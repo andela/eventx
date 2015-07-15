@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ca62dec-13bc-47fd-abed-335997d2b996" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/material-design-icons/Material-Design-Icons.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/material-design-icons/Material-Design-Icons.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/material-design-icons/Material-Design-Icons.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/material-design-icons/Material-Design-Icons.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Bold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Bold.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Bold.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Light.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Light.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Light.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Medium.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Medium.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Medium.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Thin.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Thin.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/roboto/Roboto-Thin.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Development__event_x.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/material-design-icons/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/font/material-design-icons/Material-Design-Icons.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Production__event_x.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/materialize.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/materialize.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/spec__event_x.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/test__event_x.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/event_x.iml" afterPath="$PROJECT_DIR$/.idea/event_x.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="event_x.iws" />
@@ -70,8 +40,8 @@
       <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2917342">
-              <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.09724473">
+              <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -244,6 +214,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="event_x" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="event_x" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="event_x" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="event_x" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -574,8 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2917342">
-          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.09724473">
+          <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
           <folding />
         </state>
       </provider>
