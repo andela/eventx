@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+#parallax{
+    height: 700px;
+    background: url('best.jpg') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+#event{
+
+    position: absolute;
+    height: inherit;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+#event h1{
+    position: relative;
+    display: block;
+    top: 12%;
+    color: #fff;
+    text-shadow: 2px 1px 1px black;
+    font-family: 'Great Vibes', cursive;
+
+}
