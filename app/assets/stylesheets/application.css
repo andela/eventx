@@ -18,7 +18,7 @@
 
 #parallax{
     height: 700px;
-    background: url('best.jpg') no-repeat;
+    background: image-url('best.jpg') no-repeat;
     background-size: cover;
     background-attachment: fixed;
 
