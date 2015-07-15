@@ -18,10 +18,10 @@
 
 #parallax{
     height: 700px;
-    background: image-url('best.jpg') no-repeat;
+    background-image: url('http://res.cloudinary.com/neddinn/image/upload/v1436982560/best_gslmna.jpg');
     background-size: cover;
     background-attachment: fixed;
-
+    background-repeat: no-repeat;
 }
 #event{
 
