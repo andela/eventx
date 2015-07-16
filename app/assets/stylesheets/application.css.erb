@@ -72,16 +72,21 @@ html, body{
   border-style: solid #EED8AE;
   border-width: 5px;
   border-radius: 6px;
-
 }
 .home_tag{
   position: relative;
   top: 12%;
+  bottom: 12%;
 }
 .search_form{
   position: relative;
   top: 15%;
 }
 .white_text{
-  color: #fff;
+  color: #fff !important;
 }
+input[type="text"]:focus:not([readonly]){
+  border-bottom: 1px solid #fff;
+  box-shadow: 0 1px 0 0 #fff;
+}
+
