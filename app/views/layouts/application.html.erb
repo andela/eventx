@@ -2,15 +2,51 @@
 <html>
 <head>
   <title>EventX</title>
-  <%= stylesheet_link_tag    'application', "https://fonts.googleapis.com/css?family=Great+Vibes", media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', "https://fonts.googleapis.com/css?family=Great+Vibes", "https://fonts.googleapis.com/icon?family=Material+Icons", media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <div id="parallax">
-    <div id="event"><h1>EventX</h1></div>
 
+    <div id="event">
+        <ul class="home_user_options">
+          <li class="home_sign_in_or_up"><%= link_to "Log In", root_path, class: "btn_a_tag" %></li>
+          <!-- <li class="home_sign_in_or_up"><%= link_to "Sign Up", root_path, class: "btn_a_tag" %></li> -->
+        </ul>
+        <div class="home_tag">
+          <h1 id="home_app_title">EventX</h1>
+          <p class="home_app_tag">Simple, Easy, Build it!</p>
+          <a class="waves-effect waves-light btn-large  home_button" style="background-color: #EED8AE; color: #000000">Create Event</a>
+        </div>
+        <div class="search_form">
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s3" style="color: #fff">
+                  <i class="material-icons prefix" style="color: #fff">search</i>
+                  <input id="icon_prefix" type="text" class="validate " style="color: #fff">
+                  <label for="icon_prefix" style="color: #fff">Search Event</label>
+                </div>
+                <div class="input-field col s3">
+                  <i class="material-icons prefix">my_location</i>
+                  <input id="icon_telephone" type="tel" class="validate">
+                  <label for="icon_telephone">Location</label>
+                </div>
+                <div class="input-field col s3">
+                  <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
 </div>
 
 
