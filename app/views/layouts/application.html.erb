@@ -8,50 +8,6 @@
 </head>
 <body>
 
-<div id="parallax">
-
-    <div id="event">
-        <ul class="home_user_options">
-          <li class="home_sign_in_or_up"><%= link_to "Log In", root_path, class: "btn_a_tag" %></li>
-          <!-- <li class="home_sign_in_or_up"><%= link_to "Sign Up", root_path, class: "btn_a_tag" %></li> -->
-        </ul>
-        <div class="home_tag">
-          <h1 id="home_app_title">EventX</h1>
-          <p class="home_app_tag">Simple, Easy, Build it!</p>
-          <a class="waves-effect waves-light btn-large  home_button" style="background-color: #EED8AE; color: #000000">Create Event</a>
-        </div>
-        <div class="search_form">
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s3" >
-                  <i class="material-icons prefix white_text">search</i>
-                  <input id="icon_prefix" type="text" class="validate white_text">
-                  <label for="icon_prefix" class="white_text" >Search Event</label>
-                </div>
-                <div class="input-field col s3">
-                  <i class="material-icons prefix white_text">my_location</i>
-                  <input id="icon_location" type="text" class="validate white_text">
-                  <label for="icon_location" class="white_text" >Location</label>
-                </div>
-                <div class="input-field col s3 white_text">
-                  <select>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Today</option>
-                    <option value="2">Tomorrow</option>
-                    <option value="3">This week</option>
-                    <option value="4">This weekend</option>
-                    <option value="5">Next week</option>
-                    <option value="6">Next weekend</option>
-                  </select>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-    </div>
-</div>
-
 
 <%= yield %>
 
