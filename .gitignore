@@ -17,3 +17,5 @@
 /tmp
 
 .idea/
+
+*_card.html.erb
