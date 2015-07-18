@@ -2,14 +2,14 @@
 
   <div id="event">
     <ul class="home_user_options">
-      <li class="home_sign_in_or_up"><%= link_to "Log In", "/", class: "btn_a_tag" %></li>
+      <li class="home_sign_in_or_up"><%= link_to "Log In", root_path, class: "btn_a_tag" %></li>
       <!-- <li class="home_sign_in_or_up"></li> -->
     </ul>
     <div class="home_tag">
       <h1 id="home_app_title">EventX</h1>
       <p class="home_app_tag">Simple, Easy, Build it!</p>
       <!--<a  style="background-color: #EED8AE; color: #000000"></a>-->
-      <%= link_to "Create Event", events_create_event_path, class: "waves-effect waves-light btn-large  home_button", style: "background-color: #EED8AE; color: #000000"  %>
+      <%= link_to "Create Event", create_event_path, class: "waves-effect waves-light btn-large  home_button", style: "background-color: #EED8AE; color: #000000"  %>
 
     </div>
     <div class="search_form">
@@ -43,3 +43,4 @@
     </div>
   </div>
 </div>
+<%= render partial: "card" %>
