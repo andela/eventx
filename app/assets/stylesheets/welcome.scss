@@ -1,3 +1,74 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+html, body{
+  height: 100%;
+  width: 100%;
+
+}
+
+#event{
+  position: absolute;
+  height: inherit;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+#event h1{
+  color: #fff;
+  text-shadow: 2px 1px 1px black;
+  font-family: 'Great Vibes', cursive;
+  margin:0;
+}
+
+#event .home_user_options{
+  top: 3%;
+  text-align: right;
+  position: relative;
+  padding-right: 5%
+}
+
+#event .home_user_options .home_sign_in_or_up{
+  display: inline;
+  padding: 10px;
+}
+
+#event .home_user_options .home_sign_in_or_up .btn_a_tag{
+  text-decoration: none;
+  color: #fff;
+
+}
+
+#event .home_app_tag{
+  font-size: 40px;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 4px;
+}
+.home_button{
+  font-size: 20px;
+  width: 25%;
+  border-style: solid #EED8AE;
+  border-width: 5px;
+  border-radius: 6px;
+}
+.home_tag{
+  position: relative;
+  top: 12%;
+  bottom: 12%;
+}
+.search_form{
+  position: relative;
+  top: 15%;
+}
+.white_text{
+  color: #fff !important;
+}
+input[type="text"]:focus:not([readonly]){
+  border-bottom: 1px solid #fff;
+  box-shadow: 0 1px 0 0 #fff;
+}
+
