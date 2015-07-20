@@ -19,3 +19,8 @@
 .idea/
 
 *_card.html.erb
+
+app/assets/stylesheets/material_icons/
+app/assets/font/material_icons/
+app/codesnip
+app/views/welcome/test.html.erb
