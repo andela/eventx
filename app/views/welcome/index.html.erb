@@ -1,45 +1,28 @@
-<div id="parallax">
-
-  <div id="event">
-    <ul class="home_user_options">
-      <li class="home_sign_in_or_up"><%= link_to "Log In", "/", class: "btn_a_tag" %></li>
-      <!-- <li class="home_sign_in_or_up"></li> -->
-    </ul>
-    <div class="home_tag">
-      <h1 id="home_app_title">EventX</h1>
-      <p class="home_app_tag">Simple, Easy, Build it!</p>
-      <!--<a  style="background-color: #EED8AE; color: #000000"></a>-->
-      <%= link_to "Create Event", events_create_event_path, class: "waves-effect waves-light btn-large  home_button", style: "background-color: #EED8AE; color: #000000"  %>
-
-    </div>
-    <div class="search_form">
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s3" >
-              <i class="material-icons prefix white_text">search</i>
-              <input id="icon_prefix" type="text" class="validate white_text">
-              <label for="icon_prefix" class="white_text" >Search Event</label>
-            </div>
-            <div class="input-field col s3">
-              <i class="material-icons prefix white_text">my_location</i>
-              <input id="icon_location" type="text" class="validate white_text">
-              <label for="icon_location" class="white_text" >Location</label>
-            </div>
-            <div class="input-field col s3 white_text">
-              <select>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Today</option>
-                <option value="2">Tomorrow</option>
-                <option value="3">This week</option>
-                <option value="4">This weekend</option>
-                <option value="5">Next week</option>
-                <option value="6">Next weekend</option>
-              </select>
-            </div>
-          </div>
-        </form>
+<div id="index-banner" class="parallax-container">
+  <ul class="home_user_options">
+    <li class="home_sign_in_or_up"><%= link_to "Log In", "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal"} %></li>
+    <!-- <li class="home_sign_in_or_up"></li> -->
+  </ul>
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center home_app_title">EventX</h1>
+      <div class="row center">
+        <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
       </div>
+      <div class="row center">
+        <%= link_to "Create Event", create_event_path, class: "waves-effect waves-light btn-large  home_button", style: "background-color: #EED8AE; color: #000000"  %>
+        <!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
+      </div>
+
+      <%= render partial: 'search' %>
+      <br><br>
+
     </div>
   </div>
+  <div class="parallax"><%= image_tag 'best.jpg'%></div>
 </div>
+
+<%= render partial: 'login_modal'%>
+<!-- Modal Trigger -->
+  <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->

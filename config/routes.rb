@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-  get 'events/create_event'
+  get 'test' => 'welcome#test', as: :labs_page
+  get 'create_event' => 'events#create', as: :create_event
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

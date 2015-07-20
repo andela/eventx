@@ -19,3 +19,10 @@
 .idea/
 
 _card.html*
+
+codesnip
+
+app/assets/font/material_icons/*
+app/assets/stylesheets/material_icons/*
+
+app/views/welcome/test.html.erb
