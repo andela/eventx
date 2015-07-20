@@ -1,3 +1,165 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+html, body{
+  height: 100%;
+  width: 100%;
+
+}
+
+#event{
+  position: absolute;
+  height: inherit;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+#event h1{
+  color: #fff;
+  text-shadow: 2px 1px 1px black;
+  font-family: 'Great Vibes', cursive;
+  margin:0;
+}
+
+#event .home_user_options{
+  top: 3%;
+  text-align: right;
+  position: relative;
+  padding-right: 5%
+}
+
+#event .home_user_options .home_sign_in_or_up{
+  display: inline;
+  padding: 10px;
+}
+
+#event .home_user_options .home_sign_in_or_up .btn_a_tag{
+  text-decoration: none;
+  color: #fff;
+
+}
+
+#event .home_app_tag{
+  font-size: 40px;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 4px;
+}
+.home_button{
+  font-size: 20px;
+  border-style: solid #EED8AE;
+  border-width: 5px;
+  border-radius: 6px;
+}
+.home_tag{
+  position: relative;
+  top: 12%;
+  bottom: 12%;
+}
+.search_form{
+  position: relative;
+  top: 15%;
+}
+.white_text{
+  color: #fff !important;
+}
+input[type="text"]:focus:not([readonly]){
+  border-bottom: 1px solid #fff;
+  box-shadow: 0 1px 0 0 #fff;
+}
+
+
+.content-set{
+  margin: 40px;
+}
+
+.event-section{
+  background:#F7F7F7 ;
+ }
+
+.card-shadow{
+  box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+}
+
+
+
+.card .card-content .card-title {
+  line-height: 0px;
+  width: 15px;
+}
+
+.card .card-title {
+  font-size: 15px;
+}
+
+.card .card-action {
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 10px 20px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.Amount{
+  background-color: rgba(255,255,255,.75);
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(0,0,0,.8);
+  box-sizing: border-box;
+  padding: 2px 10px;
+  position: absolute;
+  display: inline-block;
+  top: 10px;
+  right: 10px;
+  z-index: 50;
+}
+
+.card .card-reveal {
+  padding: 20px;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  overflow-y: auto;
+  top: 100%;
+  height: 100%;
+  z-index: 51;
+  display: none;
+}
+
+
+
+.remove-margin{
+  margin: 0;
+}
+
+.tabs .indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: #FFE0A6;
+  will-change: left, right;
+}
+
+.tabs .tab a {
+  color: #FFE0A6;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: color 0.28s ease;
+  -moz-transition: color 0.28s ease;
+  -o-transition: color 0.28s ease;
+  -ms-transition: color 0.28s ease;
+  transition: color 0.28s ease;
+}
+
+
+footer.page-footer {
+  margin-top: 0px;
+  padding-top: 20px;
+  background-color: #333333;
+}

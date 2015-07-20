@@ -12,35 +12,60 @@
       <%= link_to "Create Event", create_event_path, class: "waves-effect waves-light btn-large  home_button", style: "background-color: #EED8AE; color: #000000"  %>
 
     </div>
-    <div class="search_form">
+  </div>
+</div>
+
+<div class="event-section row remove-margin">
+  <div class="col s12" style="padding: 0px 0px">
+    <ul class="tabs">
+      <li class="tab col s3"><a class="active" href="#test1">FEATURED</a></li>
+      <li class="tab col s3"><a href="#test2">LATEST</a></li>
+      <li class="tab col s3"><a href="#test3">POPULAR</a></li>
+    </ul>
+  </div>
+  <div id="test1" class="col s12">
+    <div class="content-set">
       <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s3" >
-              <i class="material-icons prefix white_text">search</i>
-              <input id="icon_prefix" type="text" class="validate white_text">
-              <label for="icon_prefix" class="white_text" >Search Event</label>
+       <% 12.times do %>
+        <div class="col m4 s12 ">
+          <div class="card small card-shadow">
+            <div class="Amount">Free</div>
+            <div class="card-image waves-effect waves-block waves-light">
+              <%= image_tag "office.jpg" %>
             </div>
-            <div class="input-field col s3">
-              <i class="material-icons prefix white_text">my_location</i>
-              <input id="icon_location" type="text" class="validate white_text">
-              <label for="icon_location" class="white_text" >Location</label>
+            <div class="card-content">
+              <span class="card-title grey-text text-darken-4"><i class="fa fa-clock-o"></i> WED, JUL 29 5:00 PM </span>
+              <p>2nd Annual Women in Business and Leadership Summit 2015</p>
             </div>
-            <div class="input-field col s3 white_text">
-              <select>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Today</option>
-                <option value="2">Tomorrow</option>
-                <option value="3">This week</option>
-                <option value="4">This weekend</option>
-                <option value="5">Next week</option>
-                <option value="6">Next weekend</option>
-              </select>
+
+            <div class="card-action">
+              <span class="card-title grey-text text-darken-4"><i class="fa fa-map-marker"></i> LEKKI LAGOS
+                <i class="material-icons right activator pointer tooltipped" data-position="bottom" data-delay="50" data-tooltip="view more">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
-        </form>
+        </div>
+        <% end %>
+        <div class="center">
+          <a href="#" class="btn-large grey z-depth-0">SEE MORE</a>
+        </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <div id="test2" class="col s12">Test 2</div>
+  <div id="test3" class="col s12">Test 3</div>
+
+
+<div class="near-footer">
+ <h4>Create your own event</h4>
+ <p>Bring people together, or turn your passion into a business. <br>
+   EventX gives you everything you need to host your best event yet.</p>
+  <%= link_to "Create Event", events_create_event_path, class: "btn-large z-depth-0",
+              style: "background-color: #EED8AE; color: #000000"  %>
+
 </div>
-<%= render partial: "card" %>
