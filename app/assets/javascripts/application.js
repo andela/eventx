@@ -20,11 +20,13 @@ $(document).ready(function() {
     $('select').material_select();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
+
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
     
+
     /* Every time the window is scrolled ... */
     $(window).scroll( function(){
 
