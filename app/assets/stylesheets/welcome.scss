@@ -203,6 +203,21 @@ footer.page-footer {
   margin-top: 0px;
   padding-top: 20px;
   background-color: #333333;
+  border-top: 5px solid #666666;
+  .brand-logo{
+    margin-left: 100px;
+  }
+  a{
+    color: #666;
+  }
+  nav {
+    color: #fff;
+    background-color: #333333;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    border-bottom: #000000 2px solid;
+  }
 }
 
 
