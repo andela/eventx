@@ -16,13 +16,16 @@
 !/log/.keep
 /tmp
 
+Gemfile.lock
+
 .idea/
+
+app/assets/stylesheets/material_icons/
+app/assets/font/material_icons/
+app/codesnip
 
 _card.html*
 
-codesnip
-
-app/assets/font/material_icons/*
-app/assets/stylesheets/material_icons/*
+app/codesnip
 
 app/views/welcome/test.html.erb
