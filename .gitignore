@@ -16,6 +16,8 @@
 !/log/.keep
 /tmp
 
+Gemfile.lock
+
 .idea/
 
 app/assets/stylesheets/material_icons/
