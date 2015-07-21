@@ -20,9 +20,15 @@ $(document).ready(function() {
     $('select').material_select();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
-});
 
-$(document).ready(function() {
+
+    $("#create_event").click(function() {
+        $('ul.tabs').tabs();
+        console.log("hello")
+    });
+
+
+
 
     /* Every time the window is scrolled ... */
     $(window).scroll( function(){
@@ -43,7 +49,6 @@ $(document).ready(function() {
         });
 
     });
-
 });
 
 
