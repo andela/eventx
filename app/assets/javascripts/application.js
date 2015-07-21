@@ -18,4 +18,9 @@
 
 $(document).ready(function() {
     $('select').material_select();
+    $('.parallax').parallax();
+    $('.modal-trigger').leanModal();
 });
+
+// $(document).ready(function(){
+// });
