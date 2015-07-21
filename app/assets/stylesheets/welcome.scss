@@ -14,9 +14,10 @@ html, body{
 // }
 
 .parallax-container{
-  height: inherit;
+  height: 100%; //inherit;
   width: 100%;
   background-color: rgba(0,0,0,0.4);
+  overflow: scroll;
 }
 
 
