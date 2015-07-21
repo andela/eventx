@@ -8,16 +8,14 @@ html, body{
   width: 100%;
 }
 
-// #parallax{
-//   height: 100%;
-//   width: 100%;
-// }
-
 .parallax-container{
-  height: 100%; //inherit;
+  // height: 100%; //inherit;
+
+  min-height: 380px;
+  height: auto;
   width: 100%;
   background-color: rgba(0,0,0,0.4);
-  overflow-y: scroll;
+  //overflow-y:scroll;
 }
 
 
@@ -110,7 +108,7 @@ html, body{
   color: #000;
 }
 
-input[type="text"]:focus:not([readonly]){
+input[type=text]:focus:not([readonly]){
   border-bottom: 1px solid #fff;
   box-shadow: 0 1px 0 0 #fff;
 }
@@ -211,4 +209,19 @@ footer.page-footer {
 .hideme
 {
   opacity:0;
+}
+
+.select-wrapper{
+  input.select-dropdown{
+    //padding: 0 0;
+    margin: 0 0 15px 40px;
+  }
+}
+
+i.when_icon{
+  color: white;
+  position: absolute;
+  left: 5px;
+  // top: 16px;
+  // font-size: 10px
 }
