@@ -14,9 +14,10 @@ html, body{
 // }
 
 .parallax-container{
-  height: inherit;
+  height: 100%; //inherit;
   width: 100%;
   background-color: rgba(0,0,0,0.4);
+  overflow-y: scroll;
 }
 
 
@@ -77,6 +78,12 @@ html, body{
   background-color: rgba(0, 0, 0, 0.64);
   margin: 94px 5%;
   bottom: 10%;
+
+  button{
+    height: 40px;
+    line-height: 42px;
+    vertical-align: middle;
+  }
 }
 
 .white_text{
@@ -198,4 +205,10 @@ footer.page-footer {
   margin-top: 0px;
   padding-top: 20px;
   background-color: #333333;
+}
+
+
+.hideme
+{
+  opacity:0;
 }
