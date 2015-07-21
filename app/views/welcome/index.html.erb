@@ -1,32 +1,48 @@
-<div id="parallax">
+<div class="parallax-container" id="index-banner">
+  <ul class="home_user_options">
+    <li class="home_sign_in_or_up"><%= link_to "Log In", "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal"} %></li>
+<!-- <li class="home_sign_in_or_up"></li> -->
+  </ul>
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center home_app_title">EventX</h1>
+      <div class="row center">
+        <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
+      </div>
+      <div class="row center">
+        <%= link_to "Create Event", create_event_path, class: "waves-effect waves-light btn-large  home_button", style: "background-color: #EED8AE; color: #000000"  %>
+<!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
+      </div>
 
-  <div id="event">
-    <ul class="home_user_options">
-      <li class="home_sign_in_or_up"><%= link_to "Log In", root_path, class: "btn_a_tag" %></li>
-      <!-- <li class="home_sign_in_or_up"></li> -->
-    </ul>
-    <div class="home_tag">
-      <h1 id="home_app_title">EventX</h1>
-      <p class="home_app_tag">Simple, Easy, Build it!</p>
-      <!--<a  style="background-color: #EED8AE; color: #000000"></a>-->
-      <%= link_to "Create Event", create_event_path, class: "waves-effect waves-light btn-large  home_button", style: "background-color: #EED8AE; color: #000000"  %>
+      <%= render partial: 'search' %>
+      <br><br>
 
     </div>
   </div>
+  <div class="parallax"><%= image_tag 'best.jpg'%></div>
 </div>
+
+<%= render partial: 'login_modal'%>
 
 <div class="event-section row remove-margin">
   <div class="col s12" style="padding: 0px 0px">
     <ul class="tabs">
-      <li class="tab col s3"><a class="active" href="#test1">FEATURED</a></li>
-      <li class="tab col s3"><a href="#test2">LATEST</a></li>
-      <li class="tab col s3"><a href="#test3">POPULAR</a></li>
+      <li class="tab col s3">
+        <a class="active" href="#test1">FEATURED</a>
+      </li>
+      <li class="tab col s3">
+        <a href="#test2">LATEST</a>
+      </li>
+      <li class="tab col s3">
+        <a href="#test3">POPULAR</a>
+      </li>
     </ul>
   </div>
-  <div id="test1" class="col s12">
+  <div class="col s12" id="test1">
     <div class="content-set">
       <div class="row">
-       <% 12.times do %>
+        <% 12.times do %>
         <div class="col m4 s12 ">
           <div class="card small card-shadow">
             <div class="Amount">Free</div>
@@ -34,37 +50,46 @@
               <%= image_tag "office.jpg" %>
             </div>
             <div class="card-content">
-              <span class="card-title grey-text text-darken-4"><i class="fa fa-clock-o"></i> WED, JUL 29 5:00 PM </span>
+              <span class="card-title grey-text text-darken-4">
+                <i class="fa fa-clock-o"></i>
+                WED, JUL 29 5:00 PM
+              </span>
               <p>2nd Annual Women in Business and Leadership Summit 2015</p>
             </div>
 
             <div class="card-action">
-              <span class="card-title grey-text text-darken-4"><i class="fa fa-map-marker"></i> LEKKI LAGOS
-                <i class="material-icons right activator pointer tooltipped" data-position="bottom" data-delay="50" data-tooltip="view more">more_vert</i></span>
+              <span class="card-title grey-text text-darken-4">
+                <i class="fa fa-map-marker"></i>
+                LEKKI LAGOS
+                <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
+              </span>
             </div>
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+              <span class="card-title grey-text text-darken-4">Card Title
+                <i class="material-icons right">close</i>
+              </span>
               <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
         </div>
         <% end %>
         <div class="center">
-          <a href="#" class="btn-large grey z-depth-0">SEE MORE</a>
-        </div>
+          <a class="btn-large grey z-depth-0" href="#">SEE MORE</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="test2" class="col s12">Test 2</div>
-  <div id="test3" class="col s12">Test 3</div>
-
+</div>
+<div class="col s12" id="test2">Test 2</div>
+<div class="col s12" id="test3">Test 3</div>
 
 <div class="near-footer">
- <h4>Create your own event</h4>
- <p>Bring people together, or turn your passion into a business. <br>
-   EventX gives you everything you need to host your best event yet.</p>
+  <h4>Create your own event</h4>
+  <p>Bring people together, or turn your passion into a business.
+    <br>
+    EventX gives you everything you need to host your best event yet.</p>
+
   <%= link_to "Create Event", create_event_path, class: "btn-large z-depth-0",
               style: "background-color: #EED8AE; color: #000000"  %>
 
