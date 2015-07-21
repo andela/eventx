@@ -1,17 +1,67 @@
 <div id="test1" class="row">
-  <form class="col s12">
+  <form class="col s12 event_border">
+
     <div class="row">
-      <div class="input-field col s6 offset-s3">
-        <input placeholder="Placeholder" id="event_title" type="text" class="validate">
+      <div class="input-field col s8 offset-s2">
+        <i class="fa fa-pencil prefix"></i>
+        <input id="event_title" type="text" class="validate">
         <label for="first_name">Event Title</label>
       </div>
     </div>
 
+    <div class="divider"></div>
+
     <div class="row">
-      <div class="input-field col s12">
-        <input id="email" type="email" class="validate">
-        <label for="email">Email</label>
+      <div class="input-field col s8 offset-s2">
+        <i class="fa fa-map-marker prefix"></i>
+        <input id="location" type="text" class="validate">
+        <label for="location">Location</label>
       </div>
     </div>
+
+    <div class="divider"></div>
+
+    <div class="row">
+      <div class="input-field col s4 offset-s2">
+        <i class="fa fa-calendar prefix"></i>
+        <input id="start_date" type="date" class="datepicker">
+        <label for="start_date">Start Date</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="fa fa-calendar prefix"></i>
+        <input id="end_date" type="date" class="datepicker">
+        <label for="end_date">End Date</label>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="row">
+      <div class="input-field col s8 offset-s2">
+        <i class="fa fa-youtube prefix"></i>
+        <input id="url" type="url" class="validate">
+        <label for="url">Youtube link</label>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="row">
+      <div class="input-field col s8 offset-s2">
+        <i class="fa fa-pencil-square-o prefix"></i>
+        <textarea id="textarea1" class="materialize-textarea" length="1000" maxlength="1000"></textarea>
+        <label for="textarea1">Description</label>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="row">
+      <div class="input-field col s8 offset-s2">
+
+      </div>
+    </div>
+
   </form>
+
 </div>
