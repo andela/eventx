@@ -76,12 +76,32 @@ html, body{
 
   select{
     // margin: -2px 40px;
+
     width: 80%;
     margin-left: 50px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 1px solid #fff;
+    -webkit-appearance: none !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -moz-appearance: none !important;
+    text-decoration: none !important;
+    border-radius: none !important;
+    // border-radius: 0px !important;
+    &:focus{
+      outline: none;
+    }
 
   }
+
+  // 
+  // select:-moz-focusring{
+  //   outline: none;
+  //   border: none;
+  //   color: #fff;
+  //   text-shadow: 0 0 0 #000;
+  // }
 
   button{
     height: 40px;
