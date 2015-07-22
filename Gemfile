@@ -29,8 +29,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
+gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem "figaro"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
