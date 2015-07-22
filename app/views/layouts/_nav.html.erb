@@ -1,15 +1,18 @@
-<nav>
+<nav class="custom_nav z-depth-0">
   <div class="nav-wrapper">
-    <a class="brand-logo" href="#!">Logo</a>
+    <a href="#" data-activates="nav_mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li>
-        <a href="sass.html">
-          <i class="material-icons left">search</i>Link with Left Icon</a>
-      </li>
-      <li>
-        <a href="badges.html">
-          <i class="material-icons right">view_module</i>Link with Right Icon</a>
+        <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal"} do %>
+          <%= "#{content_tag :i, '', class: "fa fa-lock white_text left"} Log In".html_safe %>
+        <% end %>
       </li>
     </ul>
+    <ul class="side-nav" id="nav_mobile">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
   </div>
 </nav>

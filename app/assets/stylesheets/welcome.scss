@@ -31,15 +31,15 @@ html, body{
 }
 
 .home_user_options{
-  top: 3%;
+  // top: 0;
   text-align: right;
-  position: relative;
-  padding-right: 5%
+  // position: relative;
+  // padding-right: 5%
 }
 
 .home_user_options .home_sign_in_or_up{
   display: inline;
-  padding: 10px;
+  // padding: 10px;
 }
 
 .home_user_options .home_sign_in_or_up .btn_a_tag{
@@ -245,4 +245,24 @@ i.when_icon{
 .btn-large.bottom_btn{
   background-color: #EED8AE;
   color: #000000
+}
+// .btn_a_tag{
+//   .white_text{
+//     height: inherit !important;
+//   }
+// }
+
+nav.custom_nav{
+  // opacity: 0.5;
+  // filter: alpha(opacity=50);
+  // background-color: rgba(0,0,0,.1);
+  // background-color: transparent !important;
+  background-color: rgba(0, 0, 0, 0.0) !important;
+  // opacity: 0.0;
+  width: 100%;
+  height: inherit;
+  color: white !important;
+  top: 0;
+  position: absolute;
+   //filter: alpha(opacity=50);
 }
