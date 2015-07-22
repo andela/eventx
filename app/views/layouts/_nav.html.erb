@@ -4,9 +4,11 @@
     <ul class="right hide-on-med-and-down">
 
       <% if current_user %>
-      
-           <li><%= image_tag current_user.profile_url %></li>
-           <li><%= current_user.first_name %></li>
+
+           <li>
+             <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
+              <%= current_user.first_name %>
+           </li>
            <li><%= link_to "Logout", signout_path %></li>
       <% else %>
 

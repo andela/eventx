@@ -258,10 +258,9 @@ nav.custom_nav{
   // filter: alpha(opacity=50);
   // background-color: rgba(0,0,0,.1);
   // background-color: transparent !important;
-  background-color: rgba(0, 0, 0, 0.0) !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
   // opacity: 0.0;
   width: 100%;
-  height: inherit;
   color: white !important;
   top: 0;
   position: absolute;
@@ -271,4 +270,8 @@ nav.custom_nav{
 .sso_option .btn{
   width: 100% !important;
   // font-size: 65%;
+}
+
+.profile_pic.circle{
+    vertical-align: middle;
 }
