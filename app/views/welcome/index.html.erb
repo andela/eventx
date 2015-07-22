@@ -1,7 +1,7 @@
 <div class="parallax-container" id="index-banner" >
   <ul class="home_user_options">
     <% if current_user %>
-       <li><%= image_tag current_user.profile_url %></li>
+       <li><%= image_tag current_user.profile_url, class: "circle" %></li>
        <li><%= current_user.first_name %></li>
       <li><%= link_to "Logout", signout_path %></li>
     <% else %>
