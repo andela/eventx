@@ -1,4 +1,4 @@
-<div class="parallax-container" id="index-banner">
+<div class="parallax-container" id="index-banner" >
   <ul class="home_user_options">
     <li class="home_sign_in_or_up"><i class='fa fa-lock white_text'></i> <%= link_to "Log In", "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal"} %></li>
   </ul>
@@ -10,7 +10,9 @@
         <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
       </div>
       <div class="row center">
-        <%= link_to "Create Event", events_new_path, class: "waves-effect waves-light btn-large  home_button" %>
+        <%= link_to "Create Event", events_new_path, id: "create_event", data: { no_turbolink: true }, class: "waves-effect waves-light btn-large  home_button", style: "background-color: #EED8AE; color: #000000"  %>
+<!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
+
       </div>
 
       <%= render partial: 'search' %>
