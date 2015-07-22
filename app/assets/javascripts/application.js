@@ -25,7 +25,27 @@ $(document).ready(function() {
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
-    
+
+    // This is used to handle the create ticket session
+    // of the first page of the create event page
+    $('#free_ticket_btn').click(function(){
+        $("#free_ticket_div").css("display", "block");
+        // Changes the create icon to teal
+        $("#ticket_icon").css("color", "#26A79B");
+    });
+    $('#close_free').click(function(){
+        $("#free_ticket_div").css("display", "none");
+    });
+
+    $('#paid_ticket_btn').click(function(){
+        $("#paid_ticket_div").css("display", "block");
+        // Changes the create icon to teal
+        $("#ticket_icon").css("color", "#26A79B");
+    });
+    $('#close_paid').click(function(){
+        $("#paid_ticket_div").css("display", "none");
+    });
+
 
     /* Every time the window is scrolled ... */
     $(window).scroll( function(){
