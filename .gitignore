@@ -29,3 +29,6 @@ _card.html*
 app/codesnip
 
 app/views/welcome/test.html.erb
+
+# Ignore application configuration
+/config/application.yml
