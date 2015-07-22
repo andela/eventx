@@ -246,6 +246,7 @@ i.when_icon{
   background-color: #EED8AE;
   color: #000000
 }
+
 // .btn_a_tag{
 //   .white_text{
 //     height: inherit !important;
@@ -265,4 +266,9 @@ nav.custom_nav{
   top: 0;
   position: absolute;
    //filter: alpha(opacity=50);
+}
+
+.sso_option .btn{
+  width: 100% !important;
+  // font-size: 65%;
 }
