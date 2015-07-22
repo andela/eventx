@@ -9,15 +9,10 @@ html, body{
 }
 
 .parallax-container{
-  // height: 100%; //inherit;
-
-  min-height: 380px;
-  height: auto;
+  height: inherit;
   width: 100%;
   background-color: rgba(0,0,0,0.4);
-  //overflow-y:scroll;
 }
-
 
 #event{
   position: absolute;
@@ -27,6 +22,7 @@ html, body{
   margin: auto;
   background-color: rgba(0,0,0,0.4);
 }
+
 .home_app_title{
   color: #fff !important;
   text-shadow: 2px 1px 1px black;
@@ -35,15 +31,15 @@ html, body{
 }
 
 .home_user_options{
-  top: 3%;
+  // top: 0;
   text-align: right;
-  position: relative;
-  padding-right: 5%
+  // position: relative;
+  // padding-right: 5%
 }
 
 .home_user_options .home_sign_in_or_up{
   display: inline;
-  padding: 10px;
+  // padding: 10px;
 }
 
 .home_user_options .home_sign_in_or_up .btn_a_tag{
@@ -55,14 +51,15 @@ html, body{
 .home_app_tag{
   font-size: 40px;
   color: #fff;
-  // margin: 0;
-  // margin-bottom: 4px;
 }
-.home_button{
+
+.btn-large.home_button{
   font-size: 20px;
   border-style: solid #EED8AE;
   border-width: 5px;
   border-radius: 6px;
+  background-color: #EED8AE;
+  color: #000000
 }
 
 .home_tag{
@@ -77,10 +74,40 @@ html, body{
   margin: 94px 5%;
   bottom: 10%;
 
+  select{
+    // margin: -2px 40px;
+
+    width: 80%;
+    margin-left: 50px;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 1px solid #fff;
+    -webkit-appearance: none !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -moz-appearance: none !important;
+    text-decoration: none !important;
+    border-radius: none !important;
+    // border-radius: 0px !important;
+    &:focus{
+      outline: none;
+    }
+
+  }
+
+  //
+  // select:-moz-focusring{
+  //   outline: none;
+  //   border: none;
+  //   color: #fff;
+  //   text-shadow: 0 0 0 #000;
+  // }
+
   button{
     height: 40px;
     line-height: 42px;
     vertical-align: middle;
+    margin-bottom: 5px;
   }
 }
 
@@ -88,24 +115,9 @@ html, body{
   color: #fff !important;
 }
 
+
 .black_text{
   color: black !important;
-}
-
-.input-field select {
-  background-color: blue;
-}
-
-.select-wrapper span.caret{
-  color: white;
-}
-
-.dropdown-content li > a, .dropdown-content li > span{
-  color: #EE6E73;
-}
-
-.dropdown-content li > a, .dropdown-content li:first-child > span{
-  color: #000;
 }
 
 input[type=text]:focus:not([readonly]){
@@ -124,8 +136,6 @@ input[type=text]:focus:not([readonly]){
 .card-shadow{
   box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
 }
-
-
 
 .card .card-content .card-title {
   line-height: 0px;
@@ -226,17 +236,42 @@ footer.page-footer {
   opacity:0;
 }
 
-.select-wrapper{
-  input.select-dropdown{
-    //padding: 0 0;
-    margin: 0 0 15px 40px;
-  }
-}
-
 i.when_icon{
   color: white;
   position: absolute;
   left: 5px;
-  // top: 16px;
-  // font-size: 10px
+}
+
+.btn-large.bottom_btn{
+  background-color: #EED8AE;
+  color: #000000
+}
+
+// .btn_a_tag{
+//   .white_text{
+//     height: inherit !important;
+//   }
+// }
+
+nav.custom_nav{
+  // opacity: 0.5;
+  // filter: alpha(opacity=50);
+  // background-color: rgba(0,0,0,.1);
+  // background-color: transparent !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  // opacity: 0.0;
+  width: 100%;
+  color: white !important;
+  top: 0;
+  position: absolute;
+   //filter: alpha(opacity=50);
+}
+
+.sso_option .btn{
+  width: 100% !important;
+  // font-size: 65%;
+}
+
+.profile_pic.circle{
+    vertical-align: middle;
 }
