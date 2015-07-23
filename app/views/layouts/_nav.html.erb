@@ -1,11 +1,11 @@
 <nav class="custom_nav z-depth-0">
   <div class="nav-wrapper">
     <a href="#" data-activates="nav_mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
+    <ul class="right">
 
       <% if current_user %>
 
-           <li>
+           <li class="hide-on-small-only">
               <% if current_user.profile_url.present? %>
                  <%= image_tag current_user.profile_url, class: 'profile_pic circle responsive-img' %>
               <% else %>
@@ -18,7 +18,7 @@
 
           <li>
             <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
-              <%= "#{content_tag :i, '', class: "fa fa-lock white_text left"} Log In".html_safe %>
+              <%= "#{content_tag :i, '', class: "fa fa-lock white_text left  hide-on-small-only"} Log In".html_safe %>
             <% end %>
           </li>
 
