@@ -6,8 +6,12 @@
       <% if current_user %>
 
            <li>
-             <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
-              <%= current_user.first_name %>
+              <% if current_user.profile_url.present? %>
+                 <%= image_tag current_user.profile_url, class: 'profile_pic circle responsive-img' %>
+              <% else %>
+                 <%= image_tag 'defaultimage.jpeg', class: 'profile_pic circle responsive-img' %>
+              <% end %>
+             <%= current_user.first_name %>
            </li>
            <li><%= link_to "Logout", signout_path, data: {no_turbolink: true} %></li>
       <% else %>
