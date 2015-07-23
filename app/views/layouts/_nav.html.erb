@@ -5,7 +5,7 @@
 
       <% if current_user %>
 
-           <li>
+           <li class="hide-on-small-only">
               <% if current_user.profile_url.present? %>
                  <%= image_tag current_user.profile_url, class: 'profile_pic circle responsive-img' %>
               <% else %>
