@@ -31,6 +31,7 @@ gem "omniauth-google-oauth2"
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem 'omniauth-github'
+gem 'omniauth-instagram'
 gem "figaro"
 
 # Use Unicorn as the app server
