@@ -84,10 +84,12 @@
 
 <div class="near-footer">
   <h4>Create your own event</h4>
-  <p>
-    Bring people together, or turn your passion into a business.<br>
-    EventX gives you everything you need to host your best event yet.
-  </p>
-  <%= link_to "Create Event", events_new_path, class: "btn-large bottom_btn z-depth-0"  %>
+
+  <p>Bring people together, or turn your passion into a business.
+    <br>
+    EventX gives you everything you need to host your best event yet.</p>
+
+  <%= link_to "Create Event", events_new_path, data: { no_turbolink: true }, class: "btn-large bottom_btn z-depth-0"  %>
+
 
 </div>
