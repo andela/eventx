@@ -2,11 +2,11 @@
 <nav>
   <div class="nav-wrapper create">
     <%=link_to "Event X", root_path, data: { no_turbolink: true }, class: "brand-logo center" %>
-    <ul class="right hide-on-med-and-down">
+    <ul class="right">
 
       <% if current_user %>
 
-          <li>
+          <li class="hide-on-small-only">
             <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
             <%= current_user.first_name %>
           </li>
