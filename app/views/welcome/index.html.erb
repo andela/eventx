@@ -10,11 +10,11 @@
       <div class="row center">
         <%=
             link_to_if(current_user, "Create Event", events_new_path, data: {no_turbolink: true}, class: "waves-effect waves-light btn-large  home_button") do
-              session[:url] = events_new_path
-              link_to("Create Event", "#login_modal",  class: "modal-trigger btn_a_tag waves-effect waves-light btn-large  home_button", data: {no_turbolink: true})
+              # session[:url] = events_new_path
+              link_to("Create Event", "#login_modal", class: "modal-trigger btn_a_tag waves-effect waves-light btn-large  home_button")
             end
         %>
-      <!-- <%= link_to "Create Event", events_new_path, id: "create_event", data: { no_turbolink: true }, class: "waves-effect waves-light btn-large  home_button" %> -->
+
 <!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
 
       </div>
