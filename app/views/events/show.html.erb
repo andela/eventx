@@ -1,0 +1,29 @@
+<div class="parallax-container" id="index-banner">
+    <%= render partial: "layouts/nav" %>
+  <div class="section no-pad-bot">
+    <div class="container">
+      <!-- <h1 class="header center home_app_title">EventX</h1> -->
+    </div>
+  </div>
+  <div class="parallax"><%= image_tag 'best.jpg'%></div>
+</div>
+
+<div class="row">
+<div class="col s12">
+  <ul class="tabs">
+    <li class="tab col s3"><a href="#create_event" class="active">Create Event</a></li>
+    <li class="tab col s3"><a href="#customize">Customize Event</a></li>
+    <li class="tab col s3"><a href="#preview">Preview</a></li>
+  </ul>
+</div>
+
+<%= render template: 'events/create_event' %>
+
+<%= render template: 'events/customize' %>
+
+<%= render template: 'events/preview' %>
+
+
+</div>
+
+<%= render partial: 'events/create_event1' %>
