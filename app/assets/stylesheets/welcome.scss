@@ -11,6 +11,7 @@ html, body{
 .parallax-container{
   height: inherit;
   width: 100%;
+  position: relative;
   background-color: rgba(0,0,0,0.4);
 }
 
@@ -49,14 +50,16 @@ html, body{
 }
 
 .home_app_tag{
-  font-size: 40px;
+  width: 20%;
+  font-size: 1.5em;
   color: #fff;
 }
 
 .btn-large.home_button{
-  font-size: 20px;
+  // width: 30%;
+  font-size: 1.25em; //20px;
   border-style: solid #EED8AE;
-  border-width: 5px;
+  // border-width: 5px;
   border-radius: 6px;
   background-color: #EED8AE;
   color: #000000
@@ -71,7 +74,7 @@ html, body{
 .search_form {
   position: relative;
   background-color: rgba(0, 0, 0, 0.64);
-  margin: 94px 5%;
+  margin: 5% 5%;
   bottom: 10%;
 
   select{
@@ -258,7 +261,7 @@ nav.custom_nav{
   // filter: alpha(opacity=50);
   // background-color: rgba(0,0,0,.1);
   // background-color: transparent !important;
-  background-color: rgba(0, 0, 0, 0.0) !important;
+  background-color: rgba(0, 0, 0, 0.0);
   // opacity: 0.0;
   width: 100%;
   color: white !important;
@@ -276,4 +279,7 @@ nav.custom_nav{
     vertical-align: middle;
     width: 50px;
     height: 50px;
+}
+.our-center{
+  margin:0 auto !important;
 }

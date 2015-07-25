@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'create_event' => 'events#create_event', as: :create_event
 
-    get 'events' => 'events#show', as: :show_event
+  get 'events/show'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

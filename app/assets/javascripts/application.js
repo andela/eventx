@@ -66,4 +66,35 @@ $(document).ready(function() {
         });
 
     });
+
+
+
+    var $navBar = $('.custom_nav.landing');
+//
+//// find original navigation bar position
+    var navPos = $navBar.offset().top;
+
+// on scroll
+    $(window).scroll(function() {
+
+        //// get scroll position from top of the page
+        var scrollPos = $(this).scrollTop();
+        if(scrollPos>=80){
+            $navBar.addClass('fixer');
+            // $navBar.addClass('after-scroll');
+            $('.before-scroll').show();
+        }else{
+            $navBar.removeClass('fixer');
+            $('.before-scroll').hide();
+        }
+        //// check if scroll position is >= the nav position
+        //if (scrollPos >= navPos) {
+        //$navBar.addClass('nav-fixed');
+
+        //$navBar.addClass('right');
+        //} else {
+        //    $navBar.removeClass('fixed');
+        //}
+
+    });
 });
