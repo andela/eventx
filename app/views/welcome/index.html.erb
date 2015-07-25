@@ -11,8 +11,9 @@
     
         <%= create_event_or_login('Create Event') %>
       </div>
-
+      <div class="header center search_form l8 m8 s12">
       <%= render partial: 'search' %>
+        </div>
       <br><br>
 
     </div>
@@ -20,7 +21,7 @@
   <div class="parallax"><%= image_tag 'best.jpg'%></div>
 </div>
 
-<%= render partial: 'login_modal'%>
+
 
 <div class="event-section row remove-margin">
   <div class="col s12" style="padding: 0px 0px">
@@ -71,7 +72,7 @@
         </div>
         <% end %>
         <div class="center">
-          <a class="btn-large grey z-depth-0" href="#">SEE MORE</a>
+          <a class="btn-large grey z-depth-0" href="/events/show">SEE MORE</a>
         </div>
       </div>
     </div>
