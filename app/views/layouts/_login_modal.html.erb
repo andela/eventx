@@ -8,12 +8,18 @@
     </p>
 <!-- <p>Options for Sign In</p> -->
     <div class="col l4 m4 offset-l1 offset-m1 s8 offset-s2 sso_option">
-      <a href="/auth/facebook" class="waves-effect waves-light btn blue darken-3">
-        <i class="fa fa-facebook left"></i>Facebook</a>
+      <%= link_to signin_path(:facebook), class: "waves-effect waves-light btn blue darken-3" do %>
+      <!-- <a href="/auth/facebook" class="waves-effect waves-light btn blue darken-3">
+        <i class="fa fa-facebook left"></i>Facebook</a> -->
+        <i class="fa fa-facebook left"></i>Facebook
+      <% end %>
     </div>
     <div class="col l4 m4 offset-l1 offset-m1 s8 offset-s2 sso_option">
-      <a href="/auth/twitter" class="waves-effect waves-light btn blue">
-        <i class="fa fa-twitter left"></i>Twitter</a>
+      <%= link_to signin_path(:twitter), class: "waves-effect waves-light btn blue" do %>
+        <i class="fa fa-twitter left"></i>Twitter
+      <% end %>
+      <!-- <a href="/auth/twitter" class="waves-effect waves-light btn blue">
+        <i class="fa fa-twitter left"></i>Twitter</a> -->
     </div>
     <div class="col l4 m4 offset-l1 offset-m1 s8 offset-s2 sso_option">
       <a href="/auth/google_oauth2" class="waves-effect waves-light btn red darken-4">

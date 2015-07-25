@@ -25,11 +25,12 @@
   <div class="container header center search_form l8 m8 s8 offset-s2">
     <%= render partial: 'welcome/search' %>
   </div>
+  <a href="#featured_events" class="alert-scroll-under"><%= image_tag('scroll_circle.svg')%></a>
 </div>
 
 
 
-<div class="event-section row remove-margin">
+<div id="featured_events" class="event-section row remove-margin">
   <div class="col s12" style="padding: 0px 0px">
     <ul class="tabs">
       <li class="tab col s3">
