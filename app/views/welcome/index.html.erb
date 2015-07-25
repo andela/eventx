@@ -8,9 +8,8 @@
         <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
       </div>
       <div class="row center">
-      <%= link_to "Create Event", events_new_path, id: "create_event", data: { no_turbolink: true }, class: "waves-effect waves-light btn-large  home_button" %>
-<!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
-
+    
+        <%= create_event_or_login('Create Event') %>
       </div>
 
       <%= render partial: 'search' %>
