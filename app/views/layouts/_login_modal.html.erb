@@ -5,7 +5,7 @@
     </p>
     <% sign_in_provider.each do |provider, helper| %>
       <div class="col l4 m4 offset-l1 offset-m1 s8 offset-s2 sso_option">
-        <%= link_to signin_path(provider.to_s), query: class: "waves-effect waves-light btn #{helper[:class]}" do %>
+        <%= link_to signin_path(provider.to_s), class: "waves-effect waves-light btn #{helper[:class]}" do %>
           <%= "#{content_tag :i, nil, class: "fa #{helper[:icon_class]} left"} #{helper[:name]}".html_safe %>
         <% end %>
       </div>
