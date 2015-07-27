@@ -1,0 +1,8 @@
+deployment:
+  develop:
+    branch: master
+    heroku:
+      appname: event-ex
+machine:
+  ruby:
+    version: 2.2.2
