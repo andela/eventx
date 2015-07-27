@@ -14,6 +14,7 @@
 
     <%= render partial: 'layouts/login_modal'%>
 
+    <% if controller_name != "events" && action_name != "show" %>
     <footer class="page-footer">
       <div class="container">
         <div class="row">
@@ -84,7 +85,7 @@
         </div>
       </div>
     </footer>
-
+ <% end %>
 </body>
 
 </html>
