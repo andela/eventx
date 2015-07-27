@@ -26,6 +26,15 @@ $(document).ready(function() {
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 
+    //this creates an animation for the scroll button at the bottom of the parallax
+    setInterval(function () {
+      $('.alert-scroll-under').animate({opacity: 0.1
+      //  , height: '3%', width: '3%'
+    }, 500);
+      $('.alert-scroll-under').animate({opacity: 1
+      //  , height: '2%', width: '2%'
+    }, 500);
+    }, 5);
 
     // This is used to handle the create ticket session
     // of the first page of the create event page
@@ -81,11 +90,13 @@ $(document).ready(function() {
         var scrollPos = $(this).scrollTop();
         if(scrollPos>=80){
             $navBar.addClass('fixer');
-            $navBar.addClass('after-scroll');
+            // $navBar.addClass('after-scroll');
             $('.before-scroll').show();
+            $('.alert-scroll-under').hide();
         }else{
             $navBar.removeClass('fixer');
             $('.before-scroll').hide();
+            $('.alert-scroll-under').show();
         }
         //// check if scroll position is >= the nav position
         //if (scrollPos >= navPos) {

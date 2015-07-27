@@ -11,6 +11,7 @@ html, body{
 .parallax-container{
   height: inherit;
   width: 100%;
+  position: relative;
   background-color: rgba(0,0,0,0.4);
 }
 
@@ -49,14 +50,16 @@ html, body{
 }
 
 .home_app_tag{
-  font-size: 40px;
+  width: 20%;
+  font-size: 1.5em;
   color: #fff;
 }
 
 .btn-large.home_button{
-  font-size: 20px;
+  // width: 30%;
+  font-size: 1.25em; //20px;
   border-style: solid #EED8AE;
-  border-width: 5px;
+  // border-width: 5px;
   border-radius: 6px;
   background-color: #EED8AE;
   color: #000000
@@ -71,8 +74,8 @@ html, body{
 .search_form {
   position: relative;
   background-color: rgba(0, 0, 0, 0.64);
-  margin: 94px 5%;
-  bottom: 10%;
+  // margin: 5% 5%;
+  bottom: 0 !important;
 
   select{
     // margin: -2px 40px;
@@ -104,10 +107,10 @@ html, body{
   // }
 
   button{
-    height: 40px;
-    line-height: 42px;
-    vertical-align: middle;
-    margin-bottom: 5px;
+    // height: 40px;
+    // line-height: 42px;
+    // vertical-align: middle;
+    // margin-bottom: 5px;
   }
 }
 
@@ -279,4 +282,20 @@ nav.custom_nav{
 }
 .our-center{
   margin:0 auto !important;
+}
+
+.alert-scroll-under{
+  display: inline-block;
+  vertical-align: middle;
+  height: 2%;
+  width: 2%;
+  // background-image: url("<%= image_path('scroll_circle.svg')%>");
+  background-position: 0 -1865px;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 15;
+  // bottom: 2.625rem;
+  bottom: 2.625rem;
+  left: 50%;
+  margin-left: -0.375rem;
 }
