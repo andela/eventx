@@ -29,42 +29,215 @@
     <div class="col s12" id="test1">
      <div class="container margin-down">
       <div class="row">
+
         <form class="col s12">
           <div class="row">
+            <div class="input-field col s10">
+              <i class="fa fa-pencil prefix icon-setting"></i>
+              <label>EVENT TITLE <span>*</span></label>
+              <input type="text" class="validate" placeholder="Give it a short distint name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s10">
+              <i class="fa fa-map-marker prefix icon-setting"></i>
+              <label>Location <span>*</span></label>
+              <input type="text" class="validate" placeholder="Specify where it will be held">
+            </div>
+          </div>
+
+          <div class="row location_form_padding">
+            <div class="col l5 m6 s10">
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="fa prefix icon-setting"></i>
+                  <!--<label>Form for Map<span>*</span></label>-->
+                  <input type="text" class="validate" placeholder="Enter the venue name">
+                </div>
+
+                <div class="input-field col s12">
+                  <i class="fa prefix icon-setting"></i>
+                  <!--<label>Form for Map<span>*</span></label>-->
+                  <input type="text" class="validate" placeholder="Address 1">
+                </div>
+
+                <div class="input-field col s12">
+                  <i class="fa prefix icon-setting"></i>
+                  <!--<label>Form for Map<span>*</span></label>-->
+                  <input type="text" class="validate" placeholder="Address">
+                </div>
+
+                <div class="input-field col s12">
+                  <select class="browser-default">
+                    <option>Country</option>
+                  </select>
+                </div>
+
+                <div class="input-field col s12">
+                  <i class="fa prefix icon-setting"></i>
+                  <!--<label>Form for Map<span>*</span></label>-->
+                  <input type="text" class="validate" placeholder="City">
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="fa prefix icon-setting"></i>
+                    <input type="text" class="validate" placeholder="State">
+                </div>
+              </div>
+            </div>
+
+            <div class="input-field col s5 hide-on-med-and-down">
+              <!--<i class="fa fa-map-marker prefix icon-setting"></i>-->
+              <!--<label>Location <span>*</span></label>-->
+              <input type="text" class="validate" placeholder="Specify where it will be held">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s5">
+              <i class="fa fa-calendar prefix icon-setting"></i>
+              <input id="start_date" type="date" class="datepicker" placeholder="Start Date">
+            </div>
+            <div class="input-field col s5">
+              <i class="fa fa-calendar prefix icon-setting"></i>
+              <input id="end_date" type="date" class="datepicker", placeholder="End Date">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col l6 m6 s8 file-uploader">
+              <div class="inner-file-upload">
+                <p><i class="fa fa-camera"></i> <br /> Upload Event Photo</p>
+                <input type="file">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s10">
+              <i class="fa fa-newspaper-o prefix icon-setting"></i>
+              <textarea rows="6"></textarea>
+            </div>
+          </div>
+
+
+
+
+          <div class="row ">
+            <div class="input-field col s4 offset-s1">
+              <a class="waves-effect waves-light btn-large" id="free_ticket_btn"><i class="material-icons left">add</i>Create Free Tickets</a>
+            </div>
+            <div class="input-field col s4 offset-s1">
+              <a class="waves-effect waves-light btn-large" id="paid_ticket_btn"><i class="material-icons left">add</i>Create Paid Tickets</a>
+            </div>
+          </div>
+
+
+          <div class="row col s12 ticket"  id="paid_ticket_div">
+            <div class="input-field col s5">
+              <i class="fa prefix icon-setting"></i>
+              <label>Paid Ticket Title</label>
+              <input type="text" placeholder="Ticket Title">
+            </div>
+            <div class="input-field col s2">
+              <label>Quantity</label>
+              <input type="text" placeholder="100">
+            </div>
+            <div class="input-field col s2">
+              <label>Price</label>
+              <input type="text" placeholder="$10.00">
+            </div>
+            <div class="input-field col s1">
+              <a class="btn-floating btn-large waves-effect waves-light teal" id="close_paid"><i class="material-icons">clear</i></a>
+            </div>
+          </div>
+
+          <div class="row col s12 ticket"  id="free_ticket_div">
             <div class="input-field col s6">
-              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
+              <i class="fa prefix icon-setting"></i>
+              <label>Free Ticket Title</label>
+              <input type="text" placeholder="Ticket Title">
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
+            <div class="input-field col s3">
+              <label>Quantity</label>
+              <input type="text" placeholder="100">
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-              <label for="disabled">Disabled</label>
+            <div class="input-field col s1">
+              <a class="btn-floating btn-large waves-effect waves-light teal" id="close_free"><i class="material-icons">clear</i></a>
             </div>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" class="validate">
-              <label for="password">Password</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
-            </div>
-          </div>
+
+
         </form>
       </div>
        </div>
     </div>
 
   </div>
-  <div class="col s12" id="test2">Test 2</div>
+  <div class="col s12" id="test2">
+
+
+
+
+
+
+
+    <div class="container margin-down">
+      <div class="row">
+
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s10">
+              <i class="fa fa-link prefix icon-setting"></i>
+              <label>EVENT TITLE <span>*</span></label>
+
+              <input type="text" class="validate" placeholder="http://your-url.eventx.com">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s10">
+              <i class="fa fa-map-marker prefix icon-setting"></i>
+              <label>Location <span>*</span></label>
+              <input type="text" class="validate" placeholder="Specify where it will be held">
+            </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <select class="browser-default">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Event Academy</option>
+                    <option value="2">Classes</option>
+                    <option value="3">Conferences</option>
+                    <option value="3">Endurance Events</option>
+                    <option value="3">Food & Wine</option>
+                    <option value="3">Music Festivals</option>
+                </select>
+              </div>
+          </div>
+
+          <div class="row create_form">
+            <div class="input-field col s8 offset-s2 create_form">
+              <label>Select theme</label>
+              <div class="temps">
+                <% (1..12).each do |i|%>
+                <span  class="col s6 m3 center temp_image">
+                 <input type="radio" id=<%= i %> name="group1"/>
+                 <label for=<%= i %>><%= image_tag "temp#{i}.png"%> </label>
+                </span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+
+      </div>
+
+
+
+  </div>
   <div class="col s12" id="test3">Test 3</div>
 </div>
 
