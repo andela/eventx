@@ -8,15 +8,8 @@
         <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
       </div>
       <div class="row center">
-        <%=
-            link_to_if(current_user, "Create Event", events_new_path, data: {no_turbolink: true}, class: "waves-effect waves-light btn-large  home_button") do
-              # session[:url] = events_new_path
-              link_to("Create Event", "#login_modal", class: "modal-trigger btn_a_tag waves-effect waves-light btn-large  home_button")
-            end
-        %>
-
-<!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
-
+    
+        <%= create_event_or_login('Create Event') %>
       </div>
       <div class="header center search_form l8 m8 s12">
       <%= render partial: 'search' %>
