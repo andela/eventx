@@ -28,11 +28,9 @@ $(document).ready(function() {
 
     //this creates an animation for the scroll button at the bottom of the parallax
     setInterval(function () {
-      $('.alert-scroll-under').animate({opacity: 0.1
-      //  , height: '3%', width: '3%'
+      $('.alert-scroll-under').animate({opacity: 0.1// , height: '5%', width: '5%'
     }, 500);
-      $('.alert-scroll-under').animate({opacity: 1
-      //  , height: '2%', width: '2%'
+      $('.alert-scroll-under').animate({opacity: 1//, height: '2%', width: '2%'
     }, 500);
     }, 5);
 
@@ -115,5 +113,4 @@ $(document).ready(function() {
         //    $navBar2.addClass('scroller3')
         //}
     });
-
 });

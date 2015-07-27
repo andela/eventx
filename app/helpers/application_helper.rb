@@ -1,6 +1,8 @@
 module ApplicationHelper
   def signin_path(provider)
-    "/auth/#{provider.to_s}"
+    redir_path = {origin: request.env['PATH_INFO']}.to_query
+    # puts "oreoluwa #{redir_path}"
+    "/auth/#{provider.to_s}?#{redir_path}"
   end
 
   def create_event_or_login(name, classes)
