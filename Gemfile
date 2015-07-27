@@ -33,6 +33,7 @@ gem 'omniauth-linkedin'
 gem 'omniauth-github'
 gem 'omniauth-tumblr'
 gem "figaro"
+gem 'responders'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
