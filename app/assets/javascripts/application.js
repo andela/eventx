@@ -77,33 +77,40 @@ $(document).ready(function() {
 
 
     var $navBar = $('.custom_nav.landing');
+    var $navBar2 = $('.scroller')
 //
 //// find original navigation bar position
-    var navPos = $navBar.offset().top;
-
+    //var navPos = $navBar.offset().top;
+    //var footerPos = $('.page-footer').offset().top;
+    //var sidePos = $('.hello').offset().top;
+    //console.log('sidebar: ',sidePos)
+    //console.log('footer: ',footerPos)
 // on scroll
     $(window).scroll(function() {
 
         //// get scroll position from top of the page
         var scrollPos = $(this).scrollTop();
+
         if(scrollPos>=80){
             $navBar.addClass('fixer');
-            // $navBar.addClass('after-scroll');
+             $navBar2.addClass('scroll-fix')
+
             $('.before-scroll').show();
             $('.alert-scroll-under').hide();
         }else{
             $navBar.removeClass('fixer');
             $('.before-scroll').hide();
             $('.alert-scroll-under').show();
+            $navBar2.removeClass('scroll-fix')
         }
-        //// check if scroll position is >= the nav position
-        //if (scrollPos >= navPos) {
-        //$navBar.addClass('nav-fixed');
+        //console.log(scrollPos)
 
-        //$navBar.addClass('right');
-        //} else {
-        //    $navBar.removeClass('fixed');
+        //if((footerPos - scrollPos) > 550){
+        //    $navBar2.removeClass('scroller3')
+        //    $navBar2.addClass('scroller')
+        //}else{
+        //    $navBar2.removeClass('scroller')
+        //    $navBar2.addClass('scroller3')
         //}
-
     });
 });
