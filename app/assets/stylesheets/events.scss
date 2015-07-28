@@ -3,5 +3,104 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.margin-down{
+  overflow: hidden;
+  margin-top: 50px;
+  input, select{
+    border: 1px solid #CCCCCC;
+    background-color: #ffffff;
+    outline: none;
+    margin-top: 10px;
+    padding: 5px;
+    &:focus{
+      outline: none !important;
+      border-bottom-color:  #CCCCCC !important;
+    }
+  }
+  label{
+    color: #000000;
+    margin-bottom: 15px !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    span{
+      color: red;
+    }
+  }
+
+  textarea{
+    height: inherit;
+    background-color: white;
+    border: 1px solid #CCCCCC;
+    &:focus{
+      outline: none !important;
+    }
+  }
+
+  i.icon-setting{
+    margin-top: 20px;
+    color: #969CA7 !important;
+  }
+}
 
 
+.location_form_padding{
+  input{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding: 0px;
+    padding-left: 5px;
+  }
+  select{
+    border: 1px solid #CCCCCC !important;
+    border-radius: 0px !important;
+    width: 90%;
+    -webkit-appearance: none;
+    display: block;
+    margin-left: 13%;
+    margin-right: auto;
+    padding: 10px;
+    //padding: 5px;
+  }
+}
+
+.file-uploader{
+  border: 1px solid #CCCCCC;
+  background-color: #ffffff;
+  padding: 30px;
+  left: 20%;
+  position: relative;
+  .inner-file-upload{
+    height: 50px;
+    margin: 10px;
+    padding: 50px;
+    border: 2px dashed #CCCCCC;
+  }
+  input{
+    display: none;
+  }
+   p {
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    left: 34%;
+    font-weight: bolder;
+     text-transform: uppercase;
+  }
+}
+
+.row.ticket{
+  display: none;
+}
+
+.setup {
+  padding-left: 26px;
+  position: absolute;
+  top: 10px;
+  color: white;
+  background-color: #969CA7;
+  padding: 17px;
+
+}
+.setting-form{
+
+}
