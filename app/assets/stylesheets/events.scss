@@ -22,6 +22,7 @@
     margin-bottom: 15px !important;
     font-weight: bold;
     text-transform: uppercase;
+    font-size: small;
     span{
       color: red;
     }
@@ -66,13 +67,13 @@
 .file-uploader{
   border: 1px solid #CCCCCC;
   background-color: #ffffff;
-  padding: 30px;
+  // padding: 30px;
   left: 20%;
-  position: relative;
+  // position: relative;
   .inner-file-upload{
-    height: 50px;
-    margin: 10px;
-    padding: 50px;
+    // height: 50px;
+    margin: 5%;
+    padding: 15%;
     border: 2px dashed #CCCCCC;
   }
   input{
@@ -103,4 +104,37 @@
 }
 .setting-form{
 
+}
+
+.category-select{
+  position: relative;
+  width: 100%;
+  select{
+     border: 1px solid #CCCCCC !important;
+     border-radius: 0px !important;
+     width: 100%;
+    -webkit-appearance: none;
+    display: block;
+    margin-left: 5%;
+    padding-left: 5px !important;
+  }
+  label{
+    padding-left: 5%;
+  }
+}
+
+.radio-select{
+  label{
+    padding-left: 7%;
+  }
+}
+
+
+.map-area{
+  margin-top: 4%;
+  height: 365px;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  padding: 40% 20%;
 }

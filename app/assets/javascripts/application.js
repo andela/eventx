@@ -116,7 +116,39 @@ $(document).ready(function() {
 
     });
 
+    $('.file-uploader').click(function() {
+      /* Act on the event */
+      $('#event_photo_upload').trigger('click')
+    });
 
+    $('#event_photo_upload').change(function(event) {
+      /* Act on the event */
+        uploaded_file = $(this)[0].files[0]
+        $('.events_pic_name').html(uploaded_file.name)
+
+        //perform async post to server for the
+        var formdata = new FormData(uploaded_file);
+        // formdata.append('event_picture', uploaded_file, uploaded_file.name);
+        console.log(formdata);
+        $.ajax({
+          url: '/events/new',
+          type: 'POST',
+          data: formdata,
+          processData: false,
+          // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+          // data: {param1: 'value1'}
+        })
+        .done(function() {
+          console.log("success");
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+
+    });
     //analytics
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
