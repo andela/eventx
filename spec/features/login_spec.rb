@@ -17,5 +17,20 @@ RSpec.feature "Login:", type: :feature do
 
     expect(page).to have_selector("h1.header", text: "EventX")
     expect(page).to have_selector("a", text: "Create Event")
+    end
+
+  scenario "User tries to login with facebook" do
+
+    visit root_path
+
+    # save_and_open_page
+    # click_button 'Search'
+    click_link 'SEE MORE'
+
+    save_and_open_page
+
+    expect(page).to have_selector("h5", text: "Categories")
+    expect(page).to have_button("Search")
+    expect(page).to have_field("")
   end
 end
