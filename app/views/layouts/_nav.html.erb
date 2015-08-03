@@ -27,16 +27,29 @@
           <% end %>
 
         </ul>
-    <!--</div>-->
-
-
 
 
 
     <!-- START LEFT SIDEBAR NAV-->
-  <!--<ul id="nav_mobile" class="side-nav left-sidebar-nav">-->
+  <!-- <ul id="nav_mobile" class="side-nav left-sidebar-nav"> -->
+<% if content_for? :nav_cat %>
+<div id="main">
+  <div class="wrapper">
+    <aside id="left-sidebar-nav">
+      <ul class="side-nav fixed leftside-navigation" id="slide-out">
+        <%= yield :nav_cat %>
+      </ul>
+    </aside>
+  </div>
+</div>
+<% end %>
 
-  <!--</ul>-->
+  <!-- </ul> -->
+  <aside id="left-sidebar-nav">
+    <ul id="nav_mobile" class="side-nav leftside-navigation">
+      <%= yield :nav_cat %>
+    </ul>
+  </aside>
 <!-- END LEFT SIDEBAR NAV-->
 
 
