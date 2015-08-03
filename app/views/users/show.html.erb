@@ -2,15 +2,23 @@
 
   <% content_for :nav_cat do %>
         <li class="cyan darken-2">
-          <div class="row">
-            <div class="col col s4 m4 l4">
+          <div class="row our-image-cover">
+            <!-- <div class="col col s4 m4 l4">
               <%= image_tag current_user.profile_url, class: "circle responsive-img valign profile-image"%>
             </div>
 
 
             <div class="col col s8 m8 l8">
               <p class="user-roal"><%= current_user.first_name.split(' ')[0] %></p>
-            </div>
+            </div> -->
+            <div class="col l12 m12 s12">
+              <% if current_user.profile_url.present? %>
+                 <%= image_tag current_user.profile_url, class: 'profile_pic circle responsive-img' %>
+              <% else %>
+                 <%= image_tag 'defaultimage.jpeg', class: 'profile_pic circle responsive-img' %>
+              <% end %>
+              <%= current_user.first_name.split(' ')[0] %>
+           </div>
           </div>
         </li>
         <li class="bold active"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
@@ -203,19 +211,16 @@
           </div>
         </li>
       <!-- </ul> -->
-      <a href="index.html#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
+      <!-- <a href="index.html#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a> -->
     <!-- </aside> -->
   <% end %>
-
+  <div id="main">
+      <!-- START WRAPPER -->
+      <div class="wrapper">
   <%= render partial: 'layouts/nav'%>
-  <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
 
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">three</a></li>
-  </ul>
+  <%= render template: 'users/all'%>
+    </div>
+</div>
 
 </div>
