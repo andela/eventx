@@ -10,8 +10,7 @@
 </div>
 
 <div class="event-section row remove-margin">
-      <ul id="nav_mobile" class="side-nav left-sidebar-nav">
-        <div class="col s6 m4 our-sidenav mobile-scroller">
+      <ul id="nav_mobile" class="side-nav left-sidebar-nav hide-on-large-only">
           <div class="collection our-sidenav">
             <label class="collection-header out-cat-color2"><h5 >Categories</h5></label>
             <% @categories = {All: 8, Tech: 1, Business: 2, Seminar: 3, Conference: 4, Party: 5, Dinner: 6, Others: 7, Jasmine: 8, Junior: 9} %>
@@ -22,7 +21,6 @@
                 end%>
             <% end %> <!--add class active to make it active-->
           </div>
-        </div>
       </ul>
 
       <div class="col s6 m3 our-sidenav scroller hide-on-med-and-down">
