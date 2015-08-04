@@ -1,7 +1,7 @@
 <div>
 
   <% content_for :nav_cat do %>
-        <li class="cyan darken-2">
+        <li class="teal">
 
 
           <div class="row our-image-cover">
@@ -15,15 +15,18 @@
            </div>
           </div>
         </li>
-        <li class="bold active"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Events</a>
+        <li class="bold active"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> My Events</a>
 
         </li>
-        <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-image-palette "></i> Payments </a>
+        <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Attending Events</a>
+
         </li>
-        <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Account </a>
+        <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-image-palette "></i> Tickets </a>
+        </li>
+        <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Account Details </a>
         </li>
 
-        <li class="bold"><a href="<%= signout_path %>" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Logout </a>
+        <!--<li class="bold"><a href="<%#= signout_path %>" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Logout </a>-->
         </li>
 
         <li class="li-hover">
@@ -38,13 +41,14 @@
 
   <% end %>
   </div>
-  <div class="nav-wrapper" style="background-color: teal">
-    <%= render partial: 'layouts/nav'%>
+<div style="background-color: #222222 !important; height: 64px;">
+  <%= render partial: 'layouts/nav'%>
   </div>
   <div id="main">
       <!-- START WRAPPER -->
       <div class="wrapper">
-  <%= render partial: 'layouts/sidebar'%>
-  <%= render template: 'users/all'%>
+
+        <%= render partial: 'layouts/sidebar'%>
+        <%= render partial: 'users/dashboard'%>
     </div>
 </div>

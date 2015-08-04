@@ -11,3 +11,34 @@
     margin-top: 6% !important;
   }
 }
+
+#main{
+  padding-left: 240px;
+  padding-top: 68px;
+}
+
+@media only screen and  (max-width:993px) {
+    #main {
+      padding-left: 0px;
+    }
+}
+@media only screen and (min-width: 993px){
+  .our-modified-container.container {
+    width: 95%;
+  }
+}
+
+
+#content{
+  margin-bottom: 0;
+}
+
+
+#slide-out li a i{
+  line-height: inherit;
+  width: 2rem;
+  font-size: 1.6rem;
+  display: block;
+  float: left;
+
+}
