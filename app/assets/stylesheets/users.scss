@@ -21,6 +21,10 @@
     #main {
       padding-left: 0px;
     }
+
+    .our-fa-caret-down.fa-caret-down{
+        margin-top: 20px;
+    }
 }
 @media only screen and (min-width: 993px){
   .our-modified-container.container {
@@ -40,5 +44,13 @@
   font-size: 1.6rem;
   display: block;
   float: left;
+}
+ul#dropdown-user_option{
+  margin-left: 5%;
+}
 
+li a.our-dropdown-content{
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
 }
