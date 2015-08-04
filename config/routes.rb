@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  get 'create_event' => 'events#create_event', as: :create_event
-
-  get 'events/show'
+  resources :events
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
