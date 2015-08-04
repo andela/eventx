@@ -21,10 +21,12 @@
     #main {
       padding-left: 0px;
     }
+}
 
-    .our-fa-caret-down.fa-caret-down{
-        margin-top: 20px;
-    }
+@media only screen and  (max-width:601px) {
+  .our-fa-caret-down.fa-caret-down{
+    margin-top: 20px;
+  }
 }
 @media only screen and (min-width: 993px){
   .our-modified-container.container {
@@ -46,7 +48,7 @@
   float: left;
 }
 ul#dropdown-user_option{
-  margin-left: 5%;
+  margin-left: 3%;
 }
 
 li a.our-dropdown-content{
