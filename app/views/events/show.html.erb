@@ -1,14 +1,18 @@
 <div>
 
   <% content_for :nav_cat do %>
-    <li class="">
+    <li class="" style="background-color: #F15D28;">
       <div class="row our-image-cover">
         <div class="col l12 m12 s12">
-          <h5 > Category </h5>
+          <%= link_to root_path do %>
+            <h3 class="header home_app_title">EventX</h3>
+          <% end %>
         </div>
       </div>
     </li>
 
+
+    <div class="bold" style="padding-left: 30px;"><h5> Category </h5></div>
     <li class="bold active"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>All</a>
     </li>
     <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Technology</a>
@@ -42,16 +46,16 @@
 
 
 
-<div class=" showpage-header" id="index-banner">
+<div class="showpage-header" id="index-banner">
   <div style="background-color: #222222 !important; height: 64px;">
-    <%= render partial: 'layouts/nav'%>
+    <%= render partial: 'layouts/nav' %>
   </div>
 
   <div class="event-section row remove-margin">
 
       <%= render partial: 'layouts/sidebar'%>
 
-      <div class="col l9 m12 s12 our-sidenav scroller2">
+      <div class="col l9 m12 s12 our-sidenav scroller2 our-sidebar-for-eventshow">
         <div class="row our-search">
           <div class="header center search_form our-search l12 m12 s12">
             <%= render partial: 'welcome/search' %>

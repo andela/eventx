@@ -5,7 +5,7 @@
 
 
 .our-image-cover{
-  height: 80px !important;
+  height: 64px !important;
   div{
     height: 100% !important;
     margin-top: 6% !important;
@@ -54,4 +54,15 @@ li a.our-dropdown-content{
   color: black;
   font-size: 14px;
   font-weight: 400;
+}
+
+//an underlay for the transparent navbar on the users#show page
+.our-new-custom-nav{
+  background-color: #222222 !important;
+  height: 64px;
+}
+
+
+.our-custom-new-sidebar{
+  top: 0px !important;
 }

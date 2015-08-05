@@ -1,11 +1,13 @@
 <nav class="custom_nav landing z-depth-0" style="z-index: 100 ">
   <div class="nav-wrapper">
+    <% if content_for? :nav_cat %>
     <a class="button-collapse" data-activates="nav_mobile" href="#">
       <i class="material-icons">menu</i>
     </a>
+    <% end %>
     <ul class="left">
       <%= link_to root_path do %>
-        <h3 class="header home_app_title before-scroll">EventX</h3>
+        <h3 class="header home_app_title before-scroll melomelo">EventX</h3>
       <% end %>
     </ul>
     <ul class="right">
