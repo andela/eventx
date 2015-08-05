@@ -1,0 +1,13 @@
+<% if content_for? :nav_cat %>
+    <aside id="left-sidebar-nav">
+      <ul class="side-nav fixed leftside-navigation" id="slide-out" style="top: 64px;">
+        <%= yield :nav_cat %>
+      </ul>
+    </aside>
+<% end %>
+
+<aside id="left-sidebar-nav">
+  <ul class="side-nav leftside-navigation" id="nav_mobile">
+    <%= yield :nav_cat %>
+  </ul>
+</aside>

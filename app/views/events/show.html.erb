@@ -1,40 +1,55 @@
-<div class="parallax-container showpage-header" id="index-banner">
-  <%= render partial: "layouts/nav" %>
-  <!--<nav class="custom_nav landing z-depth-0">-->
-    <!--<div class="nav-wrapper">-->
-      <!--<a href="#" data-activates="nav_mobile" class="button-collapse"><i class="material-icons">menu</i></a>-->
-    <!--</div>-->
-  <!--</nav>-->
+<div>
 
-  <div class="parallax"><%= image_tag 'best5.png'%></div>
-</div>
-
-<div class="event-section row remove-margin">
-      <ul id="nav_mobile" class="side-nav left-sidebar-nav hide-on-large-only">
-          <div class="collection our-sidenav">
-            <label class="collection-header out-cat-color2"><h5 >Categories</h5></label>
-            <% @categories = {All: 8, Tech: 1, Business: 2, Seminar: 3, Conference: 4, Party: 5, Dinner: 6, Others: 7, Jasmine: 8, Junior: 9} %>
-            <% @val = 4  %>
-            <% @categories.each do |name, id|%>
-                <%= link_to_if(id== @val, name, "#", class: "collection-item active our-collection-item our-tab2-color") do
-                  link_to(name, "#", class: "collection-item our-collection-item our-cat-color")
-                end%>
-            <% end %> <!--add class active to make it active-->
-          </div>
-      </ul>
-
-      <div class="col s6 m3 our-sidenav scroller hide-on-med-and-down">
-        <div class="collection our-sidenav">
-          <label class="collection-header out-cat-color2"><h5 >Categories</h5></label>
-          <% @categories = {All: 8, Tech: 1, Business: 2, Seminar: 3, Conference: 4, Party: 5, Dinner: 6, Others: 7, Jasmine: 8, Junior: 9} %>
-          <% @val = 4  %>
-          <% @categories.each do |name, id|%>
-              <%= link_to_if(id== @val, name, "#", class: "collection-item active our-collection-item our-tab2-color") do
-                   link_to(name, "#", class: "collection-item our-collection-item our-cat-color")
-               end%>
-          <% end %> <!--add class active to make it active-->
+  <% content_for :nav_cat do %>
+    <li class="">
+      <div class="row our-image-cover">
+        <div class="col l12 m12 s12">
+          <h5 > Category </h5>
         </div>
       </div>
+    </li>
+
+    <li class="bold active"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>All</a>
+    </li>
+    <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Technology</a>
+    </li>
+    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-image-palette "></i> Business </a>
+    </li>
+    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Seminar </a>
+    </li>
+    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Conference </a>
+    </li>
+    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Party </a>
+    </li>
+    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Dinner </a>
+    </li>
+
+
+
+    <li class="li-hover">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <div class="sample-chart-wrapper">
+            <div class="ct-chart ct-golden-section" id="ct2-chart"></div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+  <% end %>
+</div>
+
+
+
+
+<div class=" showpage-header" id="index-banner">
+  <div style="background-color: #222222 !important; height: 64px;">
+    <%= render partial: 'layouts/nav'%>
+  </div>
+
+  <div class="event-section row remove-margin">
+
+      <%= render partial: 'layouts/sidebar'%>
 
       <div class="col l9 m12 s12 our-sidenav scroller2">
         <div class="row our-search">
@@ -79,4 +94,5 @@
         </div>
 
       </div>
+  </div>
 </div>
