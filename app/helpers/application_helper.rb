@@ -13,4 +13,8 @@ module ApplicationHelper
      content_tag(:a, name, href:'#login_modal', class: classes* ' ' + ' modal-trigger', )
     end
   end
+
+  def all_categories
+   Category.order(:name)
+  end
 end

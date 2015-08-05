@@ -1,3 +1,57 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.our-image-cover{
+  height: 80px !important;
+  div{
+    height: 100% !important;
+    margin-top: 6% !important;
+  }
+}
+
+#main{
+  padding-left: 240px;
+  padding-top: 68px;
+}
+
+@media only screen and  (max-width:993px) {
+    #main {
+      padding-left: 0px;
+    }
+}
+
+@media only screen and  (max-width:601px) {
+  .our-fa-caret-down.fa-caret-down{
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 993px){
+  .our-modified-container.container {
+    width: 95%;
+  }
+}
+
+#content{
+  margin-bottom: 0;
+}
+
+
+#slide-out li a i{
+  line-height: inherit;
+  width: 2rem;
+  font-size: 1.6rem;
+  display: block;
+  float: left;
+}
+ul#dropdown-user_option{
+  margin-left: 3%;
+}
+
+li a.our-dropdown-content{
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+}
