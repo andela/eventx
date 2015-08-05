@@ -6,12 +6,9 @@
 
           <div class="row our-image-cover">
             <div class="col l12 m12 s12">
-              <% if @user.profile_url.present? %>
-                 <%= image_tag @user.profile_url, class: 'profile_pic circle responsive-img' %>
-              <% else %>
-                 <%= image_tag 'defaultimage.jpeg', class: 'profile_pic circle responsive-img' %>
+              <%= link_to root_path do %>
+                <h3 class="header home_app_title">EventX</h3>
               <% end %>
-              <%= @user.first_name.split(' ')[0] %>
            </div>
           </div>
         </li>
@@ -41,8 +38,8 @@
 
   <% end %>
   </div>
-<div style="background-color: #222222 !important; height: 64px;">
-  <%= render partial: 'layouts/nav'%>
+  <div class="our-new-custom-nav">
+    <%= render partial: 'layouts/nav' %>
   </div>
   <div id="main">
       <!-- START WRAPPER -->
