@@ -29,7 +29,7 @@ RSpec.feature "Login:", type: :feature do
 
     save_and_open_page
 
-    expect(page).to have_selector("h5", text: "Categories")
+    expect(page).to have_selector("h5", text: "Category")
     expect(page).to have_button("Search")
     expect(page).to have_field("")
   end

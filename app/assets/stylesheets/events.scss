@@ -142,3 +142,10 @@
 input#event_photo_upload{
   display: none;
 }
+@media only screen and (min-width: 993px) {
+  .row .col.l9 {
+    width: 82%;
+    margin-left: 0px;
+  }
+
+}
