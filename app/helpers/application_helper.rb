@@ -9,7 +9,7 @@ module ApplicationHelper
     if current_user
       content_tag(:a, name, href:events_new_path, class: classes*' ' )
     else
-     session[:url] = create_event_url
+     #session[:url] = create_event_url
      content_tag(:a, name, href:'#login_modal', class: classes* ' ' + ' modal-trigger', )
     end
   end
