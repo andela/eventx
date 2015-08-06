@@ -33,7 +33,7 @@
       <div class="container margin-down">
         <div class="row">
 
-    <%= form_for @events, html: {class: "col s12"} do |f| %>
+    <%= form_for @events, html: {class: "col s12", multipart: true} do |f| %>
     <div class="row">
       <div class="input-field col s10">
         <i class="fa fa-pencil prefix icon-setting"></i>
@@ -116,7 +116,7 @@
   </div>
     <div class="col s12" id="test2">
     <div class="container margin-down">
-       <!-- past heere-->
+       <!-- past here-->
       <div class="row">
         <div class="col s12">
           <div class="row">
@@ -130,10 +130,7 @@
           </div>
           <div class="row">
 
-            <!--This partial is going to use nested form for tickets -->
-            <%= f.fields_for :tickets do |t| %>
-            <%= render :partial => 'ticket_fields', :f => t %>
-            <% end %>
+           <!-- Render the Tickets partial here that will be used in a nested form-->
           </div>
 
           <div class="row category-selected">
@@ -161,7 +158,7 @@
 
     <div class="col s3 offset-s4 center">
         <!--<%= f.submit  %>-->
-      <%= link_to "Save & Preview <i class='fa fa-floppy-o'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center preview z-depth-0"  %>
+      <button class="col s12 btn-large waves-effect waves-light home_button center preview z-depth-0">Save & Preview  <i class='fa fa-floppy-o'></i></button>
     </div>
      <% end %>
   </div>
