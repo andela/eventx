@@ -40,7 +40,7 @@ gem 'launchy'
 
 # for uploading pictures
 gem 'carrierwave'
-# gem 'rmagick', '2.13.2'
+gem 'rmagick'
 gem 'cloudinary'
 
 # Use Unicorn as the app server

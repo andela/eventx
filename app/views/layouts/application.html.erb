@@ -5,10 +5,10 @@
   <title>EventX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Great+Vibes", "https://fonts.googleapis.com/icon?family=Material+Icons", media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application','https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body onload="initialize()">
 
     <%= yield %>
 

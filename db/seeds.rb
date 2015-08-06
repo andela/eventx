@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+template_list = [
+    ['default', 'url']
+]
+
+template_list.each do |name, url|
+  EventTemplate.find_or_create_by(name: name, image:url)
+end

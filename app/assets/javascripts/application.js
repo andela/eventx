@@ -25,6 +25,7 @@ $(document).ready(function() {
          $('ul.tabs').tabs('select_tab', 'test3');
     })
 
+    google.maps.event.addDomListener(window, 'load', initialize);
 
       $('.dropdown-button').dropdown({
         inDuration: 300,
