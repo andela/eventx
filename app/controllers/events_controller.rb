@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @events = Event.new(event_params)
+    # 2.times {@events.tickets.build}
     if @events.save
       respond_to do |format|
         format.html {redirect_to event_path(@events), notice: 'Event was successfully created'}

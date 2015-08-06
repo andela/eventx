@@ -40,31 +40,39 @@
         <label>EVENT TITLE
           <span>*</span>
         </label>
-        <%= f.text_field :title, class: "validate", placeholder: 'Give it a short distinct name' %>
+        <%= f.text_field :title, class: "validate", placeholder: 'Give it a short distinct name', required: true %>
       </div>
     </div>
-
-    <div class="row location_form_padding">
-      <div class="col l5 m6 s10">
-            <i class="fa fa-map-marker prefix icon-setting"></i>
-            <label>Location
-              <span>*</span>
-            </label>
-            <%= f.text_field :location, class: "validate", placeholder: 'Enter Location where it will be held' %>
+    <div class="row">
+      <div class="input-field col l5 m5 s10">
+        <i class="fa fa-map-marker prefix icon-setting"></i>
+        <label>Location
+          <span>*</span>
+        </label>
+        <%= f.text_field :location, class: "validate", placeholder: 'Enter Location where it will be held', required: true %>
       </div>
-      <div class="col l5 m6 s10">
-            <i class="fa fa-map-marker prefix icon-setting"></i>
-            <label>Venue
-              <span>*</span>
-            </label>
-            <%= f.text_field :venue, class: "validate", placeholder: 'Enter Venue where it will be held' %>
+      <div class="input-field col l5 m5 s10">
+        <i class="fa fa-street-view  prefix icon-setting"></i>
+        <label>Venue
+        </label>
+        <%= f.text_field :venue, class: "validate", placeholder: 'Enter Venue where it will be held', min: Date.today %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s10">
+            <i class="fa fa-th-large prefix icon-setting"></i>
+            <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} , class: "browser-default", blank_option: true, required: true  %>
+          </div>
+        </div>
       </div>
     </div>
 
 
     </div>
     <div class="row">
-      <div class="col s10 hide-on-med-and-down">
+      <div class="col s10 hide-on-med-and-down offset-s3">
         <div class="map-area">
           Load Maps Here
         </div>
@@ -73,7 +81,7 @@
     <div class="row">
       <div class="input-field col s5">
         <i class="fa fa-calendar prefix icon-setting"></i>
-        <%= f.date_field :start_date, class: "datepicker", placeholder: "Start Date", id: "start_date" %>
+        <%= f.date_field :start_date, class: "datepicker", placeholder: "Start Date", id: "start_date", required: true %>
       </div>
       <div class="input-field col s5">
         <i class="fa fa-calendar prefix icon-setting"></i>
@@ -95,14 +103,12 @@
     <div class="row">
       <div class="input-field col s10">
         <i class="fa fa-newspaper-o prefix icon-setting"></i>
-       <%= f.text_area :description, rows: 6, placeholder: 'Enter description of event' %>
+       <%= f.text_area :description, rows: 6, placeholder: 'Enter description of event', required: true %>
       </div>
     </div>
-          <!--This partial is going to use nested form for tickets -->
-         <%= render :partial => 'events/ticket_fields' %>
 
-        <div class="input-field col s6 offset-s3">
-          <!--<%= link_to "Continue", "#test2", class: 'col s12 btn-large waves-effect waves-light home_button center tab' %>-->
+        <div class="input-field col s3 offset-s4">
+          <%= link_to "Next <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center more-info z-depth-0"  %>
         </div>
     </div>
   </div>
@@ -110,53 +116,52 @@
   </div>
     <div class="col s12" id="test2">
     <div class="container margin-down">
-    <div class="row">
-    <div class="col s12">
+       <!-- past heere-->
       <div class="row">
-        <div class="input-field col s10">
-          <i class="fa fa-link prefix icon-setting"></i>
-          <label>Enter Domain Name
-            <span>*</span>
-          </label>
-          <input class="validate" placeholder="http://your-url.eventx.com" type="text">
-        </div>
-      </div>
+        <div class="col s12">
+          <div class="row">
+            <div class="input-field col s10">
+              <i class="fa fa-link prefix icon-setting"></i>
+              <label>Enter Domain Name
+                <span>*</span>
+              </label>
+              <input class="validate" placeholder="http://your-url.eventx.com" type="text", required: true>
+            </div>
+          </div>
+          <div class="row">
 
-  <div class="row category-selected">
-    <div class="col s10">
-      <div class="row col s12">
-        <label>Choose your category</label>
-        <div class="input-field">
-          <%= f.select :category_id, [['Person', 'person'], ['Person'], ['Alex']], class: "browser-default" %>
-        </div>
-      </div>
-    </div>
-  </div>
+            <!--This partial is going to use nested form for tickets -->
+            <%= f.fields_for :tickets do |t| %>
+            <%= render :partial => 'ticket_fields', :f => t %>
+            <% end %>
+          </div>
 
-  <div class="row radio-select">
-    <div class="input-field col s10">
-      <label>Select a template</label>
-      <div class="temps">
-        <!--Hardcoded radio button association: due to the face that i have not-->
-        <!--seen the rails way of doing it but it work find for now!-->
-            <% all_template.each do |i|%>
+          <div class="row category-selected">
+
+            <div class="row radio-select">
+              <div class="input-field col s10">
+                <label>Select a template</label>
+                <div class="temps">
+                  <!--Hardcoded radio button association: due to the face that i have not-->
+                  <!--seen the rails way of doing it but it work find for now!-->
+                  <% all_template.each do |i|%>
             <span class="col s6 m3 center temp_image">
               <input id="<%= i.name %>" name="event[event_template_id]" value='<%= i.id %>' type="radio"/>
               <label for="<%= i.name %>">
                 <%= image_tag "#{i.image}" %>
               </label>
             </span>
-            <% end %>
-          </div>
-        </div>
-      </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
       </div>
   </div>
 </div>
 
     <div class="col s3 offset-s4 center">
-        <%= f.submit  %>
-      <button class="col s12 btn-large waves-effect waves-light home_button center" disabled formaction="#test3">Preview</button>
+        <!--<%= f.submit  %>-->
+      <%= link_to "Save & Preview <i class='fa fa-floppy-o'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center preview z-depth-0"  %>
     </div>
      <% end %>
   </div>
