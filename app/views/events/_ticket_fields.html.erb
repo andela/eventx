@@ -1,28 +1,30 @@
 <div id="ticket-area">
+  <label class="ticket">Create Ticket</label>
   <div class="row ">
     <div class="input-field col s4 offset-s1">
-      <a class="waves-effect waves-light btn" id="free_ticket_btn">
+      <a class="waves-effect waves-light btn z-depth-0" id="free_ticket_btn">
         <i class="material-icons left">add</i>Create Free Tickets</a>
     </div>
-    <div class="input-field col s4 offset-s1">
-      <a class="waves-effect waves-light btn" id="paid_ticket_btn">
+    <div class="input-field col s4 offset-s1 ">
+      <a class="waves-effect waves-light btn z-depth-0" id="paid_ticket_btn">
         <i class="material-icons left">add</i>Create Paid Tickets</a>
     </div>
   </div>
   <div class="row col s12 ticket" id="paid_ticket_div">
     <div class="input-field col s5">
       <i class="fa prefix icon-setting"></i>
-      <label>Paid Ticket Title</label>
-      <input placeholder="Ticket Title" type="text">
+
+      <%= f.label :name, "Paid Ticket Title" %>
+      <%= f.text_field :name, placeholder: 'Ticket Title' %>
 
     </div>
     <div class="input-field col s2">
-      <label>Quantity</label>
-      <input placeholder="100" type="text">
+      <%= f.label :quantity, "Quality" %>
+      <%= f.text_field :quantity, placeholder: 'Ticket Title' %>
     </div>
     <div class="input-field col s2">
-      <label>Price</label>
-      <input placeholder="$10.00" type="text">
+      <%= f.label :price, "Price" %>
+      <%= f.text_field :price, placeholder: 'Price' %>
     </div>
     <div class="input-field col s1">
       <a class="btn-floating btn-large waves-effect waves-light teal" id="close_paid">
@@ -33,12 +35,12 @@
   <div class="row col s12 ticket" id="free_ticket_div">
     <div class="input-field col s6">
       <i class="fa prefix icon-setting"></i>
-      <label>Free Ticket Title</label>
-      <input placeholder="Ticket Title" type="text">
+      <%= f.label :name, "Free Ticket Title" %>
+      <%= f.text_field :name, placeholder: 'Ticket Title' %>
     </div>
     <div class="input-field col s3">
-      <label>Quantity</label>
-      <input placeholder="100" type="text">
+      <%= f.label :quantity, "Quality" %>
+      <%= f.text_field :quantity, placeholder: 'Ticket Title' %>
     </div>
     <div class="input-field col s1">
       <a class="btn-floating btn-large waves-effect waves-light teal" id="close_free">
