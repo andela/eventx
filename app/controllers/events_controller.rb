@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  layout 'templates/green/index', only: [:show]
   before_action :set_events, :only => [:show]
   def new
     @events = Event.new
@@ -9,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def show
-
+    
   end
 
   def create
