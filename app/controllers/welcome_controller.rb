@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
 
-
   def index
     @events = Event.recent_events
   end
