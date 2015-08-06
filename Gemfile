@@ -38,6 +38,11 @@ gem "figaro"
 gem 'responders'
 gem 'launchy'
 
+# for uploading pictures
+gem 'carrierwave'
+# gem 'rmagick', '2.13.2'
+gem 'cloudinary'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
