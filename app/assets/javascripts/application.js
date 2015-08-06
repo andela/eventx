@@ -36,6 +36,11 @@ $(document).ready(function() {
       }
     );
 
+    if(window.location.pathname != '/'){
+      $('.melomelo').removeClass('before-scroll').css({'padding-top': '9px'});
+      console.log('yes')
+    }
+
     $('select').material_select();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
