@@ -1,1 +1,7 @@
 <h1><%= @event.title %></h1>
+
+
+<!--<%= image_tag @event.image.url(:thumb)%>-->
+
+<%= cl_image_tag(@event.image.url(:thumb)) %>
+

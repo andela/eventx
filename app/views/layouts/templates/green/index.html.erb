@@ -33,9 +33,10 @@
 
   </div>
 </nav>
-<%= content_tag(:header, class: "header", id:"top", style: "background: url('http://res.cloudinary.com/neddinn/image/upload/v1438874032/a0ychz9lks4s0hs8nbgq.jpg');") do %>
+<%= content_tag(:header, class: "header", id:"top", style: "background: url(#{@event.image.url(:main)});") do %>
   <%= content_tag(:div, nil, style: "height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)") do%>
     <%= content_tag(:h3, @event.title, style: "padding-top: 20%; font-size: 64px; color: white; font-family: Lobster") %>
+    <%= content_tag(:label, "#{@event.start_date.strftime("%b %d %Y")} to #{@event.end_date.strftime("%b %d %Y")}", style: "display: block; font-size: 24px; color: white; font-family: roboto") %>
     <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe, "#", class: "btn btn-primary btn-lg our-btn-green"  %>
   <% end %>
 <% end %>
@@ -87,8 +88,8 @@
   <% end %>
 </div>
 
-<div class="col-md-12" id="venue" style="height: 70%">
-  <iframe id="frame" scrolling="no" src="" width="100%" height="100%"></iframe>
+<div class="col-md-12" id="venue" style="height: 70%; width:100%;">
+  <iframe id="frame" scrolling="no" src=<%= "#{@event.map_url}&output=embed" %> width="120%" height="100%" frameborder="0" style="margin-left:-20px;"></iframe>
  </div>
 
 
@@ -101,7 +102,7 @@
             interval: false,
         });
 
-      $("#frame").attr("src", "https://maps.google.com/maps/place?q=314+Herbert+Macaulay+Rd,+Lagos,+Nigeria&ftid=0x103b8c5fd788b47b:0x8d5fa949dcf609ae&output=embed");
+      //$("#frame").attr("src", "");
     });
 </script>
 </body>

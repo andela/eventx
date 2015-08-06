@@ -59,35 +59,37 @@
             <%= render partial: 'welcome/search' %>
           </div>
         </div>
+
         <div class="content-set">
           <div class="row scrollblock" id="examples-transition">
-            <% 12.times do %>
+            <% @events.each do |event| %>
                 <div class="col l4 s12 m4 hideme2" id="fade-in">
                   <div class="card small card-shadow" id="card">
                     <div class="Amount">Free</div>
                     <div class="card-image waves-effect waves-block waves-light">
-                      <%= image_tag "office.jpg" %>
+                      <%= image_tag event.image_url(:landing) %>
                     </div>
                     <div class="card-content">
-              <span class="card-title grey-text text-darken-4">
-                <i class="fa fa-clock-o"></i>
-                WED, JUL 29 5:00 PM
-              </span>
-                      <p>2nd Annual Women in Business and Leadership Summit 2015</p>
+                  <span class="card-title grey-text text-darken-4">
+                    <i class="fa fa-clock-o"></i>
+                    WED, JUL 29 5:00 PM
+                    <%= event.start_date.to_formatted_s(:short) %>
+                  </span>
+                      <p><%= event.title %></p>
                     </div>
 
                     <div class="card-action">
-              <span class="card-title grey-text text-darken-4">
-                <i class="fa fa-map-marker"></i>
-                LEKKI LAGOS
-                <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
-              </span>
+                  <span class="card-title grey-text text-darken-4">
+                    <i class="fa fa-map-marker"></i>
+                    <%= event.venue + ', ' +event.location %>
+                    <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
+                  </span>
                     </div>
                     <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Card Title
-                <i class="material-icons right">close</i>
-              </span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                  <span class="card-title grey-text text-darken-4">Description
+                    <i class="material-icons right">close</i>
+                  </span>
+                      <p><%= event.description %></p>
                     </div>
                   </div>
                 </div>
