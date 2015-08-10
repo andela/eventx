@@ -14,154 +14,149 @@
       <ul class="tabs">
         <li class="tab col s3">
           <a class="active our-tab2-color" href="#test1">
-            <i class="fa fa-plus"></i>
-            Create</a>
+            <i class="fa fa-plus"></i> Create
+          </a>
         </li>
         <li class="tab col s3">
           <a class="our-tab2-color" href="#test2">
-            <i class="fa fa-search "></i>
-            Preview</a>
+            <i class="fa fa-search "></i> Customize
+          </a>
         </li>
         <li class="tab col s3">
           <a class="our-tab2-color" href="#test3">
-            <i class="fa fa-globe "></i>
-            Publish</a>
+            <i class="fa fa-globe "></i> Preview
+          </a>
         </li>
       </ul>
     </div>
     <div class="col s12" id="test1">
       <div class="container margin-down">
         <div class="row">
-
-    <%= form_for @events, html: {class: "col s12", multipart: true} do |f| %>
-    <div class="row">
-      <div class="input-field col s10">
-        <i class="fa fa-pencil prefix icon-setting"></i>
-        <label>EVENT TITLE
-          <span>*</span>
-        </label>
-        <%= f.text_field :title, class: "validate", placeholder: 'Give it a short distinct name', id: 'location', required: true %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col l5 m5 s10">
-        <i class="fa fa-map-marker prefix icon-setting"></i>
-        <label>Location
-          <span>*</span>
-        </label>
-        <%= f.text_field :location, class: "validate", placeholder: 'Enter Location where it will be held', required: true %>
-        <%= f.hidden_field :map_url, placeholder: 'Enter Location where it will be held', required: true %>
-      </div>
-      <div class="input-field col l5 m5 s10">
-        <i class="fa fa-street-view  prefix icon-setting"></i>
-        <label>Venue
-        </label>
-        <%= f.text_field :venue, class: "validate", placeholder: 'Enter Venue where it will be held', min: Date.today %>
-      </div>
-    </div>
-      <div class="row">
-        <div class="col s10 hide-on-med-and-down our-map">
-          <div class="map-area" id="map-canvas">
-            Load Maps Here
-          </div>
-        </div>
-      </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="row">
-          <div class="input-field col s10">
-            <i class="fa fa-th-large prefix icon-setting"></i>
-            <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} , class: "browser-default", blank_option: true, required: true  %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    </div>
-    <div class="row">
-      <div class="input-field col s5">
-        <i class="fa fa-calendar prefix icon-setting"></i>
-        <%= f.date_field :start_date, class: "datepicker", placeholder: "Start Date", id: "start_date", required: true %>
-      </div>
-      <div class="input-field col s5">
-        <i class="fa fa-calendar prefix icon-setting"></i>
-        <%= f.date_field :end_date, class: "datepicker", placeholder: "End Date", id: "end_date" %>
-      </div>
-    </div>
-
-    <div class="row col s10">
-      <div class="col l6 m6 s8 offset-l3 offset-m3 offset-s2 file-uploader">
-        <div class="inner-file-upload center">
-          <span class="events_pic_name">
+          <%= form_for @events, html: {class: "col s12", multipart: true} do |f| %>
+              <div class="row">
+                <div class="input-field col s10">
+                  <i class="fa fa-pencil prefix icon-setting"></i>
+                  <label>EVENT TITLE
+                    <span>*</span>
+                  </label>
+                  <%= f.text_field :title, class: "validate", placeholder: 'Give it a short distinct name', id: 'location', required: true %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col l5 m5 s10">
+                  <i class="fa fa-map-marker prefix icon-setting"></i>
+                  <label>Location
+                    <span>*</span>
+                  </label>
+                  <%= f.text_field :location, class: "validate", placeholder: 'Enter Location where it will be held', required: true %>
+                  <%= f.hidden_field :map_url, placeholder: 'Enter Location where it will be held', required: true %>
+                </div>
+                <div class="input-field col l5 m5 s10">
+                  <i class="fa fa-street-view  prefix icon-setting"></i>
+                  <label>Venue
+                  </label>
+                  <%= f.text_field :venue, class: "validate", placeholder: 'Enter Venue where it will be held', min: Date.today %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s10 hide-on-med-and-down our-map">
+                  <div class="map-area" id="map-canvas">
+                    Load Maps Here
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <div class="row">
+                    <div class="input-field col s10">
+                      <i class="fa fa-th-large prefix icon-setting"></i>
+                      <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} , class: "browser-default", blank_option: true, required: true  %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s5">
+                  <i class="fa fa-calendar prefix icon-setting"></i>
+                  <%= f.date_field :start_date, class: "datepicker", placeholder: "Start Date", id: "start_date", required: true %>
+                </div>
+                <div class="input-field col s5">
+                  <i class="fa fa-calendar prefix icon-setting"></i>
+                  <%= f.date_field :end_date, class: "datepicker", placeholder: "End Date", id: "end_date" %>
+                </div>
+              </div>
+              <div class="row col s10">
+                <div class="col l6 m6 s8 offset-l3 offset-m3 offset-s2 file-uploader">
+                  <div class="inner-file-upload center">
+                            <span class="events_pic_name">
             <i class="fa fa-camera"></i>
             <br/>
             Upload Event Photo</span>
-        </div>
-      </div>
-    </div>
-      <%= f.file_field :image,  id: "event_photo_upload" %>
-    <div class="row">
-      <div class="input-field col s10">
-        <i class="fa fa-newspaper-o prefix icon-setting"></i>
-       <%= f.text_area :description, rows: 6, placeholder: 'Enter description of event', required: true %>
-      </div>
-    </div>
-
-        <div class="input-field col s3 offset-s4">
-          <%= link_to "Next <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center more-info z-depth-0"  %>
-        </div>
-    </div>
-  </div>
-</div>
-  </div>
-    <div class="col s12" id="test2">
-    <div class="container margin-down">
-       <!-- past here-->
-      <div class="row">
-        <div class="col s12">
-          <div class="row">
-            <div class="input-field col s10">
-              <i class="fa fa-link prefix icon-setting"></i>
-              <label>Enter Domain Name
-                <span>*</span>
-              </label>
-              <input class="validate" placeholder="http://your-url.eventx.com" type="text", required: true>
-            </div>
-          </div>
-          <div class="row">
-
-           <!-- Render the Tickets partial here that will be used in a nested form-->
-          </div>
-
-          <div class="row category-selected">
-
-            <div class="row radio-select">
-              <div class="input-field col s10">
-                <label>Select a template</label>
-                <div class="temps">
-                  <!--Hardcoded radio button association: due to the face that i have not-->
-                  <!--seen the rails way of doing it but it work find for now!-->
-                  <% all_template.each do |i|%>
-            <span class="col s6 m3 center temp_image">
+                  </div>
+                </div>
+              </div>
+              <%= f.file_field :image,  id: "event_photo_upload" %>
+              <div class="row">
+                <div class="input-field col s10">
+                  <i class="fa fa-newspaper-o prefix icon-setting"></i>
+                  <%= f.text_area :description, rows: 6, placeholder: 'Enter description of event', required: true %>
+                </div>
+              </div>
+              <div class="input-field col s3 offset-s4">
+                <%= link_to "Next <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center more-info z-depth-0"  %>
+              </div>
+              </div>
+              </div>
+              <div class="col s12" id="test2">
+                <div class="container margin-down">
+                  <!-- past here-->
+                  <div class="row">
+                    <div class="col s12">
+                      <div class="row">
+                        <div class="input-field col s10">
+                          <i class="fa fa-link prefix icon-setting"></i>
+                          <label>Enter Domain Name
+                            <span>*</span>
+                          </label>
+                          <input class="validate" placeholder="http://your-url.eventx.com" type="text" , required: true>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <!-- Render the Tickets partial here that will be used in a nested form-->
+                      </div>
+                      <div class="row category-selected">
+                        <div class="row radio-select">
+                          <div class="input-field col s10">
+                            <label>Select a template</label>
+                            <div class="temps">
+                              <!--Hardcoded radio button association: due to the face that i have not-->
+                              <!--seen the rails way of doing it but it work find for now!-->
+                              <% all_template.each do |i|%>
+                                            <span class="col s6 m3 center temp_image">
               <input id="<%= i.name %>" name="event[event_template_id]" value='<%= i.id %>' type="radio"/>
               <label for="<%= i.name %>">
                 <%= image_tag "#{i.image}" %>
               </label>
             </span>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-      </div>
-  </div>
-</div>
-
-    <div class="col s3 offset-s4 center">
-        <!--<%= f.submit  %>-->
-      <button class="col s12 btn-large waves-effect waves-light home_button center preview z-depth-0">Save & Preview  <i class='fa fa-floppy-o'></i></button>
-    </div>
-     <% end %>
-  </div>
-  <div class="col s12" id="test3">Test 3</div>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col s3 offset-s4 center">
+                    <!--<%= f.submit  %>-->
+                    <button class="col s12 btn-large waves-effect waves-light home_button center preview z-depth-0">Save & Preview <i class='fa fa-floppy-o'></i></button>
+                  </div>
+          <% end %>
+          </div>
+          </div>
+          <div class="col s12 center" id="test3">
+            <iframe id="frame" scrolling="yes" src=<%= check_url(flash[:id]) %> width="90%" height="700px" frameborder="0" style="margin:0 auto;">
+              <div id="iframeBlocker" style="width:95%; height:95%;background-color:aliceblue;opacity:0.1;"></div>
+            </iframe>
+          </div>
+          </div>
 </div>

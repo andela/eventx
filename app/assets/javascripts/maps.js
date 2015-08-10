@@ -8,7 +8,6 @@ function initialize() {
 
     var input = /** @type {HTMLInputElement} */(
         document.getElementById('event_location'));
-    console.log('location: ',input)
     //var types = document.getElementById('type-selector');
     //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     //map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
@@ -26,8 +25,10 @@ function initialize() {
         infowindow.close();
         marker.setVisible(true);
         var place = autocomplete.getPlace();
+    console.log(place);
 
-        document.getElementById("event_map_url").value = place.url;
+        var c = document.getElementById("event_map_url").value = (place.url.indexOf("plus") > 0) ? ("https://maps.google.com/maps/place?q="+document.querySelector("#event_location").value.replace(/\s/g, "+")) : place.url;
+        console.log(c);
         if (!place.geometry) {
             window.alert("Autocomplete's returned place contains no geometry");
             return;

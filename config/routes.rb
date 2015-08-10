@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'events/new'
 
   get 'welcome/index'
+  get 'events/loading'
 
   resources :events
 
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
+
+
 
   #get 'auth/:provider' => "session#create"
 
