@@ -18,8 +18,9 @@ class EventsController < ApplicationController
     # 2.times {@events.tickets.build}
     # @events.image = image.secure_url
     if @events.save
+      flash[:id] = @events.id
       respond_to do |format|
-        format.html {redirect_to event_path(@events), notice: 'Event was successfully created'}
+        format.html {redirect_to events_new_path+'#test3', notice: 'Event was successfully created'}
         format.json
         format.xml
       end
@@ -35,5 +36,9 @@ class EventsController < ApplicationController
 
   def set_events
     @event = Event.find(params[:id])
+  end
+
+  def loading
+
   end
 end
