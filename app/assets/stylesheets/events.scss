@@ -179,3 +179,19 @@ input#event_photo_upload{
 #test3 {
   margin-left: 0px !important;
 }
+
+::-webkit-input-placeholder {
+  color: rgba(230,150,60,0.5);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: rgba(230,150,60,0.5);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: rgba(230,150,60,0.5);
+}
+
+:-ms-input-placeholder {
+  color: rgba(230,150,60,0.5);
+}
