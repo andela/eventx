@@ -13,20 +13,10 @@
     <div class="bold" style="padding-left: 30px;"><h5> Category </h5></div>
     <li class="bold active"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>All</a>
     </li>
-    <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Technology</a>
-    </li>
-    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-image-palette "></i> Business </a>
-    </li>
-    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Seminar </a>
-    </li>
-    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Conference </a>
-    </li>
-    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Party </a>
-    </li>
-    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Dinner </a>
-    </li>
-
-
+    <% @categories.each do |category| %>
+      <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i><%= category.name %></a>
+      </li>
+    <% end %>
 
     <li class="li-hover">
       <div class="row">
@@ -39,10 +29,6 @@
     </li>
 
   <% end %>
-</div>
-
-
-
 
 <div class="showpage-header" id="index-banner">
   <div style="background-color: #222222 !important; height: 64px;">

@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.recent_events
+    @categories = Category.all
   end
 
   def show
