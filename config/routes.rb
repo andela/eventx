@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'events/new'
 
   get 'welcome/index'
+  get  'welcome/featured'
+  get  'welcome/popular'
   get 'events/loading'
 
   resources :events
@@ -23,7 +25,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'welcome#index'
 
-  get '*unmatched_route', :to => 'application#no_route_found'
+
+
+  #get '*unmatched_route', :to => 'application#no_route_found'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -189,3 +189,14 @@ $(document).ready(function() {
 });
 
 
+$(document).ready(function(){
+    $('#FEATURED').click(function(){
+        $('#examples-transition2').load('/welcome/featured #content');
+    });
+
+    $('#POPULAR').click(function(){
+        $('#examples-transition3').load('/welcome/popular #content');
+    });
+})
+
+
