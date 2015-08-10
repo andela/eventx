@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806182433) do
+ActiveRecord::Schema.define(version: 20150810090649) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "banner"
   end
 
   create_table "event_templates", force: :cascade do |t|

@@ -40,6 +40,8 @@ gem 'launchy'
 
 # for uploading pictures
 gem 'carrierwave'
+
+# requires the imagemagick >=6.4 application
 gem 'rmagick'
 gem 'cloudinary'
 

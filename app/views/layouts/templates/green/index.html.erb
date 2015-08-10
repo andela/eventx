@@ -33,11 +33,11 @@
 
   </div>
 </nav>
-<%= content_tag(:header, class: "header", id:"top", style: "background: url(#{@event.image.url(:main)});") do %>
+<%= content_tag(:header, class: "header", id:"top", style: "background: url(#{@event.image_url()});") do %>
   <%= content_tag(:div, nil, style: "height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)") do%>
-    <%= content_tag(:h3, @event.title, style: "padding-top: 20%; font-size: 64px; color: white; font-family: Lobster") %>
-    <%= content_tag(:label, "#{@event.start_date.strftime("%b %d %Y")} to #{@event.end_date.strftime("%b %d %Y")}", style: "display: block; font-size: 24px; color: white; font-family: roboto") %>
-    <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe, "#", class: "btn btn-primary btn-lg our-btn-green"  %>
+    <%= content_tag(:h3, @event.title, style: "padding-top: 20%; font-size: 64px; color: white; font-family: 'Open Sans',Arial,sans-serif;") %>
+    <%= content_tag(:label, "#{@event.start_date.strftime("%b %d %Y")} to #{@event.end_date.strftime("%b %d %Y")}", style: "display: block; font-size: 24px; color: white; font-family: 'Open Sans',Arial,sans-serif;") %>
+    <%= link_to "Attend this event ", "#", class: "btn btn-primary btn-lg our-btn-green"  %>
   <% end %>
 <% end %>
 
@@ -93,17 +93,6 @@
  </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#media').carousel({
-            pause: true,
-            interval: false,
-        });
 
-      //$("#frame").attr("src", "");
-    });
-</script>
 </body>
 </html>
