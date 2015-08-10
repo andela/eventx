@@ -164,11 +164,34 @@ input#event_photo_upload{
 }
 
 #frame {
-  -ms-zoom: 0.35;
-  -moz-transform: scale(0.35);
-  -moz-transform-origin: 0 0;
-  -o-transform: scale(0.35);
-  -o-transform-origin: 0 0;
-  -webkit-transform: scale(0.55);
-  -webkit-transform-origin: 0 0;
+  -ms-zoom: 0.85;
+  -moz-transform: scale(0.85);
+  //-moz-transform-origin: 0 0;
+  -o-transform: scale(0.85);
+  //-o-transform-origin: 0 0;
+  -webkit-transform: scale(0.85);
+  //-webkit-transform-origin: 0 0;
+  display:block;
+  margin-top: 20px !important;
+  margin-bottom: 0px !important;
+}
+
+#test3 {
+  margin-left: 0px !important;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(230,150,60,0.5);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: rgba(230,150,60,0.5);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: rgba(230,150,60,0.5);
+}
+
+:-ms-input-placeholder {
+  color: rgba(230,150,60,0.5);
 }

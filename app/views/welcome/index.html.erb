@@ -29,10 +29,10 @@
   <div class="col s12" style="padding: 0px 0px">
     <ul class="tabs">
       <li class="tab col s3">
-        <a class="active our-tab-color" href="#test1" style="color: #313131 ;" >FEATURED</a>
+        <a class="active our-tab-color" href="#test1" style="color: #313131 ;" >LATEST</a>
       </li>
       <li class="tab col s3">
-        <a href="#test2" class="our-tab-color" style="color: #313131 ;">LATEST</a>
+        <a href="#test2" class="our-tab-color" style="color: #313131 ;">FEATURED</a>
       </li>
       <li class="tab col s3">
         <a href="#test3"class="our-tab-color" style="color: #313131 ;">POPULAR</a>
@@ -74,10 +74,14 @@
               </div>
             </div>
         <% end %>
+        <div class="row col l12 s12 m12">
         <div class="center">
-          <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
+          <% unless @events.count < 12 %>
+            <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
+          <% end %>
 
         </div>
+      </div>
       </div>
     </div>
   </div>
