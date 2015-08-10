@@ -25,6 +25,6 @@ class Event < ActiveRecord::Base
 
 
   #scope
-  scope :recent_events, -> {order(created_at: :DESC).limit(1)}
+  scope :recent_events, -> {order(created_at: :DESC).limit(12)}
 
 end
