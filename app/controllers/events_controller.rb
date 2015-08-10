@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     if @events.save
       flash[:id] = @events.id
       respond_to do |format|
-        format.html {redirect_to events_new_path+"#test3", notice: 'Event was successfully created'}
+        format.html {redirect_to events_new_path+'#test3', notice: 'Event was successfully created'}
         format.json
         format.xml
       end

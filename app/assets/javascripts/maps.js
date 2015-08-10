@@ -25,10 +25,9 @@ function initialize() {
         infowindow.close();
         marker.setVisible(true);
         var place = autocomplete.getPlace();
-    console.log(place);
-
-        var c = document.getElementById("event_map_url").value = (place.url.indexOf("plus") > 0) ? ("https://maps.google.com/maps/place?q="+document.querySelector("#event_location").value.replace(/\s/g, "+")) : place.url;
-        console.log(c);
+        var c = document.getElementById("event_map_url").value =
+            (place.url.indexOf("plus") > 0) ?
+                ("https://maps.google.com/maps/place?q="+document.querySelector("#event_location").value.replace(/\s/g, "+")) : place.url;
         if (!place.geometry) {
             window.alert("Autocomplete's returned place contains no geometry");
             return;
