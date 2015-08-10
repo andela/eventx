@@ -43,6 +43,7 @@ body {
 .header{
   background-size: cover !important;
   background-attachment: fixed !important;
+  background-position: center;
   position: relative;
   padding: 0;
   color: #FFF;
@@ -50,7 +51,7 @@ body {
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
   height: 103%;
   width: 100%;
-  margin-top: -21px;
+  margin-top: 0px;
 }
 
 .description{
@@ -178,7 +179,7 @@ body {
 
   .our-btn-green{
     background-color: green;
-    border-color: inherit;
+    border-color: green !important;
     &:hover{
       background-color: green;
       border-color: green;

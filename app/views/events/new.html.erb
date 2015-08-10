@@ -93,6 +93,7 @@
             <i class="fa fa-camera"></i>
             <br/>
             Upload Event Photo</span>
+
                   </div>
                 </div>
               </div>
@@ -134,6 +135,7 @@
                               <!--seen the rails way of doing it but it work find for now!-->
                               <% all_template.each do |i|%>
                                             <span class="col s6 m3 center temp_image">
+
               <input id="<%= i.name %>" name="event[event_template_id]" value='<%= i.id %>' type="radio"/>
               <label for="<%= i.name %>">
                 <%= image_tag "#{i.image}" %>
