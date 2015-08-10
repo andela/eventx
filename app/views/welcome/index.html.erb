@@ -29,54 +29,28 @@
   <div class="col s12" style="padding: 0px 0px">
     <ul class="tabs">
       <li class="tab col s3">
-        <a class="active our-tab-color" href="#test1" style="color: #313131 ;" >FEATURED</a>
+        <!--<a class="active our-tab-color" href="#test1" style="color: #313131 ;" >LATEST</a>-->
+        <%= link_to 'LATEST', '#test1', class:'active our-tab-color', style:'color: #313131'  %>
       </li>
       <li class="tab col s3">
-        <a href="#test2" class="our-tab-color" style="color: #313131 ;">LATEST</a>
+        <!--<a href="#test2" class="our-tab-color" style="color: #313131 ;">FEATURED</a>-->
+        <%= link_to 'FEATURED', '#test2', class:'our-tab-color', style:'color: #313131', id:'FEATURED' %>
       </li>
       <li class="tab col s3">
-        <a href="#test3"class="our-tab-color" style="color: #313131 ;">POPULAR</a>
+        <!--<a href="#test3"class="our-tab-color" style="color: #313131 ;">POPULAR</a>-->
+        <%= link_to 'POPULAR', '#test3', class:'our-tab-color', style:'color: #313131', id: 'POPULAR'  %>
       </li>
     </ul>
   </div>
   <div class="col s12" id="test1">
     <div class="content-set">
       <div class="row scrollblock" id="examples-transition">
-        <% @events.each do |event| %>
-            <div class="col l4 s12 m4 hideme2" id="fade-in">
-              <div class="card small card-shadow" id="card">
-                <div class="Amount">Free</div>
-                <div class="card-image waves-effect waves-block waves-light">
-                  <%= image_tag event.image_url(:landing) %>
-                </div>
-                <div class="card-content">
-              <span class="card-title grey-text text-darken-4">
-                <i class="fa fa-clock-o"></i>
-                WED, JUL 29 5:00 PM
-                <%= event.start_date.to_formatted_s(:short) %>
-              </span>
-                  <p><%= event.title %></p>
-                </div>
-
-                <div class="card-action">
-              <span class="card-title grey-text text-darken-4">
-                <i class="fa fa-map-marker"></i>
-                <%= event.venue + ', ' +event.location %>
-                <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
-              </span>
-                </div>
-                <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Description
-                <i class="material-icons right">close</i>
-              </span>
-                  <p><%= event.description %></p>
-                </div>
-              </div>
-            </div>
-        <% end %>
+        <%= render :partial => 'welcome/latest' %>
         <div class="row col l12 s12 m12">
         <div class="center">
-          <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
+          <% unless @events.count < 12 %>
+            <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
+          <% end %>
 
         </div>
       </div>
@@ -85,8 +59,36 @@
   </div>
 
 </div>
-<div class="col s12" id="test2">Test 2</div>
-<div class="col s12" id="test3">Test 3</div>
+<div class="col s12" id="test2">
+  <div class="content-set">
+    <div class="row scrollblock" id="examples-transition2">
+
+      <div class="row col l12 s12 m12">
+        <div class="center">
+          <% unless @events.count < 12 %>
+              <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col s12" id="test3">
+  <div class="content-set">
+    <div class="row scrollblock" id="examples-transition3">
+
+      <div class="row col l12 s12 m12">
+        <div class="center">
+          <% unless @events.count < 12 %>
+              <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="near-footer">
   <h4>Create your own event</h4>
