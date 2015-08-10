@@ -10,6 +10,14 @@
 </head>
 <body>
 
+<% if flash[:notice].present? %>
+  <div>
+    <script type="text/javascript">
+        Materialize.toast("<%= flash[:notice].to_s %>", 3000, 'rounded')
+    </script>
+  </div>
+<% end %>
+
     <%= yield %>
 
     <%= render partial: 'layouts/login_modal'%>

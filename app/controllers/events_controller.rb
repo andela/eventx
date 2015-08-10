@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user, :only => [:new, :create]
+
   layout 'templates/green/index', only: [:show]
   before_action :set_events, :only => [:show]
   def new
