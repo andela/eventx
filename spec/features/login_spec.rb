@@ -6,7 +6,7 @@ RSpec.feature "Login:", type: :feature do
     visit root_path
 
     expect(page).to have_selector("h1.header", text: "EventX")
-    expect(page).to have_selector("h4", text: "Sign in with:")
+    expect(page).to have_selector("h5", text: "Sign in with:")
     expect(page).to have_selector("div.sso_option", count: 6)
     expect(page).to have_selector("h5.header", text: "Simple, Easy, Build it")
   end
