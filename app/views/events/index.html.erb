@@ -38,9 +38,13 @@
   </div>
 
   <div class="event-section row remove-margin">
+    <div id="left">
+      <div id="sidebar">
+        <%= render partial: 'layouts/sidebar'%>
+      </div>
+    </div>
 
-      <%= render partial: 'layouts/sidebar'%>
-
+    <div id="right">
       <div class="col l9 m12 s12 our-sidenav scroller2 our-sidebar-for-eventshow">
         <div class="row our-search">
           <div class="header center search_form our-search l12 m12 s12">
@@ -73,6 +77,7 @@
                     <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
                   </span>
                     </div>
+                    
                     <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Description
                     <i class="material-icons right">close</i>
@@ -86,5 +91,6 @@
         </div>
 
       </div>
+    </div>
   </div>
 </div>
