@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
    validates :start_date, presence: true
    validates :end_date, presence: true
    validates :category_id, presence: true
-   validates :image, presence: true
+   # validates :image, presence: true
 
 
   #scope
