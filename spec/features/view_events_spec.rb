@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "ViewEvents", type: :feature do
   before(:all) do
     # Capybara.default_driver = :selenium
+    page.driver.browser.manage.window.maximize()
   end
 
   before(:each) do
