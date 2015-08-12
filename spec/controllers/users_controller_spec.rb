@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
 
   before do
+    DatabaseCleaner.strategy = :transaction
     OmniAuth.config.test_mode = true
   end
 
