@@ -54,7 +54,10 @@ gem 'cloudinary'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-
+  gem 'pry'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  # gem 'capybara-webkit'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

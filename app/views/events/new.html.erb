@@ -49,7 +49,7 @@
                     <span>*</span>
                   </label>
                   <%= f.text_field :location, class: "validate", placeholder: 'Enter Location where it will be held', required: true %>
-                  <%= f.hidden_field :map_url, placeholder: 'Enter Location where it will be held', required: true %>
+                  <%= f.hidden_field :map_url, placeholder: 'Enter Location where it will be held' %>
                 </div>
                 <div class="input-field col l5 m5 s10">
                   <i class="fa fa-street-view  prefix icon-setting"></i>
@@ -70,7 +70,7 @@
                   <div class="row">
                     <div class="input-field col s10">
                       <i class="fa fa-th-large prefix icon-setting"></i>
-                      <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} , class: "browser-default", blank_option: true, required: true  %>
+                      <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} , class: "browser-default", blank_option: true, required: true%>
                     </div>
                   </div>
                 </div>
@@ -120,7 +120,7 @@
                           <label>Enter Domain Name
                             <span>*</span>
                           </label>
-                          <input class="validate" placeholder="http://your-url.eventx.com" type="text" , required: true>
+                          <input class="validate" placeholder="http://your-url.eventx.com" type="text">
                         </div>
                       </div>
                       <div class="row">
@@ -149,8 +149,8 @@
                     </div>
                   </div>
                   <div class="col s3 offset-s4 center">
-                    <!--<%= f.submit  %>-->
-                    <button class="col s12 btn-large waves-effect waves-light home_button center preview z-depth-0">Save & Preview <i class='fa fa-floppy-o'></i></button>
+
+                    <button class="col s12 btn-large waves-effect waves-light home_button center preview z-depth-0">Save & Preview<i class='fa fa-floppy-o'></i></button>
                   </div>
           <% end %>
           </div>
