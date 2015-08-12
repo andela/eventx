@@ -1,0 +1,36 @@
+<div id="content">
+  <% unless @events.nil? %>
+    <% @events.each do |event| %>
+        <div class="col l4 s12 m4 hideme" id="fade-in">
+          <div class="card small card-shadow" id="card">
+            <div class="Amount">Free</div>
+            <div class="card-image waves-effect waves-block waves-light">
+              <%=link_to (image_tag event.image_url(:landing)), event  %>
+            </div>
+            <div class="card-content">
+                  <span class="card-title grey-text text-darken-4">
+                    <%= event.start_date.strftime("%b %d %Y") %>
+                  </span>
+              <p><%=link_to event.title, event %></p>
+            </div>
+
+            <div class="card-action">
+                  <span class="card-title grey-text text-darken-4">
+                    <i class="fa fa-map-marker"></i>
+                    <%= truncate (event.venue + ' ' +event.location) %>
+                    <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
+                  </span>
+            </div>
+            <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">Description
+                    <i class="material-icons right">close</i>
+                  </span>
+              <p><%= event.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <%else%>
+      <h1> No event found </h1>
+    <%end%>
+</div>

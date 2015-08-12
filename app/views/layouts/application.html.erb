@@ -4,17 +4,27 @@
 <head>
   <title>EventX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Great+Vibes", "https://fonts.googleapis.com/icon?family=Material+Icons", media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Great+Vibes", "https://fonts.googleapis.com/icon?family=Material+Icons", "https://fonts.googleapis.com/css?family=Open+Sans:300,600", media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application','https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if flash[:notice].present? %>
+  <div>
+    <script type="text/javascript">
+        Materialize.toast("<%= flash[:notice].to_s %>", 3000, 'rounded')
+    </script>
+  </div>
+<% end %>
 
     <%= yield %>
 
     <%= render partial: 'layouts/login_modal'%>
 
-    <% if (controller_name == "events" && action_name == "show") || (controller_name  == "users" && action_name == "show")%>
+
+    <% if (controller_name == "events" && (action_name == "index" || action_name=="loading")) || (controller_name  == "users" && action_name == "index")%>
+
     <% else %>
     <footer class="page-footer">
       <div class="container">

@@ -1,0 +1,97 @@
+  <% content_for :nav_cat do %>
+    <li class="" style="background-color: #F15D28;">
+      <div class="row our-image-cover">
+        <div class="col l12 m12 s12">
+          <%= link_to root_path do %>
+            <h3 class="header home_app_title">EventX</h3>
+          <% end %>
+        </div>
+      </div>
+    </li>
+
+
+
+
+    <div class="bold" style="padding-left: 30px;"><h5> Category </h5></div>
+    <li class="bold active"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>All</a>
+    </li>
+    <% @categories.each do |category| %>
+      <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i><%= category.name %></a>
+      </li>
+    <% end %>
+
+    <li class="li-hover">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <div class="sample-chart-wrapper">
+            <div class="ct-chart ct-golden-section" id="ct2-chart"></div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+  <% end %>
+
+<div class="showpage-header" id="index-banner">
+  <div style="background-color: #222222 !important; height: 64px;">
+    <%= render partial: 'layouts/nav' %>
+  </div>
+
+  <div class="event-section row remove-margin">
+    <div id="left">
+      <div id="sidebar">
+        <%= render partial: 'layouts/sidebar'%>
+      </div>
+    </div>
+
+    <div id="right">
+      <div class="col l9 m12 s12 our-sidenav scroller2 our-sidebar-for-eventshow">
+        <div class="row our-search">
+          <div class="header center search_form our-search l12 m12 s12">
+            <%= render partial: 'welcome/search' %>
+          </div>
+        </div>
+
+        <div class="content-set">
+          <div class="row scrollblock" id="examples-transition">
+            <% @events.each do |event| %>
+                <%= link_to (event) do %>
+                <div class="col l4 s12 m4 hideme2" id="fade-in">
+                  <div class="card small card-shadow" id="card">
+                    <div class="Amount">Free</div>
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <%=link_to (image_tag event.image_url(:landing)), event %>
+                    </div>
+                    <div class="card-content">
+                  <span class="card-title grey-text text-darken-4">
+                    <i class="fa fa-clock-o"></i>
+                    <%= event.start_date.to_formatted_s(:short) %>
+                  </span>
+                      <p><%= event.title %></p>
+                    </div>
+
+                    <div class="card-action">
+                  <span class="card-title grey-text text-darken-4">
+                    <i class="fa fa-map-marker"></i>
+                    <%= event.venue + ' ' +event.location %>
+                    <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
+                  </span>
+                    </div>
+                    
+                    <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">Description
+                    <i class="material-icons right">close</i>
+                  </span>
+                      <p><%= event.description %></p>
+                    </div>
+                  </div>
+                </div>
+                 <% end %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
