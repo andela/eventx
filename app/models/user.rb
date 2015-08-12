@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  belongs_to :attendees
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider

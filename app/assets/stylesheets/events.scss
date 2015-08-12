@@ -195,3 +195,47 @@ input#event_photo_upload{
 :-ms-input-placeholder {
   color: rgba(230,150,60,0.5);
 }
+
+.card-image{
+ img {-webkit-transition: all 0.3s ease;
+  -moz-transition:    all 0.3s ease;
+  -o-transition:      all 0.3s ease;
+  -ms-transition:     all 0.3s ease;
+  transition:         all 0.3s ease;}
+  img:hover{
+    //width: 150%;
+    //-webkit-transition: all 0.3s ease;
+    //-moz-transition:    all 0.3s ease;
+    //-o-transition:      all 0.3s ease;
+    //-ms-transition:     all 0.3s ease;
+    //transition:         all 0.3s ease;
+    transform: scale(1.1);
+  }
+}
+
+.card-content  {
+  span{
+    color:  rgba(28, 28, 28, 0.6) !important;
+    font-family: 'Roboto', sans-serif !important;
+  }
+  a{
+    color:  rgba(28, 28, 28, 0.6) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: large;
+    font-weight: bolder;
+  }
+}
+
+.venue{
+  width: 100%;
+  height: 70%;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.venue{
+  width: 100%;
+  height: 70%;
+  padding: 0px !important;
+  margin: 0px !important;
+}
