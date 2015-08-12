@@ -29,5 +29,6 @@ class Event < ActiveRecord::Base
   scope :recent_events, -> {order(created_at: :DESC).limit(12)}
   scope :featured_events, -> {order(created_at: :DESC).limit(2)}
   scope :popular_events, -> {order(created_at: :DESC).limit(3)}
+  #scope :popular_events, -> {where('id > ?', 3).limit(3)}
 
 end

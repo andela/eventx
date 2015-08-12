@@ -22,36 +22,34 @@ class ApplicationController < ActionController::Base
     }
   end
 
- #authenticate users that are not logged in
-  def authenticate_user
-    unless current_user
-      flash[:notice] = "You need to log in"
-      redirect_to root_url
-    end
-  end
-
-
   rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ::NameError, with: :error_occurred
-  rescue_from ::ActionController::RoutingError, with: :error_occurred
+  rescue_from ::ActionController::RoutingError, with: :no_route_found
   rescue_from ::Exception, with: :error_occurred
 
 
-  # #protected
+  def no_route_found
+    flash[:notice] = "Invalid address!"
+    redirect_to root_path
+  end
 
+protected
   def record_not_found(exception)
     flash[:notice] = exception.message.to_s
-    redirect_to root_url
+    redirect_to root_path
   end
 
 
   def error_occurred(exception)
     flash[:notice] = exception.message.to_s
-    redirect_to root_url
+    redirect_to root_path
   end
-  #
-  def no_route_found
-    flash[:notice] = "Invalid address!"
-    redirect_to root_url
+
+   #authenticate users that are not logged in
+  def authenticate_user
+    unless current_user
+      flash[:notice] = "You need to log in"
+      redirect_to root_path
+    end
   end
 end
