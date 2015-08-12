@@ -37,13 +37,11 @@
       outline: none !important;
     }
   }
-
   i.icon-setting{
     margin-top: 20px;
     color: #969CA7 !important;
   }
 }
-
 
 .location_form_padding{
   input{
@@ -52,7 +50,6 @@
     padding: 0px;
     padding-left: 5px;
   }
-
   select .browser-default, #event_category_id{
     border: 1px solid #CCCCCC !important;
     border-radius: 0px !important;
@@ -66,7 +63,6 @@
     //padding: 5px;
   }
 }
-
 
 .file-uploader{
   border: 1px solid #CCCCCC;
@@ -104,9 +100,6 @@
   background-color: #969CA7;
   padding: 17px;
 }
-.setting-form{
-
-}
 
 .category-select{
   position: relative;
@@ -131,7 +124,6 @@
   }
 }
 
-
 .map-area{
   text-align: center;
   padding: 20%;
@@ -141,24 +133,27 @@
   width: 79.33333% !important;
   margin-left: 47px !important;
 }
+
 input#event_photo_upload{
   display: none;
 }
+
 @media only screen and (min-width: 993px) {
   .our-sidebar-for-eventshow.l9 {
     padding-left: 240px !important;
     width: 100% !important;
     margin-left: 0px;
   }
-
-
 }
+
 .our-label{
   border-bottom: solid thin black;
 }
+
 .pre-our-label{
   background-color: #00BCD4;
 }
+
 .ticket{
   margin-left:4.2rem;
 }
@@ -194,4 +189,28 @@ input#event_photo_upload{
 
 :-ms-input-placeholder {
   color: rgba(230,150,60,0.5);
+}
+
+.card-image{
+ img {-webkit-transition: all 0.3s ease;
+  -moz-transition:    all 0.3s ease;
+  -o-transition:      all 0.3s ease;
+  -ms-transition:     all 0.3s ease;
+  transition:         all 0.3s ease;}
+  img:hover{
+    transform: scale(1.1);
+  }
+}
+
+.card-content  {
+  span{
+    color:  rgba(28, 28, 28, 0.6) !important;
+    font-family: 'Roboto', sans-serif !important;
+  }
+  a{
+    color:  rgba(28, 28, 28, 0.6) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: large;
+    font-weight: bolder;
+  }
 }

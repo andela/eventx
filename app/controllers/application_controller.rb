@@ -37,18 +37,19 @@ class ApplicationController < ActionController::Base
   rescue_from ::Exception, with: :error_occurred
 
 
-  #protected
+  # #protected
 
   def record_not_found(exception)
     flash[:notice] = exception.message.to_s
     redirect_to root_url
   end
 
+
   def error_occurred(exception)
     flash[:notice] = exception.message.to_s
     redirect_to root_url
   end
-
+  #
   def no_route_found
     flash[:notice] = "Invalid address!"
     redirect_to root_url
