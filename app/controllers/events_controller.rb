@@ -1,8 +1,10 @@
 class EventsController < ApplicationController
+  #filters
   before_action :authenticate_user, :only => [:new, :create]
+  before_action :set_events, :only => [:show]
 
   layout 'templates/green/index', only: [:show]
-  before_action :set_events, :only => [:show]
+
   def new
     @events = Event.new
   end
@@ -13,7 +15,6 @@ class EventsController < ApplicationController
   end
 
   def show
-
   end
 
   def create

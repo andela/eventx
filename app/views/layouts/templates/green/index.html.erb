@@ -20,7 +20,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"> </a>
+      <%= link_to 'EventX', root_path, class:'navbar-brand' %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -43,16 +43,6 @@
 <% end %>
 
 
-<div class="our-attendee-div">
-    <%= content_tag(:label, "10 people attending  ", style: "font-size: 24px; color: white;") %>
-    <% 3.times do %>
-      <% if current_user.profile_url.present? %>
-        <%= image_tag current_user.profile_url, class: 'profile_pic circle img-circle' %>
-      <% else %>
-        <%= image_tag 'defaultimage.jpeg', class: 'profile_pic circle img-circle' %>
-      <% end %>
-    <% end %>
-</div>
 <div id="description" class="description">
   <div class="container">
     <h2 class="text-center"> Description</h2>
@@ -66,31 +56,12 @@
 </div>
 
 <div class="col-md-8 col-md-offset-2" id="gallery">
-  <h2 class="text-center">10 Attendees</h2>
-  <% 10.times do %>
-  <div class="row">
-    <div class="col-md-8">
-      <div class="col-md-2">
-      <% if current_user.profile_url.present? %>
-        <%= image_tag current_user.profile_url, class: 'profile_pic circle img-circle' %>
-      <% else %>
-        <%= image_tag 'defaultimage.jpeg', class: 'profile_pic circle img-circle' %>
-      <% end %>
-    </div>
-    <div class="col-md-10">
-      <%= link_to current_user.first_name , '#' %>
-      <!-- Oreoluwa -->
-    </div>
-    </div>
-    <div class="col-md-4">
-      <button class="btn btn-default">See info</button>
-    </div>
-  </div>
-  <% end %>
+
 </div>
 
-<div class="col-md-12" id="venue" style="height: 70%; width:100%;">
-  <iframe id="frame" scrolling="no" src=<%= "#{@event.map_url}&output=embed" %> width="100%" height="100%" frameborder="0" style="margin-left:-20px;"></iframe>
+<div class="col-md-12" id="venue" class="venue" style="height: 70%; padding:0px">
+  <div class="map-overlay"></div>
+  <iframe id="frame" scrolling="no" src=<%= "#{@event.map_url}&output=embed" %> width="100%" height="100%" frameborder="0"></iframe>
  </div>
 
 

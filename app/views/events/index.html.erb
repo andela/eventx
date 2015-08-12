@@ -38,9 +38,13 @@
   </div>
 
   <div class="event-section row remove-margin">
+    <div id="left">
+      <div id="sidebar">
+        <%= render partial: 'layouts/sidebar'%>
+      </div>
+    </div>
 
-      <%= render partial: 'layouts/sidebar'%>
-
+    <div id="right">
       <div class="col l9 m12 s12 our-sidenav scroller2 our-sidebar-for-eventshow">
         <div class="row our-search">
           <div class="header center search_form our-search l12 m12 s12">
@@ -51,16 +55,16 @@
         <div class="content-set">
           <div class="row scrollblock" id="examples-transition">
             <% @events.each do |event| %>
+                <%= link_to (event) do %>
                 <div class="col l4 s12 m4 hideme2" id="fade-in">
                   <div class="card small card-shadow" id="card">
                     <div class="Amount">Free</div>
                     <div class="card-image waves-effect waves-block waves-light">
-                      <%= image_tag event.image_url(:landing) %>
+                      <%=link_to (image_tag event.image_url(:landing)), event %>
                     </div>
                     <div class="card-content">
                   <span class="card-title grey-text text-darken-4">
                     <i class="fa fa-clock-o"></i>
-                    WED, JUL 29 5:00 PM
                     <%= event.start_date.to_formatted_s(:short) %>
                   </span>
                       <p><%= event.title %></p>
@@ -69,10 +73,11 @@
                     <div class="card-action">
                   <span class="card-title grey-text text-darken-4">
                     <i class="fa fa-map-marker"></i>
-                    <%= event.venue + ', ' +event.location %>
+                    <%= event.venue + ' ' +event.location %>
                     <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
                   </span>
                     </div>
+                    
                     <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Description
                     <i class="material-icons right">close</i>
@@ -81,10 +86,12 @@
                     </div>
                   </div>
                 </div>
+                 <% end %>
             <% end %>
           </div>
         </div>
 
       </div>
+    </div>
   </div>
 </div>
