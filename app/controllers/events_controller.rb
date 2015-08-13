@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   end
 
   def index
+    
     @events = Event.recent_events
     @categories = Category.all
   end

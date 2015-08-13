@@ -110,15 +110,6 @@ if(scrollPos>=80){
     $('.alert-scroll-under').show();
     $navBar2.removeClass('scroll-fix')
 }
-//console.log(scrollPos)
-
-//if((footerPos - scrollPos) > 550){
-//    $navBar2.removeClass('scroller3')
-//    $navBar2.addClass('scroller')
-//}else{
-//    $navBar2.removeClass('scroller')
-//    $navBar2.addClass('scroller3')
-//}
 
 });
 
@@ -141,8 +132,7 @@ if(scrollPos>=80){
           type: 'POST',
           data: formdata,
           processData: false,
-          // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-          // data: {param1: 'value1'}
+
         })
         .done(function() {
           console.log("success");
@@ -243,3 +233,39 @@ $(document).ready(function () {
       }
     });
 });
+
+function convertDate(startdate){
+  date = new Date();
+  dateStr = startdate.toString();
+  date2 = new Date(dateStr.replace(/-/g,'/'));
+  diff = Math.floor((date2 - date) / (60 * 1000));
+  return diff;
+}
+
+function countdown(val) {
+  minutes = val
+  if (minutes > 1){
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+        var counter = document.getElementById("counter");
+        var current_minutes = mins-1
+        var days = Math.floor(current_minutes/(24 * 60));
+        var hour_min = current_minutes % (24 * 60);
+        var hour = Math.floor(hour_min / 60);
+        mins2 = hour_min % 60;
+        seconds--;
+        counter.innerHTML = ((days>0) ? days.toString()  +"d :" : "" )+ (hour < 10 ? "0" : "") + hour.toString() + "h :" + mins2.toString() + "m :" + (seconds < 10 ? "0" : "") + String(seconds) + "s";
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+            if(mins > 1){
+                countdown(mins-1);
+            }
+        }
+    }
+    tick();
+  }else{
+    counter.innerHTML = "This event has ended";
+  }
+}

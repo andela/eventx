@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', 'green', 'welcome'  %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places','application' %>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <title><%= @event.title %></title>
 </head>
-<body id="">
+<body id="" onload="countdown(convertDate('<%= @event.start_date.strftime('%F') %>'))">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -34,15 +35,15 @@
 
   </div>
 </nav>
+
 <%= content_tag(:header, class: "header", id:"top", style: "background: url(#{@event.image_url()});") do %>
   <%= content_tag(:div, nil, style: "height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)") do%>
     <%= content_tag(:h3, @event.title, style: "padding-top: 20%; font-size: 64px; color: white; font-family: 'Roboto', sans-serif;") %>
-    <%= content_tag(:label, "#{@event.start_date.strftime("%b %d %Y")} to #{@event.end_date.strftime("%b %d %Y")}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif;") %>
+    <label id="counter"></label>
+    <%= content_tag(:label, "#{@event.start_date.strftime("%b %d %Y")} to #{@event.end_date.strftime("%b %d %Y")}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif;")  %>
     <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe, "#", class: "btn btn-primary btn-lg our-btn-green"  %>
   <% end %>
 <% end %>
-
-
 <div id="description" class="description">
   <div class="container">
     <h2 class="text-center"> Description</h2>
