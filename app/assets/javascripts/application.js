@@ -243,3 +243,38 @@ $(document).ready(function () {
       }
     });
 });
+function convertDate(startdate){
+  date = new Date();
+  dateStr = startdate.toString();
+  date2 = new Date(dateStr.replace(/-/g,'/'));
+  diff = Math.floor((date2 - date) / (60 * 1000));
+  return diff;
+}
+
+function countdown(date) {
+  minutes = convertDate(date)
+  if (minutes > 1){
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+        var counter = document.getElementById("counter");
+        var current_minutes = mins-1
+        var hour_min = current_minutes % (24 * 60);
+        var days = Math.floor(current_minutes/(24 * 60));
+        var hour = Math.floor(hour_min / 60);
+        mins2 = current_minutes % 60;
+        seconds--;
+        counter.innerHTML = days.toString()  +"d :" + (hour < 10 ? "0" : "") + hour.toString() + "h :" + mins2.toString() + "m :" + (seconds < 10 ? "0" : "") + String(seconds) + "s";
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+            if(mins > 1){
+                countdown(mins-1);
+            }
+        }
+    }
+    tick();
+  }else{
+    counter.innerHTML = "This event has ended";
+  }
+}
