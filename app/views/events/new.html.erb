@@ -112,7 +112,7 @@
               <div class="col s12" id="test2">
                 <div class="container margin-down">
                   <!-- past here-->
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col s12">
                       <div class="row">
                         <div class="input-field col s10">
@@ -122,7 +122,11 @@
                           </label>
                           <input class="validate" placeholder="http://your-url.eventx.com" type="text">
                         </div>
-                      </div>
+                      </div> -->
+
+                      <%= f.fields_for :ticket do |builder| %>
+                        <%= render "ticket_fields", :f => builder %>
+                      <% end %>
                       <div class="row">
                         <!-- Render the Tickets partial here that will be used in a nested form-->
                       </div>
