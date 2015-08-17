@@ -11,7 +11,7 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <title><%= @event.title %></title>
 </head>
-<body id="" onload="countdown('<%= @event.start_date.strftime('%F') %>')">
+<body id="" onload="countdown(convertDate('<%= @event.start_date.strftime('%F') %>'))">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
