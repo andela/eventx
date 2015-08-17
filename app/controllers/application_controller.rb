@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
-  rescue_from ::NameError, with: :error_occurred
-  rescue_from ::ActionController::RoutingError, with: :no_route_found
-  rescue_from ::Exception, with: :error_occurred
+  # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
+  # rescue_from ::NameError, with: :error_occurred
+  # rescue_from ::ActionController::RoutingError, with: :no_route_found
+  # rescue_from ::Exception, with: :error_occurred
 
 
   def no_route_found
