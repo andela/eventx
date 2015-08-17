@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 
   def new
     @events = Event.new
+    1.times{@events.build_ticket }
   end
 
   def index
@@ -34,7 +35,10 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :description, :start_date, :end_date, :category_id, :location, :venue, :image, :template_id, :map_url, :event_template_id)
+      params.require(:event).permit(:title, :description, :start_date, :end_date,
+                                    :category_id, :location, :venue, :image, :template_id,
+                                    :map_url, :event_template_id,
+                                    ticket_attributes: [ :name, :quantity, :price ])
     end
 
   def set_events
