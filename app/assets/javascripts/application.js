@@ -232,7 +232,8 @@ $(document).ready(function () {
         });
       }
     });
-});
+
+
 
 function convertDate(startdate){
   date = new Date();
@@ -241,6 +242,7 @@ function convertDate(startdate){
   diff = Math.floor((date2 - date) / (60 * 1000));
   return diff;
 }
+
 
 function countdown(val) {
   minutes = val
@@ -269,3 +271,6 @@ function countdown(val) {
     counter.innerHTML = "This event has ended";
   }
 }
+var event_date = $('.our_parallax').data('countdown')
+countdown(convertDate(event_date))
+});

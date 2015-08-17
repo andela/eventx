@@ -11,8 +11,13 @@
       <% end %>
     </ul>
     <ul class="right">
+
+      <% if content_for? :show %>
+        <%= yield :show %>
+      <% end %>
+
       <% if current_user %>
-        <!--<a href="" class=" dropdown-btn">-->
+        <li>
           <a class="dropdown-button" data-activates="dropdown-user_option" style="padding:0 20px;" data-beloworigin="true" href="">
             <% if current_user.profile_url.present? %>
             <%= image_tag current_user.profile_url, class: 'profile_pic circle responsive-img' %>
@@ -22,7 +27,7 @@
             <%= current_user.first_name.split(' ')[0] %>
             <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
           </a>
-        <!--</a>-->
+        </li>
         <ul class="dropdown-content right" id="dropdown-user_option">
           <li><%= link_to "My Account", user_path(current_user.id), data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
           <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
