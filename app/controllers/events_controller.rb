@@ -3,14 +3,12 @@ class EventsController < ApplicationController
   before_action :authenticate_user, :only => [:new, :create]
   before_action :set_events, :only => [:show]
 
-  layout 'templates/green/index', only: [:show]
-
   def new
     @events = Event.new
   end
 
   def index
-    
+
     @events = Event.recent_events
     @categories = Category.all
   end

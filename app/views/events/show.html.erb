@@ -1,6 +1,83 @@
-<h1><%= @event.title %></h1>
+<!-- <h1><%#= @event.title %></h1> -->
 
 
 <!--<%= image_tag @event.image.url(:thumb)%>-->
 
-<%= cl_image_tag(@event.image.url(:thumb)) %>
+<%#= cl_image_tag(@event.image.url(:thumb)) %>
+
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'EventX', root_path, class:'navbar-brand' %>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#top">Home</a></li>
+        <li class=""><a href="#description">About</a></li>
+        <li class=""><a href="#schedule">Schedule</a></li>
+        <li class=""><a href="#gallery">Attendee</a></li>
+        <li class=""><a href="#venue">Venue</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<%= content_tag(:header, class: "header", id:"top", style: "background: url(#{@event.image_url()});") do %>
+  <%= content_tag(:div, nil, style: "height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)") do%>
+    <%= content_tag(:h3, @event.title, style: "padding-top: 20%; font-size: 64px; color: white; font-family: 'Roboto', sans-serif;") %>
+    <label id="counter"></label>
+    <%= content_tag(:label, "#{@event.start_date.strftime("%b %d %Y")} to #{@event.end_date.strftime("%b %d %Y")}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif;")  %>
+    <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe, "#", class: "btn btn-primary btn-lg our-btn-green"  %>
+  <% end %>
+<% end %>
+<div id="description" class="description">
+  <div class="container">
+    <h2 class="text-center"> Description</h2>
+   <p class="lead ">
+    <%= @event.description %>
+   </p>
+    <div class="text-center">
+    <a class="atcb-link" tabindex="1" id=""><i class="fa fa-calendar"> </i> Add to My Calendar</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-8 col-md-offset-2" id="gallery">
+
+</div>
+
+<div class="col-md-12" id="venue" class="venue" style="height: 70%; padding:0px">
+  <div class="map-overlay"></div>
+  <iframe id="frame" scrolling="no" src=<%= "#{@event.map_url}&output=embed" %> width="100%" height="100%" frameborder="0"></iframe>
+ </div> -->
+
+ <div class="parallax-container" id="index-banner">
+     <%= render partial: "layouts/nav" %>
+   <div class="section no-pad-bot">
+     <div class="container">
+     <br><br>
+       <h1 class="header center home_app_title">EventX</h1>
+       <div class="row center">
+         <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
+       </div>
+       <div class="row center">
+
+         <%= create_event_or_login('Create Event', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
+
+       </div>
+       <span class="hide-on-med-and-down"><br><br></span>
+     </div>
+   </div>
+   <div class="parallax"><%= image_tag 'best.jpg'%></div>
+   <div class="container header center search_form l8 m8 s8 offset-s2">
+     <%= render partial: 'welcome/search' %>
+   </div>
+   <a href="#featured_events" class="alert-scroll-under"><%= image_tag('scroll_circle.svg', class: 'responsive')%></a>
+ </div>
