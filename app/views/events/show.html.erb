@@ -10,7 +10,6 @@
 
  <div class="our_parallax" id="index-banner" style="background: url('<%= @event.image_url(:main)%>')" data-countdown="<%= @event.start_date.strftime('%F') %>">
    <div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
-   <!-- <div class="parallax"><%= image_tag @event.image_url(:main)%></div> -->
      <%= render partial: "layouts/nav" %>
    <div class="section no-pad-bot">
      <div class="container">
@@ -22,13 +21,10 @@
        </div>
        <div class="row center">
 
-         <%#= create_event_or_login('Attend Event', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
-
        </div>
        <span class="hide-on-med-and-down"><br><br></span>
      </div>
    </div>
-   <!-- <a href="#featured_events" class="alert-scroll-under"><%= image_tag('scroll_circle.svg', class: 'responsive')%></a> -->
   </div>
  </div>
  <div id="description" class="description">
