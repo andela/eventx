@@ -39,7 +39,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     if(window.location.pathname != '/'){
       $('.melomelo').removeClass('before-scroll').css({'padding-top': '9px'});
-      console.log('yes')
     }
 
     $('select').material_select();
@@ -188,32 +187,26 @@ $(window).scroll( function(){
 
 });
 
+function loadContent(path, click_count, transition_id, method){
+    $(transition_id).load(path, function(){
+        $(transition_id).hide();
+        $(this).fadeIn(3000);
+        if(click_count >= 1){
+            $( this ).unbind( method );
+        }
+    });
+}
 $(document).ready(function(){
     var timesClicked = 0;
     $('#FEATURED').bind('click', function(event){
-        $('#examples-transition2').load('/welcome/featured #content', function(){
-            //$(document).animate({'top': 5500}, 300);
-            $( this ).scroll(500);
-            $( this).scrollTop( 300 );
-            console.log('alex')
-            timesClicked++;
-            $('#examples-transition2').hide();
-            $(this).fadeIn(1000);
-            if(timesClicked >= 1){
-                $( this ).unbind( event );
-            }
-        });
+        timesClicked++;
+        loadContent('/welcome/featured #content', timesClicked, '#examples-transition2', event)
+
     });
 
     $('#POPULAR').bind('click', function(event){
-        $('#examples-transition3').load('/welcome/popular #content', function(){
-            timesClicked++;
-            $('#examples-transition3').hide();
-            $(this).fadeIn(5000);
-            if(timesClicked >= 1){
-                $( this).unbind(event);
-            }
-        });
+        timesClicked++;
+        loadContent('/welcome/popular #content', timesClicked, '#examples-transition3', event)
     });
 })
 

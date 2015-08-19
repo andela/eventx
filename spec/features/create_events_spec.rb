@@ -50,8 +50,8 @@ Capybara.default_driver = :selenium
 
       # fill_in "event[end_date]", with: "#{Date.tomorrow.strftime('%e %B, %Y ')}"
       fill_in "event[description]", with: "This is a demo description for our event This is a demo description for our event This is a demo description for our event This is a demo description for our event This is a demo description for our event "
-      
-      
+
+
 
       # expect(page).to have_selector("input[value='This is a test Event']")
       # expect(page).to have_selector("input[value='#{Date.tomorrow.to_s} 00:00:00 UTC +00:00']")
@@ -61,7 +61,8 @@ Capybara.default_driver = :selenium
       click_link "Next"
 
       click_button "Save & Preview"
-      # require "pry"; binding.pry;
+      
+      require "pry"; binding.pry;
       # expect(page).to have_selector("h3", text: "This is a test Event")
 
 
