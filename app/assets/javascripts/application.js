@@ -122,17 +122,11 @@ $(document).ready(function() {
 
   $('#event_photo_upload').change(function(event) {
     /* Act on the event */
-
     var reader = new FileReader()
-
     reader.onload = function (e) {
               $('#index-banner').css('background', "url("+e.target.result+")");
-              $('#index-banner').css('background-attachment', "fixed");
-          }
-
-
+    }
     uploaded_file = $(this)[0].files[0]
-
     reader.readAsDataURL(uploaded_file);
 
 
@@ -188,7 +182,18 @@ $(document).ready(function() {
 
     var start_date = $("#event_start_date").val()
     var end_date = $("#event_end_date").val()
-    var map = $("#event_map_url").val()+"&output=embed";
+    if(start_date){
+      countdown(convertDate(start_date));
+    }
+
+    var map_val = $("#event_map_url").val();
+    if(map_val){
+      var map = map_val + "&output=embed"
+    }
+    else {
+      var map = 'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' + "&output=embed"
+    }
+
     var description = ($("#event_description").val().length>200) ? $("#event_description").val().substr(0,200)+"..." : $("#event_description").val();
      $(".preview-tab").removeClass("disabled");
      $('ul.tabs').tabs('select_tab', 'test3');
@@ -197,9 +202,6 @@ $(document).ready(function() {
      $(".our_event_description").html(description);
      $(".our-event-date").html(start_date+ " to "+ end_date);
      $(".our-event-map-url").attr({'src': map})
-
-
-
   })
 
 
@@ -289,6 +291,7 @@ function convertDate(startdate) {
   dateStr = startdate.toString();
   date2 = new Date(dateStr.replace(/-/g, '/'));
   diff = Math.floor((date2 - date) / (60 * 1000));
+
   return diff;
 }
 
@@ -301,6 +304,14 @@ function countdown(val) {
 
     function tick() {
       var counter = document.getElementById("counter");
+      $('#counter').css({
+        'font-size': '3rem',
+        'padding': '0 10px',
+        'color': '#fff',
+        'z-index': '100',
+        'background-color': 'rgba(0,0,0,0.2)'
+      })
+
       var current_minutes = mins - 1
       var days = Math.floor(current_minutes / (24 * 60));
       var hour_min = current_minutes % (24 * 60);
