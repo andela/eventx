@@ -5,10 +5,10 @@ class EventsController < ApplicationController
 
   layout 'templates/green/index', only: [:show]
 
-  def new
+   def new
     @events = Event.new
     @events.build_ticket
-  end
+   end
 
   def index
 
