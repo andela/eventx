@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def new
     @events = Event.new
-    1.times{@events.build_ticket }
+    @events.build_ticket
   end
 
   def index
@@ -21,8 +21,6 @@ class EventsController < ApplicationController
 
   def create
     @events = Event.new(event_params)
-    # 2.times {@events.tickets.build}
-    # @events.image = image.secure_url
     if @events.save
       flash[:id] = @events.id
       respond_to do |format|
