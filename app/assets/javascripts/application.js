@@ -122,29 +122,42 @@ $(document).ready(function() {
 
   $('#event_photo_upload').change(function(event) {
     /* Act on the event */
+
+    var reader = new FileReader()
+
+    reader.onload = function (e) {
+              $('#index-banner').css('background', "url("+e.target.result+")");
+              $('#index-banner').css('background-attachment', "fixed");
+          }
+
+
     uploaded_file = $(this)[0].files[0]
+
+    reader.readAsDataURL(uploaded_file);
+
+
     $('.events_pic_name').html(uploaded_file.name)
-
-    //perform async post to server for the
-    var formdata = new FormData(uploaded_file);
-    // formdata.append('event_picture', uploaded_file, uploaded_file.name);
-    console.log(formdata);
-    $.ajax({
-        url: '/events/new',
-        type: 'POST',
-        data: formdata,
-        processData: false,
-
-      })
-      .done(function() {
-        console.log("success");
-      })
-      .fail(function() {
-        console.log("error");
-      })
-      .always(function() {
-        console.log("complete");
-      });
+    //
+    // //perform async post to server for the
+    // var formdata = new FormData(uploaded_file);
+    // // formdata.append('event_picture', uploaded_file, uploaded_file.name);
+    // console.log(formdata);
+    // $.ajax({
+    //     url: '/events/new',
+    //     type: 'POST',
+    //     data: formdata,
+    //     processData: false,
+    //
+    //   })
+    //   .done(function() {
+    //     console.log("success");
+    //   })
+    //   .fail(function() {
+    //     console.log("error");
+    //   })
+    //   .always(function() {
+    //     console.log("complete");
+    //   });
 
   });
 
@@ -169,6 +182,27 @@ $(document).ready(function() {
   if(event_date){
     countdown(convertDate(event_date));
   }
+
+  // script for binding event details to preview page
+  $(".preview").click(function(){
+
+    var start_date = $("#event_start_date").val()
+    var end_date = $("#event_end_date").val()
+    var map = $("#event_map_url").val()+"&output=embed";
+    var description = ($("#event_description").val().length>200) ? $("#event_description").val().substr(0,200)+"..." : $("#event_description").val();
+     $(".preview-tab").removeClass("disabled");
+     $('ul.tabs').tabs('select_tab', 'test3');
+     $(".preview-tab").addClass("disabled");
+     $(".our-event-title").html($("#event_title").val());
+     $(".our_event_description").html(description);
+     $(".our-event-date").html(start_date+ " to "+ end_date);
+     $(".our-event-map-url").attr({'src': map})
+
+
+
+  })
+
+
 });
 
 

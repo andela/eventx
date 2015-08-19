@@ -74,6 +74,11 @@ GEM
     diff-lcs (1.2.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.5.2)
     faraday (0.9.1)
@@ -187,6 +192,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    request_store (1.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rest-client (1.8.0)
@@ -266,6 +272,7 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.1.0)
   database_cleaner
+  draper
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)

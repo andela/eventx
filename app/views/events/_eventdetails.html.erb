@@ -1,0 +1,33 @@
+
+ <div class="our_parallax" id="index-banner" style="background: url('<%= @event.image_url(:main)%>')" data-countdown="<%= @event.start_date %>">
+   <div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
+     <%= render partial: "layouts/nav" if (controller_name = 'events' && action_name == 'show')%>
+   <div class="section no-pad-bot">
+     <div class="container">
+       <div class="row center">
+         <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
+         <label id="counter"></label>
+         <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif;", class: "our-event-date")  %>
+         <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe, "#", class: "btn btn-primary btn-lg our-btn-green"  %>
+       </div>
+       <div class="row center">
+
+       </div>
+       <span class="hide-on-med-and-down"><br><br></span>
+     </div>
+   </div>
+  </div>
+ </div>
+ <div id="description" class="description">
+   <div class="container center">
+     <h2 class="our_description_title">Description</h2>
+     <p class="our_event_description"><%= @event.description %></p>
+     <div class="text-center">
+       <a class="atcb-link" tabindex="1" id=""><i class="fa fa-calendar"> </i> Add to My Calendar</a>
+     </div>
+   </div>
+ </div>
+<div class="col-md-12" id="venue" class="venue" style="height: 70%; padding:0px">
+ <div class="map-overlay"></div>
+ <iframe scrolling="no" src=<%= getMap(@event.map_url) %> width="100%" height="100%" frameborder="0" class="our-event-map-url"></iframe>
+</div>

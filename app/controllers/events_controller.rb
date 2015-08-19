@@ -4,12 +4,11 @@ class EventsController < ApplicationController
   before_action :set_events, :only => [:show]
 
   def new
-    @events = Event.new
-    1.times{@events.build_ticket }
+    @event = Event.new
+    @events = @event.build_ticket
   end
 
   def index
-
     @events = Event.recent_events
     @categories = Category.all
   end
@@ -19,6 +18,7 @@ class EventsController < ApplicationController
 
   def create
     @events = Event.new(event_params)
+
     # 2.times {@events.tickets.build}
     # @events.image = image.secure_url
     if @events.save
@@ -42,7 +42,8 @@ class EventsController < ApplicationController
     end
 
   def set_events
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id]).decorate
+    # require 'pry' ; binding.pry
   end
 
   def loading
