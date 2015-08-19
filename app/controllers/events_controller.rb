@@ -5,11 +5,13 @@ class EventsController < ApplicationController
 
   layout 'templates/green/index', only: [:show]
 
-  def new
+   def new
     @events = Event.new
-  end
+    @events.build_ticket
+   end
 
   def index
+
     @events = Event.recent_events
     @categories = Category.all
   end
@@ -19,8 +21,6 @@ class EventsController < ApplicationController
 
   def create
     @events = Event.new(event_params)
-    # 2.times {@events.tickets.build}
-    # @events.image = image.secure_url
     if @events.save
       flash[:id] = @events.id
       respond_to do |format|
@@ -35,7 +35,10 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :description, :start_date, :end_date, :category_id, :location, :venue, :image, :template_id, :map_url, :event_template_id)
+      params.require(:event).permit(:title, :description, :start_date, :end_date,
+                                    :category_id, :location, :venue, :image, :template_id,
+                                    :map_url, :event_template_id,
+                                    ticket_attributes: [ :name, :quantity, :price ])
     end
 
   def set_events
