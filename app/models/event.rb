@@ -2,9 +2,9 @@ class Event < ActiveRecord::Base
   #association
   belongs_to :category
   belongs_to :event_template
-  has_many :tickets, dependent: :destroy
-  accepts_nested_attributes_for :tickets
-  has_many :attendees, class_name: 'User'
+  has_one :ticket, dependent: :destroy
+  accepts_nested_attributes_for :ticket
+  #has_many :attendees, class_name: 'User'
 
   #fileupload
   mount_uploader :image, PictureUploader
@@ -29,5 +29,6 @@ class Event < ActiveRecord::Base
   scope :recent_events, -> {order(created_at: :DESC).limit(12)}
   scope :featured_events, -> {order(created_at: :DESC).limit(2)}
   scope :popular_events, -> {order(created_at: :DESC).limit(3)}
+  #scope :popular_events, -> {where('id > ?', 3).limit(3)}
 
 end

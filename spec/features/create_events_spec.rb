@@ -38,9 +38,10 @@ Capybara.default_driver = :selenium
       fill_in "event[title]", with: "This is a test Event"
       fill_in "event[location]", with: "Lagos, Nigeria"
 
-      # find(:xpath, "//input[@id='event_map_url']").set "https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb"
+      #find(:xpath, "//input[@id='event_map_url']").set "https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb"
       fill_in "event[venue]", with: "Amity"
 
+      # require "pry"; binding.pry;
       # select "Music", from: "event[category_id]"
       find('#event_category_id').find(:xpath, 'option[2]').select_option
 
@@ -61,8 +62,7 @@ Capybara.default_driver = :selenium
       click_link "Next"
 
       click_button "Save & Preview"
-      
-      require "pry"; binding.pry;
+
       # expect(page).to have_selector("h3", text: "This is a test Event")
 
 
