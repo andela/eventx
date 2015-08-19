@@ -291,7 +291,6 @@ function convertDate(startdate) {
   dateStr = startdate.toString();
   date2 = new Date(dateStr.replace(/-/g, '/'));
   diff = Math.floor((date2 - date) / (60 * 1000));
-
   return diff;
 }
 
