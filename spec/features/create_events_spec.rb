@@ -60,10 +60,14 @@ Capybara.default_driver = :selenium
 
 
       click_link "Next"
-      
+
       click_link "Preview"
 
+      expect(page).to have_selector('h3.our-event-title', text: "This is a test Event")
+
       click_button "Save"
+
+      require 'pry' ; binding.pry
 
       # expect(page).to have_selector("h3", text: "This is a test Event")
 
