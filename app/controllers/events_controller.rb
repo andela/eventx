@@ -1,17 +1,13 @@
 class EventsController < ApplicationController
-  #filters
   before_action :authenticate_user, :only => [:new, :create]
   before_action :set_events, :only => [:show]
 
-  layout 'templates/green/index', only: [:show]
-
-   def new
-    @events = Event.new
-    @events.build_ticket
-   end
+  def new
+    @event = Event.new
+    @event.build_ticket
+  end
 
   def index
-
     @events = Event.recent_events
     @categories = Category.all
   end
@@ -20,11 +16,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @events = Event.new(event_params)
-    if @events.save
-      flash[:id] = @events.id
+    @event = Event.new(event_params)
+    if @event.save
+      flash[:id] = @event.id
       respond_to do |format|
-        format.html {redirect_to events_new_path+'#test3', notice: 'Event was successfully created'}
+        format.html {redirect_to @event, notice: 'Event was successfully created.'}
         format.json
         format.xml
       end
@@ -42,7 +38,7 @@ class EventsController < ApplicationController
     end
 
   def set_events
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id]).decorate
   end
 
   def loading

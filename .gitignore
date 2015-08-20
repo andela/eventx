@@ -32,3 +32,6 @@ app/views/welcome/test.html.erb
 
 # Ignore application configuration
 /config/application.yml
+
+#ignore tmp images
+public/uploads/tmp/*
