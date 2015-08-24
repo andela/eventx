@@ -45,8 +45,8 @@ Capybara.default_driver = :selenium
       # select "Music", from: "event[category_id]"
       find('#event_category_id').find(:xpath, 'option[2]').select_option
 
-      page.execute_script("$('#start_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
-      page.execute_script("$('#end_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
+      page.execute_script("$('#event_start_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
+      page.execute_script("$('#event_end_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
       # fill_in "event[start_date]", with: "#{Date.tomorrow.strftime('%e %B, %Y ')}"
 
       # fill_in "event[end_date]", with: "#{Date.tomorrow.strftime('%e %B, %Y ')}"
@@ -61,7 +61,12 @@ Capybara.default_driver = :selenium
 
       click_link "Next"
 
-      click_button "Save & Preview"
+      click_link "Preview"
+
+      expect(page).to have_selector('h3.our-event-title', text: "This is a test Event")
+
+      click_button "Save"
+
       # expect(page).to have_selector("h3", text: "This is a test Event")
 
 

@@ -244,6 +244,7 @@ input#event_photo_upload{
 
 .our_event_description{
   font-size: 21px;
+  word-wrap: break-word;
 }
 
 .description{
@@ -267,11 +268,4 @@ input#event_photo_upload{
   left: 0;
   right: 0;
   background: rgba(78, 174, 73, 0.42);
-}
-#counter{
-  font-size: 3rem;
-  padding: 0 10px;
-  color: #fff;
-  z-index: 100;
-  background-color: rgba(0,0,0,0.2)
 }

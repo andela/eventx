@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  #filters
   before_action :authenticate_user, :only => [:new, :create]
   before_action :set_events, :only => [:show]
 
@@ -9,7 +8,6 @@ class EventsController < ApplicationController
   end
 
   def index
-
     @events = Event.recent_events
     @categories = Category.all
   end
@@ -23,7 +21,7 @@ class EventsController < ApplicationController
     if @events.save
       flash[:id] = @events.id
       respond_to do |format|
-        format.html {redirect_to events_new_path+'#test3', notice: 'Event was successfully created'}
+        format.html {redirect_to @event, notice: 'Event was successfully created.'}
         format.json
         format.xml
       end
@@ -41,7 +39,7 @@ class EventsController < ApplicationController
     end
 
   def set_events
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id]).decorate
   end
 
   def loading
