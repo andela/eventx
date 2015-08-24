@@ -193,12 +193,13 @@ $(document).ready(function() {
     else {
       var map = 'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' + "&output=embed"
     }
-
-    var description = ($("#event_description").val().length>200) ? $("#event_description").val().substr(0,200)+"..." : $("#event_description").val();
+    var description_selector = $("#event_description").val()
+    var description = (description_selector.length>200) ? description_selector.substr(0,200)+"..." : description_selector;
+    var title = ($("#event_title").val()=="") ? "Event title goes here" : $("#event_title").val()
      $(".preview-tab").removeClass("disabled");
      $('ul.tabs').tabs('select_tab', 'test3');
      $(".preview-tab").addClass("disabled");
-     $(".our-event-title").html($("#event_title").val());
+     $(".our-event-title").html(title);
      $(".our_event_description").html(description);
      $(".our-event-date").html(start_date+ " to "+ end_date);
      $(".our-event-map-url").attr({'src': map})
@@ -298,20 +299,19 @@ function convertDate(startdate) {
 
 function countdown(val) {
   minutes = val
+  $('#counter').css({
+    'font-size': '3rem',
+    'padding': '0 10px',
+    'color': '#fff',
+    'z-index': '100',
+    'background-color': 'rgba(0,0,0,0.2)'
+  })
   if (minutes > 1) {
     var seconds = 60;
     var mins = minutes
 
     function tick() {
       var counter = document.getElementById("counter");
-      $('#counter').css({
-        'font-size': '3rem',
-        'padding': '0 10px',
-        'color': '#fff',
-        'z-index': '100',
-        'background-color': 'rgba(0,0,0,0.2)'
-      })
-
       var current_minutes = mins - 1
       var days = Math.floor(current_minutes / (24 * 60));
       var hour_min = current_minutes % (24 * 60);

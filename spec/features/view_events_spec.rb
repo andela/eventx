@@ -1,15 +1,21 @@
 require 'rails_helper'
+require 'database_cleaner'
+
 
 RSpec.feature "ViewEvents", type: :feature do
   before(:all) do
-    # Capybara.default_driver = :selenium
+    DatabaseCleaner.clean
     page.driver.browser.manage.window.maximize()
+    # Capybara.default_driver = :selenium
   end
+
 
   before(:each) do
     category_1 = Category.create({name: 'Alex', description: "Alex's special category for crappy things"})
     category_2 = Category.create({name: 'KayOre',description: "Alex's special category for crappy things"})
   end
+
+
   scenario "User tries to see all events" do
 
 

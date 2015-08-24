@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  DatabaseCleaner.strategy = :transaction
+  before(:all) do
+    DatabaseCleaner.clean
+  end
   # category_1 = Category.create({name: 'Alex', description: "Alex's special category for crappy things"})
   # category_2 = Category.create({name: 'Kay', description: "Kay's special category about parties where broken bottles were thrown"})
 
