@@ -1,13 +1,12 @@
 class AttendeesController < ApplicationController
+  respond_to :js
   before_action :find_event
   def create
     @attendee = @event.attendees.build(user_id: current_user.id)
     if @attendee.save
-      flash[:notice] ="You are now attending this event"
-      redirect_to @event
+
     else
-      flash[:notice] = @attendee.errors
-      redirect_to :back
+
     end
   end
 

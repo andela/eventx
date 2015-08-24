@@ -8,7 +8,13 @@
          <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
          <label id="counter"></label>
          <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif;", class: "our-event-date")  %>
-         <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe, "#", class: "btn btn-primary btn-lg our-btn-green"  %>
+         <% unless @event.attending?(current_user) %>
+             <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe,  attendees_path(:event_id => @event.id),
+                     method: :post, class: 'btn btn-primary btn-lg our-btn-green', remote: :true  %>
+         <% else %>
+             <%= link_to "Unattend! <i class='fa fa-plus'></i>".html_safe,  attendees_path(@event),
+                         method: :delete, class: 'btn btn-primary btn-lg our-btn-green', remote: :true  %>
+         <% end %>
        </div>
        <div class="row center">
 

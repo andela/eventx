@@ -25,6 +25,15 @@ class Event < ActiveRecord::Base
    validates :category_id, presence: true
    # validates :image, presence: true
 
+  def attending?(user)
+    if self.users.include?(user)
+      return true
+    else
+      return false
+    end
+  end
+
+
 
   #scope
   scope :recent_events, -> {order(created_at: :DESC).limit(12)}

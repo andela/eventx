@@ -3,8 +3,8 @@ class EventsController < ApplicationController
   before_action :set_events, :only => [:show]
 
   def new
-    @events = Event.new
-    @events.build_ticket
+    @event = Event.new
+    @event.build_ticket
   end
 
   def index
