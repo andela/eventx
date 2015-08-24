@@ -4,7 +4,8 @@ class Event < ActiveRecord::Base
   belongs_to :event_template
   has_one :ticket, dependent: :destroy
   accepts_nested_attributes_for :ticket
-  #has_many :attendees, class_name: 'User'
+  has_many :attendees
+  has_many :users, :through => :attendees
 
   #fileupload
   mount_uploader :image, PictureUploader

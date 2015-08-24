@@ -17,7 +17,7 @@
          <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
          <label id="counter"></label>
          <%= content_tag(:label, "#{@event.start_date.strftime("%b %d %Y")} to #{@event.end_date.strftime("%b %d %Y")}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif;")  %>
-         <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe, "#", class: "btn btn-primary btn-lg our-btn-green"  %>
+         <%= link_to "Attend this event! <i class='fa fa-plus'></i>".html_safe,  attendees_path(:event_id => @event.id), method: :post, class: "btn btn-primary btn-lg our-btn-green"  %>
        </div>
        <div class="row center">
 

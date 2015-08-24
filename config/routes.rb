@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+
   get 'events/new'
 
   get 'welcome/index'
   get  'welcome/featured'
   get  'welcome/popular'
   get 'events/loading'
-
+  resources :attendees
   resources :events
   resources :users
   get 'auth/:provider/callback', to: 'sessions#create'
