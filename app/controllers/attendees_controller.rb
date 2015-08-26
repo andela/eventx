@@ -14,7 +14,6 @@ class AttendeesController < ApplicationController
    @attendee = current_user.attendees.find_by_event_id(@event.id)
    @destroy = true if @attendee.destroy
     flash[:error] = "You have successfully unattend this event"
-    # redirect_to :back
   end
 
   private

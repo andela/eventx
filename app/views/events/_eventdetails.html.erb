@@ -1,5 +1,5 @@
 
- <div class="our_parallax" id="index-banner" style="background: url('<%= @event.image_url(:main)%>')" data-countdown="<%= @event.start_date %>">
+ <div class="parallax-container" id="index-banner" data-countdown="<%= @event.start_date %>">
    <div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
      <%= render partial: "layouts/nav" if (controller_name = 'events' && action_name == 'show')%>
    <div class="section no-pad-bot">
@@ -26,6 +26,7 @@
        <span class="hide-on-med-and-down"><br><br></span>
      </div>
    </div>
+   <div class="parallax"><%= image_tag @event.image_url(:main) %></div>
   </div>
  </div>
  <div id="description" class="description">

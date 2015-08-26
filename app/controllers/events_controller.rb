@@ -16,10 +16,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    @events = Event.new(event_params)
-    @events.user_id = current_user
-    if @events.save
-      flash[:id] = @events.id
+    @event = Event.new(event_params)
+    @event.user_id = current_user
+    if @event.save
+      flash[:id] = @event.id
       respond_to do |format|
         format.html {redirect_to @event, notice: 'Event was successfully created.'}
         format.json

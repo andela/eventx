@@ -172,7 +172,7 @@ $(document).ready(function() {
   ga('send', 'pageview');
 
 
-  var event_date = $('.our_parallax').data('countdown')
+  var event_date = $('.parallax-container').data('countdown')
   if(event_date){
     countdown(convertDate(event_date));
   }
