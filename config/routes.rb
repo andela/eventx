@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get  'welcome/featured'
   get  'welcome/popular'
   get 'events/loading'
+  get 'unattend', to: 'attendees#destroy', as: 'unattend'
   resources :attendees
   resources :events
   resources :users
