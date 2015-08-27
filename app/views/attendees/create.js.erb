@@ -1,7 +1,1 @@
-<% if @create2 %>
-    $("#att").load(location.href + " #att2");
-    $("#att").fadeIn().delay(1000);
 
-<% else %>
- alert(<%=j @attendee.errors.full_messages.to_sentence %>);
-<% end %>
