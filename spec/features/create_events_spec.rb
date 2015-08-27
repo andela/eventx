@@ -1,22 +1,20 @@
 require 'rails_helper'
+require 'database_cleaner'
 
 RSpec.feature "CreateEvents", type: :feature do
-Capybara.run_server = true #Whether start server when testing
-Capybara.server_port = 8200
 Capybara.default_driver = :selenium
 # Capybara.current_driver = :webkit
 
 
     before do
       # page.driver.browser.manage.window.resize_to(990,640)
-      DatabaseCleaner.strategy = :transaction
       OmniAuth.config.test_mode = true
       Category.create({name: 'Alex', description: "Alex's special category for crappy things"})
       Category.create({name: 'Music', description: "music's special category for crappy things"})
     end
 
     after do
-      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.clean
     end
 
     scenario "User can create events" do
@@ -45,12 +43,13 @@ Capybara.default_driver = :selenium
       # select "Music", from: "event[category_id]"
       find('#event_category_id').find(:xpath, 'option[2]').select_option
 
-      page.execute_script("$('#start_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
-      page.execute_script("$('#end_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
+      page.execute_script("$('#event_start_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
+      page.execute_script("$('#event_end_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
       # fill_in "event[start_date]", with: "#{Date.tomorrow.strftime('%e %B, %Y ')}"
 
       # fill_in "event[end_date]", with: "#{Date.tomorrow.strftime('%e %B, %Y ')}"
-      fill_in "event[description]", with: "This is a demo description for our event This is a demo description for our event This is a demo description for our event This is a demo description for our event This is a demo description for our event "
+      description = "This is a demo description for our event"
+      fill_in "event[description]", with: description
 
 
 
@@ -61,8 +60,18 @@ Capybara.default_driver = :selenium
 
       click_link "Next"
 
-      click_button "Save & Preview"
-      # expect(page).to have_selector("h3", text: "This is a test Event")
+      click_link "Preview"
+
+      expect(page).to have_selector('h3.our-event-title', text: "This is a test Event")
+      expect(page).to have_selector('p.our_event_description', text: description)
+      expect(page).to have_selector('label.our-event-date', text: "#{Date.tomorrow.strftime("%-d %B, %Y")} to #{Date.tomorrow.strftime("%-d %B, %Y")}")
+
+      click_button "Save"
+
+
+      expect(page).to have_selector('h3.our-event-title', text: "This is a test Event")
+      expect(page).to have_selector('p.our_event_description', text: description)
+      expect(page).to have_selector('label.our-event-date', text: "#{Date.tomorrow.strftime("%b %-d %Y")} to #{Date.tomorrow.strftime("%b %-d %Y")}")
 
 
       # expect(page).to have_selector("li", text: "Venue")

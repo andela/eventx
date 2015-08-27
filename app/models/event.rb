@@ -4,7 +4,8 @@ class Event < ActiveRecord::Base
   belongs_to :event_template
   has_one :ticket, dependent: :destroy
   accepts_nested_attributes_for :ticket
-  #has_many :attendees, class_name: 'User'
+  has_many :attendees
+  has_many :users, :through => :attendees
 
   #fileupload
   mount_uploader :image, PictureUploader
@@ -23,6 +24,15 @@ class Event < ActiveRecord::Base
    validates :end_date, presence: true
    validates :category_id, presence: true
    # validates :image, presence: true
+
+  def attending?(user)
+    if self.users.include?(user)
+      return true
+    else
+      return false
+    end
+  end
+
 
 
   #scope

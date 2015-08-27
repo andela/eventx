@@ -7,33 +7,38 @@
     <% end %>
     <ul class="left">
       <%= link_to root_path do %>
-        <h3 class="header home_app_title before-scroll melomelo">EventX</h3>
+      <h3 class="header home_app_title before-scroll our-custom-header">EventX</h3>
       <% end %>
     </ul>
     <ul class="right">
-      <% if current_user %>
-        <!--<a href="" class=" dropdown-btn">-->
-          <a class="dropdown-button" data-activates="dropdown-user_option" style="padding:0 20px;" data-beloworigin="true" href="">
-            <% if current_user.profile_url.present? %>
-            <%= image_tag current_user.profile_url, class: 'profile_pic circle responsive-img' %>
-            <% else %>
-            <%= image_tag 'defaultimage.jpeg', class: 'left profile_pic circle responsive-img' %>
-            <% end %>
-            <%= current_user.first_name.split(' ')[0] %>
-            <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
-          </a>
-        <!--</a>-->
-        <ul class="dropdown-content right" id="dropdown-user_option">
-          <li><%= link_to "My Account", user_path(current_user.id), data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
-          <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
-        </ul>
-      <% else %>
-      <li>
-        <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
-        <%= "#{content_tag :i, '', class: "fa fa-lock white_text left  hide-on-small-only"} Log In".html_safe %>
-        <% end %>
-      </li>
+
+      <% if content_for? :show %>
+        <%= yield :show %>
       <% end %>
-    </ul>
-  </div>
+
+      <% if current_user %>
+      <li>
+        <a class="dropdown-button" data-activates="dropdown-user_option" data-beloworigin="true" href="" style="padding:0 20px;">
+          <% if current_user.profile_url.present? %>
+          <%= image_tag current_user.profile_url, class: 'profile_pic circle responsive-img' %>
+          <% else %>
+          <%= image_tag 'defaultimage.jpeg', class: 'left profile_pic circle responsive-img' %>
+          <% end %>
+          <%= current_user.first_name.split(' ')[0] %>
+          <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
+        </a>
+      </li>
+      <ul class="dropdown-content right" id="dropdown-user_option">
+        <li><%= link_to "My Account", user_path(current_user.id), data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+        <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+      </ul>
+      <% else %>
+    <li>
+      <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
+      <%= "#{content_tag :i, '', class: "fa fa-lock white_text left  hide-on-small-only"} Log In".html_safe %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>
 </nav>
