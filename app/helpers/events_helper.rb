@@ -18,5 +18,6 @@ module EventsHelper
     else
       new_map = map_url + "&output=embed"
     end
+    new_map
   end
 end
