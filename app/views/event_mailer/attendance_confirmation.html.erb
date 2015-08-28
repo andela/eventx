@@ -1,0 +1,9 @@
+<h1>EventX Attendance Information</h1>
+<p>
+  <%= @greeting %>,
+</p><br>
+<p>You are now attending <%= @event.title %> that will be holding on <%= @event.start_date.strftime("%b %d %Y") %></p><br>
+<p>Event Details </p>
+<p><%= @event.description%></p>
+<p><%= @event.location %></p><br>
+<a href="<%= @event.map_url %>" >Click here to view map</a>

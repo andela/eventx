@@ -20,6 +20,20 @@ Rails.application.configure do
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
+  config.active_job.queue_adapter = :delayed_job
+
+  # Set mail delivery type to :smtp, :sendmail, :file or :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      authentication: :login,
+      openssl_verify_mode:'none' ,
+      enable_starttls_auto: true,
+      user_name: "eventxapp@gmail.com",
+      password: "Password12!"
+  }
+
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
