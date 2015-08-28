@@ -24,7 +24,5 @@ module EventX
     config.assets.digest = true
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-
-    config.console = Pry
   end
 end
