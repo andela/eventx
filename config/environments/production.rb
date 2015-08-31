@@ -28,7 +28,7 @@ Rails.application.configure do
       address: "smtp.gmail.com",
       port: 587,
       authentication: :login,
-      openssl_verify_mode:'none' ,
+    #   openssl_verify_mode:'none' ,
       enable_starttls_auto: true,
       user_name: "eventxapp@gmail.com",
       password: "Password12!"

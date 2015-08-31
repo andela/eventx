@@ -28,10 +28,10 @@ Rails.application.configure do
       port: 587,
       domain: "gmail.com",
       authentication: "plain",
-      openssl_verify_mode:'none' ,
+    #   openssl_verify_mode:'none' ,
       enable_starttls_auto: true,
-      user_name: "eventxapp@gmail.com",
-      password: "Password12!"
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"]
   }
 
   # Raise an error on page load if there are pending migrations.
