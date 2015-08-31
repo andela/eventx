@@ -19,6 +19,21 @@ Rails.application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
+  config.active_job.queue_adapter = :delayed_job
+
+  # Set mail delivery type to :smtp, :sendmail, :file or :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "gmail.com",
+      authentication: "plain",
+    #   openssl_verify_mode:'none' ,
+      enable_starttls_auto: true,
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"]
+  }
+
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 

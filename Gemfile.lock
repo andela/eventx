@@ -67,8 +67,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    daemons (1.2.3)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.0.3)
+      activerecord (>= 3.0, < 5.0)
+      delayed_job (>= 3.0, < 4.1)
     diff-lcs (1.2.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
@@ -269,7 +275,9 @@ DEPENDENCIES
   carrierwave
   cloudinary
   coffee-rails (~> 4.1.0)
+  daemons
   database_cleaner
+  delayed_job_active_record
   draper
   figaro
   font-awesome-sass

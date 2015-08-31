@@ -71,7 +71,7 @@ Capybara.default_driver = :selenium
 
       expect(page).to have_selector('h3.our-event-title', text: "This is a test Event")
       expect(page).to have_selector('p.our_event_description', text: description)
-      expect(page).to have_selector('label.our-event-date', text: "#{Date.tomorrow.strftime("%b %-d %Y")} to #{Date.tomorrow.strftime("%b %-d %Y")}")
+      expect(page).to have_selector('label.our-event-date', text: "#{Date.tomorrow.strftime("%b %d %Y")} to #{Date.tomorrow.strftime("%b %d %Y")}")
 
 
       # expect(page).to have_selector("li", text: "Venue")

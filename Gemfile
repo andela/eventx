@@ -50,6 +50,8 @@ gem 'cloudinary'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -57,6 +59,9 @@ group :development, :test do
   gem 'pry'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+
+  #This is used to perform asynchronous jobs like sending mails now or at a later time
+
   # gem 'capybara-webkit'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
