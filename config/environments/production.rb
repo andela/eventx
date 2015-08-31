@@ -27,11 +27,12 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       address: "smtp.gmail.com",
       port: 587,
-      authentication: :login,
+      domain: "gmail.com",
+      authentication: "plain",
     #   openssl_verify_mode:'none' ,
       enable_starttls_auto: true,
-      user_name: "eventxapp@gmail.com",
-      password: "Password12!"
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"]
   }
 
   # Disable serving static files from the `/public` folder by default since
