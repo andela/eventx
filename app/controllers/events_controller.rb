@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user, :only => [:new, :create]
-  before_action :set_events, :only => [:show]
+  before_action :authenticate_user, :only => [:new, :create, :edit]
+  before_action :set_events, :only => [:show, :edit, :update]
+
 
   def new
     @event = Event.new
@@ -15,9 +16,20 @@ class EventsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to user_path(current_user.id), notice: 'Your Event was successfully updated'
+    else
+      redirect_to :back
+    end
+  end
+
   def create
     @event = Event.new(event_params)
-    @event.user_id = current_user
+     @event.user_id = current_user.id
     if @event.save
       flash[:id] = @event.id
       respond_to do |format|
@@ -40,6 +52,7 @@ class EventsController < ApplicationController
 
   def set_events
     @event = Event.find(params[:id]).decorate
+    @event.user_id = current_user
   end
 
   def loading

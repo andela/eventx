@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :ticket
   has_many :attendees
   has_many :users, :through => :attendees
+  belongs_to :user
 
   #fileupload
   mount_uploader :image, PictureUploader

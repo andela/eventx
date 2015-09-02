@@ -84,7 +84,6 @@ $(document).ready(function() {
 
 
 
-
   var $navBar = $('.custom_nav.landing');
   var $navBar2 = $('.scroller')
     //
@@ -123,35 +122,36 @@ $(document).ready(function() {
   $('#event_photo_upload').change(function(event) {
     /* Act on the event */
     var reader = new FileReader()
-    reader.onload = function (e) {
-              $('#index-banner').css('background', "url("+e.target.result+")");
+    reader.onload = function(e) {
+      $('#index-banner').css('background', "url(" + e.target.result +
+        ")");
     }
     uploaded_file = $(this)[0].files[0]
     reader.readAsDataURL(uploaded_file);
 
 
     $('.events_pic_name').html(uploaded_file.name)
-    //
-    // //perform async post to server for the
-    // var formdata = new FormData(uploaded_file);
-    // // formdata.append('event_picture', uploaded_file, uploaded_file.name);
-    // console.log(formdata);
-    // $.ajax({
-    //     url: '/events/new',
-    //     type: 'POST',
-    //     data: formdata,
-    //     processData: false,
-    //
-    //   })
-    //   .done(function() {
-    //     console.log("success");
-    //   })
-    //   .fail(function() {
-    //     console.log("error");
-    //   })
-    //   .always(function() {
-    //     console.log("complete");
-    //   });
+      //
+      // //perform async post to server for the
+      // var formdata = new FormData(uploaded_file);
+      // // formdata.append('event_picture', uploaded_file, uploaded_file.name);
+      // console.log(formdata);
+      // $.ajax({
+      //     url: '/events/new',
+      //     type: 'POST',
+      //     data: formdata,
+      //     processData: false,
+      //
+      //   })
+      //   .done(function() {
+      //     console.log("success");
+      //   })
+      //   .fail(function() {
+      //     console.log("error");
+      //   })
+      //   .always(function() {
+      //     console.log("complete");
+      //   });
 
   });
 
@@ -166,45 +166,59 @@ $(document).ready(function() {
     a.async = 1;
     a.src = g;
     m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js',
+    'ga');
 
   ga('create', 'UA-65653167-1', 'auto');
   ga('send', 'pageview');
 
 
   var event_date = $('.parallax-container').data('countdown')
-  if(event_date){
+  if (event_date) {
     countdown(convertDate(event_date));
   }
 
   // script for binding event details to preview page
-  $(".preview").click(function(){
+  $(".preview").click(function() {
 
     var start_date = $("#event_start_date").val()
     var end_date = $("#event_end_date").val()
-    if(start_date){
+    if (start_date) {
       countdown(convertDate(start_date));
     }
 
     var map_val = $("#event_map_url").val();
-    if(map_val){
+    if (map_val) {
       var map = map_val + "&output=embed"
-    }
-    else {
-      var map = 'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' + "&output=embed"
+    } else {
+      var map =
+        'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' +
+        "&output=embed"
     }
     var description_selector = $("#event_description").val()
-    var description = (description_selector.length>200) ? description_selector.substr(0,200)+"..." : description_selector;
-    var title = ($("#event_title").val()=="") ? "Event title goes here" : $("#event_title").val()
-     $(".preview-tab").removeClass("disabled");
-     $('ul.tabs').tabs('select_tab', 'test3');
-     $(".preview-tab").addClass("disabled");
-     $(".our-event-title").html(title);
-     $(".our_event_description").html(description);
-     $(".our-event-date").html(start_date+ " to "+ end_date);
-     $(".our-event-map-url").attr({'src': map})
+    var description = (description_selector.length > 200) ?
+      description_selector.substr(0, 200) + "..." :
+      description_selector;
+    var title = ($("#event_title").val() == "") ?
+      "Event title goes here" : $("#event_title").val()
+    $(".preview-tab").removeClass("disabled");
+    $('ul.tabs').tabs('select_tab', 'test3');
+    $(".preview-tab").addClass("disabled");
+    $(".our-event-title").html(title);
+    $(".our_event_description").html(description);
+    $(".our-event-date").html(start_date + " to " + end_date);
+    $(".our-event-map-url").attr({
+      'src': map
+    })
   })
 
+  $('#edit-event').click(function(e) {
+    // e.preventDefault();
+    event_id = $(this).data('eventid')
+      // console.log(event_id)
+    $('#content').load('/events/' + event_id + '/edit')
+      // $('#content').load('/events/new');
+  });
 
 });
 
@@ -232,29 +246,31 @@ $(window).scroll(function() {
 $(document).ready(function() {
   var timesClicked = 0;
   $('#FEATURED').bind('click', function(event) {
-    $('#examples-transition2').load('/welcome/featured #content', function() {
-      //$(document).animate({'top': 5500}, 300);
-      $(this).scroll(500);
-      $(this).scrollTop(300);
-      console.log('alex')
-      timesClicked++;
-      $('#examples-transition2').hide();
-      $(this).fadeIn(1000);
-      if (timesClicked >= 1) {
-        $(this).unbind(event);
-      }
-    });
+    $('#examples-transition2').load('/welcome/featured #content',
+      function() {
+        //$(document).animate({'top': 5500}, 300);
+        $(this).scroll(500);
+        $(this).scrollTop(300);
+        console.log('alex')
+        timesClicked++;
+        $('#examples-transition2').hide();
+        $(this).fadeIn(1000);
+        if (timesClicked >= 1) {
+          $(this).unbind(event);
+        }
+      });
   });
 
   $('#POPULAR').bind('click', function(event) {
-    $('#examples-transition3').load('/welcome/popular #content', function() {
-      timesClicked++;
-      $('#examples-transition3').hide();
-      $(this).fadeIn(5000);
-      if (timesClicked >= 1) {
-        $(this).unbind(event);
-      }
-    });
+    $('#examples-transition3').load('/welcome/popular #content',
+      function() {
+        timesClicked++;
+        $('#examples-transition3').hide();
+        $(this).fadeIn(5000);
+        if (timesClicked >= 1) {
+          $(this).unbind(event);
+        }
+      });
   });
 })
 
@@ -318,7 +334,9 @@ function countdown(val) {
       var hour = Math.floor(hour_min / 60);
       mins2 = hour_min % 60;
       seconds--;
-      counter.innerHTML = ((days > 0) ? days.toString() + "d :" : "") + (hour < 10 ? "0" : "") + hour.toString() + "h :" + mins2.toString() + "m :" + (seconds < 10 ? "0" : "") + String(seconds) + "s";
+      counter.innerHTML = ((days > 0) ? days.toString() + "d :" : "") + (hour <
+          10 ? "0" : "") + hour.toString() + "h :" + mins2.toString() + "m :" +
+        (seconds < 10 ? "0" : "") + String(seconds) + "s";
       if (seconds > 0) {
         setTimeout(tick, 1000);
       } else {
