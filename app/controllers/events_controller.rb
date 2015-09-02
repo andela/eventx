@@ -29,7 +29,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-     @event.user_id = current_user.id
+    #  @event.user_id = current_user.id
+     @event.event_manager = current_user
     if @event.save
       flash[:id] = @event.id
       respond_to do |format|
@@ -44,6 +45,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
+      # require 'pry' ; binding.pry
       params.require(:event).permit(:title, :description, :start_date, :end_date,
                                     :category_id, :location, :venue, :image, :template_id,
                                     :map_url, :event_template_id,

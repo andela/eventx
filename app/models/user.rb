@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   enum role: [:attendee, :event_staff, :event_manager, :super_admin ]
 
   #associations
-  has_many :attendees
-  has_many :events, :through => :attendees
+  has_many :attendees, class: Attendee, foreign_key: 'user_id'
+  has_many :events, foreign_key: 'event_manager_id'
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -26,7 +26,7 @@
       </thead>
 
       <tbody>
-      <%  @user.events.each do |event| %>
+      <%  @current_user.events.each do |event| %>
       <tr>
         <td><%= event.title %></td>
         <td><%= event.location %></td>
@@ -36,7 +36,8 @@
         <ul class="dropdown-content" id="dropdown-<%= "#{event.id}" %>">
           <li data-eventId='<%= event.id %>'><%= link_to "Edit Event", edit_event_path(event), id:"edit-event", class:"our-dropdown-content", data: {eventid: event.id } %></li>
           <li><a class="our-dropdown-content" href="">Disable Event</a></li>
-          <li><a class="our-dropdown-content" href="">View Event</a></li>
+          <!-- <li><a class="our-dropdown-content" href="">View Event</a></li> -->
+          <li><%= link_to 'View Event', event, class: "our-dropdown-content" %></li>
           <li><a class="our-dropdown-content" href="">View Ticket</a></li>
         </ul>
       </tr>
