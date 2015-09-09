@@ -131,27 +131,6 @@ $(document).ready(function() {
 
 
     $('.events_pic_name').html(uploaded_file.name)
-    //
-    // //perform async post to server for the
-    // var formdata = new FormData(uploaded_file);
-    // // formdata.append('event_picture', uploaded_file, uploaded_file.name);
-    // console.log(formdata);
-    // $.ajax({
-    //     url: '/events/new',
-    //     type: 'POST',
-    //     data: formdata,
-    //     processData: false,
-    //
-    //   })
-    //   .done(function() {
-    //     console.log("success");
-    //   })
-    //   .fail(function() {
-    //     console.log("error");
-    //   })
-    //   .always(function() {
-    //     console.log("complete");
-    //   });
 
   });
 
@@ -266,25 +245,25 @@ $(document).ready(function() {
     var win = $(window).height();
     var nav = $('.nav-wrapper').height();
     var height2 = height + 6 + nav - win
-
-    if (scroll - (height - win) >= 130) {
-      $('#slide-out').css({
-        'position': 'absolute',
-        'bottom': '0',
-        'margin-top': height2,
-        'left': '0',
-        'z-index': '-1'
-      });
-    } else {
-      $('#slide-out').css({
-        'position': 'fixed',
-        'margin-top': '0',
-        'z-index': '200'
-      });
+    if(height != null){
+      if (scroll - (height - win) >= 130) {
+        $('#slide-out').css({
+          'position': 'absolute',
+          'bottom': '0',
+          'margin-top': height2,
+          'left': '0',
+          'z-index': '-1'
+        });
+      }
+      else {
+        $('#slide-out').css({
+          'position': 'fixed',
+          'margin-top': '0',
+          'z-index': '200'
+        });
+      }
     }
   });
-
-
 });
 
 function convertDate(startdate) {
