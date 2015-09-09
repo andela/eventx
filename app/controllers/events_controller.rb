@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   before_action :authenticate_user, :only => [:new, :create]
-  before_action :set_events, :only => [:show]
+  before_action :set_events, :only => [:show, :edit]
 
   def new
     @event = Event.new
@@ -64,7 +64,6 @@ class EventsController < ApplicationController
   def set_events
     @event = Event.find(params[:id]).decorate
   end
-
 
   def loading
 
