@@ -43,4 +43,8 @@ class Event < ActiveRecord::Base
   scope :popular_events, -> {order(created_at: :DESC).limit(3)}
   #scope :popular_events, -> {where('id > ?', 3).limit(3)}
 
+  def self.search_by_event_name(name)
+    where("title LIKE ? ", "%#{name}%")
+  end
+
 end

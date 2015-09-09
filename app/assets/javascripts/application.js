@@ -362,3 +362,10 @@ $(document).ready(function() {
     $('#event_end_date').pickadate('picker').set('select', event_end_date)
   }
 });
+
+$(document).ready(function() {
+  $("#user_event_search_form input").keyup(function() {
+   $.get($("#user_event_search_form").attr("action"), $("#user_event_search_form").serialize(), null, "script");
+   return false;
+ });
+});
