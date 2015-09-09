@@ -5,7 +5,6 @@ class Event < ActiveRecord::Base
   has_one :ticket, dependent: :destroy
   accepts_nested_attributes_for :ticket
 
-
   has_many :attendees
   belongs_to :event_manager, class: User
 

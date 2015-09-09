@@ -86,13 +86,7 @@ $(document).ready(function() {
 
   var $navBar = $('.custom_nav.landing');
   var $navBar2 = $('.scroller')
-    //
-    //// find original navigation bar position
-    //var navPos = $navBar.offset().top;
-    //var footerPos = $('.page-footer').offset().top;
-    //var sidePos = $('.hello').offset().top;
-    //console.log('sidebar: ',sidePos)
-    //console.log('footer: ',footerPos)
+
     // on scroll
   $(window).scroll(function() {
 
@@ -131,28 +125,6 @@ $(document).ready(function() {
 
 
     $('.events_pic_name').html(uploaded_file.name)
-      //
-      // //perform async post to server for the
-      // var formdata = new FormData(uploaded_file);
-      // // formdata.append('event_picture', uploaded_file, uploaded_file.name);
-      // console.log(formdata);
-      // $.ajax({
-      //     url: '/events/new',
-      //     type: 'POST',
-      //     data: formdata,
-      //     processData: false,
-      //
-      //   })
-      //   .done(function() {
-      //     console.log("success");
-      //   })
-      //   .fail(function() {
-      //     console.log("error");
-      //   })
-      //   .always(function() {
-      //     console.log("complete");
-      //   });
-
   });
 
   //analytics
@@ -217,7 +189,6 @@ $(document).ready(function() {
     event_id = $(this).data('eventid')
       // console.log(event_id)
     $('#content').load('/events/' + event_id + '/edit')
-      // $('#content').load('/events/new');
   });
 
 });

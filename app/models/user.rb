@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   #associations
   has_many :attendees, class: Attendee, foreign_key: 'user_id'
   has_many :events, foreign_key: 'event_manager_id'
-
+  has_many :events_attending, through: :attendees, source: 'event'
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
