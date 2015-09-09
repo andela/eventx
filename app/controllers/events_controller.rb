@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
+
   before_action :authenticate_user, :only => [:new, :create]
   before_action :set_events, :only => [:show]
-  before_action :category_params, :only => [:category_search]
-  before_action :search_params, :only => [:index]
 
   def new
     @event = Event.new
@@ -28,9 +27,20 @@ class EventsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to user_path(current_user.id), notice: 'Your Event was successfully updated'
+    else
+      redirect_to :back
+    end
+  end
+
   def create
     @event = Event.new(event_params)
-    @event.user_id = current_user
+    @event.event_manager = current_user
     if @event.save
       flash[:id] = @event.id
       respond_to do |format|
@@ -55,9 +65,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id]).decorate
   end
 
-  def search_params
-    params.permit(:event_name, :event_location, :event_date, :category_id)
-  end
 
   def loading
 

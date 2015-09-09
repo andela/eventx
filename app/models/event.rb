@@ -4,8 +4,9 @@ class Event < ActiveRecord::Base
   belongs_to :event_template
   has_one :ticket, dependent: :destroy
   accepts_nested_attributes_for :ticket
+
   has_many :attendees
-  has_many :users, :through => :attendees
+  belongs_to :event_manager, class: User
 
   #fileupload
   mount_uploader :image, PictureUploader
@@ -26,7 +27,7 @@ class Event < ActiveRecord::Base
    # validates :image, presence: true
 
   def attending?(user)
-    if self.users.include?(user)
+    if self.attendees.include?(user)
       return true
     else
       return false
@@ -34,9 +35,6 @@ class Event < ActiveRecord::Base
   end
 
   def self.search(title="", location="", date="")
-    p title.class
-    p location.class
-    p date.class
     date_range = []
     date_range = self.format_date(date) unless date.empty?
     location = "%" + location + "%" unless location.empty?
@@ -47,7 +45,6 @@ class Event < ActiveRecord::Base
     query +="location LIKE :location" unless location.empty?
     query +=" AND " unless location.empty? || date.empty?
     query +="start_date Between :start_date AND :end_date" unless date.empty?
-
     self.find_by_sql [query, {title: title, location: location, start_date: date_range[0], end_date: date_range[-1]}]
   end
 
@@ -80,5 +77,9 @@ class Event < ActiveRecord::Base
   scope :featured_events, -> {order(created_at: :DESC).limit(2)}
   scope :popular_events, -> {order(created_at: :DESC).limit(3)}
   #scope :popular_events, -> {where('id > ?', 3).limit(3)}
+
+  def self.search_by_event_name(name)
+    where("title LIKE ? ", "%#{name}%")
+  end
 
 end

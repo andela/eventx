@@ -84,16 +84,9 @@ $(document).ready(function() {
 
 
 
-
   var $navBar = $('.custom_nav.landing');
   var $navBar2 = $('.scroller')
-    //
-    //// find original navigation bar position
-    //var navPos = $navBar.offset().top;
-    //var footerPos = $('.page-footer').offset().top;
-    //var sidePos = $('.hello').offset().top;
-    //console.log('sidebar: ',sidePos)
-    //console.log('footer: ',footerPos)
+
     // on scroll
   $(window).scroll(function() {
 
@@ -123,15 +116,15 @@ $(document).ready(function() {
   $('#event_photo_upload').change(function(event) {
     /* Act on the event */
     var reader = new FileReader()
-    reader.onload = function (e) {
-              $('#index-banner').css('background', "url("+e.target.result+")");
+    reader.onload = function(e) {
+      $('#index-banner').css('background', "url(" + e.target.result +
+        ")");
     }
     uploaded_file = $(this)[0].files[0]
     reader.readAsDataURL(uploaded_file);
 
 
     $('.events_pic_name').html(uploaded_file.name)
-
   });
 
   //analytics
@@ -145,45 +138,58 @@ $(document).ready(function() {
     a.async = 1;
     a.src = g;
     m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js',
+    'ga');
 
   ga('create', 'UA-65653167-1', 'auto');
   ga('send', 'pageview');
 
 
   var event_date = $('.parallax-container').data('countdown')
-  if(event_date){
+  if (event_date) {
     countdown(convertDate(event_date));
   }
 
   // script for binding event details to preview page
-  $(".preview").click(function(){
+  $(".preview").click(function() {
 
     var start_date = $("#event_start_date").val()
     var end_date = $("#event_end_date").val()
-    if(start_date){
+    if (start_date) {
       countdown(convertDate(start_date));
     }
 
     var map_val = $("#event_map_url").val();
-    if(map_val){
+    if (map_val) {
       var map = map_val + "&output=embed"
-    }
-    else {
-      var map = 'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' + "&output=embed"
+    } else {
+      var map =
+        'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' +
+        "&output=embed"
     }
     var description_selector = $("#event_description").val()
-    var description = (description_selector.length>200) ? description_selector.substr(0,200)+"..." : description_selector;
-    var title = ($("#event_title").val()=="") ? "Event title goes here" : $("#event_title").val()
-     $(".preview-tab").removeClass("disabled");
-     $('ul.tabs').tabs('select_tab', 'test3');
-     $(".preview-tab").addClass("disabled");
-     $(".our-event-title").html(title);
-     $(".our_event_description").html(description);
-     $(".our-event-date").html(start_date+ " to "+ end_date);
-     $(".our-event-map-url").attr({'src': map})
+    var description = (description_selector.length > 200) ?
+      description_selector.substr(0, 200) + "..." :
+      description_selector;
+    var title = ($("#event_title").val() == "") ?
+      "Event title goes here" : $("#event_title").val()
+    $(".preview-tab").removeClass("disabled");
+    $('ul.tabs').tabs('select_tab', 'test3');
+    $(".preview-tab").addClass("disabled");
+    $(".our-event-title").html(title);
+    $(".our_event_description").html(description);
+    $(".our-event-date").html(start_date + " to " + end_date);
+    $(".our-event-map-url").attr({
+      'src': map
+    })
   })
 
+  $('#edit-event').click(function(e) {
+    // e.preventDefault();
+    event_id = $(this).data('eventid')
+      // console.log(event_id)
+    $('#content').load('/events/' + event_id + '/edit')
+  });
 
 });
 
@@ -211,29 +217,31 @@ $(window).scroll(function() {
 $(document).ready(function() {
   var timesClicked = 0;
   $('#FEATURED').bind('click', function(event) {
-    $('#examples-transition2').load('/welcome/featured #content', function() {
-      //$(document).animate({'top': 5500}, 300);
-      $(this).scroll(500);
-      $(this).scrollTop(300);
-      console.log('alex')
-      timesClicked++;
-      $('#examples-transition2').hide();
-      $(this).fadeIn(1000);
-      if (timesClicked >= 1) {
-        $(this).unbind(event);
-      }
-    });
+    $('#examples-transition2').load('/welcome/featured #content',
+      function() {
+        //$(document).animate({'top': 5500}, 300);
+        $(this).scroll(500);
+        $(this).scrollTop(300);
+        console.log('alex')
+        timesClicked++;
+        $('#examples-transition2').hide();
+        $(this).fadeIn(1000);
+        if (timesClicked >= 1) {
+          $(this).unbind(event);
+        }
+      });
   });
 
   $('#POPULAR').bind('click', function(event) {
-    $('#examples-transition3').load('/welcome/popular #content', function() {
-      timesClicked++;
-      $('#examples-transition3').hide();
-      $(this).fadeIn(5000);
-      if (timesClicked >= 1) {
-        $(this).unbind(event);
-      }
-    });
+    $('#examples-transition3').load('/welcome/popular #content',
+      function() {
+        timesClicked++;
+        $('#examples-transition3').hide();
+        $(this).fadeIn(5000);
+        if (timesClicked >= 1) {
+          $(this).unbind(event);
+        }
+      });
   });
 })
 
@@ -297,7 +305,9 @@ function countdown(val) {
       var hour = Math.floor(hour_min / 60);
       mins2 = hour_min % 60;
       seconds--;
-      counter.innerHTML = ((days > 0) ? days.toString() + "d :" : "") + (hour < 10 ? "0" : "") + hour.toString() + "h :" + mins2.toString() + "m :" + (seconds < 10 ? "0" : "") + String(seconds) + "s";
+      counter.innerHTML = ((days > 0) ? days.toString() + "d :" : "") + (hour <
+          10 ? "0" : "") + hour.toString() + "h :" + mins2.toString() + "m :" +
+        (seconds < 10 ? "0" : "") + String(seconds) + "s";
       if (seconds > 0) {
         setTimeout(tick, 1000);
       } else {
@@ -311,3 +321,22 @@ function countdown(val) {
     counter.innerHTML = "This event has ended";
   }
 }
+
+$(document).ready(function() {
+  event_start_date = $('#event_start_date').data('event-start-date')
+  event_end_date = $('#event_end_date').data('event-end-date')
+
+  if(event_start_date && event_end_date){
+    var event_start_date = new Date(event_start_date)
+    var event_end_date = new Date(event_end_date)
+    $('#event_start_date').pickadate('picker').set('select', event_start_date)
+    $('#event_end_date').pickadate('picker').set('select', event_end_date)
+  }
+});
+
+$(document).ready(function() {
+  $("#user_event_search_form input").keyup(function() {
+   $.get($("#user_event_search_form").attr("action"), $("#user_event_search_form").serialize(), null, "script");
+   return false;
+ });
+});

@@ -1,0 +1,5 @@
+<% unless @events.empty? %>
+$('#events_lists').html("<%=j render partial: 'users/eventlist' %>")
+<% else %>
+$('#events_lists').html("<h4>No Event found</h4>")
+<% end %>
