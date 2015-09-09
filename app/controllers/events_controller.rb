@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user, :only => [:new, :create]
   before_action :set_events, :only => [:show]
+  before_action :category_params, :only => [:category_search]
+  before_action :search_params, :only => [:index]
 
   def new
     @event = Event.new
@@ -10,6 +12,17 @@ class EventsController < ApplicationController
   def index
     @events = Event.recent_events
     @categories = Category.all
+    unless params.size==0
+      params[:event_date] = (params[:event_date].nil?) ? "" : params[:event_date]
+      params[:event_location] = (params[:event_location].nil?) ? "" : params[:event_location]
+      params[:event_name] = (params[:event_name].nil?) ? "" : params[:event_name]
+      @events = (params[:category_id].nil?) ? Event.search(params[:event_name], params[:event_location], params[:event_date]) : Event.where(category_id: params[:category_id])
+      unless @events.nil?
+        render :index
+      end
+    end
+
+
   end
 
   def show
@@ -40,6 +53,10 @@ class EventsController < ApplicationController
 
   def set_events
     @event = Event.find(params[:id]).decorate
+  end
+
+  def search_params
+    params.permit(:event_name, :event_location, :event_date, :category_id)
   end
 
   def loading
