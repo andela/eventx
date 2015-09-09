@@ -1,4 +1,5 @@
-  <form action="<%= root_path %>" class="form-header col l12 m12 s9 centralize">
+  <form action="<%= events_path %>" class="form-header col l12 m12 s9 centralize" method="get" >
+    <!-- data-remote="<%#= controller_name=='welcome' ? 'false': 'true' %>" -->
     <div class="row">
       <div class="col l3 m8 s7 input-field">
         <i class="material-icons prefix white_text">search</i>
@@ -14,12 +15,12 @@
         <i class="when_icon fa fa-calendar prefix white_text"></i>
           <select name="event_date" class="browser-default">
             <option disabled selected value="">When?</option>
-            <option value="1">Today</option>
-            <option value="2">Tomorrow</option>
-            <option value="3">This week</option>
-            <option value="4">This weekend</option>
-            <option value="5">Next week</option>
-            <option value="6">Next weekend</option>
+            <option value="today">Today</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="this week">This week</option>
+            <option value="this weekend">This weekend</option>
+            <option value="next week">Next week</option>
+            <option value="next weekend">Next weekend</option>
           </select>
       </div>
 

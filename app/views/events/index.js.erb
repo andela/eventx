@@ -1,0 +1,5 @@
+$("a[data-remote]").on("ajax:success", function(e, data, status, xhr){
+  $('#events').html("<%= escape_javascript(render partial: 'events_result')%>")
+   $("li.bold").removeClass("active")
+   $(this.parentNode).addClass('active')
+})
