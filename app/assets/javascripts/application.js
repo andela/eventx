@@ -131,27 +131,6 @@ $(document).ready(function() {
 
 
     $('.events_pic_name').html(uploaded_file.name)
-    //
-    // //perform async post to server for the
-    // var formdata = new FormData(uploaded_file);
-    // // formdata.append('event_picture', uploaded_file, uploaded_file.name);
-    // console.log(formdata);
-    // $.ajax({
-    //     url: '/events/new',
-    //     type: 'POST',
-    //     data: formdata,
-    //     processData: false,
-    //
-    //   })
-    //   .done(function() {
-    //     console.log("success");
-    //   })
-    //   .fail(function() {
-    //     console.log("error");
-    //   })
-    //   .always(function() {
-    //     console.log("complete");
-    //   });
 
   });
 
@@ -266,8 +245,7 @@ $(document).ready(function() {
     var win = $(window).height();
     var nav = $('.nav-wrapper').height();
     var height2 = height + 6 + nav - win
-    //
-    if(height!=null){
+    if(height != null){
       if (scroll - (height - win) >= 130) {
         $('#slide-out').css({
           'position': 'absolute',
@@ -286,8 +264,6 @@ $(document).ready(function() {
       }
     }
   });
-
-
 });
 
 function convertDate(startdate) {
