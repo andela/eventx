@@ -84,7 +84,7 @@ $(document).ready(function() {
 
 
 
-  var $navBar = $('.custom_nav.landing');
+  var $navBar = $('.landing');
   var $navBar2 = $('.scroller')
 
     // on scroll
@@ -179,6 +179,8 @@ $(document).ready(function() {
     $(".our-event-title").html(title);
     $(".our_event_description").html(description);
     $(".our-event-date").html(start_date + " to " + end_date);
+    color = $("input[name='event[event_template_id]']:checked").attr('id') + " darken-4";
+    $(".landing2").addClass(color)
     $(".our-event-map-url").attr({
       'src': map
     })

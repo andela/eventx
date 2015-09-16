@@ -1,5 +1,5 @@
-<nav class="custom_nav landing z-depth-0" style="z-index: 100 ">
-  <div class="nav-wrapper">
+<nav class="custom_nav <%= "landing" unless @current_page && @current_page == 'new' %> z-depth-0" style="z-index: 100 ">
+  <div class="nav-wrapper <%= "#{@event.event_template} darken-4"; "landing2" if @current_page && @current_page == 'new'%> ">
     <% if content_for? :nav_cat %>
     <a class="button-collapse" data-activates="nav_mobile" href="#">
       <i class="material-icons">menu</i>

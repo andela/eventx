@@ -27,6 +27,14 @@ class EventDecorator < Draper::Decorator
      end
   end
 
+  def event_template
+    if object.event_template
+            object.event_template.name
+    else
+       nil
+     end
+  end
+
   def end_date
     if object.end_date
       object.end_date.strftime("%b %d %Y")
