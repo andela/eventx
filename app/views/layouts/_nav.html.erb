@@ -1,5 +1,6 @@
 <nav class="custom_nav <%= "landing" unless @current_page && @current_page == 'new' %> z-depth-0" style="z-index: 100 ">
-  <div class="nav-wrapper <%= "#{@event.template_name} darken-4" if controller_name == 'events' && action_name == 'show'; "landing2" if @current_page && @current_page == 'new'%> ">
+
+  <div class='nav-wrapper <%= "#{@event.event_template} darken-4 " if controller_name == "events" && action_name == "show"%> <%= "landing2" if @current_page && @current_page == "new"%>'>
     <% if content_for? :nav_cat %>
     <a class="button-collapse" data-activates="nav_mobile" href="#">
       <i class="material-icons">menu</i>
@@ -18,7 +19,7 @@
 
       <% if current_user %>
       <li>
-        <a class="dropdown-button" data-activates="dropdown-user_option" data-beloworigin="true" href="" style="padding:0 20px;">
+        <a class="<%= 'dropdown-button' unless @current_page && @current_page == 'new'%>" data-activates="dropdown-user_option" data-beloworigin="true" href="#" style="padding:0 20px;">
           <% if current_user.profile_url.present? %>
           <%= image_tag current_user.profile_url, class: 'profile_pic circle responsive-img' %>
           <% else %>

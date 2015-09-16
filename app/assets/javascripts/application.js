@@ -27,6 +27,7 @@ $(document).ready(function() {
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
+
   $('.dropdown-button').dropdown({
     inDuration: 300,
     outDuration: 225,
@@ -167,10 +168,11 @@ $(document).ready(function() {
         'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' +
         "&output=embed"
     }
-    var description_selector = $("#event_description").val()
-    var description = (description_selector.length > 200) ?
+    description_selector = $("#event_description").val();
+    description = (description_selector.length > 200) ?
       description_selector.substr(0, 200) + "..." :
       description_selector;
+    description = ($("#event_description").val() == "") ? "Your Event description goes here<br/><br/><br/><br/>" : $("#event_description").val()
     var title = ($("#event_title").val() == "") ?
       "Event title goes here" : $("#event_title").val()
     $(".preview-tab").removeClass("disabled");
@@ -341,4 +343,9 @@ $(document).ready(function() {
    $.get($("#user_event_search_form").attr("action"), $("#user_event_search_form").serialize(), null, "script");
    return false;
  });
+
+ $("#preview-event-div a").click(function(e) {
+   e.preventDefault();
+ });
+
 });

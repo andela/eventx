@@ -16,14 +16,17 @@
        <div class="row center">
          <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
          <label id="counter"></label>
-         <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif;", class: "our-event-date")  %>
+         <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
          <div id="att">
            <div id="att2">
                <% css_class_unattend = @event.attending?(current_user)? '': 'hideam' %>
                <% css_class_attend =  @event.attending?(current_user)? 'hideam': '' %>
-
+               <% @var1 = ""; @var2 = ""%>
+               <% @var1 = "#{@event.event_template} darken-4"  if controller_name == "events" && action_name == "show"%>
+               <% @var2 = "landing2" if @current_page && @current_page == "new"%>
                  <%= link_to "Attend this event".html_safe,  attendees_path(:event_id => @event.id),
-                         method: :post, class: "#{css_class_attend} btn waves-effect waves-light btn-large our-btn-green #{(@event.event_template) ? @event.event_template.name : nil} darken-4",data: {id: 'unattend'},id:'attend', remote: :true  %>
+                         method: :post,data: {id: 'unattend'},id:'attend', remote: :true,
+                         class: "#{css_class_attend} btn waves-effect waves-light btn-large our-btn-green #{@var1} #{@var2}"  %>
 
                  <%= link_to "Unattend".html_safe,  unattend_path(:event_id => @event.id),
                              method: :get, class: "#{css_class_unattend} btn waves-effect waves-light btn-large our-btn-green red darken-4", data: {id: 'attend'},id: 'unattend', remote: :true  %>
@@ -54,7 +57,7 @@
  <iframe scrolling="no" src=<%= getMap(@event.map_url) %> width="100%" height="100%" frameborder="0" class="our-event-map-url"></iframe>
 </div>
 
-<footer class="page-footer <%= @event.event_template %> darken-4">
+<footer class='page-footer <%= "#{@event.event_template} darken-4 " if controller_name == "events" && action_name == "show"%> <%= "landing2" if @current_page && @current_page == "new"%>' >
  <div class="container">
    <div class="row">
      <div class="col l6 s12">
