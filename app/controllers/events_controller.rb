@@ -5,7 +5,8 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @event.build_ticket
+    1.times{ @event.ticket_types.build }
+    # @event.build_ticket_types
   end
 
   def index
@@ -25,6 +26,9 @@ class EventsController < ApplicationController
   end
 
   def show
+    @user_tickets = @event.user_tickets.new
+    @event.user_tickets.build
+    @event_ticket = @event.ticket_types
   end
 
   def edit

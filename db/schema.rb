@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902181914) do
+ActiveRecord::Schema.define(version: 20150916120705) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20150902181914) do
     t.integer  "event_manager_id"
   end
 
-  create_table "tickets", force: :cascade do |t|
+  create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"
     t.decimal  "price"
@@ -76,6 +76,19 @@ ActiveRecord::Schema.define(version: 20150902181914) do
     t.datetime "updated_at", null: false
     t.string   "name"
   end
+
+  create_table "user_tickets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ticket_types_id"
+    t.string   "ticket_number"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "uniq_id"
+    t.boolean  "payment_status",  default: false
+  end
+
+  add_index "user_tickets", ["ticket_types_id"], name: "index_user_tickets_on_ticket_types_id"
+  add_index "user_tickets", ["user_id"], name: "index_user_tickets_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.integer  "role",                   default: 0
