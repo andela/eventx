@@ -1,8 +1,8 @@
 <div class="modal" id="purchase_ticket_modal">
   <div class="modal-content row">
     Buy tickets
-    <%= form_for @user_tickets, url: event_bookings_path(@event) do |f| %>
-
+    <%= form_for @booking, url: event_bookings_path(@event) do |f| %>
+      <%#= f.text_field :ticket_type %>
       <%= f.fields_for :user_tickets do |attendee| %>
         <%= render 'user_ticket_fields', f: attendee %>
       <% end %>

@@ -3,11 +3,11 @@
   <div class="col l8 m8">
     <div class="col m5">
       <%#= f.check_box ticket.name %>
-      <%= check_box 'user_ticket', ticket.name %>
-      <%= label 'user_ticket', ticket.name %>
+      <%= check_box :ticket_type, ticket.id %>
+      <%= label :ticket_type, ticket.id, ticket.name %>
     </div>
     <div class="col m7">
-      <%= number_field "user_ticket[#{ticket.name}]", 'quantity', class: "event_ticket_input" %>
+      <%= number_field :tickets_quantity, ticket.id, class: "event_ticket_input" %>
     </div>
   </div>
 </p>

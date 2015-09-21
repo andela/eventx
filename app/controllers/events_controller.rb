@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
 
   before_action :authenticate_user, :only => [:new, :create]
-  before_action :set_events, :only => [:show, :edit]
+  before_action :set_events, :only => [:show, :edit, :update]
 
   def new
     @event = Event.new
-    1.times{ @event.ticket_types.build }
+    @event.ticket_types.build
     # @event.build_ticket_types
   end
 
@@ -26,9 +26,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user_tickets = @event.user_tickets.new
-    @event.user_tickets.build
+    @booking = @event.bookings.new
+    @booking.user = current_user
     @event_ticket = @event.ticket_types
+    1.times{ @booking.user_tickets.build }
+    # user_tickets.new
+    # @event.user_tickets.build
   end
 
   def edit
@@ -62,7 +65,7 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :description, :start_date, :end_date,
                                     :category_id, :location, :venue, :image, :template_id,
                                     :map_url, :event_template_id,
-                                    ticket_attributes: [ :name, :quantity, :price ])
+                                    ticket_types_attributes: [ :id,  :_destroy, :name, :quantity, :price ])
     end
 
   def set_events

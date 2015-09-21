@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # resources :bookings
   get 'unattend', to: 'attendees#destroy', as: 'unattend'
   resources :attendees
+  # post '\bookings'
+  # resources :bookings, only: [:create]
   resources :events do
     resources :bookings, only: [:create]
   end

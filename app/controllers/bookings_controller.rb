@@ -1,41 +1,80 @@
 class BookingsController < ApplicationController
-before_action :set_event
-# skip_before_filter :verify_authenticity_token
+  before_action :set_event
+  before_action :ticket_params
+  protect_from_forgery except: [:hook]
 
   def create
-    # require 'pry' ; binding.pry
-    uniq_id = SecureRandom.hex
-    puts params
-    # tickets = @event.ticket_types
-    # tickets.build(ticket_params)
-    # ticket.update_all(uniq_id)
-    #.user_tickets
-    # ticket.paypal_url(event_path(params[:event]))
-    # redirect_to
+    @booking = Booking.new(event: @event, user: current_user)
+    @booking.save
+    tickets = []
+    ticket_params.each{ |ticket_type_id, quantity|
+        quantity.to_i.times{
+          tickets << UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking)
+        }
+    }
+    UserTicket.import tickets
+    @booking.save
+    Booking.update_counters(@booking.id, user_tickets_count: tickets.size)
+    process_free_ticket_or_redirect_paid_ticket
   end
 
+  def paypal_hook
+    params.permit!
+    status = params[:payment_status]
+    if status == "Completed"
+       response = validate_IPN_notification(request.raw_post)
+       examine_booking(response)
+    end
+    render nothing: true
+  end
+
+
   private
-    # def ticket_params
-    #   params.require(:ticket)
-    # end
+    def ticket_params
+      params.require(:tickets_quantity)
+    end
 
     def set_event
       @event = Event.find(params[:event_id])
     end
 
-    def paypal_url()
-      values = {
-          business: ENV['PAYPAL_BUSINESS'],
-          cmd: "_xclick",
-          return: "#{ENV['app_host']}#{return_path}",
-          invoice: ticket_number,
-          amount: ticket_type.price,
-          item_name: ticket_type.event.title,
-          item_number: id,
-          quantity: 1,
-          notify_url: "#{ENV['paypal_notify_url']}/hook",
-          ticket_types: params[:tickets]
-      }
-      "#{ENV['paypal_host']}/cgi-bin/webscr?" + values.to_query
+    def process_free_ticket_or_redirect_paid_ticket
+      if @booking.amount == 0
+        @booking.free!
+        redirect_to @booking.event
+      else
+        redirect_to @booking.paypal_url(event_url(@booking.event))
+      end
+    end
+
+    def validate_IPN_notification(raw)
+      uri = URI.parse(Booking.validate_url)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.open_timeout = 60
+      http.read_timeout = 60
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http.use_ssl = true
+      response = http.post(uri.request_uri, raw,
+                           'Content-Length' => "#{raw.size}",
+                           'User-Agent' => "Highness"
+                         ).body
+    end
+
+    def examine_booking(response)
+      case response
+      when "VERIFIED"
+        @booking = Booking.find_by_uniq_id(params[:invoice])
+        booking_accepted(@booking) if @booking
+        #create a logger for invalid bookings
+      when "INVALID"
+
+      else
+        # trigger error mailer for investigation
+      end
+    end
+
+    def booking_accepted(booking)
+      booking.paid!
+      booking.update(txn_id: params[:txn_id])
     end
 end

@@ -1,12 +1,12 @@
 class AttendeesController < ApplicationController
   #respond_to :js
   before_action :find_event, :find_user
-  
+
 
   def create
     @attendee = @event.attendees.build(user_id: current_user.id)
     # @attendee.ticket.new(ticket_type: ticket)
-    ticket = UserTicket.new(ticket_type: params[:ticket_type], user: current_user)
+    # ticket = UserTicket.new(ticket_type: params[:ticket_type], user: current_user)
     if @attendee.save
       #sends an email to the attendee of the event
       EventMailer.attendance_confirmation(@user, @event).deliver_later!(wait: 1.minute)
