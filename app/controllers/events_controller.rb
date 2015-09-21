@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.ticket_types.build
-    # @event.build_ticket_types
   end
 
   def index

@@ -20,7 +20,7 @@ function remove_fields(link){
 function add_fields(link, association, content){
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, 'g');
-  field = content.replace(regexp, 1);
+  field = content.replace(regexp, new_id);
   // field = content.replace(regexp, new_id);
   // console.log($('div.event_ticket_field'));
   $('div.event_ticket_field').append(field);
