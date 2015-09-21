@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
-  before_action :set_event
-  before_action :ticket_params
-  protect_from_forgery except: [:hook]
+  before_action :set_event, except: [:view_booking, :paypal_hook]
+  before_action :ticket_params, except: [:view_booking, :paypal_hook]
+  protect_from_forgery except: [:paypal_hook]
 
   def create
     @booking = Booking.new(event: @event, user: current_user)
@@ -28,6 +28,14 @@ class BookingsController < ApplicationController
     render nothing: true
   end
 
+  def view_booking
+    if params[:item_number]
+      booking = Booking.find(params[:item_number])
+      redirect_to event_path(booking.event)
+    else
+      redirect_to events_path
+    end
+  end
 
   private
     def ticket_params
@@ -43,7 +51,7 @@ class BookingsController < ApplicationController
         @booking.free!
         redirect_to @booking.event
       else
-        redirect_to @booking.paypal_url(event_url(@booking.event))
+        redirect_to @booking.paypal_url(view_booking_path)
       end
     end
 
@@ -56,7 +64,7 @@ class BookingsController < ApplicationController
       http.use_ssl = true
       response = http.post(uri.request_uri, raw,
                            'Content-Length' => "#{raw.size}",
-                           'User-Agent' => "Highness"
+                           'User-Agent' => "EventX"
                          ).body
     end
 

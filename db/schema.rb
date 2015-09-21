@@ -83,6 +83,16 @@ ActiveRecord::Schema.define(version: 20150921101748) do
     t.integer  "event_manager_id"
   end
 
+  create_table "ticket_purchases", force: :cascade do |t|
+    t.integer  "attendee_id"
+    t.integer  "ticket_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "ticket_purchases", ["attendee_id"], name: "index_ticket_purchases_on_attendee_id"
+  add_index "ticket_purchases", ["ticket_id"], name: "index_ticket_purchases_on_ticket_id"
+
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"
