@@ -2,10 +2,14 @@ class Event < ActiveRecord::Base
   #association
   belongs_to :category
   belongs_to :event_template
-  has_one :ticket, dependent: :destroy
-  accepts_nested_attributes_for :ticket
+  has_many :ticket_types, dependent: :destroy
+  accepts_nested_attributes_for :ticket_types
 
-  has_many :attendees
+  has_many :bookings
+  has_many :user_tickets, through: :bookings
+  # accepts_nested_attributes_for :user_tickets
+
+  has_many :attendees, through: :bookings, source: 'user'
   belongs_to :event_manager, class: User
 
   #fileupload
@@ -82,4 +86,7 @@ class Event < ActiveRecord::Base
     where("title LIKE ? ", "%#{name}%")
   end
 
+  def ticket_sold
+
+  end
 end

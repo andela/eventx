@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902181914) do
+ActiveRecord::Schema.define(version: 20150921101748) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 20150902181914) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "uniq_id"
+    t.integer  "amount"
+    t.string   "txn_id"
+    t.integer  "payment_status",     default: 0, null: false
+    t.integer  "user_tickets_count", default: 0
+  end
+
+  add_index "bookings", ["event_id"], name: "index_bookings_on_event_id"
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -68,7 +83,17 @@ ActiveRecord::Schema.define(version: 20150902181914) do
     t.integer  "event_manager_id"
   end
 
-  create_table "tickets", force: :cascade do |t|
+  create_table "ticket_purchases", force: :cascade do |t|
+    t.integer  "attendee_id"
+    t.integer  "ticket_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "ticket_purchases", ["attendee_id"], name: "index_ticket_purchases_on_attendee_id"
+  add_index "ticket_purchases", ["ticket_id"], name: "index_ticket_purchases_on_ticket_id"
+
+  create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"
     t.decimal  "price"
@@ -76,6 +101,17 @@ ActiveRecord::Schema.define(version: 20150902181914) do
     t.datetime "updated_at", null: false
     t.string   "name"
   end
+
+  create_table "user_tickets", force: :cascade do |t|
+    t.integer  "ticket_type_id"
+    t.string   "ticket_number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "booking_id"
+  end
+
+  add_index "user_tickets", ["booking_id"], name: "index_user_tickets_on_booking_id"
+  add_index "user_tickets", ["ticket_type_id"], name: "index_user_tickets_on_ticket_type_id"
 
   create_table "users", force: :cascade do |t|
     t.integer  "role",                   default: 0

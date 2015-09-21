@@ -6,9 +6,14 @@ Rails.application.routes.draw do
   get  'welcome/featured'
   get  'welcome/popular'
   get 'events/loading'
+  # resources :bookings
   get 'unattend', to: 'attendees#destroy', as: 'unattend'
   resources :attendees
-  resources :events
+  # post '\bookings'
+  # resources :bookings, only: [:create]
+  resources :events do
+    resources :bookings, only: [:create]
+  end
   resources :users
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

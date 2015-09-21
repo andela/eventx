@@ -1,3 +1,7 @@
+$(function(){
+  google.maps.event.addDomListener(window, 'load', initialize);
+});
+
 function initialize() {
     var mapOptions = {
         center: new google.maps.LatLng(-33.8688, 151.2195),
@@ -77,5 +81,3 @@ function initialize() {
     setupClickListener('changetype-establishment', ['establishment']);
     setupClickListener('changetype-geocode', ['geocode']);
 }
-
-

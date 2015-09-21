@@ -1,3 +1,17 @@
 // Place all the styles related to the attendees controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Remove default checkbox */
+/* line 359, /Users/andela2014/.rvm/gems/ruby-2.1.6/gems/materialize-sass-0.97.0/app/assets/stylesheets/materialize/components/_form.scss */
+// [type="checkbox"]:not(:checked),
+// [type="checkbox"]:checked {
+//   position: absolute;
+//   left: -9999px;
+//   visibility: hidden;
+// }
+
+input.event_ticket_input{
+  height: 1.5em;
+}
