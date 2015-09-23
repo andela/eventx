@@ -15,6 +15,14 @@ class Event < ActiveRecord::Base
   #fileupload
   mount_uploader :image, PictureUploader
 
+  def all_tickets_sold
+    ticket_types.where("price > 0")
+  end
+
+  def paid_tickets_sold
+    user_tickets.where(payment_status: Event.statuses[:paid])
+  end
+
   #validation
   def expiration_date_cannot_be_in_the_past
     if end_date.present? && end_date < Date.today

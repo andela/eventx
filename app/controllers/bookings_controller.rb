@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
-  before_action :set_event, except: [:view_booking, :paypal_hook]
-  before_action :ticket_params, except: [:view_booking, :paypal_hook]
+  before_action except: [:view_booking, :paypal_hook] do
+    set_event
+    ticket_params
+  end
   protect_from_forgery except: [:paypal_hook]
 
   def create
@@ -43,6 +45,7 @@ class BookingsController < ApplicationController
     end
 
     def set_event
+      session[:user_id] = 2
       @event = Event.find(params[:event_id])
     end
 
