@@ -6,8 +6,36 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# module ActiveRecord
+#   class Base
+#     def self.reset_pk_sequence
+#       case ActiveRecord::Base.connection.adapter_name
+#       when 'SQLite'
+#         new_max = maximum(primary_key) || 0
+#         update_seq_sql = "update sqlite_sequence set seq = #{new_max} where name = '#{table_name}';"
+#         ActiveRecord::Base.connection.execute(update_seq_sql)
+#       when 'PostgreSQL'
+#         ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
+#       else
+#         raise "Task not implemented for this DB adapter"
+#       end
+#     end
+#   end
+# end
+
+
 Category.destroy_all
+Category.reset_pk_sequence
+# ActiveRecord::Base.connection.reset_pk_sequence!('Category')
+# ActiveRecord::Base.connection.execute("DELETE FROM CATEGORIES")
+# ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='CATEGORIES'")
+# ActiveRecord::Base.connection.execute("DELETE FROM EVENT_TEMPLATES")
+# ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='EVENT_TEMPLATES'")
+# #delete from your_table;   //
+# # delete from sqlite_sequence where n#ame='your_table';
 EventTemplate.destroy_all
+EventTemplate.reset_pk_sequence
+# ActiveRecord::Base.connection.reset_pk_sequence!('EventTemplate')
 
 template_list = [
   ['blue','http://res.cloudinary.com/neddinn/image/upload/c_scale,h_92,w_101/v1442402582/blue_k0b4yt.png'],
