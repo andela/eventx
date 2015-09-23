@@ -38,7 +38,7 @@ protected
   def authenticate_user
     unless current_user
       flash[:notice] = "You need to log in"
-      redirect_to root_path
+      redirect_to (:back || root_path)
     end
   end
 end

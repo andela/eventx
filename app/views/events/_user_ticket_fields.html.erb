@@ -1,0 +1,14 @@
+<% @event_ticket.each do |ticket|%>
+<p>
+  <div class="col l8 m8">
+    <div class="col m5">
+      <%#= f.check_box ticket.name %>
+      <%= check_box :ticket_type, ticket.id %>
+      <%= label :ticket_type, ticket.id, ticket.name %>
+    </div>
+    <div class="col m7">
+      <%= number_field :tickets_quantity, ticket.id, class: "event_ticket_input" %>
+    </div>
+  </div>
+</p>
+<% end %>

@@ -2,14 +2,26 @@ class Event < ActiveRecord::Base
   #association
   belongs_to :category
   belongs_to :event_template
-  has_one :ticket, dependent: :destroy
-  accepts_nested_attributes_for :ticket
+  has_many :ticket_types, dependent: :destroy
+  accepts_nested_attributes_for :ticket_types
 
-  has_many :attendees
+  has_many :bookings
+  has_many :user_tickets, through: :bookings
+  # accepts_nested_attributes_for :user_tickets
+
+  has_many :attendees, through: :bookings, source: 'user'
   belongs_to :event_manager, class: User
 
   #fileupload
   mount_uploader :image, PictureUploader
+
+  def all_tickets_sold
+    ticket_types.where("price > 0")
+  end
+
+  def paid_tickets_sold
+    user_tickets.where(payment_status: Event.statuses[:paid])
+  end
 
   #validation
   def expiration_date_cannot_be_in_the_past
@@ -83,4 +95,7 @@ class Event < ActiveRecord::Base
     where("title LIKE ? ", "%#{name}%")
   end
 
+  def ticket_sold
+
+  end
 end
