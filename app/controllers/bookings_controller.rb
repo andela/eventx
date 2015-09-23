@@ -45,7 +45,6 @@ class BookingsController < ApplicationController
     end
 
     def set_event
-      session[:user_id] = 2
       @event = Event.find(params[:event_id])
     end
 
