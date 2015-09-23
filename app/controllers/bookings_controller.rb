@@ -14,8 +14,8 @@ class BookingsController < ApplicationController
           tickets << UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking)
         }
     }
-    @booking.save
     UserTicket.import tickets
+    @booking.save
     Booking.update_counters(@booking.id, user_tickets_count: tickets.size)
     process_free_ticket_or_redirect_paid_ticket
   end
