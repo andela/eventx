@@ -133,9 +133,9 @@
 <!--Hardcoded radio button association: due to the face that i have not-->
 <!--seen the rails way of doing it but it work find for now!-->
                 <% all_template.each do |i|%>
-                <span class="col s6 m3 center temp_image">
+                <span class="col s6 m3 center temp_image" >
                   <input  id="<%= i.name %>" name="event[event_template_id]" type="radio" value='<%= i.id %>'/>
-                  <label for="<%= i.name %>">
+                  <label for="<%= i.name %>" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%=i.name %>" >
                     <%= image_tag "#{i.image}" %>
                   </label>
                 </span>
@@ -158,7 +158,8 @@
   <!-- <iframe id="frame" scrolling="yes" src="30" width="80%" height="500px" frameborder="0" style="margin:0 auto;">
   </iframe> -->
 
-  <div class="" style="width: 80%; height: 500px; margin: 0 auto 700px auto">
+  <div class="" style="width: 80%; height: 500px; margin: 0 auto 1000px auto" id="preview-event-div">
+    <% @current_page = "new" %>
     <%= render partial: 'events/eventdetails' %>
   </div>
   <div class="col s3 offset-s4 center">
