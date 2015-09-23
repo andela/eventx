@@ -1,46 +1,99 @@
+<% content_for :show do %>
+<span class="hide-on-small-only">
+<li>
+  <a href="#">About</a>
+</li>
+<li>
+  <a href="#">Schedule</a>
+</li>
+<li>
+  <a href="#">Attendee</a>
+</li>
+<li>
+  <a href="#">Venue</a>
+</li>
+</span>
+<% end%>
 
- <div class="parallax-container" id="index-banner" data-countdown="<%= @event.start_date %>">
-   <div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
-     <%= render partial: "layouts/nav" if (controller_name = 'events' && action_name == 'show')%>
-   <div class="section no-pad-bot">
-     <div class="container">
-       <div class="row center">
-         <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
-         <label id="counter"></label>
-         <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif;", class: "our-event-date")  %>
-         <div id="att">
-           <div id="att2">
-               <% css_class_unattend = @event.attending?(current_user)? '': 'hideam' %>
-               <% css_class_attend =  @event.attending?(current_user)? 'hideam': '' %>
+<div class="parallax-container" data-countdown="<%= @event.start_date %>" id="index-banner">
+<div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
+  <%= render partial: "layouts/nav" %>
+  <div class="section no-pad-bot">
+    <div class="container">
+      <div class="row center">
+        <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
+        <label id="counter"></label>
+        <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
+        <div id="att">
+          <div id="att2">
+            <% css_class_unattend = @event.attending?(current_user)? '': 'hideam' %>
+            <% css_class_attend =  @event.attending?(current_user)? 'hideam': '' %>
+            <% @var1 = ""; @var2 = ""%>
+            <% @var1 = "#{@event.event_template} darken-4"  if controller_name == "events" && action_name == "show"%>
+            <% @var2 = "landing2" if @current_page && @current_page == "new"%>
 
-                 <%= link_to "Attend this event".html_safe, '#purchase_ticket_modal',
-                          class: "#{css_class_attend} modal-trigger btn waves-effect waves-light btn-large our-btn-green teal darken-2",data: {id: 'unattend', target: 'purchase_ticket_modal'},id:'attend'  %>
+            <%= link_to "Attend this event".html_safe, '#purchase_ticket_modal',
+                          class: "#{css_class_attend} modal-trigger btn waves-effect waves-light btn-large our-btn-green #{@var1} #{@var2}", data: {id: 'unattend', target: 'purchase_ticket_modal'},id:'attend'  %>
 
-                 <%= link_to "Unattend".html_safe,  unattend_path(:event_id => @event.id),
+            <%= link_to "Unattend".html_safe,  unattend_path(:event_id => @event.id),
                              method: :get, class: "#{css_class_unattend} btn waves-effect waves-light btn-large our-btn-green red darken-4", data: {id: 'attend'},id: 'unattend', remote: :true  %>
 
-           </div>
-         </div>
-       </div>
-       <div class="row center">
-
-       </div>
-       <span class="hide-on-med-and-down"><br><br></span>
-     </div>
-   </div>
-   <div class="parallax"><%= image_tag @event.image_url(:main) %></div>
+          </div>
+        </div>
+      </div>
+      <div class="row center"></div>
+      <span class="hide-on-med-and-down"><br><br></span>
+    </div>
   </div>
- </div>
- <div id="description" class="description">
-   <div class="container center">
-     <h2 class="our_description_title">Description</h2>
-     <p class="our_event_description"><%= @event.description %></p>
-     <div class="text-center">
-       <a class="atcb-link" tabindex="1" id=""><i class="fa fa-calendar"> </i> Add to My Calendar</a>
-     </div>
-   </div>
- </div>
-<div class="col-md-12" id="venue" class="venue" style="height: 70%; padding:0px">
- <div class="map-overlay"></div>
- <iframe scrolling="no" src=<%= getMap(@event.map_url) %> width="100%" height="100%" frameborder="0" class="our-event-map-url"></iframe>
+  <div class="parallax"><%= image_tag @event.image_url(:main) %></div>
 </div>
+</div>
+<div class="description" id="description">
+<div class="container center">
+  <h2 class="our_description_title">Description</h2>
+  <p class="our_event_description"><%= @event.description %></p>
+  <div class="text-center">
+    <a class="atcb-link" id="" tabindex="1">
+      <i class="fa fa-calendar"></i>
+      Add to My Calendar</a>
+  </div>
+</div>
+</div>
+<div class="col-md-12" class="venue" id="venue" style="height: 70%; padding:0px">
+<div class="map-overlay"></div>
+<iframe scrolling="no" src=<%= getMap(@event.map_url) %> width="100%" height="100%" frameborder="0" class="our-event-map-url"></iframe>
+</div>
+
+<footer class='page-footer <%= "#{@event.event_template} darken-4 " if controller_name == "events" && action_name == "show"%> <%= "landing2" if @current_page && @current_page == "new"%>'>
+<div class="container">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">About the Event Manager</h5>
+      <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li>
+          <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+        </li>
+        <li>
+          <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+        </li>
+        <li>
+          <a class="grey-text text-lighten-3" href="#!">Link 3</a>
+        </li>
+        <li>
+          <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="footer-copyright">
+  <div class="container">
+    © 2014 Copyright Text
+    <a class="grey-text text-lighten-4 right" href="#!">See more events by this Event manager</a>
+  </div>
+</div>
+</footer>

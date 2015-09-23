@@ -50,9 +50,10 @@ class Event < ActiveRecord::Base
     date_range = []
     date_range = self.format_date(date) unless date.empty?
     location = "%" + location + "%" unless location.empty?
+    title = "%" + title + "%" unless title.empty?
     query = "SELECT * FROM events "
     query +="WHERE " unless title.empty? && location.empty? && date.empty?
-    query +="title=:title" unless title.empty?
+    query +="title LIKE :title" unless title.empty?
     query +=" AND " unless location.empty? || title.empty?
     query +="location LIKE :location" unless location.empty?
     query +=" AND " unless location.empty? || date.empty?

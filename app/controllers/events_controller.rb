@@ -47,6 +47,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.event_manager = current_user
+    @event.title = @event.title.strip
     if @event.save
       flash[:id] = @event.id
       respond_to do |format|

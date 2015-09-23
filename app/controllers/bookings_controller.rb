@@ -6,16 +6,16 @@ class BookingsController < ApplicationController
   protect_from_forgery except: [:paypal_hook]
 
   def create
-    @booking = Booking.new(event: @event, user: current_user)
-    @booking.save
+    @booking = Booking.create(event: @event, user: current_user)
+
     tickets = []
     ticket_params.each{ |ticket_type_id, quantity|
         quantity.to_i.times{
           tickets << UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking)
         }
     }
-    UserTicket.import tickets
     @booking.save
+    UserTicket.import tickets
     Booking.update_counters(@booking.id, user_tickets_count: tickets.size)
     process_free_ticket_or_redirect_paid_ticket
   end

@@ -39,4 +39,8 @@ class Booking < ActiveRecord::Base
       self.uniq_id = SecureRandom.hex
     end
 
+    def check_presence_of_tickets
+      errors.add(:user_tickets, "You cannot save without an ID")if user_tickets.blank?
+    end
+
 end
