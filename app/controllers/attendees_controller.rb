@@ -16,11 +16,11 @@ class AttendeesController < ApplicationController
   end
 
   def destroy
-   @attendee = current_user.attendees.find_by_event_id(@event.id)
-   if !@attendee.nil? && @attendee.destroy
-     #flash[:notice] = "You have successfully unattend this event"
+   @attendee = current_user.bookings.find_by_event_id(@event.id)
+   if @attendee.destroy
+     flash[:notice] = "You have successfully unattended this event"
    else
-     #flash[:notice] = "An error occurred"
+     flash[:notice] = "An error occurred"
    end
   end
 

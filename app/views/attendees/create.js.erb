@@ -1,4 +1,7 @@
 $("a[data-remote]").on("ajax:success", function(e, data, status, xhr){
-  $(this).addClass('hideam')
-  $('#'+$(this).data('id')).removeClass('hideam')
+  $(this).hide();
+  console.log("<%= require 'pry'; binding.pry %>") 
+  // addClass('hideam')
+  $('#'+$(this).data('id')).show();
+  // removeClass('hideam')
 })

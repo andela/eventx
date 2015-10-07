@@ -39,11 +39,15 @@ class Event < ActiveRecord::Base
    # validates :image, presence: true
 
   def attending?(user)
-    if self.attendees.include?(user)
-      return true
-    else
-      return false
-    end
+    # if self.attendees.include?(user)
+    #   return true
+    # else
+    #   return false
+    # end
+    # if self.bookings
+    attendees = self.bookings.where.not(payment_status: Booking.payment_statuses[:unpaid]).pluck(:user_id)
+    true if attendees.include?(user.id)
+    # require 'pry' ; binding.pry
   end
 
   def self.search(title="", location="", date="")

@@ -25,20 +25,7 @@
         <label id="counter"></label>
         <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
         <div id="att">
-          <div id="att2">
-            <% css_class_unattend = @event.attending?(current_user)? '': 'hideam' %>
-            <% css_class_attend =  @event.attending?(current_user)? 'hideam': '' %>
-            <% @var1 = ""; @var2 = ""%>
-            <% @var1 = "#{@event.event_template} darken-4"  if controller_name == "events" && action_name == "show"%>
-            <% @var2 = "landing2" if @current_page && @current_page == "new"%>
-
-            <%= link_to "Attend this event".html_safe, '#purchase_ticket_modal',
-                          class: "#{css_class_attend} modal-trigger btn waves-effect waves-light btn-large our-btn-green #{@var1} #{@var2}", data: {id: 'unattend', target: 'purchase_ticket_modal'},id:'attend'  %>
-
-            <%= link_to "Unattend".html_safe,  unattend_path(:event_id => @event.id),
-                             method: :get, class: "#{css_class_unattend} btn waves-effect waves-light btn-large our-btn-green red darken-4", data: {id: 'attend'},id: 'unattend', remote: :true  %>
-
-          </div>
+          <%= render partial: "events/attend_unattend_event_button" %>
         </div>
       </div>
       <div class="row center"></div>
