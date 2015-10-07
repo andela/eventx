@@ -1,16 +1,19 @@
 class BookingsController < ApplicationController
   before_action except: [:view_booking, :paypal_hook] do
+    authenticate_user
     set_event
     ticket_params
+    is_ticket_quantity_specified
   end
   protect_from_forgery except: [:paypal_hook]
+
 
   def create
     @booking = Booking.create(event: @event, user: current_user)
 
     tickets = []
     ticket_params.each{ |ticket_type_id, quantity|
-        quantity.to_i.times{
+        quantity.to_i.times{ |i|
           tickets << UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking)
         }
     }
@@ -51,6 +54,7 @@ class BookingsController < ApplicationController
     def process_free_ticket_or_redirect_paid_ticket
       if @booking.amount == 0
         @booking.free!
+        trigger_booking_mail
         redirect_to @booking.event
       else
         redirect_to @booking.paypal_url(view_booking_path)
@@ -83,8 +87,22 @@ class BookingsController < ApplicationController
       end
     end
 
+    def is_ticket_quantity_specified
+      if ticket_params.values.map(&:to_i).inject(:+) <= 0
+        flash[:notice] = "You have to specify quantity of ticket required!"
+        redirect_to event_path(params[:event_id])
+      end
+    end
+
     def booking_accepted(booking)
       booking.paid!
       booking.update(txn_id: params[:txn_id])
+      trigger_booking_mail
+    end
+
+    def trigger_booking_mail
+      user = @booking.user
+      event = @booking.event
+      EventMailer.attendance_confirmation(user, event).deliver_later!(wait: 1.minute)
     end
 end

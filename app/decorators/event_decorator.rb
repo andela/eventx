@@ -10,6 +10,7 @@ class EventDecorator < Draper::Decorator
     end
   end
 
+
   def start_date
     if object.start_date
       object.start_date.strftime("%b %d %Y")

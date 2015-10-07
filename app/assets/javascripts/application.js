@@ -351,6 +351,11 @@ $(document).ready(function() {
    return false;
  });
 
+ $('#preview-event-div a').each(function(e){
+    $(this).removeAttr('data-target');
+    $(this).attr({"href": "#" });
+  });
+
  $("#preview-event-div a").click(function(e) {
    e.preventDefault();
  });

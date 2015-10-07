@@ -1,12 +1,25 @@
+<div class="col l8 m8">
+  <div class="col m4">
+    Ticket Type
+  </div>
+  <div class="col m4">
+    Ticket Price
+  </div>
+  <div class="col m3">
+    Quantity
+  </div>
+</div>
 <% @event_ticket.each do |ticket|%>
 <p>
   <div class="col l8 m8">
-    <div class="col m5">
-      <%#= f.check_box ticket.name %>
+    <div class="col m4">
       <%= check_box :ticket_type, ticket.id %>
       <%= label :ticket_type, ticket.id, ticket.name %>
     </div>
-    <div class="col m7">
+    <div class="col m4">
+      <%= label :tickets_price, number_to_currency(ticket.price), class: "tickets_price" %>
+    </div>
+    <div class="col m3">
       <%= number_field :tickets_quantity, ticket.id, class: "event_ticket_input" %>
     </div>
   </div>
