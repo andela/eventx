@@ -61,7 +61,12 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails'
   gem 'selenium-webdriver'
+  # gem "capybara-webkit"
+  gem "chromedriver-helper"
   gem 'database_cleaner'
+  gem 'faker'
+  gem 'simplecov', :require => false
+  gem "codeclimate-test-reporter", require: nil
 
   #This is used to perform asynchronous jobs like sending mails now or at a later time
 
