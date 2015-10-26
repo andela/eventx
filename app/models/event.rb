@@ -8,7 +8,8 @@ class Event < ActiveRecord::Base
   has_many :bookings
   has_many :user_tickets, through: :bookings
   # accepts_nested_attributes_for :user_tickets
-
+  has_many :event_staffs
+  has_many :staffs, through: :event_staffs, source: 'user'
   has_many :attendees, through: :bookings, source: 'user'
   belongs_to :event_manager, class: User
 
@@ -102,4 +103,6 @@ class Event < ActiveRecord::Base
   def ticket_sold
 
   end
+
+  
 end

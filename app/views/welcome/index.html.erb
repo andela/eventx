@@ -8,8 +8,12 @@
         <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
       </div>
       <div class="row center">
-
+        <% if can? :create, Event %>
         <%= create_event_or_login('Create Event', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
+        <%else%>
+        <%= create_event_or_login('Become An Event Manager', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
+        <%end%>
+
 
       </div>
       <span class="hide-on-med-and-down"><br><br></span>

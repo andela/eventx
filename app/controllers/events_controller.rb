@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
 
+
   before_action :authenticate_user, :only => [:new, :create]
+  before_action :authorize_user_create, :only => [:new, :create]
+  before_action :authorize_user_manage, :only => [:edit,:update]
   before_action :set_events, :only => [:show, :edit, :update]
+
 
   def new
     @event = Event.new
@@ -20,8 +24,6 @@ class EventsController < ApplicationController
         render :index
       end
     end
-
-
   end
 
   def show
@@ -34,6 +36,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -46,9 +49,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.event_manager = current_user
+    # @event.event_manager = current_user
     @event.title = @event.title.strip
     if @event.save
+       @event.event_staffs.create(user: current_user).event_manager!
       flash[:id] = @event.id
       respond_to do |format|
         format.html {redirect_to @event, notice: 'Event was successfully created.'}
@@ -74,5 +78,19 @@ class EventsController < ApplicationController
 
   def loading
 
+  end
+
+  def authorize_user_create
+    unless can? :create, Event
+      flash[:notice] = "You need to be an event manager"
+      redirect_to (root_path)
+    end
+  end
+
+  def authorize_user_manage
+    unless can? :manage, Event
+      flash[:notice] = "You need to be an event manager"
+      redirect_to (root_path)
+    end
   end
 end

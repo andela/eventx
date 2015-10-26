@@ -1,15 +1,27 @@
 class User < ActiveRecord::Base
   # This set the roles of the users
-  enum role: [:attendee, :event_staff, :event_manager, :super_admin ]
-
+  enum status: [:user, :event_manager]
+ # attr_reader :role
   #associations
   # has_many :attendees, class: Attendee, foreign_key: 'user_id'
-  has_many :events, foreign_key: 'event_manager_id'
+  # has_many :events, foreign_key: 'event_manager_id'
   # has_many :events_attending, through: :attendees, source: 'event'
+  # def initialize(role_id = 0)
+  #   @role = status.has_key?(role_id.to_i) ? status[role_id.to_i] : status[0]
+  # end
+
 
   has_many :bookings
   has_many :user_tickets, through: :bookings
   has_many :events_attending, through: :bookings, source: 'event'
+  has_many :event_staffs
+  has_many :events, through: :event_staffs
+  has_many :authentications
+
+
+  # def role?(role_name)
+  #   role == role_name
+  # end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

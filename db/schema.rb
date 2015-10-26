@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921101748) do
+ActiveRecord::Schema.define(version: 20151026135256) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20150921101748) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "event_staffs", force: :cascade do |t|
+    t.integer  "role"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_staffs", ["event_id"], name: "index_event_staffs_on_event_id"
+  add_index "event_staffs", ["user_id"], name: "index_event_staffs_on_user_id"
+
   create_table "event_templates", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
@@ -80,7 +91,6 @@ ActiveRecord::Schema.define(version: 20150921101748) do
     t.string   "venue"
     t.integer  "event_template_id"
     t.string   "map_url"
-    t.integer  "event_manager_id"
   end
 
   create_table "ticket_types", force: :cascade do |t|
@@ -104,7 +114,6 @@ ActiveRecord::Schema.define(version: 20150921101748) do
   add_index "user_tickets", ["ticket_type_id"], name: "index_user_tickets_on_ticket_type_id"
 
   create_table "users", force: :cascade do |t|
-    t.integer  "role",                   default: 0
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -115,6 +124,7 @@ ActiveRecord::Schema.define(version: 20150921101748) do
     t.datetime "updated_at",                         null: false
     t.string   "oauth_token"
     t.datetime "oauth_token_expires_at"
+    t.integer  "status",                 default: 0
   end
 
 end
