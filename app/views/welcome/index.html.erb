@@ -10,6 +10,8 @@
       <div class="row center">
         <% if can? :create, Event %>
         <%= create_event_or_login('Create Event', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
+        <%elsif !current_user %>
+         <%= create_event_or_login('Sign up', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
         <%else%>
         <%= create_event_or_login('Become An Event Manager', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
         <%end%>
