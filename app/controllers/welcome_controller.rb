@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-
   def index
     @events = Event.recent_events
   end
@@ -12,7 +11,6 @@ class WelcomeController < ApplicationController
   def popular
     @events = Event.popular_events
   end
-
 
   def set
     session[:url] = events_new_path

@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
       user ||= User.new 
-      if user.event_manager?
+      if user.is_an_event_manager?
         can :manage, Event
       else
         can :read, :all

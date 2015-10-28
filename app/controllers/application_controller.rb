@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  before_action :check_domain
   helper_method :current_user
   protect_from_forgery with: :exception
-
 
   #private
   def current_user
@@ -19,6 +17,22 @@ class ApplicationController < ActionController::Base
   def no_route_found
     flash[:notice] = "Invalid address!"
     redirect_to root_path
+  end
+
+  def check_domain
+    subdomain = modify(request.subdomain)
+    if !subdomain.empty?
+      manager = ManagerProfile.find_by(:subdomain => subdomain)
+      if manager.nil?
+        flash[:info] = "Subdomain does not exist"
+        redirect_to ENV['app_host']
+      end
+      ActsAsTenant.current_tenant = manager
+    end
+  end
+
+  def modify(name)
+    name.match(/\A([a-zA-Z]+)/).to_s
   end
 
 protected

@@ -13,7 +13,7 @@
         <%elsif !current_user %>
          <%= create_event_or_login('Sign up', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
         <%else%>
-        <%= create_event_or_login('Become An Event Manager', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
+        <%= become_a_manager('Become An Event Manager', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
         <%end%>
 
 

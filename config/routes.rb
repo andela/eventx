@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :manager_profiles
+  
+
   get 'events/new'
 
   get 'welcome/index'

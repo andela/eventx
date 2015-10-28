@@ -12,6 +12,10 @@ module ApplicationHelper
     end
   end
 
+  def become_a_manager(name, classes)
+    content_tag(:a, name, href:new_manager_profile_path, class: classes*' ' )
+  end
+
   def all_categories
    Category.order(:name)
   end

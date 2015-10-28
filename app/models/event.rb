@@ -7,11 +7,13 @@ class Event < ActiveRecord::Base
 
   has_many :bookings
   has_many :user_tickets, through: :bookings
-  # accepts_nested_attributes_for :user_tickets
   has_many :event_staffs
   has_many :staffs, through: :event_staffs, source: 'user'
   has_many :attendees, through: :bookings, source: 'user'
-  belongs_to :event_manager, class: User
+
+  belongs_to :manager_profile
+  acts_as_tenant(:manager_profile)
+  validates_uniqueness_to_tenant :subdomain
 
   #fileupload
   mount_uploader :image, PictureUploader
@@ -37,18 +39,10 @@ class Event < ActiveRecord::Base
    validates :start_date, presence: true
    validates :end_date, presence: true
    validates :category_id, presence: true
-   # validates :image, presence: true
 
   def attending?(user)
-    # if self.attendees.include?(user)
-    #   return true
-    # else
-    #   return false
-    # end
-    # if self.bookings
     attendees = self.bookings.where.not(payment_status: Booking.payment_statuses[:unpaid]).pluck(:user_id)
     true if attendees.include?(user.id)
-    # require 'pry' ; binding.pry
   end
 
   def self.search(title="", location="", date="")
@@ -88,8 +82,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-
-
   #scope
   scope :recent_events, -> {order(created_at: :DESC).limit(12)}
   scope :featured_events, -> {order(created_at: :DESC).limit(2)}
@@ -101,8 +93,5 @@ class Event < ActiveRecord::Base
   end
 
   def ticket_sold
-
   end
-
-  
 end
