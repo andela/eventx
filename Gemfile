@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.2.1"
 gem "acts_as_tenant"
@@ -38,7 +37,7 @@ gem "omniauth-tumblr"
 gem "figaro"
 gem "responders"
 gem "launchy"
-
+gem "social-share-button", "~> 0.1.6"
 gem "activerecord-import"
 
 # for uploading pictures

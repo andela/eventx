@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       manager = ManagerProfile.find_by(:subdomain => subdomain)
       if manager.nil?
         flash[:info] = "Subdomain does not exist"
-        redirect_to ENV['app_host']
+        render :file => "public/custom_404.html", :layout => false
       end
       ActsAsTenant.current_tenant = manager
     end

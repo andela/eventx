@@ -13,7 +13,6 @@ class Event < ActiveRecord::Base
 
   belongs_to :manager_profile
   acts_as_tenant(:manager_profile)
-  validates_uniqueness_to_tenant :subdomain
 
   #fileupload
   mount_uploader :image, PictureUploader
@@ -86,7 +85,6 @@ class Event < ActiveRecord::Base
   scope :recent_events, -> {order(created_at: :DESC).limit(12)}
   scope :featured_events, -> {order(created_at: :DESC).limit(2)}
   scope :popular_events, -> {order(created_at: :DESC).limit(3)}
-  #scope :popular_events, -> {where('id > ?', 3).limit(3)}
 
   def self.search_by_event_name(name)
     where("title LIKE ? ", "%#{name}%")
