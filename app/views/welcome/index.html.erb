@@ -9,49 +9,42 @@
       </div>
       <div class="row center">
         <% if can? :create, Event %>
-        <%= create_event_or_login('Create Event', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
+        <%= create_event_or_login("Create Event", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%elsif !current_user %>
-         <%= create_event_or_login('Sign up', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
+         <%= create_event_or_login("Sign up", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%else%>
-        <%= become_a_manager('Become An Event Manager', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
+        <%= become_a_manager("Become An Event Manager", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%end%>
-
 
       </div>
       <span class="hide-on-med-and-down"><br><br></span>
     </div>
   </div>
-  <div class="parallax"><%= image_tag 'best.jpg'%></div>
+  <div class="parallax"><%= image_tag "best.jpg"%></div>
   <div class="container header center search_form l8 m8 s8 offset-s2">
-    <%= render partial: 'welcome/search' %>
+    <%= render partial: "welcome/search" %>
   </div>
-  <a href="#featured_events" class="alert-scroll-under"><%= image_tag('scroll_circle.svg', class: 'responsive')%></a>
+  <a href="#featured_events" class="alert-scroll-under"><%= image_tag("scroll_circle.svg", class: "responsive")%></a>
 </div>
-
-
-
 
 <div id="featured_events" class="event-section row remove-margin">
   <div class="col s12" style="padding: 0px 0px">
     <ul class="tabs">
       <li class="tab col s3">
-        <!--<a class="active our-tab-color" href="#test1" style="color: #313131 ;" >LATEST</a>-->
-        <%= link_to 'LATEST', '#test1', class:'active our-tab-color', style:'color: #313131'  %>
+        <%= link_to "UPCOMING", "#test1", class:"active our-tab-color", style:"color: #313131"  %>
       </li>
       <li class="tab col s3">
-        <!--<a href="#test2" class="our-tab-color" style="color: #313131 ;">FEATURED</a>-->
-        <%= link_to 'FEATURED', '#test2', class:'our-tab-color', style:'color: #313131', id:'FEATURED' %>
+        <%= link_to "FEATURED", "#test2", class:"our-tab-color", style:"color: #313131", id:"FEATURED" %>
       </li>
       <li class="tab col s3">
-        <!--<a href="#test3"class="our-tab-color" style="color: #313131 ;">POPULAR</a>-->
-        <%= link_to 'POPULAR', '#test3', class:'our-tab-color', style:'color: #313131', id: 'POPULAR'  %>
+        <%= link_to "POPULAR", "#test3", class:"our-tab-color", style:"color: #313131", id: "POPULAR"  %>
       </li>
     </ul>
   </div>
   <div class="col s12" id="test1">
     <div class="content-set">
       <div class="row scrollblock" id="examples-transition">
-        <%= render :partial => 'welcome/latest' %>
+        <%= render :partial => "welcome/latest" %>
         <div class="row col l12 s12 m12">
         <div class="center">
           <% unless @events.count < 12 %>
@@ -62,7 +55,6 @@
       </div>
     </div>
   </div>
-
 
 <div class="col s12" id="test2">
   <div class="content-set">
@@ -123,9 +115,13 @@
 
   <p>Bring people together, or turn your passion into a business.
     <br>
-    EventX gives you everything you need to host your best event yet.</p>
+    EventX gives you everything you need to host your best event yet.
+  </p>
 
-  <%= link_to "Learn More", events_new_path, data: { no_turbolink: true }, class: "btn-large bottom_btn z-depth-0"  %>
-
+    <% if can? :create, Event %>
+      <%= create_event_or_login("Get Started", ["waves-effect", "btn-large bottom_btn z-depth-0"]) %>
+    <% else %>
+      <%= become_a_manager("Get Started", ["waves-effect", "btn-large bottom_btn z-depth-0"]) %>
+    <% end %>
 
 </div>

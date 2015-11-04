@@ -1,0 +1,19 @@
+.social-share-button a{
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	margin-top: 5%;
+}
+
+.social-share-button-facebook {
+	background: url("facebook.png") no-repeat;
+}
+.social-share-button-google_plus {
+	background: url("google-plus.png") no-repeat;
+}
+.social-share-button-twitter {
+	background: url("twitter.png") no-repeat;
+}
+.social-share-button-pinterest {
+	background: url("pinterest.png") no-repeat;
+}

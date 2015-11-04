@@ -1,5 +1,5 @@
  <div class="our-new-custom-nav">
-    <%= render partial: 'layouts/nav' %>
+    <%= render partial: "layouts/nav" %>
   </div>
       <!-- START WRAPPER -->
       <div class="wrapper">
@@ -10,7 +10,7 @@
       <div class="container">
         <div class="row">
       <div class="input-field col s10">
-    <%= label_tag(:company_name, "Company Name") %>    
+    <%= label_tag(:company_name, "Company Name") %>
     <%= m.text_field :company_name %>
     </div>
        <div class="input-field col s10">
@@ -22,15 +22,11 @@
     <%= m.text_field :company_phone %>
      </div>
        <div class="input-field col s10">
-     <%= label_tag(:domain, "Company Domain") %>
-    <%= m.text_field :domain %>
-     </div>
-       <div class="input-field col s10">
     <%= label_tag(:subdomain, "Preferred Subdomain") %>
     <%= m.text_field :subdomain %>
      </div>
        <div class="input-field col s10">
-    <%= button_tag  "Submit", class: 'btn-large waves-effect waves-light home_button center  z-depth-0'%>
+    <%= button_tag  "Submit", class: "btn-large waves-effect waves-light home_button center  z-depth-0"%>
       </div>
     </div>
 </div>

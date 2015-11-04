@@ -8,12 +8,11 @@ class Event < ActiveRecord::Base
   has_many :bookings
   has_many :user_tickets, through: :bookings
   has_many :event_staffs
-  has_many :staffs, through: :event_staffs, source: 'user'
-  has_many :attendees, through: :bookings, source: 'user'
+  has_many :staffs, through: :event_staffs, source: "user"
+  has_many :attendees, through: :bookings, source: "user"
 
   belongs_to :manager_profile
   acts_as_tenant(:manager_profile)
-  validates_uniqueness_to_tenant :subdomain
 
   #fileupload
   mount_uploader :image, PictureUploader
@@ -57,36 +56,44 @@ class Event < ActiveRecord::Base
     query +="location LIKE :location" unless location.empty?
     query +=" AND " unless location.empty? || date.empty?
     query +="start_date Between :start_date AND :end_date" unless date.empty?
-    self.find_by_sql [query, {title: title, location: location, start_date: date_range[0], end_date: date_range[-1]}]
+    self.find_by_sql [query, {title: title, location: location,
+      start_date: date_range[0], end_date: date_range[-1]}]
   end
-
 
   def self.format_date(type)
     date_range = []
     t = Time.now
     case type
-    when 'today'
+    when "today"
       date_range = [t.beginning_of_day, t.end_of_day]
-    when 'tomorrow'
-      date_range = [t.beginning_of_day+(24*60*60), t.end_of_day+(24*60*60)]
-    when 'this week'
+    when "tomorrow"
+      date_range = [t.beginning_of_day+(86400), t.end_of_day+(86400)]
+    when "this week"
       date_range = [t.beginning_of_week, t.end_of_week]
-    when 'next week'
-      date_range = [t.beginning_of_week+(24*60*60*7), t.end_of_week+(24*60*60*7)]
-    when 'this weekend'
-      date_range = [t.end_of_week-(24*60*60*2), t.end_of_week]
-    when 'next weekend'
-      date_range = [t.end_of_week+(24*60*60*5), t.end_of_week+(24*60*60*7)]
+    when "next week"
+      date_range = [t.beginning_of_week+(86400*7), t.end_of_week+(86400*7)]
+    when "this weekend"
+      date_range = [t.end_of_week-(86400*2), t.end_of_week]
+    when "next weekend"
+      date_range = [t.end_of_week+(86400*5), t.end_of_week+(86400*7)]
     else
       date_range = t.now
     end
   end
 
   #scope
-  scope :recent_events, -> {order(created_at: :DESC).limit(12)}
-  scope :featured_events, -> {order(created_at: :DESC).limit(2)}
-  scope :popular_events, -> {order(created_at: :DESC).limit(3)}
-  #scope :popular_events, -> {where('id > ?', 3).limit(3)}
+  scope :recent_events, -> { order(created_at: :DESC).limit(12) }
+  scope :featured_events, -> { order(created_at: :DESC).limit(12) }
+  scope :upcoming_events, -> {
+    where("start_date >= ?", Time.zone.now).order("start_date ASC").limit(12)
+  }
+
+  def self.popular_events
+    query = "SELECT events.*, COUNT(bookings.event_id) AS num from events "
+    query += "INNER JOIN bookings WHERE bookings.event_id = events.id "
+    query += "GROUP BY events.id ORDER BY num"
+    find_by_sql(query)
+  end
 
   def self.search_by_event_name(name)
     where("title LIKE ? ", "%#{name}%")
