@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def check_domain
     subdomain = modify(request.subdomain)
     excluded_subdomains = ['eventx', 'admin', 'www', 'event']
-    unless subdomain.empty? || excluded_subdomains.include? subdomain
+    unless subdomain.empty? || excluded_subdomains.include?(subdomain)
       set_tenant subdomain
     end
   end
