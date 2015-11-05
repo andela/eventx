@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def check_domain
     subdomain = modify(request.subdomain)
-    if !subdomain.empty?
+    if !subdomain.empty? && subdomain != "event"
       manager = ManagerProfile.find_by(:subdomain => subdomain)
       if manager.nil?
         flash[:info] = "Subdomain does not exist"
