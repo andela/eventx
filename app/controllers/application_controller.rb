@@ -21,18 +21,10 @@ class ApplicationController < ActionController::Base
 
   def check_domain
     subdomain = modify(request.subdomain)
-    if !subdomain.empty? && subdomain != "event"
-      manager = ManagerProfile.find_by(:subdomain => subdomain)
-      if manager.nil?
-        flash[:info] = "Subdomain does not exist"
-        render :file => "public/custom_404.html", :layout => false
-      end
-      ActsAsTenant.current_tenant = manager
+    excluded_subdomains = ['eventx', 'admin', 'www', 'event']
+    unless subdomain.empty? || excluded_subdomains.include? subdomain
+      set_tenant subdomain
     end
-  end
-
-  def modify(name)
-    name.match(/\A([a-zA-Z]+)/).to_s
   end
 
 protected
@@ -41,10 +33,22 @@ protected
     redirect_to root_path
   end
 
+  def modify(name)
+    name.match(/\A([a-zA-Z]+)/).to_s
+  end
 
   def error_occurred(exception)
     flash[:notice] = exception.message.to_s
     redirect_to root_path
+  end
+
+  def set_tenant(subdomain)
+    manager = ManagerProfile.find_by(:subdomain => subdomain)
+    if manager.nil?
+      flash[:info] = "Subdomain does not exist"
+      render :file => "public/custom_404.html", :layout => false
+    end
+    ActsAsTenant.current_tenant = manager
   end
 
    #authenticate users that are not logged in
