@@ -21,8 +21,6 @@ RSpec.feature "Event Manager abilities", type: :feature do
 
       click_link 'Become An Event Manager'
 
-      
-
       expect(page).to have_selector("p.center", text: "Create it, Preview it, Publish it!")
       expect(page).to have_field("event[title]", type: "text")
       expect(page).to have_field("event[venue]", type: "text")
