@@ -1,13 +1,12 @@
 require 'rails_helper'
 require 'database_cleaner'
 
-RSpec.feature "Event Manager abilities", type: :feature do
-    before do
+RSpec.feature "Event Manager abilities", type: :feature, js: true do
+    before :all do
       OmniAuth.config.test_mode = true
       Category.create({name: 'Alex', description: "Alex's special category for crappy things"})
       Category.create({name: 'Music', description: "music's special category for crappy things"})
     end
-
     after do
       DatabaseCleaner.clean
     end
@@ -17,9 +16,35 @@ RSpec.feature "Event Manager abilities", type: :feature do
 
       click_link 'Log In'
 
-      click_link 'Facebook'
+      within ".modal-content" do
+        click_link 'Google'
+      end
+
+      expect(page).to have_content "BECOME AN EVENT MANAGER"
+      expect(page).not_to have_content "Create Event"
 
       click_link 'Become An Event Manager'
+
+      expect(page.current_path).to eq "/manager_profiles/new"
+
+      #with incorrect values
+      fill_in "manager_profile[company_name]", with: ""
+      fill_in "manager_profile[company_mail]", with: ""
+      fill_in "manager_profile[company_phone]", with: "08023439399"
+      fill_in "manager_profile[subdomain]", with: ""
+      expect(page.current_path).to eq "/manager_profiles/new"
+
+      #with correct values
+      fill_in "manager_profile[company_name]", with: "Our Comapany"
+      fill_in "manager_profile[company_mail]", with: "baba@yaho.com"
+      fill_in "manager_profile[company_phone]", with: "08023439399"
+      fill_in "manager_profile[subdomain]", with: "ladyb"
+      click_button "Submit"
+      expect(page.current_path).to eq "/"
+      expect(page).to have_content "CREATE EVENT"
+      expect(page).not_to have_content "Become An Event Manager"
+      click_link "Create Event"
+      expect(page.current_path).to eq "/events/new"
 
       expect(page).to have_selector("p.center", text: "Create it, Preview it, Publish it!")
       expect(page).to have_field("event[title]", type: "text")
@@ -28,9 +53,7 @@ RSpec.feature "Event Manager abilities", type: :feature do
 
       fill_in "event[title]", with: "This is a test Event"
       fill_in "event[location]", with: "Lagos, Nigeria"
-
       fill_in "event[venue]", with: "Amity"
-
       find('#event_category_id').find(:xpath, 'option[2]').select_option
 
       page.execute_script("$('#event_start_date').pickadate('picker').set('select', #{Date.tomorrow.to_time.to_i*1000})")
