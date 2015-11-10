@@ -54,7 +54,7 @@
 <iframe scrolling="no" src=<%= getMap(@event.map_url) %> width="100%" height="100%" frameborder="0" class="our-event-map-url"></iframe>
 </div>
 
-<footer class='page-footer <%= "#{@event.event_template} darken-4 " if controller_name == "events" && action_name == "show"%> <%= "landing2" if @current_page && @current_page == "new"%>'>
+<footer class="page-footer <%= '#{@event.event_template} darken-4 ' if controller_name == 'events' && action_name == 'show'%> <%= 'landing2' if @current_page && @current_page == 'new'%>">
 <div class="container">
   <div class="row">
     <div class="col l6 s12">

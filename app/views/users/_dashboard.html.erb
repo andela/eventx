@@ -5,13 +5,13 @@
   <div class="our-modified-container container" id ="hel">
     <div class="row center">
       <div class="col l8 m8 s12 offset-l3 offset-m2">
-          <%= form_tag user_path(current_user), method: :get, id: 'user_event_search_form', remote: true do %>
+          <%= form_tag user_path(current_user), method: :get, id: "user_event_search_form", remote: true do %>
             <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
-              <%= content_tag :i, 'search', class: "material-icons prefix" %>
+              <%= content_tag :i, "search", class: "material-icons prefix" %>
               <%= text_field_tag( :search, params[:search], placeholder: "Search By Event Name", class: "" ) %>
             <% end %>
             <%= content_tag :div, class: "input-field col l2 m2 s4" do %>
-              <%= button_tag 'Search', type: 'submit', class: 'btn' %>
+              <%= button_tag "Search", type: "submit", class: "btn" %>
             <% end %>
           <% end %>
       </div>
@@ -32,7 +32,7 @@
       </thead>
 
       <tbody id="events_lists">
-        <%= render partial: 'users/eventlist'%>
+        <%= render partial: "users/eventlist"%>
       </tbody>
     </table>
     <a class="btn-floating btn-large waves-effect waves-light teal" style="position: fixed; bottom: 25px; right: 50px;" href="<%= events_new_path%>"><i class="material-icons">add</i></a>

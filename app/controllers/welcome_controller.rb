@@ -3,7 +3,6 @@ class WelcomeController < ApplicationController
     @events = Event.recent_events
   end
 
-
   def featured
     @events = Event.featured_events
   end

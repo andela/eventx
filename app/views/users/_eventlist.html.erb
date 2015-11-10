@@ -2,14 +2,14 @@
 <tr>
   <td><%= event.title %></td>
   <td><%= event.location %></td>
-  <td><%= event.start_date.strftime('%d %B, %Y') %></td>
+  <td><%= event.start_date.strftime("%d %B, %Y") %></td>
   <!-- <td>Opened</td> -->
-  <td><a href="" class="dropdown-button btn-floating btn waves-effect waves-light transparent z-depth-0" data-activates="dropdown-<%= "#{event.id}" %>"><i class="fa fa-ellipsis-v" style="color: black;" ></i></a></td>
-  <ul class="dropdown-content" id="dropdown-<%= "#{event.id}" %>">
-    <li data-eventId='<%= event.id %>'><%= link_to "Edit Event", edit_event_path(event), id:"edit-event", class:"our-dropdown-content", data: {eventid: event.id } %></li>
+  <td><a href="" class="dropdown-button btn-floating btn waves-effect waves-light transparent z-depth-0" data-activates="dropdown-<%= '#{event.id}' %>"><i class="fa fa-ellipsis-v" style="color: black;" ></i></a></td>
+  <ul class="dropdown-content" id="dropdown-<%= '#{event.id}' %>">
+    <li data-eventId="<%= event.id %>"><%= link_to "Edit Event", edit_event_path(event), id:"edit-event", class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li><a class="our-dropdown-content" href="">Disable Event</a></li>
     <!-- <li><a class="our-dropdown-content" href="">View Event</a></li> -->
-    <li><%= link_to 'View Event', event, class: "our-dropdown-content" %></li>
+    <li><%= link_to "View Event", event, class: "our-dropdown-content" %></li>
     <li><a class="our-dropdown-content" href="">View Ticket</a></li>
   </ul>
 </tr>

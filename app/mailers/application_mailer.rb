@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-    default from: 'eventxapp@gmail.com'
-    layout 'mailer'
+    default from: "eventxapp@gmail.com"
+    layout "mailer"
 end

@@ -4,7 +4,7 @@
     <%= form_for @booking, url: event_bookings_path(@event) do |f| %>
       <%#= f.text_field :ticket_type %>
       <%= f.fields_for :user_tickets do |attendee| %>
-        <%= render 'user_ticket_fields', f: attendee %>
+        <%= render "user_ticket_fields", f: attendee %>
       <% end %>
       <div class="col l4 m4">
         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
