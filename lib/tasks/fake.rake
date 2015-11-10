@@ -1,4 +1,4 @@
-require 'fakeout'
+require "fakeout"
 
 desc "Fakeout data"
 task :fake => :environment do

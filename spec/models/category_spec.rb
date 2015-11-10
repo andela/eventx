@@ -1,17 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Category, type: :model do
   before(:all) do
     DatabaseCleaner.clean
   end
-  # category_1 = Category.create({name: 'Alex', description: "Alex's special category for crappy things"})
-  # category_2 = Category.create({name: 'Kay', description: "Kay's special category about parties where broken bottles were thrown"})
-
-  it 'is invalid without a name' do
-    category_1 = Category.create({name: 'Alex', description: "Alex's special category for crappy things"})
-    category_2 = Category.create({description: "Alex's special category for crappy things"})
-
-    expect(category_1).to be_valid
-    expect(category_2).to be_valid
+  describe "#create" do
+    it "is invalid without a name" do
+      expect(FactoryGirl.create(:category)).to be_valid
+      expect(FactoryGirl.build(:invalid_category)).not_to be_valid
+    end
   end
 end
