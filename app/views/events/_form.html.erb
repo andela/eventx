@@ -32,7 +32,7 @@
               <label>EVENT TITLE
                 <span>*</span>
               </label>
-              <%= f.text_field :title, class: "validate", placeholder: 'Give it a short distinct name', required: true %>
+              <%= f.text_field :title, class: "validate", placeholder: "Give it a short distinct name", required: true %>
             </div>
           </div>
           <div class="row">
@@ -41,14 +41,14 @@
               <label>Location
                 <span>*</span>
               </label>
-              <%= f.text_field :location, class: "validate", placeholder: 'Enter Location where it will be held', required: true %>
-              <%= f.hidden_field :map_url, placeholder: 'Enter Location where it will be held' %>
+              <%= f.text_field :location, class: "validate", placeholder: "Enter Location where it will be held", required: true %>
+              <%= f.hidden_field :map_url, placeholder: "Enter Location where it will be held" %>
             </div>
             <div class="input-field col l5 m5 s10">
               <i class="fa fa-street-view prefix icon-setting"></i>
               <label>Venue
               </label>
-              <%= f.text_field :venue, class: "validate", placeholder: 'Enter Venue where it will be held', min: Date.today %>
+              <%= f.text_field :venue, class: "validate", placeholder: "Enter Venue where it will be held", min: Date.today %>
             </div>
           </div>
           <div class="row">
@@ -94,7 +94,7 @@
         <div class="row">
           <div class="input-field col s10">
             <i class="fa fa-newspaper-o prefix icon-setting"></i>
-            <%= f.text_area :description, rows: 6, placeholder: 'Enter description of event', required: true %>
+            <%= f.text_area :description, rows: 6, placeholder: "Enter description of event", required: true %>
           </div>
         </div>
         <div class="input-field col s3 offset-s4">
@@ -115,7 +115,7 @@
               <%= render "events/ticket_type_fields", :f => builder %>
               <% end %>
             </div>
-            <%= link_to_add_fields("Add Another Ticket", f, 'events', :ticket_types, "btn btn-circle add_another_ticket", "Add Another Ticket") %>
+            <%= link_to_add_fields("Add Another Ticket", f, "events", :ticket_types, "btn btn-circle add_another_ticket", "Add Another Ticket") %>
           </div>
         </div>
         <div class="row">
@@ -130,7 +130,7 @@
 <!--seen the rails way of doing it but it work find for now!-->
                 <% all_template.each do |i|%>
                 <span class="col s6 m3 center temp_image">
-                  <input id="<%= i.name %>" name="event[event_template_id]" type="radio" value='<%= i.id %>'/>
+                  <input id="<%= i.name %>" name="event[event_template_id]" type="radio" value="<%= i.id %>"/>
                   <label for="<%= i.name %>">
                     <%= image_tag "#{i.image}" %>
                   </label>
@@ -147,7 +147,6 @@
 
     </div>
 
-
     <%# end %>
 
   </div>
@@ -159,11 +158,11 @@
 
   <div class="" id="preview-event-div" style="width: 80%; height: 500px; margin: 0 auto 1000px auto">
     <% @current_page = "new" %>
-    <%= render partial: 'events/eventdetails' %>
+    <%= render partial: "events/eventdetails" %>
   </div>
   <div class="col s3 offset-s4 center">
     <button class="col s12 btn-large waves-effect waves-light home_button center z-depth-0">Save
-      <i class='fa fa-floppy-o'></i>
+      <i class="fa fa-floppy-o"></i>
     </button>
   </div>
 </div>

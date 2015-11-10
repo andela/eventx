@@ -5,17 +5,16 @@ class BookingsController < ApplicationController
     ticket_params
     is_ticket_quantity_specified
   end
-  protect_from_forgery except: [:paypal_hook]
 
+  protect_from_forgery except: [:paypal_hook]
 
   def create
     @booking = Booking.create(event: @event, user: current_user)
-
     tickets = []
     ticket_params.each{ |ticket_type_id, quantity|
-        quantity.to_i.times{ |i|
-          tickets << UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking)
-        }
+      quantity.to_i.times{ |i|
+        tickets << UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking)
+      }
     }
     UserTicket.import tickets
     @booking.save
@@ -69,8 +68,8 @@ class BookingsController < ApplicationController
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       http.use_ssl = true
       response = http.post(uri.request_uri, raw,
-                           'Content-Length' => "#{raw.size}",
-                           'User-Agent' => "EventX"
+                           "Content-Length" => "#{raw.size}",
+                           "User-Agent" => "EventX"
                          ).body
     end
 

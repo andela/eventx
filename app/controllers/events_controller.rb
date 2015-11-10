@@ -36,7 +36,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to user_path(current_user.id), notice: 'Your Event was successfully updated'
+      redirect_to user_path(current_user.id), notice: "Your Event was successfully updated"
     else
       redirect_to :back
     end
@@ -50,7 +50,7 @@ class EventsController < ApplicationController
        @event.event_staffs.create(user: current_user).event_manager!
       flash[:id] = @event.id
       respond_to do |format|
-        format.html {redirect_to @event, notice: 'Event was successfully created.'}
+        format.html {redirect_to @event, notice: "Event was successfully created."}
         format.json
         format.xml
       end
