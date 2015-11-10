@@ -13,7 +13,7 @@ RSpec.feature "Login:", type: :feature do
 
     expect(page).to have_selector("h5.header", text: "Simple, Easy, Build it")
     expect(page).to have_selector("h1.header", text: "EventX")
-    expect(page).to have_selector("a", text: "CREATE EVENT")
+    expect(page).to have_selector("a", text: "SIGN UP")
 
     click_link 'Log In'
 
@@ -26,7 +26,6 @@ RSpec.feature "Login:", type: :feature do
     visit root_path
 
     # click_link 'Google'
-#
   end
 
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'database_cleaner'
 
-RSpec.feature "CreateEvents", type: :feature do
+RSpec.feature "Event Manager abilities", type: :feature do
     before do
       OmniAuth.config.test_mode = true
       Category.create({name: 'Alex', description: "Alex's special category for crappy things"})
@@ -12,14 +12,16 @@ RSpec.feature "CreateEvents", type: :feature do
       DatabaseCleaner.clean
     end
 
-    scenario "User can create events" do
+    scenario "user wants to become an Event Manager" do
       visit root_path
 
       click_link 'Log In'
 
-      click_link 'Google'
+      click_link 'Facebook'
 
-      click_link 'Create Event'
+      click_link 'Become An Event Manager'
+
+      
 
       expect(page).to have_selector("p.center", text: "Create it, Preview it, Publish it!")
       expect(page).to have_field("event[title]", type: "text")
