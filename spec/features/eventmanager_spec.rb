@@ -3,6 +3,7 @@ require 'database_cleaner'
 
 RSpec.feature "Event Manager abilities", type: :feature, js: true do
     before :all do
+      set_valid_omniauth
       OmniAuth.config.test_mode = true
       Category.create({name: 'Alex', description: "Alex's special category for crappy things"})
       Category.create({name: 'Music', description: "music's special category for crappy things"})
