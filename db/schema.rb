@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20151027145406) do
   add_index "user_tickets", ["ticket_type_id"], name: "index_user_tickets_on_ticket_type_id"
 
   create_table "users", force: :cascade do |t|
+    t.integer  "status",                 default: 0
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -138,7 +139,6 @@ ActiveRecord::Schema.define(version: 20151027145406) do
     t.datetime "updated_at",                         null: false
     t.string   "oauth_token"
     t.datetime "oauth_token_expires_at"
-    t.integer  "status",                 default: 0
   end
 
 end

@@ -1,13 +1,13 @@
 class ManagerProfilesController < ApplicationController
   def create
-   manager = ManagerProfile.create(create_params)
-   manager.user_id = current_user.id
-   if manager.save
+   @manager_profiles = ManagerProfile.create(create_params)
+   @manager_profiles.user_id = current_user.id
+   if @manager_profiles.save
     flash[:success] = "You are now a manager"
     redirect_to(root_path)
   else
     flash[:notice] = "Incorrect entry entered ?"
-     redirect_to(new_manager_profile_path)
+    render :new
    end
   end
 
