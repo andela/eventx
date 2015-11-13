@@ -82,9 +82,18 @@ class Event < ActiveRecord::Base
   end
 
   #scope
-  scope :recent_events, -> {order(created_at: :DESC).limit(12)}
-  scope :featured_events, -> {order(created_at: :DESC).limit(2)}
-  scope :popular_events, -> {order(created_at: :DESC).limit(3)}
+  scope :recent_events, -> { order(created_at: :DESC).limit(12) }
+  scope :featured_events, -> { order(created_at: :DESC).limit(12) }
+  scope :upcoming_events, -> {
+    where("start_date >= ?", Time.zone.now).order("start_date ASC").limit(12)
+  }
+
+  def self.popular_events
+    query = "SELECT events.*, COUNT(bookings.event_id) AS num from events "
+    query += "INNER JOIN bookings WHERE bookings.event_id = events.id "
+    query += "GROUP BY events.id ORDER BY num"
+    find_by_sql(query)
+  end
 
   def self.search_by_event_name(name)
     where("title LIKE ? ", "%#{name}%")

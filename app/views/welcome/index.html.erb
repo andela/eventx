@@ -16,7 +16,6 @@
         <%= become_a_manager('Become An Event Manager', ['waves-effect', 'waves-light btn-large',  'home_button']) %>
         <%end%>
 
-
       </div>
       <span class="hide-on-med-and-down"><br><br></span>
     </div>
@@ -28,15 +27,12 @@
   <a href="#featured_events" class="alert-scroll-under"><%= image_tag('scroll_circle.svg', class: 'responsive')%></a>
 </div>
 
-
-
-
 <div id="featured_events" class="event-section row remove-margin">
   <div class="col s12" style="padding: 0px 0px">
     <ul class="tabs">
       <li class="tab col s3">
         <!--<a class="active our-tab-color" href="#test1" style="color: #313131 ;" >LATEST</a>-->
-        <%= link_to 'LATEST', '#test1', class:'active our-tab-color', style:'color: #313131'  %>
+        <%= link_to 'UPCOMING', '#test1', class:'active our-tab-color', style:'color: #313131'  %>
       </li>
       <li class="tab col s3">
         <!--<a href="#test2" class="our-tab-color" style="color: #313131 ;">FEATURED</a>-->
@@ -123,9 +119,14 @@
 
   <p>Bring people together, or turn your passion into a business.
     <br>
-    EventX gives you everything you need to host your best event yet.</p>
+    EventX gives you everything you need to host your best event yet.
+  </p>
 
-  <%= link_to "Learn More", events_new_path, data: { no_turbolink: true }, class: "btn-large bottom_btn z-depth-0"  %>
+    <% if can? :create, Event %>
+      <%= create_event_or_login('Get Started', ['waves-effect', 'btn-large bottom_btn z-depth-0']) %>
+    <% else %>
+      <%= become_a_manager('Get Started', ['waves-effect', 'btn-large bottom_btn z-depth-0']) %>
+    <% end %>
 
 
 </div>

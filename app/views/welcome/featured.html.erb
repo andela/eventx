@@ -1,9 +1,22 @@
 <div id="content">
   <% unless @events.nil? %>
     <% @events.each do |event| %>
-        <div class="col l4 s12 m4" id="fade-in">
+    <% @tickets =TicketType.where(event_id: event.id)%>
+            <div class="col l4 s12 m4" id="fade-in">
           <div class="card small card-shadow" id="card">
-            <div class="Amount">Free</div>
+            <div class="Amount">
+                <% @tickets.each do |ticket| %>
+                <% if ticket.name == nil %>
+                  <% if ticket.price.to_i == 0%>
+                    Free
+                  <% else %>
+                   $<%= ticket.price.to_i %>,
+                   <% end %>
+                <% else %>
+                  <%= ticket.name %>,
+                <% end %>
+              <% end %>
+            </div>
             <div class="card-image waves-effect waves-block waves-light">
               <%=link_to (image_tag event.image_url(:landing)), event  %>
             </div>

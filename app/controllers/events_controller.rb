@@ -44,7 +44,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.manager_profile_id = current_user.id
+    @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
     if @event.save
        @event.event_staffs.create(user: current_user).event_manager!
@@ -55,6 +55,7 @@ class EventsController < ApplicationController
         format.xml
       end
     else
+      flash[:notice] = @event.errors.full_messages.join("<br />")
       render :new
     end
   end

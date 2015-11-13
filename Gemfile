@@ -28,12 +28,14 @@ gem "draper"
 # gem "bcrypt", "~> 3.1.7"
 gem "rspec-rails"
 gem "capybara"
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem "omniauth-twitter"
 gem "omniauth-linkedin"
 gem "omniauth-github"
 gem "omniauth-tumblr"
+
 gem "figaro"
 gem "responders"
 gem "launchy"
@@ -81,7 +83,6 @@ group :development, :test do
 end
 
 group :production do
-  gem "faker"
   gem "pg",             "0.17.1"
   gem "rails_12factor", "0.0.2"
 end

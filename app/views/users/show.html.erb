@@ -1,9 +1,6 @@
 <div>
-
   <% content_for :nav_cat do %>
         <li class="teal darken-3">
-
-
           <div class="row our-image-cover">
             <div class="col l12 m12 s12">
               <%= link_to root_path do %>
@@ -35,17 +32,16 @@
             </div>
           </div>
         </li>
-
   <% end %>
-  </div>
-  <div class="our-new-custom-nav">
-    <%= render partial: 'layouts/nav' %>
-  </div>
-  <div id="main">
-      <!-- START WRAPPER -->
-      <div class="wrapper">
+</div>
 
-        <%= render partial: 'layouts/sidebar'%>
-        <%= render partial: 'users/dashboard'%>
-    </div>
+<div class="our-new-custom-nav">
+  <%= render partial: 'layouts/nav' %>
+</div>
+
+<div id="main">
+  <div class="wrapper">
+    <%= render partial: 'layouts/sidebar'%>
+    <%= render partial: 'users/dashboard'%>
+  </div>
 </div>

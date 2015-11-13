@@ -19,4 +19,16 @@ module ApplicationHelper
   def all_categories
    Category.order(:name)
   end
+
+  def get_site_root_site_link
+    "http://#{request.domain}:#{request.port}"
+  end
+
+  def show_form_errors(form_object)
+    content = ""
+    form_object.errors.full_messages.each do |err|
+      content << "<li>#{err}</li>"
+    end
+    "<div class='row error'><ul>#{content}</ul></div>".html_safe
+  end
 end
