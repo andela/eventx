@@ -2,14 +2,11 @@ require "rails_helper"
 require "database_cleaner"
 
 RSpec.feature "Event Manager abilities", type: :feature, js: true do
-  before :all do
+  before do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
     FactoryGirl.create(:category)
     FactoryGirl.create(:category2)
-  end
-  after do
-    DatabaseCleaner.clean
   end
 
   scenario "user wants to become an Event Manager" do
