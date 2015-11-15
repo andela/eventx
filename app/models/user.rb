@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :user_tickets, through: :bookings
   has_many :events_attending, through: :bookings, source: 'event'
   has_many :event_staffs
-  has_many :events, through: :event_staffs
   has_one :manager_profile
+  has_many :events, through: :manager_profile
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

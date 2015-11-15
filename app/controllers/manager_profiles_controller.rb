@@ -1,14 +1,17 @@
 class ManagerProfilesController < ApplicationController
+  before_action :authenticate_user
+
   def create
-   manager = ManagerProfile.create(create_params)
-   manager.user_id = current_user.id
-   if manager.save
-    flash[:success] = "You are now a manager"
-    redirect_to(root_path)
-  else
-    flash[:notice] = "Incorrect entry entered ?"
-     redirect_to(new_manager_profile_path)
-   end
+    @manager = ManagerProfile.create(create_params)
+    @manager.user_id = current_user.id
+    if @manager.save
+      flash[:success] = "You can now create and manage events."
+      path = request.base_url.gsub("http://", "http://#{@manager.subdomain}.")
+      redirect_to(path)
+    else
+      flash[:notice] = "Incorrect entry entered ?"
+      render "new"
+    end
   end
 
   def update
