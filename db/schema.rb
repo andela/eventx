@@ -1,17 +1,4 @@
-# encoding: UTF-8
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
-#
-# It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20150921101748) do
+ActiveRecord::Schema.define(version: 20151027145406) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -59,6 +46,17 @@ ActiveRecord::Schema.define(version: 20150921101748) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "event_staffs", force: :cascade do |t|
+    t.integer  "role"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_staffs", ["event_id"], name: "index_event_staffs_on_event_id"
+  add_index "event_staffs", ["user_id"], name: "index_event_staffs_on_user_id"
+
   create_table "event_templates", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
@@ -75,12 +73,25 @@ ActiveRecord::Schema.define(version: 20150921101748) do
     t.string   "image"
     t.integer  "theme_id"
     t.integer  "category_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "venue"
     t.integer  "event_template_id"
     t.string   "map_url"
-    t.integer  "event_manager_id"
+    t.integer  "manager_profile_id"
+  end
+
+  add_index "events", ["manager_profile_id"], name: "index_events_on_manager_profile_id"
+
+  create_table "manager_profiles", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "subdomain"
+    t.string   "company_name"
+    t.string   "company_mail"
+    t.string   "company_phone"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "domain"
   end
 
   create_table "ticket_types", force: :cascade do |t|
@@ -104,7 +115,7 @@ ActiveRecord::Schema.define(version: 20150921101748) do
   add_index "user_tickets", ["ticket_type_id"], name: "index_user_tickets_on_ticket_type_id"
 
   create_table "users", force: :cascade do |t|
-    t.integer  "role",                   default: 0
+    t.integer  "status",                 default: 0
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"

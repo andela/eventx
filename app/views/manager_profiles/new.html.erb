@@ -1,0 +1,36 @@
+ <div class="our-new-custom-nav">
+    <%= render partial: "layouts/nav" %>
+  </div>
+      <!-- START WRAPPER -->
+      <div class="wrapper">
+        <section id="content" >
+
+  <%= form_for @manager_profiles do |m| %>
+  <div class="col s12">
+      <div class="container">
+        <div class="row">
+      <div class="input-field col s10">
+    <%= label_tag(:company_name, "Company Name") %>
+    <%= m.text_field :company_name %>
+    </div>
+       <div class="input-field col s10">
+    <%= label_tag(:company_mail, "Company Mail") %>
+    <%= m.text_field :company_mail %>
+     </div>
+       <div class="input-field col s10">
+     <%= label_tag(:company_phone, "Company Phone") %>
+    <%= m.text_field :company_phone %>
+     </div>
+       <div class="input-field col s10">
+    <%= label_tag(:subdomain, "Preferred Subdomain") %>
+    <%= m.text_field :subdomain %>
+     </div>
+       <div class="input-field col s10">
+    <%= button_tag  "Submit", class: "btn-large waves-effect waves-light home_button center  z-depth-0"%>
+      </div>
+    </div>
+</div>
+</div>
+  <% end %>
+      </section>
+    </div>
