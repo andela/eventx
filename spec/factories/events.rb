@@ -3,7 +3,7 @@ FactoryGirl.define do
     title "Blessings wedding"
     description "Happy day of joy celebration happinness smiles."
     location "Beach side"
-    start_date Time.zone.now
+    start_date Time.zone.now + 86400
     end_date Time.zone.now + 86400 * 7
     image "http://graph.facebook.com/1065771400114300/picture"
     theme_id 1
@@ -27,6 +27,13 @@ FactoryGirl.define do
         id 3
         category_id 2
         title "Sports is cool"
+      end
+      factory :old_event do
+        id 4
+        category_id 1
+        title "Old Event"
+        start_date Time.zone.now - 86400 * 7
+        end_date Time.zone.now
       end
     end
   end

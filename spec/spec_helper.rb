@@ -1,7 +1,7 @@
 require "codeclimate-test-reporter"
-require 'capybara'
+require "capybara"
 
-SimpleCov.start 'rails' do
+SimpleCov.start "rails" do
   formatter SimpleCov::Formatter::MultiFormatter[
     SimpleCov::Formatter::HTMLFormatter,
     CodeClimate::TestReporter::Formatter
