@@ -6,6 +6,9 @@ Coveralls.wear!
 require "spec_helper"
 require "rspec/rails"
 require "factory_girl"
+require "capybara/rspec"
+require "capybara/rails"
+require "database_cleaner"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 

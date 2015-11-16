@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     id 1
-    status 0
+    status 2
     first_name "Blessing"
     last_name "Ebowe"
     email "eb@gmaill.com"

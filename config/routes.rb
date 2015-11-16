@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
   get "/session" => "sessions#create"
-  resources :users
+  resources :users, only: [:show]
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")
   get "signout", to: "sessions#destroy", as: "signout"

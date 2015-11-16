@@ -4,6 +4,9 @@ RSpec.feature "Login:", type: :feature do
   before do
     OmniAuth.config.test_mode = true
   end
+  after do
+    DatabaseCleaner.clean
+  end
   scenario "User visits the homepage" do
     visit(root_path)
     expect(page).to have_selector("h1.header", text: "EventX")
@@ -21,8 +24,8 @@ RSpec.feature "Login:", type: :feature do
     click_link "Sign up"
     click_link "Google"
     expect(page).to have_content "Become An Event Manager"
-    expect(page).to have_button("Search")
-    expect(page).to have_content "LATEST"
+    expect(page).to have_button "Search"
+    expect(page).to have_content "UPCOMING"
     expect(page).to have_content "FEATURED"
   end
 end
