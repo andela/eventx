@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe ManagerProfilesController, type: :controller do
   before do
     DatabaseCleaner.strategy = :transaction
-    OmniAuth.config.test_mode = true
     set_valid_omniauth
+    OmniAuth.config.test_mode = true
     request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
   end
 

@@ -25,7 +25,7 @@ module EventsHelper
     if id
       "/events/#{id}"
     else
-      '/events/loading'
+      "/events/loading"
     end
   end
 

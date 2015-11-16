@@ -62,10 +62,10 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :description, :start_date, :end_date,
-                                    :category_id, :location, :venue, :image, :template_id,
-                                    :map_url, :event_template_id,
-                                    ticket_types_attributes: [ :id,  :_destroy, :name, :quantity, :price ])
+      params.require(:event).permit(:title, :description, :start_date,
+      :end_date, :category_id, :location, :venue, :image, :template_id,
+      :map_url, :event_template_id, ticket_types_attributes: [ :id,  :_destroy,
+        :name, :quantity, :price ])
     end
 
   def set_events
@@ -74,7 +74,7 @@ class EventsController < ApplicationController
       flash[:notice] = "Event not found"
       redirect_to events_url
     else
-      @event.decorate
+      @event = @event.decorate
     end
   end
 
