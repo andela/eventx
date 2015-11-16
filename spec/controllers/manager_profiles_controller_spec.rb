@@ -21,6 +21,7 @@ RSpec.describe ManagerProfilesController, type: :controller do
       post :create, manager_profile: FactoryGirl.attributes_for(:invalid_manager)
       expect(flash[:notice]).to eq "Found Errors in form submitted!"
       expect(response).to render_template :new
+      session[:user_id] = nil
     end
   end
 end

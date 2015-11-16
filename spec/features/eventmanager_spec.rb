@@ -12,7 +12,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
   scenario "user wants to become an Event Manager" do
     visit root_path
     click_link "Log In"
-    within ".modal" do
+    within ".modal-content" do
       click_link "Google"
     end
 
@@ -77,6 +77,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     expect(page).to have_selector("h3.our-event-title",
     text: "This is a test Event")
     expect(page).to have_selector("p.our_event_description", text: description)
+    save_and_open_page
     expect(page).to have_selector("label.our-event-date",
     text: "#{Date.tomorrow.strftime('%b %d %Y')} " +
     "to #{Date.tomorrow.strftime('%b %d %Y')}")
