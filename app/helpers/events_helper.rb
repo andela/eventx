@@ -42,5 +42,4 @@ module EventsHelper
     new_map
   end
 
- 
 end

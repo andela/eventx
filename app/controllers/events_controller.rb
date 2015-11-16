@@ -69,7 +69,13 @@ class EventsController < ApplicationController
     end
 
   def set_events
-    @event = Event.find(params[:id]).decorate
+    @event = Event.find_by_id(params[:id])
+    if @event.nil?
+      flash[:notice] = "Event not found"
+      redirect_to events_url
+    else
+      @event.decorate
+    end
   end
 
   def loading
