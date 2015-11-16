@@ -1,20 +1,16 @@
 <div id="content">
   <% unless @events.nil? %>
     <% @events.each do |event| %>
-    <% @tickets =TicketType.where(event_id: event.id)%>
+    <% @tickets = event.ticket_types.pluck(:price)%>
             <div class="col l4 s12 m4" id="fade-in">
           <div class="card small card-shadow" id="card">
             <div class="Amount">
-                <% @tickets.each do |ticket| %>
-                <% if ticket.name == nil %>
-                  <% if ticket.price.to_i == 0%>
-                    Free
-                  <% else %>
-                   $<%= ticket.price.to_i %>,
-                   <% end %>
+                <% if user_is_attending_event(event) %>
+                  Attending
+                <% elsif @tickets.max  == 0 && @tickets.min == 0 %>
+                 Free 
                 <% else %>
-                  <%= ticket.name %>,
-                <% end %>
+                 <%= "$#{@tickets.min.to_i} " "-" " $#{@tickets.max.to_i}"%>
               <% end %>
             </div>
             <div class="card-image waves-effect waves-block waves-light">

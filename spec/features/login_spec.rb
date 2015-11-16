@@ -22,7 +22,7 @@ RSpec.feature "Login:", type: :feature do
     click_link "Google"
     expect(page).to have_content "Become An Event Manager"
     expect(page).to have_button("Search")
-    expect(page).to have_content "LATEST"
+    expect(page).to have_content "UPCOMING"
     expect(page).to have_content "FEATURED"
   end
 end

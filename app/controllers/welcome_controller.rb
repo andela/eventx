@@ -10,8 +10,4 @@ class WelcomeController < ApplicationController
   def popular
     @events = Event.popular_events
   end
-
-  def set
-    session[:url] = events_new_path
-  end
 end

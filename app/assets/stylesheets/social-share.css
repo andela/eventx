@@ -6,14 +6,14 @@
 }
 
 .social-share-button-facebook {
-	background: url("facebook.png") no-repeat;
+	background: url("http://res.cloudinary.com/dud0a5two/image/upload/v1447684756/facebook.png") no-repeat;
 }
 .social-share-button-google_plus {
-	background: url("google-plus.png") no-repeat;
+	background: url("http://res.cloudinary.com/dud0a5two/image/upload/v1447684759/google-plus.png") no-repeat;
 }
 .social-share-button-twitter {
-	background: url("twitter.png") no-repeat;
+	background: url("http://res.cloudinary.com/dud0a5two/image/upload/v1447684773/twitter.png") no-repeat;
 }
 .social-share-button-pinterest {
-	background: url("pinterest.png") no-repeat;
+	background: url("http://res.cloudinary.com/dud0a5two/image/upload/v1447684762/pinterest.png") no-repeat;
 }

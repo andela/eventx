@@ -3,6 +3,8 @@ require "database_cleaner"
 
 RSpec.feature "ViewEvents", type: :feature, js: true do
   before do
+    set_valid_omniauth
+    OmniAuth.config.test_mode = true
     FactoryGirl.create(:event_template)
     FactoryGirl.create(:category)
     FactoryGirl.create(:category2)

@@ -8,7 +8,9 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     FactoryGirl.create(:category)
     FactoryGirl.create(:category2)
   end
-
+  after do
+    DatabaseCleaner.clean
+  end
   scenario "user wants to become an Event Manager" do
     visit root_path
     click_link "Log In"
@@ -26,7 +28,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     # with incorrect values
     fill_in "manager_profile[company_name]", with: ""
     fill_in "manager_profile[company_mail]", with: ""
-    fill_in "manager_profile[company_phone]", with: "08023439399"
+    fill_in "manager_profile[company_phone]", with: ""
     fill_in "manager_profile[subdomain]", with: ""
     expect(page.current_path).to eq "/manager_profiles/new"
 
@@ -36,7 +38,8 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     fill_in "manager_profile[company_phone]", with: "08023439399"
     fill_in "manager_profile[subdomain]", with: "ladyb"
     click_button "Submit"
-    expect(page.current_path).to eq "/"
+    expect(page.current_path).not_to eq "/manager_profiles/new"
+    visit root_path
     expect(page).to have_content "CREATE EVENT"
     expect(page).not_to have_content "Become An Event Manager"
     click_link "Create Event"
