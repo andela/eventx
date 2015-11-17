@@ -1,7 +1,7 @@
 module EventsHelper
 
-  def user_is_attending_event
-    @event.attending?(current_user) if current_user
+  def user_is_attending_event(event = @event)
+    event.attending?(current_user) if current_user
   end
 
   def attend_event_or_login(name, classes, additional_class_1, additional_class_2)
