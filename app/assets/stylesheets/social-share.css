@@ -1,0 +1,19 @@
+.social-share-button a{
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	margin-top: 5%;
+}
+
+.social-share-button-facebook {
+	background: url("http://res.cloudinary.com/dud0a5two/image/upload/v1447684756/facebook.png") no-repeat;
+}
+.social-share-button-google_plus {
+	background: url("http://res.cloudinary.com/dud0a5two/image/upload/v1447684759/google-plus.png") no-repeat;
+}
+.social-share-button-twitter {
+	background: url("http://res.cloudinary.com/dud0a5two/image/upload/v1447684773/twitter.png") no-repeat;
+}
+.social-share-button-pinterest {
+	background: url("http://res.cloudinary.com/dud0a5two/image/upload/v1447684762/pinterest.png") no-repeat;
+}

@@ -14,7 +14,7 @@ Rails.application.configure do
 
   # Configure static file server for tests with Cache-Control for performance.
   config.serve_static_files   = true
-  config.static_cache_control = 'public, max-age=3600'
+  config.static_cache_control = "public, max-age=3600"
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -39,26 +39,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-
-  module OmniauthMacros
-    def mock_auth_hash
-      # The mock_auth configuration allows you to set per-provider (or default)
-      # authentication hashes to return during integration testing.
-      OmniAuth.config.mock_auth[:twitter] = {
-          'provider' => 'twitter',
-          'uid' => '123545',
-          'user_info' => {
-              'name' => 'mockuser',
-              'image' => 'mock_user_thumbnail_url'
-          },
-          'credentials' => {
-              'token' => 'mock_token',
-              'secret' => 'mock_secret'
-          }
-      }
-    end
-  end
-
-
-  end
+end
