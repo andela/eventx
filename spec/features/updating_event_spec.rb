@@ -5,8 +5,6 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
   before do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
-    google_oauth2 = OmniAuth.config.mock_auth[:google_oauth2]
-    Rails.application.env_config["omniauth.auth"] = google_oauth2
     FactoryGirl.create(:category)
     FactoryGirl.create(:category2)
   end
@@ -37,6 +35,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
                         .pickadate('picker').set('select', #{date})")
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
+
 
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description
