@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require materialize-sprockets
+//= require social-share-button
 //= require_tree .
 
 $(document).ready(function() {

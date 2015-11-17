@@ -3,10 +3,11 @@
 @import "events";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
+/*= require social-share-button*/
 // @import "style";
 @import "users";
 @import "attendees";
+@import "social-share";
 
 .near-footer {
     border-top: 1px solid #dedede;
@@ -168,6 +169,7 @@
 select .browser-default, #event_category_id{
     border: 1px solid #CCCCCC !important;
     border-radius: 0px !important;
+    font: #000 !important; 
     width: 96%;
     height: 60px !important;
     -webkit-appearance: none;
@@ -175,4 +177,7 @@ select .browser-default, #event_category_id{
     margin-left: 6%;
     margin-right: auto;
     padding: 10px !important;
+}
+.error{
+  color: red;
 }
