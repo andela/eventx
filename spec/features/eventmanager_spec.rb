@@ -45,7 +45,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     expect(page.current_path).to eq "/events/new"
 
     expect(page).to have_selector("p.center",
-    text: "Create it, Preview it, Publish it!")
+                                  text: "Create it, Preview it, Publish it!")
     expect(page).to have_field("event[title]", type: "text")
     expect(page).to have_field("event[venue]", type: "text")
     expect(page).to have_field("event[location]", type: "text")
@@ -56,8 +56,10 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     find("#event_category_id").find(:xpath, "option[2]").select_option
 
     date = Date.tomorrow.in_time_zone.to_i * 1000
-    page.execute_script("$('#event_start_date').pickadate('picker').set('select', #{date})")
-    page.execute_script("$('#event_end_date').pickadate('picker').set('select', #{date})")
+    page.execute_script("$('#event_start_date')\
+                        .pickadate('picker').set('select', #{date})")
+    page.execute_script("$('#event_end_date')\
+                        .pickadate('picker').set('select', #{date})")
 
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description
@@ -67,19 +69,19 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     click_link "Preview"
 
     expect(page).to have_selector("h3.our-event-title",
-    text: "This is a test Event")
+                                  text: "This is a test Event")
     expect(page).to have_selector("p.our_event_description", text: description)
+    date = Date.tomorrow.strftime("%-d %B, %Y")
     expect(page).to have_selector("label.our-event-date",
-    text: "#{Date.tomorrow.strftime('%-d %B, %Y')} " +
-    "to #{Date.tomorrow.strftime('%-d %B, %Y')}")
+                                  text: "#{date} to #{date}")
 
     click_button "Save"
 
     expect(page).to have_selector("h3.our-event-title",
-    text: "This is a test Event")
+                                  text: "This is a test Event")
     expect(page).to have_selector("p.our_event_description", text: description)
+    date1 = Date.tomorrow.strftime("%b %d %Y")
     expect(page).to have_selector("label.our-event-date",
-    text: "#{Date.tomorrow.strftime('%b %d %Y')} " +
-    "to #{Date.tomorrow.strftime('%b %d %Y')}")
+                                  text: "#{date1} " + "to #{date1}")
   end
 end

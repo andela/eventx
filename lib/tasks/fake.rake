@@ -1,7 +1,7 @@
 require "fakeout"
 
 desc "Fakeout data"
-task :fake => :environment do
+task fake: :environment do
   faker = Fakeout::Builder.new
 
   # fake users

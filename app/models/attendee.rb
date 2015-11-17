@@ -6,7 +6,7 @@ class Attendee < ActiveRecord::Base
 
   # validation
   def cannot_attend_one_event_twice
-     if event.attendees.include? user
+    if event.attendees.include? user
       errors.add(:user_id, "You have already chosen to attend this event!")
     end
   end

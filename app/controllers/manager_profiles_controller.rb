@@ -7,7 +7,7 @@ class ManagerProfilesController < ApplicationController
     if @manager_profile.save
       flash[:success] = "You can now create and manage events."
       path = request.base_url.gsub("http://",
-      "http://#{@manager_profile.subdomain}.")
+                                   "http://#{@manager_profile.subdomain}.")
       redirect_to(path)
     else
       flash[:notice] = "Found Errors in form submitted!"
@@ -20,8 +20,9 @@ class ManagerProfilesController < ApplicationController
   end
 
   private
-    def manager_profile_params
-      params.require(:manager_profile).permit(:company_name, :company_mail,
-      :company_phone, :subdomain)
-    end
+
+  def manager_profile_params
+    params.require(:manager_profile).permit(:company_name, :company_mail,
+                                            :company_phone, :subdomain)
+  end
 end

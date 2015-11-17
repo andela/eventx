@@ -31,20 +31,20 @@
   <div class="col s12" style="padding: 0px 0px">
     <ul class="tabs">
       <li class="tab col s3">
-        <%= link_to "UPCOMING", "#test1", class:"active our-tab-color", style:"color: #313131"  %>
+        <%= link_to "UPCOMING", "#upcoming", class:"active our-tab-color", style:"color: #313131"  %>
       </li>
       <li class="tab col s3">
-        <%= link_to "FEATURED", "#test2", class:"our-tab-color", style:"color: #313131", id:"FEATURED" %>
+        <%= link_to "FEATURED", "#featured", class:"our-tab-color", style:"color: #313131", id:"featured_tab" %>
       </li>
       <li class="tab col s3">
-        <%= link_to "POPULAR", "#test3", class:"our-tab-color", style:"color: #313131", id: "POPULAR"  %>
+        <%= link_to "POPULAR", "#popular", class:"our-tab-color", style:"color: #313131", id: "popular_tab"  %>
       </li>
     </ul>
   </div>
-  <div class="col s12" id="test1">
+  <div class="col s12" id="upcoming">
     <div class="content-set">
-      <div class="row scrollblock" id="examples-transition">
-        <%= render :partial => "welcome/latest" %>
+      <div class="row scrollblock" id="upcoming_content">
+        <%= render "events/events_card", events: @events %>
         <div class="row col l12 s12 m12">
         <div class="center">
           <% unless @events.count < 12 %>
@@ -56,58 +56,8 @@
     </div>
   </div>
 
-<div class="col s12" id="test2">
-  <div class="content-set">
-    <div class="row scrollblock" id="examples-transition2">
-      <div class="row col l12 s12 m12">
-        <div class="center" style="height: inherit; width: inherit; padding: 15%;">
-          <div class="preloader-wrapper big active">
-            <div class="spinner-layer spinner-yellow-only">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-              <div class="circle"></div>
-            </div><div class="circle-clipper right">
-              <div class="circle"></div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="center">
-          <% unless @events.count < 12 %>
-              <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col s12" id="test3">
-  <div class="content-set">
-    <div class="row scrollblock" id="examples-transition3">
-      <div class="row col l12 s12 m12">
-        <div class="center" style="height: inherit; width: inherit; padding: 15%;">
-          <div class="preloader-wrapper big active">
-            <div class="spinner-layer spinner-yellow-only">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-              <div class="circle"></div>
-            </div><div class="circle-clipper right">
-              <div class="circle"></div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="center">
-          <% unless @events.count < 12 %>
-              <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <%= render "welcome/homepage_tab", text_id: "featured", example_id: "featured_content" %>
+  <%= render "welcome/homepage_tab", text_id: "popular", example_id: "popular_content" %>
 </div>
 
 <div class="near-footer">

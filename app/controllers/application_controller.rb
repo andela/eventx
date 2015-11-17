@@ -3,17 +3,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   protect_from_forgery with: :exception
 
-  #private
-
   def current_user
     @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
   end
-
-  # rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
-  # rescue_from ::NameError, with: :error_occurred
-  # rescue_from ::ActionController::RoutingError, with: :no_route_found
-  # rescue_from ::Exception, with: :error_occurred
-
 
   def no_route_found
     flash[:notice] = "Invalid address!"
@@ -22,13 +14,14 @@ class ApplicationController < ActionController::Base
 
   def check_domain
     subdomain = modify(request.subdomain)
-    excluded_subdomains = ["eventx", "admin", "www", "event"]
+    excluded_subdomains = %w[eventx admin www event]
     unless subdomain.empty? || excluded_subdomains.include?(subdomain)
       set_tenant subdomain
     end
   end
 
-protected
+  protected
+
   def record_not_found(exception)
     flash[:notice] = exception.message.to_s
     redirect_to root_path
@@ -44,19 +37,18 @@ protected
   end
 
   def set_tenant(subdomain)
-    manager = ManagerProfile.find_by(:subdomain => subdomain)
+    manager = ManagerProfile.find_by(subdomain: subdomain)
     if manager.nil?
       flash[:info] = "Subdomain does not exist"
-      render :file => "public/custom_404.html", :layout => false
+      render file: "public/custom_404.html", layout: false
     end
     ActsAsTenant.current_tenant = manager
   end
 
-   #authenticate users that are not logged in
   def authenticate_user
     unless current_user
       flash[:notice] = "You need to log in"
-      redirect_to (root_path)
+      redirect_to(root_path)
     end
   end
 end

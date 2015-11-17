@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       @events = @events.search_by_event_name(params[:search])
       respond_to do |format|
         format.html
-        format.js { render "show.js.erb"  }
+        format.js { render "show.js.erb" }
       end
     end
   end

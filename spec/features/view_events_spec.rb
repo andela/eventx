@@ -26,12 +26,12 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     expect(page).to have_button("Search")
     within("#slide-out") do
       expect(page).to have_selector("li.bold", text: "All")
-      expect(page).to have_selector("li.bold", count: Category.count+1)
+      expect(page).to have_selector("li.bold", count: Category.count + 1)
     end
     click_link "All"
     expect(page).to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
-    expect(page).to have_selector(".Amount", text: "FREE", count: 3)
+    expect(page).to have_selector(".Amount", text: "$9", count: 3)
     expect(page).to have_selector("Label", text: "Search Event")
     expect(page).to have_selector("Label", text: "Location")
 

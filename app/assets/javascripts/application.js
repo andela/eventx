@@ -1,10 +1,10 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+// This is a manifest file that"ll be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+// or any plugin"s vendor/assets/javascripts directory can be referenced here using a relative path.
 //
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// It"s not advisable to add code directly here, but if you do, it"ll appear at the bottom of the
 // compiled file.
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
@@ -19,14 +19,14 @@
 $(document).ready(function() {
   $(".more-info").click(function() {
     //preventDefault();
-    $('ul.tabs').tabs('select_tab', 'test2');
+    $("ul.tabs").tabs("select_tab", "ticketing");
   })
-  $(".preview").click(function() {
-    //preventDefault();
-    $('ul.tabs').tabs('select_tab', 'test3');
-  })
+  // $(".preview").click(function() {
+  //   //preventDefault();
+  //   $("ul.tabs").tabs("select_tab", "preview");
+  // })
 
-  $('.dropdown-button').dropdown({
+  $(".dropdown-button").dropdown({
     inDuration: 300,
     outDuration: 225,
     constrain_width: false, // Does not change width of dropdown to that of the activator
@@ -35,56 +35,56 @@ $(document).ready(function() {
     belowOrigin: false // Displays dropdown below the button
   });
 
-  if (window.location.pathname != '/') {
-    $('.our-custom-header').removeClass('before-scroll').css({
-      'padding-top': '9px'
+  if (window.location.pathname != "/") {
+    $(".our-custom-header").removeClass("before-scroll").css({
+      "padding-top": "9px"
     });
   }
 
-  $('select').material_select();
-  $('.parallax').parallax();
-  $('.modal-trigger').leanModal();
+  $("select").material_select();
+  $(".parallax").parallax();
+  $(".modal-trigger").leanModal();
   $(".button-collapse").sideNav();
 
-  $('.datepicker').pickadate({
+  $(".datepicker").pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
 
   //this creates an animation for the scroll button at the bottom of the parallax
   setInterval(function() {
-    $('.alert-scroll-under').animate({
-      opacity: 0.1 // , height: '5%', width: '5%'
+    $(".alert-scroll-under").animate({
+      opacity: 0.1 // , height: "5%", width: "5%"
     }, 500);
-    $('.alert-scroll-under').animate({
-      opacity: 1 //, height: '2%', width: '2%'
+    $(".alert-scroll-under").animate({
+      opacity: 1 //, height: "2%", width: "2%"
     }, 500);
   }, 5);
 
   // This is used to handle the create ticket session
   // of the first page of the create event page
-  $('#free_ticket_btn').click(function() {
+  $("#free_ticket_btn").click(function() {
     $("#free_ticket_div").css("display", "block");
     // Changes the create icon to teal
     $("#ticket_icon").css("color", "#26A79B");
   });
-  $('#close_free').click(function() {
+  $("#close_free").click(function() {
     $("#free_ticket_div").css("display", "none");
   });
 
-  $('#paid_ticket_btn').click(function() {
+  $("#paid_ticket_btn").click(function() {
     $("#paid_ticket_div").css("display", "block");
     // Changes the create icon to teal
     $("#ticket_icon").css("color", "#26A79B");
   });
-  $('#close_paid').click(function() {
+  $("#close_paid").click(function() {
     $("#paid_ticket_div").css("display", "none");
   });
 
 
 
-  var $navBar = $('.landing');
-  var $navBar2 = $('.scroller')
+  var $navBar = $(".landing");
+  var $navBar2 = $(".scroller")
 
     // on scroll
   $(window).scroll(function() {
@@ -93,42 +93,42 @@ $(document).ready(function() {
     var scrollPos = $(this).scrollTop();
 
     if (scrollPos >= 80) {
-      $navBar.addClass('fixer');
-      $navBar2.addClass('scroll-fix')
+      $navBar.addClass("fixer");
+      $navBar2.addClass("scroll-fix")
 
-      $('.before-scroll').show();
-      $('.alert-scroll-under').hide();
+      $(".before-scroll").show();
+      $(".alert-scroll-under").hide();
     } else {
-      $navBar.removeClass('fixer');
-      $('.before-scroll').hide();
-      $('.alert-scroll-under').show();
-      $navBar2.removeClass('scroll-fix')
+      $navBar.removeClass("fixer");
+      $(".before-scroll").hide();
+      $(".alert-scroll-under").show();
+      $navBar2.removeClass("scroll-fix")
     }
 
   });
 
-  $('.file-uploader').click(function() {
+  $(".file-uploader").click(function() {
     /* Act on the event */
-    $('#event_photo_upload').trigger('click')
+    $("#event_photo_upload").trigger("click")
   });
 
-  $('#event_photo_upload').change(function(event) {
+  $("#event_photo_upload").change(function(event) {
     /* Act on the event */
     var reader = new FileReader()
     reader.onload = function(e) {
-      $('#index-banner').css('background', "url(" + e.target.result +
+      $("#index-banner").css("background", "url(" + e.target.result +
         ")");
     }
     uploaded_file = $(this)[0].files[0]
     reader.readAsDataURL(uploaded_file);
 
 
-    $('.events_pic_name').html(uploaded_file.name)
+    $(".events_pic_name").html(uploaded_file.name)
   });
 
   //analytics
   (function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
+    i["GoogleAnalyticsObject"] = r;
     i[r] = i[r] || function() {
       (i[r].q = i[r].q || []).push(arguments)
     }, i[r].l = 1 * new Date();
@@ -137,14 +137,14 @@ $(document).ready(function() {
     a.async = 1;
     a.src = g;
     m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js',
-    'ga');
+  })(window, document, "script", "//www.google-analytics.com/analytics.js",
+    "ga");
 
-  ga('create', 'UA-65653167-1', 'auto');
-  ga('send', 'pageview');
+  ga("create", "UA-65653167-1", "auto");
+  ga("send", "pageview");
 
 
-  var event_date = $('.parallax-container').data('countdown')
+  var event_date = $(".parallax-container").data("countdown")
   if (event_date) {
     countdown(convertDate(event_date));
   }
@@ -155,7 +155,7 @@ $(document).ready(function() {
   var prev_color = ""
   var color = ""
   $(".preview").click(function() {
-    // if(prev_color=='init' || prev_color!=color){
+    // if(prev_color=="init" || prev_color!=color){
     //   prev_color = color
 
     var start_date = $("#event_start_date").val()
@@ -169,7 +169,7 @@ $(document).ready(function() {
       var map = map_val + "&output=embed"
     } else {
       var map =
-        'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' +
+        "https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb" +
         "&output=embed"
     }
     // description_selector = $("#event_description").val();
@@ -180,27 +180,27 @@ $(document).ready(function() {
     var title = ($("#event_title").val() == "") ?
       "Event title goes here" : $("#event_title").val()
     $(".preview-tab").removeClass("disabled");
-    $('ul.tabs').tabs('select_tab', 'test3');
+    $("ul.tabs").tabs("select_tab", "preview");
     $(".preview-tab").addClass("disabled");
     $(".our-event-title").html(title);
     $(".our_event_description").html(description);
     $(".our-event-date").html(start_date + " to " + end_date);
 
     prev_color = color
-    color = $("input[name='event[event_template_id]']:checked").attr('id') + " darken-4";
+    color = $("input[name='event[event_template_id]']:checked").attr("id") + " darken-4";
 
     $(".landing2").removeClass(prev_color)
     $(".landing2").addClass(color)
     $(".our-event-map-url").attr({
-      'src': map
+      "src": map
     })
   })
 
-  $('#edit-event').click(function(e) {
+  $("#edit-event").click(function(e) {
     // e.preventDefault();
-    event_id = $(this).data('eventid')
+    event_id = $(this).data("eventid")
       // console.log(event_id)
-    $('#content').load('/events/' + event_id + '/edit')
+    $("#content").load("/events/" + event_id + "/edit")
   });
 
 });
@@ -210,7 +210,7 @@ $(document).ready(function() {
 $(window).scroll(function() {
 
   /* Check the location of each desired element */
-  $('.hideme').each(function(i) {
+  $(".hideme").each(function(i) {
 
     var bottom_of_object = $(this).offset().top + $(this).outerHeight();
     var bottom_of_window = $(window).scrollTop() + $(window).height();
@@ -219,7 +219,7 @@ $(window).scroll(function() {
     if (bottom_of_window > bottom_of_object) {
 
       $(this).animate({
-        'opacity': '1'
+        "opacity": "1"
       }, 300);
     }
   });
@@ -227,32 +227,23 @@ $(window).scroll(function() {
 });
 
 $(document).ready(function() {
-  var timesClicked = 0;
-  $('#FEATURED').bind('click', function(event) {
-    $('#examples-transition2').load('/welcome/featured #content',
+  $("#featured_tab").bind("click", function(event) {
+    $("#featured_content").load("/welcome/featured",
       function() {
-        //$(document).animate({'top': 5500}, 300);
         $(this).scroll(500);
         $(this).scrollTop(300);
-        console.log('alex')
-        timesClicked++;
-        $('#examples-transition2').hide();
+        $("#featured_content").hide();
         $(this).fadeIn(1000);
-        if (timesClicked >= 1) {
-          $(this).unbind(event);
-        }
+        $(this).unbind(event);
       });
   });
 
-  $('#POPULAR').bind('click', function(event) {
-    $('#examples-transition3').load('/welcome/popular #content',
+  $("#popular_tab").bind("click", function(event) {
+    $("#popular_content").load("/welcome/popular",
       function() {
-        timesClicked++;
-        $('#examples-transition3').hide();
+        $("#popular_content").hide();
         $(this).fadeIn(5000);
-        if (timesClicked >= 1) {
-          $(this).unbind(event);
-        }
+        $(this).unbind(event);
       });
   });
 })
@@ -260,26 +251,26 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $(window).scroll(function() {
-    var height = $('#content').height();
+    var height = $("#content").height();
     var scroll = $(this).scrollTop();
     var win = $(window).height();
-    var nav = $('.nav-wrapper').height();
+    var nav = $(".nav-wrapper").height();
     var height2 = height + 6 + nav - win
     if(height != null){
       if (scroll - (height - win) >= 130) {
-        $('#slide-out').css({
-          'position': 'absolute',
-          'bottom': '0',
-          'margin-top': height2,
-          'left': '0',
-          'z-index': '-1'
+        $("#slide-out").css({
+          "position": "absolute",
+          "bottom": "0",
+          "margin-top": height2,
+          "left": "0",
+          "z-index": "-1"
         });
       }
       else {
-        $('#slide-out').css({
-          'position': 'fixed',
-          'margin-top': '0',
-          'z-index': '200'
+        $("#slide-out").css({
+          "position": "fixed",
+          "margin-top": "0",
+          "z-index": "200"
         });
       }
     }
@@ -289,7 +280,7 @@ $(document).ready(function() {
 function convertDate(startdate) {
   date = new Date();
   dateStr = startdate.toString();
-  date2 = new Date(dateStr.replace(/-/g, '/'));
+  date2 = new Date(dateStr.replace(/-/g, "/"));
   diff = Math.floor((date2 - date) / (60 * 1000));
 
   return diff;
@@ -298,12 +289,12 @@ function convertDate(startdate) {
 
 function countdown(val) {
   minutes = val
-  $('#counter').css({
-    'font-size': '3rem',
-    'padding': '0 10px',
-    'color': '#fff',
-    'z-index': '100',
-    'background-color': 'rgba(0,0,0,0.2)'
+  $("#counter").css({
+    "font-size": "3rem",
+    "padding": "0 10px",
+    "color": "#fff",
+    "z-index": "100",
+    "background-color": "rgba(0,0,0,0.2)"
   })
   if (minutes > 1) {
     var seconds = 60;
@@ -335,14 +326,14 @@ function countdown(val) {
 }
 
 $(document).ready(function() {
-  event_start_date = $('#event_start_date').data('event-start-date')
-  event_end_date = $('#event_end_date').data('event-end-date')
+  event_start_date = $("#event_start_date").data("event-start-date")
+  event_end_date = $("#event_end_date").data("event-end-date")
 
   if(event_start_date && event_end_date){
     var event_start_date = new Date(event_start_date)
     var event_end_date = new Date(event_end_date)
-    $('#event_start_date').pickadate('picker').set('select', event_start_date)
-    $('#event_end_date').pickadate('picker').set('select', event_end_date)
+    $("#event_start_date").pickadate("picker").set("select", event_start_date)
+    $("#event_end_date").pickadate("picker").set("select", event_end_date)
   }
 });
 
@@ -352,8 +343,8 @@ $(document).ready(function() {
    return false;
  });
 
- $('#preview-event-div a').each(function(e){
-    $(this).removeAttr('data-target');
+ $("#preview-event-div a").each(function(e){
+    $(this).removeAttr("data-target");
     $(this).attr({"href": "#" });
   });
 

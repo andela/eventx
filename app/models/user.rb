@@ -17,15 +17,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  # def self.auth_name
-  #   if self.info.name == "" || nil?
-  #     return self.info.login
-  #   else
-  #     return self.info.name
-  #   end
-  # end
-
-  def is_an_event_manager?
-   !self.manager_profile.nil?
+  def event_manager?
+    !manager_profile.nil?
   end
 end

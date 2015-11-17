@@ -30,8 +30,10 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     find("#event_category_id").find(:xpath, "option[2]").select_option
 
     date = Date.tomorrow.in_time_zone.to_i * 1000
-    page.execute_script("$('#event_start_date').pickadate('picker').set('select', #{date})")
-    page.execute_script("$('#event_end_date').pickadate('picker').set('select', #{date})")
+    page.execute_script("$('#event_start_date')\
+                        .pickadate('picker').set('select', #{date})")
+    page.execute_script("$('#event_end_date')\
+                        .pickadate('picker').set('select', #{date})")
 
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description

@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root "welcome#index"
   get "events/new"
   get "welcome/index"
-  get  "welcome/featured"
-  get  "welcome/popular"
+  get "welcome/featured"
+  get "welcome/popular"
   get "events/loading"
   post "/paypal_hook" => "bookings#paypal_hook", as: :hook
   post "/view" => "bookings#view_booking", as: :view_booking
