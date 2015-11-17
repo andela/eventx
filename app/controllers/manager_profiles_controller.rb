@@ -21,6 +21,7 @@ class ManagerProfilesController < ApplicationController
 
   private
     def manager_profile_params
-      params.require(:manager_profile).permit(:company_name, :company_mail, :company_phone, :subdomain)
+      params.require(:manager_profile).permit(:company_name, :company_mail,
+      :company_phone, :subdomain)
     end
 end
