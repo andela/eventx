@@ -1,4 +1,4 @@
-require 'faker'
+require "faker"
 
 module Fakeout
   class Builder
@@ -42,11 +42,11 @@ module Fakeout
 
     def pick_random(model)
       ids = ActiveRecord::Base.connection.select_all("SELECT id FROM #{model.to_s.tableize}")
-      model.find(ids[rand(ids.length)]['id'].to_i) if ids
+      model.find(ids[rand(ids.length)]["id"].to_i) if ids
     end
 
     def random_unique_email
-      Faker::Internet.email.gsub('@', "+#{User.count}@")
+      Faker::Internet.email.gsub("@", "+#{User.count}@")
     end
   end
 
@@ -70,5 +70,3 @@ module Fakeout
     end
   end
 end
-
-
