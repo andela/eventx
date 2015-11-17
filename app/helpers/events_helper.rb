@@ -17,10 +17,6 @@ module EventsHelper
     end
   end
 
-  # def unattend_event_button()
-  #
-  # end
-
   def all_template
     EventTemplate.order(:name)
   end
@@ -29,7 +25,7 @@ module EventsHelper
     if id
       "/events/#{id}"
     else
-      '/events/loading'
+      "/events/loading"
     end
   end
 
@@ -42,5 +38,4 @@ module EventsHelper
     new_map
   end
 
- 
 end

@@ -7,5 +7,9 @@ FactoryGirl.define do
     company_phone "08062201524"
     domain "MyDomain"
     id 1
+    factory :invalid_manager do
+      id 2
+      subdomain nil
+    end
   end
 end
