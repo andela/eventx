@@ -11,8 +11,9 @@ RSpec.describe SessionsController, type: :controller do
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
     end
     it "should successfully create a user" do
-      expect { post :create,
-        provider: :google_oauth2 }.to change{ User.count }.by(1)
+      count = User.count
+      post :create, provider: :google_oauth2
+      expect(User.count).to be > count
     end
     it "should successfully create a session" do
       expect(session[:user_id]).to be_nil

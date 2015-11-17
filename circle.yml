@@ -8,4 +8,4 @@ machine:
     version: 2.2.3
 test:
   override:
-    - bundle exec rake spec
+    - rake spec

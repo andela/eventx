@@ -1,15 +1,7 @@
 Category.destroy_all
 Category.reset_pk_sequence
-# ActiveRecord::Base.connection.reset_pk_sequence!("Category")
-# ActiveRecord::Base.connection.execute("DELETE FROM CATEGORIES")
-# ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='CATEGORIES'")
-# ActiveRecord::Base.connection.execute("DELETE FROM EVENT_TEMPLATES")
-# ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='EVENT_TEMPLATES'")
-# #delete from your_table;   //
-# # delete from sqlite_sequence where n#ame='your_table';
 EventTemplate.destroy_all
 EventTemplate.reset_pk_sequence
-# ActiveRecord::Base.connection.reset_pk_sequence!('EventTemplate')
 
 template_list = [
   ["blue","http://res.cloudinary.com/neddinn/image/upload/c_scale,h_92,w_101/v1442402582/blue_k0b4yt.png"],
@@ -27,13 +19,13 @@ template_list = [
 ]
 
 category_list = [
-  ["Music","Intimate, house concerts, major music festival, and the occasional dance party",""],
-  ["Food & drink","Dinner parties, tasting and big-time festivals",""],
-  ["Classes","Enlightening seminars, technical workshops, and fitness classes",""],
-  ["Arts","Plays, comedy nights, art exhibitions and film festivals",""],
-  ["Parties","Casual happy hours, singles nights, and all-night celebrations",""],
-  ["Sport & Wellness","Obstacle races, drop-in yoga classes, and the big game",""],
-  ["Networking","Business mixers, hobby meetups, and panel discussions",""]
+  ["Music", "Intimate, house concerts, major music festival, and the occasional dance party", ""],
+  ["Food & drink", "Dinner parties, tasting and big-time festivals", ""],
+  ["Classes", "Enlightening seminars, technical workshops, and fitness classes", ""],
+  ["Arts", "Plays, comedy nights, art exhibitions and film festivals", ""],
+  ["Parties", "Casual happy hours, singles nights, and all-night celebrations", ""],
+  ["Sport & Wellness", "Obstacle races, drop-in yoga classes, and the big game", ""],
+  ["Networking", "Business mixers, hobby meetups, and panel discussions", ""]
 ]
 
 category_list.each do |name, description, banner|
