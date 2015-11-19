@@ -10,7 +10,6 @@ class EventDecorator < Draper::Decorator
     end
   end
 
-
   def start_date
     if object.start_date
       object.start_date.strftime("%b %d %Y")
@@ -22,8 +21,6 @@ class EventDecorator < Draper::Decorator
   def event_template
     if object.event_template
       object.event_template.name
-    else
-      nil
     end
   end
 
@@ -34,5 +31,4 @@ class EventDecorator < Draper::Decorator
       ""
     end
   end
-
 end

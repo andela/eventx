@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$white-color: #000;
 
 .margin-down{
-  overflow: hidden;
   margin-top: 50px;
   padding-bottom: 20px;
   input, select{
@@ -54,6 +54,7 @@
     border: 1px solid #CCCCCC !important;
     border-radius: 0px !important;
     width: 90%;
+    color: $white-color; //!important;
     -webkit-appearance: none;
     display: block;
     margin-left: 13%;
@@ -171,7 +172,7 @@ input#event_photo_upload{
   margin-bottom: 0px !important;
 }
 
-#test3 {
+#popular {
   margin-left: 0px !important;
 }
 

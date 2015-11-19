@@ -1,9 +1,6 @@
 <div>
-
   <% content_for :nav_cat do %>
         <li class="teal darken-3">
-
-
           <div class="row our-image-cover">
             <div class="col l12 m12 s12">
               <%= link_to root_path do %>
@@ -22,10 +19,6 @@
         </li>
         <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Account Details </a>
         </li>
-
-        <!--<li class="bold"><a href="<%#= signout_path %>" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Logout </a>-->
-        </li>
-
         <li class="li-hover">
           <div class="row">
             <div class="col s12 m12 l12">
@@ -35,17 +28,16 @@
             </div>
           </div>
         </li>
-
   <% end %>
   </div>
   <div class="our-new-custom-nav">
-    <%= render partial: 'layouts/nav' %>
+    <%= render partial: "layouts/nav" %>
   </div>
   <div id="main">
       <!-- START WRAPPER -->
       <div class="wrapper">
 
-        <%= render partial: 'layouts/sidebar'%>
-        <%= render partial: 'users/dashboard'%>
+        <%= render partial: "layouts/sidebar"%>
+        <%= render partial: "users/dashboard"%>
     </div>
 </div>

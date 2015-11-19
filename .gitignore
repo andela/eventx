@@ -21,6 +21,10 @@ coverage/
 
 .idea/
 
+# Rubocop
+index.html
+
+
 app/assets/stylesheets/material_icons/
 app/assets/font/material_icons/
 app/codesnip
