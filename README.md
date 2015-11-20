@@ -1,7 +1,6 @@
 # EventX
 [![Code Climate](https://codeclimate.com/github/andela/eventx/badges/gpa.svg)](https://codeclimate.com/github/andela/eventx)
-[![Coverage Status](https://coveralls.io/repos/andela/eventx/badge.svg?branch=manager_test&service=github)](https://coveralls.io/github/andela/eventx?branch=manager_test)
-[![Test Coverage](https://codeclimate.com/github/andela/eventx/badges/coverage.svg)](https://codeclimate.com/github/andela/eventx/coverage)
+[![Coverage Status](https://coveralls.io/repos/andela/eventx/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela/eventx?branch=master)
 
 What do you do when you have an event and all the event management applications available are too heavy but with little functionality to serve your purpose?
 How do organize a small get-together with your friends, without having to go through a rigorous event creation process and without bothering about all the complexities of event management?
