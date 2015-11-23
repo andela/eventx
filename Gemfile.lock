@@ -144,7 +144,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    materialize-sass (0.97.2)
+    materialize-sass (0.97.1)
       sass (~> 3.3)
     method_source (0.8.2)
     mime-types (2.6.2)
@@ -328,51 +328,54 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-import
-  acts_as_tenant
-  cancancan
-  capybara
-  carrierwave
-  chromedriver-helper
-  cloudinary
+  activerecord-import (= 0.10.0)
+  acts_as_tenant (~> 0.3.9)
+  cancancan (= 1.13.1)
+  capybara (= 2.5.0)
+  carrierwave (= 0.10.0)
+  chromedriver-helper (= 1.0.0)
+  cloudinary (= 1.1.0)
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
   coveralls
-  daemons
-  database_cleaner
-  delayed_job_active_record
-  draper
-  factory_girl_rails
-  faker
-  figaro
-  font-awesome-sass
+  daemons (= 1.2.3)
+  database_cleaner (= 1.5.1)
+  delayed_job_active_record (= 4.1.0)
+  draper (= 2.1.0)
+  factory_girl_rails (= 4.5.0)
+  faker (= 1.5.0)
+  figaro (= 1.1.1)
+  font-awesome-sass (= 4.4.0)
   jbuilder (~> 2.0)
-  jquery-rails
-  launchy
-  materialize-sass
+  jquery-rails (= 4.0.5)
+  launchy (= 2.4.3)
+  materialize-sass (= 0.97.1)
   nokogiri (= 1.6.6.2)
-  omniauth-facebook
-  omniauth-github
-  omniauth-google-oauth2
-  omniauth-linkedin
+  omniauth-facebook (= 3.0.0)
+  omniauth-github (= 1.1.2)
+  omniauth-google-oauth2 (= 0.2.10)
+  omniauth-linkedin (= 0.2.0)
   omniauth-oauth2 (~> 1.3.1)
-  omniauth-tumblr
-  omniauth-twitter
+  omniauth-tumblr (= 1.1)
+  omniauth-twitter (= 1.2.1)
   pg (= 0.17.1)
   pry-rails
   rails (= 4.2.1)
   rails_12factor (= 0.0.2)
   redcarpet (= 3.3.2)
-  responders
-  rmagick
-  rspec-rails
+  responders (= 2.1.0)
+  rmagick (= 2.15.4)
+  rspec-rails (= 3.4.0)
   rubocop
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  selenium-webdriver
+  selenium-webdriver (= 2.48.1)
   simplecov
   social-share-button (~> 0.1.6)
-  spring
-  sqlite3
+  spring (= 1.4.3)
+  sqlite3 (= 1.3.11)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.6
