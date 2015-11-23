@@ -92,8 +92,8 @@ class Event < ActiveRecord::Base
 
   def self.popular_events
     query = "SELECT events.*, COUNT(bookings.event_id) AS num from events "
-    query += "INNER JOIN bookings WHERE bookings.event_id = events.id "
-    query += "GROUP BY events.id ORDER BY num"
+    query += "INNER JOIN bookings ON bookings.event_id = events.id "
+    query += "GROUP BY events.id ORDER BY num DESC"
     find_by_sql(query)
   end
 
