@@ -1,12 +1,16 @@
 class BookingsController < ApplicationController
-  before_action except: [:view_booking, :paypal_hook] do
-    authenticate_user
+  before_action :authenticate_user
+  before_action except: [:view_booking, :paypal_hook, :index] do
     set_event
     ticket_params
     ticket_quantity_specified?
   end
 
   protect_from_forgery except: [:paypal_hook]
+
+  def index
+    @bookings = current_user.bookings
+  end
 
   def create
     @booking = Booking.create(event: @event, user: current_user)

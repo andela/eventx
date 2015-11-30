@@ -35,6 +35,8 @@ gem "cloudinary", "1.1.0"
 gem "delayed_job_active_record", "4.1.0"
 gem "daemons", "1.2.3"
 gem "faker", "1.5.0"
+gem "barby"
+gem "rqrcode"
 
 group :development, :test do
   gem "rspec-rails", "3.4.0"
