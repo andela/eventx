@@ -1,6 +1,4 @@
 require "codeclimate-test-reporter"
-require "capybara"
-
 SimpleCov.start "rails" do
   formatter SimpleCov::Formatter::MultiFormatter[
     SimpleCov::Formatter::HTMLFormatter,
@@ -33,7 +31,7 @@ RSpec.configure do |config|
   end
 
   # config.after(:suite) do
-  #   WebMock.disable_net_connect!(:allow => 'codeclimate.com')
+  #   WebMock.disable_net_connect!(:allow => "codeclimate.com")
   # end
 
   # The settings below are suggested to provide a good initial experience
@@ -69,8 +67,4 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   # Kernel.srand config.seed
-end
-
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
