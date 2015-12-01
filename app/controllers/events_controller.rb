@@ -12,21 +12,24 @@ class EventsController < ApplicationController
   def index
     @events = Event.recent_events
     @categories = Category.all
-    unless params.size == 0
-      date = (params[:event_date].nil?) ? "" : params[:event_date]
-      params[:event_date] = date
-      location = (params[:event_location].nil?) ? "" : params[:event_location]
-      params[:event_location] = location
-      event_name = (params[:event_name].nil?) ? "" : params[:event_name]
-      params[:event_name] = event_name
-      if params[:category_id].nil?
-        @events = Event.search(params[:event_name], params[:event_location],
-                               params[:event_date])
-      else
-        @events = Event.where(category_id: params[:category_id])
-      end
-      unless @events.nil?
-        render :index
+    respond_to do |format|
+      unless params.size == 0
+        date = (params[:event_date].nil?) ? "" : params[:event_date]
+        params[:event_date] = date
+        location = (params[:event_location].nil?) ? "" : params[:event_location]
+        params[:event_location] = location
+        event_name = (params[:event_name].nil?) ? "" : params[:event_name]
+        params[:event_name] = event_name
+        if params[:category_id].nil?
+          @events = Event.search(params[:event_name], params[:event_location],
+                                 params[:event_date])
+          renders(format, @events, :index)
+        elsif params[:category_id]
+          @events = Event.where(category_id: params[:category_id])
+          renders(format, @events, :index)
+        else
+          renders(format, @events, :index)
+        end
       end
     end
   end
@@ -36,6 +39,9 @@ class EventsController < ApplicationController
     @booking.user = current_user
     @event_ticket = @event.ticket_types
     1.times { @booking.user_tickets.build }
+    respond_to do |format|
+      renders(format, @event)
+    end
   end
 
   def edit
@@ -54,18 +60,20 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
-    if @event.save
-      @event.event_staffs.create(user: current_user).event_manager!
-      flash[:id] = @event.id
-      created = "Event was successfully created."
-      respond_to do |format|
+    respond_to do |format|
+      if @event.save
+        @event.event_staffs.create(user: current_user).event_manager!
+        flash[:id] = @event.id
+        created = "Event was successfully created."
         format.html { redirect_to @event, notice: "#{created}" }
-        format.json
+        format.json { render json: @event, status: 201 }
         format.xml
+      else
+        format.html do
+          render :new, flash[:notice] = @event.errors.full_messages.join("<br>")
+        end
+        format.json { render json: @events.errors, status: 422 }
       end
-    else
-      flash[:notice] = @event.errors.full_messages.join("<br />")
-      render :new
     end
   end
 
@@ -77,6 +85,12 @@ class EventsController < ApplicationController
                                   :image, :template_id, :map_url,
                                   :event_template_id, ticket_types_attributes:
                                   [:id, :_destroy, :name, :quantity, :price])
+  end
+
+  def renders(format, objects, page = nil)
+    format.html { render page }
+    format.json { render json: objects }
+    format.js {}
   end
 
   def set_events
