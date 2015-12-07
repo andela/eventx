@@ -21,7 +21,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   config.active_job.queue_adapter = :delayed_job
-
+  OmniAuth.config.full_host = ENV["app_host"]
   # Set mail delivery type to :smtp, :sendmail, :file or :test
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

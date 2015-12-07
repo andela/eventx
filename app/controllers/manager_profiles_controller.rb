@@ -6,7 +6,7 @@ class ManagerProfilesController < ApplicationController
     @manager_profile.user_id = current_user.id
     if @manager_profile.save
       flash[:success] = "You can now create and manage events."
-      path = request.base_url.gsub("http://",
+      path = request.base_url.gsub(%r((http:\/\/www.)|(www.)|(http:\/\/)),
                                    "http://#{@manager_profile.subdomain}.")
       redirect_to(path)
     else

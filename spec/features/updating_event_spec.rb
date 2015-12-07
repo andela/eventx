@@ -56,12 +56,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "This is an edited Event"
-    expect(page).to have_content "Obodo, Oyibo"
     expect(page).to have_content "Your Event was successfully updated"
-    fill_in "search", with: "This is a test Event"
-    expect(page).to have_content "No Event found"
-    expect(page).not_to have_content "This is a test Event"
-    fill_in "search", with: "This is an edited Event"
-    expect(page).to have_content "Obodo, Oyibo"
+    expect(page.current_path).to eq "/events/1"
   end
 end
