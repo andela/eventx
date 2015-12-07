@@ -8,7 +8,7 @@ module PrintHelper
     @ticket_type = TicketType.find(ticket_type_id)
     @event = @ticket_type.event
     tickets = ""
-    quantity.times  { tickets += render "ticket" }
+    quantity.times  { tickets += render "printer/ticket" }
     tickets
   end
 
@@ -19,4 +19,15 @@ module PrintHelper
     "data:image/png;base64,#{base64_output}"
   end
 
+  def booking_tickets(booking)
+    ticket_types = ""
+    tickets = booking.user_tickets.group(:ticket_type_id).count
+    tickets.each do |type_id, quantity|
+      type = TicketType.find_by(id: type_id).name
+      ticket_types << content_tag("p", link_to(
+        type, print_path(booking.id, type_id)) + ": #{quantity}"
+      )
+    end
+    ticket_types.html_safe
+  end
 end

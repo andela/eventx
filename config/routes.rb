@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
   get "/tickets" => "bookings#index"
-  get "/print/:booking_id" => "printer#print", as: :print
+  get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
   get "/download/:booking_id" => "printer#download", as: :download
   get "/session" => "sessions#create"
   resources :users, only: [:show]
