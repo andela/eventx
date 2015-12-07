@@ -10,6 +10,9 @@ Bundler.require(*Rails.groups)
 
 module EventX
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
     # Settings in config/environments/*
     # take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -27,8 +30,9 @@ module EventX
     # config.i18n.load_path +=
     # Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    # config.autoload_paths += Dir["#{config.root}/lib/**/"]
-    # config.autoload_paths += Dir["#{config.root}/lib/*"]
+    # config.autoload_paths << Rails.root.join("lib")
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += Dir["#{config.root}/lib/*"]
     config.assets.compile = true
     config.assets.digest = true
     # Do not swallow errors in after_commit/after_rollback callbacks.

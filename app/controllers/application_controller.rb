@@ -1,10 +1,24 @@
+require "application_responder"
+
 class ApplicationController < ActionController::Base
+  self.responder = ApplicationResponder
+  respond_to :html, :json
+
   before_action :check_domain
   helper_method :current_user
-  protect_from_forgery with: :exception
+  protect_from_forgery
+  skip_before_action :verify_authenticity_token, if: :json_request?
+
+  rescue_from NotAuthenticatedError do
+    render status: :unauthorized
+  end
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+    if session[:user_id]
+      @current_user ||= User.find_by_id(session[:user_id])
+    elsif decoded_auth_token
+      @current_user ||= User.find_by_id(decoded_auth_token["user_id"])
+    end
   end
 
   def no_route_found
@@ -31,6 +45,10 @@ class ApplicationController < ActionController::Base
     name.match(/\A([a-zA-Z]+)/).to_s
   end
 
+  def json_request?
+    request.format.json?
+  end
+
   def error_occurred(exception)
     flash[:notice] = exception.message.to_s
     redirect_to root_path
@@ -45,10 +63,27 @@ class ApplicationController < ActionController::Base
     ActsAsTenant.current_tenant = manager
   end
 
+  def decoded_auth_token
+    @decoded_auth_token ||= AuthToken.decode(http_auth_header)
+  end
+
+  def http_auth_header
+    if request.headers["Authorization"].present?
+      return request.headers["Authorization"].split(" ").last
+    end
+  end
+
   def authenticate_user
     unless current_user
-      flash[:notice] = "You need to log in"
-      redirect_to(root_path)
+      respond_to do |format|
+        format.html do
+          redirect_to(root_path)
+          flash[:notice] = "You need to log in"
+        end
+        format.json do
+          fail NotAuthenticatedError
+        end
+      end
     end
   end
 end

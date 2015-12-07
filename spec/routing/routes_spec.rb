@@ -21,10 +21,10 @@ RSpec.describe "routing to controllers", type: :routing do
     )
   end
   it "gets featured events" do
-    expect(get: "welcome/featured").to be_routable
+    expect(get: "/featured_events").to be_routable
   end
   it "gets popular events" do
-    expect(get: "welcome/popular").to be_routable
+    expect(get: "/popular_events").to be_routable
   end
   it "routes /paypal_hook to Bookings" do
     expect(post: "/paypal_hook").to route_to(

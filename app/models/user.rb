@@ -20,4 +20,10 @@ class User < ActiveRecord::Base
   def event_manager?
     !manager_profile.nil?
   end
+
+  def generate_auth_token
+    user = self
+    payload = { user_id: user.id, email: user.email }
+    AuthToken.encode(payload)
+  end
 end

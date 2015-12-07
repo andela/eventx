@@ -228,7 +228,7 @@ $(window).scroll(function() {
 
 $(document).ready(function() {
   $("#featured_tab").bind("click", function(event) {
-    $("#featured_content").load("/welcome/featured",
+    $("#featured_content").load("/featured_events",
       function() {
         $(this).scroll(500);
         $(this).scrollTop(300);
@@ -239,7 +239,7 @@ $(document).ready(function() {
   });
 
   $("#popular_tab").bind("click", function(event) {
-    $("#popular_content").load("/welcome/popular",
+    $("#popular_content").load("/popular_events",
       function() {
         $("#popular_content").hide();
         $(this).fadeIn(5000);

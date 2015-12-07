@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root "welcome#index"
   get "events/new"
-  get "welcome/index"
-  get "welcome/featured"
-  get "welcome/popular"
+  get "/featured_events" => "welcome#featured"
+  get "/popular_events" => "welcome#popular"
+  get "/upcoming_events" => "welcome#index"
   get "events/loading"
   post "/paypal_hook" => "bookings#paypal_hook", as: :hook
   post "/view" => "bookings#view_booking", as: :view_booking
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
   get "/download/:booking_id" => "printer#download", as: :download
   get "/session" => "sessions#create"
+  post "/api_login" => "sessions#api_login"
   resources :users, only: [:show]
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")
