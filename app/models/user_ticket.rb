@@ -9,7 +9,7 @@ class UserTicket < ActiveRecord::Base
   private
 
   def add_ticket_number
-    ticket_number ||= SecureRandom.hex
-    ticket_number
+    self.ticket_number ||= SecureRandom.hex
+    self.ticket_number
   end
 end

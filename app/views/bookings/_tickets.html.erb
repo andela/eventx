@@ -1,0 +1,19 @@
+<div class="row">
+  <% @bookings.each do |booking|%>
+  <div class="col s12 m4 l4">
+    <div class="card medium">
+      <div class="card-image">
+        <img src="http://www.herald.co.zw/wp-content/uploads/2014/09/PPC-Ads-online-page-surebuild-300px-x-600px.jpg">
+        <span class="card-title"><%=booking.event.title %></span>
+      </div>
+      <div class="card-content">
+        <%= booking_tickets(booking) %>
+      </div>
+      <div class="card-action">
+        <%= link_to content_tag(:i, "", class: "fa fa-print") + "Print", print_path(booking.id), class: "left"%>
+        <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + "Download", download_path(booking.id), {class: "right", target: "_blank"}%>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

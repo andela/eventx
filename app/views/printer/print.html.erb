@@ -1,0 +1,3 @@
+<% @ticket_types.each do |ticket_type_id, quantity| %>
+<%= print_ticket(ticket_type_id, quantity).html_safe %>
+<% end %>
