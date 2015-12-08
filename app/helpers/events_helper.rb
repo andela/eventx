@@ -42,9 +42,15 @@ module EventsHelper
     if user_is_attending_event(event)
       "Attending"
     elsif tickets.max == tickets.min
-      tickets.max == 0 ? "Free" : "$#{tickets.max.to_i}"
+      tickets.max == 0 ? "Free" : number_to_currency(tickets.max, unit: "$")
     else
-      "$#{tickets.min.to_i} " "-" " $#{tickets.max.to_i}"
+      "#{converter(tickets.min)} - #{converter(tickets.max)}"
     end
+  end
+
+  private
+
+  def converter(amt)
+    number_to_currency(amt, unit: "$")
   end
 end

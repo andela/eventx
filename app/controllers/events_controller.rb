@@ -12,21 +12,15 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.recent_events
-    @categories = Category.all
-    unless params.size == 0
+    if params.size != 0
+      @categories = Category.all
+      category_id = (params[:category_id].nil?) ? "" : params[:category_id]
       date = (params[:event_date].nil?) ? "" : params[:event_date]
-      params[:event_date] = date
       location = (params[:event_location].nil?) ? "" : params[:event_location]
-      params[:event_location] = location
       event_name = (params[:event_name].nil?) ? "" : params[:event_name]
-      params[:event_name] = event_name
-      if params[:category_id].nil?
-        @events = Event.search(params[:event_name], params[:event_location],
-                               params[:event_date])
-      elsif params[:category_id]
-        @events = Event.where(category_id: params[:category_id])
-      end
+      @events = Event.search(event_name, location, date, category_id)
+    else
+      @events = Event.recent_events
     end
     respond_with @events
   end

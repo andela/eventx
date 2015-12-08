@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @events = @user.events
     if params[:search]
       @events = @events.search_by_event_name(params[:search])
-      respond_with @events
     end
+    respond_with @events
   end
 end
