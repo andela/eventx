@@ -1,10 +1,10 @@
-/* line 6, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 6, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 html, body {
   height: 100%;
   width: 100%;
 }
 
-/* line 11, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 11, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .parallax-container {
   height: inherit;
   width: 100%;
@@ -12,7 +12,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* line 18, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 18, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 #event {
   position: absolute;
   height: inherit;
@@ -22,7 +22,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* line 27, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 27, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .home_app_title {
   color: #fff !important;
   text-shadow: 2px 1px 1px black;
@@ -30,30 +30,30 @@ html, body {
   margin: 0;
 }
 
-/* line 34, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 34, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .home_user_options {
   text-align: right;
 }
 
-/* line 41, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 41, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .home_user_options .home_sign_in_or_up {
   display: inline;
 }
 
-/* line 46, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 46, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .home_user_options .home_sign_in_or_up .btn_a_tag {
   text-decoration: none;
   color: #fff;
 }
 
-/* line 52, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 52, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .home_app_tag {
   width: 20%;
   font-size: 1.5em;
   color: #fff;
 }
 
-/* line 58, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 58, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .btn-large.home_button {
   font-size: 1.25em;
   border-style: solid #EED8AE;
@@ -62,20 +62,20 @@ html, body {
   color: #000000;
 }
 
-/* line 68, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 68, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .home_tag {
   position: relative;
   top: 12%;
   bottom: 12%;
 }
 
-/* line 74, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 74, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .search_form {
   position: relative;
   background-color: rgba(0, 0, 0, 0.64);
   bottom: 0 !important;
 }
-/* line 80, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 80, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .search_form select {
   width: 80%;
   margin-left: 20%;
@@ -89,65 +89,65 @@ html, body {
   text-decoration: none !important;
   border-radius: none !important;
 }
-/* line 95, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 95, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .search_form select:focus {
   outline: none;
 }
 
-/* line 117, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 117, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .white_text {
   color: #fff !important;
 }
 
-/* line 122, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 122, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .black_text {
   color: black !important;
 }
 
-/* line 126, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 126, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 input[type=text]:focus:not([readonly]) {
   border-bottom: 1px solid #fff;
   box-shadow: 0 1px 0 0 #EED8AE;
 }
 
-/* line 131, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 131, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .content-set {
   margin: 40px;
 }
 
-/* line 135, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 135, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .event-section {
   background: #F7F7F7;
 }
 
-/* line 139, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 139, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .card-shadow {
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-/* line 143, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 143, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .card .card-content .card-title {
   line-height: 0px;
   width: 15px;
 }
 
-/* line 148, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 148, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .card .card-title {
   font-size: 15px;
 }
 
-/* line 152, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 152, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .card .card-action {
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 10px 20px;
 }
 
-/* line 157, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 157, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .pointer {
   cursor: pointer;
 }
 
-/* line 161, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 161, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .Amount {
   text-transform: uppercase;
   background-color: #EED8AE;
@@ -164,7 +164,7 @@ input[type=text]:focus:not([readonly]) {
   z-index: 50;
 }
 
-/* line 177, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 177, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .card .card-reveal {
   padding: 20px;
   position: absolute;
@@ -177,12 +177,12 @@ input[type=text]:focus:not([readonly]) {
   display: none;
 }
 
-/* line 191, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 191, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .remove-margin {
   margin: 0;
 }
 
-/* line 195, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 195, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .tabs .indicator {
   position: absolute;
   bottom: 0;
@@ -191,7 +191,7 @@ input[type=text]:focus:not([readonly]) {
   will-change: left, right;
 }
 
-/* line 203, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 203, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .tabs .tab a {
   color: #8c8383;
   display: block;
@@ -205,27 +205,27 @@ input[type=text]:focus:not([readonly]) {
   transition: color 0.28s ease;
 }
 
-/* line 216, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 216, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .tabs .tab a:hover {
   color: #f9c9cb;
 }
 
-/* line 221, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 221, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 footer.page-footer {
   margin-top: 0px;
   padding-top: 20px;
   background-color: #333333;
   border-top: 5px solid #666666;
 }
-/* line 226, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 226, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 footer.page-footer .brand-logo {
   margin-left: 100px;
 }
-/* line 229, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 229, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 footer.page-footer a {
   color: #666;
 }
-/* line 232, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 232, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 footer.page-footer nav {
   color: #fff;
   background-color: #333333;
@@ -235,25 +235,25 @@ footer.page-footer nav {
   border-bottom: #000000 2px solid;
 }
 
-/* line 243, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 243, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .hideme {
   opacity: 0;
 }
 
-/* line 248, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 248, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 i.when_icon {
   color: white;
   position: absolute;
   left: 5px;
 }
 
-/* line 254, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 254, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .btn-large.bottom_btn {
   background-color: #EED8AE;
   color: #000000;
 }
 
-/* line 265, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 265, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 nav.custom_nav {
   background-color: transparent;
   width: 100%;
@@ -262,12 +262,12 @@ nav.custom_nav {
   position: absolute;
 }
 
-/* line 279, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 279, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .sso_option .btn {
   width: 100% !important;
 }
 
-/* line 284, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 284, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .profile_pic.circle {
   vertical-align: middle;
   width: 50px;
@@ -275,12 +275,12 @@ nav.custom_nav {
   border: solid 3px rgba(255, 255, 255, 0.6);
 }
 
-/* line 290, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 290, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .our-center {
   margin: 0 auto !important;
 }
 
-/* line 294, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 294, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .alert-scroll-under {
   display: inline-block;
   vertical-align: middle;
@@ -295,7 +295,7 @@ nav.custom_nav {
   margin-left: -0.375rem;
 }
 
-/* line 310, /rails/eventx/app/assets/stylesheets/welcome.scss.erb */
+/* line 310, /Users/ikem/Projects/simulations/eventx/app/assets/stylesheets/welcome.scss.erb */
 .drop {
   color: #6B5936;
 }
