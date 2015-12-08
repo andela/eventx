@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/featured_events" => "welcome#featured"
   get "/popular_events" => "welcome#popular"
   get "/upcoming_events" => "welcome#index"
+  get "/my_events" => "users#show"
   get "events/loading"
   post "/paypal_hook" => "bookings#paypal_hook", as: :hook
   post "/view" => "bookings#view_booking", as: :view_booking

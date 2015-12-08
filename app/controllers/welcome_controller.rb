@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
   end
 
   def renders(events)
-    respond_to do |format|
+    respond_with(events) do |format|
       format.html { render "welcome/events_list", layout: false }
       format.json { render json: events }
     end

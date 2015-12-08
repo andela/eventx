@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, if: :json_request?
 
   rescue_from NotAuthenticatedError do
-    render status: :unauthorized
+    render json: {}, status: :unauthorized
   end
 
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find_by_id(session[:user_id])
-    elsif decoded_auth_token
+    if decoded_auth_token
       @current_user ||= User.find_by_id(decoded_auth_token["user_id"])
+    elsif session[:user_id]
+      @current_user ||= User.find_by_id(session[:user_id])
     end
   end
 

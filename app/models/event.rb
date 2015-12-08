@@ -45,11 +45,11 @@ class Event < ActiveRecord::Base
     true if attendees.include?(user.id)
   end
 
-  def self.search(title = "", location = "", date = "")
+  def self.search(title = "", location = "", date = "", category_id = "")
     date_range = []
     date_range = format_date(date) unless date.empty?
-    location = "%" + location + "%" unless location.empty?
-    title = "%" + title + "%" unless title.empty?
+    location = "%" + location + "%"
+    title = "%" + title + "%"
     query = "SELECT * FROM events "
     query += "WHERE " unless title.empty? && location.empty? && date.empty?
     query += "title LIKE :title" unless title.empty?
@@ -57,9 +57,12 @@ class Event < ActiveRecord::Base
     query += "location LIKE :location" unless location.empty?
     query += " AND " unless location.empty? || date.empty?
     query += "start_date Between :start_date AND :end_date" unless date.empty?
+    query += " AND " unless category_id.empty?
+    query += "category_id = :category_id" unless category_id.empty?
     find_by_sql [query, {
       title: title, location: location,
-      start_date: date_range[0], end_date: date_range[-1]
+      start_date: date_range[0], end_date: date_range[-1],
+      category_id: category_id
     }]
   end
 

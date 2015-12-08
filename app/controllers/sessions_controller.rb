@@ -13,17 +13,20 @@ class SessionsController < ApplicationController
   end
 
   def api_login
-    head :no_content unless params[:token] && params[:provider]
-    token = params[:token]
-    provider = params[:provider]
-    response = HTTParty.get(ENV[provider],
-                            headers: { "Access_token"  => token,
-                                       "Authorization" => "OAuth #{token}" })
-    userinfo = JSON.parse(response.body) if response.code == 200
-    create_auth_obj(userinfo)
-    @user = User.from_omniauth(userinfo) if userinfo
-    api_key = @user.generate_auth_token if @user
-    render json: api_key.to_json || { error: "Invalid credentials" }
+    if params["token"].blank? || params["provider"].blank?
+      render json: {}, status: 417
+    else
+      token = params[:token]
+      @provider = params[:provider]
+      response = HTTParty.get(ENV[@provider],
+                              headers: { "Access_token"  => token,
+                                         "Authorization" => "OAuth #{token}" })
+      userinfo = JSON.parse(response.body) if response.code == 200
+      @user = User.from_omniauth(create_auth_obj(userinfo)) if userinfo
+      api_key = @user.generate_auth_token if @user
+      api_key ||= "Invalid token/provider supplied"
+      render json: { api_key: api_key }
+    end
   end
 
   def destroy
@@ -32,19 +35,16 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-  # private
+  private
 
-  # def create_auth_obj
-  # end
-  #
-  # def oauth_url(provider)
-  #   oauth_url = {}
-  #   oauth_url["google"] = "https://www.googleapis.com/oauth2/v2/userinfo"
-  #   fields = "fields=id,name,email,picture"
-  #   oauth_url["facebook"] = "https://graph.facebook.com/me?#{fields}"
-  #   t_fields = "status=false,include_email=true"
-  #   twitter = "https://api.twitter.com/1.1/account/verify_credentials.json"
-  #   oauth_url["twitter"] = twitter
-  #   oauth_url["github"] = "https://api.github.com/user"
-  # end
+  def create_auth_obj(userinfo)
+    auth = {}
+    auth["provider"] = @provider
+    auth["uid"] = userinfo["id"]
+    @pic = userinfo["picture"] if @provider == "google_oauth2"
+    @pic = userinfo["picture"]["url"] if @provider == "facebook"
+    auth["info"] = { image: @pic,
+                     email: userinfo["email"], name: userinfo["name"] }
+    auth
+  end
 end
