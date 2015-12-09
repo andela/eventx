@@ -23,11 +23,11 @@ class PrinterController < ApplicationController
   end
 
   def set_ticket_type
-    @ticket_types = @booking.user_tickets
+    user_tickets = @booking.user_tickets
     if params[:ticket_type_id]
       id = params[:ticket_type_id]
-      @ticket_types = @ticket_types.where(ticket_type_id: id)
+      user_tickets = user_tickets.where(ticket_type_id: id)
     end
-    @ticket_types = @ticket_types.group(:ticket_type_id).count
+    @ticket_types = user_tickets.select(:ticket_type_id).group(:ticket_type_id).count
   end
 end
