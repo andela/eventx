@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   protect_from_forgery except: [:paypal_hook]
 
   def index
-    @bookings = current_user.bookings.order(id: :desc)
+    @bookings = current_user.bookings.order(id: :desc).decorate
   end
 
   def create

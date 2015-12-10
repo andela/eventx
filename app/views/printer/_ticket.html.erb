@@ -8,14 +8,14 @@
         <thead>
           <tr>
             <th data-field="id" colspan="1"><p>Logo</p></th>
-            <th data-field="name" class="left" colspan="3"><h4><%= @event.title %></h4><span class="ticket_type"><%= @ticket_type.name %></span></a></th>
+            <th data-field="name" class="left" colspan="3"><h4><%= @event.title %></h4><span class="ticket_type"><%= ticket_type %></span></a></th>
           </tr>
         </thead>
               <tbody>
                 <tr>
                   <td class="left-align" colspan="1">Start Date</td>
                   <td><%= @event.start_date.strftime("%B %d, %Y") %></td>
-                  <td rowspan="3" class="right-align" ><%= image_tag create_qr_code(@event.title, current_user.id) %></td>
+                  <td rowspan="3" class="right-align" ><%= image_tag create_qr_code(ticket.ticket_number) %></td>
                 </tr>
                 <tr>
                   <td class="left-align">End Date</td>
