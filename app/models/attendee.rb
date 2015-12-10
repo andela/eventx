@@ -1,7 +1,7 @@
 class Attendee < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
-  validates :user_id, presence: true
+  validates_presence_of :user_id, :event_id
   validate :cannot_attend_one_event_twice
 
   # validation
