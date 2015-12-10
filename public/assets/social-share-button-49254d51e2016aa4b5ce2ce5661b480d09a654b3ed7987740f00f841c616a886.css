@@ -1,0 +1,320 @@
+/*
+
+        Creating a sprite from following images:
+
+        app/assets/images/sprites/social-share-button/baidu.png (16x16)
+        app/assets/images/sprites/social-share-button/delicious.png (16x16)
+        app/assets/images/sprites/social-share-button/douban.png (16x16)
+        app/assets/images/sprites/social-share-button/email.png (16x16)
+        app/assets/images/sprites/social-share-button/facebook.png (16x16)
+        app/assets/images/sprites/social-share-button/flickr.png (16x16)
+        app/assets/images/sprites/social-share-button/google_bookmark.png (16x16)
+        app/assets/images/sprites/social-share-button/google_plus.png (16x16)
+        app/assets/images/sprites/social-share-button/kaixin001.png (16x16)
+        app/assets/images/sprites/social-share-button/pinterest.png (16x16)
+        app/assets/images/sprites/social-share-button/plurk.png (16x16)
+        app/assets/images/sprites/social-share-button/qq.png (16x16)
+        app/assets/images/sprites/social-share-button/renren.png (16x16)
+        app/assets/images/sprites/social-share-button/tqq.png (16x16)
+        app/assets/images/sprites/social-share-button/tumblr.png (16x16)
+        app/assets/images/sprites/social-share-button/twitter.png (16x16)
+        app/assets/images/sprites/social-share-button/weibo.png (16x16)
+
+        Output files:
+          app/assets/images/sprites/social-share-button.png
+          app/assets/stylesheets/social-share-button.scss
+
+        Output size:
+          80x64
+
+*/
+/* line 32, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-baidu {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") 0px 0px no-repeat;
+}
+
+/* line 33, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-delicious {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -16px 0px no-repeat;
+}
+
+/* line 34, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-douban {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") 0px -16px no-repeat;
+}
+
+/* line 35, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-email {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -16px -16px no-repeat;
+}
+
+/* line 36, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-facebook {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -32px 0px no-repeat;
+}
+
+/* line 37, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-flickr {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -32px -16px no-repeat;
+}
+
+/* line 38, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-google_bookmark {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") 0px -32px no-repeat;
+}
+
+/* line 39, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-google_plus {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -16px -32px no-repeat;
+}
+
+/* line 40, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-kaixin001 {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -32px -32px no-repeat;
+}
+
+/* line 41, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-pinterest {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -48px 0px no-repeat;
+}
+
+/* line 42, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-plurk {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -48px -16px no-repeat;
+}
+
+/* line 43, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-qq {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -48px -32px no-repeat;
+}
+
+/* line 44, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-renren {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") 0px -48px no-repeat;
+}
+
+/* line 45, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-tqq {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -16px -48px no-repeat;
+}
+
+/* line 46, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-tumblr {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -32px -48px no-repeat;
+}
+
+/* line 47, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-twitter {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -48px -48px no-repeat;
+}
+
+/* line 48, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+.social-share-button-weibo {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/assets/sprites/social-share-button-01bd4e9a7782620aab986c55abc6ecb9ee88d50bb51f28c2f00fe36d87a0944c.png") -64px 0px no-repeat;
+}
+
+@media only screen and (-webkit-device-pixel-ratio: 2) {
+  /* line 51, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-baidu {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") 0px 0px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 52, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-delicious {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -16px 0px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 53, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-douban {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") 0px -16px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 54, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-email {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -16px -16px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 55, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-facebook {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -32px 0px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 56, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-flickr {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -32px -16px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 57, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-google_bookmark {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") 0px -32px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 58, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-google_plus {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -16px -32px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 59, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-kaixin001 {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -32px -32px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 60, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-pinterest {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -48px 0px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 61, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-plurk {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -48px -16px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 62, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-qq {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -48px -32px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 63, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-renren {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") 0px -48px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 64, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-tqq {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -16px -48px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 65, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-tumblr {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -32px -48px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 66, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-twitter {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -48px -48px no-repeat;
+    background-size: 80px 64px;
+  }
+
+  /* line 67, /home/vagrant/.rvm/gems/ruby-2.2.3/gems/social-share-button-0.1.10/app/assets/stylesheets/social-share-button.scss */
+  .social-share-button-weibo {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/assets/sprites/social-share-button@2x-a597120b30fe6ae4ac5b4f0f45f307c0f5519851529b3010a7c584eb3ed186be.png") -64px 0px no-repeat;
+    background-size: 80px 64px;
+  }
+}

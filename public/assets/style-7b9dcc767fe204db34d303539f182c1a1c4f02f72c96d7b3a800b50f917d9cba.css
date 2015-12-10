@@ -1,0 +1,2692 @@
+/*================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 2.1
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================*/
+/*-----------------------------------------
+
+------------------------------------------*/
+/*=================================================================================
+    General
+====================================================================================*/
+/*----------------------------------------
+  General Layout Style
+------------------------------------------*/
+/* line 18, /rails/eventx/app/assets/stylesheets/style.scss */
+body {
+  background-color: #fcfcfc;
+}
+
+/* line 21, /rails/eventx/app/assets/stylesheets/style.scss */
+#main,
+footer {
+  padding-left: 240px;
+}
+
+/* line 26, /rails/eventx/app/assets/stylesheets/style.scss */
+#input-select .input-field label {
+  position: absolute;
+  top: -14px;
+  font-size: 0.8rem;
+}
+
+/* line 31, /rails/eventx/app/assets/stylesheets/style.scss */
+#sidenav-overlay {
+  background-color: transparent;
+}
+
+/* line 34, /rails/eventx/app/assets/stylesheets/style.scss */
+.container {
+  padding: 0 0.5rem;
+  margin: 0 auto;
+  max-width: 100% !important;
+  width: 98%;
+}
+
+/* line 41, /rails/eventx/app/assets/stylesheets/style.scss */
+#left-sidebar-nav span.badge.new {
+  line-height: 20px;
+}
+
+/* line 46, /rails/eventx/app/assets/stylesheets/style.scss */
+#content .container .row {
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 601px) {
+  /* line 50, /rails/eventx/app/assets/stylesheets/style.scss */
+  .container {
+    width: 98%;
+  }
+}
+@media only screen and (min-width: 993px) {
+  /* line 55, /rails/eventx/app/assets/stylesheets/style.scss */
+  .container {
+    width: 98%;
+  }
+}
+@media only screen and (max-width: 993px) {
+  /* line 60, /rails/eventx/app/assets/stylesheets/style.scss */
+  #main,
+  footer {
+    padding-left: 0px;
+  }
+}
+/* line 65, /rails/eventx/app/assets/stylesheets/style.scss */
+.ps-scrollbar-x-rail, .ps-scrollbar-y-rail {
+  z-index: 9999;
+}
+
+/*---------------------------------
+    Typography
+-----------------------------------*/
+/* line 72, /rails/eventx/app/assets/stylesheets/style.scss */
+.small {
+  font-size: 1.0rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 77, /rails/eventx/app/assets/stylesheets/style.scss */
+.medium-small {
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 82, /rails/eventx/app/assets/stylesheets/style.scss */
+.ultra-small {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 87, /rails/eventx/app/assets/stylesheets/style.scss */
+small {
+  font-size: 0.8rem;
+}
+
+/* line 90, /rails/eventx/app/assets/stylesheets/style.scss */
+.strong {
+  font-weight: 600;
+}
+
+/* line 93, /rails/eventx/app/assets/stylesheets/style.scss */
+h4.header {
+  font-size: 1.5rem;
+  line-height: 2.508rem;
+  margin: 1.14rem 0 0.912rem 0;
+}
+
+/* line 98, /rails/eventx/app/assets/stylesheets/style.scss */
+p.title {
+  font-size: 1.3rem;
+}
+
+/* line 101, /rails/eventx/app/assets/stylesheets/style.scss */
+p.header {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* line 106, /rails/eventx/app/assets/stylesheets/style.scss */
+h4.header {
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* line 111, /rails/eventx/app/assets/stylesheets/style.scss */
+h4.header2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* line 116, /rails/eventx/app/assets/stylesheets/style.scss */
+li.li-hover:hover {
+  background: transparent !important;
+}
+
+/* line 119, /rails/eventx/app/assets/stylesheets/style.scss */
+.more-text {
+  padding: 5px 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* line 125, /rails/eventx/app/assets/stylesheets/style.scss */
+.valign-demo {
+  height: 400px;
+  background-color: #ddd;
+}
+
+/* line 129, /rails/eventx/app/assets/stylesheets/style.scss */
+.margin {
+  margin: 0 !important;
+}
+
+/*----------------------------------------
+    Pre Loader
+------------------------------------------*/
+/* line 135, /rails/eventx/app/assets/stylesheets/style.scss */
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+/* line 143, /rails/eventx/app/assets/stylesheets/style.scss */
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  /* Chrome, Opera 15+, Safari 5+ */
+  animation: spin 2s linear infinite;
+  /* Chrome, Firefox 16+, IE 10+, Opera */
+  z-index: 1001;
+}
+
+/* line 162, /rails/eventx/app/assets/stylesheets/style.scss */
+#loader-logo {
+  display: block;
+  position: absolute;
+  left: 48%;
+  top: 46%;
+  z-index: 1001;
+}
+
+/* line 170, /rails/eventx/app/assets/stylesheets/style.scss */
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #e74c3c;
+  -webkit-animation: spin 3s linear infinite;
+  /* Chrome, Opera 15+, Safari 5+ */
+  animation: spin 3s linear infinite;
+  /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+/* line 186, /rails/eventx/app/assets/stylesheets/style.scss */
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #f9c922;
+  -webkit-animation: spin 1.5s linear infinite;
+  /* Chrome, Opera 15+, Safari 5+ */
+  animation: spin 1.5s linear infinite;
+  /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(0deg);
+    /* IE 9 */
+    transform: rotate(0deg);
+    /* Firefox 16+, IE 10+, Opera */
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(360deg);
+    /* IE 9 */
+    transform: rotate(360deg);
+    /* Firefox 16+, IE 10+, Opera */
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(0deg);
+    /* IE 9 */
+    transform: rotate(0deg);
+    /* Firefox 16+, IE 10+, Opera */
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(360deg);
+    /* IE 9 */
+    transform: rotate(360deg);
+    /* Firefox 16+, IE 10+, Opera */
+  }
+}
+/* line 246, /rails/eventx/app/assets/stylesheets/style.scss */
+#loader-wrapper .loader-section {
+  position: fixed;
+  top: 0;
+  width: 51%;
+  height: 100%;
+  background: #222222;
+  z-index: 1000;
+  -webkit-transform: translateX(0);
+  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateX(0);
+  /* IE 9 */
+  transform: translateX(0);
+  /* Firefox 16+, IE 10+, Opera */
+}
+
+/* line 262, /rails/eventx/app/assets/stylesheets/style.scss */
+#loader-wrapper .loader-section.section-left {
+  left: 0;
+}
+
+/* line 265, /rails/eventx/app/assets/stylesheets/style.scss */
+#loader-wrapper .loader-section.section-right {
+  right: 0;
+}
+
+/* Loaded */
+/* line 270, /rails/eventx/app/assets/stylesheets/style.scss */
+.loaded #loader-wrapper .loader-section.section-left {
+  -webkit-transform: translateX(-100%);
+  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateX(-100%);
+  /* IE 9 */
+  transform: translateX(-100%);
+  /* Firefox 16+, IE 10+, Opera */
+  -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* line 283, /rails/eventx/app/assets/stylesheets/style.scss */
+.loaded #loader-wrapper .loader-section.section-right {
+  -webkit-transform: translateX(100%);
+  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateX(100%);
+  /* IE 9 */
+  transform: translateX(100%);
+  /* Firefox 16+, IE 10+, Opera */
+  -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* line 296, /rails/eventx/app/assets/stylesheets/style.scss */
+.loaded #loader {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+/* line 301, /rails/eventx/app/assets/stylesheets/style.scss */
+.loaded #loader-wrapper {
+  visibility: hidden;
+  -webkit-transform: translateY(-100%);
+  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateY(-100%);
+  /* IE 9 */
+  transform: translateY(-100%);
+  /* Firefox 16+, IE 10+, Opera */
+  -webkit-transition: all 0.3s 1s ease-out;
+  transition: all 0.3s 1s ease-out;
+}
+
+/* JavaScript Turned Off */
+/* line 317, /rails/eventx/app/assets/stylesheets/style.scss */
+.no-js #loader-wrapper {
+  display: none;
+}
+
+/* line 320, /rails/eventx/app/assets/stylesheets/style.scss */
+.progress {
+  background-color: rgba(255, 64, 129, 0.22);
+}
+
+/*=================================================================================
+    Header
+====================================================================================*/
+/*----------------------------------------
+    Page Header
+------------------------------------------*/
+/* line 329, /rails/eventx/app/assets/stylesheets/style.scss */
+h1.logo-wrapper {
+  margin: 0px 0px;
+}
+
+/* line 332, /rails/eventx/app/assets/stylesheets/style.scss */
+h1 span.logo-text {
+  display: none;
+}
+
+/* line 335, /rails/eventx/app/assets/stylesheets/style.scss */
+header .brand-logo {
+  margin: 1px 0px;
+  padding: 0 20px;
+}
+
+/* line 339, /rails/eventx/app/assets/stylesheets/style.scss */
+header .brand-logo img {
+  width: 172px;
+}
+
+/* line 342, /rails/eventx/app/assets/stylesheets/style.scss */
+.menu-sidebar-collapse {
+  margin: 0 10px;
+}
+
+/* line 345, /rails/eventx/app/assets/stylesheets/style.scss */
+.menu-sidebar-collapse i {
+  line-height: 36px !important;
+}
+
+@media only screen and (max-width: 992px) {
+  /* line 349, /rails/eventx/app/assets/stylesheets/style.scss */
+  nav .nav-wrapper {
+    text-align: center;
+  }
+
+  /* line 352, /rails/eventx/app/assets/stylesheets/style.scss */
+  nav .nav-wrapper a.page-title {
+    font-size: 36px;
+  }
+}
+/*Search box*/
+/* line 359, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-wrapper {
+  max-width: 824px;
+  width: 100%;
+  margin: 0 auto;
+  width: calc(100% - 45%);
+  height: 40px;
+  display: inline-block;
+  margin-left: 240px;
+  position: relative;
+}
+
+/* line 369, /rails/eventx/app/assets/stylesheets/style.scss */
+#content .header-search-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+}
+
+/* line 376, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-wrapper i {
+  position: absolute;
+  top: 0;
+  font-size: 24px;
+  top: 6px;
+  left: 24px;
+  line-height: 32px !important;
+  -webkit-transition: color 200ms ease;
+  transition: color 200ms ease;
+}
+
+/* line 386, /rails/eventx/app/assets/stylesheets/style.scss */
+input.header-search-input {
+  display: block;
+  padding: 8px 8px 8px 72px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  height: 24px;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  border: none;
+  font-size: 16px;
+  appearance: textfield;
+  font-weight: 400;
+  outline: none;
+  border-radius: 3px;
+}
+
+/* line 401, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-input::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* line 407, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-input::-moz-placeholder {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* line 413, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-input:-ms-input-placeholder {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* line 419, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-input::placeholder {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* line 426, /rails/eventx/app/assets/stylesheets/style.scss */
+input.header-search-input:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* line 430, /rails/eventx/app/assets/stylesheets/style.scss */
+input.header-search-input:focus {
+  color: #333;
+  background: #fff;
+}
+
+/* line 434, /rails/eventx/app/assets/stylesheets/style.scss */
+input.header-search-input:focus {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* line 439, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-wrapper-focus i {
+  color: #444;
+}
+
+/* line 442, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-input:focus::-webkit-input-placeholder {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* line 448, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-input:focus::-moz-placeholder {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* line 454, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-input:focus:-ms-input-placeholder {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* line 460, /rails/eventx/app/assets/stylesheets/style.scss */
+.header-search-input:focus::placeholder {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/*Old Search*/
+/* line 469, /rails/eventx/app/assets/stylesheets/style.scss */
+li.search-out:hover {
+  background: transparent;
+}
+
+/* line 472, /rails/eventx/app/assets/stylesheets/style.scss */
+.search-out {
+  display: none;
+}
+
+/* line 475, /rails/eventx/app/assets/stylesheets/style.scss */
+.search-out-text {
+  border-bottom: 1px solid #fff !important;
+}
+
+/* line 478, /rails/eventx/app/assets/stylesheets/style.scss */
+.search-out input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #fff !important;
+  box-shadow: none;
+}
+
+/*=================================================================================
+    Sidebar
+====================================================================================*/
+/*----------------------------------------
+    Sidebar Main Menu
+------------------------------------------*/
+/* line 489, /rails/eventx/app/assets/stylesheets/style.scss */
+nav ul li.no-hover:hover {
+  background: none;
+}
+
+/* line 492, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation {
+  top: 64px;
+}
+
+@media only screen and (max-width: 992px) {
+  /* line 496, /rails/eventx/app/assets/stylesheets/style.scss */
+  ul.side-nav.leftside-navigation {
+    top: 56px;
+  }
+}
+/* line 500, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 508, /rails/eventx/app/assets/stylesheets/style.scss */
+.side-nav a {
+  line-height: 42px;
+  height: 42px;
+}
+
+/* line 512, /rails/eventx/app/assets/stylesheets/style.scss */
+#left-sidebar-nav {
+  position: fixed;
+  width: 100px;
+  left: 180px;
+  z-index: 999;
+  height: auto;
+}
+
+/* line 519, /rails/eventx/app/assets/stylesheets/style.scss */
+#slide-out li a i {
+  line-height: inherit;
+  width: 2rem;
+  font-size: 1.6rem;
+  display: block;
+  float: left;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+/* line 528, /rails/eventx/app/assets/stylesheets/style.scss */
+#slide-out ul.side-nav li {
+  padding: 0px !important;
+}
+
+/* line 531, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav li {
+  padding: 0;
+}
+
+/* line 534, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav .collapsible-header {
+  margin: 0;
+}
+
+/* line 537, /rails/eventx/app/assets/stylesheets/style.scss */
+.caption {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+/* line 542, /rails/eventx/app/assets/stylesheets/style.scss */
+.caption-uppercase {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* line 548, /rails/eventx/app/assets/stylesheets/style.scss */
+.sidebar-collapse {
+  position: absolute;
+  left: -170px;
+  top: -45px;
+}
+
+/* line 557, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation li {
+  line-height: 44px;
+}
+
+/* line 560, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation li:hover,
+ul.side-nav.leftside-navigation li.active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* line 564, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation li a {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* line 568, /rails/eventx/app/assets/stylesheets/style.scss */
+.side-nav.leftside-navigation .collapsible-body li.active,
+.side-nav.fixed.leftside-navigation .collapsible-body li.active {
+  background-color: #FAFAFA;
+}
+
+/* line 572, /rails/eventx/app/assets/stylesheets/style.scss */
+.side-nav.leftside-navigation .collapsible-body li.active a,
+.side-nav.fixed.leftside-navigation .collapsible-body li.active a {
+  color: #444;
+}
+
+/* line 576, /rails/eventx/app/assets/stylesheets/style.scss */
+.side-nav .collapsible-body li a {
+  margin: 0 1rem 0 3rem;
+}
+
+/* line 579, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation ul.collapsible-accordion {
+  background-color: #FFF;
+}
+
+/* line 582, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation:hover {
+  /*overflow-y:hidden;*/
+}
+
+/* line 585, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation li.user-details {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*overflow: hidden;*/
+  margin-bottom: 15px;
+  padding: 15px 0px 0px 15px;
+}
+
+/* line 596, /rails/eventx/app/assets/stylesheets/style.scss */
+.user-details .row {
+  margin: 0;
+}
+
+/* line 599, /rails/eventx/app/assets/stylesheets/style.scss */
+.user-task,
+.user-time {
+  margin: 0;
+  font-size: 13px;
+  color: #fff;
+}
+
+/* line 605, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation .profile-image {
+  /*height: 50px;*/
+}
+
+/* line 608, /rails/eventx/app/assets/stylesheets/style.scss */
+ul.side-nav.leftside-navigation .profile-btn {
+  margin: 0;
+  text-transform: capitalize;
+  padding: 0;
+  text-shadow: 1px 1px 1px #444;
+  font-size: 15px;
+}
+
+/* line 615, /rails/eventx/app/assets/stylesheets/style.scss */
+.user-roal {
+  color: #fff;
+  margin-top: -16px;
+  font-size: 13px;
+  text-shadow: 1px 1px 1px #444;
+}
+
+/* line 621, /rails/eventx/app/assets/stylesheets/style.scss */
+.bold > a {
+  font-weight: bold;
+}
+
+/* line 624, /rails/eventx/app/assets/stylesheets/style.scss */
+nav.top-nav {
+  height: 122px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 630, /rails/eventx/app/assets/stylesheets/style.scss */
+nav.top-nav a.page-title {
+  line-height: 122px;
+  font-size: 48px;
+}
+
+/*----------------------------------------
+    Right Chat Slideout
+------------------------------------------*/
+/* line 640, /rails/eventx/app/assets/stylesheets/style.scss */
+.rightside-navigation {
+  overflow: hidden;
+}
+
+/* line 643, /rails/eventx/app/assets/stylesheets/style.scss */
+.chat-close-collapse {
+  padding: 5px 15px 0 0;
+}
+
+/* line 646, /rails/eventx/app/assets/stylesheets/style.scss */
+#right-search .input-field {
+  margin-top: 0px;
+}
+
+/* line 649, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .collapsible-header {
+  background-color: transparent;
+  border: none;
+  line-height: 45px;
+  height: 45px;
+  font-weight: 400;
+}
+
+/* line 656, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .chat-out-list {
+  padding: 5px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* line 661, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .favorite-associate-list .circle {
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  border: 2px solid #999;
+  padding: 3px;
+  display: block;
+}
+
+/* line 669, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .favorite-associate-list .online-user {
+  border: 2px solid #00e676;
+}
+
+/* line 672, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .recent-activity-list-icon {
+  margin-top: 8px;
+  font-size: 2rem;
+}
+
+/* line 676, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .recent-activity-list-text a {
+  font-size: 0.8rem;
+  padding: 0;
+  font-weight: 600;
+}
+
+/* line 681, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .recent-activity-list-text p {
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+/* line 685, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .favorite-associate-list p {
+  padding: 0;
+}
+
+/* line 688, /rails/eventx/app/assets/stylesheets/style.scss */
+#chat-out .favorite-associate-list p.place {
+  font-size: 0.8rem;
+}
+
+/* =================================================================================
+    Content
+================================================================================= */
+/*----------------------------------------
+    Breadcrumb
+------------------------------------------*/
+/* line 698, /rails/eventx/app/assets/stylesheets/style.scss */
+.breadcrumb {
+  padding: 0px;
+  margin: 15px 0px;
+  list-style: none;
+}
+
+/* line 703, /rails/eventx/app/assets/stylesheets/style.scss */
+.breadcrumbs-title {
+  font-size: 1.5rem;
+  line-height: 1.804rem;
+  margin: 18px 0px 0px 0px;
+}
+
+/* line 708, /rails/eventx/app/assets/stylesheets/style.scss */
+.breadcrumb > li {
+  display: inline-block;
+}
+
+/* line 711, /rails/eventx/app/assets/stylesheets/style.scss */
+.breadcrumb a {
+  color: #00bcd4;
+}
+
+/* line 714, /rails/eventx/app/assets/stylesheets/style.scss */
+.breadcrumb .active {
+  font-weight: normal;
+  color: #999;
+}
+
+/* line 718, /rails/eventx/app/assets/stylesheets/style.scss */
+.breadcrumb > li + li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: "/\00a0";
+}
+
+/* line 723, /rails/eventx/app/assets/stylesheets/style.scss */
+h5.breadcrumbs-header {
+  font-size: 1.64rem;
+  line-height: 1.804rem;
+  margin: 1.5rem 0 0 0;
+}
+
+/* line 728, /rails/eventx/app/assets/stylesheets/style.scss */
+.breadcrumbs-nav {
+  margin: 8px 0 9px 0;
+}
+
+/*----------------------------------------
+    Cards
+------------------------------------------*/
+/*card-stats*/
+/* line 736, /rails/eventx/app/assets/stylesheets/style.scss */
+#card-stats .card-content {
+  text-align: center;
+}
+
+/* line 739, /rails/eventx/app/assets/stylesheets/style.scss */
+#card-stats .card-stats-title, #card-stats .card-stats-title i {
+  font-size: 1.2rem;
+}
+
+/* line 743, /rails/eventx/app/assets/stylesheets/style.scss */
+#card-stats .card-stats-compare {
+  font-size: 1.0rem;
+}
+
+/* line 746, /rails/eventx/app/assets/stylesheets/style.scss */
+#card-stats .card-stats-compare i {
+  position: relative;
+  top: 5px;
+}
+
+/* line 750, /rails/eventx/app/assets/stylesheets/style.scss */
+#card-stats .card-stats-number {
+  font-size: 1.8rem;
+  line-height: 2.0rem;
+  margin: 0.2rem 0 0.2rem 0;
+  font-weight: 500;
+}
+
+/*work-collections*/
+/* line 758, /rails/eventx/app/assets/stylesheets/style.scss */
+#work-collections .collection-header {
+  font-size: 1.64rem;
+  font-weight: 500;
+}
+
+/* line 762, /rails/eventx/app/assets/stylesheets/style.scss */
+#work-collections .collection-item.avatar {
+  height: auto;
+}
+
+/* line 765, /rails/eventx/app/assets/stylesheets/style.scss */
+#work-collections p.collections-title {
+  font-size: 1.0rem;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* line 771, /rails/eventx/app/assets/stylesheets/style.scss */
+#work-collections p.collections-content {
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+}
+
+/*flight-card*/
+/* line 779, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .card-header .card-title {
+  padding: 20px;
+}
+
+/* line 782, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .flight-card-title {
+  margin: 0;
+  font-weight: 300;
+}
+
+/* line 786, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .flight-card-date {
+  font-size: 1.0rem;
+  margin: 0;
+}
+
+/* line 790, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .flight-state {
+  padding-bottom: 15px;
+}
+
+/* line 793, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .flight-state-two {
+  border-left: 1px dashed #9e9e9e;
+}
+
+/* line 796, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .flight-icon {
+  font-size: 2.2rem;
+  display: block;
+  -webkit-transform: rotate(90deg);
+  /* Safari */
+  -moz-transform: rotate(90deg);
+  /* Firefox */
+  -ms-transform: rotate(90deg);
+  /* IE */
+  -o-transform: rotate(90deg);
+  /* Opera */
+  /* SASS Internet Explorer */
+}
+
+/* line 814, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .card-content-bg {
+  background: url(../images/sample-1.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* line 821, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .card-content {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* line 824, /rails/eventx/app/assets/stylesheets/style.scss */
+#flight-card .flight-state-wrapper {
+  margin: 0 0 100px 0 !important;
+}
+
+/*task-card*/
+/* line 829, /rails/eventx/app/assets/stylesheets/style.scss */
+#task-card label {
+  display: block;
+  color: rgba(0, 0, 0, 0.87);
+  height: auto;
+}
+
+/* line 834, /rails/eventx/app/assets/stylesheets/style.scss */
+#task-card .task-card-title {
+  margin: 0;
+  color: #fff;
+  font-weight: 300;
+}
+
+/* line 839, /rails/eventx/app/assets/stylesheets/style.scss */
+#task-card .task-card-date {
+  font-size: 1.0rem;
+  margin: 0;
+  color: #fff;
+}
+
+/* line 844, /rails/eventx/app/assets/stylesheets/style.scss */
+#task-card .collection-header {
+  padding: 20px;
+}
+
+/* line 847, /rails/eventx/app/assets/stylesheets/style.scss */
+#task-card .task-add {
+  position: absolute;
+  right: 10px;
+  top: 76px;
+}
+
+/* line 852, /rails/eventx/app/assets/stylesheets/style.scss */
+#task-card .task-cat {
+  padding: 2px 4px;
+  color: #fff;
+  margin-left: 37px;
+  font-weight: 300;
+  font-size: 0.8rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+
+/* line 863, /rails/eventx/app/assets/stylesheets/style.scss */
+.task-cat {
+  padding: 2px 4px;
+  color: #fff;
+  font-weight: 300;
+  font-size: 0.8rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+
+/* line 873, /rails/eventx/app/assets/stylesheets/style.scss */
+.collection .collection-item.avatar i.circle {
+  font-size: 28px;
+}
+
+/* Profile Card */
+/* line 878, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-card .card-image {
+  height: 150px;
+}
+
+/* line 881, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-card .card-content p {
+  font-size: 1.2rem;
+  margin: 10px 0 12px 0;
+}
+
+/* line 885, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-card .card-profile-image {
+  width: 70px;
+  position: absolute;
+  top: 110px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* line 892, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-card .btn-move-up {
+  position: relative;
+  top: -40px;
+  right: -18px;
+  margin-right: 10px !important;
+}
+
+/*----------------------------------------
+    Charts
+------------------------------------------*/
+/* line 902, /rails/eventx/app/assets/stylesheets/style.scss */
+#chart-dashboard {
+  padding-top: 12px;
+}
+
+/* line 905, /rails/eventx/app/assets/stylesheets/style.scss */
+#chart-dashboard .card .card-content,
+#card-stats .card .card-content,
+#card-stats .card .card-action {
+  padding: 10px 14px;
+}
+
+/* line 910, /rails/eventx/app/assets/stylesheets/style.scss */
+#line-updated {
+  /*background: #00bcd4;*/
+}
+
+/* line 913, /rails/eventx/app/assets/stylesheets/style.scss */
+.sample-chart-wrapper {
+  width: 100%;
+}
+
+/* line 916, /rails/eventx/app/assets/stylesheets/style.scss */
+.chart-title {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+/* Revenue Chart */
+/* line 922, /rails/eventx/app/assets/stylesheets/style.scss */
+.chart-revenue {
+  float: right;
+  text-align: center;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+/* line 928, /rails/eventx/app/assets/stylesheets/style.scss */
+.chart-revenue .chart-revenue-total {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* line 932, /rails/eventx/app/assets/stylesheets/style.scss */
+.chart-revenue .chart-revenue-per {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* line 936, /rails/eventx/app/assets/stylesheets/style.scss */
+.chart-revenue .chart-revenue-per i {
+  position: relative;
+  top: 5px;
+}
+
+/* line 940, /rails/eventx/app/assets/stylesheets/style.scss */
+.chart-revenue-switch {
+  padding-top: 28px;
+  padding-right: 10px;
+  color: #fff;
+  text-align: right;
+}
+
+/* doughnut chart */
+/* line 948, /rails/eventx/app/assets/stylesheets/style.scss */
+.doughnut-chart-status {
+  position: relative;
+  top: -75px;
+  left: 0;
+  font-size: 16px;
+  font-weight: 500;
+  height: 0px;
+  text-align: center;
+}
+
+/* line 957, /rails/eventx/app/assets/stylesheets/style.scss */
+.doughnut-chart-status p {
+  margin-top: -5px;
+}
+
+/* line 960, /rails/eventx/app/assets/stylesheets/style.scss */
+.doughnut-chart-legend li {
+  padding: 2px 0;
+  font-size: 0.9rem;
+}
+
+/* line 964, /rails/eventx/app/assets/stylesheets/style.scss */
+.doughnut-chart-legend li:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  display: block;
+  float: left;
+  margin-top: 6px;
+  margin-right: 4px;
+}
+
+/* line 973, /rails/eventx/app/assets/stylesheets/style.scss */
+li.mobile:before {
+  background: #F7464A;
+}
+
+/* line 976, /rails/eventx/app/assets/stylesheets/style.scss */
+li.kitchen:before {
+  background: #46BFBD;
+}
+
+/* line 979, /rails/eventx/app/assets/stylesheets/style.scss */
+li.home:before {
+  background: #FDB45C;
+}
+
+/* line 982, /rails/eventx/app/assets/stylesheets/style.scss */
+a.button-collapse.top-nav {
+  position: absolute;
+  left: 7.5%;
+  top: 0;
+  float: none;
+  margin-left: 1.5rem;
+  color: #fff;
+  font-size: 32px;
+  z-index: 2;
+}
+
+/* trending bar chart */
+/* line 994, /rails/eventx/app/assets/stylesheets/style.scss */
+.trending-bar-chart-wrapper {
+  width: 100%;
+}
+
+/* line 997, /rails/eventx/app/assets/stylesheets/style.scss */
+.btn-move-up {
+  position: relative;
+  top: -28px;
+  right: -18px;
+  margin-right: 10px !important;
+}
+
+/* Flot Chart*/
+/* line 1005, /rails/eventx/app/assets/stylesheets/style.scss */
+.flotchart-placeholder {
+  width: 100%;
+  height: 300px;
+  font-size: 13px;
+  line-height: 1.2em;
+}
+
+/* line 1011, /rails/eventx/app/assets/stylesheets/style.scss */
+#flotchart table {
+  position: absolute;
+  top: 13px;
+  right: 17px;
+  font-size: smaller;
+  color: #545454;
+  width: 100px;
+}
+
+/* line 1019, /rails/eventx/app/assets/stylesheets/style.scss */
+#flotchart td,
+th {
+  padding: 5px;
+}
+
+/* xCharts */
+/* line 1025, /rails/eventx/app/assets/stylesheets/style.scss */
+.xchart-placeholder {
+  width: 90%;
+  height: 300px;
+}
+
+/*Sparkline*/
+/* line 1031, /rails/eventx/app/assets/stylesheets/style.scss */
+.tooltip-class {
+  overflow: hidden;
+  color: #fff;
+  height: 20px;
+  width: 30px;
+}
+
+/**/
+/* line 1039, /rails/eventx/app/assets/stylesheets/style.scss */
+#ct2-chart .ct-series.ct-series-a .ct-area {
+  fill: #00BCD4;
+}
+
+/* line 1042, /rails/eventx/app/assets/stylesheets/style.scss */
+#ct2-chart .ct-series.ct-series-a .ct-point {
+  stroke: #00BCD4;
+}
+
+/* line 1045, /rails/eventx/app/assets/stylesheets/style.scss */
+#ct2-chart .ct-series.ct-series-a .ct-line {
+  stroke: #54E2F4;
+}
+
+/*------------------
+  Widget
+--------------------*/
+/* line 1052, /rails/eventx/app/assets/stylesheets/style.scss */
+.socialbox .logo {
+  color: #fff;
+  font-size: 28px;
+  left: 20px;
+  bottom: 20px;
+  position: absolute;
+}
+
+/* line 1059, /rails/eventx/app/assets/stylesheets/style.scss */
+.socialbox .info {
+  color: #fff;
+  margin: 0;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 15px;
+  padding: 0;
+}
+
+/*----------------------------------------
+    Calender
+------------------------------------------*/
+/* line 1072, /rails/eventx/app/assets/stylesheets/style.scss */
+#full-calendar {
+  padding-top: 30px;
+}
+
+/* line 1075, /rails/eventx/app/assets/stylesheets/style.scss */
+#calendar h2 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  line-height: 35px;
+}
+
+/* line 1080, /rails/eventx/app/assets/stylesheets/style.scss */
+#calendar .fc-day-header {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* line 1084, /rails/eventx/app/assets/stylesheets/style.scss */
+#external-events {
+  padding-top: 50px;
+}
+
+/* line 1087, /rails/eventx/app/assets/stylesheets/style.scss */
+#external-events .fc-event {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+  margin-bottom: 10px;
+  cursor: all-scroll;
+  border: none;
+}
+
+/* line 1095, /rails/eventx/app/assets/stylesheets/style.scss */
+.fc button {
+  background: #fff;
+}
+
+/* line 1098, /rails/eventx/app/assets/stylesheets/style.scss */
+.fc td,
+.fc th {
+  border-width: 0px !important;
+}
+
+/* line 1102, /rails/eventx/app/assets/stylesheets/style.scss */
+.fc-state-active,
+.fc-state-down {
+  color: #ff4081 !important;
+}
+
+/*----------------------------------------
+    Color Palette for css-color.html page
+------------------------------------------*/
+/* line 1110, /rails/eventx/app/assets/stylesheets/style.scss */
+.dynamic-color .red,
+.dynamic-color .pink,
+.dynamic-color .purple,
+.dynamic-color .deep-purple,
+.dynamic-color .indigo,
+.dynamic-color .blue,
+.dynamic-color .light-blue,
+.dynamic-color .cyan,
+.dynamic-color .teal,
+.dynamic-color .green,
+.dynamic-color .light-green,
+.dynamic-color .lime,
+.dynamic-color .yellow,
+.dynamic-color .amber,
+.dynamic-color .orange,
+.dynamic-color .deep-orange,
+.dynamic-color .brown,
+.dynamic-color .grey,
+.dynamic-color .blue-grey {
+  height: 55px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 55px;
+  font-weight: 500;
+  font-size: 12px;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 1140, /rails/eventx/app/assets/stylesheets/style.scss */
+.dynamic-color .col {
+  margin-bottom: 55px;
+}
+
+@media only screen and (max-width: 1024px) {
+  /* line 1144, /rails/eventx/app/assets/stylesheets/style.scss */
+  tfoot {
+    display: none;
+  }
+}
+/* line 1148, /rails/eventx/app/assets/stylesheets/style.scss */
+tr.group,
+tr.group:hover {
+  background-color: #ddd !important;
+}
+
+/*----------------------------------------
+    Grid - Flat Site Mockup
+------------------------------------------*/
+/* line 1156, /rails/eventx/app/assets/stylesheets/style.scss */
+#site-layout-example-left {
+  background-color: #90a4ae;
+  height: 300px;
+}
+
+/* line 1160, /rails/eventx/app/assets/stylesheets/style.scss */
+#site-layout-example-right {
+  background-color: #26a69a;
+  height: 300px;
+}
+
+/* line 1164, /rails/eventx/app/assets/stylesheets/style.scss */
+#site-layout-example-top {
+  background-color: #E57373;
+  height: 50px;
+}
+
+/* line 1168, /rails/eventx/app/assets/stylesheets/style.scss */
+.flat-text-header {
+  height: 35px;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: block;
+  margin: 27px auto;
+}
+
+/* line 1175, /rails/eventx/app/assets/stylesheets/style.scss */
+.flat-text {
+  height: 25px;
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 27px auto;
+}
+
+/* line 1182, /rails/eventx/app/assets/stylesheets/style.scss */
+.flat-text.small {
+  width: 25%;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* line 1187, /rails/eventx/app/assets/stylesheets/style.scss */
+.flat-text.full-width {
+  width: 100%;
+}
+
+/* line 1190, /rails/eventx/app/assets/stylesheets/style.scss */
+.col.grid-example {
+  border: 1px solid #eee;
+  margin: 7px 0;
+  text-align: center;
+  line-height: 50px;
+  font-size: 28px;
+  background-color: tomato;
+  color: white;
+  padding: 0px;
+}
+
+/* line 1200, /rails/eventx/app/assets/stylesheets/style.scss */
+.col.grid-example span {
+  font-weight: 200;
+  line-height: 50px;
+}
+
+/* line 1204, /rails/eventx/app/assets/stylesheets/style.scss */
+.waves-color-demo .collection-item {
+  height: 57px;
+  line-height: 57px;
+}
+
+/*----------------------------------------
+    Chrome Browser Grid Example
+------------------------------------------*/
+/* line 1212, /rails/eventx/app/assets/stylesheets/style.scss */
+.browser-window {
+  text-align: left;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  -webkit-border-radius: 5px 5px 2px 2px;
+  -moz-border-radius: 5px 5px 2px 2px;
+  border-radius: 5px 5px 2px 2px;
+  background-clip: padding-box;
+  background-color: transparent;
+  margin: 20px 0px;
+  overflow: hidden;
+}
+
+/* line 1225, /rails/eventx/app/assets/stylesheets/style.scss */
+.browser-window .top-bar {
+  height: 30px;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  background-clip: padding-box;
+  border-top: thin solid #eaeae9;
+  border-bottom: thin solid #dfdfde;
+  background: linear-gradient(#e7e7e6, #E2E2E1);
+}
+
+/* line 1235, /rails/eventx/app/assets/stylesheets/style.scss */
+.browser-window .circle {
+  height: 10px;
+  width: 10px;
+  display: inline-block;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background-color: white;
+  margin-right: 1px;
+}
+
+/* line 1245, /rails/eventx/app/assets/stylesheets/style.scss */
+#close-circle {
+  background-color: #FF5C5A;
+}
+
+/* line 1248, /rails/eventx/app/assets/stylesheets/style.scss */
+#minimize-circle {
+  background-color: #FFBB50;
+}
+
+/* line 1251, /rails/eventx/app/assets/stylesheets/style.scss */
+#maximize-circle {
+  background-color: #1BC656;
+}
+
+/* line 1254, /rails/eventx/app/assets/stylesheets/style.scss */
+.browser-window .circles {
+  margin: 5px 12px;
+}
+
+/* line 1257, /rails/eventx/app/assets/stylesheets/style.scss */
+.browser-window .content {
+  margin: 0;
+  width: 100%;
+  display: inline-block;
+  border-radius: 0 0 5px 5px;
+  background-color: #fafafa;
+}
+
+/* line 1264, /rails/eventx/app/assets/stylesheets/style.scss */
+.browser-window .row {
+  margin: 0;
+}
+
+/* line 1267, /rails/eventx/app/assets/stylesheets/style.scss */
+.clear {
+  clear: both;
+}
+
+/* line 1270, /rails/eventx/app/assets/stylesheets/style.scss */
+.promo i {
+  color: #ee6e73;
+  font-size: 6rem;
+  display: block;
+}
+
+/* line 1275, /rails/eventx/app/assets/stylesheets/style.scss */
+.promo-caption {
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+/*----------------------------------------
+    icon page
+------------------------------------------*/
+/* line 1285, /rails/eventx/app/assets/stylesheets/style.scss */
+.icon-demo {
+  line-height: 50px;
+}
+
+/* line 1288, /rails/eventx/app/assets/stylesheets/style.scss */
+.icon-container i {
+  font-size: 3em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* line 1293, /rails/eventx/app/assets/stylesheets/style.scss */
+.icon-container .icon-preview {
+  height: 120px;
+  text-align: center;
+}
+
+/* line 1297, /rails/eventx/app/assets/stylesheets/style.scss */
+.icon-holder {
+  display: block;
+  text-align: center;
+  width: 150px;
+  height: 115px;
+  float: left;
+  margin: 0px 0px 15px 0px;
+}
+
+/* line 1305, /rails/eventx/app/assets/stylesheets/style.scss */
+.icon-holder p {
+  margin: 0px 0;
+}
+
+/*----------------------------------------
+    Login Page
+------------------------------------------*/
+/* line 1312, /rails/eventx/app/assets/stylesheets/style.scss */
+.login-form {
+  width: 280px;
+}
+
+/* line 1315, /rails/eventx/app/assets/stylesheets/style.scss */
+.login-form-text {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+
+/* line 1320, /rails/eventx/app/assets/stylesheets/style.scss */
+.profile-image-login {
+  width: 100px;
+  height: 100px !important;
+}
+
+/* line 1325, /rails/eventx/app/assets/stylesheets/style.scss */
+.login-text {
+  margin-top: -6px;
+  margin-left: -6px !important;
+}
+
+/*----------------------------------------
+    Error Page
+------------------------------------------*/
+/* line 1333, /rails/eventx/app/assets/stylesheets/style.scss */
+.text-long-shadow {
+  text-shadow: #1d7d74 1px 1px, #1d7d74 2px 2px, #1d7d74 3px 3px, #1d7d74 4px 4px, #1d7d74 5px 5px, #1d7d74 6px 6px, #1d7d74 7px 7px, #1d7d74 8px 8px, #1d7d74 9px 9px, #1d7d74 10px 10px, #1d7d74 11px 11px, #1d7d74 12px 12px, #1d7d74 13px 13px, #1d7d74 14px 14px, #1d7e75 15px 15px, #1d8077 16px 16px, #1e8278 17px 17px, #1e847a 18px 18px, #1e857c 19px 19px, #1f877d 20px 20px, #1f897f 21px 21px, #208b81 22px 22px, #208d82 23px 23px, #208e84 24px 24px, #219086 25px 25px, #219287 26px 26px, #229489 27px 27px, #22958b 28px 28px, #22978c 29px 29px, #23998e 30px 30px, #239b90 31px 31px, #249d91 32px 32px, #249e93 33px 33px, #24a095 34px 34px, #25a296 35px 35px, #25a498 36px 36px, #26a69a 37px 37px;
+  background-color: #26a69a;
+  /*height: 100%;*/
+  width: 100%;
+  font-size: 10rem;
+  color: #fff !important;
+  text-align: center;
+  padding: 20px 0 !important;
+}
+
+/*----------------------------------------
+    Email Page
+------------------------------------------*/
+/* line 1347, /rails/eventx/app/assets/stylesheets/style.scss */
+#mail-app hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 1355, /rails/eventx/app/assets/stylesheets/style.scss */
+.email-unread .email-title {
+  font-weight: 500;
+}
+
+/* line 1358, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-sidebar {
+  min-height: 650px;
+}
+
+/* line 1361, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-sidebar li {
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* line 1365, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-sidebar li i {
+  padding: 12px;
+  color: #272727;
+}
+
+/* line 1369, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-sidebar li i.active {
+  background: #DDDDDD;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+
+/* line 1375, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-sidebar li i:hover {
+  background: #DDDDDD;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+
+/* line 1381, /rails/eventx/app/assets/stylesheets/style.scss */
+#mail-app #email-sidebar,
+#mail-app #email-list,
+#mail-app #email-details {
+  margin-top: 0px;
+}
+
+/* line 1386, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list {
+  padding: 0;
+}
+
+/* line 1389, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection {
+  margin: 0;
+}
+
+/* line 1392, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection .collection-item.avatar {
+  height: auto;
+  padding-left: 72px;
+  position: relative;
+}
+
+/* line 1397, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection .collection-item:hover {
+  background: #e1f5fe;
+  cursor: pointer;
+}
+
+/* line 1401, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection .collection-item.selected {
+  background: #e1f5fe;
+  border-left: 4px solid #29b6f6;
+}
+
+/* line 1405, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection .collection-item.avatar .secondary-content {
+  position: absolute;
+  top: 10px;
+  right: -4px;
+}
+
+/* line 1410, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection .collection-item.avatar .secondary-content.email-time {
+  right: 8px;
+}
+
+/* line 1413, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection .collection-item.avatar .icon {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  left: 15px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  top: 20px;
+}
+
+/* line 1424, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection .collection-item.avatar .circle {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 300;
+  padding: 10px;
+}
+
+/* line 1438, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .collection .collection-item.avatar img.circle {
+  padding: 0px;
+}
+
+/* line 1441, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-list .attach-file {
+  -ms-transform: rotate(90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+  color: #9e9e9e;
+  font-size: 1.1rem;
+}
+
+/* line 1452, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details {
+  padding: 15px;
+}
+
+/* line 1455, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .email-subject {
+  font-size: 1.2rem;
+}
+
+/* line 1458, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .email-subject i {
+  font-size: 2.2rem;
+}
+
+/* line 1461, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .email-tag {
+  padding: 3px;
+  font-size: 0.9rem;
+}
+
+/* line 1465, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .collection {
+  border: none;
+}
+
+/* line 1468, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .collection .collection-item.avatar {
+  height: auto;
+  padding-left: 72px;
+  position: relative;
+}
+
+/* line 1473, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .collection .collection-item.selected {
+  background: #e1f5fe;
+  border-left: 4px solid #29b6f6;
+}
+
+/* line 1477, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .collection .collection-item.avatar .icon {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  top: 20px;
+}
+
+/* line 1487, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .collection .collection-item.avatar .circle {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 300;
+  padding: 10px;
+}
+
+/* line 1501, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .collection .collection-item.avatar img.circle {
+  padding: 0px;
+}
+
+/* line 1504, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .email-actions {
+  padding-top: 25px;
+}
+
+/* line 1507, /rails/eventx/app/assets/stylesheets/style.scss */
+#email-details .email-actions a {
+  color: #757575;
+  padding: 5px;
+}
+
+/* line 1511, /rails/eventx/app/assets/stylesheets/style.scss */
+.email-reply {
+  padding-top: 20px;
+}
+
+/* line 1514, /rails/eventx/app/assets/stylesheets/style.scss */
+.email-reply a {
+  color: #757575;
+}
+
+/* line 1517, /rails/eventx/app/assets/stylesheets/style.scss */
+.email-reply p {
+  color: #757575;
+  margin: 0;
+}
+
+/* line 1521, /rails/eventx/app/assets/stylesheets/style.scss */
+.email-reply a i {
+  font-size: 2rem;
+}
+
+/* line 1524, /rails/eventx/app/assets/stylesheets/style.scss */
+#mail-app .modal .modal-content {
+  padding: 0;
+}
+
+/* line 1527, /rails/eventx/app/assets/stylesheets/style.scss */
+.model-email-content {
+  padding: 24px;
+}
+
+/*----------------------------------------
+    Invoice Page
+------------------------------------------*/
+/* line 1534, /rails/eventx/app/assets/stylesheets/style.scss */
+.invoice-icon i {
+  font-size: 2rem;
+}
+
+/* line 1537, /rails/eventx/app/assets/stylesheets/style.scss */
+.invoice-table {
+  padding-top: 40px;
+}
+
+/* line 1540, /rails/eventx/app/assets/stylesheets/style.scss */
+.invoice-text {
+  padding: 18px 0px;
+}
+
+/*----------------------------------------
+    Blog
+------------------------------------------*/
+/* ----- Blog Card -----*/
+/* line 1550, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog-card .card {
+  margin: 0px;
+}
+
+/* line 1553, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog-card ul.card-action-buttons {
+  margin: -26px 10px 0px 0px;
+  text-align: right;
+}
+
+/* line 1557, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog-card ul.card-action-buttons li {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+/* line 1561, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog-card .card .card-content {
+  padding: 5px 10px 5px 10px;
+}
+
+/* line 1564, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog-card .card .card-content .card-title,
+.blog-card .card .card-reveal .card-title {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+}
+
+/* -----Blogs Masonery Page----- */
+/* line 1572, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog {
+  width: 20%;
+  padding: 10px;
+}
+
+/* line 1575, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog-sizer {
+  width: 20%;
+}
+
+/* line 1578, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog .card {
+  margin: 0px;
+}
+
+/* line 1581, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog ul.card-action-buttons {
+  margin: -26px 10px 0px 0px;
+  text-align: right;
+}
+
+/* line 1585, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog ul.card-action-buttons li {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+/* line 1589, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog .card .card-content {
+  padding: 5px 10px 5px 10px;
+}
+
+/* line 1592, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog .card .card-content .card-title,
+.blog .card .card-reveal .card-title {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+}
+
+/* line 1598, /rails/eventx/app/assets/stylesheets/style.scss */
+.blog-post-content {
+  padding-bottom: 10px;
+}
+
+/*  blog page media queries */
+@media screen and (max-width: 2200px) {
+  /* line 1604, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog-sizer {
+    width: 20%;
+  }
+
+  /* line 1605, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 1800px) {
+  /* line 1608, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog-sizer {
+    width: 30%;
+  }
+
+  /* line 1609, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1600px) {
+  /* line 1612, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog-sizer {
+    width: 33.33%;
+  }
+
+  /* line 1613, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog {
+    width: 33.33%;
+  }
+}
+@media screen and (max-width: 1224px) {
+  /* line 1616, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog-sizer {
+    width: 33.33%;
+  }
+
+  /* line 1617, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog {
+    width: 33.33%;
+  }
+}
+@media screen and (max-width: 980px) {
+  /* line 1620, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog-sizer {
+    width: 50%;
+  }
+
+  /* line 1621, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 720px) {
+  /* line 1624, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog-sizer {
+    width: 50%;
+  }
+
+  /* line 1625, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 1629, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog-sizer {
+    width: 100%;
+  }
+
+  /* line 1630, /rails/eventx/app/assets/stylesheets/style.scss */
+  .blog {
+    width: 100%;
+  }
+}
+/* -----Blogs Page Full width 2----- */
+/* line 1634, /rails/eventx/app/assets/stylesheets/style.scss */
+#blog-post-full .card-title {
+  text-shadow: 1px 1px 4px #000;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+/* line 1639, /rails/eventx/app/assets/stylesheets/style.scss */
+#blog-post-full .blog-post-full-cat {
+  padding: 5px;
+  margin: 25px;
+  right: 0px;
+  left: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* line 1649, /rails/eventx/app/assets/stylesheets/style.scss */
+#blog-post-full .blog-post-full-cat a {
+  color: #fff;
+  text-shadow: none;
+}
+
+/*----------------------------------------
+    Products
+------------------------------------------*/
+/* ---- Product Card ----- */
+/* line 1661, /rails/eventx/app/assets/stylesheets/style.scss */
+.product-card .card {
+  margin: 0px;
+}
+
+/* line 1664, /rails/eventx/app/assets/stylesheets/style.scss */
+.product-card ul.card-action-buttons {
+  margin: -26px 10px 0px 0px;
+  text-align: right;
+}
+
+/* line 1668, /rails/eventx/app/assets/stylesheets/style.scss */
+.product-card ul.card-action-buttons li {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+/* line 1672, /rails/eventx/app/assets/stylesheets/style.scss */
+.product-card .card .card-content {
+  padding: 5px 10px 5px 10px;
+}
+
+/* line 1675, /rails/eventx/app/assets/stylesheets/style.scss */
+.product-card .card .card-content .card-title,
+.product-card .card .card-reveal .card-title {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+}
+
+/* line 1681, /rails/eventx/app/assets/stylesheets/style.scss */
+.product-card .card .btn-price {
+  width: 65px;
+  height: 65px;
+  font-weight: 600;
+  font-size: 1.0rem;
+  line-height: 65px;
+  margin: 10px;
+  position: absolute;
+  top: 0px;
+  letter-spacing: 0px;
+}
+
+/* -----Products Masonery ----- */
+/* line 1694, /rails/eventx/app/assets/stylesheets/style.scss */
+.product {
+  width: 20%;
+  padding: 10px;
+}
+
+/* line 1697, /rails/eventx/app/assets/stylesheets/style.scss */
+.product-sizer {
+  width: 20%;
+}
+
+/* line 1700, /rails/eventx/app/assets/stylesheets/style.scss */
+.product .card {
+  margin: 0px;
+}
+
+/* line 1703, /rails/eventx/app/assets/stylesheets/style.scss */
+.product ul.card-action-buttons {
+  margin: -26px 10px 0px 0px;
+  text-align: right;
+}
+
+/* line 1707, /rails/eventx/app/assets/stylesheets/style.scss */
+.product ul.card-action-buttons li {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+/* line 1711, /rails/eventx/app/assets/stylesheets/style.scss */
+.product .card .card-content {
+  padding: 5px 10px 5px 10px;
+}
+
+/* line 1714, /rails/eventx/app/assets/stylesheets/style.scss */
+.product .card .card-content .card-title,
+.product .card .card-reveal .card-title {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+}
+
+/* line 1720, /rails/eventx/app/assets/stylesheets/style.scss */
+.product .card .btn-price {
+  width: 65px;
+  height: 65px;
+  font-weight: 600;
+  font-size: 1.0rem;
+  line-height: 65px;
+  margin: 10px;
+  position: absolute;
+  top: 0px;
+  letter-spacing: 0px;
+}
+
+/* eCommers product page media queries */
+@media screen and (max-width: 2200px) {
+  /* line 1733, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product-sizer {
+    width: 20%;
+  }
+
+  /* line 1734, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 1800px) {
+  /* line 1737, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product-sizer {
+    width: 30%;
+  }
+
+  /* line 1738, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1600px) {
+  /* line 1741, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product-sizer {
+    width: 25%;
+  }
+
+  /* line 1742, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1224px) {
+  /* line 1745, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product-sizer {
+    width: 33.33%;
+  }
+
+  /* line 1746, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product {
+    width: 33.33%;
+  }
+}
+@media screen and (max-width: 980px) {
+  /* line 1749, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product-sizer {
+    width: 50%;
+  }
+
+  /* line 1750, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 720px) {
+  /* line 1753, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product-sizer {
+    width: 50%;
+  }
+
+  /* line 1754, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 1758, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product-sizer {
+    width: 100%;
+  }
+
+  /* line 1759, /rails/eventx/app/assets/stylesheets/style.scss */
+  .product {
+    width: 100%;
+  }
+}
+/*----------------------------------------
+    Gallary  Page
+------------------------------------------*/
+/* line 1766, /rails/eventx/app/assets/stylesheets/style.scss */
+.gallary-item img {
+  width: 20%;
+}
+
+/* line 1769, /rails/eventx/app/assets/stylesheets/style.scss */
+.gallary-sizer {
+  width: 20%;
+}
+
+/* Gallary page media queries */
+@media screen and (max-width: 2200px) {
+  /* line 1775, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-sizer {
+    width: 20%;
+  }
+
+  /* line 1776, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-item img {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 1800px) {
+  /* line 1779, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-sizer {
+    width: 30%;
+  }
+
+  /* line 1780, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-item img {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1600px) {
+  /* line 1783, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-sizer {
+    width: 25%;
+  }
+
+  /* line 1784, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-item img {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1224px) {
+  /* line 1787, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-sizer {
+    width: 33.33%;
+  }
+
+  /* line 1788, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-item img {
+    width: 33.33%;
+  }
+}
+@media screen and (max-width: 980px) {
+  /* line 1791, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-sizer {
+    width: 50%;
+  }
+
+  /* line 1792, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-item img {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 720px) {
+  /* line 1795, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-sizer {
+    width: 50%;
+  }
+
+  /* line 1796, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-item img {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 1800, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-sizer {
+    width: 100%;
+  }
+
+  /* line 1801, /rails/eventx/app/assets/stylesheets/style.scss */
+  .gallary-item img {
+    width: 100%;
+  }
+}
+/*----------------------------------------
+    Contact Page (Map-card)
+------------------------------------------*/
+/* ---- Map card ----*/
+/* line 1810, /rails/eventx/app/assets/stylesheets/style.scss */
+.map-card #map-canvas {
+  width: 100%;
+  height: 342px;
+}
+
+/* line 1814, /rails/eventx/app/assets/stylesheets/style.scss */
+.map-card .card .card-content .card-title, .map-card .card .card-reveal .card-title {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+}
+
+/* line 1819, /rails/eventx/app/assets/stylesheets/style.scss */
+.map-card .btn-move-up {
+  top: -38px;
+}
+
+/* ---- Map Contact Page ----*/
+/* line 1823, /rails/eventx/app/assets/stylesheets/style.scss */
+#map-canvas {
+  width: 100%;
+  height: 250px;
+}
+
+/*----------------------------------------
+    Pricing Plan  Page
+------------------------------------------*/
+/* line 1831, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .collection {
+  border: none;
+}
+
+/* line 1834, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .collection .collection-item {
+  border-bottom: none;
+  text-align: center;
+  font-size: 1.07rem;
+  line-height: 1.6em;
+}
+
+/* line 1840, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .collection .collection-item:before {
+  font-size: 1.28rem;
+  line-height: 1.6em;
+  color: #009315;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  content: "\e623";
+  margin-right: 10px;
+}
+
+/* line 1853, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .card .card-image {
+  position: relative;
+  width: 100%;
+}
+
+/* line 1857, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .card .card-image .card-title {
+  position: relative;
+  font-size: 1.28rem;
+  line-height: 1.6em;
+  text-align: center;
+  width: 100%;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 1867, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .card .card-image .price {
+  position: relative;
+  font-size: 5rem;
+  line-height: 1.6em;
+  color: #fff;
+  font-weight: 300;
+  text-align: center;
+}
+
+/* line 1875, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .card .card-image .price sup {
+  font-weight: 100;
+  font-size: 1.42rem;
+  line-height: 1.6em;
+  top: -35px;
+}
+
+/* line 1881, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .card .card-image .price sub {
+  font-weight: 100;
+  font-size: 1.42rem;
+  line-height: 1.6em;
+  top: 0px;
+}
+
+/* line 1887, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .card .card-image .price-desc {
+  text-align: center;
+  color: #fff;
+  padding-bottom: 10px;
+}
+
+/* line 1892, /rails/eventx/app/assets/stylesheets/style.scss */
+.plans-container .card .card-content {
+  padding: 0;
+}
+
+ /*
+@media screen and (min-width: 601px) {
+  .plans-container .card {
+    min-height: 550px;
+  }
+}*/
+/*----------------------------------------
+    Profile Page
+------------------------------------------*/
+/* line 1906, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-header .card-image {
+  height: 250px;
+}
+
+/* line 1909, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-header .card-profile-image {
+  width: 110px;
+  position: absolute;
+  top: 190px;
+  z-index: 1;
+  left: 40px;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* line 1918, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-header .card-content {
+  margin-top: -40px;
+}
+
+/* line 1921, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-header .card-content .card-title {
+  margin-bottom: 0px;
+}
+
+/*profile-page-wall*/
+/* line 1927, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall .profile-image-post {
+  width: 60px;
+  margin: 30px 10px;
+}
+
+/* line 1931, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall .tab-profile .tab i {
+  font-size: 16px;
+}
+
+/* line 1934, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall .tab-content {
+  padding: 10px;
+}
+
+/* line 1937, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall .share-icons {
+  margin-top: 10px;
+}
+
+/* line 1940, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall .share-icons i {
+  padding: 0px 5px;
+}
+
+/* line 1945, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall-posts .profile-small {
+  height: 250px;
+  overflow: hidden;
+}
+
+/* line 1949, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall-posts .profile-medium {
+  height: 350px;
+  overflow: hidden;
+}
+
+/* line 1953, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall-posts .profile-large {
+  height: 450px;
+  overflow: hidden;
+}
+
+/* line 1957, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall-posts .card-profile-title {
+  font-size: 16px;
+  padding: 20px;
+  border-radius: 0 0 2px 2px;
+}
+
+/* line 1962, /rails/eventx/app/assets/stylesheets/style.scss */
+#profile-page-wall-posts .card-action-share {
+  padding: 16px;
+}
+
+/*----------------------------------------
+    Shadow effect
+------------------------------------------*/
+/* line 1970, /rails/eventx/app/assets/stylesheets/style.scss */
+.shadow-demo {
+  background-color: #26a69a;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+}
+
+/* line 1976, /rails/eventx/app/assets/stylesheets/style.scss */
+.collapsible-header {
+  font-weight: 500;
+}
+
+/*=================================================================================
+    Footer
+====================================================================================*/
+/* line 1983, /rails/eventx/app/assets/stylesheets/style.scss */
+footer.page-footer {
+  padding-top: 0px;
+}
+
+/*----------------------------------------
+    footer charts
+------------------------------------------*/
+/* line 1990, /rails/eventx/app/assets/stylesheets/style.scss */
+#world-map-markers {
+  height: 300px;
+}
+
+/* line 1993, /rails/eventx/app/assets/stylesheets/style.scss */
+#polar-chart-holder {
+  padding-top: 20px;
+}
+
+/*=================================================================================
+    Media Queries
+====================================================================================*/
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* STYLES GO HERE */
+  /* line 2004, /rails/eventx/app/assets/stylesheets/style.scss */
+  .doughnut-chart-status {
+    display: none;
+  }
+}
+/* For Tables ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* STYLES GO HERE */
+  /* line 2013, /rails/eventx/app/assets/stylesheets/style.scss */
+  .doughnut-chart-status {
+    display: none;
+  }
+
+  /* line 2016, /rails/eventx/app/assets/stylesheets/style.scss */
+  #card-stats .card-stats-compare {
+    font-size: 0.8rem;
+  }
+}

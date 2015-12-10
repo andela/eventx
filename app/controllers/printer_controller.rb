@@ -18,8 +18,9 @@ class PrinterController < ApplicationController
     if @booking.nil?
       flash[:notice] = "Booking not found"
       redirect_to tickets_path
+    else
+      set_ticket_type
     end
-    set_ticket_type
   end
 
   def set_ticket_type
