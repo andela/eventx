@@ -7,7 +7,7 @@
         <span class="card-title card-panel cyan lighten-1"><%=booking.event.title %></span>
       </div>
       <div class="card-content">
-        <%= booking_tickets(booking) %>
+        <%= booking.show_ticket_types %>
       </div>
       <div class="card-action">
         <%= link_to content_tag(:i, "", class: "fa fa-print") + "Print", print_path(booking.id), class: "left"%>
