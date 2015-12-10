@@ -3,8 +3,8 @@
   <div class="col s12 m4 l4">
     <div class="card medium">
       <div class="card-image">
-        <img src="http://www.herald.co.zw/wp-content/uploads/2014/09/PPC-Ads-online-page-surebuild-300px-x-600px.jpg">
-        <span class="card-title"><%=booking.event.title %></span>
+        <%= image_tag booking.event.image_url(:landing) %>
+        <span class="card-title card-panel cyan lighten-1"><%=booking.event.title %></span>
       </div>
       <div class="card-content">
         <%= booking_tickets(booking) %>
