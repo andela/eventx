@@ -12,4 +12,5 @@ Rails.application.config.assets.precompile += %w( welcome.css )
 # in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( green.css )
+Rails.application.config.assets.precompile += %w( pdf.css )
 # Rails.application.config.assets.precompile += %w( events1.js )
