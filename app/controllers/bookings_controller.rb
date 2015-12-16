@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: :paypal_hook
   before_action except: [:view_booking, :paypal_hook, :index] do
     set_event
     ticket_params
@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   protect_from_forgery except: [:paypal_hook]
 
   def index
-    @bookings = current_user.bookings.order(id: :desc)
+    @bookings = current_user.bookings.order(id: :desc).decorate
   end
 
   def create

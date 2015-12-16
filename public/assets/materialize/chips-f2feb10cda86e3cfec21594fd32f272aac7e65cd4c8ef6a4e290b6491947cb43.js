@@ -1,0 +1,1 @@
+!function(n){n(document).ready(function(){n(document).on("click.chip",".chip .material-icons",function(c){n(this).parent().remove()})})}(jQuery);
