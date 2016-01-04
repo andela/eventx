@@ -12,7 +12,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
   end
   scenario "Manager logs in and tries to edit event" do
     visit root_path
-    click_link "Log In"
+    click_link "Sign up"
     within ".modal-content" do
       click_link "Google"
     end
