@@ -16,10 +16,6 @@ module ApplicationHelper
     content_tag(:a, name, href: new_manager_profile_path, class: classes * " ")
   end
 
-  def all_categories
-    Category.order(:name)
-  end
-
   def get_site_root_site_link
     "http://#{request.domain}:#{request.port}"
   end

@@ -7,8 +7,7 @@ class SearchQuery
     new.build(search_params)
   end
 
-  def build(event_name: "", event_location: "",
-            event_date: "", category_id: "")
+  def build(event_name: "", event_location: "", event_date: "", category_id: "")
     append_by_match :title, event_name.downcase
     append_by_match :location, event_location.downcase
     append_by_category category_id
@@ -25,7 +24,7 @@ class SearchQuery
   end
 
   def append_by_date_range(range)
-    @query.where(events[:start_date].in(range)) unless range.empty?
+    @query.where(events[:start_date].in(range[0]..range[-1])) unless range.empty?
   end
 
   def events

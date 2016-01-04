@@ -6,6 +6,8 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     OmniAuth.config.test_mode = true
     FactoryGirl.create(:category)
     FactoryGirl.create(:category2)
+    FactoryGirl.create(:ticket_type4)
+    FactoryGirl.create(:ticket_type)
   end
   after do
     DatabaseCleaner.clean
@@ -83,5 +85,15 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     date1 = Date.tomorrow.strftime("%b %d %Y")
     expect(page).to have_selector("label.our-event-date",
                                   text: "#{date1} " + "to #{date1}")
+
+    visit "/events/1"
+    click_link "Attend this event"
+    within ".modal-content" do
+      page.execute_script("$('#ticket_type_1').prop('checked', true)")
+      fill_in "tickets_quantity_1", with: 1
+      click_button "Submit"
+    end
+    Capybara.default_max_wait_time = 20
+    expect(page).not_to have_content "UNATTEND"
   end
 end

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :events, through: :manager_profile
 
   def self.from_omniauth(auth)
+    return auth unless auth
     provider = auth["provider"]
     where(provider: provider, uid: auth["uid"]).first_or_create do |user|
       user.provider = provider

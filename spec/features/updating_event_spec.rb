@@ -6,13 +6,15 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     OmniAuth.config.test_mode = true
     FactoryGirl.create(:category)
     FactoryGirl.create(:category2)
+    # FactoryGirl.create(:event_template)
+    # FactoryGirl.create(:event)
   end
   after do
     DatabaseCleaner.clean
   end
   scenario "Manager logs in and tries to edit event" do
     visit root_path
-    click_link "Log In"
+    click_link "Sign up"
     within ".modal-content" do
       click_link "Google"
     end
@@ -34,7 +36,6 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
                         .pickadate('picker').set('select', #{date})")
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
-
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description
 
@@ -58,5 +59,10 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     expect(page).to have_content "This is an edited Event"
     expect(page).to have_content "Your Event was successfully updated"
     expect(page.current_path).to eq "/events/1"
+    find("a[data-activates = 'dropdown-user_option']").click
+    click_link "My Account"
+    fill_in "Search By Event Name", with: "This is an edited Event"
+    click_button "Search"
+    expect(page).to have_content "This is an edited Event"
   end
 end

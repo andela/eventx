@@ -12,11 +12,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    if params.size != 0
-      @categories = Category.all
-      @events = Event.search(search_params.symbolize_keys)
-    else
+    @categories = Category.all
+    if search_params.size == 0
       @events = Event.recent_events
+    else
+      @events = Event.search(search_params.symbolize_keys)
     end
     respond_with @events
   end
@@ -66,6 +66,7 @@ class EventsController < ApplicationController
                                   :event_template_id, ticket_types_attributes:
                                   [:id, :_destroy, :name, :quantity, :price])
   end
+
 
   def set_events
     @event = Event.find_by_id(params[:id])

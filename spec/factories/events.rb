@@ -23,6 +23,30 @@ FactoryGirl.define do
       factory :event_with_ticket1 do
         id 2
       end
+      factory :next_week_event do
+        id 5
+        title "Next week Event"
+        start_date Time.zone.now.end_of_week + 86_400 * 3
+        end_date Time.zone.now.end_of_week + 86_400 * 4
+      end
+      factory :tomorrow_event do
+        id 8
+        title "Tomorrow Event"
+        start_date Time.zone.tomorrow
+        end_date Time.zone.tomorrow
+      end
+      factory :next_weekend_event do
+        id 6
+        title "Next weekend Event"
+        start_date Time.zone.now.end_of_week + 86_400 * 5
+        end_date Time.zone.now.end_of_week  + 86_400 * 5
+      end
+      factory :this_weekend_event do
+        id 7
+        title "This weekend Event"
+        start_date Time.zone.now.end_of_week - 86_400 * 2
+        end_date Time.zone.now.end_of_week - 86_400 * 2
+      end
       factory :sport_event do
         id 3
         category_id 2
