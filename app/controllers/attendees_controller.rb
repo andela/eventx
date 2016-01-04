@@ -1,13 +1,5 @@
 class AttendeesController < ApplicationController
-  before_action :find_event, :find_user
-
-  def create
-    @attendee = @event.attendees.build(user_id: current_user.id)
-    if @attendee.save
-      event = EventMailer.attendance_confirmation(@user, @event)
-      event.deliver_later!(wait: 1.minute)
-    end
-  end
+  before_action :find_event
 
   def destroy
     @attendee = current_user.bookings.find_by_event_id(@event.id)
@@ -25,10 +17,6 @@ class AttendeesController < ApplicationController
   end
 
   def find_event
-    @event = Event.find(params[:event_id])
-  end
-
-  def find_user
-    @user = User.find(current_user.id)
+    @event = Event.find(attend_params[:event_id])
   end
 end

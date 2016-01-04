@@ -4,6 +4,7 @@ end
 
 def set_invalid_omniauth
   OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
+  false
 end
 
 def build_google_oauth2_response(email = nil)
