@@ -12,11 +12,11 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
   end
   scenario "user wants to become an Event Manager" do
     visit root_path
-    click_link "Log In"
+    click_link "Sign up"
     within ".modal-content" do
       click_link "Google"
     end
-
+    
     expect(page).to have_content "BECOME AN EVENT MANAGER"
     expect(page).not_to have_content "Create Event"
 
