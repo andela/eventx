@@ -34,10 +34,6 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
                         .pickadate('picker').set('select', #{date})")
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
-
-    within "#test1" do
-      page.attach_file("#event_photo_upload", ("#{Rails.root}/spec/test.jpg"))
-    end
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description
 
