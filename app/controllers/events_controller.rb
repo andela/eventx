@@ -14,11 +14,7 @@ class EventsController < ApplicationController
   def index
     if params.size != 0
       @categories = Category.all
-      category_id = (params[:category_id].nil?) ? "" : params[:category_id]
-      date = (params[:event_date].nil?) ? "" : params[:event_date]
-      location = (params[:event_location].nil?) ? "" : params[:event_location]
-      event_name = (params[:event_name].nil?) ? "" : params[:event_name]
-      @events = Event.search(event_name, location, date, category_id)
+      @events = Event.search(search_params.symbolize_keys)
     else
       @events = Event.recent_events
     end
@@ -58,6 +54,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.permit(:event_name, :event_location, :event_date, :category_id)
+  end
 
   def event_params
     params.require(:event).permit(:title, :description, :start_date,
