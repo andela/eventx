@@ -5,7 +5,6 @@ require "barby/outputter/png_outputter"
 
 module PrintHelper
   def print_ticket(ticket)
-    ticket_number = ticket.ticket_number
     type = TicketType.find(ticket.ticket_type_id).name
     render "printer/ticket", ticket_type: type, ticket: ticket
   end
