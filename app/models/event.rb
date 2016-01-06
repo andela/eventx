@@ -50,17 +50,25 @@ class Event < ActiveRecord::Base
   end
 
   def self.popular_events
-    find_by_sql(PopularQuery.build)
+    find_by_sql(scope_raw_query(PopularQuery.build))
   end
 
   def self.search(search_params)
     query = SearchQuery.build_by(search_params)
-    find_by_sql(query)
+    find_by_sql(scope_raw_query(query))
   end
 
   def self.upcoming_events
     time = Time.zone.now
     where("start_date >= ?", time).limit(12).order("start_date ASC")
+  end
+
+  def self.scope_raw_query(query)
+    tenant = ActsAsTenant.current_tenant
+    if tenant
+      query = query.where(arel_table[:manager_profile_id].eq(tenant.id))
+    end
+    query.to_sql
   end
 
   def ticket_sold

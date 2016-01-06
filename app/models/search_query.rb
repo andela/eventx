@@ -13,7 +13,7 @@ class SearchQuery
     append_by_match :location, event_location.downcase
     append_by_category category_id
     append_by_date_range EventDate.format(event_date)
-    @query.to_sql
+    @query
   end
 
   def append_by_match(column, word)
