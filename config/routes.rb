@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/my_events" => "users#show"
   get "events/loading"
   post "/paypal_hook" => "bookings#paypal_hook", as: :hook
-  post "/view" => "bookings#view_booking", as: :view_booking
+  post "/paypal_dummy" => "bookings#paypal_dummy", as: :paypal_dummy
   get "unattend", to: "attendees#destroy", as: "unattend"
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")
