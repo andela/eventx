@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user, except: [:paypal_hook, :view_booking, :paypal_dummy]
+  before_action :authenticate_user,
+                except: [:paypal_hook, :view_booking, :paypal_dummy]
   before_action except: [:view_booking, :paypal_hook, :index, :paypal_dummy] do
     set_event
     ticket_params
