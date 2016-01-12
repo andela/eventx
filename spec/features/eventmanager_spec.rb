@@ -4,10 +4,6 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
   before do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
-    FactoryGirl.create(:category)
-    FactoryGirl.create(:category2)
-    FactoryGirl.create(:ticket_type4)
-    FactoryGirl.create(:ticket_type)
   end
   after do
     DatabaseCleaner.clean
@@ -85,14 +81,5 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     date1 = Date.tomorrow.strftime("%b %d %Y")
     expect(page).to have_selector("label.our-event-date",
                                   text: "#{date1} " + "to #{date1}")
-
-    # visit "/events/1"
-    # click_link "Attend this event"
-    # within ".modal-content" do
-    #   # check "MyString"
-    #   find("#ticket_type_1").clickz
-    #   click_button "Submit"
-    # end
-    # expect(page).to have_content "UNATTEND"
   end
 end

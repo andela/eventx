@@ -20,8 +20,8 @@ RSpec.describe User, type: :model do
 
   describe "#event_manager?" do
     it "returns true for users that are also event managers" do
-      user = User.first
-      manager_profile = FactoryGirl.create(:manager_profile)
+      user = FactoryGirl.create(:user)
+      FactoryGirl.create(:manager_profile, user: user)
       expect(user.event_manager?).to be_truthy
     end
 
@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
 
   describe "#generate_auth_token" do
     it "returns encoded string" do
-      user = User.first
+      user = FactoryGirl.create(:user)
       expect(user.generate_auth_token).not_to be nil
     end
   end

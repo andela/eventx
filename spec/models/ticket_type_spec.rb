@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe TicketType, type: :model do
   before (:each) do
-    @ticket_type = FactoryGirl.create(:ticket_type)
-    @user_ticket = FactoryGirl.create(:user_ticket, ticket_type: @ticket_type)
+    @ticket_type = FactoryGirl.create(:ticket_type_paid)
+    FactoryGirl.create(:user_ticket, ticket_type: @ticket_type)
   end
 
   describe "#sold" do
@@ -23,19 +23,4 @@ RSpec.describe TicketType, type: :model do
       expect(@ticket_type.tickets_left).to eql 0
     end
   end
-
-
-
-
-
-
 end
-#   def sold
-#     user_tickets.size
-#   end
-# 1   def total_amount_sold
-#     sold * price.to_f
-#   end
-# 1   def tickets_left
-#     quantity - sold
-#   end

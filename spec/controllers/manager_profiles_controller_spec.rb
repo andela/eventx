@@ -19,7 +19,7 @@ RSpec.describe ManagerProfilesController, type: :controller do
     it "does not create invalid manager profile" do
       user = User.from_omniauth(request.env["omniauth.auth"])
       session[:user_id] = user.id
-      profile = FactoryGirl.attributes_for(:invalid_manager)
+      profile = FactoryGirl.attributes_for(:manager_profile, subdomain: nil)
       post :create, manager_profile: profile
       expect(flash[:notice]).to eq "Found Errors in form submitted!"
       expect(response).to render_template :new

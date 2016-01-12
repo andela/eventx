@@ -5,17 +5,13 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
   before do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
-    FactoryGirl.create(:event_template)
-    FactoryGirl.create(:category)
-    FactoryGirl.create(:category2)
-    FactoryGirl.create(:category3)
-    FactoryGirl.create(:ticket_type)
-    FactoryGirl.create(:ticket_type2)
-    FactoryGirl.create(:user)
-    FactoryGirl.create(:manager_profile)
-    FactoryGirl.create(:event_with_ticket)
-    FactoryGirl.create(:event_with_ticket1)
-    FactoryGirl.create(:sport_event)
+    user = FactoryGirl.create(:user)
+    manager = FactoryGirl.create(:manager_profile, user: user)
+    event = FactoryGirl.create(:event_with_ticket, manager_profile: manager)
+    FactoryGirl.create(:event_with_ticket, manager_profile: manager)
+    FactoryGirl.create(:ticket_type_free, event: event)
+    FactoryGirl.create(:ticket_type_free, event: event)
+    FactoryGirl.create(:sport_event, manager_profile: manager)
   end
   after do
     DatabaseCleaner.clean
@@ -38,7 +34,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     click_link "Music"
     expect(page).to have_content("Blessings wedding")
 
-    click_link "Sports"
+    click_link "Sport & Wellness"
     expect(page).not_to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
 

@@ -2,8 +2,6 @@ require "rails_helper"
 
 RSpec.feature "search_event:", type: :feature do
   before do
-    FactoryGirl.create(:category)
-    FactoryGirl.create(:event_template)
     FactoryGirl.create(:event)
     FactoryGirl.create(:next_week_event)
     FactoryGirl.create(:next_weekend_event)

@@ -1,24 +1,12 @@
 FactoryGirl.define do
   factory :ticket_type do
+    name "MyTicket"
     quantity 1
-    event_id 1
-    price "9.99"
-    name "MyString"
-    factory :ticket_type2 do
-      event_id 2
-    factory :ticket_type4 do
-      quantity 1
-      event_id 1
+    factory :ticket_type_free do
       price "0.00"
-      name "Ticket"
     end
+    factory :ticket_type_paid do
+      price "9.99"
     end
-  end
-
-  factory :ticket_type3 do
-    quantity 1
-    event_id 2
-    price "9.99"
-    name "MyString"
   end
 end
