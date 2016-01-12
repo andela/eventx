@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  respond_to :html, :json
   def index
     @events = Event.upcoming_events
     respond_with @events
