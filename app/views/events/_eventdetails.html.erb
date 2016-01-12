@@ -28,9 +28,7 @@
           <%= render partial: "events/attend_unattend_event_button" %>
         </div>
         <%if @event.id%>
-          <%= social_share_button_tag(@event.title,
-          url: request.base_url + event_path(@event), image: @event.image,
-          desc: @event.description, popup: "true" ) %>
+            <%= social_share_button_tag(@event.title, popup: true)%>
         <%end%>
       </div>
       <div class="row center"></div>
