@@ -40,61 +40,26 @@ class Event < ActiveRecord::Base
     true if attendees.include?(user.id)
   end
 
-<<<<<<< HEAD
   def self.popular_events
-    find_by_sql(PopularQuery.build)
-=======
-  def self.search(title = "", location = "", date = "", category_id = "")
-    date_range = []
-    date_range = format_date(date) unless date.empty?
-    location = "%" + location + "%"
-    title = "%" + title + "%"
-    query = "SELECT * FROM events "
-    query += "WHERE " unless title.empty? && location.empty? && date.empty?
-    query += "title LIKE :title" unless title.empty?
-    query += " AND " unless location.empty? || title.empty?
-    query += "location LIKE :location" unless location.empty?
-    query += " AND " unless location.empty? || date.empty?
-    query += "start_date Between :start_date AND :end_date" unless date.empty?
-    query += " AND " unless category_id.empty?
-    query += "category_id = :category_id" unless category_id.empty?
-    find_by_sql [query, {
-      title: title, location: location,
-      start_date: date_range[0], end_date: date_range[-1],
-      category_id: category_id
-    }]
+    find_by_sql(scope_raw_query(PopularQuery.build))
   end
-
-  def self.format_date(type)
-    date_range = []
-    t = Time.now
-    secs = 86_400
-    case type
-    when "tomorrow"
-      date_range = t.beginning_of_day + (secs), t.end_of_day + (secs)
-    when "this week"
-      date_range = [t.beginning_of_week, t.end_of_week]
-    when "next week"
-      date_range = t.beginning_of_week + (secs * 7), t.end_of_week + (secs * 7)
-    when "this weekend"
-      date_range = [t.end_of_week - (secs * 2), t.end_of_week]
-    when "next weekend"
-      date_range = [t.end_of_week + (secs * 5), t.end_of_week + (secs * 7)]
-    else
-      date_range = [t.beginning_of_day, t.end_of_day]
-    end
-    date_range
->>>>>>> fb6f455... Added Search specs
-  end
-
+  
   def self.search(search_params)
     query = SearchQuery.build_by(search_params)
-    find_by_sql(query)
+    find_by_sql(scope_raw_query(query))
   end
 
   def self.upcoming_events
     time = Time.zone.now
     where("start_date >= ?", time).limit(12).order("start_date ASC")
+  end
+
+  def self.scope_raw_query(query)
+    tenant = ActsAsTenant.current_tenant
+    if tenant
+      query = query.where(arel_table[:manager_profile_id].eq(tenant.id))
+    end
+    query.to_sql
   end
 
   def ticket_sold

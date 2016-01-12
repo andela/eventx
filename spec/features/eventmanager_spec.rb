@@ -86,14 +86,13 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     expect(page).to have_selector("label.our-event-date",
                                   text: "#{date1} " + "to #{date1}")
 
-    visit "/events/1"
-    click_link "Attend this event"
-    within ".modal-content" do
-      page.execute_script("$('#ticket_type_1').prop('checked', true)")
-      fill_in "tickets_quantity_1", with: 1
-      click_button "Submit"
-    end
-    Capybara.default_max_wait_time = 20
-    expect(page).not_to have_content "UNATTEND"
+    # visit "/events/1"
+    # click_link "Attend this event"
+    # within ".modal-content" do
+    #   # check "MyString"
+    #   find("#ticket_type_1").clickz
+    #   click_button "Submit"
+    # end
+    # expect(page).to have_content "UNATTEND"
   end
 end
