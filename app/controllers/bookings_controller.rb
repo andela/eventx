@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user, except: :paypal_hook
-  before_action except: [:view_booking, :paypal_hook, :index] do
+  before_action :authenticate_user,
+                except: [:paypal_hook, :view_booking, :paypal_dummy]
+  before_action except: [:view_booking, :paypal_hook, :index, :paypal_dummy] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -37,13 +38,8 @@ class BookingsController < ApplicationController
     render nothing: true
   end
 
-  def view_booking
-    if params[:item_number]
-      booking = Booking.find(params[:item_number])
-      redirect_to event_path(booking.event)
-    else
-      redirect_to events_path
-    end
+  def paypal_dummy
+    redirect_to tickets_path
   end
 
   private
@@ -60,9 +56,9 @@ class BookingsController < ApplicationController
     if @booking.amount == 0
       @booking.free!
       trigger_booking_mail
-      redirect_to @booking.event
+      redirect_to tickets_path
     else
-      redirect_to @booking.paypal_url(view_booking_path)
+      redirect_to @booking.paypal_url(paypal_dummy_path)
     end
   end
 
