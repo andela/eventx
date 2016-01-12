@@ -5,12 +5,8 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
   before do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
-    FactoryGirl.create(:event_template)
-    FactoryGirl.create(:category)
-    FactoryGirl.create(:category2)
     FactoryGirl.create(:ticket_type)
-    FactoryGirl.create(:user)
-    FactoryGirl.create(:manager_profile)
+    FactoryGirl.create(:manager_profile, user: FactoryGirl.create(:user))
     FactoryGirl.create(:event_with_ticket)
     FactoryGirl.create(:old_event)
     FactoryGirl.create(:sport_event)

@@ -20,7 +20,7 @@
       <%= label :tickets_price, number_to_currency(ticket.price), class: "tickets_price" %>
     </div>
     <div class="col m3">
-      <%= number_field :tickets_quantity, ticket.id, class: "event_ticket_input" %>
+      <%= text_field :tickets_quantity, ticket.id, class: "event_ticket_input" %>
     </div>
   </div>
 </p>

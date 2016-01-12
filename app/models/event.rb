@@ -27,15 +27,6 @@ class Event < ActiveRecord::Base
   scope :recent_events, -> { order(created_at: :DESC).limit(12) }
   scope :featured_events, -> { order(created_at: :DESC).limit(12) }
 
-  def all_tickets_sold
-    ticket_types.where("price > 0")
-  end
-
-  def paid_tickets_sold
-    user_tickets.where(payment_status: Event.statuses[:paid])
-  end
-
-  # validation
   def expiration_date_cannot_be_in_the_past
     if end_date.present? && end_date < Date.today
       errors.add(:end_date, "can't be in the past")
@@ -52,7 +43,7 @@ class Event < ActiveRecord::Base
   def self.popular_events
     find_by_sql(scope_raw_query(PopularQuery.build))
   end
-
+  
   def self.search(search_params)
     query = SearchQuery.build_by(search_params)
     find_by_sql(scope_raw_query(query))

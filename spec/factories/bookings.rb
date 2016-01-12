@@ -1,7 +1,5 @@
 FactoryGirl.define do
   factory :booking do
-    user_id 1
-    event_id 1
     uniq_id "MyString"
     amount 1
     txn_id "MyString"

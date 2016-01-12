@@ -4,8 +4,6 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
   before do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
-    FactoryGirl.create(:category)
-    FactoryGirl.create(:category2)
   end
   after do
     DatabaseCleaner.clean

@@ -15,7 +15,6 @@
 
     <% @categories.each do |category| %>
       <li class="bold"><%= link_to "#{category.name}", events_path(category_id: category.id), class:"waves-effect", remote: true  %></li>
-
     <% end %>
 
     <li class="li-hover">
