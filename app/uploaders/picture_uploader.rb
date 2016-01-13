@@ -3,9 +3,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include Cloudinary::CarrierWave
 
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
 
   version :thumb do
     process eager: true
@@ -25,7 +25,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     process quality: 100
   end
 
-  def extension_white_list
-    %w(jpg jpeg gif png)
-  end
+  # def extension_white_list
+  #   %w(jpg jpeg gif png)
+  # end
 end

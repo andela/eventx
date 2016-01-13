@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
   scope :featured_events, -> { order(created_at: :DESC).limit(12) }
 
   def expiration_date_cannot_be_in_the_past
-    if end_date.present? && end_date < Date.today
+    if end_date.present? && (end_date < Date.today || end_date < start_date)
       errors.add(:end_date, "can't be in the past")
     end
   end
@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
   def self.popular_events
     find_by_sql(scope_raw_query(PopularQuery.build))
   end
-  
+
   def self.search(search_params)
     query = SearchQuery.build_by(search_params)
     find_by_sql(scope_raw_query(query))
@@ -56,9 +56,7 @@ class Event < ActiveRecord::Base
 
   def self.scope_raw_query(query)
     tenant = ActsAsTenant.current_tenant
-    if tenant
-      query = query.where(arel_table[:manager_profile_id].eq(tenant.id))
-    end
+    query = query.where(arel_table[:manager_profile_id].eq(tenant.id)) if tenant
     query.to_sql
   end
 

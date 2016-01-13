@@ -19,8 +19,11 @@ RSpec.feature "Login:", type: :feature do
     expect(page).to have_selector("h5", text: "Sign in with:")
     expect(page).to have_selector("div.sso_option", count: 6)
   end
+
   scenario "User tries to login with google" do
-    visit root_path
+    visit new_event_path
+    expect(page).to have_content "Sign up"
+
     click_link "Sign up"
     click_link "Google"
     expect(page).to have_content "Become An Event Manager"
@@ -51,6 +54,7 @@ RSpec.feature "Login:", type: :feature do
     visit "/postoffice"
     expect(page).to have_content "Simple, Easy, Build it"
   end
+
   # scenario "User tries to visit a bad subdomain" do
   #   visit root_path
   #   save_and_open_page
