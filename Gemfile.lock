@@ -151,6 +151,8 @@ GEM
       mime-types (>= 1.16, < 3)
     materialize-sass (0.97.1)
       sass (~> 3.3)
+    meta-tags (2.1.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (2.6.2)
     mini_portile (0.6.2)
@@ -364,6 +366,7 @@ DEPENDENCIES
   jwt
   launchy (= 2.4.3)
   materialize-sass (= 0.97.1)
+  meta-tags
   nokogiri (= 1.6.6.2)
   omniauth-facebook (= 3.0.0)
   omniauth-github (= 1.1.2)

@@ -41,6 +41,7 @@ gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 gem "jwt"
 gem "httparty"
+gem "meta-tags"
 
 group :development, :test do
   gem "rspec-rails", "3.4.0"

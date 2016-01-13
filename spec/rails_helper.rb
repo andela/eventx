@@ -37,4 +37,6 @@ RSpec.configure do |config|
   end
   config.infer_spec_type_from_file_location!
   config.include ApplicationHelper
+  config.include Requests::JsonHelpers, type: :controller
+  config.include Requests::ApiHelper, type: :controller
 end
