@@ -2,7 +2,7 @@ require "rails_helper"
 require "database_cleaner"
 
 RSpec.feature "ViewEvents", type: :feature, js: true do
-  before do
+  before(:each) do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
     FactoryGirl.create(:ticket_type)
@@ -11,7 +11,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     FactoryGirl.create(:old_event)
     FactoryGirl.create(:sport_event)
   end
-  after do
+  after(:each) do
     DatabaseCleaner.clean
   end
   scenario "User wants to attend an Event" do

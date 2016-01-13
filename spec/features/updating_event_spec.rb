@@ -3,9 +3,8 @@ require "rails_helper"
 def visit_page_and_create_manage_profile
   visit root_path
   click_link "Sign up"
-  within ".modal-content" do
-    click_link "Google"
-  end
+  click_link "Google"
+
   click_link "Become An Event Manager"
   fill_in "manager_profile[company_name]", with: "Our Comapany"
   fill_in "manager_profile[company_mail]", with: "baba@yaho.com"
@@ -15,14 +14,16 @@ def visit_page_and_create_manage_profile
 end
 
 RSpec.feature "Event Manager edits event", type: :feature, js: true do
-  before do
+  before(:each) do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
     # FactoryGirl.create(:event)
   end
-  after do
+
+  after(:each) do
     DatabaseCleaner.clean
   end
+
   scenario "Manager logs in and tries to edit event" do
     visit_page_and_create_manage_profile
     visit root_path
