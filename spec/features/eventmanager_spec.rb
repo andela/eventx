@@ -1,13 +1,15 @@
 require "rails_helper"
 
 RSpec.feature "Event Manager abilities", type: :feature, js: true do
-  before do
+  before(:each) do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
   end
-  after do
+
+  after(:all) do
     DatabaseCleaner.clean
   end
+  
   scenario "user wants to become an Event Manager" do
     visit root_path
     click_link "Log In"
