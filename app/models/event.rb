@@ -28,7 +28,8 @@ class Event < ActiveRecord::Base
   scope :featured_events, -> { order(created_at: :DESC).limit(12) }
 
   def expiration_date_cannot_be_in_the_past
-    if end_date.present? && (end_date < Date.today || end_date < start_date)
+    today = Time.zone.today
+    if end_date.present? && (end_date < today || end_date < start_date)
       errors.add(:end_date, "can't be in the past")
     end
   end

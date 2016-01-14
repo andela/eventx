@@ -24,7 +24,8 @@ class SearchQuery
   end
 
   def append_by_date_range(range)
-    @query.where(events[:start_date].in(range[0]..range[-1])) unless range.empty?
+    empty = range.empty?
+    @query.where(events[:start_date].in(range[0]..range[-1])) unless empty
   end
 
   def events
