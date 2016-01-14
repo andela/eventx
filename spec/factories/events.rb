@@ -16,7 +16,7 @@ FactoryGirl.define do
         tickets_count 1
       end
       after(:create) do |event, evaluator|
-        create_list(:ticket_type_paid, evaluator.tickets_count, event: event)
+        create_list(:ticket_type_free, evaluator.tickets_count, event: event)
       end
       factory :next_week_event do
         title "Next week Event"

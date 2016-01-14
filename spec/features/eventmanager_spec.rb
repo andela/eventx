@@ -9,7 +9,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
   after(:all) do
     DatabaseCleaner.clean
   end
-  
+
   scenario "user wants to become an Event Manager" do
     visit root_path
     click_link "Log In"
@@ -65,9 +65,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     fill_in "event[description]", with: description
 
     click_link "Next"
-
     click_link "Preview"
-
     expect(page).to have_selector("h3.our-event-title",
                                   text: "This is a test Event")
     expect(page).to have_selector("p.our_event_description", text: description)
@@ -84,14 +82,5 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     expect(page).to have_selector("label.our-event-date",
                                   text: "#{date1} " + "to #{date1}")
 
-    visit "/events/1"
-    click_link "Attend this event"
-    within ".modal-content" do
-      page.execute_script("$('#ticket_type_1').prop('checked', true)")
-      fill_in "tickets_quantity_1", with: 1
-      click_button "Submit"
-    end
-    Capybara.default_max_wait_time = 20
-    expect(page).not_to have_content "UNATTEND"
   end
 end

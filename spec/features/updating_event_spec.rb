@@ -17,7 +17,6 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
   before(:each) do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
-    # FactoryGirl.create(:event)
   end
 
   after(:each) do
