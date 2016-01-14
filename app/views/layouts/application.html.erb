@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EventX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag "application",
   "https://fonts.googleapis.com/css?family=Great+Vibes",
@@ -13,6 +12,34 @@
   "data-turbolinks-track" => false %>
 
   <%= csrf_meta_tags %>
+    <% if @event && @event.id %>
+      <%
+      set_meta_tags title: @event.title,
+        type:  "event",
+        image: @event.image,
+        description: @event.description[0..150],
+        url: (request.base_url + event_path(@event))
+      %>
+      <%
+        set_meta_tags twitter: {
+          card: "summary",
+          title: @event.title,
+          image: @event.image,
+          description: @event.description[0..150],
+          url: (request.base_url + event_path(@event))
+        }
+      %>
+      <%
+        set_meta_tags og: {
+          title: @event.title,
+          type:  "event",
+          image: @event.image,
+          description: @event.description[0..150],
+          url: (request.base_url + event_path(@event))
+        }
+        %>
+    <% end %>
+    <%= display_meta_tags site: "EventX" %>
 </head>
 
 <body>

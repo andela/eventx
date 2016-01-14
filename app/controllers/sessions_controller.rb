@@ -13,19 +13,17 @@ class SessionsController < ApplicationController
   end
 
   def api_login
-    if params["token"].blank? || params["provider"].blank?
+    token = params[:token]
+    provider = params[:provider]
+    if token.blank? || ENV[provider].nil?
       render json: {}, status: 417
     else
-      token = params[:token]
-      @provider = params[:provider]
-      response = HTTParty.get(ENV[@provider],
-                              headers: { "Access_token"  => token,
-                                         "Authorization" => "OAuth #{token}" })
+      response = get_provider_uri(ENV[provider], token)
       userinfo = JSON.parse(response.body) if response.code == 200
-      @user = User.from_omniauth(create_auth_obj(userinfo)) if userinfo
-      api_key = @user.generate_auth_token if @user
+      api_user = get_api_user(userinfo, provider) if userinfo
+      api_key = api_user.generate_auth_token if api_user
       api_key ||= "Invalid token/provider supplied"
-      render json: { api_key: api_key }
+      get_api_response(api_key, api_user)
     end
   end
 
@@ -37,13 +35,32 @@ class SessionsController < ApplicationController
 
   private
 
-  def create_auth_obj(userinfo)
+  def get_api_response(api_key, api_user)
+    if api_key == "Invalid token/provider supplied"
+      render json: { api_key: api_key }, status: 417
+    else
+      session[:user_id] = api_user.id
+      render json: { api_key: api_key }, status: 200
+    end
+  end
+
+  def get_api_user(userinfo, provider)
+    User.from_omniauth(create_auth_obj(userinfo, provider))
+  end
+
+  def get_provider_uri(provider, token)
+    HTTParty.get(provider, headers: { "Access_token"  => token,
+                                      "Authorization" => "OAuth #{token}" })
+  end
+
+  def create_auth_obj(userinfo, provider)
     auth = {}
-    auth["provider"] = @provider
+    auth["provider"] = provider
     auth["uid"] = userinfo["id"]
-    @pic = userinfo["picture"] if @provider == "google_oauth2"
-    @pic = userinfo["picture"]["url"] if @provider == "facebook"
-    auth["info"] = { image: @pic,
+    pic = nil
+    pic = userinfo["picture"] if provider == "google_oauth2"
+    pic = userinfo["picture"]["url"] if provider == "facebook"
+    auth["info"] = { image: pic,
                      email: userinfo["email"], name: userinfo["name"] }
     auth
   end
