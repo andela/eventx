@@ -4,9 +4,13 @@ class UsersController < ApplicationController
 
   def show
     @events = current_user.events
-    if params[:search]
-      @events = @events.search(params[:search])
+    if search_params[:event_name]
+      @events = @events.search(search_params.symbolize_keys)
     end
     respond_with @events
+  end
+
+  def search_params
+    params.permit(:event_name)
   end
 end

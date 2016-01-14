@@ -8,7 +8,7 @@
           <%= form_tag user_path(current_user), method: :get, id: "user_event_search_form", remote: true do %>
             <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
               <%= content_tag :i, "search", class: "material-icons prefix" %>
-              <%= text_field_tag( :search, params[:search], placeholder: "Search By Event Name", class: "" ) %>
+              <%= text_field_tag( :event_name, :event_name, placeholder: "Search By Event Name", class: "" ) %>
             <% end %>
             <%= content_tag :div, class: "input-field col l2 m2 s4" do %>
               <%= button_tag "Search", type: "submit", class: "btn" %>

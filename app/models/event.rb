@@ -27,17 +27,9 @@ class Event < ActiveRecord::Base
   scope :recent_events, -> { order(created_at: :DESC).limit(12) }
   scope :featured_events, -> { order(created_at: :DESC).limit(12) }
 
-  def all_tickets_sold
-    ticket_types.where("price > 0")
-  end
-
-  def paid_tickets_sold
-    user_tickets.where(payment_status: Event.statuses[:paid])
-  end
-
-  # validation
   def expiration_date_cannot_be_in_the_past
-    if end_date.present? && end_date < Date.today
+    today = Time.zone.today
+    if end_date.present? && (end_date < today || end_date < start_date)
       errors.add(:end_date, "can't be in the past")
     end
   end
@@ -65,9 +57,7 @@ class Event < ActiveRecord::Base
 
   def self.scope_raw_query(query)
     tenant = ActsAsTenant.current_tenant
-    if tenant
-      query = query.where(arel_table[:manager_profile_id].eq(tenant.id))
-    end
+    query = query.where(arel_table[:manager_profile_id].eq(tenant.id)) if tenant
     query.to_sql
   end
 

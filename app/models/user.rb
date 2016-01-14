@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :events, through: :manager_profile
 
   def self.from_omniauth(auth)
+    return auth unless auth
     provider = auth["provider"]
     where(provider: provider, uid: auth["uid"]).first_or_create do |user|
       user.provider = provider
@@ -23,8 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_auth_token
-    user = self
-    payload = { user_id: user.id, email: user.email }
+    payload = { user_id: id, email: email }
     AuthToken.encode(payload)
   end
 end

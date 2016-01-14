@@ -1,15 +1,15 @@
 require "rails_helper"
 
 RSpec.feature "Event Manager abilities", type: :feature, js: true do
-  before do
+  before(:each) do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
-    FactoryGirl.create(:category)
-    FactoryGirl.create(:category2)
   end
-  after do
+
+  after(:all) do
     DatabaseCleaner.clean
   end
+
   scenario "user wants to become an Event Manager" do
     visit root_path
     click_link "Log In"
@@ -65,9 +65,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     fill_in "event[description]", with: description
 
     click_link "Next"
-
     click_link "Preview"
-
     expect(page).to have_selector("h3.our-event-title",
                                   text: "This is a test Event")
     expect(page).to have_selector("p.our_event_description", text: description)
@@ -83,5 +81,6 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     date1 = Date.tomorrow.strftime("%b %d %Y")
     expect(page).to have_selector("label.our-event-date",
                                   text: "#{date1} " + "to #{date1}")
+
   end
 end

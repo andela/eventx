@@ -11,25 +11,38 @@ FactoryGirl.define do
     venue "Beside the waters"
     event_template_id 1
     map_url "gothere"
-    manager_profile_id 1
     factory :event_with_ticket do
-      id 1
       transient do
         tickets_count 1
       end
       after(:create) do |event, evaluator|
-        create_list(:ticket_type, evaluator.tickets_count, event: event)
+        create_list(:ticket_type_free, evaluator.tickets_count, event: event)
       end
-      factory :event_with_ticket1 do
-        id 2
+      factory :next_week_event do
+        title "Next week Event"
+        start_date Time.zone.now.end_of_week + 86_400 * 3
+        end_date Time.zone.now.end_of_week + 86_400 * 4
+      end
+      factory :tomorrow_event do
+        title "Tomorrow Event"
+        start_date Time.zone.tomorrow
+        end_date Time.zone.tomorrow
+      end
+      factory :next_weekend_event do
+        title "Next weekend Event"
+        start_date Time.zone.now.end_of_week + 86_400 * 5
+        end_date Time.zone.now.end_of_week  + 86_400 * 5
+      end
+      factory :this_weekend_event do
+        title "This weekend Event"
+        start_date Time.zone.now.end_of_week - 86_400 * 2
+        end_date Time.zone.now.end_of_week - 86_400 * 2
       end
       factory :sport_event do
-        id 3
-        category_id 2
+        category_id 6
         title "Sports is cool"
       end
       factory :old_event do
-        id 4
         category_id 1
         title "Old Event"
         start_date Time.zone.now - 86_400 * 7
