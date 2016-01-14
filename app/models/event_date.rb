@@ -1,7 +1,7 @@
 class EventDate
   attr_reader :t, :secs
   def initialize
-    @t = Time.now
+    @t = Time.zone.now
     @secs = 86_400
   end
 

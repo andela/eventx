@@ -67,7 +67,6 @@ class EventsController < ApplicationController
                                   [:id, :_destroy, :name, :quantity, :price])
   end
 
-
   def set_events
     @event = Event.find_by_id(params[:id])
     if @event.nil?
