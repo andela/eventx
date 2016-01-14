@@ -21,14 +21,6 @@ module EventsHelper
     EventTemplate.order(:name)
   end
 
-  def check_url(id)
-    if id
-      "/events/#{id}"
-    else
-      "/events/loading"
-    end
-  end
-
   def getmap(map_url)
     if map_url.nil? || map_url.strip.empty?
       new_map = ("https://goo.gl/ULMKDn") + "&output=embed"

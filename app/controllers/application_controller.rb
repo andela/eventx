@@ -36,22 +36,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def record_not_found(exception)
-    flash[:notice] = exception.message.to_s
-    redirect_to root_path
-  end
-
   def modify(name)
     name.match(/\A([a-zA-Z]+)/).to_s
   end
 
   def json_request?
     request.format.json?
-  end
-
-  def error_occurred(exception)
-    flash[:notice] = exception.message.to_s
-    redirect_to root_path
   end
 
   def set_tenant(subdomain)
