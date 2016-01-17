@@ -2,26 +2,15 @@ require "rails_helper"
 
 RSpec.feature "Event Manager abilities", type: :feature, js: true do
   before(:each) do
-    set_valid_omniauth
-    OmniAuth.config.test_mode = true
-  end
-
-  after(:all) do
-    DatabaseCleaner.clean
+    sign_up
   end
 
   scenario "user wants to become an Event Manager" do
-    visit root_path
-    click_link "Log In"
-    within ".modal-content" do
-      click_link "Google"
-    end
-
     expect(page).to have_content "BECOME AN EVENT MANAGER"
     expect(page).not_to have_content "Create Event"
+    expect(page).not_to have_content "Sign up"
 
     click_link "Become An Event Manager"
-
     expect(page.current_path).to eq "/manager_profiles/new"
 
     # with incorrect values
@@ -29,7 +18,8 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     fill_in "manager_profile[company_mail]", with: ""
     fill_in "manager_profile[company_phone]", with: ""
     fill_in "manager_profile[subdomain]", with: ""
-    expect(page.current_path).to eq "/manager_profiles/new"
+    click_button "Submit"
+    expect(page).to have_content "Found Errors in form submitted!"
 
     # with correct values
     fill_in "manager_profile[company_name]", with: "Our Comapany"
@@ -38,6 +28,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     fill_in "manager_profile[subdomain]", with: "ladyb"
     click_button "Submit"
     expect(page.current_path).not_to eq "/manager_profiles/new"
+
     visit root_path
     expect(page).to have_content "CREATE EVENT"
     expect(page).not_to have_content "Become An Event Manager"

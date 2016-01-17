@@ -48,8 +48,7 @@ group :development, :test do
   gem "factory_girl_rails", "4.5.0"
   gem "sqlite3", "1.3.11"
   gem "pry-rails"
-  gem "selenium-webdriver", "2.48.1"
-  gem "chromedriver-helper", "1.0.0"
+  gem "poltergeist"
   gem "database_cleaner", "1.5.1"
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil

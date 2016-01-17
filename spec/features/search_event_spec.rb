@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "search_event:", type: :feature do
-  before do
+  before(:each) do
     FactoryGirl.create(:event)
     FactoryGirl.create(:next_week_event)
     FactoryGirl.create(:next_weekend_event)
@@ -43,6 +43,7 @@ RSpec.feature "search_event:", type: :feature do
     click_button "Search"
     expect(page).to have_content "Next week Event"
   end
+
   scenario "User searches for next weekend events" do
     visit(root_path)
     click_button "Search"
