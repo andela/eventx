@@ -13,6 +13,9 @@ require "capybara/rspec"
 require "capybara/rails"
 require "database_cleaner"
 require "capybara/poltergeist"
+require "webmock/rspec"
+
+WebMock.allow_net_connect!
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -46,7 +49,7 @@ RSpec.configure do |config|
   end
   config.infer_spec_type_from_file_location!
   config.include ApplicationHelper
-  config.include Requests::JsonHelpers, type: :controller
+  config.include Requests::JsonHelper, type: :controller
   config.include Requests::ApiHelper, type: :controller
 end
 
