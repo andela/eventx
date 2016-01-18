@@ -33,11 +33,13 @@ class EventsController < ApplicationController
   end
 
   def update
-    msg = "Your Event was successfully updated"
-    err = "Your Event was not updated"
-    flash[:notice] = msg if @event.update(event_params)
-    flash[:notice] = err unless @event.update(event_params)
-    respond_with(@event)
+    if @event.update(event_params)
+      flash[:notice] = "Your Event was successfully updated"
+      respond_with(@event)
+    else
+      flash[:notice] = "Your Event was not updated"
+      respond_with(@event)
+    end
   end
 
   def create

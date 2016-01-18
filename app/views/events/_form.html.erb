@@ -112,11 +112,13 @@
           </div>
           <div class="row ">
             <div class="event_ticket_field">
-              <%= f.fields_for :ticket_types do |builder| %>
-              <%= render "events/ticket_type_fields", :f => builder %>
+              <%= f.fields_for :ticket_types do |tickets| %>
+              <%= render "events/ticket_type_fields", :f => tickets, :locals => {:f => tickets} %>
               <% end %>
             </div>
-            <%= link_to_add_fields("Add Another Ticket", f, "events", :ticket_types, "btn btn-circle add_another_ticket", "Add Another Ticket") %>
+            <div class="links">
+            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle add_another_ticket"), f, :ticket_types, :class => '' %>
+          </div>
           </div>
         </div>
         <div class="row">

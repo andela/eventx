@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "signout", to: "sessions#destroy", as: "signout"
   get "/session" => "sessions#create"
   post "/api_login" => "sessions#api_login"
-  resources :manager_profiles
+  resources :manager_profiles, only: [:new, :create]
   resources :attendees
   resources :events do
     resources :bookings, only: [:create]

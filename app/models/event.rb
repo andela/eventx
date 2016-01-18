@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :category
   belongs_to :event_template
   has_many :ticket_types, dependent: :destroy
-  accepts_nested_attributes_for :ticket_types
+  accepts_nested_attributes_for :ticket_types, reject_if: :all_blank, allow_destroy: true
 
   has_many :bookings
   has_many :user_tickets, through: :bookings
