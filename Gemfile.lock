@@ -68,6 +68,7 @@ GEM
     cloudinary (1.1.0)
       aws_cf_signer
       rest-client
+    cocoon (1.2.6)
     codeclimate-test-reporter (0.4.8)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
@@ -349,6 +350,7 @@ DEPENDENCIES
   capybara (= 2.5.0)
   carrierwave (= 0.10.0)
   cloudinary (= 1.1.0)
+  cocoon
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
   coveralls

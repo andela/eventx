@@ -43,3 +43,5 @@ app/views/welcome/test.html.erb
 
 #ignore tmp images
 public/uploads/tmp/*
+
+/vendor/*

@@ -42,6 +42,8 @@ gem "wkhtmltopdf-binary"
 gem "jwt"
 gem "httparty"
 gem "meta-tags"
+gem 'cocoon'
+
 
 group :development, :test do
   gem "rspec-rails", "3.4.0"
