@@ -68,6 +68,7 @@ GEM
     cloudinary (1.1.0)
       aws_cf_signer
       rest-client
+    cocoon (1.2.6)
     codeclimate-test-reporter (0.4.8)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
@@ -204,8 +205,6 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (2.11.1)
-      rack (>= 1.1, < 2.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -341,6 +340,7 @@ DEPENDENCIES
   capybara (= 2.5.0)
   carrierwave (= 0.10.0)
   cloudinary (= 1.1.0)
+  cocoon
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
   coveralls
@@ -370,7 +370,6 @@ DEPENDENCIES
   pg (= 0.17.1)
   poltergeist
   pry-rails
-  puma (= 2.11.1)
   rails (= 4.2.1)
   rails_12factor (= 0.0.2)
   redcarpet (= 3.3.2)

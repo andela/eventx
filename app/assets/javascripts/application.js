@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require cocoon
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require social-share-button
