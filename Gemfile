@@ -47,6 +47,7 @@ group :development, :test do
   gem "rspec-rails", "3.4.0"
   gem "factory_girl_rails", "4.5.0"
   gem "sqlite3", "1.3.11"
+  gem "webmock"
   gem "pry-rails"
   gem "poltergeist"
   gem "database_cleaner", "1.5.1"
