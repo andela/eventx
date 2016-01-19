@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     token = params[:token]
     provider = params[:provider]
     if token.blank? || ENV[provider].nil?
-      render json: {}, status: 417
+      render_api_response("Invalid token/provider supplied", 417)
     else
       response = get_provider_uri(ENV[provider], token)
       userinfo = JSON.parse(response.body) if response.code == 200
@@ -37,11 +37,15 @@ class SessionsController < ApplicationController
 
   def get_api_response(api_key, api_user)
     if api_key == "Invalid token/provider supplied"
-      render json: { api_key: api_key }, status: 417
+      render_api_response(api_key, 417)
     else
       session[:user_id] = api_user.id
-      render json: { api_key: api_key }, status: 200
+      render_api_response(api_key, 200)
     end
+  end
+
+  def render_api_response(api_key, status)
+    render json: { api_key: api_key }, status: status
   end
 
   def get_api_user(userinfo, provider)
@@ -58,8 +62,9 @@ class SessionsController < ApplicationController
     auth["provider"] = provider
     auth["uid"] = userinfo["id"]
     pic = nil
-    pic = userinfo["picture"] if provider == "google_oauth2"
-    pic = userinfo["picture"]["url"] if provider == "facebook"
+    picture = userinfo["picture"] || {}
+    pic = picture if provider == "google_oauth2"
+    pic = picture["url"] if provider == "facebook"
     auth["info"] = { image: pic,
                      email: userinfo["email"], name: userinfo["name"] }
     auth

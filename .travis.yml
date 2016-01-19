@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 4.1.1
+  pre:
+     - curl -k -L -o phantomjs.tar.bz2 https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+     - tar -jxf phantomjs.tar.bz2
+
+language: ruby
+rvm:
+  - 2.2.3
+cache: bundler

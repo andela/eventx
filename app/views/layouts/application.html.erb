@@ -53,8 +53,7 @@
 
     <%= yield %>
 
-    <%= render partial: "layouts/login_modal"%>
-
+    <%= render partial: "layouts/login_modal" unless current_user %>
 
     <% if (controller_name == "events" && (action_name == "index" || action_name=="loading" || action_name=="show" )) || (controller_name  == "users" && action_name == "index")%>
 

@@ -12,13 +12,24 @@ require "capybara"
 require "capybara/rspec"
 require "capybara/rails"
 require "database_cleaner"
+require "capybara/poltergeist"
+require "webmock/rspec"
+
+WebMock.allow_net_connect!
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, js_errors: false, inspector: true)
+end
+
+Capybara.javascript_driver = :poltergeist
+
+Capybara.server do |app, port|
+  require "rack/handler/puma"
+  Rack::Handler::Puma.run(app, Port: port)
 end
 
 RSpec.configure do |config|
@@ -38,6 +49,16 @@ RSpec.configure do |config|
   end
   config.infer_spec_type_from_file_location!
   config.include ApplicationHelper
-  config.include Requests::JsonHelpers, type: :controller
+  config.include Requests::JsonHelper, type: :controller
   config.include Requests::ApiHelper, type: :controller
+end
+
+def sign_up
+  set_valid_omniauth
+  OmniAuth.config.test_mode = true
+  visit root_path
+  expect(page).to have_content "SIGN UP"
+  click_link "Sign up"
+  click_link "Google"
+  visit root_path
 end
