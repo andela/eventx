@@ -33,24 +33,30 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     within("#slide-out") do
       expect(page).to have_selector("li.bold", text: "All")
       expect(page).to have_selector("li.bold", count: Category.count + 1)
+      click_link "All"
     end
 
-    click_link "All"
     expect(page).to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
-    expect(page).to have_selector(".Amount", text: "FREE", count: 3)
+    expect(page).to have_selector(".Amount", text: "FREE", count: 2)
     expect(page).to have_selector(".Amount", text: "$9", count: 1)
     expect(page).to have_selector("Label", text: "Search Event")
     expect(page).to have_selector("Label", text: "Location")
 
-    click_link "Music"
+    within("#slide-out") do
+      click_link "Music"
+    end
     expect(page).to have_content("Blessings wedding")
 
-    click_link "Sport & Wellness"
+    within("#slide-out") do
+      click_link "Sport & Wellness"
+    end
     expect(page).not_to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
 
-    click_link "Parties"
+    within("#slide-out") do
+      click_link "Parties"
+    end
     expect(page).not_to have_content("Blessings wedding")
     expect(page).not_to have_content("Sports is cool")
 
@@ -70,9 +76,9 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     within("#slide-out") do
       expect(page).to have_selector("li.bold", text: "All")
       expect(page).to have_selector("li.bold", count: Category.count + 1)
+      click_link "All"
     end
 
-    click_link "All"
     expect(page).to have_content("Subdomain event")
     expect(page).not_to have_content("Blessings wedding")
     expect(page).not_to have_content("Sports is cool")
