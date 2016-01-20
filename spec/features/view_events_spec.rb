@@ -7,9 +7,8 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     OmniAuth.config.test_mode = true
     user = FactoryGirl.create(:user)
     manager = FactoryGirl.create(:manager_profile, user: user)
-    event = FactoryGirl.create(:event_with_ticket, manager_profile: manager)
-    FactoryGirl.create(:event_with_ticket, manager_profile: manager)
-    FactoryGirl.create(:ticket_type_paid, event: event)
+    FactoryGirl.create(:event, manager_profile: manager)
+    FactoryGirl.create(:paid_event, manager_profile: manager)
     FactoryGirl.create(:sport_event, manager_profile: manager)
 
     user = FactoryGirl.create(:user)
@@ -17,7 +16,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
                                   user: user,
                                   subdomain: "sub",
                                   company_mail: Faker::Internet.email)
-    FactoryGirl.create(:event_with_ticket,
+    FactoryGirl.create(:event,
                        manager_profile: @manager,
                        title: "Subdomain event")
   end
@@ -38,7 +37,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
 
     expect(page).to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
-    expect(page).to have_selector(".Amount", text: "FREE", count: 2)
+    expect(page).to have_selector(".Amount", text: "FREE", count: 3)
     expect(page).to have_selector(".Amount", text: "$9", count: 1)
     expect(page).to have_selector("Label", text: "Search Event")
     expect(page).to have_selector("Label", text: "Location")

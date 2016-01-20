@@ -4,7 +4,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
   before(:each) do
     manager =
     FactoryGirl.create(:manager_profile, user: FactoryGirl.create(:user))
-    FactoryGirl.create(:event_with_ticket, manager_profile: manager)
+    FactoryGirl.create(:event, manager_profile: manager)
     old = FactoryGirl.build(:old_event, manager_profile: manager)
     old.save(validate: false)
     FactoryGirl.create(:sport_event, manager_profile: manager)
@@ -42,17 +42,11 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       click_button "Submit"
     end
 
-    visit tickets_path
     expect(page).to have_content "Blessings wedding"
     expect(page).to have_content "MyTicket"
     expect(page).to have_content "PRINT"
     expect(page).to have_content "DOWNLOAD"
     find("a[href='/print/1']").click
-
-    # visit tickets_path
-    # expect(page).to have_content "Blessings wedding"
-    # expect(page).to have_content "MyTicket"
-    # find("a[href='/download/1']").click
 
     visit tickets_path
     expect(page).to have_content "Blessings wedding"

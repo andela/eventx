@@ -28,6 +28,9 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description
     click_link "Next"
+    fill_in "event[ticket_types_attributes][0][name]", with: "free"
+    fill_in "event[ticket_types_attributes][0][quantity]", with: 10
+    fill_in "event[ticket_types_attributes][0][price]", with: 0.0
     click_link "Preview"
     click_button "Save"
 
@@ -73,6 +76,9 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     description = "description " * 1000
     fill_in "event[description]", with: description
     click_link "Next"
+    fill_in "event[ticket_types_attributes][0][name]", with: "free"
+    fill_in "event[ticket_types_attributes][0][quantity]", with: 10
+    fill_in "event[ticket_types_attributes][0][price]", with: 0.0
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "Description is "\
@@ -81,6 +87,9 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     description = "short " * 2
     fill_in "event[description]", with: description
     click_link "Next"
+    fill_in "event[ticket_types_attributes][0][name]", with: "free"
+    fill_in "event[ticket_types_attributes][0][quantity]", with: 10
+    fill_in "event[ticket_types_attributes][0][price]", with: 0.0
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "Description is too "\
@@ -92,18 +101,22 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{invalid_date})")
     click_link "Next"
+    fill_in "event[ticket_types_attributes][0][name]", with: "free"
+    fill_in "event[ticket_types_attributes][0][quantity]", with: 10
+    fill_in "event[ticket_types_attributes][0][price]", with: 0.0
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "End date can't be in the past"
-
     page.execute_script("$('#event_start_date')\
                         .pickadate('picker').set('select', #{date})")
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
     click_link "Next"
+    fill_in "event[ticket_types_attributes][0][name]", with: ""
+    fill_in "event[ticket_types_attributes][0][quantity]", with: ""
+    fill_in "event[ticket_types_attributes][0][price]", with: ""
     click_link "Preview"
     click_button "Save"
-    expect(page).to have_content "This is a test Event"
-    expect(page).to have_content "This is a demo description for our event"
+    expect(page).to have_content("Ticket types can't be blank")
   end
 end

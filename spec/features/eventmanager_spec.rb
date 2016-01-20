@@ -56,6 +56,9 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     fill_in "event[description]", with: description
 
     click_link "Next"
+    fill_in "event[ticket_types_attributes][0][name]", with: "free"
+    fill_in "event[ticket_types_attributes][0][quantity]", with: 10
+    fill_in "event[ticket_types_attributes][0][price]", with: 0.0
     click_link "Preview"
     expect(page).to have_selector("h3.our-event-title",
                                   text: "This is a test Event")

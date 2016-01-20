@@ -2,12 +2,16 @@ class Event < ActiveRecord::Base
   belongs_to :category
   belongs_to :event_template
   has_many :ticket_types, dependent: :destroy
-  accepts_nested_attributes_for :ticket_types, reject_if: :all_blank, allow_destroy: true
+  has_many :event_staffs, dependent: :destroy
+  has_many :staffs, through: :event_staffs, source: "user"
+  accepts_nested_attributes_for :ticket_types,
+                                allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :staffs,
+                                allow_destroy: true,
+                                reject_if: :invalid_staff_info
 
   has_many :bookings
   has_many :user_tickets, through: :bookings
-  has_many :event_staffs
-  has_many :staffs, through: :event_staffs, source: "user"
   has_many :attendees, through: :bookings, source: "user"
 
   belongs_to :manager_profile
@@ -22,6 +26,7 @@ class Event < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :category_id, presence: true
+  validates :ticket_types, presence: true
 
   # scope
   scope :recent_events, -> { order(created_at: :DESC).limit(12) }
@@ -62,5 +67,11 @@ class Event < ActiveRecord::Base
   end
 
   def ticket_sold
+  end
+
+  private
+
+  def invalid_staff_info(attr)
+    attr["role"].blank? || attr["user_id"].blank?
   end
 end

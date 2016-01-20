@@ -1,7 +1,7 @@
-<div class="row col s12 nested-fields " id="paid_ticket_div">
+<div class="row col s12 nested-fields " id="paid_ticket_div" >
   <div class="input-field col s5">
     <i class="fa fa-ticket prefix icon-setting"></i>
-    <%= f.text_field :name, placeholder: "Ticket Title" %>
+    <%= f.text_field :name, placeholder: "Ticket Title"  %>
   </div>
   <div class="input-field col s2">
     <%= f.text_field :quantity, min: 0, placeholder: "Quantity" %>
@@ -9,7 +9,7 @@
   <div class="input-field col s2">
     <%= f.text_field :price, min: 0, placeholder: "Price"%>
   </div>
-  <div class="col s2">
+  <div class="col s2 closecocoon">
     <%= link_to_remove_association "x", f, class: "btn-floating btn waves-effect waves-light red"  %>
   </div>
 </div>

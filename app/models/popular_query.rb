@@ -9,7 +9,7 @@ class PopularQuery
 
   def self.build
     events.
-      project(Arel.star, bookings[:event_id].count.as("num")).
+      project(events[Arel.star], bookings[:event_id].count.as("num")).
       join(bookings).on(events[:id].eq(bookings[:event_id])).
       group(events[:id]).order("num DESC")
   end

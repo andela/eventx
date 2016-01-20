@@ -108,22 +108,36 @@
       <div class="container margin-down">
         <div>
           <div style="margin-bottom: 20px; margin-left: 50px;">
-            <label>Create Ticket</label>
           </div>
           <div class="row ">
-            <div class="event_ticket_field">
+            <div class="event_ticket_field" >
+              <h5>Create Ticket</h5>
+              <hr>
               <%= f.fields_for :ticket_types do |tickets| %>
               <%= render "events/ticket_type_fields", :f => tickets, :locals => {:f => tickets} %>
               <% end %>
             </div>
             <div class="links">
-            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle add_another_ticket"), f, :ticket_types, :class => '' %>
+            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, :class => '' %>
           </div>
           </div>
+          <!-- Add Staff -->
+          <div class="row">
+            <div style="margin-bottom: 20px; margin-left: 50px;">
+            </div>
+            <div class="event_ticket_field">
+              <h5>Add Staff</h5>
+              <hr>
+              <%= f.fields_for :staffs do |staff| %>
+              <%= render "staff_fields", :f => staff, :locals => {:f => staff} %>
+              <% end %>
+            </div>
+            <div class="links">
+            <%= link_to_add_association content_tag(:span, 'Add Staff', class: "btn btn-circle"), f, :staffs, :class => '' %>
+          </div>
         </div>
-        <div class="row">
-<!-- Render the Tickets partial here that will be used in a nested form-->
-        </div>
+          </div>
+        <!--End add staff -->
         <div class="row category-selected">
           <div class="row radio-select">
             <div class="input-field col s10">
