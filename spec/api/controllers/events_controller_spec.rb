@@ -9,7 +9,11 @@ RSpec.describe EventsController, type: :controller do
     request.headers["Authorization"] = "#{api_key}"
   end
 
-  let(:event) { FactoryGirl.attributes_for(:event) }
+  let(:event) do
+    FactoryGirl.attributes_for(:event,
+                               ticket_types_attributes:
+                               [FactoryGirl.attributes_for(:ticket_type_free)])
+  end
 
   describe "#create" do
     it "should allow Api user to create an event" do

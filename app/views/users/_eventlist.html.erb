@@ -11,6 +11,7 @@
     <!-- <li><a class="our-dropdown-content" href="">View Event</a></li> -->
     <li><%= link_to "View Event", event, class: "our-dropdown-content" %></li>
     <li><a class="our-dropdown-content" href="">View Ticket</a></li>
+    <li><%= link_to "Manage Staff", event_staffs_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
   </ul>
 </tr>
 <% end %>

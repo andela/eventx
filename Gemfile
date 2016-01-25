@@ -42,8 +42,7 @@ gem "wkhtmltopdf-binary"
 gem "jwt"
 gem "httparty"
 gem "meta-tags"
-gem 'cocoon'
-
+gem "cocoon"
 
 group :development, :test do
   gem "rspec-rails", "3.4.0"
@@ -59,7 +58,7 @@ group :development, :test do
   gem "coveralls", require: false
 end
 
-gem "webmock", :group => :test
+gem "webmock", group: :test
 
 group :production do
   gem "pg", "0.17.1"

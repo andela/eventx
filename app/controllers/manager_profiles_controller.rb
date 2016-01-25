@@ -19,6 +19,18 @@ class ManagerProfilesController < ApplicationController
     @manager_profile = ManagerProfile.new
   end
 
+  def event_staffs
+    @event = Event.find_by_id(params[:event_id])
+    if @event
+      @event_staffs = @event.event_staffs.new
+    else
+      flash[:notice] = @event.errors.full_messages.join("<br />")
+    end
+  end
+
+  def manage_staffs
+  end
+
   private
 
   def manager_profile_params

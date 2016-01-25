@@ -3,14 +3,16 @@ class UsersController < ApplicationController
   respond_to :json, :html, :js
 
   def show
-    @events = current_user.events
-    if search_params[:event_name]
-      @events = @events.search(search_params.symbolize_keys)
-    end
+    # query = search_params.merge(user_id: current_user.id)
+    @events = Event.search(search_params)
     respond_with @events
   end
 
+  def users_with_likely_emails(email)
+    User.with_alike_email(email).to_json
+  end
+
   def search_params
-    params.permit(:event_name)
+    params.permit(:event_name).symbolize_keys
   end
 end

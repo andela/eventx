@@ -1,0 +1,31 @@
+<div class="our-new-custom-nav">
+   <%= render partial: "layouts/nav" %>
+ </div>
+     <!-- START WRAPPER -->
+     <div class="wrapper">
+       <section id="content" >
+ <%= form_for @event_staffs do |f| %>
+ <div class="col s12">
+     <div class="container">
+       <div class="row">
+     <div class="input-field col s10">
+   <%= label_tag(:role, "Role") %>
+   <%= f.text_field :role %>
+   </div>
+      <div class="input-field col s10">
+   <%= label_tag(:user_id, "User Id") %>
+   <%= f.text_field :user_id %>
+    </div>
+      <div class="input-field col s10">
+    <%= label_tag(:event_id, "Event Id") %>
+   <%= f.text_field :event_id %>
+    </div>
+      <div class="input-field col s10">
+   <%= button_tag  "Submit", class: "btn-large waves-effect waves-light home_button center  z-depth-0"%>
+     </div>
+   </div>
+</div>
+</div>
+ <% end %>
+     </section>
+   </div>

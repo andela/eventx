@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.ticket_types.build
+    @event.staffs.build
   end
 
   def index
@@ -27,6 +28,10 @@ class EventsController < ApplicationController
     @event_ticket = @event.ticket_types
     1.times { @booking.user_tickets.build }
     respond_with @event
+  end
+
+  def destroy_staff(id)
+    @event.event_staffs.find_by_id(id).destroy
   end
 
   def edit
@@ -65,8 +70,11 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :description, :start_date,
                                   :end_date, :category_id, :location, :venue,
                                   :image, :template_id, :map_url,
-                                  :event_template_id, ticket_types_attributes:
-                                  [:id, :_destroy, :name, :quantity, :price])
+                                  :event_template_id,
+                                  ticket_types_attributes:
+                                    [:id, :_destroy, :name, :quantity, :price],
+                                  event_staffs:
+                                    [:role, :user_id, :id, :_destroy])
   end
 
   def set_events
