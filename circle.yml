@@ -3,6 +3,7 @@ machine:
     version: 2.2.3
 test:
   override:
+    - bundle exec rake db:reset RAILS_ENV=test
     - bundle exec rake spec
 
 dependencies:

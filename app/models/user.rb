@@ -19,9 +19,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.with_alike_email(email)
-    query = users.where(users[:email].matches("%#{email}%")).limit(5).to_sql
-    find_by_sql(query)
+  def self.lookup_email(email)
+    where("email LIKE ? ", "%#{email}%").limit(5).map do |user|
+      { "value": user.email, "data": user.id }
+    end
   end
 
   def users

@@ -128,13 +128,9 @@
             <div class="event_ticket_field">
               <h5>Add Staff</h5>
               <hr>
-              <%= f.fields_for :staffs do |staff| %>
-              <%= render "staff_fields", :f => staff, :locals => {:f => staff} %>
-              <% end %>
+              <div class="event_staffs"><%= @event.get_event_staffs.html_safe %></div>
+              <%= render "staff_fields" %>
             </div>
-            <div class="links">
-            <%= link_to_add_association content_tag(:span, 'Add Staff', class: "btn btn-circle"), f, :staffs, :class => '' %>
-          </div>
         </div>
           </div>
         <!--End add staff -->

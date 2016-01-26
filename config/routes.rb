@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "/upcoming_events" => "welcome#index"
   get "/my_events" => "users#show"
   get "events/loading"
+  get "/lookup_staffs" => "users#lookup_staff_emails"
+  get "/user_info/:id" => "users#fetch_user_info"
+  get "/remove_staff/:event_staff_id" => "events#remove_staff"
   post "/paypal_hook" => "bookings#paypal_hook", as: :hook
   post "/paypal_dummy" => "bookings#paypal_dummy", as: :paypal_dummy
   get "unattend", to: "attendees#destroy", as: "unattend"

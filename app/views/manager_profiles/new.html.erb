@@ -4,11 +4,11 @@
       <!-- START WRAPPER -->
       <div class="wrapper">
         <section id="content" >
-
   <%= form_for @manager_profile do |m| %>
   <div class="col s12">
       <div class="container">
         <div class="row">
+          <%= show_form_errors(@manager_profile) %>
       <div class="input-field col s10">
     <%= label_tag(:company_name, "Company Name") %>
     <%= m.text_field :company_name %>

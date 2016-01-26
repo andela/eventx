@@ -13,6 +13,7 @@
 //= require jquery
 //= require cocoon
 //= require jquery_ujs
+//= require jquery-ui/autocomplete
 //= require materialize-sprockets
 //= require social-share-button
 //= require_tree .
