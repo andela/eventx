@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   has_many :staffs, through: :event_staffs, source: "user"
   accepts_nested_attributes_for :ticket_types,
                                 allow_destroy: true, reject_if: :all_blank
-  accepts_nested_attributes_for :staffs,
+  accepts_nested_attributes_for :event_staffs,
                                 allow_destroy: true,
                                 reject_if: :invalid_staff_info
 
@@ -72,6 +72,6 @@ class Event < ActiveRecord::Base
   private
 
   def invalid_staff_info(attr)
-    attr["role"].blank? || attr["user_id"].blank?
+    attr["user_id"].blank?
   end
 end

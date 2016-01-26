@@ -7,7 +7,7 @@ class EventDecorator < Draper::Decorator
   end
 
   def start_date
-    object.start_date ? object.start_date.strftime("%b %d %Y") : ""
+    object.start_date ? object.start_date.strftime("%b %d %Y") : Time.zone.now
   end
 
   def event_template
@@ -15,6 +15,16 @@ class EventDecorator < Draper::Decorator
   end
 
   def end_date
-    object.end_date ? object.end_date.strftime("%b %d %Y") : ""
+    object.end_date ? object.end_date.strftime("%b %d %Y") : Time.zone.now
+  end
+
+  def get_event_staffs
+    var = ""
+    event_staffs.each do |staff|
+      role = "(#{staff.role})" if staff.role
+      user = staff.user
+      var += h.render "users/fetch_user_info", user: user, role: role
+    end
+    var.html_safe
   end
 end
