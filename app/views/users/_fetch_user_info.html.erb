@@ -1,0 +1,6 @@
+<div class="chip">
+  <img src="<%= user.profile_url %>" alt="Contact Person">
+  <%= "#{user.first_name} #{user.last_name} #{role}" %>&emsp;
+  <a href="#" data-remote="true"><span class="remove_staff">x</span></a>
+  <input type="hidden" name = "event[event_staffs_attributes][][user_id]" value = "<%= user.id %>" />
+</div>

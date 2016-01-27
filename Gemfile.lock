@@ -137,6 +137,8 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     json (1.8.3)
     jwt (1.5.2)
     launchy (2.4.3)
@@ -206,6 +208,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (2.11.1)
@@ -365,6 +369,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails (= 4.0.5)
+  jquery-ui-rails (= 5.0.5)
   jwt
   launchy (= 2.4.3)
   materialize-sass (= 0.97.1)
@@ -379,6 +384,7 @@ DEPENDENCIES
   omniauth-twitter (= 1.2.1)
   pg (= 0.17.1)
   poltergeist
+  pry-nav
   pry-rails
   puma (= 2.11.1)
   rails (= 4.2.1)

@@ -8,8 +8,13 @@ class UsersController < ApplicationController
     respond_with @events
   end
 
-  def users_with_likely_emails(email)
-    User.with_alike_email(email).to_json
+  def lookup_staff_emails
+    render json: User.lookup_email(params[:entry])
+  end
+
+  def fetch_user_info
+    @user = User.find_by(id: params[:user_id])
+    render layout: false, partial: "fetch_user_info", locals: { user: @user }
   end
 
   def search_params

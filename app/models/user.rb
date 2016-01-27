@@ -19,13 +19,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.with_alike_email(email)
-    query = users.where(users[:email].matches("%#{email}%")).limit(5).to_sql
-    find_by_sql(query)
-  end
-
-  def users
-    User.arel_table
+  def self.lookup_email(email)
+    where(arel_table[:email].matches("%#{email}%")).limit(5).
+      pluck(:email, :id).map do |mail, id|
+      { "value": mail, "data": id }
+    end
   end
 
   def event_manager?

@@ -7,9 +7,8 @@ class EventsController < ApplicationController
   respond_to :html, :json, :js
 
   def new
-    @event = Event.new
+    @event = Event.new.decorate
     @event.ticket_types.build
-    @event.staffs.build
   end
 
   def index
@@ -30,14 +29,11 @@ class EventsController < ApplicationController
     respond_with @event
   end
 
-  def destroy_staff(id)
-    @event.event_staffs.find_by_id(id).destroy
-  end
-
   def edit
   end
 
   def update
+    @event.event_staffs.delete_all
     if @event.update(event_params)
       flash[:notice] = "Your Event was successfully updated"
       respond_with(@event)
@@ -48,11 +44,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(event_params).decorate
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
     if @event.save
-      @event.event_staffs.create(user: current_user).event_manager!
+      # @event.event_staffs.create(user: current_user).event_manager!
       flash[:notice] = "Your Event was successfully created."
     else
       flash[:notice] = @event.errors.full_messages.join("<br />")
@@ -73,8 +69,8 @@ class EventsController < ApplicationController
                                   :event_template_id,
                                   ticket_types_attributes:
                                     [:id, :_destroy, :name, :quantity, :price],
-                                  event_staffs:
-                                    [:role, :user_id, :id, :_destroy])
+                                  event_staffs_attributes:
+                                    [:user_id])
   end
 
   def set_events
