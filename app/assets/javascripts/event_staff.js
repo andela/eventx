@@ -5,10 +5,15 @@ $(document).ready(function(){
     source: "/lookup_staffs",
     select: function(event, ui){
       var staffId = ui.item.data;
-      $.get("/user_info/" + staffId, function(data){
-        $(".event_staffs").append(data);
-        $(".add_staff_field").val("");
-      });
+      if ($(".event_staffs").length > 0){
+        $.get("/user_info/" + staffId, function(data){
+          $(".event_staffs").append(data);
+          $(".add_staff_field").val("");
+        });
+      }
+      else {
+          $("#new_staff").val(staffId);
+      }
     }
   });
 

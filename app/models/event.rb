@@ -50,9 +50,13 @@ class Event < ActiveRecord::Base
     find_by_sql(scope_raw_query(PopularQuery.build))
   end
 
+  def self.search_query(search_params)
+    SearchQuery.build_by(search_params)
+  end
+
   def self.search(search_params)
-    query = SearchQuery.build_by(search_params)
-    find_by_sql(scope_raw_query(query))
+    query = scope_raw_query(search_query(search_params))
+    find_by_sql(query)
   end
 
   def self.upcoming_events
@@ -64,6 +68,12 @@ class Event < ActiveRecord::Base
     tenant = ActsAsTenant.current_tenant
     query = query.where(arel_table[:manager_profile_id].eq(tenant.id)) if tenant
     query.to_sql
+  end
+
+  def self.my_event_search(search_params, manager_profile_id)
+    query = search_query(search_params).
+            where(arel_table[:manager_profile_id].eq(manager_profile_id))
+    find_by_sql(query.to_sql)
   end
 
   def ticket_sold

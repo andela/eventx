@@ -1,0 +1,42 @@
+<div class="our-new-custom-nav">
+   <%= render partial: "layouts/nav" %>
+</div>
+<!-- START WRAPPER -->
+<div class="container">
+  <div class="wrapper">
+    <div class="staff">
+      <ul class="collection with-header">
+        <li class="collection-header"><h5>All Staffs for <%= @event.title%> Event
+        </h5></li>
+        <% @event.event_staffs.each do |staff| %>
+          <%= render "event_staffs", staff: staff %>
+        <% end %>
+      </ul>
+    </div>
+
+    <section id="content" >
+      <%= form_tag do |f| %>
+        <div class="col s12">
+          <div class="container">
+            <div class="row">
+              <div class="input-field col s3">
+                <%= select_tag(:role,
+                             options_for_select([["Select Role"],
+                                                 ["Event Staff", 1],
+                                                 ["Assistant Manager", 2]]))%>
+              </div>
+              <div class="input-field col offset-s1 s5">
+                <input type="text" class= "add_staff_field" placeholder="Enter staff email"/>
+                <input type="hidden" id = "new_staff" name = "user_id" />
+              </div>
+              <div class="input-field col s3">
+                <%= button_tag  "Submit", id: "save_staff",
+                class: "btn waves-effect waves-light home_button center z-depth-0"%>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</div>

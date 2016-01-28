@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root "welcome#index"
   get "events/new"
-  get "/events/:event_id/event_staffs" => "manager_profiles#event_staffs",
-      as: :event_staffs
-  post "/events/:event_id/event_staffs" => "manager_profiles#manage_staffs",
-       as: :manage_staffs
+  post "/events/:event_id/manage_staffs" => "manager_profiles#save_staffs",
+       as: :save_staffs
+  get "/events/:event_id/manage_staffs" => "manager_profiles#manage_staffs",
+      as: :manage_staffs
+  get "/events/:event_id/remove_staff/:event_staff_id" =>
+    "manager_profiles#remove_staff", as: :remove_staff
   get "/featured_events" => "welcome#featured"
   get "/popular_events" => "welcome#popular"
   get "/upcoming_events" => "welcome#index"

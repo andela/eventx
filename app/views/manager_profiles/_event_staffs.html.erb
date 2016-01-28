@@ -1,0 +1,10 @@
+<li class="collection-item avatar">
+  <img src="<%= staff.user.profile_url %>" alt="User Image" class="circle">
+  <span class="title"><%= staff.role.capitalize.tr("_", " ")%></span>
+  <p><%= staff.user.first_name%><br>
+   <%= staff.user.email%>
+  </p>
+  <a href="<%= remove_staff_path(event_staff_id: staff) %>"
+    data-confirm="Are you sure you want to delete this staff ?">
+    <i class="material-icons secondary-content">delete</i></a>
+</li>

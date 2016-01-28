@@ -1,5 +1,6 @@
 class ManagerProfilesController < ApplicationController
   before_action :authenticate_user
+  before_action :managers_current_event
 
   def create
     @manager_profile = ManagerProfile.new(manager_profile_params)
@@ -19,13 +20,19 @@ class ManagerProfilesController < ApplicationController
     @manager_profile = ManagerProfile.new
   end
 
-  def event_staffs
-    @event = Event.find_by_id(params[:event_id])
-    if @event
-      @event_staffs = @event.event_staffs.new
-    else
-      flash[:notice] = @event.errors.full_messages.join("<br />")
-    end
+  def save_staffs
+    staff = @event.event_staffs.new(role: staff_params[:role].to_i,
+                                    user_id: staff_params[:user_id])
+
+    success = "Successfully added Staff!"
+    flash[:notice] = staff.save ? success : staff.errors.full_messages.first
+    redirect_to :manage_staffs
+  end
+
+  def remove_staff
+    @event.event_staffs.find_by(id: params[:event_staff_id]).destroy
+    flash[:notice] = "Successfully deleted Staff!"
+    redirect_to :manage_staffs
   end
 
   def manage_staffs
@@ -33,8 +40,16 @@ class ManagerProfilesController < ApplicationController
 
   private
 
+  def managers_current_event
+    @event ||= Event.find_by_id(params[:event_id])
+  end
+
   def manager_profile_params
     params.require(:manager_profile).permit(:company_name, :company_mail,
                                             :company_phone, :subdomain)
+  end
+
+  def staff_params
+    params.permit(:role, :user_id)
   end
 end
