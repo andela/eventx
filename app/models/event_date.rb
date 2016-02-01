@@ -21,7 +21,7 @@ class EventDate
   end
 
   def tomorrow
-    [t.beginning_of_day + (secs), t.end_of_day + (secs)]
+    [t.beginning_of_day + secs, t.end_of_day + secs]
   end
 
   def this_week

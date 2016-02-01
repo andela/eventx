@@ -128,7 +128,7 @@
             <div class="event_ticket_field">
               <h5>Add Staff</h5>
               <hr>
-              <div class="event_staffs"><%= @event.get_event_staffs %></div>
+              <div class="event_staffs" id="event_staffs"><%= @event.get_event_staffs %></div>
               <%= render "staff_fields" %>
             </div>
         </div>
@@ -136,8 +136,10 @@
         <!--End add staff -->
         <div class="row category-selected">
           <div class="row radio-select">
+            <h5>Select a template</h5>
+            <hr>
             <div class="input-field col s10">
-              <label>Select a template</label>
+
               <div class="temps">
 <!--Hardcoded radio button association: due to the face that i have not-->
 <!--seen the rails way of doing it but it work find for now!-->

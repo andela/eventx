@@ -21,9 +21,7 @@ class ManagerProfilesController < ApplicationController
   end
 
   def save_staffs
-    staff = @event.event_staffs.new(role: staff_params[:role].to_i,
-                                    user_id: staff_params[:user_id])
-
+    staff = @event.event_staffs.new(staff_params)
     success = "Successfully added Staff!"
     flash[:notice] = staff.save ? success : staff.errors.full_messages.first
     redirect_to :manage_staffs
@@ -36,6 +34,7 @@ class ManagerProfilesController < ApplicationController
   end
 
   def manage_staffs
+    @roles = Event.get_roles
   end
 
   private

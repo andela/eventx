@@ -9,15 +9,12 @@ class EventsController < ApplicationController
   def new
     @event = Event.new.decorate
     @event.ticket_types.build
+    @roles = Event.get_roles
   end
 
   def index
     @categories = Category.all
-    if search_params.size == 0
-      @events = Event.recent_events
-    else
-      @events = Event.search(search_params.symbolize_keys)
-    end
+    @events = Event.find_event(search_params)
     respond_with @events
   end
 
@@ -30,29 +27,29 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @roles = Event.get_roles
   end
 
   def update
     @event.event_staffs.delete_all
-    if @event.update(event_params)
-      flash[:notice] = "Your Event was successfully updated"
-      respond_with(@event)
-    else
-      flash[:notice] = "Your Event was not updated"
-      respond_with(@event)
-    end
+    flash[:notice] = if @event.update(event_params)
+                       "Your Event was successfully updated"
+                     else
+                       @event.errors.full_messages.join("; ")
+                     end
+    respond_with(@event)
   end
 
   def create
+    @roles = Event.get_roles
     @event = Event.new(event_params).decorate
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
-    if @event.save
-      # @event.event_staffs.create(user: current_user).event_manager!
-      flash[:notice] = "Your Event was successfully created."
-    else
-      flash[:notice] = @event.errors.full_messages.join("<br />")
-    end
+    flash[:notice] = if @event.save
+                       "Your Event was successfully created."
+                     else
+                       @event.errors.full_messages.join("; ")
+                     end
     respond_with(@event)
   end
 
@@ -70,7 +67,7 @@ class EventsController < ApplicationController
                                   ticket_types_attributes:
                                     [:id, :_destroy, :name, :quantity, :price],
                                   event_staffs_attributes:
-                                    [:user_id])
+                                    [:user_id, :role])
   end
 
   def set_events

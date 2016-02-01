@@ -79,6 +79,23 @@ class Event < ActiveRecord::Base
   def ticket_sold
   end
 
+  def self.get_roles
+    roles = {}
+    EventStaff.roles.each do |key, _value|
+      role_text = key.split("_").map(&:capitalize).join(" ")
+      roles[role_text] = key
+    end
+    roles
+  end
+
+  def self.find_event(params)
+    if params.size == 0
+      recent_events
+    else
+      search(params.symbolize_keys)
+    end
+  end
+
   private
 
   def invalid_staff_info(attr)
