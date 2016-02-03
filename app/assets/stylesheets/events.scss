@@ -279,3 +279,17 @@ input#event_photo_upload{
   margin-left: 8%;
   margin-top: 3%;
 }
+
+.add_staff_field{
+  border-radius: 0px;
+  background: #fff;
+  border: 1px solid #454545;
+  height: 0 0 30px;
+}
+.ui-autocomplete {
+    background: #eeeeee;
+    padding: 15px 30px 15px 30px;
+    width: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 3px #444;
+}
