@@ -93,6 +93,6 @@ The date option comes in:
 * Next Weekend
 
 
-## Checkout Event X
+## Check out Event X
 
- Checkout the hosted version of this app at <a href="http://eventtx.com" target="blank">www.eventtx.com</a>
+ Check out the hosted version of this app at <a href="http://eventtx.com" target="blank">www.eventtx.com</a>
