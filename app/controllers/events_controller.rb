@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user, except: [:show, :index]
   before_action :authorize_user_create, only: [:new, :create]
   before_action :authorize_user_manage, only: [:edit, :update]
-  before_action :set_events, only:  [:show, :edit, :update]
+  before_action :set_events, only:  [:show, :edit, :update, :enable, :disable]
 
   respond_to :html, :json, :js
 
@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   def index
     @categories = Category.all
     @events = Event.find_event(search_params)
+    @events = [] if @events.nil?
     respond_with @events
   end
 
@@ -28,6 +29,18 @@ class EventsController < ApplicationController
 
   def edit
     @roles = Event.get_roles
+  end
+
+  def enable
+    @event.enabled = true
+    @event.save(validate: false)
+    redirect_to :back
+  end
+
+  def disable
+    @event.enabled = false
+    @event.save(validate: false)
+    redirect_to :back
   end
 
   def update
@@ -56,7 +69,8 @@ class EventsController < ApplicationController
   private
 
   def search_params
-    params.permit(:event_name, :event_location, :event_date, :category_id)
+    params.permit(:event_name, :event_location, :event_date, :category_id,
+                  :enabled)
   end
 
   def event_params
@@ -74,7 +88,7 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     if @event.nil?
       flash[:notice] = "Event not found"
-      redirect_to events_url
+      redirect_to :back
     else
       @event = @event.decorate
     end

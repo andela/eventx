@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Event, type: :model do
   it "should have a valid factory" do
-    event = FactoryGirl.build(:event)
+    event = build(:event)
     expect(event).to be_valid
   end
 
@@ -18,12 +18,12 @@ RSpec.describe Event, type: :model do
   describe "#find_event" do
     it "finds event without parameters" do
       desc = "Happy day of joy celebration happinness smiles."
-      FactoryGirl.create(:event)
+      create(:event)
       expect(Event.find_event({}).as_json.first["description"]).to eq desc
     end
 
     it "finds event with parameters" do
-      FactoryGirl.create(:event)
+      create(:event)
       desc = "Happy day of joy celebration happinness smiles."
       params = { event_name: "Blessings wedding" }
       expect(Event.find_event(params).as_json.first["description"]).to eq desc

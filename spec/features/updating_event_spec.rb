@@ -59,7 +59,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     find("a[data-activates = 'dropdown-user_option']").click
     click_link "My Account"
     fill_in "Search By Event Name", with: "This is an edited Event"
-    click_button "Search"
+    find("#search-button").click
     expect(page).to have_content "This is an edited Event"
   end
 

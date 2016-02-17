@@ -1,10 +1,35 @@
 $(document).ready(function(){
 
-  var isExistingOnPage = function (userId) {
+    var notify = function(message){
+        Materialize.toast(message, 3000, "rounded");
+    };
+
+    var validateForm = function(){
+        var empty_fields = [];
+        var requiredFields = $("#event_title, #event_location, #event_category_id, #event_description");
+        for(var i=0, len=requiredFields.length; i<len; i++){
+            var current_field = requiredFields[i];
+            if(current_field.value == ""){
+                current_field.name = current_field.name.replace("[", " ");
+                current_field.name = current_field.name.replace("]", " ");
+                current_field.name = current_field.name.replace("_id", "");
+                empty_fields.push(current_field.name);
+            }
+        }
+        empty_fields.forEach(function(value){
+           notify(value + " is required!")
+        });
+    };
+
+    $('#save_event').on("click", function(){
+        validateForm();
+    });
+
+    var isExistingOnPage = function (userId) {
     var parent = $("#event_staffs").children(),
         isOnPage = false;
 
-    for (var i = 0; i < parent.length; i += 1) {
+    for (var i = 0, len = parent.length; i < len; i += 1) {
       if(parent[i].dataset.id === userId) {
       isOnPage = true;
       break;
@@ -14,13 +39,11 @@ $(document).ready(function(){
   };
 
   var generateHtml = function(data){
-    return `<div class="chip" data-id= "` + data.user_id + `">
-      <img src="`+ data.profile_url + `" alt="Contact Person">
-      ` + data.first_name + ` (` + data.user_role+ `)&emsp;
-      <a href="#" data-remote="true"><span class="remove_staff">x</span></a>
-      <input type="hidden" class="uid"name = "event[event_staffs_attributes][][user_id]" value = "` + data.user_id + `" />
-      <input type="hidden" name = "event[event_staffs_attributes][][role]" value = "` + data.role + `" />
-    </div>`;
+    return [ "<div class='chip' data-id =",  data.user_id,  ">",
+            "<img src=", data.profile_url,  "alt='Contact Person'>",  data.first_name,  " ( ",  data.user_role,  " )&emsp;",
+             "<a href='#' data-remote='true'><span class='remove_staff'>x</span></a>",
+             "<input type='hidden' class='uid'name = 'event[event_staffs_attributes][][user_id]' value =", data.user_id, "/>",
+             "<input type='hidden' name = 'event[event_staffs_attributes][][role]' value =", data.role, "/></div>" ].join('\n');
   };
 
   var validateEmailField = function (email, staffId) {
@@ -33,13 +56,9 @@ $(document).ready(function(){
     }
   };
 
-  var notify = function(message){
-    Materialize.toast(message, 3000, "rounded");
-  };
-
   $(".add_staff_field").autocomplete({
       delay:500,
-      minLength: 4,
+      minLength: 1,
       source: "/lookup_staffs",
       select:function(event, ui){
         var staffId = ui.item.data;

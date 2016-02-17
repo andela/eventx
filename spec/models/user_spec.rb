@@ -20,8 +20,8 @@ RSpec.describe User, type: :model do
 
   describe "#event_manager?" do
     it "returns true for users that are also event managers" do
-      user = FactoryGirl.create(:user)
-      FactoryGirl.create(:manager_profile, user: user)
+      user = create(:user)
+      create(:manager_profile, user: user)
       expect(user.event_manager?).to be_truthy
     end
 
@@ -33,15 +33,13 @@ RSpec.describe User, type: :model do
 
   describe "#generate_auth_token" do
     it "returns encoded string" do
-      user = FactoryGirl.create(:user)
+      user = create(:user)
       expect(user.generate_auth_token).not_to be nil
     end
   end
-
-
   describe "#lookup_email" do
     it "returns user email and id if the user exist" do
-      user = FactoryGirl.create(:user)
+      user = create(:user)
       result = [{ "value" => "eb@gmaill.com", "data" => 1 }]
       expect(User.lookup_email(user.email)).to eq result
     end
@@ -49,7 +47,7 @@ RSpec.describe User, type: :model do
 
   describe "#user_info" do
     it "returns user information" do
-      FactoryGirl.create(:user)
+      create(:user)
       parameter = { user_id: 1, role: "event_manager" }
       pic = "http://graph.facebook.com/1065771400114300/picture"
       result = { user_id: 1, role: "event_manager", first_name: "Blessing",
@@ -62,7 +60,7 @@ RSpec.describe User, type: :model do
 
   describe "#user_hash" do
     it "returns a hash of user information" do
-      FactoryGirl.create(:user)
+      create(:user)
       pic = "http://graph.facebook.com/1065771400114300/picture"
       parameter = { user_id: 1, role: "event_manager" }
       result = { first_name: "Blessing", email: "eb@gmaill.com",

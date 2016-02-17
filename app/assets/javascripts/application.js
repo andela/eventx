@@ -28,6 +28,7 @@ $(document).ready(function() {
   //   $("ul.tabs").tabs("select_tab", "preview");
   // })
 
+
   $(".dropdown-button").dropdown({
     inDuration: 300,
     outDuration: 225,
@@ -48,12 +49,41 @@ $(document).ready(function() {
   $(".modal-trigger").leanModal();
   $(".button-collapse").sideNav();
 
-  $(".datepicker").pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
+var calendarManager = function (){
 
-  //this creates an animation for the scroll button at the bottom of the parallax
+    var from_$input = $('#event_start_date').pickadate(),
+        from_picker = from_$input.pickadate('picker');
+
+    var to_$input = $('#event_end_date').pickadate(),
+        to_picker = to_$input.pickadate('picker');
+
+// When something is selected, update the “from” and “to” limits.
+try {
+  from_picker.on('set', function(event) {
+      if ( event.select ) {
+          to_picker.set('min', from_picker.get('select'))
+      }
+      else if ( 'clear' in event ) {
+          to_picker.set('min', false)
+      }
+  })
+} catch (e) {
+  return null
+
+}
+    to_picker.on('set', function(event) {
+        if ( event.select ) {
+            from_picker.set('max', to_picker.get('select'))
+        }
+        else if ( 'clear' in event ) {
+            from_picker.set('max', false)
+        }
+    })
+
+};
+    calendarManager();
+
+    //this creates an animation for the scroll button at the bottom of the parallax
   setInterval(function() {
     $(".alert-scroll-under").animate({
       opacity: 0.1 // , height: "5%", width: "5%"
@@ -163,7 +193,7 @@ $(document).ready(function() {
     var start_date = $("#event_start_date").val()
     var end_date = $("#event_end_date").val()
     if (start_date) {
-      countdown(convertDate(start_date));
+      countdown(convertDate(start_date), end_date);
     }
 
     var map_val = $("#event_map_url").val();
@@ -175,7 +205,7 @@ $(document).ready(function() {
         "&output=embed"
     }
     // description_selector = $("#event_description").val();
-    description_selector = ($("#event_description").val() == "") ? "Your Event description goes here<br/><br/><br/><br/>" : $("#event_description").val()
+    description_selector = ($("#event_description").val() == "") ? "" : $("#event_description").val()
     description = (description_selector.length > 200) ?
       description_selector.substr(0, 200) + "..." :
       description_selector;
@@ -252,6 +282,8 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
+
+
   $(window).scroll(function() {
     var height = $("#content").height();
     var scroll = $(this).scrollTop();
@@ -284,13 +316,15 @@ function convertDate(startdate) {
   dateStr = startdate.toString();
   date2 = new Date(dateStr.replace(/-/g, "/"));
   diff = Math.floor((date2 - date) / (60 * 1000));
-
   return diff;
 }
 
 
 function countdown(val) {
-  minutes = val
+  minutes = val;
+  endDate = $(".end_date").data("countdown")
+  eMin = convertDate(endDate)
+
   $("#counter").css({
     "font-size": "3rem",
     "padding": "0 10px",
@@ -298,10 +332,15 @@ function countdown(val) {
     "z-index": "100",
     "background-color": "rgba(0,0,0,0.2)"
   })
-  if (minutes > 1) {
+  if((eMin < 1)){
+   counter.innerHTML = "This event has ended";
+ }
+  else if((minutes < 1)){
+   counter.innerHTML = "This event has started";
+ }
+  else if (minutes > 1) {
     var seconds = 60;
     var mins = minutes
-
     function tick() {
       var counter = document.getElementById("counter");
       var current_minutes = mins - 1
@@ -315,15 +354,14 @@ function countdown(val) {
         (seconds < 10 ? "0" : "") + String(seconds) + "s";
       if (seconds > 0) {
         setTimeout(tick, 1000);
-      } else {
+      }
+      else {
         if (mins > 1) {
           countdown(mins - 1);
         }
       }
     }
     tick();
-  } else {
-    counter.innerHTML = "This event has ended";
   }
 }
 
@@ -333,14 +371,14 @@ $(document).ready(function() {
 
   if(event_start_date && event_end_date){
     var event_start_date = new Date(event_start_date)
-    var event_end_date = new Date(event_end_date)
+    //var event_end_date = new Date(event_end_date)
     $("#event_start_date").pickadate("picker").set("select", event_start_date)
-    $("#event_end_date").pickadate("picker").set("select", event_end_date)
+    $("#event_end_date").pickadate("picker").clear();
   }
 });
 
 $(document).ready(function() {
-  $("#user_event_search_form input").keyup(function() {
+  $("#search-button").on("click", function() {
    $.get($("#user_event_search_form").attr("action"), $("#user_event_search_form").serialize(), null, "script");
    return false;
  });
@@ -354,4 +392,8 @@ $(document).ready(function() {
    e.preventDefault();
  });
 
+});
+
+$(document).ready(function(){
+  $('.tooltipped').tooltip({delay: 5});
 });
