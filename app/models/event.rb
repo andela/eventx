@@ -89,7 +89,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.find_event(params)
-    if params.size == 0
+    if params.empty?
       recent_events
     else
       search(params.symbolize_keys)

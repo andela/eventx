@@ -28,6 +28,7 @@ $(document).ready(function() {
   //   $("ul.tabs").tabs("select_tab", "preview");
   // })
 
+
   $(".dropdown-button").dropdown({
     inDuration: 300,
     outDuration: 225,
@@ -48,12 +49,58 @@ $(document).ready(function() {
   $(".modal-trigger").leanModal();
   $(".button-collapse").sideNav();
 
-  $(".datepicker").pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
+  //$("#event_start_date").pickadate({
+  //  selectMonths: true, // Creates a dropdown to control month
+  //  selectYears: 15, // Creates a dropdown of 15 years to control year
+  //    onSet:function(context){
+  //          console.log(context);
+  //        $("#event_end_date").pickadate({
+  //           min: new Date(context)
+  //        })
+  //    }
+  //});
+var calendarManager = function (){
 
-  //this creates an animation for the scroll button at the bottom of the parallax
+    var from_$input = $('#event_start_date').pickadate(),
+        from_picker = from_$input.pickadate('picker')
+
+    var to_$input = $('#event_end_date').pickadate(),
+        to_picker = to_$input.pickadate('picker')
+
+
+// Check if there’s a “from” or “to” date to start with.
+    if ( from_picker.get('value') ) {
+        to_picker.set('min', from_picker.get('select'))
+    }
+    if ( to_picker.get('value') ) {
+        from_picker.set('max', to_picker.get('select'))
+    }
+
+// When something is selected, update the “from” and “to” limits.
+    from_picker.on('set', function(event) {
+        if ( event.select ) {
+            to_picker.set('min', from_picker.get('select'))
+        }
+        else if ( 'clear' in event ) {
+            to_picker.set('min', false)
+        }
+    })
+    to_picker.on('set', function(event) {
+        if ( event.select ) {
+            from_picker.set('max', to_picker.get('select'))
+        }
+        else if ( 'clear' in event ) {
+            from_picker.set('max', false)
+        }
+    })
+
+
+};
+
+    calendarManager();
+
+
+    //this creates an animation for the scroll button at the bottom of the parallax
   setInterval(function() {
     $(".alert-scroll-under").animate({
       opacity: 0.1 // , height: "5%", width: "5%"
@@ -175,7 +222,7 @@ $(document).ready(function() {
         "&output=embed"
     }
     // description_selector = $("#event_description").val();
-    description_selector = ($("#event_description").val() == "") ? "Your Event description goes here<br/><br/><br/><br/>" : $("#event_description").val()
+    description_selector = ($("#event_description").val() == "") ? "" : $("#event_description").val()
     description = (description_selector.length > 200) ?
       description_selector.substr(0, 200) + "..." :
       description_selector;
@@ -252,6 +299,8 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
+
+
   $(window).scroll(function() {
     var height = $("#content").height();
     var scroll = $(this).scrollTop();
@@ -335,7 +384,7 @@ $(document).ready(function() {
     var event_start_date = new Date(event_start_date)
     var event_end_date = new Date(event_end_date)
     $("#event_start_date").pickadate("picker").set("select", event_start_date)
-    $("#event_end_date").pickadate("picker").set("select", event_end_date)
+    $("#event_end_date").pickadate("picker").clear();
   }
 });
 

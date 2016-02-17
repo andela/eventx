@@ -9,7 +9,7 @@
           </a>
         </li>
         <li class="tab col s3 ">
-          <a class="our-tab2-color" href="#ticketing">
+          <a class="our-tab2-color" href="#ticketing" id="customize">
             <i class="fa fa-search "></i>
             Customize
           </a>
@@ -99,7 +99,7 @@
           </div>
         </div>
         <div class="input-field col s3 offset-s4">
-          <%= link_to "Next <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center more-info z-depth-0"  %>
+          <%= link_to "Next <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center more-info z-depth-0", id:'next' %>
         </div>
       </div>
     </div>
@@ -176,7 +176,7 @@
     <%= render partial: "events/eventdetails" %>
   </div>
   <div class="col s3 offset-s4 center">
-    <button class="col s12 btn-large waves-effect waves-light home_button center z-depth-0">Save
+    <button class="col s12 btn-large waves-effect waves-light home_button center z-depth-0" id="save_event">Save
       <i class="fa fa-floppy-o"></i>
     </button>
   </div>

@@ -22,8 +22,12 @@ class ManagerProfilesController < ApplicationController
 
   def save_staffs
     staff = @event.event_staffs.new(staff_params)
-    success = "Successfully added Staff!"
-    flash[:notice] = staff.save ? success : staff.errors.full_messages.first
+    begin
+      staff.save
+    rescue ActiveRecord::RecordNotUnique
+      flash[:notice] = "There is an error with the form"
+    end
+    flash[:success] = "Successfully added Staff!"
     redirect_to :manage_staffs
   end
 

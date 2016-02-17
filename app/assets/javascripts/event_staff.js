@@ -1,10 +1,35 @@
-$(document).ready(function(){
+$(document).ready(function(e){
 
-  var isExistingOnPage = function (userId) {
+    var notify = function(message){
+        Materialize.toast(message, 3000, "rounded");
+    };
+
+    var validateForm = function(){
+        var empty_fields = [];
+        var requiredFields = $("#event_title, #event_location, #event_category_id, #event_description");
+        for(var i=0, len=requiredFields.length; i<len; i++){
+            var current_field = requiredFields[i];
+            if(current_field.value == ""){
+                current_field.name = current_field.name.replace("[", " ");
+                current_field.name = current_field.name.replace("]", " ");
+                current_field.name = current_field.name.replace("_id", "");
+                empty_fields.push(current_field.name);
+            }
+        }
+        empty_fields.forEach(function(value){
+           notify(value + " is required!")
+        });
+    };
+
+    $('#save_event').on("click", function(){
+        validateForm();
+    });
+
+    var isExistingOnPage = function (userId) {
     var parent = $("#event_staffs").children(),
         isOnPage = false;
 
-    for (var i = 0; i < parent.length; i += 1) {
+    for (var i = 0, len = parent.length; i < len; i += 1) {
       if(parent[i].dataset.id === userId) {
       isOnPage = true;
       break;
@@ -33,9 +58,7 @@ $(document).ready(function(){
     }
   };
 
-  var notify = function(message){
-    Materialize.toast(message, 3000, "rounded");
-  };
+
 
   $(".add_staff_field").autocomplete({
       delay:500,

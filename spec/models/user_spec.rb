@@ -37,8 +37,6 @@ RSpec.describe User, type: :model do
       expect(user.generate_auth_token).not_to be nil
     end
   end
-
-
   describe "#lookup_email" do
     it "returns user email and id if the user exist" do
       user = FactoryGirl.create(:user)
