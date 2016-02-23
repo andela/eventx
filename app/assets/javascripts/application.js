@@ -49,32 +49,13 @@ $(document).ready(function() {
   $(".modal-trigger").leanModal();
   $(".button-collapse").sideNav();
 
-  //$("#event_start_date").pickadate({
-  //  selectMonths: true, // Creates a dropdown to control month
-  //  selectYears: 15, // Creates a dropdown of 15 years to control year
-  //    onSet:function(context){
-  //          console.log(context);
-  //        $("#event_end_date").pickadate({
-  //           min: new Date(context)
-  //        })
-  //    }
-  //});
 var calendarManager = function (){
 
     var from_$input = $('#event_start_date').pickadate(),
-        from_picker = from_$input.pickadate('picker')
+        from_picker = from_$input.pickadate('picker');
 
     var to_$input = $('#event_end_date').pickadate(),
-        to_picker = to_$input.pickadate('picker')
-
-
-// Check if there’s a “from” or “to” date to start with.
-    if ( from_picker.get('value') ) {
-        to_picker.set('min', from_picker.get('select'))
-    }
-    if ( to_picker.get('value') ) {
-        from_picker.set('max', to_picker.get('select'))
-    }
+        to_picker = to_$input.pickadate('picker');
 
 // When something is selected, update the “from” and “to” limits.
     from_picker.on('set', function(event) {
@@ -96,9 +77,7 @@ var calendarManager = function (){
 
 
 };
-
     calendarManager();
-
 
     //this creates an animation for the scroll button at the bottom of the parallax
   setInterval(function() {
@@ -210,7 +189,7 @@ var calendarManager = function (){
     var start_date = $("#event_start_date").val()
     var end_date = $("#event_end_date").val()
     if (start_date) {
-      countdown(convertDate(start_date));
+      countdown(convertDate(start_date), end_date);
     }
 
     var map_val = $("#event_map_url").val();
@@ -338,7 +317,10 @@ function convertDate(startdate) {
 
 
 function countdown(val) {
-  minutes = val
+  minutes = val;
+  endDate = $(".end_date").data("countdown")
+  eMin = convertDate(endDate)
+
   $("#counter").css({
     "font-size": "3rem",
     "padding": "0 10px",
@@ -346,13 +328,13 @@ function countdown(val) {
     "z-index": "100",
     "background-color": "rgba(0,0,0,0.2)"
   })
-  if((minutes < 1440) && (minutes > 0)){
-   counter.innerHTML = "This event has started";
- }
-  else if((minutes < 1)){
+  if((eMin < 1)){
    counter.innerHTML = "This event has ended";
  }
-  else if (minutes > 1440) {
+  else if((minutes < 1)){
+   counter.innerHTML = "This event has started";
+ }
+  else if (minutes > 1) {
     var seconds = 60;
     var mins = minutes
     function tick() {

@@ -3,11 +3,11 @@ class SearchQuery
     @query = events.project(Arel.sql("*"))
   end
 
-  def self.build_by(search_params, manager_profile_id=nil)
+  def self.build_by(search_params)
     new.build(search_params)
-    if manager_profile_id
-      append_by_enabled
-    end
+    # if manager_profile_id
+    #   append_by_enabled
+    # end
   end
 
   def build(event_name: "", event_location: "", event_date: "", category_id: "")
@@ -15,7 +15,7 @@ class SearchQuery
     append_by_match :location, event_location.downcase
     append_by_category category_id
     append_by_date_range EventDate.format(event_date)
-    # append_by_enabled
+    append_by_enabled
     @query
   end
 

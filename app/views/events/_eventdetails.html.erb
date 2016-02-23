@@ -16,6 +16,7 @@
 <% end%>
 
 <div class="parallax-container" data-countdown="<%= @event.start_date %>" id="index-banner">
+<span class="end_date" data-countdown="<%= @event.end_date %>" id="index-banners"></span>
 <div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
   <%= render partial: "layouts/nav" %>
   <div class="section no-pad-bot">
