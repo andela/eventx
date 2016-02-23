@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027145406) do
+ActiveRecord::Schema.define(version: 20160217113950) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -86,12 +86,13 @@ ActiveRecord::Schema.define(version: 20151027145406) do
     t.string   "image"
     t.integer  "theme_id"
     t.integer  "category_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "venue"
     t.integer  "event_template_id"
     t.string   "map_url"
     t.integer  "manager_profile_id"
+    t.boolean  "enabled",            default: true
   end
 
   add_index "events", ["manager_profile_id"], name: "index_events_on_manager_profile_id"

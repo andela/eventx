@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-ruby "2.2.3"
 
 gem "rails", "4.2.1"
 gem "acts_as_tenant", "~> 0.3.9"
@@ -67,5 +66,5 @@ end
 group :production do
   gem "pg", "0.17.1"
   gem "rails_12factor", "0.0.2"
-  gem "puma", "2.11.1"
+  #gem "puma", "2.11.1"
 end

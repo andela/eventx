@@ -29,8 +29,8 @@ class Event < ActiveRecord::Base
   validates :ticket_types, presence: true
 
   # scope
-  scope :recent_events, -> { order(created_at: :DESC).limit(12) }
-  scope :featured_events, -> { order(created_at: :DESC).limit(12) }
+  scope :recent_events, -> { where(enabled: true).order(created_at: :DESC).limit(12) }
+  scope :featured_events, -> { where(enabled: true).order(created_at: :DESC).limit(12) }
 
   def expiration_date_cannot_be_in_the_past
     today = Time.zone.today
