@@ -13,14 +13,22 @@ $(document).ready(function(){
     return isOnPage;
   };
 
+  // var generateHtml = function(data){
+  //   return `<div class="chip" data-id= "` + data.user_id + `">
+  //     <img src="`+ data.profile_url + `" alt="Contact Person">
+  //     ` + data.first_name + ` (` + data.user_role+ `)&emsp;
+  //     <a href="#" data-remote="true"><span class="remove_staff">x</span></a>
+  //     <input type="hidden" class="uid"name = "event[event_staffs_attributes][][user_id]" value = "` + data.user_id + `" />
+  //     <input type="hidden" name = "event[event_staffs_attributes][][role]" value = "` + data.role + `" />
+  //   </div>`;
+  // };
+
   var generateHtml = function(data){
-    return `<div class="chip" data-id= "` + data.user_id + `">
-      <img src="`+ data.profile_url + `" alt="Contact Person">
-      ` + data.first_name + ` (` + data.user_role+ `)&emsp;
-      <a href="#" data-remote="true"><span class="remove_staff">x</span></a>
-      <input type="hidden" class="uid"name = "event[event_staffs_attributes][][user_id]" value = "` + data.user_id + `" />
-      <input type="hidden" name = "event[event_staffs_attributes][][role]" value = "` + data.role + `" />
-    </div>`;
+    return [ "<div class='chip' data-id =",  data.user_id,  ">",
+            "<img src=", data.profile_url,  "alt='Contact Person'>",  data.first_name,  " ( ",  data.user_role,  " )&emsp;",
+             "<a href='#' data-remote='true'><span class='remove_staff'>x</span></a>",
+             "<input type='hidden' class='uid'name = 'event[event_staffs_attributes][][user_id]' value =", data.user_id, "/>",
+             "<input type='hidden' name = 'event[event_staffs_attributes][][role]' value =", data.role, "/></div>" ].join('\n');
   };
 
   var validateEmailField = function (email, staffId) {
@@ -39,7 +47,7 @@ $(document).ready(function(){
 
   $(".add_staff_field").autocomplete({
       delay:500,
-      minLength: 4,
+      minLength: 1,
       source: "/lookup_staffs",
       select:function(event, ui){
         var staffId = ui.item.data;

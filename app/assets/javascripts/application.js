@@ -284,7 +284,6 @@ function convertDate(startdate) {
   dateStr = startdate.toString();
   date2 = new Date(dateStr.replace(/-/g, "/"));
   diff = Math.floor((date2 - date) / (60 * 1000));
-
   return diff;
 }
 
@@ -298,10 +297,15 @@ function countdown(val) {
     "z-index": "100",
     "background-color": "rgba(0,0,0,0.2)"
   })
-  if (minutes > 1) {
+  if((minutes < 1440) && (minutes > 0)){
+   counter.innerHTML = "This event has started";
+ }
+  else if((minutes < 1)){
+   counter.innerHTML = "This event has ended";
+ }
+  else if (minutes > 1440) {
     var seconds = 60;
     var mins = minutes
-
     function tick() {
       var counter = document.getElementById("counter");
       var current_minutes = mins - 1
@@ -315,15 +319,14 @@ function countdown(val) {
         (seconds < 10 ? "0" : "") + String(seconds) + "s";
       if (seconds > 0) {
         setTimeout(tick, 1000);
-      } else {
+      }
+      else {
         if (mins > 1) {
           countdown(mins - 1);
         }
       }
     }
     tick();
-  } else {
-    counter.innerHTML = "This event has ended";
   }
 }
 
