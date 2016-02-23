@@ -21,9 +21,11 @@ class EventDecorator < Draper::Decorator
   def get_event_staffs
     var = ""
     event_staffs.each do |staff|
-      role = "(#{staff.role})" if staff.role
+      role = staff.role.to_s if staff.role
+      user_role = staff.role.split("_").map(&:capitalize).join(" ")
       user = staff.user
-      var += h.render "users/fetch_user_info", user: user, role: role
+      parameters = { user: user, role: role, user_role: user_role }
+      var += h.render "users/fetch_user_info", parameters
     end
     var.html_safe
   end

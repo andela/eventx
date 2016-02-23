@@ -6,7 +6,7 @@ RSpec.describe EventsController, type: :controller do
     FactoryGirl.create(:manager_profile, user: user)
     session[:user_id] = user.id
     api_key = user.generate_auth_token
-    request.headers["Authorization"] = "#{api_key}"
+    request.headers["Authorization"] = api_key.to_s
   end
 
   let(:event) do

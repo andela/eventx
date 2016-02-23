@@ -20,14 +20,11 @@
           <div class="container">
             <div class="row">
               <div class="input-field col s3">
-                <%= select_tag(:role,
-                             options_for_select([["Select Role"],
-                                                 ["Event Staff", 1],
-                                                 ["Assistant Manager", 2]]))%>
+                <%= select_tag(:role, options_for_select(@roles))%>
               </div>
               <div class="input-field col offset-s1 s5">
-                <input type="text" class= "add_staff_field" placeholder="Enter staff email"/>
-                <input type="hidden" id = "new_staff" name = "user_id" />
+                <input type="text" id = "ent_staff_email" class= "add_staff_field" placeholder="Enter staff email"/>
+                <input type="hidden" id = "staff_id" name = "user_id" />
               </div>
               <div class="input-field col s3">
                 <%= button_tag  "Submit", id: "save_staff",
