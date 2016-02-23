@@ -385,7 +385,7 @@ $(document).ready(function() {
 
   if(event_start_date && event_end_date){
     var event_start_date = new Date(event_start_date)
-    var event_end_date = new Date(event_end_date)
+    //var event_end_date = new Date(event_end_date)
     $("#event_start_date").pickadate("picker").set("select", event_start_date)
     $("#event_end_date").pickadate("picker").clear();
   }

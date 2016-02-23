@@ -4,7 +4,7 @@ class PopularQuery
   end
 
   def self.events
-    Event.arel_table
+    Event.arel_table.where(enabled: true)
   end
 
   def self.build
