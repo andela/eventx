@@ -69,5 +69,9 @@ end
 group :production do
   gem "pg", "0.17.1"
   gem "rails_12factor", "0.0.2"
+<<<<<<< 7a204afd8976b6e79ef1a9e1620f83224e3326e6
   #gem "puma", "2.11.1"
+=======
+  # gem "puma", "2.11.1"
+>>>>>>> made some js changes
 end
