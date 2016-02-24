@@ -5,17 +5,14 @@ class SearchQuery
 
   def self.build_by(search_params)
     new.build(search_params)
-    # if manager_profile_id
-    #   append_by_enabled
-    # end
   end
 
-  def build(event_name: "", event_location: "", event_date: "", category_id: "")
+  def build(event_name: "", event_location: "", event_date: "", category_id: "", enabled: "")
     append_by_match :title, event_name.downcase
     append_by_match :location, event_location.downcase
     append_by_category category_id
     append_by_date_range EventDate.format(event_date)
-    append_by_enabled
+    append_by_enabled enabled
     @query
   end
 
@@ -32,8 +29,8 @@ class SearchQuery
     @query.where(events[:start_date].in(range[0]..range[-1])) unless empty
   end
 
-  def append_by_enabled
-    @query.where(events[:enabled].eq(true))
+  def append_by_enabled(enabled)
+    @query.where(events[:enabled].eq(enabled)) if enabled
   end
 
   def events

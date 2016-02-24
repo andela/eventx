@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   private
 
   def search_params
-    params.permit(:event_name).symbolize_keys
+    params.permit(:event_name, :enabled).symbolize_keys
   end
 
   def user_info_params

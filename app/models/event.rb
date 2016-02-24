@@ -61,7 +61,7 @@ class Event < ActiveRecord::Base
 
   def self.upcoming_events
     time = Time.zone.now
-    where("start_date >= ?", time).limit(12).order("start_date ASC")
+    where("start_date >= ?", time).limit(12).order("start_date ASC").where(enabled: true)
   end
 
   def self.scope_raw_query(query)
@@ -71,10 +71,17 @@ class Event < ActiveRecord::Base
   end
 
   def self.my_event_search(search_params, manager_profile_id)
+    search_params[:enabled] = false
     query = search_query(search_params).
             where(arel_table[:manager_profile_id].eq(manager_profile_id))
     find_by_sql(query.to_sql)
   end
+  #
+  # def self.manager_event_search(search_params, manager_profile_id)
+  #   query = search_query(search_params).
+  #       where(arel_table[:manager_profile_id].eq(manager_profile_id))
+  #   find_by_sql(query.to_sql)
+  # end
 
   def ticket_sold
   end
@@ -92,7 +99,9 @@ class Event < ActiveRecord::Base
     if params.empty?
       recent_events
     else
-      search(params.symbolize_keys)
+      params = params.symbolize_keys
+      params[:enabled] = true
+      search(params)
     end
   end
 
