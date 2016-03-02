@@ -5,20 +5,20 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
   before do
     set_valid_omniauth
     OmniAuth.config.test_mode = true
-    user = FactoryGirl.create(:user)
-    manager = FactoryGirl.create(:manager_profile, user: user)
-    FactoryGirl.create(:event, manager_profile: manager)
-    FactoryGirl.create(:paid_event, manager_profile: manager)
-    FactoryGirl.create(:sport_event, manager_profile: manager)
+    user = create(:user)
+    manager = create(:manager_profile, user: user)
+    create(:event, manager_profile: manager)
+    create(:paid_event, manager_profile: manager)
+    create(:sport_event, manager_profile: manager)
 
-    user = FactoryGirl.create(:user)
-    @manager = FactoryGirl.create(:manager_profile,
-                                  user: user,
-                                  subdomain: "sub",
-                                  company_mail: Faker::Internet.email)
-    FactoryGirl.create(:event,
-                       manager_profile: @manager,
-                       title: "Subdomain event")
+    user = create(:user)
+    @manager = create(:manager_profile,
+                      user: user,
+                      subdomain: "sub",
+                      company_mail: Faker::Internet.email)
+    create(:event,
+           manager_profile: @manager,
+           title: "Subdomain event")
   end
 
   after do

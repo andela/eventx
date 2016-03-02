@@ -17,7 +17,7 @@ RSpec.describe EventMailer, type: :mailer do
     end
 
     it "renders the headers" do
-      expect(@mail.subject).to eq("#{@event.title}")
+      expect(@mail.subject).to eq(@event.title.to_s)
       expect(@mail.to).to eq([@user.email])
       expect(@mail.from).to eq(["eventxapp@gmail.com"])
     end

@@ -1,6 +1,16 @@
 <div class="row col s12" id="" >
   <div class="input-field col s5">
     <i class="fa fa-user prefix icon-setting"></i>
-    <input type="text" class= "add_staff_field" placeholder="Enter staff email"/>
+    <input type="email" class="add_staff_field" placeholder="Enter staff email" id = "staff_field_id"/>
+  </div>
+  <div class="input-field col s3 staff_role">
+    <%= select_tag(:role, options_for_select(@roles))%>
+    <input type="hidden" id = "staff_id" name = "user_id" />
+  </div>
+    <div class="checked_div hide"></div>
+  <div class="col s4">
+    <button type="button" id="add_staff" class="btn btn-circle staff_add_btn">
+      Add Staff
+    </button>
   </div>
 </div>

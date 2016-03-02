@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-ruby "2.2.3"
 
 gem "rails", "4.2.1"
 gem "acts_as_tenant", "~> 0.3.9"
@@ -41,6 +40,8 @@ gem "jwt"
 gem "httparty"
 gem "meta-tags"
 gem "cocoon"
+gem "will_paginate-materialize"
+gem "will_paginate", "~> 3.0.6"
 
 group :development, :test do
   gem "sqlite3", "1.3.11"
@@ -56,6 +57,7 @@ group :test do
   gem "capybara", "2.5.0"
   gem "webmock", group: :test
   gem "poltergeist"
+  gem "phantomjs", require: "phantomjs/poltergeist"
   gem "rspec-rails", "3.4.0"
   gem "factory_girl_rails", "4.5.0"
   gem "database_cleaner", "1.5.1"

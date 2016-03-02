@@ -31,6 +31,9 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "event[ticket_types_attributes][0][name]", with: "free"
     fill_in "event[ticket_types_attributes][0][quantity]", with: 10
     fill_in "event[ticket_types_attributes][0][price]", with: 0.0
+    email = "johndummy@example.com"
+    fill_in "Enter staff email", with: email
+    click_button "add_staff"
     click_link "Preview"
     click_button "Save"
 
@@ -46,6 +49,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "event[location]", with: "Obodo, Oyibo"
     fill_in "event[venue]", with: "LAmity"
     click_link "Next"
+
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "This is an edited Event"
@@ -55,7 +59,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     find("a[data-activates = 'dropdown-user_option']").click
     click_link "My Account"
     fill_in "Search By Event Name", with: "This is an edited Event"
-    click_button "Search"
+    find("#search-button").click
     expect(page).to have_content "This is an edited Event"
   end
 
@@ -79,6 +83,9 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "event[ticket_types_attributes][0][name]", with: "free"
     fill_in "event[ticket_types_attributes][0][quantity]", with: 10
     fill_in "event[ticket_types_attributes][0][price]", with: 0.0
+    email = "johndummy@example.com"
+    fill_in "Enter staff email", with: email
+    click_button "add_staff"
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "Description is "\
@@ -90,6 +97,9 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "event[ticket_types_attributes][0][name]", with: "free"
     fill_in "event[ticket_types_attributes][0][quantity]", with: 10
     fill_in "event[ticket_types_attributes][0][price]", with: 0.0
+    email = "johndummy@example.com"
+    fill_in "Enter staff email", with: email
+    click_button "add_staff"
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "Description is too "\
@@ -104,6 +114,9 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "event[ticket_types_attributes][0][name]", with: "free"
     fill_in "event[ticket_types_attributes][0][quantity]", with: 10
     fill_in "event[ticket_types_attributes][0][price]", with: 0.0
+    email = "johndummy@example.com"
+    fill_in "Enter staff email", with: email
+    click_button "add_staff"
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "End date can't be in the past"
