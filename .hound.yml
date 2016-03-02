@@ -6,3 +6,6 @@ ruby:
 
 javascript:
  ignore_file: .javascript_ignore
+ config_file: .jshintrc
+
+
