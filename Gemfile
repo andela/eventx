@@ -40,9 +40,13 @@ gem "jwt"
 gem "httparty"
 gem "meta-tags"
 gem "cocoon"
+<<<<<<< 069ba10ba72397d16acf3f76de2356a83b527c22
 gem "will_paginate-materialize"
 gem "will_paginate", "~> 3.0.6"
 gem "faker", "1.5.0"
+=======
+gem "icalendar"
+>>>>>>> This commit includes the add to calender feature
 
 group :development, :test do
   gem "sqlite3", "1.3.11"

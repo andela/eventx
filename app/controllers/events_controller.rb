@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user, except: [:show, :index]
   before_action :authorize_user_create, only: [:new, :create]
   before_action :authorize_user_manage, only: [:edit, :update]
-  before_action :set_events, only:  [:show, :edit, :update, :enable, :disable]
+  before_action :set_events, only:  [:show, :edit, :update, :enable, :disable, :generate]
 
   respond_to :html, :json, :js
 
