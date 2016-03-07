@@ -42,7 +42,6 @@ $(document).ready(function () {
   if (window.location.pathname != '/') {
     $('.our-custom-header').removeClass('before-scroll').css({ 'padding-top': '9px' });
   }
-
   $('select').material_select();
   $('.parallax').parallax();
   $('.modal-trigger').leanModal();
@@ -56,7 +55,6 @@ $(document).ready(function () {
   setInterval(function () {
     $('.alert-scroll-under').animate({
       opacity: 0.1  // , height: "5%", width: "5%"
-
     }, 500);
     $('.alert-scroll-under').animate({
       opacity: 1  //, height: "2%", width: "2%"
@@ -145,9 +143,9 @@ $(document).ready(function () {
     var map_val = $('#event_map_url').val();
     var map;
     if (map_val) {
-       map = map_val + '&output=embed';
+      map = map_val + '&output=embed';
     } else {
-       map = 'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' + '&output=embed';
+      map = 'https://maps.google.com/maps/place?q=Lagos,+Nigeria&ftid=0x103b8b2ae68280c1:0xdc9e87a367c3d9cb' + '&output=embed';
     }
     // description_selector = $("#event_description").val();
     var description_selector = $('#event_description').val() === '' ? 'Your Event description goes here<br/><br/><br/><br/>' : $('#event_description').val();
@@ -234,7 +232,6 @@ function convertDate(startdate) {
   var diff = Math.floor((date2 - date) / (60 * 1000));
   return diff;
 }
-
 function countdown(val) {
   var minutes = val;
   $('#counter').css({
@@ -258,8 +255,7 @@ function countdown(val) {
       counter.innerHTML = (days > 0 ? days.toString() + 'd :' : '') + (hour < 10 ? '0' : '') + hour.toString() + 'h :' + mins2.toString() + 'm :' + (seconds < 10 ? '0' : '') + String(seconds) + 's';
       if (seconds > 0) {
         setTimeout(tick, 1000);
-      }
-      else {
+      } else {
         if (mins > 1) {
           countdown(mins - 1);
         }
@@ -274,8 +270,8 @@ $(document).ready(function () {
   var event_start_date = $('#event_start_date').data('event-start-date');
   var event_end_date = $('#event_end_date').data('event-end-date');
   if (event_start_date && event_end_date) {
-     event_start_date = new Date(event_start_date);
-     event_end_date = new Date(event_end_date);
+    event_start_date = new Date(event_start_date);
+    event_end_date = new Date(event_end_date);
     $('#event_start_date').pickadate('picker').set('select', event_start_date);
     $('#event_end_date').pickadate('picker').set('select', event_end_date);
   }
