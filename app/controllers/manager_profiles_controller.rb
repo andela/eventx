@@ -21,11 +21,13 @@ class ManagerProfilesController < ApplicationController
   end
 
   def save_staffs
-    staff = @event.event_staffs.new(role: staff_params[:role].to_i,
-                                    user_id: staff_params[:user_id])
-
-    success = "Successfully added Staff!"
-    flash[:notice] = staff.save ? success : staff.errors.full_messages.first
+    staff = @event.event_staffs.new(staff_params)
+    begin
+      staff.save
+    rescue ActiveRecord::RecordNotUnique
+      flash[:notice] = "There is an error with the form"
+    end
+    flash[:success] = "Successfully added Staff!"
     redirect_to :manage_staffs
   end
 
@@ -36,6 +38,7 @@ class ManagerProfilesController < ApplicationController
   end
 
   def manage_staffs
+    @roles = Event.get_roles
   end
 
   private

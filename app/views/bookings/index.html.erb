@@ -1,4 +1,7 @@
 <div>
+  <div class="our-new-custom-nav">
+    <%= render partial: "layouts/nav" %>
+  </div>
   <% content_for :nav_cat do %>
         <li class="teal darken-3">
           <div class="row our-image-cover">
@@ -29,14 +32,10 @@
         </li>
   <% end %>
   </div>
-  <div class="our-new-custom-nav">
-    <%= render partial: "layouts/nav" %>
-  </div>
-  <div id="main">
-      <!-- START WRAPPER -->
-      <div class="wrapper">
 
-        <%= render partial: "layouts/sidebar"%>
-          <%= render partial: "tickets"%>
-    </div>
+<div id="main">
+  <div class="wrapper">
+    <%= render partial: "layouts/sidebar"%>
+      <%= render partial: "tickets"%>
+  </div>
 </div>

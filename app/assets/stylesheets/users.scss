@@ -54,6 +54,7 @@ li a.our-dropdown-content{
   color: black;
   font-size: 14px;
   font-weight: 400;
+  width: auto;
 }
 
 //an underlay for the transparent navbar on the users#show page
@@ -65,4 +66,23 @@ li a.our-dropdown-content{
 
 .our-custom-new-sidebar{
   top: 0px !important;
+}
+
+.sh{
+  margin-top: 6px;
+}
+
+.pagination li.active {
+  background-color: teal;
+  color: #fff;
+}
+
+.pagination li {
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 0 10px;
+  line-height: 30px;
+  border-radius: 2px;
+  text-align: center;
+  color: teal;
 }

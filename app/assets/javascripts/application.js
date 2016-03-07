@@ -42,6 +42,7 @@ $(document).ready(function () {
   if (window.location.pathname != '/') {
     $('.our-custom-header').removeClass('before-scroll').css({ 'padding-top': '9px' });
   }
+
   $('select').material_select();
   $('.parallax').parallax();
   $('.modal-trigger').leanModal();
@@ -55,6 +56,7 @@ $(document).ready(function () {
   setInterval(function () {
     $('.alert-scroll-under').animate({
       opacity: 0.1  // , height: "5%", width: "5%"
+
     }, 500);
     $('.alert-scroll-under').animate({
       opacity: 1  //, height: "2%", width: "2%"
@@ -138,7 +140,7 @@ $(document).ready(function () {
     var start_date = $('#event_start_date').val();
     var end_date = $('#event_end_date').val();
     if (start_date) {
-      countdown(convertDate(start_date));
+      countdown(convertDate(start_date), end_date);
     }
     var map_val = $('#event_map_url').val();
     var map;
@@ -164,7 +166,6 @@ $(document).ready(function () {
     $('.our-event-map-url').attr({ 'src': map });
   });
   $('#edit-event').click(function () {
-    // e.preventDefault();
     var event_id = $(this).data('eventid');
     // console.log(event_id)
     $('#content').load('/events/' + event_id + '/edit');
@@ -257,7 +258,8 @@ function countdown(val) {
       counter.innerHTML = (days > 0 ? days.toString() + 'd :' : '') + (hour < 10 ? '0' : '') + hour.toString() + 'h :' + mins2.toString() + 'm :' + (seconds < 10 ? '0' : '') + String(seconds) + 's';
       if (seconds > 0) {
         setTimeout(tick, 1000);
-      } else {
+      }
+      else {
         if (mins > 1) {
           countdown(mins - 1);
         }
