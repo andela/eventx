@@ -47,11 +47,22 @@
     <div class="col s12 m6 l3 offset-l3">
     <%= start_date = Date.parse(@event.start_date)
         end_date = Date.parse(@event.end_date)
-        calendar_link = "https://www.google.com/calendar/render?action=TEMPLATE&uid=#{request.protocol}#{request.host}/events/#{@event.id}&text=#{@event.title}&dates=#{start_date.strftime("%Y%m%dT%H%M%S")}/#{end_date.strftime("%Y%m%dT%H%M%S")}&details=#{@event.description}&location=#{@event.location}&sprop=name"
-        link_to content_tag(:icon, ' Add to my Calendar', :class => "fa fa-calendar"), generate_event_path(@event.id), :class => 'atcb-link', :tab_index=>"1", :target => '_blank' %>
+        calendar_link = "https://www.google.com/calendar/render?action=TEMPLATE"
+        calendar_link << "&uid=#{request.protocol}#{request.host}/events/#{@event.id}&text=#{@event.title}"
+        calendar_link << "&dates=#{start_date.strftime("%Y%m%dT%H%M%S")}/#{end_date.strftime("%Y%m%dT%H%M%S")}"
+        calendar_link << "&details=#{@event.description}&location=#{@event.location}&sprop=name"
+        link_to content_tag(:icon, ' Add to my Calendar', :class => "fa fa-calendar"),
+                generate_event_path(@event.id),
+                :class => 'atcb-link',
+                :tab_index=>"1",
+                :target => '_blank' %>
   </div>
   <div class="col s12 m6 l3">
-    <%= link_to content_tag(:icon, ' Add to Google Calendar', :class => "fa fa-google-plus"), calendar_link, :class => 'atcb-link', :tab_index=>"2", :target => '_blank' %>
+    <%= link_to content_tag(:icon, ' Add to Google Calendar', :class => "fa fa-google-plus"),
+                calendar_link,
+                :class => 'atcb-link',
+                :tab_index=>"2",
+                :target => '_blank' %>
   </div>
   </div>
 </div>
