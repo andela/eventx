@@ -29,6 +29,7 @@ gem "social-share-button", "~> 0.1.6"
 gem "activerecord-import", "0.10.0"
 gem "carrierwave", "0.10.0"
 gem "rmagick", "2.15.4"
+gem "icalendar"
 gem "cloudinary", "1.1.0"
 gem "delayed_job_active_record", "4.1.0"
 gem "daemons", "1.2.3"
@@ -69,5 +70,5 @@ end
 group :production do
   gem "pg", "0.17.1"
   gem "rails_12factor", "0.0.2"
-  #gem "puma", "2.11.1"
+  gem "puma", "2.11.1"
 end

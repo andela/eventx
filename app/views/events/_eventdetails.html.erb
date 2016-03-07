@@ -43,10 +43,11 @@
 <div class="container center">
   <h2 class="our_description_title">Description</h2>
   <p class="our_event_description"><%= @event.description %></p>
+  <% begin %>
   <div class="row">
     <div class="col s12 m6 l3 offset-l3">
     <%= link_to content_tag(:icon, ' Add to my Calendar', class: "fa fa-calendar"),
-                generate_event_path(@event.id),
+                generate_event_path(@event),
                 class: 'atcb-link',
                 tab_index: "1",
                 target: '_blank' %>
@@ -59,6 +60,24 @@
                 target: '_blank' %>
   </div>
   </div>
+      <% rescue %>
+      <div class="row">
+        <div class="col s12 m6 l3 offset-l3">
+          <%= link_to content_tag(:icon, ' Add to my Calendar', class: "fa fa-calendar"),
+                      '#',
+                      class: 'atcb-link',
+                      tab_index: "1",
+                      target: '_blank' %>
+        </div>
+        <div class="col s12 m6 l3">
+          <%= link_to content_tag(:icon, ' Add to Google Calendar', class: "fa fa-google-plus"),
+                      '#',
+                      class: 'atcb-link',
+                      tab_index: "2",
+                      target: '_blank' %>
+        </div>
+      </div>
+  <% end %>
 </div>
 </div>
 <div class="col-md-12" class="venue" id="venue" style="height: 70%; padding:0px">

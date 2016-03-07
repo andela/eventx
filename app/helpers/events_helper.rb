@@ -43,10 +43,12 @@ module EventsHelper
   def calendar_link(event)
     start_date = Date.parse(event.start_date).strftime("%Y%m%dT%H%M%S")
     end_date = Date.parse(event.end_date).strftime("%Y%m%dT%H%M%S")
-    calendar_link = "https://www.google.com/calendar/render?action=TEMPLATE"
-    calendar_link << "&uid=#{request.protocol}#{request.host}/events/#{event.id}&text=#{event.title}"
-    calendar_link << "&dates=#{start_date}/#{end_date}"
-    calendar_link << "&details=#{event.description}&location=#{event.location}&sprop=name"
+    'https://www.google.com/calendar/render' \
+    '?action=TEMPLATE&' \
+    "uid=#{request.protocol}#{request.host}/events/#{event.id}" \
+    "&text=#{event.title}&" \
+    "dates=#{start_date}/#{end_date}&" \
+    "details=#{event.description}&location=#{event.location}"
   end
 
   private
