@@ -79,9 +79,9 @@ class EventsController < ApplicationController
     @calendar = Icalendar::Calendar.new
     @calendar.add_event(event)
     @calendar.publish
-    headers['Content-Type'] = "text/calendar; charset=UTF-8;"
+    headers['Content-Type'] = 'text/calendar; charset=UTF-8;'
     headers['Content-Disposition'] = "attachment; filename = #{@event.title.gsub(' ', '_')}.ics"
-    render :text => @calendar.to_ical
+    render text: @calendar.to_ical
   end
 
   private
