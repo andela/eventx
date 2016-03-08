@@ -12,7 +12,7 @@ RSpec.describe Booking, type: :model do
       and_return("http://sample.com/notify")
   end
 
-  let(:my_ticket)do
+  let(:my_ticket) do
     user_tickets.ticket_type_id = 1
     user_tickets.booking_id = 1
     user_tickets.ticket_number = Booking.new.instance_eval { add_uniq_id }
@@ -26,9 +26,9 @@ RSpec.describe Booking, type: :model do
 
   describe "#calculate_amount" do
     it "calculates amount" do
-      booking = FactoryGirl.create(:booking)
-      ticket = FactoryGirl.create(:ticket_type_paid)
-      FactoryGirl.create(:user_ticket, ticket_type: ticket, booking: booking)
+      booking = create(:booking)
+      ticket = create(:ticket_type_paid)
+      create(:user_ticket, ticket_type: ticket, booking: booking)
       expect(booking.instance_eval { calculate_amount }).to eql 9.99
     end
   end
@@ -43,7 +43,7 @@ RSpec.describe Booking, type: :model do
 
   describe "#paypal_url" do
     it "returns appropriate paypal url with" do
-      booking = FactoryGirl.create(:booking, event: FactoryGirl.create(:event))
+      booking = create(:booking, event: create(:event))
       paypal_url = booking.paypal_url("/paypal_dummy")
       expect(paypal_url).to eql("#{ENV['paypal_host']}/cgi-bin/webscr?amount=0"\
       "&business=notify%40email.com&cmd=_xclick&invoice=#{booking.uniq_id}&"\

@@ -70,7 +70,7 @@ class BookingsController < ApplicationController
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     http.use_ssl = true
     http.post(uri.request_uri, raw,
-              "Content-Length" => "#{raw.size}",
+              "Content-Length" => raw.size.to_s,
               "User-Agent" => "EventX"
              ).body
   end

@@ -22,11 +22,11 @@ module EventsHelper
   end
 
   def getmap(map_url)
-    if map_url.nil? || map_url.strip.empty?
-      new_map = ("https://goo.gl/ULMKDn") + "&output=embed"
-    else
-      new_map = map_url + "&output=embed"
-    end
+    new_map = if map_url.nil? || map_url.strip.empty?
+                "https://goo.gl/ULMKDn" + "&output=embed"
+              else
+                map_url + "&output=embed"
+              end
     new_map
   end
 

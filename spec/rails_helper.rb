@@ -22,7 +22,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, js_errors: false, inspector: true)
+  Capybara::Poltergeist::Driver.new(app, js_errors: false, inspector: true,
+                                         timeout: 60,
+                                         phantomjs: Phantomjs.path)
 end
 
 Capybara.javascript_driver = :poltergeist
@@ -33,6 +35,7 @@ Capybara.server do |app, port|
 end
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false
   config.before(:suite) do

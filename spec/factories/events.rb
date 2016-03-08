@@ -10,7 +10,7 @@ FactoryGirl.define do
     category_id 1
     venue "Beside the waters"
     event_template_id 1
-    map_url "gothere"
+    map_url "http://www.example.com/gothere"
     ticket_types { build_list(:ticket_type_free, 1) }
 
     factory :paid_event do

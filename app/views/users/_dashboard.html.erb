@@ -1,42 +1,48 @@
-<!-- START CONTENT -->
-<section id="content" >
-
-  <!--start container-->
-  <div class="our-modified-container container" id ="hel">
-    <div class="row center">
-      <div class="col l8 m8 s12 offset-l3 offset-m2">
-          <%= form_tag user_path(current_user), method: :get, id: "user_event_search_form", remote: true do %>
-            <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
-              <%= content_tag :i, "search", class: "material-icons prefix" %>
-              <%= text_field_tag(:event_name, "", placeholder: "Search By Event Name") %>
-            <% end %>
-            <%= content_tag :div, class: "input-field col l2 m2 s4" do %>
-              <%= button_tag "Search", type: "submit", class: "btn" %>
-            <% end %>
+<div class="col s12">
+  <% if current_user.event_manager? %>
+  <div class="row">
+    <div class="col s6 offset-s4">
+        <%= form_tag user_path(current_user), method: :get, id: "user_event_search_form", remote: true do %>
+          <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
+            <%= text_field_tag(:event_name, "", placeholder: "Search By Event Name") %>
           <% end %>
-      </div>
+          <%= content_tag :div, class: "input-field col l2 m2 s4" do %>
+          <%= button_tag( class: "btn btn-floating", id: "search-button") do %>
+            <%= content_tag :i, "search", class: "material-icons" %>
+          <% end %>
+          <% end %>
+        <% end %>
     </div>
-    <label>
-      <% all_events = @events %>
-      <%= "Result: #{all_events.size} event".pluralize(all_events.size)%>
-    </label>
-    <table class="centered striped">
-      <thead>
-      <tr>
-        <th data-field="id">Name</th>
-        <th data-field="name">Location</th>
-        <th data-field="price">Date</th>
-        <th data-field="price">Status</th>
-        <th data-field="price"></th>
-      </tr>
-      </thead>
-
-      <tbody id="events_lists">
-        <%= render partial: "users/eventlist"%>
-      </tbody>
-    </table>
-    <a class="btn-floating btn-large waves-effect waves-light teal" style="position: fixed; bottom: 25px; right: 50px;" href="<%= events_new_path%>"><i class="material-icons">add</i></a>
+  </div>
+  <div class="row">
+    <div class="col l8 m8 s6 offset-m2">
+      <label>
+        <% all_events = @resources %>
+        <strong><%= "Result: #{all_events.size} event".pluralize(all_events.size)%></strong>
+      </label>
     </div>
-    <!--end container-->
-</section>
-<!-- END CONTENT -->
+  </div>
+  <div class="row">
+  <table class="responsive-table bordered">
+    <thead>
+    <tr>
+      <th data-field="id">Enable/Disable</th>
+      <th data-field="id">Name</th>
+      <th data-field="name">Location</th>
+      <th data-field="price">Start Date</th>
+      <th data-field="price">End Date</th>
+      <th data-field="price">Manage Event</th>
+    </tr>
+    </thead>
+    <tbody id="events_lists">
+    <%= render partial: "users/eventlist"%>
+  </tbody>
+  </table>
+  <div class="center-align" id="pagination" >
+  <%= will_paginate @resources, renderer: MaterializePagination::Rails %>
+  </div>
+  <a class="btn-floating btn-large waves-effect waves-light teal tooltipped",  "data-position" = "top", "data-tooltip" = "I am tooltip" style="position: fixed; bottom: 25px; right: 50px;" href="<%= events_new_path%>"><i class="material-icons">add</i></a>
+  <% else %>
+    <%= render partial: "users/users_dashboard"%>
+  <% end %>
+</div>

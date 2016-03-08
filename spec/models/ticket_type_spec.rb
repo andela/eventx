@@ -2,14 +2,14 @@ require "rails_helper"
 
 RSpec.describe TicketType, type: :model do
   it "should have a valid factory" do
-    tic_type = FactoryGirl.build(:ticket_type)
+    tic_type = build(:ticket_type)
     expect(tic_type).to be_valid
   end
 
   describe "" do
     before(:each) do
-      @ticket_type = FactoryGirl.create(:ticket_type_paid)
-      FactoryGirl.create(:user_ticket, ticket_type: @ticket_type)
+      @ticket_type = create(:ticket_type_paid)
+      create(:user_ticket, ticket_type: @ticket_type)
     end
 
     describe "#sold" do
