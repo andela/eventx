@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   $('#user_event_search_form input').keyup(function () {
     $.get($('#user_event_search_form').attr('action'), $('#user_event_search_form').serialize(), null, 'script');

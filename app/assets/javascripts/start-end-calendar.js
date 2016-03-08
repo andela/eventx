@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   var event_start_date = $('#event_start_date').data('event-start-date');
   var event_end_date = $('#event_end_date').data('event-end-date');

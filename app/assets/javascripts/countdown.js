@@ -5,8 +5,6 @@ function convertDate(startdate) {
   var diff = Math.floor((date2 - date) / (60 * 1000));
   return diff;
 }
-
-
 function countdown(val) {
   var minutes = val;
   $('#counter').css({
