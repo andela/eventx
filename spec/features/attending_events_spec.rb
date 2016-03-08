@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "ViewEvents", type: :feature, js: true do
   before(:each) do
     manager =
-    FactoryGirl.create(:manager_profile, user: FactoryGirl.create(:user))
+      FactoryGirl.create(:manager_profile, user: FactoryGirl.create(:user))
     FactoryGirl.create(:event, manager_profile: manager)
     old = FactoryGirl.build(:old_event, manager_profile: manager)
     old.save(validate: false)

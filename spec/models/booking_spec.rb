@@ -12,7 +12,7 @@ RSpec.describe Booking, type: :model do
       and_return("http://sample.com/notify")
   end
 
-  let(:my_ticket)do
+  let(:my_ticket) do
     user_tickets.ticket_type_id = 1
     user_tickets.booking_id = 1
     user_tickets.ticket_number = Booking.new.instance_eval { add_uniq_id }

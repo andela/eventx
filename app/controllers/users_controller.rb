@@ -10,18 +10,26 @@ class UsersController < ApplicationController
   end
 
   def lookup_staff_emails
-    render json: User.lookup_email(params[:term])
+    user = User.lookup_email(params[:term])
+    if user
+      render json: user
+    else
+      render json: { error: "error" }
+    end
   end
 
   def fetch_user_info
-    @user = User.find_by(id: params[:user_id])
-    render layout: false, partial: "fetch_user_info",
-           locals: { user: @user, role: nil }
+    user_info = User.user_info(user_info_params)
+    render json: user_info
   end
 
   private
 
   def search_params
-    params.permit(:event_name).symbolize_keys
+    params.permit(:event_name, :enabled).symbolize_keys
+  end
+
+  def user_info_params
+    params.permit(:user_id, :role)
   end
 end

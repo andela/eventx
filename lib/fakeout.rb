@@ -2,7 +2,7 @@ require "faker"
 
 module Fakeout
   class Builder
-    FAKEABLE = %w(Event)
+    FAKEABLE = %w(Event).freeze
 
     attr_accessor :report
 

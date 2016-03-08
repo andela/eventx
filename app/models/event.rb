@@ -29,8 +29,8 @@ class Event < ActiveRecord::Base
   validates :ticket_types, presence: true
 
   # scope
-  scope :recent_events, -> { order(created_at: :DESC).limit(12) }
-  scope :featured_events, -> { order(created_at: :DESC).limit(12) }
+  scope :recent_events, -> { where(enabled: true).order(created_at: :DESC).limit(12) }
+  scope :featured_events, -> { where(enabled: true).order(created_at: :DESC).limit(12) }
 
   def expiration_date_cannot_be_in_the_past
     today = Time.zone.today
@@ -61,7 +61,7 @@ class Event < ActiveRecord::Base
 
   def self.upcoming_events
     time = Time.zone.now
-    where("start_date >= ?", time).limit(12).order("start_date ASC")
+    where("start_date >= ?", time).limit(12).order("start_date ASC").where(enabled: true)
   end
 
   def self.scope_raw_query(query)
@@ -71,12 +71,38 @@ class Event < ActiveRecord::Base
   end
 
   def self.my_event_search(search_params, manager_profile_id)
+    search_params[:enabled] = false
     query = search_query(search_params).
             where(arel_table[:manager_profile_id].eq(manager_profile_id))
     find_by_sql(query.to_sql)
   end
+  #
+  # def self.manager_event_search(search_params, manager_profile_id)
+  #   query = search_query(search_params).
+  #       where(arel_table[:manager_profile_id].eq(manager_profile_id))
+  #   find_by_sql(query.to_sql)
+  # end
 
   def ticket_sold
+  end
+
+  def self.get_roles
+    roles = {}
+    EventStaff.roles.each do |key, _value|
+      role_text = key.split("_").map(&:capitalize).join(" ")
+      roles[role_text] = key
+    end
+    roles
+  end
+
+  def self.find_event(params)
+    if params.empty?
+      recent_events
+    else
+      params = params.symbolize_keys
+      params[:enabled] = true
+      search(params)
+    end
   end
 
   private

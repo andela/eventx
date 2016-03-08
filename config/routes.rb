@@ -7,6 +7,12 @@ Rails.application.routes.draw do
       as: :manage_staffs
   get "/events/:event_id/remove_staff/:event_staff_id" =>
     "manager_profiles#remove_staff", as: :remove_staff
+  get "/events/:id/enable" =>
+          "events#enable", as: :enable_event
+  get "/events/:id/disable" =>
+          "events#disable", as: :disable_event
+  get "/events/:id/generate" =>
+          "events#generate", as: :generate_event
   get "/featured_events" => "welcome#featured"
   get "/popular_events" => "welcome#popular"
   get "/upcoming_events" => "welcome#index"

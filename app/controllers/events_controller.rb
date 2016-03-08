@@ -2,22 +2,20 @@ class EventsController < ApplicationController
   before_action :authenticate_user, except: [:show, :index]
   before_action :authorize_user_create, only: [:new, :create]
   before_action :authorize_user_manage, only: [:edit, :update]
-  before_action :set_events, only:  [:show, :edit, :update]
+  before_action :set_events, only:  [:show, :edit, :update, :enable, :disable, :generate]
 
   respond_to :html, :json, :js
 
   def new
     @event = Event.new.decorate
     @event.ticket_types.build
+    @roles = Event.get_roles
   end
 
   def index
     @categories = Category.all
-    if search_params.size == 0
-      @events = Event.recent_events
-    else
-      @events = Event.search(search_params.symbolize_keys)
-    end
+    @events = Event.find_event(search_params)
+    @events = [] if @events.nil?
     respond_with @events
   end
 
@@ -30,36 +28,66 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @roles = Event.get_roles
+  end
+
+  def enable
+    @event.enabled = true
+    @event.save
+    redirect_to :back
+  end
+
+  def disable
+    @event.enabled = false
+    @event.save
+    redirect_to :back
   end
 
   def update
     @event.event_staffs.delete_all
-    if @event.update(event_params)
-      flash[:notice] = "Your Event was successfully updated"
-      respond_with(@event)
-    else
-      flash[:notice] = "Your Event was not updated"
-      respond_with(@event)
-    end
+    flash[:notice] = if @event.update(event_params)
+                       "Your Event was successfully updated"
+                     else
+                       @event.errors.full_messages.join("; ")
+                     end
+    respond_with(@event)
   end
 
   def create
+    @roles = Event.get_roles
     @event = Event.new(event_params).decorate
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
-    if @event.save
-      # @event.event_staffs.create(user: current_user).event_manager!
-      flash[:notice] = "Your Event was successfully created."
-    else
-      flash[:notice] = @event.errors.full_messages.join("<br />")
-    end
+    flash[:notice] = if @event.save
+                       "Your Event was successfully created."
+                     else
+                       @event.errors.full_messages.join("; ")
+                     end
     respond_with(@event)
+  end
+
+  def generate
+    @event = Event.find(params[:id])
+    event = Icalendar::Event.new
+    event.dtstart = @event.start_date.strftime("%Y%m%dT%H%M%S")
+    event.dtend = @event.end_date.strftime("%Y%m%dT%H%M%S")
+    event.summary = @event.title
+    event.description = @event.description
+    event.location = @event.location
+    event.uid = "#{request.protocol}#{request.host}/events/#{params[:id]}"
+
+    @calendar = Icalendar::Calendar.new
+    @calendar.add_event(event)
+    @calendar.publish
+    headers['Content-Type'] = 'text/calendar; charset=UTF-8;'
+    headers['Content-Disposition'] = "attachment; filename = #{@event.title.gsub(' ', '_')}.ics"
+    render text: @calendar.to_ical
   end
 
   private
 
   def search_params
-    params.permit(:event_name, :event_location, :event_date, :category_id)
+    params.permit(:event_name, :event_location, :event_date, :category_id, :enabled)
   end
 
   def event_params
@@ -70,7 +98,7 @@ class EventsController < ApplicationController
                                   ticket_types_attributes:
                                     [:id, :_destroy, :name, :quantity, :price],
                                   event_staffs_attributes:
-                                    [:user_id])
+                                    [:user_id, :role])
   end
 
   def set_events
