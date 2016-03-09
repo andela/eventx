@@ -269,6 +269,15 @@ function countdown(val) {
   }
 }
 $(document).ready(function () {
+  $('#start_time').pickatime({
+       twelvehour: true
+     });
+  $('#end_time').pickatime({
+   twelvehour: false
+  });
+});
+
+$(document).ready(function () {
   var event_start_date = $('#event_start_date').data('event-start-date');
   var event_end_date = $('#event_end_date').data('event-end-date');
   if (event_start_date && event_end_date) {
@@ -290,4 +299,23 @@ $(document).ready(function () {
   $('#preview-event-div a').click(function (e) {
     e.preventDefault();
   });
+});
+
+$('.timepicker').pickatime({
+  twelvehour: true,
+  donetext: 'Done',
+  beforeShow: function() {
+    activeElement = $(document.activeElement)
+    activeForm = activeElement.closest('form')[0]
+
+    // Remove existing validation errors
+    activeForm.ClientSideValidations.removeError(activeElement)
+
+    // Prevent a validation error occurring when element un-focusses
+    activeElement.disableClientSideValidations();
+  },
+  afterDone: function() {
+    activeElement = $(document.activeElement)
+    $(activeElement).enableClientSideValidations();
+  }
 });
