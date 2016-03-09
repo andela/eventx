@@ -128,12 +128,34 @@
             <div class="event_ticket_field">
               <h5>Add Staff</h5>
               <hr>
+<<<<<<< HEAD
+              <div class="event_staffs"><%= @event.get_event_staffs %></div>
+                <%= render "staff_fields" %>
+              </div>
+=======
               <div class="event_staffs" id="event_staffs"><%= @event.get_event_staffs %></div>
               <%= render "staff_fields" %>
+>>>>>>> 1cdd5821c4a321755d86964c4543128267904a4d
             </div>
-        </div>
           </div>
         <!--End add staff -->
+          <!-- Add Highlight -->
+          <div class="row">
+            <div style="margin-bottom: 20px; margin-left: 50px;">
+            </div>
+            <div class="event_highlights_field">
+              <h5>Add Highlight</h5>
+              <hr>
+              <%= f.fields_for :highlights do |highlights| %>
+              <%= render "highlight_fields", :f => highlights, :locals => {:f => highlights}  %>
+              <% end %>
+              </div>
+            </div>
+          </div>
+          <hr>
+        <!--End add highlight -->
+        <div style="margin-bottom: 20px; margin-left: 50px;">
+        </div>
         <div class="row category-selected">
           <div class="row radio-select">
             <h5>Select a template</h5>

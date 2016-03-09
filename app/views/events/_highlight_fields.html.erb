@@ -1,0 +1,22 @@
+<div class="row col s12 nested-fields " id="paid_ticket_div" >
+  <div class="input-field col s5">
+    <i class="fa fa-ticket prefix icon-setting"></i>
+    <%= f.text_field :title, placeholder: "Title"  %>
+  </div>
+  <div class="input-field col s10">
+    <%= f.text_area :description, rows: 6, placeholder: "Enter Highlight Description" %>
+  </div>
+  <div class="input-field col s5">
+    <%= f.text_field :start_time, id: "start_time", class: "timepicker", placeholder: "Start Time" %>
+  </div>
+  <div class="input-field col s5">
+    <%= f.text_field :end_time, id: "end_time", class: "timepicker", placeholder: "End Time" %>
+  </div>
+  </div>
+  <div class="input-field col s5">
+    <%= f.text_field :image_title, placeholder: "Caption"%>
+  </div>
+  <div class="input-field col s5">
+    <%= f.file_field :image,  id: "highlight_photo_upload" %>
+  </div>
+</div>

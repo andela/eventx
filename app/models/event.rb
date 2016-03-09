@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   belongs_to :event_template
   has_many :ticket_types, dependent: :destroy
   has_many :event_staffs, dependent: :destroy
+  has_many :highlights, dependent: :destroy
   has_many :staffs, through: :event_staffs, source: "user"
   accepts_nested_attributes_for :ticket_types,
                                 allow_destroy: true, reject_if: :all_blank
