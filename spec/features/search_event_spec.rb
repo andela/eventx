@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.feature "search_event:", type: :feature do
   before(:each) do
-    FactoryGirl.create(:event)
-    FactoryGirl.create(:next_week_event)
-    FactoryGirl.create(:next_weekend_event)
-    FactoryGirl.create(:this_weekend_event)
-    FactoryGirl.create(:tomorrow_event)
+    create(:event)
+    create(:next_week_event)
+    create(:next_weekend_event)
+    create(:this_weekend_event)
+    create(:tomorrow_event)
   end
 
   scenario "User searches for today's events" do

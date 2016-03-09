@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   def self.lookup_email(email)
     where(arel_table[:email].matches("%#{email}%")).limit(5).
       pluck(:email, :id).map do |mail, id|
-      { "value": mail, "data": id }
+      { "value" => mail, "data" => id }
     end
   end
 
@@ -30,8 +30,28 @@ class User < ActiveRecord::Base
     !manager_profile.nil?
   end
 
+  def self.user_info(parameter)
+    if parameter[:user_id].nil?
+      { error: "Field is empty" }
+    else
+      user_role = user_role(parameter[:role])
+      user_data = user_hash(parameter).merge(user_role: user_role)
+      parameter.merge(user_data).symbolize_keys
+    end
+  end
+
   def generate_auth_token
     payload = { user_id: id, email: email }
     AuthToken.encode(payload)
+  end
+
+  def self.user_role(role)
+    role.split("_").map(&:capitalize).join(" ")
+  end
+
+  def self.user_hash(params)
+    user = User.where(id: params[:user_id]).pluck(:first_name, :email,
+                                                  :profile_url).first
+    { first_name: user[0], email: user[1], profile_url: user[2] }
   end
 end

@@ -18,6 +18,9 @@
     "google",
     "ga",
     "counter",
+    "Materialize",
+    "countdown",
+    "convertDate",
 
     "jasmine",
     "beforeEach",
@@ -32,5 +35,14 @@
   "quotmark": true,
   "trailing": true,
   "undef": true,
-  "unused": true
+  "unused": true,
+
+  "-W099": false, 
+  "-W065": false, 
+  "-W015": false, 
+  "-W116": false, 
+  "-W030": false,
+  "-W082": false,
+  "unused": false
+
 }

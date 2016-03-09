@@ -6,7 +6,7 @@ RSpec.describe UsersController, type: :controller do
     manager = FactoryGirl.create(:manager_profile, user: user)
     session[:user_id] = user.id
     api_key = user.generate_auth_token
-    request.headers["Authorization"] = "#{api_key}"
+    request.headers["Authorization"] = api_key.to_s
     FactoryGirl.create(:event, manager_profile: manager)
   end
 

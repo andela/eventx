@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160308114007) do
+=======
+ActiveRecord::Schema.define(version: 20160217113950) do
+>>>>>>> 1cdd5821c4a321755d86964c4543128267904a4d
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160308114007) do
   end
 
   add_index "event_staffs", ["event_id"], name: "index_event_staffs_on_event_id"
+  add_index "event_staffs", ["user_id", "event_id"], name: "index_event_staffs_on_user_id_and_event_id", unique: true
   add_index "event_staffs", ["user_id"], name: "index_event_staffs_on_user_id"
 
   create_table "event_templates", force: :cascade do |t|
@@ -86,12 +91,13 @@ ActiveRecord::Schema.define(version: 20160308114007) do
     t.string   "image"
     t.integer  "theme_id"
     t.integer  "category_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "venue"
     t.integer  "event_template_id"
     t.string   "map_url"
     t.integer  "manager_profile_id"
+    t.boolean  "enabled",            default: true
   end
 
   add_index "events", ["manager_profile_id"], name: "index_events_on_manager_profile_id"

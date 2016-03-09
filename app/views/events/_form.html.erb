@@ -9,7 +9,7 @@
           </a>
         </li>
         <li class="tab col s3 ">
-          <a class="our-tab2-color" href="#ticketing">
+          <a class="our-tab2-color" href="#ticketing" id="customize">
             <i class="fa fa-search "></i>
             Customize
           </a>
@@ -99,7 +99,7 @@
           </div>
         </div>
         <div class="input-field col s3 offset-s4">
-          <%= link_to "Next <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center more-info z-depth-0"  %>
+          <%= link_to "Next <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center more-info z-depth-0", id:'next' %>
         </div>
       </div>
     </div>
@@ -128,9 +128,14 @@
             <div class="event_ticket_field">
               <h5>Add Staff</h5>
               <hr>
+<<<<<<< HEAD
               <div class="event_staffs"><%= @event.get_event_staffs %></div>
                 <%= render "staff_fields" %>
               </div>
+=======
+              <div class="event_staffs" id="event_staffs"><%= @event.get_event_staffs %></div>
+              <%= render "staff_fields" %>
+>>>>>>> 1cdd5821c4a321755d86964c4543128267904a4d
             </div>
           </div>
         <!--End add staff -->
@@ -153,8 +158,10 @@
         </div>
         <div class="row category-selected">
           <div class="row radio-select">
+            <h5>Select a template</h5>
+            <hr>
             <div class="input-field col s10">
-              <label>Select a template</label>
+
               <div class="temps">
 <!--Hardcoded radio button association: due to the face that i have not-->
 <!--seen the rails way of doing it but it work find for now!-->
@@ -191,7 +198,7 @@
     <%= render partial: "events/eventdetails" %>
   </div>
   <div class="col s3 offset-s4 center">
-    <button class="col s12 btn-large waves-effect waves-light home_button center z-depth-0">Save
+    <button class="col s12 btn-large waves-effect waves-light home_button center z-depth-0" id="save_event">Save
       <i class="fa fa-floppy-o"></i>
     </button>
   </div>
