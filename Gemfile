@@ -42,6 +42,7 @@ gem "meta-tags"
 gem "cocoon"
 gem "will_paginate-materialize"
 gem "will_paginate", "~> 3.0.6"
+gem "faker", "1.5.0"
 
 group :development, :test do
   gem "sqlite3", "1.3.11"
@@ -50,7 +51,6 @@ group :development, :test do
   gem "web-console", "~> 2.0"
   gem "spring", "1.4.3"
   gem "rubocop", require: false
-  gem "faker", "1.5.0"
 end
 
 group :test do
