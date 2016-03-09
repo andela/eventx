@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160308114007) do
-=======
-ActiveRecord::Schema.define(version: 20160217113950) do
->>>>>>> 1cdd5821c4a321755d86964c4543128267904a4d
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"

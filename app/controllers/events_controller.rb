@@ -9,11 +9,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new.decorate
     @event.ticket_types.build
-<<<<<<< HEAD
     @event.highlights.build
-=======
-    @roles = Event.get_roles
->>>>>>> 1cdd5821c4a321755d86964c4543128267904a4d
   end
 
   def index
