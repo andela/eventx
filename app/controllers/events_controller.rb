@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new.decorate
     @event.ticket_types.build
-    @roles = Event.get_roles
+    @event.highlights.build
   end
 
   def index
@@ -80,6 +80,10 @@ class EventsController < ApplicationController
                                   :event_template_id,
                                   ticket_types_attributes:
                                     [:id, :_destroy, :name, :quantity, :price],
+                                  highlights_attributes:
+                                    [:id, :_destroy, :title, :description,
+                                     :start_time, :end_time, :image,
+                                     :image_title],
                                   event_staffs_attributes:
                                     [:user_id, :role])
   end
