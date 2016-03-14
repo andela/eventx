@@ -66,6 +66,22 @@ class EventsController < ApplicationController
     respond_with(@event)
   end
 
+  def generate
+    @event = Event.find(params[:id])
+    @calendar = Icalendar::Calendar.new
+    @generator = Icalendar::Event.new
+    decorator = EventGeneratorDecorator.new(@event, @calendar, @generator)
+
+    decorator.generator
+
+    @generator.uid = "#{request.protocol}#{request.host}/events/#{params[:id]}"
+    decorator.add_to_calendar
+    headers['Content-Type'] = 'text/calendar; charset=UTF-8;'
+    headers['Content-Disposition'] = "attachment; filename = #{@event.title.gsub(' ', '_')}.ics"
+
+    render text: @calendar.to_ical
+  end
+
   private
 
   def search_params
