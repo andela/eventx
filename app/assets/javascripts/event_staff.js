@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   var notify = function (message) {
     Materialize.toast(message, 3000, 'rounded');
@@ -69,6 +70,7 @@ $(document).ready(function () {
       var staffId = ui.item.data;
       $('#staff_id').val(staffId);
     }
+
   });
   $('.event_staffs').on('click', '.remove_staff', function () {
     $(this).parents('.chip').hide('slow', function () {
