@@ -64,7 +64,7 @@
               <div class="row">
                 <div class="input-field col s10">
                   <i class="fa fa-th-large prefix icon-setting"></i>
-                  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} , class: "browser-default", blank_option: true, required: true%>
+                  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} , class: "browser-default", blank_option: true, required: false%>
                 </div>
               </div>
             </div>
