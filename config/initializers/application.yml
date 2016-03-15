@@ -1,0 +1,38 @@
+FACEBOOK_APP_ID: "427509817446614"
+FACEBOOK_SECRET: "4166d3c3bf9a0df406ca1eeffa794874"
+
+TWITTER_API_KEY: "fxepCdPRGwtujFGxQgKdhcbV9"
+TWITTER_SECRET: "C6KhRSdClOP9xELA4YDEwztlb0u3i0TM78vlpn46FD0Rfnu89Y"
+
+GOOGLE_CLIENT_ID: "962417276421-pl25ps2gge7bnv9or2ju7ls9is5aa1g0.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET: "644AB99C-wpERCOOxkTJdKAf"
+
+LINKEDIN_CONSUMER_KEY: "774gycq63dmbfp"
+LINKEDIN_CONSUMER_SECRET: “RabW0DHXWdieRXeL”
+
+GITHUB_KEY: "0e08985f8833a96b6893"
+GITHUB_SECRET: "5c1edbd5fb088c7633bc7b710789c7b18ef6b4f6"
+
+TUMBLR_KEY: "3MMci9Elckshk55KGht7ac5ZcMbMhPzbhz80E0Ly4lqvn2y9Ox"
+TUMBLR_SECRET: "JlvDSpXloN1eHotte1wumvK5O1EcbrQRF5knITWcjHqHhHskwC"
+
+# Providers for API user info
+google_oauth2: "https://www.googleapis.com/oauth2/v2/userinfo"
+facebook: "https://graph.facebook.com/me?fields=id,name,email,picture"
+twitter: "https://api.twitter.com/1.1/account/verify_credentials.json?skip_status,include_email"
+github: "https://api.github.com/user"
+
+development:
+  PAYPAL_BUSINESS: oreoluwa-facilitator@outlook.com
+  paypal_host: https://www.sandbox.paypal.com
+  app_host: http://lvh.me:3000
+  paypal_notify_url: http://9c1bac57.ngrok.io
+
+production:
+  PAYPAL_BUSINESS: oreoluwa-facilitator@outlook.com
+  paypal_host: https://www.sandbox.paypal.com
+  app_host: https://event-ex.herokuapp.com
+  paypal_notify_url: https://event-ex.herokuapp.com
+
+test:
+  app_host: 127.0.0.1:41337
