@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user, except: [:show, :index]
   before_action :authorize_user_create, only: [:new, :create]
   before_action :authorize_user_manage, only: [:edit, :update]
-  before_action :set_events, only:  [:show, :edit, :update, :enable, :disable]
+  before_action :set_events,
+                only: [:show, :edit, :update, :enable, :disable, :generate]
 
   respond_to :html, :json, :js
 
@@ -64,6 +65,19 @@ class EventsController < ApplicationController
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
+  end
+
+  def generate
+    calendar = Icalendar::Calendar.new
+    generator = Icalendar::Event.new
+    decorator = EventGeneratorDecorator.new
+    decorator.generator(generator, @event)
+    generator.uid = "#{request.protocol}#{request.host}/events/#{params[:id]}"
+    decorator.add_to_calendar(calendar, generator)
+    headers['Content-Type'] = 'text/calendar; charset=UTF-8;'
+    headers['Content-Disposition'] = 'attachment;' <<
+        "filename = #{@event.title.tr(' ', '_')}.ics"
+    render text: calendar.to_ical
   end
 
   private

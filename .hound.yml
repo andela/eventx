@@ -1,11 +1,9 @@
 scss:
- enabled: false
+  enabled: false
 
 ruby:
- config_file: .rubocop.yml
+  config_file: .rubocop.yml
 
 javascript:
  ignore_file: .javascript_ignore
  config_file: .jshintrc
-
-
