@@ -29,4 +29,33 @@ class EventDecorator < Draper::Decorator
     end
     var.html_safe
   end
+
+  def generator
+    generator = Icalendar::Event.new
+    generator.dtstart = object.start_date.strftime("%Y%m%dT%H%M%S")
+    generator.dtend = object.end_date.strftime("%Y%m%dT%H%M%S")
+    generator.summary = object.title
+    generator.description = object.description
+    generator.location = object.location
+    generator.uid = "#{h.events_url}/#{object.id}"
+    generator
+  end
+
+  def calendar
+    calendar = Icalendar::Calendar.new
+    calendar.add_event(generator)
+    calendar.publish
+    calendar
+  end
+
+  def google_calender_link
+    start_date = object.start_date.strftime("%Y%m%dT%H%M%S")
+    end_date = object.end_date.strftime("%Y%m%dT%H%M%S")
+    'https://www.google.com/calendar/render' \
+    '?action=TEMPLATE&' \
+    "#{h.events_url}/#{object.id}" \
+    "&text=#{object.title}&" \
+    "dates=#{start_date}/#{end_date}&" \
+    "details=#{object.description}&location=#{object.location}"
+  end
 end
