@@ -43,10 +43,13 @@
 <div class="container center">
   <h2 class="our_description_title">Description</h2>
   <p class="our_event_description"><%= @event.description %></p>
-  <div class="text-center">
-    <a class="atcb-link" id="" tabindex="1">
-      <i class="fa fa-calendar"></i>
-      Add to My Calendar</a>
+  <div class="row">
+    <div class="col s12 m6 l3 offset-l3">
+      <%= @event.display_download_link %>
+    </div>
+    <div class="col s12 m6 l3">
+      <%= @event.display_google_link %>
+    </div>
   </div>
 </div>
 </div>
