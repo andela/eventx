@@ -43,6 +43,7 @@ gem "cocoon"
 gem "will_paginate-materialize"
 gem "will_paginate", "~> 3.0.6"
 gem "faker", "1.5.0"
+gem 'icalendar'
 
 group :development, :test do
   gem "sqlite3", "1.3.11"
