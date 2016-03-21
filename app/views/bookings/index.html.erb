@@ -12,10 +12,11 @@
            </div>
           </div>
         </li>
-        <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> My Events</a>
+        <li class="bold"><%= link_to content_tag(:i, "", class: "mdi-image-palette") + "My Events", events_path, class: "waves-effect waves-cyan" %>
+
 
         </li>
-        <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Attending Events</a>
+        <li class="bold"><%= link_to content_tag(:i, "", class: "mdi-action-dashboard") + "Edit Events", my_events_path, class: "waves-effect waves-cyan" %>
         </li>
         <li class="bold active"><%= link_to content_tag(:i, "", class: "mdi-image-palette") + "Tickets", tickets_path, class: "waves-effect waves-cyan" %>
         </li>
@@ -35,7 +36,10 @@
 
 <div id="main">
   <div class="wrapper">
+
+
     <%= render partial: "layouts/sidebar"%>
+
       <%= render partial: "tickets"%>
   </div>
 </div>
