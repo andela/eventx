@@ -11,6 +11,7 @@ Rails.application.routes.draw do
           "events#enable", as: :enable_event
   get "/events/:id/disable" =>
           "events#disable", as: :disable_event
+  get "/events/:id/generate" => "events#generate", as: :generate_event
   get "/featured_events" => "welcome#featured"
   get "/popular_events" => "welcome#popular"
   get "/upcoming_events" => "welcome#index"
