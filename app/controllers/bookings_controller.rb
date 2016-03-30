@@ -12,7 +12,8 @@ class BookingsController < ApplicationController
   protect_from_forgery except: [:paypal_hook]
 
   def event_titles
-    @event_titles = Event.select("id, title").where(manager_profile_id: current_user)
+    @event_titles = Event.select("id, title").
+                    where(manager_profile_id: current_user)
   end
 
   def index
@@ -49,7 +50,10 @@ class BookingsController < ApplicationController
   end
 
   def each_event_ticket
-    @bookings = current_user.bookings.where(event: @event).order(id: :desc).decorate
+    @bookings = current_user.bookings.where(
+      event: @event
+    ).order(id: :desc).decorate
+
     render "index"
   end
 
