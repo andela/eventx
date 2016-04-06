@@ -27,7 +27,7 @@
     <li class="divider"></li>
     <li><%= link_to "View Event", event, class: "our-dropdown-content" %></li>
     <li class="divider"></li>
-    <li><a class="our-dropdown-content" href="">View Ticket</a></li>
+    <li><%= link_to "View Ticket", tickets_path(event), class: "our-dropdown-content" %></li>
     <li class="divider"></li>
     <li><%= link_to "Manage Staffs", manage_staffs_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
