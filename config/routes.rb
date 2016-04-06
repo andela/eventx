@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   resources :events do
     resources :bookings, only: [:create]
   end
+  get "/events/:id/:highlight_id" =>
+    "events#show_event_highlight", as: :show_event_highlight
   resources :users, only: [:show]
   get "*unmatched_route", to: "application#no_route_found"
 end

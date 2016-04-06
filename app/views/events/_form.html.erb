@@ -131,9 +131,39 @@
               <div class="event_staffs" id="event_staffs"><%= @event.get_event_staffs %></div>
               <%= render "staff_fields" %>
             </div>
-        </div>
           </div>
         <!--End add staff -->
+        <!-- Add Highlight -->
+          <div class="row">
+            <div style="margin-bottom: 20px; margin-left: 50px;">
+            </div>
+            <div class="event_highlights_field">
+              <h5>Add Highlight</h5>
+              <hr>
+              <%= render "highlight_table",  highlights: @event.highlights %>
+              <div class="event_staffs" id="event_highlights"></div>
+              <% unless @event.highlights.count < 0 %>
+                <%= f.fields_for :highlights do |highlight| %>
+                <%= render "highlight_fields", f: highlight, field_id: highlight.object.id  %>
+                <% end %>
+              <% end %>
+              <%= f.fields_for @event.highlights.new do |h| %>
+                <%= render "highlight_fields", f: h, field_id: "_new"  %>
+              <% end %>
+              <div class="col s4">
+                <button type="button" id="add_highlight" class="btn btn-circle staff_add_btn">
+                  Add Highlight
+                </button>
+                <% unless @event.highlights.count == 0 %>
+                  <button type="button" id="add_highlight" class="btn btn-circle staff_add_btn">
+                    Update Highlight
+                  </button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <!--End add highlight -->
+          </div>
         <div class="row category-selected">
           <div class="row radio-select">
             <h5>Select a template</h5>
@@ -171,7 +201,7 @@
 <!-- <iframe id="frame" scrolling="yes" src="30" width="80%" height="500px" frameborder="0" style="margin:0 auto;">
   </iframe> -->
 
-  <div class="" id="preview-event-div" style="width: 80%; height: 500px; margin: 0 auto 1000px auto">
+  <div class="" id="preview-event-div" style="width: 80%; height: 500px; margin: 0 auto 5% auto; overflow: auto;">
     <% @current_page = "new" %>
     <%= render partial: "events/eventdetails" %>
   </div>

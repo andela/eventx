@@ -37,5 +37,9 @@ $(document).ready(function () {
     $('.landing2').removeClass(prev_color);
     $('.landing2').addClass(color);
     $('.our-event-map-url').attr({ 'src': map });
+
+    // hightlights data
+    var h_title = $('#highlight_title').val();
+    $('.our-highlight-title').html(h_title);
   });
 });  /* Every time the window is scrolled ... */
