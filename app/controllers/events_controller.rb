@@ -66,6 +66,10 @@ class EventsController < ApplicationController
     respond_with(@event)
   end
 
+  def tickets
+    @bookings = current_user.user_tickets_for_event(params[:id])
+  end
+
   private
 
   def search_params

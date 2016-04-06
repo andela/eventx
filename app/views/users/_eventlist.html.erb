@@ -1,3 +1,31 @@
+<% content_for :nav_cat do %>
+      <li class="teal darken-3">
+        <div class="row our-image-cover">
+          <div class="col l12 m12 s12">
+            <%= link_to root_path do %>
+              <h3 class="header home_app_title">EventX</h3>
+            <% end %>
+         </div>
+        </div>
+      </li>
+      <li class="bold"><%= link_to content_tag(:i, "", class: "mdi-image-palette") + "My Events", my_events_path, class: "waves-effect waves-cyan" %></li>
+
+      <li class="bold active"><%= link_to content_tag(:i, "", class: "mdi-image-palette") + "View Bookings", tickets_path, class: "waves-effect waves-cyan" %>
+      </li>
+      <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Account Details </a>
+      </li>
+      <li class="li-hover">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <div class="sample-chart-wrapper">
+              <div class="ct-chart ct-golden-section" id="ct2-chart"></div>
+            </div>
+          </div>
+        </div>
+      </li>
+<% end %>
+</div>
+<%= render partial: "layouts/sidebar"%>
 
 <%  @resources.each do |event| %>
 <tr>
@@ -27,7 +55,7 @@
     <li class="divider"></li>
     <li><%= link_to "View Event", event, class: "our-dropdown-content" %></li>
     <li class="divider"></li>
-    <li><%= link_to "View Ticket", each_event_ticket_path(event), class: "our-dropdown-content", data: {eventid: event.id } %></li>
+    <li><%= link_to "View Booking", event_tickets_path(event), class: "our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
     <li><%= link_to "Manage Staffs", manage_staffs_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>

@@ -17,4 +17,5 @@ $(document).ready(function () {
   $('#close_paid').click(function () {
     $('#paid_ticket_div').css('display', 'none');
   });
+  //initialize select
 });

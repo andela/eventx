@@ -5,6 +5,10 @@ class PrinterController < ApplicationController
     render pdf: "print", layout: "pdf.html.erb"
   end
 
+  def redirect_to_print
+    redirect_to print_path(booking_id: params[:booking_id], ticket_type_id: params[:ticket_type_id] )
+  end
+
   def download
     html = render_to_string("print", layout: "pdf.html.erb")
     pdf = WickedPdf.new.pdf_from_string(html)

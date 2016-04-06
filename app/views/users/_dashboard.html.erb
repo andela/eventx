@@ -1,7 +1,7 @@
 <div class="col s12">
   <% if current_user.event_manager? %>
   <div class="row">
-    <div class="col s6 offset-s4">
+    <div class="col s6 offset-s4 post">
         <%= form_tag user_path(current_user), method: :get, id: "user_event_search_form", remote: true do %>
           <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
             <%= text_field_tag(:event_name, "", placeholder: "Search By Event Name") %>
@@ -23,16 +23,18 @@
     </div>
   </div>
   <div class="row">
-  <table class="responsive-table bordered">
+  <table class="responsive-table bordered tablebot">
     <thead>
     <tr>
+    <div class="padtable">
       <th data-field="id">Enable/Disable</th>
       <th data-field="id">Name</th>
       <th data-field="name">Location</th>
       <th data-field="price">Start Date</th>
       <th data-field="price">End Date</th>
-      <th data-field="price">Manage Event</th>
+      <th data-field="price">Manage</th>
     </tr>
+    </div>
     </thead>
     <tbody id="events_lists">
     <%= render partial: "users/eventlist"%>
@@ -41,8 +43,9 @@
   <div class="center-align" id="pagination" >
   <%= will_paginate @resources, renderer: MaterializePagination::Rails %>
   </div>
-  <a class="btn-floating btn-large waves-effect waves-light teal tooltipped",  "data-position" = "top", "data-tooltip" = "I am tooltip" style="position: fixed; bottom: 25px; right: 50px;" href="<%= events_new_path%>"><i class="material-icons">add</i></a>
+  <a class="btn-floating btn-large round",  "data-position" = "top", "data-tooltip" = "I am tooltip" style="position: fixed; bottom: 645px; left: 180px;" href="<%= events_new_path%>"><i class="material-icons">add</i></a>
   <% else %>
     <%= render partial: "users/users_dashboard"%>
+
   <% end %>
 </div>

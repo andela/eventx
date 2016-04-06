@@ -1,6 +1,6 @@
 <% unless @resources.empty? %>
-$('#events_lists').html("<%=j render partial: 'users/eventlist' %>")
-$('#pagination').html("<%=j will_paginate @resources, renderer: MaterializePagination::Rails %>")
+  $('#events_lists').html("<%=j render partial: 'users/eventlist' %>")
+  $('#pagination').html("<%=j will_paginate @resources, renderer: MaterializePagination::Rails %>")
 <% else %>
-$('#events_lists').html("<h4>No Event found</h4>")
+  $('#events_lists').html("<h4>No Event found</h4>")
 <% end %>

@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = current_user.bookings.order(id: :desc).decorate
+    @bookings = current_user.user_tickets
   end
 
   def create
@@ -47,14 +47,6 @@ class BookingsController < ApplicationController
 
   def paypal_dummy
     redirect_to tickets_path
-  end
-
-  def each_event_ticket
-    @bookings = current_user.bookings.where(
-      event: @event
-    ).order(id: :desc).decorate
-
-    render "index"
   end
 
   private

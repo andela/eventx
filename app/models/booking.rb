@@ -26,6 +26,11 @@ class Booking < ActiveRecord::Base
     "#{ENV['paypal_host']}/cgi-bin/webscr?cmd=_notify-validate"
   end
 
+  def to_partial_path
+    "bookings/ticket"
+  end
+
+
   private
 
   def calculate_amount
