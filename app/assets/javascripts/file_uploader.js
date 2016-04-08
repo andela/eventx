@@ -13,5 +13,4 @@ $(document).ready(function () {
     reader.readAsDataURL(uploaded_file);
     $('.events_pic_name').html(uploaded_file.name);
   });
-
 });

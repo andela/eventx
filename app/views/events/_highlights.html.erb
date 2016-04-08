@@ -1,30 +1,4 @@
-<div class="row">
-<div class="col s12">
-  <% id = @event.id %>
-      <ul class="collapsible popout" data-collapsible ="accordion">
-        <% @event.highlights.decorate.each do |h| %>
-        <% url = id ? show_event_highlight_path(id, h) : "#" %>
-         <li>
-           <div class="collapsible-header">
-             <div class="left">
-               <div class="fa fa-clock-o fa-lg"></div>
-                 [ <em><%= h.start_time%> - <%= h.end_time%></em> ]
-                 <b><%= h.title %></b>
-             </div>
-           <i class="material-icons right more">expand_more</i>
-           <i class="material-icons right less" style="display: none">expand_less</i>
-          </div>
-           <div class="collapsible-body">
-             <p><%= h.description %></p>
-             <h4><%= h.image_title %></h4>
-             <p><%= image_tag h.image_url(:thumb) %></p>
-           </div>
-         </li>
-<% end %>
-       </ul>
-
-
-
-</div>
-
-</div>
+<% @id = @event.id %>
+<ul class="collapsible" data-collapsible="accordion" id="event_page_highlight">
+  <%= render @highlights if @highlights %>
+</ul>
