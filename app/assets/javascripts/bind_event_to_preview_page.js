@@ -17,6 +17,7 @@ $(document).ready(function () {
       countdown(convertDate(start_date), end_date);
     }
     var map_val = $('#event_map_url').val();
+    '';
     var map;
     if (map_val) {
       map = map_val + '&output=embed';
@@ -37,9 +38,9 @@ $(document).ready(function () {
     $('.landing2').removeClass(prev_color);
     $('.landing2').addClass(color);
     $('.our-event-map-url').attr({ 'src': map });
-
     // hightlights data
     var h_title = $('#highlight_title').val();
-    $('.our-highlight-title').html(h_title);
+    $('#event_page_highlight').html($('ul#highlight_table').html());
+    $('.collapsible').collapsible();
   });
 });  /* Every time the window is scrolled ... */

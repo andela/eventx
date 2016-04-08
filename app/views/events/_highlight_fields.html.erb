@@ -3,7 +3,7 @@
     <%= f.text_field :title, placeholder: "Title" , class: "highlight_title", id: "title" %>
   </div>
   <div class="input-field col s10">
-    <%= f.text_area :description, rows: 6, placeholder: "Enter Highlight Description", class: "highlight_description"%>
+    <%= f.text_area :description, rows: 6, placeholder: "Enter Highlight Description", class: "highlight_description materialize-textarea"%>
   </div>
   <div class="input-field col s5">
     <%= f.text_field :start_time, class: "timepicker highlight_start_time", placeholder: "Start Time" %>
@@ -14,7 +14,16 @@
   <div class="input-field col s5">
     <%= f.text_field :image_title, placeholder: "Caption" , class: "highlight_caption"%>
   </div>
-  <div class="input-field col s5">
-    <%= f.file_field :image,  class: "highlight_photo_upload", id: "highlight_photo_upload" %>
+
+  <div class="col s5">
+    <div class="file-field input-field">
+      <div class="btn input-field">
+        <span>File</span>
+        <%= f.file_field :image,  class: "highlight_photo_upload file-field", id: "highlight_photo_upload" %>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload your image">
+      </div>
+    </div>
   </div>
 </div>

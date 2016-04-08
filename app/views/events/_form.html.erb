@@ -95,7 +95,7 @@
         <div class="row">
           <div class="input-field col s10">
             <i class="fa fa-newspaper-o prefix icon-setting"></i>
-            <%= f.text_area :description, rows: 6, placeholder: "Enter description of event", required: true %>
+            <%= f.text_area :description, rows: 6, placeholder: "Enter description of event", required: true, class: "materialize-textarea" %>
           </div>
         </div>
         <div class="input-field col s3 offset-s4">
@@ -111,7 +111,7 @@
           </div>
           <div class="row ">
             <div class="event_ticket_field" >
-              <h5>Create Ticket</h5>
+              <h5><i class="fa fa-ticket prefix icon-setting"></i> Create Ticket</h5>
               <hr>
               <%= f.fields_for :ticket_types do |tickets| %>
               <%= render "events/ticket_type_fields", :f => tickets, :locals => {:f => tickets} %>
@@ -126,7 +126,7 @@
             <div style="margin-bottom: 20px; margin-left: 50px;">
             </div>
             <div class="event_ticket_field">
-              <h5>Add Staff</h5>
+              <h5><i class="fa fa-user prefix icon-setting"></i> Add Staff</h5>
               <hr>
               <div class="event_staffs" id="event_staffs"><%= @event.get_event_staffs %></div>
               <%= render "staff_fields" %>
@@ -138,7 +138,7 @@
             <div style="margin-bottom: 20px; margin-left: 50px;">
             </div>
             <div class="event_highlights_field">
-              <h5>Add Highlight</h5>
+              <h5><i class="fa fa-th-list prefix icon-setting"></i> Add Highlight</h5>
               <hr>
               <%= render "highlight_table",  highlights: @event.highlights %>
               <div class="event_staffs" id="event_highlights"></div>
@@ -203,7 +203,7 @@
 
   <div class="" id="preview-event-div" style="width: 80%; height: 500px; margin: 0 auto 5% auto; overflow: auto;">
     <% @current_page = "new" %>
-    <%= render partial: "events/eventdetails" %>
+    <%= render "eventdetails" %>
   </div>
   <div class="col s3 offset-s4 center">
     <button class="col s12 btn-large waves-effect waves-light home_button center z-depth-0" id="save_event">Save
