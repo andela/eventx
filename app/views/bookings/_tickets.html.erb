@@ -3,7 +3,7 @@
   <div class="col s12 m4 l4">
     <div class="card medium">
       <div class="card-image">
-        <%= image_tag booking.event.image_url(:landing) %>
+        <%=link_to image_tag(booking.event.image_url(:landing)), events_path(booking.event) %>
         <span class="card-title card-panel red darken-3 "><%=booking.event.title %></span>
       </div>
       <div class="card-content row alignbox">
@@ -16,12 +16,12 @@
           <%= hidden_field_tag :booking_id, booking.id %>
         </div>
         <div class="col l4 ">
-          <%= submit_tag "print", class: "waves-light btn print-box-size" %>
+          <%= submit_tag "Print Ticket", class: "waves-light btn print-box-size" %>
           <% end %>
         </div>
       </div>
       <div class="card-action">
-        <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + "Download All", download_path(booking.id), {class: "grey-text left", target: "_blank"}%>
+        <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + "Download All Tickets", download_path(booking.id), {class: "grey-text left", target: "_blank"}%>
       </div>
     </div>
   </div>
