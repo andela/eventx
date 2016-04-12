@@ -54,7 +54,6 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
 
     visit print_path(25)
     expect(page).to have_content "Booking not found"
-    expect(page).to have_content "Blessings wedding"
     expect(page).to have_content "My Events"
 
     visit events_path

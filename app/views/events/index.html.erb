@@ -10,11 +10,14 @@
     </li>
 
     <div class="bold" style="padding-left: 30px;"><h5> Category </h5></div>
-    <li class="bold"><%= link_to "All", events_path, class:"waves-effect waves-cyan", remote: true  %>
+    <li class="bold">
+    <%= link_to "All", events_path, class:"waves-effect waves-cyan", id: "all", remote: true  %>
     </li>
 
     <% @categories.each do |category| %>
-      <li class="bold"><%= link_to "#{category.name}", events_path(category_id: category.id), class:"waves-effect", remote: true  %></li>
+      <li class="bold">
+        <%= link_to "#{category.name}", events_path(category_id: category.id), id: "#{category.name.split.first.downcase}", class:"waves-effect", remote: true  %>
+      </li>
     <% end %>
 
     <li class="li-hover">
