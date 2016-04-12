@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316132226) do
+ActiveRecord::Schema.define(version: 20160411140409) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20160316132226) do
     t.string   "image_title"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.date     "day"
   end
 
   add_index "highlights", ["event_id"], name: "index_highlights_on_event_id"
