@@ -142,14 +142,7 @@
               <hr>
               <%= render "highlight_table",  highlights: @event.highlights %>
               <div class="event_staffs" id="event_highlights"></div>
-              <% unless @event.highlights.count < 0 %>
-                <%= f.fields_for :highlights do |highlight| %>
-                <%= render "highlight_fields", f: highlight, field_id: highlight.object.id  %>
-                <% end %>
-              <% end %>
-              <%= f.fields_for @event.highlights.new do |h| %>
-                <%= render "highlight_fields", f: h, field_id: "_new"  %>
-              <% end %>
+                <%= render "highlight_fields", field_id: "_new"  %>
               <div class="col s4">
                 <button type="button" id="add_highlight" class="btn btn-circle staff_add_btn">
                   Add Highlight

@@ -1,12 +1,14 @@
 $(document).ready(function(){
+  var highlight_count = 0;
   $('#add_highlight').on('click', function(){
     var highlight = highLight();
     $(".highlight_fields").hide();
     $('.tooltipped').tooltip({delay: 50});
     if(!highlight.empty()){
-      $('<li />', {html: highlight.generateHtml()}).appendTo('ul#highlight_table')
+      $('<li />', {html: highlight.generateHtml(highlight_count)}).appendTo('ul#highlight_table')
       $('.collapsible').collapsible();
       $('.materialboxed').materialbox();
+      highlight_count++;
     };
 
     localStorage.removeItem('highlight_photo_upload');
@@ -35,11 +37,4 @@ $(document).ready(function(){
     var uploaded_file = $(this)[0].files[0];
     reader.readAsDataURL(uploaded_file);
   });
-
-  // $(".show_highlight_field").click(function(){
-  //   $(".highlight_fields").hide();
-  //   var id = $(this).attr("id").replace("form_id", "");
-  //   $("#highlight_field"+id).removeClass('hide').fadeIn("slow");
-  // });
-
 });

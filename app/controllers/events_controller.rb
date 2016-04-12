@@ -103,7 +103,7 @@ class EventsController < ApplicationController
                                   ticket_types_attributes:
                                     [:id, :_destroy, :name, :quantity, :price],
                                   highlights_attributes:
-                                  [:id, :_destroy, :title, :description,
+                                  [:id, :_destroy, :day, :title, :description,
                                    :start_time, :end_time, :image,
                                    :image_title],
                                   event_staffs_attributes:
