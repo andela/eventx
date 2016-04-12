@@ -10,19 +10,18 @@
   var canvas, svg;
   var $ = window.jQuery, $win = $(window), $doc = $(document);
   // Can I use inline svg ?
-  var svgNS = 'http://www.w3.org/2000/svg', 
-      svgSupported = 'SVGAngle' in window && (function () {
+  var svgNS = 'http://www.w3.org/2000/svg', svgSupported = 'SVGAngle' in window && function () {
       var supported, el = document.createElement('div');
       el.innerHTML = '<svg/>';
       supported = (el.firstChild && el.firstChild.namespaceURI) == svgNS;
       el.innerHTML = '';
       return supported;
-    }());
+    }();
   // Can I use transition ?
-  var transitionSupported = (function () {
+  var transitionSupported = function () {
     var style = document.createElement('div').style;
     return 'transition' in style || 'WebkitTransition' in style || 'MozTransition' in style || 'msTransition' in style || 'OTransition' in style;
-  }());
+  }();
   // Listen touch events in touch screen device, instead of mouse events in desktop.
   var touchSupported = 'ontouchstart' in window, mousedownEvent = 'mousedown' + (touchSupported ? ' touchstart' : ''), mousemoveEvent = 'mousemove.clockpicker' + (touchSupported ? ' touchmove.clockpicker' : ''), mouseupEvent = 'mouseup.clockpicker' + (touchSupported ? ' touchend.clockpicker' : '');
   // Vibrate the device if supported
@@ -360,7 +359,7 @@
     }
     // Get the time
     var value = ((this.input.prop('value') || this.options['default'] || '') + '').split(':');
-    if (this.options.twelvehour && (typeof value[1] !== 'undefined')) {
+    if (this.options.twelvehour && typeof value[1] !== 'undefined') {
       value[1] = value[1].replace('AM', '').replace('PM', '');
     }
     if (value[0] === 'now') {

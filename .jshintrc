@@ -21,6 +21,7 @@
     "Materialize",
     "countdown",
     "convertDate",
+    "highLight",
 
     "jasmine",
     "beforeEach",
@@ -37,10 +38,10 @@
   "undef": true,
   "unused": true,
 
-  "-W099": false, 
-  "-W065": false, 
-  "-W015": false, 
-  "-W116": false, 
+  "-W099": false,
+  "-W065": false,
+  "-W015": false,
+  "-W116": false,
   "-W030": false,
   "-W082": false,
   "unused": false
