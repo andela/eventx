@@ -49,9 +49,9 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     end
 
     expect(page).to have_content "Blessings wedding"
-    expect(page).to have_content "MyTicket"
-    expect(page).to have_content "PRINT"
-    expect(page).to have_content "DOWNLOAD"
+    expect(page).to have_content "View Bookings"
+    expect(page).to have_content "My Events"
+    expect(page).to have_content "DOWNLOAD ALL TICKETS"
     find("a[href='/print/1']").click
 
     visit tickets_path
