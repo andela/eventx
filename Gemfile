@@ -64,6 +64,7 @@ group :test do
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: false
   gem "coveralls", require: false
+  gem "selenium-webdriver"
 end
 
 group :production do

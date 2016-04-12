@@ -12,7 +12,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     allow_any_instance_of(BookingsController).to receive(:trigger_booking_mail).
       and_return("")
 
-    page.driver.browser.url_blacklist = ["http://www.example.com"]
+    # page.driver.browser.url_blacklist = ["http://www.example.com"]
   end
 
   scenario "User searches for an Event" do
@@ -48,21 +48,15 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       click_button "Submit"
     end
 
-    expect(page).to have_content "Blessings wedding"
-    expect(page).to have_content "View Bookings"
-    expect(page).to have_content "My Events"
-    expect(page).to have_content "DOWNLOAD ALL TICKETS"
-    find("a[href='/print/1']").click
-
     visit tickets_path
     expect(page).to have_content "Blessings wedding"
-    expect(page).to have_content "MyTicket"
-    click_link("MyTicket")
+    expect(page).to have_content "DOWNLOAD ALL TICKETS"
+    click_link("Download All Tickets")
 
     visit print_path(25)
     expect(page).to have_content "Booking not found"
     expect(page).to have_content "Blessings wedding"
-    expect(page).to have_content "MyTicket"
+    expect(page).to have_content "My Events"
 
     visit events_path
     click_link "Blessings wedding"
