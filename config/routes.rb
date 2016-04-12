@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   resources :attendees
   resources :events do
     resources :bookings, only: [:create]
+    #  member do
+    #   get "tickets"
+    # end
   end
   resources :users, only: [:show]
   get "*unmatched_route", to: "application#no_route_found"

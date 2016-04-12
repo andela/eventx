@@ -70,7 +70,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       and_return(@manager.subdomain)
 
     visit events_path
-    expect(page).to have_selector("h5", text: "Category")
+    expect(page).to.have_selector("h5", text: "Category")
     expect(page).to have_button("Search")
     within("#slide-out") do
       expect(page).to have_selector("li.bold", text: "All")

@@ -3,7 +3,7 @@
   <div class="col s12 m4 l4">
     <div class="card medium">
       <div class="card-image">
-        <%=link_to image_tag(booking.event.image_url(:landing)), events_path(booking.event) %>
+        <%=link_to image_tag(booking.event.image_url(:landing)), event_tickets_path(booking.event_id) %>
         <span class="card-title card-panel red darken-3 "><%=booking.event.title %></span>
       </div>
       <div class="card-content row alignbox">
@@ -27,3 +27,4 @@
   </div>
   <% end %>
 </div>
+
