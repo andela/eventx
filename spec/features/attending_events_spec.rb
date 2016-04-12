@@ -12,7 +12,6 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     allow_any_instance_of(BookingsController).to receive(:trigger_booking_mail).
       and_return("")
 
-    # page.driver.browser.url_blacklist = ["http://www.example.com"]
   end
 
   scenario "User searches for an Event" do
