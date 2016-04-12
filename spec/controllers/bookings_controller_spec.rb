@@ -6,7 +6,6 @@ RSpec.describe BookingsController, type: :controller do
     create_booking
   end
 
-
   context "#index" do
     it "gets bookings if user has booked for an event" do
       get :index

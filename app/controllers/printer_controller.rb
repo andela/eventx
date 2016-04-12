@@ -6,7 +6,10 @@ class PrinterController < ApplicationController
   end
 
   def redirect_to_print
-    redirect_to print_path(booking_id: params[:booking_id], ticket_type_id: params[:ticket_type_id] )
+    redirect_to print_path(
+      booking_id: params[:booking_id],
+      ticket_type_id: params[:ticket_type_id]
+    )
   end
 
   def download

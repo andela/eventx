@@ -107,5 +107,3 @@ def create_booking
   ticket_type = create(:ticket_type, event: @event)
   create(:user_ticket, ticket_type: ticket_type, booking: booking)
 end
-
-

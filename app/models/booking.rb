@@ -30,7 +30,6 @@ class Booking < ActiveRecord::Base
     "bookings/ticket"
   end
 
-
   private
 
   def calculate_amount

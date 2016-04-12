@@ -19,7 +19,6 @@ class BookingDecorator < Draper::Decorator
   end
 
   def get_ticket_display(type, type_id, quantity)
-    link = h.print_path(id, type_id)
     h.content_tag(:option, type + ": #{quantity}", value: type_id)
   end
 end
