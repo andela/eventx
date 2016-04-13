@@ -141,10 +141,10 @@
               <h5><i class="fa fa-th-list prefix icon-setting"></i> Add Highlight</h5>
               <hr>
               <div class="event_staffs" id="event_highlights">
-                <% if @event.highlights %>
+                <% if @highlights %>
                 <ul class="collapsible" data-collapsible="accordion" id="highlight_table">
                   <% count = 0 %>
-                  <% @event.highlights.each do |h| %>
+                  <% @highlights.each do |h| %>
                   <%= render "highlight", highlight: h, count: count %>
                   <% count += 1 %>
                   <% end %>
@@ -156,11 +156,6 @@
                 <button type="button" id="add_highlight" class="btn btn-circle staff_add_btn">
                   Add Highlight
                 </button>
-                <% unless @event.highlights.count == 0 %>
-                  <button type="button" id="add_highlight" class="btn btn-circle staff_add_btn">
-                    Update Highlight
-                  </button>
-                <% end %>
               </div>
             </div>
           </div>

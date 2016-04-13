@@ -17,7 +17,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new.decorate
     @event.ticket_types.build
-    @event.highlights.build
     @roles = Event.get_roles
   end
 
@@ -39,6 +38,7 @@ class EventsController < ApplicationController
 
   def edit
     @roles = Event.get_roles
+    @highlights = @event.highlights.decorate
   end
 
   def enable
@@ -54,6 +54,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    @roles = Event.get_roles
     @event.event_staffs.delete_all
     flash[:notice] = if @event.update(event_params)
                        "Your Event was successfully updated"

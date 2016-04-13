@@ -1,19 +1,30 @@
 function highLight() {
   var fields = [
-    'day',
-    'title',
-    'description',
-    'start_time',
-    'end_time',
-    'image',
-    'image_title'
-  ];
+      'day',
+      'title',
+      'description',
+      'start_time',
+      'end_time',
+      'image',
+      'image_title'
+    ], deletedFields = [
+      'id',
+      '_destroy'
+    ];
   function removeHighlight(ele) {
     var deleteHighlight = confirm('Are you sure?');
     if (deleteHighlight) {
-      var highlightIndex = ele.closest('li').find('input[name*=index]')[0].value;
-      createDeletedFields(ele.closest('li'), highlightIndex)
-      ele.closest('li').remove();
+      try {
+        var highlightIndex = ele.closest('li').find('input[name*=index]')[0].value;
+        createDeletedFields(ele.closest('li'), highlightIndex);
+      } catch (e) {
+        console.log({
+          error: e,
+          message: 'You just deleted a highlight that has not been saved'
+        });
+      } finally {
+        ele.closest('li').remove();
+      }
     }
   }
   function editHighlight(ele) {
@@ -22,9 +33,9 @@ function highLight() {
     populateFields(values);
     ele.closest('li').remove();
   }
-  function createDeletedFields(ele, highlight_count){
+  function createDeletedFields(ele, highlight_count) {
     var data = {};
-    data.id = ele.find('=[id]').val();
+    data.id = ele.find('[name*=id]').val();
     data._destroy = 1;
     $('#event_highlights').append(deletedHighlightHtml(data, highlight_count));
   }
