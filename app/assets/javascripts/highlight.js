@@ -11,6 +11,8 @@ function highLight() {
   function removeHighlight(ele) {
     var deleteHighlight = confirm('Are you sure?');
     if (deleteHighlight) {
+      var highlightIndex = ele.closest('li').find('input[name*=index]')[0].value;
+      createDeletedFields(ele.closest('li'), highlightIndex)
       ele.closest('li').remove();
     }
   }
@@ -19,6 +21,12 @@ function highLight() {
     var values = fetchValues(ele);
     populateFields(values);
     ele.closest('li').remove();
+  }
+  function createDeletedFields(ele, highlight_count){
+    var data = {};
+    data.id = ele.find('=[id]').val();
+    data._destroy = 1;
+    $('#event_highlights').append(deletedHighlightHtml(data, highlight_count));
   }
   function fetchValues(ele) {
     var collapsibleHeader = ele.closest('.collapsible-header');
@@ -81,6 +89,20 @@ function highLight() {
     });
     return '<div class=\'ha\'>' + _.join(html, '');
     +'</div>';
+  }
+  function deletedHighlightHtml(data, highlight_count) {
+    html = _.map(deletedFields, function (value) {
+      return [
+        '<input type=\'hidden\' name = \'event[highlights_attributes][',
+        highlight_count,
+        '][',
+        value,
+        ']\' value=\'',
+        data[value],
+        '\'>'
+      ].join('');
+    });
+    return _.join(html, '');
   }
   function accordionItemHtml(data) {
     return [

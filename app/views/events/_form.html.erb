@@ -140,8 +140,17 @@
             <div class="event_highlights_field">
               <h5><i class="fa fa-th-list prefix icon-setting"></i> Add Highlight</h5>
               <hr>
-              <%= render "highlight_table",  highlights: @event.highlights %>
-              <div class="event_staffs" id="event_highlights"></div>
+              <div class="event_staffs" id="event_highlights">
+                <% if @event.highlights %>
+                <ul class="collapsible" data-collapsible="accordion" id="highlight_table">
+                  <% count = 0 %>
+                  <% @event.highlights.each do |h| %>
+                  <%= render "highlight", highlight: h, count: count %>
+                  <% count += 1 %>
+                  <% end %>
+                </ul>
+                <% end %>
+              </div>
                 <%= render "highlight_fields", field_id: "_new"  %>
               <div class="col s4">
                 <button type="button" id="add_highlight" class="btn btn-circle staff_add_btn">
@@ -164,8 +173,6 @@
             <div class="input-field col s10">
 
               <div class="temps">
-<!--Hardcoded radio button association: due to the face that i have not-->
-<!--seen the rails way of doing it but it work find for now!-->
                 <% all_template.each do |i|%>
                 <span class="col s6 m3 center temp_image">
                   <input id="<%= i.name %>" name="event[event_template_id]" type="radio" value="<%= i.id %>"/>

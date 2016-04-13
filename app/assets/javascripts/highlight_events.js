@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var highlight_count = 0;
+  var highlight_count = $('.ha').length;
   $('#add_highlight').on('click', function () {
     var highlight = highLight();
     $('.highlight_fields').hide();

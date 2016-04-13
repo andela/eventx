@@ -1,0 +1,33 @@
+<li>
+  <div class="collapsible-header tooltipped" data-position="bottom" data-delay="50" data-tooltip="Click to Expand">
+    <%= highlight.day %> - <%= highlight.title %>
+    <span class="right">
+      <%= highlight.start_time %> - <%= highlight.end_time %>
+      <span class="right remove-highlight" onclick="highLight().remove($(this))"><i class="material-icons">delete</i></span>
+      <span class="right edit-highlight" onclick="highLight().edit($(this))"><i class="material-icons">edit</i></span></span>
+  </div>
+  <div class="collapsible-body">
+    <div class="row">
+      <div class="col l6 m6">
+        <div class="card-panel">
+          <img id="img" class="materialboxed" width="100%" data-caption="<%= highlight.image_title %>" src="<%= highlight.image_url(:landing) %>"/>
+        </div>
+      </div>
+      <div class="col l6">
+        <p><%= highlight.description %></p>
+      </div>
+    </div>
+  </div>
+  <div class="ha">
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][id]" value="<%= highlight.id %>"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][index]" value="<%= count %>"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][_destroy]" value="1"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][day]" value="<%= highlight.day %>"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][title]" value="<%= highlight.title %>"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][description]" value="<%= highlight.description %>"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][start_time]" value="<%= highlight.start_time %>"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][end_time]" value="<%= highlight.end_time %>"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][image_title]" value="<%= highlight.image_title %>"/>
+    <input type="hidden" name="event[highlights_attributes][<%= count %>][image_title]" value="<%= highlight.image_url %>"/>
+  </div>
+</li>
