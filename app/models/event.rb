@@ -3,13 +3,15 @@ class Event < ActiveRecord::Base
   belongs_to :event_template
   has_many :ticket_types, dependent: :destroy
   has_many :event_staffs, dependent: :destroy
+  has_many :highlights, dependent: :destroy
   has_many :staffs, through: :event_staffs, source: "user"
   accepts_nested_attributes_for :ticket_types,
                                 allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :event_staffs,
                                 allow_destroy: true,
                                 reject_if: :invalid_staff_info
-
+  accepts_nested_attributes_for :highlights,
+                                allow_destroy: true, reject_if: :all_blank
   has_many :bookings
   has_many :user_tickets, through: :bookings
   has_many :attendees, through: :bookings, source: "user"

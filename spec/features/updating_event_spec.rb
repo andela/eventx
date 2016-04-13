@@ -77,7 +77,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
                         .pickadate('picker').set('select', #{date})")
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
-    description = "description " * 1000
+    description = "description " * 84
     fill_in "event[description]", with: description
     click_link "Next"
     fill_in "event[ticket_types_attributes][0][name]", with: "free"
@@ -91,7 +91,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     expect(page).to have_content "Description is "\
     "too long (maximum is 1000 characters)"
 
-    description = "short " * 2
+    description = "short "
     fill_in "event[description]", with: description
     click_link "Next"
     fill_in "event[ticket_types_attributes][0][name]", with: "free"

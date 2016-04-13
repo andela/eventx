@@ -8,8 +8,8 @@ $white-color: #000;
   margin-top: 50px;
   padding-bottom: 20px;
   input, select{
-    border: 1px solid #CCCCCC;
-    background-color: #ffffff;
+    //border: 1px solid #CCCCCC;
+    //background-color: #ffffff;
     outline: none;
     margin-top: 10px;
     padding: 5px;
@@ -30,9 +30,9 @@ $white-color: #000;
   }
 
   textarea{
-    height: inherit;
-    background-color: white;
-    border: 1px solid #CCCCCC;
+    //height: inherit;
+    //background-color: white;
+    //border: 1px solid #CCCCCC;
     &:focus{
       outline: none !important;
     }
@@ -56,7 +56,7 @@ $white-color: #000;
     width: 90%;
     color: $white-color; //!important;
     -webkit-appearance: none;
-    display: block;
+    //display: block;
     margin-left: 13%;
     margin-right: auto;
     padding: 10px;
@@ -110,7 +110,7 @@ $white-color: #000;
      border-radius: 0px !important;
      width: 100%;
     -webkit-appearance: none;
-    display: block;
+    //display: block;
     margin-left: 5%;
     padding-left: 5px !important;
   }
@@ -300,3 +300,10 @@ input#event_photo_upload{
 .staff_add_btn{
   margin-top: 42px;
 }
+
+//
+// .collapsible li.active i {
+//  -ms-transform: rotate(180deg); /* IE 9 */
+//  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+//  transform: rotate(180deg);
+// }

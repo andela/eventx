@@ -2,14 +2,22 @@ class EventsController < ApplicationController
   before_action :authenticate_user, except: [:show, :index]
   before_action :authorize_user_create, only: [:new, :create]
   before_action :authorize_user_manage, only: [:edit, :update]
-  before_action :set_events,
-                only: [:show, :edit, :update, :enable, :disable, :generate]
+  before_action :set_events, only:  [
+    :show,
+    :edit,
+    :update,
+    :enable,
+    :disable,
+    :generate,
+    :show_event_highlight
+  ]
 
   respond_to :html, :json, :js
 
   def new
     @event = Event.new.decorate
     @event.ticket_types.build
+    @event.highlights.build
     @roles = Event.get_roles
   end
 
@@ -23,6 +31,7 @@ class EventsController < ApplicationController
   def show
     @booking = @event.bookings.new
     @booking.user = current_user
+    @highlights = @event.highlights.decorate
     @event_ticket = @event.ticket_types
     1.times { @booking.user_tickets.build }
     respond_with @event
@@ -75,6 +84,10 @@ class EventsController < ApplicationController
     render text: calendar.to_ical
   end
 
+  def show_event_highlight
+    @highlight = @event.highlights.find_by(id: params[:highlight_id])
+  end
+
   private
 
   def search_params
@@ -89,12 +102,16 @@ class EventsController < ApplicationController
                                   :event_template_id,
                                   ticket_types_attributes:
                                     [:id, :_destroy, :name, :quantity, :price],
+                                  highlights_attributes:
+                                  [:id, :_destroy, :day, :title, :description,
+                                   :start_time, :end_time, :image,
+                                   :image_title],
                                   event_staffs_attributes:
                                     [:user_id, :role])
   end
 
   def set_events
-    @event = Event.find_by_id(params[:id])
+    @event = Event.find_by(id: params[:id])
     if @event.nil?
       flash[:notice] = "Event not found"
       redirect_to :back
