@@ -8,8 +8,6 @@ $white-color: #000;
   margin-top: 50px;
   padding-bottom: 20px;
   input, select{
-    //border: 1px solid #CCCCCC;
-    //background-color: #ffffff;
     outline: none;
     margin-top: 10px;
     padding: 5px;
@@ -30,9 +28,6 @@ $white-color: #000;
   }
 
   textarea{
-    //height: inherit;
-    //background-color: white;
-    //border: 1px solid #CCCCCC;
     &:focus{
       outline: none !important;
     }
@@ -56,23 +51,17 @@ $white-color: #000;
     width: 90%;
     color: $white-color; //!important;
     -webkit-appearance: none;
-    //display: block;
     margin-left: 13%;
     margin-right: auto;
     padding: 10px;
-    //display: none !important;
-    //padding: 5px;
   }
 }
 
 .file-uploader{
   border: 1px solid #CCCCCC;
   background-color: #ffffff;
-  // padding: 30px;
   left: 20%;
-  // position: relative;
   .inner-file-upload{
-    // height: 50px;
     margin: 5%;
     padding: 15%;
     border: 2px dashed #CCCCCC;
@@ -109,9 +98,7 @@ $white-color: #000;
      border: 1px solid #CCCCCC !important;
      border-radius: 0px !important;
      width: 100%;
-    -webkit-appearance: none;
-    //display: block;
-    margin-left: 5%;
+    -webkit-appearance: none;    margin-left: 5%;
     padding-left: 5px !important;
   }
   label{
@@ -162,11 +149,8 @@ input#event_photo_upload{
 #frame {
   -ms-zoom: 0.85;
   -moz-transform: scale(0.85);
-  //-moz-transform-origin: 0 0;
   -o-transform: scale(0.85);
-  //-o-transform-origin: 0 0;
   -webkit-transform: scale(0.85);
-  //-webkit-transform-origin: 0 0;
   display:block;
   margin-top: 20px !important;
   margin-bottom: 0px !important;
@@ -228,7 +212,6 @@ input#event_photo_upload{
   height: 100%;
   width: 100%;
   margin-top: 0px;
-  // background-color: rgba(0,0,0,0.4);
 }
 
 .our-event-title{
@@ -268,7 +251,6 @@ input#event_photo_upload{
   bottom: 0;
   left: 0;
   right: 0;
-  // background: rgba(78, 174, 73, 0.42);
 }
 
 .btn-large.home_button{
@@ -300,10 +282,3 @@ input#event_photo_upload{
 .staff_add_btn{
   margin-top: 42px;
 }
-
-//
-// .collapsible li.active i {
-//  -ms-transform: rotate(180deg); /* IE 9 */
-//  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-//  transform: rotate(180deg);
-// }
