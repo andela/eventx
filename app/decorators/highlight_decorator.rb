@@ -6,7 +6,7 @@ class HighlightDecorator < Draper::Decorator
   end
 
   def day
-    object.day.strftime('%a %B %d, %Y')
+    object.day.strftime("%a %B %d, %Y")
   end
 
   def start_time

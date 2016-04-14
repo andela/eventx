@@ -13,17 +13,18 @@ function highLight() {
     ];
   function removeHighlight(ele) {
     var deleteHighlight = confirm('Are you sure?');
+    ele = ele.closest('li')
     if (deleteHighlight) {
       try {
-        var highlightIndex = ele.closest('li').find('input[name*=index]')[0].value;
-        createDeletedFields(ele.closest('li'), highlightIndex);
+        var highlightIndex = ele.find('input[name*=index]')[0].value;
+        createDeletedFields(ele, highlightIndex);
       } catch (e) {
         console.log({
           error: e,
           message: 'You just deleted a highlight that has not been saved'
         });
       } finally {
-        ele.closest('li').remove();
+        ele.remove();
       }
     }
   }

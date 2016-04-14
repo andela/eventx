@@ -35,7 +35,7 @@
     </tr>
     </thead>
     <tbody id="events_lists">
-    <%= render partial: "users/eventlist"%>
+    <%= render "users/eventlist"%>
   </tbody>
   </table>
   <div class="center-align" id="pagination" >
@@ -43,6 +43,6 @@
   </div>
   <a class="btn-floating btn-large waves-effect waves-light teal tooltipped",  "data-position" = "top", "data-tooltip" = "I am tooltip" style="position: fixed; bottom: 25px; right: 50px;" href="<%= events_new_path%>"><i class="material-icons">add</i></a>
   <% else %>
-    <%= render partial: "users/users_dashboard"%>
+    <%= render "users/users_dashboard"%>
   <% end %>
 </div>
