@@ -22,6 +22,8 @@
     "countdown",
     "convertDate",
     "highLight",
+    "_",
+    "confirm",
 
     "jasmine",
     "beforeEach",

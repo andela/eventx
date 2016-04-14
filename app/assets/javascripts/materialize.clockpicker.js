@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 /*!
  * ClockPicker v0.0.7 (http://weareoutman.github.io/clockpicker/)
  * Copyright 2014 Wang Shenwei.
@@ -251,7 +252,7 @@
       });
     }
     if (svgSupported) {
-      // Draw clock hands and others 
+      // Draw clock hands and others
       canvas = popover.find('.clockpicker-canvas');
       svg = createSvgElement('svg');
       svg.setAttribute('class', 'clockpicker-svg');
@@ -570,4 +571,4 @@
       }
     });
   };
-}());
+}());  /* jshint ignore:end */

@@ -15,16 +15,13 @@ function highLight() {
     ];
   function removeHighlight(ele) {
     var deleteHighlight = confirm('Are you sure?');
-    ele = ele.closest('li')
+    ele = ele.closest('li');
     if (deleteHighlight) {
       try {
         var highlightIndex = ele.find('input[name*=index]')[0].value;
         createDeletedFields(ele, highlightIndex);
       } catch (e) {
-        console.log({
-          error: e,
-          message: 'You just deleted a highlight that has not been saved'
-        });
+        //You just deleted a highlight that has not been saved
       } finally {
         ele.remove();
       }
@@ -53,7 +50,7 @@ function highLight() {
     });
   }
   function populateFields(collapsibleData) {
-    var collapsibleData = _.fromPairs(collapsibleData), hfield = $('#highlight_field_new').children(), tag = '.highlight_';
+    collapsibleData = _.fromPairs(collapsibleData), hfield = $('#highlight_field_new').children(), tag = '.highlight_';
     _.forEach(collapsibleData, function (value, key) {
       hfield.find(tag + key).val(value);
     });
@@ -92,7 +89,7 @@ function highLight() {
     return accordionItemHtml(data) + hiddenFieldHtml(data, highlight_count);
   }
   function hiddenFieldHtml(data, highlight_count) {
-    html = _.map(fields, function (value) {
+    var html = _.map(fields, function (value) {
       return [
         '<input type=\'hidden\' name = \'event[highlights_attributes][',
         highlight_count,
@@ -103,8 +100,7 @@ function highLight() {
         '\'>'
       ].join('');
     });
-    return '<div class=\'ha\'>' + _.join(html, '');
-    +'</div>';
+    return '<div class=\'ha\'>' + _.join(html, '') + '</div>';
   }
   function deletedHighlightHtml(data, highlight_count) {
     html = _.map(deletedFields, function (value) {
