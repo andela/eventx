@@ -2,7 +2,7 @@
 <div id="att2">
   <%= attend_event_or_login( "Attend this event", nil, @var1, @var2) unless user_is_attending_event %>
 
-  <%= link_to "Unattend".html_safe,  unattend_path(:event_id => @event.id),
+  <%= link_to "Unattend".html_safe,  unattend_path(event_id: @event.id),
                    method: :get, class: "btn waves-effect waves-light btn-large our-btn-green red darken-4", data: {id: "attend"},id: "attend", remote: :true  if user_is_attending_event%>
 </div>
 <% end %>

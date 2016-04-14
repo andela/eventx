@@ -114,11 +114,11 @@
               <h5><i class="fa fa-ticket prefix icon-setting"></i> Create Ticket</h5>
               <hr>
               <%= f.fields_for :ticket_types do |tickets| %>
-              <%= render "events/ticket_type_fields", :f => tickets, :locals => {:f => tickets} %>
+              <%= render "events/ticket_type_fields", f: tickets, locals: {f: tickets} %>
               <% end %>
             </div>
             <div class="links">
-            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, :class => '' %>
+            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, class: '' %>
           </div>
           </div>
           <!-- Add Staff -->
