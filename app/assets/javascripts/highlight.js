@@ -1,5 +1,7 @@
 function highLight() {
   var fields = [
+      'id',
+      '_destroy',
       'day',
       'title',
       'description',
@@ -64,6 +66,8 @@ function highLight() {
     var data = hightlightData();
     delete data.image_title;
     delete data.image;
+    delete data.id;
+    delete data._destroy;
     var arr = _.toArray(data);
     return arr.some(function (value) {
       return value === '';

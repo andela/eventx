@@ -1,6 +1,8 @@
 <div class="row col s12 hide highlight_fields" id="highlight_field<%= field_id %>">
   <div class="input-field col s5">
     <%= text_field_tag "day", '', placeholder: "Day" , class: "datepicker highlight_day", id: "day" %>
+    <%= hidden_field_tag "id", '', class: "highlight_id", id: "id", value:"" %>
+    <%= hidden_field_tag "_destroy", '', class: "highlight__destroy", id: "_destroy", value:"false" %>
   </div>
   <div class="input-field col s5">
     <%= text_field_tag "title", '', placeholder: "Title" , class: "highlight_title", id: "title" %>
