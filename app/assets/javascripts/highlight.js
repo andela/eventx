@@ -104,7 +104,7 @@ function highLight() {
     return '<div class=\'ha\'>' + _.join(html, '') + '</div>';
   }
   function deletedHighlightHtml(data, highlight_count) {
-    html = _.map(deletedFields, function (value) {
+    var html = _.map(deletedFields, function (value) {
       return [
         '<input type=\'hidden\' name = \'event[highlights_attributes][',
         highlight_count,
