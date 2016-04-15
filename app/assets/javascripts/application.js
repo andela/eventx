@@ -19,6 +19,7 @@
 //= require_tree .
 /*jshint -W030 */
 /*jshint -W082 */
+/*jshint ignore:start */
 $('.timepicker').pickatime({
   twelvehour: true,
   donetext: 'Done',
@@ -35,3 +36,4 @@ $('.timepicker').pickatime({
     $(activeElement).enableClientSideValidations();
   }
 });
+/*jshint ignore:end */

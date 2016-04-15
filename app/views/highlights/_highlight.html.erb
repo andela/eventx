@@ -1,6 +1,6 @@
 <% url = @id ? show_event_highlight_path(@id, highlight) : "#" %>
  <li>
-   <div class="collapsible-header tooltipped" data-position="bottom" data-delay="50" data-tooltip="Click to Expand">
+   <div class="collapsible-header">
      <span class="left"><%= highlight.day %> - <%= highlight.title %></span>
      <span class="right"><%= highlight.start_time %> - <%= highlight.end_time %></span></div>
      <div class="collapsible-body">
@@ -16,5 +16,3 @@
      </div>
    </div>
   </li>
-
-  

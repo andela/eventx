@@ -50,7 +50,8 @@ function highLight() {
     });
   }
   function populateFields(collapsibleData) {
-    collapsibleData = _.fromPairs(collapsibleData), hfield = $('#highlight_field_new').children(), tag = '.highlight_';
+    collapsibleData = _.fromPairs(collapsibleData);
+    var hfield = $('#highlight_field_new').children(), tag = '.highlight_';
     _.forEach(collapsibleData, function (value, key) {
       hfield.find(tag + key).val(value);
     });
@@ -118,7 +119,7 @@ function highLight() {
   }
   function accordionItemHtml(data) {
     return [
-      '<div class="collapsible-header tooltipped" data-position="bottom" data-delay="50" data-tooltip="Click to Expand">',
+      '<div class="collapsible-header">',
       data.day + ' - ' + data.title,
       '<span class="right">',
       data.start_time,

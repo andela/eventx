@@ -7,7 +7,6 @@ Bundler.require(*Rails.groups)
 
 module EventX
   class Application < Rails::Application
-
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.autoload_paths += Dir["#{config.root}/lib/*"]
     config.assets.compile = true
