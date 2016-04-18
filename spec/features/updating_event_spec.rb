@@ -63,7 +63,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     expect(page).to have_content "This is an edited Event"
   end
 
-  scenario "Manager fills in wrong event information" do
+  scenario "Manager fills in a long description" do
     visit_page_and_create_manage_profile
     visit root_path
     click_link "Create Event"
@@ -77,7 +77,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
                         .pickadate('picker').set('select', #{date})")
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
-    description = "description " * 1000
+    description = "description " * 84
     fill_in "event[description]", with: description
     click_link "Next"
     fill_in "event[ticket_types_attributes][0][name]", with: "free"
@@ -90,8 +90,23 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_button "Save"
     expect(page).to have_content "Description is "\
     "too long (maximum is 1000 characters)"
+  end
 
-    description = "short " * 2
+  scenario "Manager fills in a short description" do
+    visit_page_and_create_manage_profile
+    visit root_path
+    click_link "Create Event"
+    fill_in "event[title]", with: "This is a test Event"
+    fill_in "event[location]", with: "Lagos, Nigeria"
+    fill_in "event[venue]", with: "Amity"
+    find("#event_category_id").find(:xpath, "option[2]").select_option
+
+    date = Date.tomorrow.in_time_zone.to_i * 1000
+    page.execute_script("$('#event_start_date')\
+                        .pickadate('picker').set('select', #{date})")
+    page.execute_script("$('#event_end_date')\
+                        .pickadate('picker').set('select', #{date})")
+    description = "short "
     fill_in "event[description]", with: description
     click_link "Next"
     fill_in "event[ticket_types_attributes][0][name]", with: "free"
@@ -104,30 +119,25 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_button "Save"
     expect(page).to have_content "Description is too "\
     "short (minimum is 20 characters)"
+  end
 
-    description = "This is a demo description for our event"
-    fill_in "event[description]", with: description
-    invalid_date = Date.yesterday.in_time_zone.to_i * 1000
-    page.execute_script("$('#event_end_date')\
-                        .pickadate('picker').set('select', #{invalid_date})")
-    click_link "Next"
-    fill_in "event[ticket_types_attributes][0][name]", with: "free"
-    fill_in "event[ticket_types_attributes][0][quantity]", with: 10
-    fill_in "event[ticket_types_attributes][0][price]", with: 0.0
-    email = "johndummy@example.com"
-    fill_in "Enter staff email", with: email
-    click_button "add_staff"
-    click_link "Preview"
-    click_button "Save"
-    expect(page).to have_content "End date can't be in the past"
+  scenario "Manager does not create ticket" do
+    visit_page_and_create_manage_profile
+    visit root_path
+    click_link "Create Event"
+    fill_in "event[title]", with: "This is a test Event"
+    fill_in "event[location]", with: "Lagos, Nigeria"
+    fill_in "event[venue]", with: "Amity"
+    find("#event_category_id").find(:xpath, "option[2]").select_option
+
+    date = Date.tomorrow.in_time_zone.to_i * 1000
     page.execute_script("$('#event_start_date')\
                         .pickadate('picker').set('select', #{date})")
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
+    description = "This is a demo description for our event"
+    fill_in "event[description]", with: description
     click_link "Next"
-    fill_in "event[ticket_types_attributes][0][name]", with: ""
-    fill_in "event[ticket_types_attributes][0][quantity]", with: ""
-    fill_in "event[ticket_types_attributes][0][price]", with: ""
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content("Ticket types can't be blank")

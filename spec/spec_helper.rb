@@ -32,7 +32,7 @@ RSpec.configure do |config|
   end
 
   # config.after(:suite) do
-  #   WebMock.disable_net_connect!(:allow => "codeclimate.com")
+  #   WebMock.disable_net_connect!(allow: "codeclimate.com")
   # end
 
   # The settings below are suggested to provide a good initial experience

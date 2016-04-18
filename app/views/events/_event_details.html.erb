@@ -4,7 +4,7 @@
   <a href="#description">About</a>
 </li>
 <li>
-  <a href="#">Schedule</a>
+  <a href="#highlight">Highlight</a>
 </li>
 <li>
   <a href="#">Attendee</a>
@@ -18,7 +18,7 @@
 <div class="parallax-container" data-countdown="<%= @event.start_date %>" id="index-banner">
 <span class="end_date" data-countdown="<%= @event.end_date %>" id="index-banners"></span>
 <div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
-  <%= render partial: "layouts/nav" %>
+  <%= render "layouts/nav" %>
   <div class="section no-pad-bot">
     <div class="container">
       <div class="row center">
@@ -26,7 +26,7 @@
         <label id="counter"></label>
         <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
         <div id="att">
-          <%= render partial: "events/attend_unattend_event_button" %>
+          <%= render "events/attend_unattend_event_button" %>
         </div>
         <%if @event.id%>
             <%= social_share_button_tag(@event.title, popup: true)%>
@@ -52,6 +52,12 @@
     </div>
   </div>
 </div>
+</div>
+<div class="highlights description" id="highlight">
+  <div class="container center">
+    <h2 class="our_description_title">Event Highlights</h2>
+    <%= render "highlights" %>
+  </div>
 </div>
 <div class="col-md-12" class="venue" id="venue" style="height: 70%; padding:0px">
 <div class="map-overlay"></div>

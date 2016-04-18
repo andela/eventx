@@ -1,0 +1,34 @@
+<div class="row col s12 hide highlight_fields" id="highlight_field<%= field_id %>">
+  <div class="input-field col s5">
+    <%= text_field_tag "day", '', placeholder: "Day" , class: "datepicker highlight_day", id: "day" %>
+    <%= hidden_field_tag "id", '', class: "highlight_id", id: "id", value:"" %>
+    <%= hidden_field_tag "_destroy", '', class: "highlight__destroy", id: "_destroy", value:"false" %>
+  </div>
+  <div class="input-field col s5">
+    <%= text_field_tag "title", '', placeholder: "Title" , class: "highlight_title", id: "title" %>
+  </div>
+  <div class="input-field col s10">
+    <%= text_area_tag "description", '', rows: 6, placeholder: "Enter Highlight Description", class: "highlight_description materialize-textarea"%>
+  </div>
+  <div class="input-field col s5">
+    <%= text_field_tag "start_time", '', class: "timepicker highlight_start_time", placeholder: "Start Time" %>
+  </div>
+  <div class="input-field col s5">
+    <%= text_field_tag "end_time", '', class: "timepicker highlight_end_time", placeholder: "End Time" %>
+  </div>
+  <div class="input-field col s5">
+    <%= text_field_tag "image_title", '', placeholder: "Caption" , class: "highlight_image_title"%>
+  </div>
+
+  <div class="col s5">
+    <div class="file-field input-field">
+      <div class="btn input-field">
+        <span>File</span>
+        <%= file_field_tag "image", accept: 'image/png,image/gif,image/jpeg', class: "highlight_photo_upload file-field", id: "highlight_photo_upload" %>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload your image">
+      </div>
+    </div>
+  </div>
+</div>

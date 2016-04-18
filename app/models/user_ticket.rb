@@ -1,5 +1,4 @@
 class UserTicket < ActiveRecord::Base
-  # before_create :add_ticket_number
   after_initialize :add_ticket_number
 
   belongs_to :user
