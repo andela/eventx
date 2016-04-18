@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")
   get "/tickets" => "bookings#index"
+  get "/events/:id/tickets" =>
+          "events#tickets", as: :event_tickets
   get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
+  post "/print/:id" => "printer#redirect_to_print"
+  get "/print/:id" => "printer#redirect_to_print"
   get "/download/:booking_id" => "printer#download", as: :download
   get "signout", to: "sessions#destroy", as: "signout"
   get "/session" => "sessions#create"

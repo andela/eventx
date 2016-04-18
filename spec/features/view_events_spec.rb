@@ -27,14 +27,8 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
 
   scenario "User tries to see all events" do
     visit events_path
-    expect(page).to have_selector("h5", text: "Category")
-    expect(page).to have_button("Search")
-    within("#slide-out") do
-      expect(page).to have_selector("li.bold", text: "All")
-      expect(page).to have_selector("li.bold", count: Category.count + 1)
-      click_link "All"
-    end
 
+    expect(page).to have_button("Search")
     expect(page).to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
     expect(page).to have_selector(".Amount", text: "FREE", count: 3)
@@ -42,20 +36,14 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     expect(page).to have_selector("Label", text: "Search Event")
     expect(page).to have_selector("Label", text: "Location")
 
-    within("#slide-out") do
-      click_link "Music"
-    end
+    page.find('#music').trigger("click")
     expect(page).to have_content("Blessings wedding")
 
-    within("#slide-out") do
-      click_link "Sport & Wellness"
-    end
+    page.find('#sport').trigger("click")
     expect(page).not_to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
 
-    within("#slide-out") do
-      click_link "Parties"
-    end
+    page.find('#parties').trigger("click")
     expect(page).not_to have_content("Blessings wedding")
     expect(page).not_to have_content("Sports is cool")
 
@@ -70,13 +58,8 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       and_return(@manager.subdomain)
 
     visit events_path
-    expect(page).to have_selector("h5", text: "Category")
     expect(page).to have_button("Search")
-    within("#slide-out") do
-      expect(page).to have_selector("li.bold", text: "All")
-      expect(page).to have_selector("li.bold", count: Category.count + 1)
-      click_link "All"
-    end
+    page.find('#all').trigger("click")
 
     expect(page).to have_content("Subdomain event")
     expect(page).not_to have_content("Blessings wedding")

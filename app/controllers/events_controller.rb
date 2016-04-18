@@ -77,16 +77,16 @@ class EventsController < ApplicationController
     respond_with(@event)
   end
 
+  def tickets
+    @bookings = current_user.user_tickets_for_event(params[:id])
+  end
+
   def generate
     calendar = @event.calendar
     headers["Content-Type"] = "text/calendar; charset=UTF-8;"
     headers["Content-Disposition"] = "attachment;" \
         "filename = #{@event.title.tr(' ', '_')}.ics"
     render text: calendar.to_ical
-  end
-
-  def show_event_highlight
-    @highlight = @event.highlights.find_by(id: params[:highlight_id])
   end
 
   private
@@ -112,7 +112,7 @@ class EventsController < ApplicationController
   end
 
   def set_events
-    @event = Event.find_by(id: params[:id])
+    @event = Event.find(params[:id])
     if @event.nil?
       flash[:notice] = "Event not found"
       redirect_to :back

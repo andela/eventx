@@ -1,3 +1,4 @@
+<%= render partial: "layouts/dashboard_sidebar"%>
 
 <%  @resources.each do |event| %>
 <tr>
@@ -27,7 +28,7 @@
     <li class="divider"></li>
     <li><%= link_to "View Event", event, class: "our-dropdown-content" %></li>
     <li class="divider"></li>
-    <li><%= link_to "View Ticket", tickets_path(event), class: "our-dropdown-content" %></li>
+    <li><%= link_to "View Booking", event_tickets_path(event), class: "our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
     <li><%= link_to "Manage Staffs", manage_staffs_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>

@@ -21,7 +21,6 @@ function highLight() {
         var highlightIndex = ele.find('input[name*=index]')[0].value;
         createDeletedFields(ele, highlightIndex);
       } catch (e) {
-        //You just deleted a highlight that has not been saved
       } finally {
         ele.remove();
       }
