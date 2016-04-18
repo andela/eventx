@@ -14,7 +14,6 @@ module BookingHelper
   end
 
   def event
-    # binding.pry
     manager = create(:manager_profile, user: user)
     event_template = EventTemplate.create(
       name: "purple",
