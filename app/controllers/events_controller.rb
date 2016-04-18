@@ -85,10 +85,6 @@ class EventsController < ApplicationController
     render text: calendar.to_ical
   end
 
-  def show_event_highlight
-    @highlight = @event.highlights.find_by(id: params[:highlight_id])
-  end
-
   private
 
   def search_params
@@ -112,7 +108,7 @@ class EventsController < ApplicationController
   end
 
   def set_events
-    @event = Event.find_by(id: params[:id])
+    @event = Event.find(params[:id])
     if @event.nil?
       flash[:notice] = "Event not found"
       redirect_to :back
