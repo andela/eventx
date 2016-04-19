@@ -1,7 +1,9 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user,
-                except: [:paypal_hook, :view_booking, :paypal_dummy]
-  before_action except: [:view_booking, :paypal_hook, :index, :paypal_dummy] do
+                except: [:paypal_hook, :paypal_dummy]
+  before_action :set_event, only: :each_event_ticket
+  before_action except: [:paypal_hook, :index,
+                         :paypal_dummy, :each_event_ticket] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -9,8 +11,13 @@ class BookingsController < ApplicationController
 
   protect_from_forgery except: [:paypal_hook]
 
+  def event_titles
+    @event_titles = Event.select("id, title").
+                    where(manager_profile_id: current_user)
+  end
+
   def index
-    @bookings = current_user.bookings.order(id: :desc).decorate
+    @bookings = current_user.user_tickets
   end
 
   def create

@@ -77,6 +77,10 @@ class EventsController < ApplicationController
     respond_with(@event)
   end
 
+  def tickets
+    @bookings = current_user.user_tickets_for_event(params[:id])
+  end
+
   def generate
     calendar = @event.calendar
     headers["Content-Type"] = "text/calendar; charset=UTF-8;"
