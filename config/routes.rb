@@ -35,7 +35,8 @@ Rails.application.routes.draw do
   get "/session" => "sessions#create"
   post "/api_login" => "sessions#api_login"
   resources :manager_profiles, only: [:new, :create]
-  resources :attendees
+  resources :attendees 
+  resources :categories 
   resources :events do
     resources :bookings, only: [:create]
   end
