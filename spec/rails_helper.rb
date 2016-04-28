@@ -63,7 +63,6 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-
 def sign_up
   set_valid_omniauth
   OmniAuth.config.test_mode = true

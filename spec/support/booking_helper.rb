@@ -19,14 +19,9 @@ module BookingHelper
       name: "purple",
       image: "http://goo.gl/erHIiU"
     )
-    category = Category.create(
-      name: "Networking", description:
-      "Business mixers, hobby meetups, and panel discussions"
-    )
     create(
       :event, manager_profile: manager,
-              event_template: event_template,
-              category: category
+              event_template: event_template
     )
   end
 

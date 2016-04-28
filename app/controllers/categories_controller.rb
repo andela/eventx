@@ -1,26 +1,28 @@
 class CategoriesController < ApplicationController
-  def index 
-    @categories = Category.all 
+  def index
+    @categories = Category.where(
+      "manager_profile_id = ? OR manager_profile_id = ?",
+      0, ActsAsTenant.current_tenant.id)
   end
 
-  def show 
-  end    
-
-  def new 
-    
+  def show
   end
 
-  def create 
+  def new
+  end
+
+  def create
     @category = Category.new(category_params)
-    if @category.save 
-      render :show 
-    else 
+    @category.manager_profile_id = current_user.manager_profile.id
+    if @category.save
+      render :show
+    else
       flash[:notice] = "Category exists"
-      render :error 
-    end 
+      render :error
+    end
   end
 
-  def category_params 
+  def category_params
     params.require(:category).permit(:name, :description)
-  end 
+  end
 end

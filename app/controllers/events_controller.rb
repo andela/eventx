@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @categories = Category.list
     @events = Event.find_event(search_params)
     @events = [] if @events.nil?
     respond_with @events
