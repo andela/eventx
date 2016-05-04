@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426161341) do
+ActiveRecord::Schema.define(version: 20160425225045) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20160426161341) do
     t.string   "map_url"
     t.integer  "manager_profile_id"
     t.boolean  "enabled",            default: true
+    t.integer  "remit_id"
   end
 
   add_index "events", ["manager_profile_id"], name: "index_events_on_manager_profile_id"
@@ -123,6 +124,14 @@ ActiveRecord::Schema.define(version: 20160426161341) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "domain"
+  end
+
+  create_table "remits", force: :cascade do |t|
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "total_amount"
+    t.string   "status",       default: "requested"
+    t.integer  "event_id"
   end
 
   create_table "ticket_types", force: :cascade do |t|

@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   resources :events do
     resources :bookings, only: [:create]
   end
+  get "/remit/:id", to: "remit#new", as: :remit
+  get "/download/:id", to: "remit#download", as: :download_remit
   get "/events/:id/:highlight_id" =>
     "events#show_event_highlight", as: :show_event_highlight
   resources :users, only: [:show]
