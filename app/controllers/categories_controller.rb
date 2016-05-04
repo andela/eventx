@@ -1,8 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.where(
-      "manager_profile_id = ? OR manager_profile_id = ?",
-      0, ActsAsTenant.current_tenant.id)
+    @categories = Category.current
   end
 
   def show
@@ -16,9 +14,6 @@ class CategoriesController < ApplicationController
     @category.manager_profile_id = current_user.manager_profile.id
     if @category.save
       render :show
-    else
-      flash[:notice] = "Category exists"
-      render :error
     end
   end
 
