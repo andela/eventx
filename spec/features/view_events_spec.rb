@@ -10,7 +10,6 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     create(:event, manager_profile: manager)
     create(:paid_event, manager_profile: manager)
     create(:sport_event, manager_profile: manager)
-
     user = create(:user)
     @manager = create(:manager_profile,
                       user: user,
@@ -19,6 +18,8 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     create(:event,
            manager_profile: @manager,
            title: "Subdomain event")
+
+    @cat = create(:category, manager_profile: @manager)
   end
 
   after do
@@ -61,6 +62,8 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     expect(page).to have_button("Search")
     page.find('#all').trigger("click")
 
+    expect(page).to have_content(@cat.name)
+
     expect(page).to have_content("Subdomain event")
     expect(page).not_to have_content("Blessings wedding")
     expect(page).not_to have_content("Sports is cool")
@@ -75,6 +78,8 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       and_return("invalid")
 
     visit events_path
+
+    expect(page).not_to have_content(@cat.name)
     expect(page).not_to have_selector("h5", text: "Category")
     expect(page).not_to have_button("Search")
 

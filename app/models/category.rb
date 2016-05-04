@@ -1,6 +1,5 @@
 class Category < ActiveRecord::Base
   validates :name, presence: true
-  validates_uniqueness_of :name, notice: "Category exists"
   has_many :events
   belongs_to :manager_profile
 
@@ -9,6 +8,12 @@ class Category < ActiveRecord::Base
       "manager_profile_id = ? OR manager_profile_id = ?",
       0, tenant
     )
+  }
+
+  scope :current, lambda {
+    where(
+      "manager_profile_id = ? OR manager_profile_id = ?",
+      0, ActsAsTenant.current_tenant.id)
   }
 
   def self.tenant
