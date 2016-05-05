@@ -1,13 +1,23 @@
 class RemitController < ApplicationController
+  before_action :remit_exist
+
   def new
     @event = Event.find_by(id: params[:id])
     @manager = @event.manager_profile
     @remit = @event.build_remit
-    if @remit.save
-      @remit
-    else
-      flash[:notice] = "Event cannot yet request a remittance!"
-      redirect_to my_events_path
+
+    unless @remit.save
+      redirect_to my_events_path,
+                  notice: "Event cannot yet request a remittance!"
+    end
+  end
+
+  private
+
+  def remit_exist
+    if Remit.find_by(event_id: params[:id])
+      redirect_to my_events_path,
+                  notice: "This event remit have already been processed"
     end
   end
 end

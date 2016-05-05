@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425225045) do
+ActiveRecord::Schema.define(version: 20160505091750) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 20160425225045) do
     t.string   "map_url"
     t.integer  "manager_profile_id"
     t.boolean  "enabled",            default: true
-    t.integer  "remit_id"
   end
 
   add_index "events", ["manager_profile_id"], name: "index_events_on_manager_profile_id"

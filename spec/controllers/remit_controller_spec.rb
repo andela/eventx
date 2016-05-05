@@ -12,27 +12,47 @@ RSpec.describe RemitController, type: :controller do
   end
 
   describe "#new" do
-    it "gets new remit when remit is requested for" do
-      @event.update(start_date: Time.now - 10.days)
-      @event.update(end_date: Time.now - 9.days)
+    context "when event has ended" do
+      it "gets new remit when remit is requested for" do
+        @event.update(start_date: Time.now - 10.days)
+        @event.update(end_date: Time.now - 9.days)
 
-      get :new, id: @event.id
+        get :new, id: @event.id
 
-      expect(assigns(:remit).event.title).to eq "Blessings wedding"
-      expect(
-        assigns(:remit
-               ).event.description
-      ).to eq "Happy day of joy celebration happinness smiles."
-      expect(assigns(:remit).event.venue).to eq "Beside the waters"
+        expect(assigns(:remit).event.title).to eq "Blessings wedding"
+        expect(
+          assigns(:remit
+                 ).event.description
+        ).to eq "Happy day of joy celebration happinness smiles."
+        expect(assigns(:remit).event.venue).to eq "Beside the waters"
+      end
     end
 
-    it "does not get new remit when remit is requested for" do
-      @event.update(start_date: Time.now - 10.days)
-      @event.update(end_date: Time.now - 3.days)
+    context "when event has not ended" do
+      it "does not get new remit when remit is requested for" do
+        @event.update(start_date: Time.now - 10.days)
+        @event.update(end_date: Time.now - 3.days)
 
-      get :new, id: @event.id
+        get :new, id: @event.id
 
-      expect(flash[:notice]).to eq "Event cannot yet request a remittance!"
+        expect(flash[:notice]).to eq "Event cannot yet request a remittance!"
+      end
+    end
+
+    context "when a remit has been requested" do
+      it "does not allow remit to be requested twice" do
+        @event.update(start_date: Time.now - 10.days)
+        @event.update(end_date: Time.now - 9.days)
+
+        remit = @event.build_remit
+        remit.save
+
+        get :new, id: @event.id
+        expect(
+          flash[:notice]
+        ).to eq "This event remit have already been processed"
+        remit.destroy
+      end
     end
   end
 end
