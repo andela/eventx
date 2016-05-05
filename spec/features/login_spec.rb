@@ -39,7 +39,8 @@ RSpec.feature "Login:", type: :feature, js: true do
 
   scenario "User tries to edit event" do
     sign_up
-    visit "/events/1/edit"
+    event = create(:event)
+    visit "/events/#{event.id}/edit"
     expect(page).to have_content "BECOME AN EVENT MANAGER"
   end
 

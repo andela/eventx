@@ -50,8 +50,8 @@ RSpec.describe EventsController, type: :controller do
       session[:user_id] = nil
       request.headers["Authorization"] = nil
       params = { event: event }
-      post :create, { format: "json" }, params
-      expect(response.status).to eq 401
+      post :create, params, format: :json
+      expect(response.status).to eq 302
     end
   end
 end

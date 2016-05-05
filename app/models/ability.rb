@@ -11,16 +11,10 @@ class Ability
       end
     end
 
-    if user.manager_profile.present?
-      can :new, Event
-      can :create, Event
-      can :edit, Event do |event|
-        user == event.manager_profile.user
-      end
-
-      can :update, Event do |event|
-        user == event.manager_profile.user
-      end
+    if user.event_manager?
+      can :manage, Event
+    else
+      can :read, Event
     end
   end
 end

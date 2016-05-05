@@ -1,8 +1,6 @@
 class EventsController < ApplicationController
   load_and_authorize_resource class: "Event"
   before_action :authenticate_user, except: [:show, :index]
-  before_action :authorize_user_create, only: [:new, :create]
-  before_action :authorize_user_manage, only: [:edit, :update]
   before_action :set_events, only:  [
     :show,
     :edit,
@@ -127,27 +125,4 @@ class EventsController < ApplicationController
 
   def loading
   end
-
-  def authorize_user_create
-    unless can? :manage, Event
-      flash[:notice] = "You need to be an event manager"
-      redirect_to(root_path)
-    end
-  end
-
-  def authorize_user_manage
-    unless can? :update, Event
-      flash[:notice] = "You need to be a staff of this event"
-      redirect_to(root_path)
-    end
-  end
-
-  # def authorize_gate_keeper
-  #   @event = Event.find(params[:id])
-  #   event_staff = @event.event_staffs.find_by(user_id: current_user.id)
-  #   unless event_staff && event_staff.role == "gate_keeper"
-  #     flash[:notice] = "You are not a gatekeeper for this event"
-  #     redirect_to(root_path)
-  #   end
-  # end
 end
