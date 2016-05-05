@@ -1,0 +1,7 @@
+<% if @user_ticket %>
+  $('#ticket_details').empty().append("<%= j render @user_ticket %>");
+<% end %>
+
+<% if flash[:notice].present? %>
+  Materialize.toast("<%= flash[:notice].to_s %>", 3000, "rounded")
+<% end %>

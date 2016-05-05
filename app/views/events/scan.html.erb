@@ -1,0 +1,19 @@
+<div class="col s12">
+  <div class="row" style="min-height:500px;">
+    <%= render partial: "layouts/dashboard_sidebar"%>
+    <div class="col s6 offset-s4 post">
+        <%= form_tag scan_ticket_path, method: :get, remote: true do %>
+          <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
+            <%= text_field_tag(:ticket_no, "", placeholder: "Search Tickect by Number") %>
+            <%= hidden_field_tag(:event_id, "", value: params[:id]) %>
+          <% end %>
+          <%= content_tag :div, class: "input-field col l2 m2 s4" do %>
+            <%= button_tag( class: "btn btn-floating", id: "search-button") do %>
+              <%= content_tag :i, "search", class: "material-icons" %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <div class="col" id="ticket_details"></div>
+    </div>
+  </div>
+</div>
