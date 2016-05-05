@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get "/user_info/:user_id" => "users#fetch_user_info"
   post "/paypal_hook" => "bookings#paypal_hook", as: :hook
   post "/paypal_dummy" => "bookings#paypal_dummy", as: :paypal_dummy
+  get "/scan_ticket" => "bookings#scan_ticket", as: :scan_ticket
+  get "/events/:id/scan" => "events#scan", as: :gatekeeper
+  get "/scan_ticket/:ticket_no" => "bookings#use_ticket", as: :scan
   get "unattend", to: "attendees#destroy", as: "unattend"
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")

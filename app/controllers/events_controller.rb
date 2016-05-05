@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  load_and_authorize_resource class: "Event"
   before_action :authenticate_user, except: [:show, :index]
   before_action :authorize_user_create, only: [:new, :create]
   before_action :authorize_user_manage, only: [:edit, :update]
@@ -9,7 +10,7 @@ class EventsController < ApplicationController
     :enable,
     :disable,
     :generate,
-    :show_event_highlight
+    :scan
   ]
 
   respond_to :html, :json, :js
@@ -51,6 +52,9 @@ class EventsController < ApplicationController
     @event.enabled = false
     @event.save(validate: false)
     redirect_to :back
+  end
+
+  def scan
   end
 
   def update
@@ -137,4 +141,13 @@ class EventsController < ApplicationController
       redirect_to(root_path)
     end
   end
+
+  # def authorize_gate_keeper
+  #   @event = Event.find(params[:id])
+  #   event_staff = @event.event_staffs.find_by(user_id: current_user.id)
+  #   unless event_staff && event_staff.role == "gate_keeper"
+  #     flash[:notice] = "You are not a gatekeeper for this event"
+  #     redirect_to(root_path)
+  #   end
+  # end
 end

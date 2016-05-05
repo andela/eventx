@@ -4,6 +4,7 @@ class UserTicket < ActiveRecord::Base
   belongs_to :user
   belongs_to :ticket_type
   belongs_to :booking, counter_cache: true
+  belongs_to :scanned_by, class_name: "User", foreign_key: :scanned_by
 
   private
 
