@@ -5,7 +5,12 @@ RSpec.feature "ScanTicket", type: :feature, js: true do
     @user = create(:user, email: "user@eventx.com")
     @gate_keeper = create(:user, email: "gatekeeper@eventx.com")
     @event = create(:event)
-    @event_staff = create(:event_staff, :gate_keeper, event: @event, user: @gate_keeper)
+    @event_staff = create(
+      :event_staff,
+      :gate_keeper,
+      event: @event,
+      user: @gate_keeper
+    )
     allow_any_instance_of(ApplicationController).
       to receive(:current_user).and_return(@gate_keeper)
   end

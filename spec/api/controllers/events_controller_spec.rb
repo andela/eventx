@@ -13,7 +13,7 @@ RSpec.describe EventsController, type: :controller do
     attributes_for(:event,
                    ticket_types_attributes:
                    [attributes_for(:ticket_type_free)])
-end
+  end
 
   describe "#create" do
     it "should allow Api user to create an event" do
