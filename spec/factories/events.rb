@@ -12,6 +12,7 @@ FactoryGirl.define do
     event_template_id 1
     map_url "http://www.example.com/gothere"
     ticket_types { build_list(:ticket_type_free, 1) }
+    manager_profile
 
     factory :paid_event do
       ticket_types { build_list(:ticket_type_paid, 1) }

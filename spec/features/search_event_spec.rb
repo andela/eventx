@@ -2,11 +2,12 @@ require "rails_helper"
 
 RSpec.feature "search_event:", type: :feature do
   before(:each) do
-    create(:event)
-    create(:next_week_event)
-    create(:next_weekend_event)
-    create(:this_weekend_event)
-    create(:tomorrow_event)
+    manager_profile = create(:manager_profile)
+    create(:event, manager_profile: manager_profile)
+    create(:next_week_event, manager_profile: manager_profile)
+    create(:next_weekend_event, manager_profile: manager_profile)
+    create(:this_weekend_event, manager_profile: manager_profile)
+    create(:tomorrow_event, manager_profile: manager_profile)
   end
 
   scenario "User searches for today's events" do

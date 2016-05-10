@@ -145,9 +145,12 @@ ActiveRecord::Schema.define(version: 20160505091750) do
   create_table "user_tickets", force: :cascade do |t|
     t.integer  "ticket_type_id"
     t.string   "ticket_number"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "booking_id"
+    t.boolean  "is_used",        default: false
+    t.datetime "time_used"
+    t.integer  "scanned_by"
   end
 
   add_index "user_tickets", ["booking_id"], name: "index_user_tickets_on_booking_id"

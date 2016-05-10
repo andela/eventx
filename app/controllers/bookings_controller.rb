@@ -3,13 +3,15 @@ class BookingsController < ApplicationController
                 except: [:paypal_hook, :paypal_dummy]
   before_action :set_event, only: :each_event_ticket
   before_action except: [:paypal_hook, :index,
-                         :paypal_dummy, :each_event_ticket] do
+                         :paypal_dummy, :each_event_ticket,
+                         :scan_ticket, :use_ticket] do
     set_event
     ticket_params
     ticket_quantity_specified?
   end
 
   protect_from_forgery except: [:paypal_hook]
+  respond_to :js, :hmtl, :json
 
   def event_titles
     @event_titles = Event.select("id, title").
@@ -47,6 +49,26 @@ class BookingsController < ApplicationController
 
   def paypal_dummy
     redirect_to tickets_path
+  end
+
+  def scan_ticket
+    @user_ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
+    flash[:notice] = "Ticket does not exist" unless @user_ticket
+  end
+
+  def use_ticket
+    ticket_no = params[:ticket_no]
+    @user_ticket = UserTicket.find_by(ticket_number: ticket_no)
+    if @user_ticket.is_used
+      flash[:notice] = "Ticket has already been used"
+    else
+      @user_ticket.update_attributes(
+        is_used: true,
+        time_used: Time.now,
+        scanned_by: current_user
+      )
+    end
+    render :scan_ticket
   end
 
   private

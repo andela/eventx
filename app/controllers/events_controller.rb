@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
+  load_and_authorize_resource class: "Event"
   before_action :authenticate_user, except: [:show, :index]
-  before_action :authorize_user_create, only: [:new, :create]
-  before_action :authorize_user_manage, only: [:edit, :update]
   before_action :set_events, only:  [
     :show,
     :edit,
@@ -9,7 +8,7 @@ class EventsController < ApplicationController
     :enable,
     :disable,
     :generate,
-    :show_event_highlight
+    :scan
   ]
 
   respond_to :html, :json, :js
@@ -51,6 +50,9 @@ class EventsController < ApplicationController
     @event.enabled = false
     @event.save(validate: false)
     redirect_to :back
+  end
+
+  def scan
   end
 
   def update
@@ -122,19 +124,5 @@ class EventsController < ApplicationController
   end
 
   def loading
-  end
-
-  def authorize_user_create
-    unless can? :manage, Event
-      flash[:notice] = "You need to be an event manager"
-      redirect_to(root_path)
-    end
-  end
-
-  def authorize_user_manage
-    unless can? :update, Event
-      flash[:notice] = "You need to be a staff of this event"
-      redirect_to(root_path)
-    end
   end
 end
