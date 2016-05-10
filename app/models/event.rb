@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :category
   belongs_to :event_template
+  has_one :remit
   has_many :ticket_types, dependent: :destroy
   has_many :event_staffs, dependent: :destroy
   has_many :highlights, dependent: :destroy
@@ -86,9 +87,6 @@ class Event < ActiveRecord::Base
     find_by_sql(query.to_sql)
   end
 
-  def ticket_sold
-  end
-
   def self.get_roles
     roles = {}
     EventStaff.roles.each do |key, _value|
@@ -106,6 +104,10 @@ class Event < ActiveRecord::Base
       params[:enabled] = true
       search(params)
     end
+  end
+
+  def can_request_remit?
+    Date.today >= (end_date + 5.days)
   end
 
   private

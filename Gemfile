@@ -53,6 +53,7 @@ group :development, :test do
   gem "web-console", "~> 2.0"
   gem "spring", "1.4.3"
   gem "rubocop", require: false
+  gem "letter_opener"
 end
 
 group :test do
