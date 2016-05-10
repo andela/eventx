@@ -5,5 +5,6 @@ FactoryGirl.define do
     company_mail "ema@a.com"
     company_phone "08062201524"
     domain "MyDomain"
+    user
   end
 end

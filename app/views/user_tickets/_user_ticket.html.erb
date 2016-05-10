@@ -12,11 +12,11 @@
         </div>
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"><%= @user_ticket.booking.event.title %><i class="material-icons right">more_vert</i></span>
+        <span class="card-title activator grey-text text-darken-4"><%= @user_ticket.booking.event.title %><i class="material-icons right" id="open-ticket-details">more_vert</i></span>
         <p><%= @user_ticket.ticket_type.name %></p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Details:<i class="material-icons right">close</i></span>
+        <span class="card-title grey-text text-darken-4">Details:<i class="material-icons right" id="close-ticket-details">close</i></span>
         <ul class="collection">
           <li class="collection-item avatar">
             <img src="<%= @user_ticket.booking.user.profile_url %>" alt="" class="circle">
@@ -36,7 +36,7 @@
         </ul>
       </div>
       <div class="card-action">
-        <%= link_to "Scan", scan_path(ticket_no: @user_ticket.ticket_number), class:"btn", remote: true %>
+        <%= link_to "Scan", scan_path(ticket_no: @user_ticket.ticket_number), class:"btn", id:"scan-ticket-button", remote: true %>
         <a href="#" class="btn right">Cancel</a>
       </div>
     </div>
