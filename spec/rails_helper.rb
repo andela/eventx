@@ -56,6 +56,13 @@ RSpec.configure do |config|
   config.include Requests::ApiHelper, type: :controller
 end
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 def sign_up
   set_valid_omniauth
   OmniAuth.config.test_mode = true

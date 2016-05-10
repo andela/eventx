@@ -7,5 +7,9 @@ FactoryGirl.define do
     profile_url "http://graph.facebook.com/1065771400114300/picture"
     provider "facebook"
     uid "1065771400114300"
+
+    trait :manager do
+      manager_profile
+    end
   end
 end
