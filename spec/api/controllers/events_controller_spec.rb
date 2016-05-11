@@ -2,17 +2,17 @@ require "rails_helper"
 
 RSpec.describe EventsController, type: :controller do
   before do
-    user = FactoryGirl.create(:user)
-    FactoryGirl.create(:manager_profile, user: user)
+    user = create(:user)
+    @manager_profile = create(:manager_profile, user: user)
     session[:user_id] = user.id
     api_key = user.generate_auth_token
     request.headers["Authorization"] = api_key.to_s
   end
 
   let(:event) do
-    FactoryGirl.attributes_for(:event,
-                               ticket_types_attributes:
-                               [FactoryGirl.attributes_for(:ticket_type_free)])
+    attributes_for(:event,
+                   ticket_types_attributes:
+                   [attributes_for(:ticket_type_free)])
   end
 
   describe "#create" do
@@ -34,10 +34,10 @@ RSpec.describe EventsController, type: :controller do
 
   describe "#update" do
     it "should allow Api user to edit an event" do
-      FactoryGirl.create(:event)
+      create(:event, manager_profile: @manager_profile)
       first_event = Event.first
       expect(first_event.title).to eq "Blessings wedding"
-      edited_event = FactoryGirl.attributes_for(:tomorrow_event)
+      edited_event = attributes_for(:tomorrow_event)
       put :update, id: first_event.to_param, event: edited_event
       edited_event_title = Event.first.title
       expect(edited_event_title).not_to eq "Blessings wedding"
@@ -50,8 +50,8 @@ RSpec.describe EventsController, type: :controller do
       session[:user_id] = nil
       request.headers["Authorization"] = nil
       params = { event: event }
-      post :create, { format: "json" }, params
-      expect(response.status).to eq 401
+      post :create, params, format: :json
+      expect(response.status).to eq 302
     end
   end
 end

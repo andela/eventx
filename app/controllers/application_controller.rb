@@ -13,12 +13,21 @@ class ApplicationController < ActionController::Base
     render json: {}, status: :unauthorized
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:notice] = exception.message
+    redirect_to root_path
+  end
+
   def current_user
     if decoded_auth_token
       @current_user ||= User.find_by_id(decoded_auth_token["user_id"])
     elsif session[:user_id]
       @current_user ||= User.find_by_id(session[:user_id])
     end
+  end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
   end
 
   def no_route_found

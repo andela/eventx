@@ -31,6 +31,9 @@
     <li><%= link_to "View Booking", event_tickets_path(event), class: "our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
     <li><%= link_to "Manage Staffs", manage_staffs_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
+
+    <li class="divider"></li>
+    <li><%= link_to "Request Remit", remit_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
   </ul>
 </tr>
