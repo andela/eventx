@@ -17,5 +17,15 @@ class Ability
     else
       can :read, Event
     end
+
+    if user.bookings.present?
+      can :request_refund, Booking do |booking|
+        booking.event.enabled == false &&
+          booking.event.start_date > Time.now &&
+          booking.payment_status == "paid"
+      end
+
+      can :manage, Booking, user_id: user.id
+    end
   end
 end
