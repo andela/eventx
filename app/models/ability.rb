@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    can :read, :all
+    can :read, Event
 
     if user.event_staffs.present?
       can :scan, Event do |event|
@@ -12,9 +12,10 @@ class Ability
     end
 
     if user.event_manager?
-      can :manage, Event, manager_profile_id: user.manager_profile.id
-    else
-      can :read, Event
+      can [:update, :edit, :destroy, :enable, :disable],
+          Event,
+          manager_profile_id: user.manager_profile.id
+      can [:create, :new, :tickets], Event
     end
 
     if user.bookings.present?
@@ -23,8 +24,9 @@ class Ability
           booking.event.start_date > Time.now &&
           booking.payment_status == "paid"
       end
-
-      can :manage, Booking, user_id: user.id
     end
+
+    can :create, Booking
+    can :paypal_dummy, Booking
   end
 end
