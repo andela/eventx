@@ -1,10 +1,12 @@
 class BookingsController < ApplicationController
+  # load_and_authorize_resource param_method: :request_refund
   before_action :authenticate_user,
                 except: [:paypal_hook, :paypal_dummy]
   before_action :set_event, only: :each_event_ticket
   before_action except: [:paypal_hook, :index,
                          :paypal_dummy, :each_event_ticket,
-                         :scan_ticket, :use_ticket] do
+                         :scan_ticket, :use_ticket,
+                         :request_refund] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -19,7 +21,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = current_user.user_tickets
+    @bookings = current_user.bookings.order(id: :desc).decorate
   end
 
   def create
@@ -37,16 +39,6 @@ class BookingsController < ApplicationController
     process_free_ticket_or_redirect_paid_ticket
   end
 
-  def paypal_hook
-    params.permit!
-    status = params[:payment_status]
-    if status == "Completed"
-      response = validate_ipn_notification(request.raw_post)
-      examine_booking(response)
-    end
-    render nothing: true
-  end
-
   def paypal_dummy
     params.permit!
     status = params[:payment_status]
@@ -60,6 +52,18 @@ class BookingsController < ApplicationController
   def scan_ticket
     @user_ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
     flash[:notice] = "Ticket does not exist" unless @user_ticket
+  end
+
+  def request_refund
+    @booking = Booking.find_by_uniq_id(params[:uniq_id])
+    if @booking.update_attributes(
+        refund_requested: true,
+        time_requested: Time.now
+      )
+      flash[:notice] = "Request for a refund has been sent"
+    else
+      flash[:notice] = "Request cannot be sent at this time."
+    end
   end
 
   def use_ticket
