@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get "events/loading"
   get "/lookup_staffs" => "users#lookup_staff_emails"
   get "/user_info/:user_id" => "users#fetch_user_info"
-  post "/paypal_hook" => "bookings#paypal_hook", as: :hook
+  post "/refund/:uniq_id" => "bookings#request_refund", as: :refund
   post "/paypal_dummy" => "bookings#paypal_dummy", as: :paypal_dummy
   get "/scan_ticket" => "bookings#scan_ticket", as: :scan_ticket
   get "/events/:id/scan" => "events#scan", as: :gatekeeper
@@ -29,12 +29,9 @@ Rails.application.routes.draw do
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")
   get "/tickets" => "bookings#index"
-  get "/events/:id/tickets" =>
-          "events#tickets", as: :event_tickets
-
+  get "/events/:id/tickets" => "events#tickets", as: :event_tickets
   get "/events/:id/tickets-report" =>
           "events#tickets_report", as: :tickets_report
-
   get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
   post "/print/:id" => "printer#redirect_to_print"
   get "/print/:id" => "printer#redirect_to_print"
