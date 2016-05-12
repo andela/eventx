@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    can :read, Event
+    can [:read, :tickets], Event
 
     if user.event_staffs.present?
       can :scan, Event do |event|
@@ -15,7 +15,7 @@ class Ability
       can [:update, :edit, :destroy, :enable, :disable],
           Event,
           manager_profile_id: user.manager_profile.id
-      can [:create, :new, :tickets], Event
+      can [:create, :new], Event
     end
 
     if user.bookings.present?
