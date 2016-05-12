@@ -27,17 +27,17 @@ class BookingDecorator < Draper::Decorator
   end
 
   def generate_request_refund_button
-    if object.refund_requested
+    if refund_requested
       h.link_to "Processing Request", "#", class: "btn disabled"
     else
-      h.link_to "Request Refund", h.refund_path(object.uniq_id), class: "btn",
-              remote: true, method: :post
+      h.link_to "Request Refund", h.refund_path(uniq_id),
+                class: "btn", remote: true, method: :post
     end
   end
 
   def status
     "<span class='card-panel red right' \
     style='position: relative; bottom: 37px; color: white'>
-    Cancelled</span>".html_safe unless object.event.enabled
+    Cancelled</span>".html_safe unless event.enabled
   end
 end

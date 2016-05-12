@@ -44,12 +44,12 @@ RSpec.describe Booking, type: :model do
   describe "#paypal_url" do
     it "returns appropriate paypal url with" do
       booking = create(:booking, event: create(:event))
-      paypal_url = booking.paypal_url("/paypal_dummy")
+      paypal_url = booking.paypal_url("/paypal_hook")
       expect(paypal_url).to eql("#{ENV['paypal_host']}/cgi-bin/webscr?amount=0"\
       "&business=notify%40email.com&cmd=_xclick&invoice=#{booking.uniq_id}&"\
       "item_name=Ticket+for+Blessings+wedding&item_number=1&"\
       "notify_url=http%3A%2F%2Fsample.com%2Fnotify%2Fpaypal_hook&"\
-      "return=http%3A%2F%2Fsample.com%2Fpaypal_dummy")
+      "return=http%3A%2F%2Fsample.com%2Fpaypal_hook")
     end
 
     it "returns paypal validate url" do

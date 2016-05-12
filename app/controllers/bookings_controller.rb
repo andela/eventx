@@ -1,12 +1,9 @@
 class BookingsController < ApplicationController
   # load_and_authorize_resource param_method: :request_refund
-  before_action :authenticate_user,
-                except: [:paypal_hook, :paypal_dummy]
+  before_action :authenticate_user, except: [:paypal_hook]
   before_action :set_event, only: :each_event_ticket
-  before_action except: [:paypal_hook, :index,
-                         :paypal_dummy, :each_event_ticket,
-                         :scan_ticket, :use_ticket,
-                         :request_refund] do
+  before_action except: [:paypal_hook, :index, :each_event_ticket,
+                         :scan_ticket, :use_ticket, :request_refund] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -39,7 +36,7 @@ class BookingsController < ApplicationController
     process_free_ticket_or_redirect_paid_ticket
   end
 
-  def paypal_dummy
+  def paypal_hook
     params.permit!
     status = params[:payment_status]
     if status == "Completed"
@@ -57,9 +54,9 @@ class BookingsController < ApplicationController
   def request_refund
     @booking = Booking.find_by_uniq_id(params[:uniq_id])
     if @booking.update_attributes(
-        refund_requested: true,
-        time_requested: Time.now
-      )
+      refund_requested: true,
+      time_requested: Time.now
+    )
       flash[:notice] = "Request for a refund has been sent"
     else
       flash[:notice] = "Request cannot be sent at this time."
@@ -97,7 +94,7 @@ class BookingsController < ApplicationController
       trigger_booking_mail
       redirect_to tickets_path
     else
-      redirect_to @booking.paypal_url(paypal_dummy_path)
+      redirect_to @booking.paypal_url(paypal_hook_path)
     end
   end
 

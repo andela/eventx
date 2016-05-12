@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "/lookup_staffs" => "users#lookup_staff_emails"
   get "/user_info/:user_id" => "users#fetch_user_info"
   post "/refund/:uniq_id" => "bookings#request_refund", as: :refund
-  post "/paypal_dummy" => "bookings#paypal_dummy", as: :paypal_dummy
+  post "/paypal_hook" => "bookings#paypal_hook", as: :paypal_hook
   get "/scan_ticket" => "bookings#scan_ticket", as: :scan_ticket
   get "/events/:id/scan" => "events#scan", as: :gatekeeper
   get "/scan_ticket/:ticket_no" => "bookings#use_ticket", as: :scan

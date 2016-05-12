@@ -27,6 +27,6 @@ class Ability
     end
 
     can :create, Booking
-    can :paypal_dummy, Booking
+    can :paypal_hook, Booking
   end
 end
