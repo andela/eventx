@@ -23,12 +23,12 @@ RSpec.feature "ScanTicket", type: :feature, js: true do
     fill_in "ticket_no", with: "MyString"
     click_button "search-button"
     expect(page).to have_content "Blessings wedding"
-    expect(page).to have_content "VALID"
+    expect(page).to have_content "Valid"
     find("#open-ticket-details").click
     expect(page).to have_content "Ticket Owner"
     find("#close-ticket-details").click
     click_link "Scan"
-    expect(page).to have_content "USED"
+    expect(page).to have_content "Used"
     find("#open-ticket-details").click
     expect(page).to have_content "Scanned by"
   end
