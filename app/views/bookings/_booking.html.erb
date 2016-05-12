@@ -1,0 +1,18 @@
+<div class="col s12 m4 l4">
+  <div class="card">
+    <div class="card-image">
+      <%=link_to image_tag(booking.event.image_url(:landing)), event_path(booking.event_id) %>
+      <span class="card-panel teal" style="position: relative; bottom: 8px; color: white"><%= booking.event.title %></span>
+      <%= booking.status %>
+    </div>
+    <div class="card-content">
+      <p><strong>Event Date: </strong><span class="card-title grey-text text-darken-4"><%= booking.event.start_date.strftime("%b %d, %Y") %></span></p>
+      <p><strong>Date Booked: </strong><span class="card-title grey-text text-darken-4"><%= booking.created_at.strftime("%b %d, %Y") %></span></p>
+      <p><strong>Status: </strong><%= booking.payment_status.capitalize %></p>
+      <%= booking.request_refund_button %>
+    </div>
+    <div class="card-action">
+      <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + " Download All Tickets", download_path(booking.id), {class: "grey-text left", target: "_blank"} %>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,10 @@
 <div id="main">
   <div class="wrapper">
     <%= render partial: "layouts/dashboard_sidebar"%>
-    <%= render partial: "all_tickets"%>
+    <div class="row">
+      <% @bookings.each do |b| %>
+        <%= render "booking", booking: b %>
+      <% end %>
+    </div>
   </div>
 </div>
