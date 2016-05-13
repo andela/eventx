@@ -52,5 +52,9 @@ FactoryGirl.define do
       start_date Time.zone.now - 86_400 * 7
       end_date Time.zone.now
     end
+
+    trait :cancelled do
+      enabled false
+    end
   end
 end
