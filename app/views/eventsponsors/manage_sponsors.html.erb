@@ -1,0 +1,50 @@
+<div class="our-new-custom-nav">
+   <%= render "layouts/nav" %>
+</div>
+
+<div class="event-section row remove-margin">
+  <div id="left">
+    <div id="sidebar">
+      <%= render partial: "layouts/dashboard_sidebar"%>
+    </div>
+  </div>
+  <div class="col s9 offset-s3" id="right">
+
+    <div class="row">
+      <h5>All Sponsors for <%= @event.title%> Event </h5>
+    </div>
+
+    <button data-target="modal1" class="btn modal-trigger">Modal</button>
+
+
+
+    <% @event_sponsors.each do |sponsor| %>
+    <div class="col s12 l4 m3">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="<%= sponsor.logo%>">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%= sponsor.name %><i class="material-icons right">more_vert</i></span>
+          <p><a href="#">This is a link</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        </div>
+        <div class="card-action"><a href="#">This is a link</a><a href="#">This is a link</a></div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Add New Sponsor</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>

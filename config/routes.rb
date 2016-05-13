@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   get "events/new"
   post "/events/:event_id/manage_staffs" => "manager_profiles#save_staffs",
        as: :save_staffs
+
+  get "/events/:event_id/event_sponsors" => "eventsponsors#manage_sponsors", as: :eventsponsor
+  post "/events/:event_id/event_sponsors" => "eventsponsors#create", as: :new_eventsponsor
+  put "/events/:event_id/event_sponsors" => "eventsponsors#update", as: :edit_eventsponsor
+  delete "/events/:event_id/event_sponsors" => "eventsponsors#destroy", as: :delete_eventsponsor
+
+
   get "/events/:event_id/manage_staffs" => "manager_profiles#manage_staffs",
       as: :manage_staffs
   get "/events/:event_id/remove_staff/:event_staff_id" =>

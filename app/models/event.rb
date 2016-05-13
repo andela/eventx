@@ -16,6 +16,7 @@ class Event < ActiveRecord::Base
   has_many :bookings
   has_many :user_tickets, through: :bookings
   has_many :attendees, through: :bookings, source: "user"
+  has_many :eventsponsors, dependent: :destroy
 
   belongs_to :manager_profile
   acts_as_tenant(:manager_profile)
