@@ -31,7 +31,7 @@ class BookingDecorator < Draper::Decorator
       h.link_to "Processing Request", "#", class: "btn disabled"
     else
       h.link_to "Request Refund", h.refund_path(uniq_id),
-                class: "btn", remote: true, method: :post
+                class: "btn", remote: true, method: :post, id: "request-refund"
     end
   end
 
