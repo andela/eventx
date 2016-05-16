@@ -1,0 +1,18 @@
+<div class="slider">
+  <% @events.each do |event| %>
+    <% @tickets = event.ticket_types.pluck(:price)%>
+      <ul class="slides">
+        <li>
+          <div class="Amount">
+              <%= event_price(@tickets, event) %>
+          </div>
+          <%=link_to (image_tag event.image_url(:landing)), event  %><!-- random image -->
+          <div class="caption center-align">
+            <div class="slid-box"><%= event.title %></div>
+            <div class="slid-desc-box"><%= event.description %></div>
+          </div>
+        </li>
+  <% end %>
+      </ul>
+</div>
+
