@@ -32,6 +32,7 @@ class EventsController < ApplicationController
     @booking.user = current_user
     @highlights = @event.highlights.decorate
     @event_ticket = @event.ticket_types
+    @event_sponsors = @event.eventsponsors
     1.times { @booking.user_tickets.build }
     respond_with @event
   end

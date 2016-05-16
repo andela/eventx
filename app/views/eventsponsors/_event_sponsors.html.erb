@@ -1,0 +1,16 @@
+<div id="eventSponsors">
+<div class="row gold-sponsors">
+  <h5>Gold Sponsors</h5>
+  <%= render partial: "eventsponsors/gold_sponsors", locals: { event_sponsors: group_by_level(@event_sponsors, "gold") }%>
+</div>
+
+<div class="row silver-sponsors">
+  <h5>Silver Sponsors</h5>
+  <%= render partial: "eventsponsors/gold_sponsors", locals: { event_sponsors: group_by_level(@event_sponsors, "silver") }%>
+</div>
+
+<div class="row bronze-sponsors">
+  <h5>Bronze Sponsors</h5>
+  <%= render partial: "eventsponsors/gold_sponsors", locals: { event_sponsors: group_by_level(@event_sponsors, "bronze") }%>
+</div>
+</div>

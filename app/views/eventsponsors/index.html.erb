@@ -1,0 +1,24 @@
+<div class="our-new-custom-nav">
+   <%= render "layouts/nav" %>
+</div>
+
+<div class="event-section row remove-margin">
+  <div id="left">
+    <div id="sidebar">
+      <%= render partial: "layouts/dashboard_sidebar"%>
+    </div>
+  </div>
+  <div class="col s9 offset-s3" id="right">
+
+    <div class="row">
+      <h5>All Sponsors for <%= @event.title%> Event </h5>
+    </div>
+
+    <%= can_add_event_sponsor %>
+    
+    <%= render partial: "event_sponsors" %>
+  </div>
+</div>
+<div id="toast">
+</div>
+<%= render partial: "sponsor_modal" %>

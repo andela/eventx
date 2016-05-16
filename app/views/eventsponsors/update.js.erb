@@ -1,0 +1,8 @@
+<% if remotipart_submitted? %>
+$("#eventSponsors").html("<%= j(render('event_sponsors', event_sponsors: @event_sponsors))%>")
+$("#addSponsorModal").closeModal();
+
+<% if flash[:success] || flash[:error] %>
+$("#toast").html("<%= j(render('event_sponsor_toast')) %>");
+<% end %>
+<% end %>
