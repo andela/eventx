@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-  # load_and_authorize_resource param_method: :request_refund
   before_action :authenticate_user, except: [:paypal_hook]
   before_action :set_event, only: :each_event_ticket
   before_action except: [:paypal_hook, :index, :each_event_ticket,
@@ -53,14 +52,14 @@ class BookingsController < ApplicationController
 
   def request_refund
     @booking = Booking.find_by_uniq_id(params[:uniq_id])
-    if @booking.update_attributes(
+    flash[:notice] = if @booking.update_attributes(
       refund_requested: true,
       time_requested: Time.now
     )
-      flash[:notice] = "Request for a refund has been sent"
-    else
-      flash[:notice] = "Request cannot be sent at this time."
-    end
+                       "Request for a refund has been sent"
+                     else
+                       "Request cannot be sent at this time."
+                     end
   end
 
   def use_ticket

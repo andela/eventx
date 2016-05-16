@@ -12,10 +12,7 @@ class Ability
     end
 
     if user.event_manager?
-      can [:update, :edit, :destroy, :enable, :disable],
-          Event,
-          manager_profile_id: user.manager_profile.id
-      can [:create, :new], Event
+      can :manage, Event
     end
 
     if user.bookings.present?
