@@ -18,4 +18,5 @@ RSpec.describe EventsController, type: :controller do
       ).to eq "MyTicket"
     end
   end
+
 end
