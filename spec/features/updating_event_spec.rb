@@ -1,18 +1,8 @@
 require "rails_helper"
 
-def visit_page_and_create_manage_profile
-  sign_up
-  click_link "Become An Event Manager"
-  fill_in "manager_profile[company_name]", with: "Our Comapany"
-  fill_in "manager_profile[company_mail]", with: "baba@yaho.com"
-  fill_in "manager_profile[company_phone]", with: "08023439399"
-  fill_in "manager_profile[subdomain]", with: "ladyb"
-  click_button "Submit"
-end
-
 RSpec.feature "Event Manager edits event", type: :feature, js: true do
   scenario "Manager logs in and tries to edit event" do
-    visit_page_and_create_manage_profile
+    sign_up_and_create_an_event_manager
     visit root_path
     click_link "Create Event"
     fill_in "event[title]", with: "This is a test Event"
@@ -64,7 +54,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
   end
 
   scenario "Manager fills in a long description" do
-    visit_page_and_create_manage_profile
+    sign_up_and_create_an_event_manager
     visit root_path
     click_link "Create Event"
     fill_in "event[title]", with: "This is a test Event"
@@ -93,7 +83,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
   end
 
   scenario "Manager fills in a short description" do
-    visit_page_and_create_manage_profile
+    sign_up_and_create_an_event_manager
     visit root_path
     click_link "Create Event"
     fill_in "event[title]", with: "This is a test Event"
@@ -122,7 +112,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
   end
 
   scenario "Manager does not create ticket" do
-    visit_page_and_create_manage_profile
+    sign_up_and_create_an_event_manager
     visit root_path
     click_link "Create Event"
     fill_in "event[title]", with: "This is a test Event"

@@ -92,7 +92,7 @@ class EventsController < ApplicationController
   end
 
   def popular
-    @events = Event.popular_events
+    @popular_events = Event.popular_events
   end
 
   private

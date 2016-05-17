@@ -49,7 +49,9 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     end
 
     visit tickets_path
-    click_link("Download All Tickets")
+    page.find('#downloadticket').trigger("click")
+    expect(page.current_path).to eq "/tickets"
+
     visit print_path(25)
     expect(page).to have_content "Booking not found"
     expect(page).to have_content "My Events"
