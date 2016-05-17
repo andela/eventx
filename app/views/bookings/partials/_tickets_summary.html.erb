@@ -9,8 +9,8 @@
       <th>S/N</th>
       <th>Name</th>
       <th>Quantity</th>
-      <th>Ticket Left</th>
       <th>Quantity Sold</th>
+      <th>Ticket Left</th>
       <th>Price</th>
       <th>Amount</th>
     </tr>
@@ -21,8 +21,8 @@
             <td><%= index + 1%></td>
             <td><%= ticket.name %></td>
             <td><%= ticket.quantity %></td>
-            <td><%= ticket.remains %></td>
             <td><%= ticket.tickets_sold %></td>
+            <td><%= ticket.remains %></td>
             <td><%= number_to_currency(ticket.price)%></td>
             <td><%= number_to_currency(ticket.amount)%></td>
           </tr>

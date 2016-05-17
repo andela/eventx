@@ -1,6 +1,9 @@
 
         <h5>All Bookings</h5>
         <hr /> 
+ <% if @presenter.all_bookings.empty? %>
+          <i>No bookings yet</i>
+ <% else %> 
         <table class="responsive-table bordered striped">
           <thead>
           <tr>
@@ -13,7 +16,7 @@
             <th>TicketID</th>
           </tr>
       <tbody>
-      <% @presenter.all_bookings.each_with_index do |booking, index|%>        
+    <% @presenter.all_bookings.each_with_index do |booking, index| %>        
                 <tr>
                   <td><%= index+1 %></td>
                   <td><%= booking.created_at.to_formatted_s(:long_ordinal) %></td>
@@ -22,7 +25,8 @@
                   <td><%= booking.user_tickets_count %></td>
                   <td><%= booking.uniq_id %></td>
                 </tr>
-      <% end %>
+    <% end %>
+ <% end %> 
 
 <div class="center-align" id="pagination" >
   <%= will_paginate @presenter.all_bookings , renderer: MaterializePagination::Rails %>

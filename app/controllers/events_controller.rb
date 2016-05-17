@@ -84,9 +84,9 @@ class EventsController < ApplicationController
     @bookings = current_user.user_tickets_for_event(params[:id])
   end
 
-  def tickets_report 
+  def tickets_report
     @presenter = Events::TicketsReportPresenter.new(@event)
-  end 
+  end
 
   def generate
     calendar = @event.calendar
@@ -131,5 +131,3 @@ class EventsController < ApplicationController
   def loading
   end
 end
-
-
