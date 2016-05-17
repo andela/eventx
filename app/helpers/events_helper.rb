@@ -1,4 +1,5 @@
 module EventsHelper
+
   def user_is_attending_event(event = @event)
     event.attending?(current_user) if current_user
   end

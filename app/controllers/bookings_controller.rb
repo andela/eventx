@@ -48,6 +48,12 @@ class BookingsController < ApplicationController
   end
 
   def paypal_dummy
+    params.permit!
+    status = params[:payment_status]
+    if status == "Completed"
+      response = validate_ipn_notification(request.raw_post)
+      examine_booking(response)
+    end
     redirect_to tickets_path
   end
 
