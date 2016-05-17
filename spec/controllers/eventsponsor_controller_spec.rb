@@ -7,17 +7,19 @@ RSpec.describe EventsponsorsController, type: :controller do
 
   before(:each) do
     allow_any_instance_of(ApplicationController).
-      to receive(:current_user).and_return(@event_sponsor.event.manager_profile.user)
+      to receive(:current_user).and_return(
+        @event_sponsor.event.manager_profile.user
+      )
   end
 
   describe "GET index" do
     context "when event has sponsors" do
       before do
-        xhr :get, :index, event_id: @event_sponsor.event.id
+        get :index, event_id: @event_sponsor.event.id
       end
 
       it "should assign eventsponsor" do
-        expect(assigns[:event_sponsor].count).to eq 1
+        expect(assigns[:event_sponsors].count).to eq 1
       end
     end
   end
@@ -25,11 +27,12 @@ RSpec.describe EventsponsorsController, type: :controller do
   describe "POST create" do
     context "when creating a new event sponsor" do
       let(:valid_create_request) do
-        post(
-          :create,
-          event_id: @event_sponsor.event.id,
-          eventsponsor: attributes_for(:eventsponsor)
-        )
+      xhr(
+        :post,
+        :create,
+        event_id: @event_sponsor.event.id,
+        eventsponsor: attributes_for(:eventsponsor)
+      )
       end
 
       it "returns success flash message" do
@@ -46,7 +49,8 @@ RSpec.describe EventsponsorsController, type: :controller do
 
     context "when creating a new event sponsor with invalid data" do
       let(:invalid_create_request) do
-        post(
+        xhr(
+          :post,
           :create,
           event_id: @event_sponsor.event.id,
           eventsponsor: attributes_for(:eventsponsor, name: nil, logo: nil)
@@ -69,7 +73,8 @@ RSpec.describe EventsponsorsController, type: :controller do
   describe "PUT update" do
     context "when updating an event sponsor with valid data" do
       let(:valid_update_request) do
-        put(
+        xhr(
+          :put,
           :update,
           event_id: @event_sponsor.event.id,
           eventsponsor: attributes_for(:eventsponsor),
@@ -85,7 +90,8 @@ RSpec.describe EventsponsorsController, type: :controller do
 
     context "when updating an event sponsor with invalid data" do
       let(:invalid_update_request) do
-        put(
+        xhr(
+          :put,
           :update,
           event_id: @event_sponsor.event.id,
           eventsponsor: attributes_for(:eventsponsor, name: nil),
@@ -103,7 +109,8 @@ RSpec.describe EventsponsorsController, type: :controller do
   describe "DELETE destroy" do
     it "should decrease event sponsors count" do
       expect do
-        delete(
+        xhr(
+          :delete,
           :destroy,
           event_id: @event_sponsor.event.id,
           id: @event_sponsor.id

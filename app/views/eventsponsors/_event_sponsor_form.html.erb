@@ -5,7 +5,7 @@
   </div>
   <div class="input-field col l4">
     <%= f.label :url, "Website", class: "bold black-text" %>
-    <%= f.text_field :url, class: "validate", required: :required,  pattern: ".{3,100}", title: "3 to 100 characters required" %>
+    <%= f.text_field :url, class: "validate", required: :required,  pattern: "(https?://)?([a-z0-9]+\\.)?[a-z0-9\\-]+\\.[a-z]+.+[^\\W\\_]", title: "3 to 100 characters required" %>
   </div>
   <div class="sponsor-level col l4">
     <%= f.label :level, "Level", class: "bold black-text" %>
@@ -21,6 +21,6 @@
   </div>
   <div class="modal-footer">
     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-    <%= f.submit "Save" %>
+    <%= f.submit "Save", id: "saveSponsor" %>
   </div>
 <% end %>

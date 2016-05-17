@@ -11,7 +11,10 @@ module EventsponsorsHelper
 
   def can_manage_sponsor(sponsor)
     if event_manager?
-      render partial: "eventsponsors/manage_sponsor", locals: { sponsor: sponsor }
+      render(
+        partial: "eventsponsors/manage_sponsor",
+        locals: { sponsor: sponsor }
+      )
     end
   end
 

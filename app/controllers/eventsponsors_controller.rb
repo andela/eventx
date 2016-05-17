@@ -12,8 +12,8 @@ class EventsponsorsController < ApplicationController
   end
 
   def create
-    event_sponsor = @event.eventsponsors.new(event_sponsor_params)
-    if event_sponsor.save
+    @event_sponsor = @event.eventsponsors.new(event_sponsor_params)
+    if @event_sponsor.save
       flash[:success] = "Event sponsor added"
     else
       flash[:error] = "Unable to create event sponsor"
@@ -25,8 +25,9 @@ class EventsponsorsController < ApplicationController
   end
 
   def update
-    event_sponsor = @event.eventsponsors.find_by(id: params[:id])
-    if event_sponsor.update(event_sponsor_params)
+    @event_sponsor = @event.eventsponsors.find_by(id: params[:id])
+      binding.pry
+    if @event_sponsor.update(event_sponsor_params)
       flash[:success] = "Event sponsor updated"
     else
       flash[:error] = "Unable to update event sponsor"
