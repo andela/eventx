@@ -1,5 +1,4 @@
-<div class="card-action" style="color:black !important;">
+<div class="card-action manage-sponsor">
   <%= link_to "Edit", edit_event_eventsponsor_path(@event.id, sponsor.id), class: "btn", remote: true, id: "addSponsor"%>
-  <%= link_to "Delete", event_eventsponsor_path(@event.id, sponsor.id), method: :delete, class: "btn", remote: true%>
-  <a href="#">This is a link</a><a href="#">This is a link</a>
+  <%= link_to "Delete", event_eventsponsor_path(@event.id, sponsor.id), method: :delete, class: "btn", remote: true, data: {confirm: "Are you sure"}%>
 </div>

@@ -2,20 +2,24 @@
    <%= render "layouts/nav" %>
 </div>
 
-<div class="event-section row remove-margin">
+<div class="event-section row event-sponsors-main center">
   <div id="left">
     <div id="sidebar">
       <%= render partial: "layouts/dashboard_sidebar"%>
     </div>
   </div>
-  <div class="col s9 offset-s3" id="right">
+  <div id="right">
 
     <div class="row">
-      <h5>All Sponsors for <%= @event.title%> Event </h5>
+      <div class="col l6">
+        <h5>All Sponsors for <%= @event.title%> Event </h5>
+      </div>
+      <div class="col l6">
+        <%= can_add_event_sponsor %>
+      </div>
     </div>
 
-    <%= can_add_event_sponsor %>
-    
+
     <%= render partial: "event_sponsors" %>
   </div>
 </div>

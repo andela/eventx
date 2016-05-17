@@ -10,10 +10,21 @@ module EventsponsorsHelper
   end
 
   def can_manage_sponsor(sponsor)
-    can_manage = current_user ? current_user.event_manager? : false
-    if can_manage
+    if event_manager?
       render partial: "eventsponsors/manage_sponsor", locals: { sponsor: sponsor }
     end
+  end
+
+  def add_sponsor
+    if event_manager?
+      "Add Sponsor"
+    else
+      "Become A Sponsor"
+    end
+  end
+
+  def event_manager?
+    current_user ? current_user.event_manager? : false
   end
 
   def can_add_event_sponsor

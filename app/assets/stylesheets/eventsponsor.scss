@@ -3,3 +3,19 @@
     display: block !important;
   }
 }
+
+.card-content a {
+  color: #2bbbad !important;
+}
+
+.event-sponsors-main {
+  padding-left: 255px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.manage-sponsor {
+  & .btn {
+    margin-left: 20px;
+  }
+}
