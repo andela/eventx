@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="card-action">
-        <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + "Download All Tickets", download_path(booking.id), {class: "grey-text left", target: "_blank"}%>
+        <%= link_to content_tag(:i, "", class: "fa fa-floppy-o", id: "downloadticket") + "Download All Tickets", download_path(booking.id), {class: "grey-text left", target: "_blank"}%>
       </div>
     </div>
   </div>

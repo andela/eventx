@@ -91,6 +91,10 @@ class EventsController < ApplicationController
     render text: calendar.to_ical
   end
 
+  def popular
+    @popular_events = Event.popular_events
+  end
+
   private
 
   def search_params
