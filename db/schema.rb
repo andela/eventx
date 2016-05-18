@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505091750) do
+ActiveRecord::Schema.define(version: 20160512130617) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,13 +23,18 @@ ActiveRecord::Schema.define(version: 20160505091750) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "uniq_id"
     t.integer  "amount"
     t.string   "txn_id"
-    t.integer  "payment_status",     default: 0, null: false
+    t.integer  "payment_status",     default: 0,     null: false
     t.integer  "user_tickets_count", default: 0
+    t.boolean  "refund_requested",   default: false
+    t.datetime "time_requested"
+    t.boolean  "granted",            default: false
+    t.integer  "granted_by"
+    t.datetime "time_granted"
   end
 
   add_index "bookings", ["event_id"], name: "index_bookings_on_event_id"

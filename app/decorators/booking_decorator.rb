@@ -21,4 +21,24 @@ class BookingDecorator < Draper::Decorator
   def get_ticket_display(type, type_id, quantity)
     h.content_tag(:option, type + ": #{quantity}", value: type_id)
   end
+
+  def request_refund_button
+    generate_request_refund_button.html_safe if h.can? :request_refund, object
+  end
+
+  def generate_request_refund_button
+    if refund_requested
+      h.link_to "Processing Request", "#", class: "btn disabled print-box-size"
+    else
+      h.link_to "Request Refund", h.refund_path(uniq_id),
+                class: "btn print-box-size",
+                remote: true, method: :post, id: "request-refund"
+    end
+  end
+
+  def status
+    "<span class='card-panel red right' \
+    style='position: relative; bottom: 37px; color: white'>
+    Cancelled</span>".html_safe unless event.enabled
+  end
 end

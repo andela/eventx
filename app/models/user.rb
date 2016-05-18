@@ -40,10 +40,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def user_tickets
-    bookings.order(id: :desc).decorate
-  end
-
   def user_tickets_for_event(event_id)
     bookings.where(
       event_id: event_id).order(id: :desc).decorate

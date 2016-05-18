@@ -1,30 +1,29 @@
 <div class="row">
   <% @bookings.each_with_index do |booking, index|%>
-  <div class="col s12 m4 l4">
-    <div class="card medium">
-      <div class="card-image">
-        <%=link_to image_tag(booking.event.image_url(:landing)), event_path(booking.event_id) %>
-        <span class="card-title card-panel red darken-3 "><%=booking.event.title %></span>
-      </div>
-      <div class="card-content row alignbox">
-        <div class="col l8 ">
-        <%= form_tag(controller: "printer", action: "redirect_to_print" ) do %>
-          <select name="ticket_type_id" id='dropdown-<%= "#{index}" %> ' class='browser-default ticket-select' >
-            <%= booking.show_ticket_types %>
-            <option value="">Print All</option>
-          </select>
-          <%= hidden_field_tag :booking_id, booking.id %>
+    <div class="col s12 m4 l4">
+      <div class="card medium">
+        <div class="card-image">
+          <%=link_to image_tag(booking.event.image_url(:landing)), event_path(booking.event_id) %>
+          <span class="card-title card-panel red darken-3 "><%=booking.event.title %></span>
         </div>
-        <div class="col l4 ">
-          <%= submit_tag "Print Ticket", class: "waves-light btn print-box-size" %>
-          <% end %>
+        <div class="card-content row alignbox">
+          <div class="col l8 ">
+          <%= form_tag(controller: "printer", action: "redirect_to_print" ) do %>
+            <select name="ticket_type_id" id='dropdown-<%= "#{index}" %> ' class='browser-default ticket-select' >
+              <%= booking.show_ticket_types %>
+              <option value="">Print All</option>
+            </select>
+            <%= hidden_field_tag :booking_id, booking.id %>
+          </div>
+          <div class="col l4 ">
+            <%= submit_tag "Print Ticket", class: "waves-light btn print-box-size" %>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="card-action">
-        <%= link_to content_tag(:i, "", class: "fa fa-floppy-o", id: "downloadticket") + "Download All Tickets", download_path(booking.id), {class: "grey-text left", target: "_blank"}%>
+        <div class="card-action">
+          <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + "Download All Tickets", download_path(booking.id), html: { class: "grey-text left", target: "_blank", id: "download-ticket" } %>
+        </div>
       </div>
     </div>
-  </div>
   <% end %>
 </div>
-

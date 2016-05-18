@@ -1,10 +1,8 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user,
-                except: [:paypal_hook, :paypal_dummy]
+  before_action :authenticate_user, except: [:paypal_hook]
   before_action :set_event, only: :each_event_ticket
-  before_action except: [:paypal_hook, :index,
-                         :paypal_dummy, :each_event_ticket,
-                         :scan_ticket, :use_ticket] do
+  before_action except: [:paypal_hook, :index, :each_event_ticket,
+                         :scan_ticket, :use_ticket, :request_refund] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -19,7 +17,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = current_user.user_tickets
+    @bookings = current_user.bookings.order(id: :desc).decorate
   end
 
   def create
@@ -44,22 +42,24 @@ class BookingsController < ApplicationController
       response = validate_ipn_notification(request.raw_post)
       examine_booking(response)
     end
-    render nothing: true
-  end
-
-  def paypal_dummy
-    params.permit!
-    status = params[:payment_status]
-    if status == "Completed"
-      response = validate_ipn_notification(request.raw_post)
-      examine_booking(response)
-    end
     redirect_to tickets_path
   end
 
   def scan_ticket
     @user_ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
     flash[:notice] = "Ticket does not exist" unless @user_ticket
+  end
+
+  def request_refund
+    @booking = Booking.find_by_uniq_id(params[:uniq_id])
+    flash[:notice] = if @booking.update_attributes(
+      refund_requested: true,
+      time_requested: Time.now
+    )
+                       "Request for a refund has been sent"
+                     else
+                       "Request cannot be sent at this time."
+                     end
   end
 
   def use_ticket
@@ -93,7 +93,7 @@ class BookingsController < ApplicationController
       trigger_booking_mail
       redirect_to tickets_path
     else
-      redirect_to @booking.paypal_url(paypal_dummy_path)
+      redirect_to @booking.paypal_url(paypal_hook_path)
     end
   end
 

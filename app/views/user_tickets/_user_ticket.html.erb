@@ -3,13 +3,11 @@
     <div class="card">
       <div class="card-image">
         <img src="<%= @user_ticket.booking.event.image_url(:landing) %>">
-        <div class="center">
           <% if @user_ticket.is_used %>
-          <a class="btn red"><i class="material-icons">not_interested</i> Used</a>
+          <span class="card-panel red" style="position: absolute; bottom: 8px; color: white"><i class="material-icons">not_interested</i> Used</span>
           <% else %>
-          <a class="btn green"><i class="material-icons">verified_user</i> Valid</a>
+          <span class="card-panel teal" style="position: absolute; bottom: 8px; color: white"><i class="material-icons">verified_user</i> Valid</span>
           <% end %>
-        </div>
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4"><%= @user_ticket.booking.event.title %><i class="material-icons right" id="open-ticket-details">more_vert</i></span>
