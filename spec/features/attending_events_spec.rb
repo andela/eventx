@@ -48,8 +48,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       click_button "Submit"
     end
 
-    visit tickets_path
-    page.find('#downloadticket').trigger("click")
+    expect(page).to have_content "DOWNLOAD ALL TICKETS"
     expect(page.current_path).to eq "/tickets"
 
     visit print_path(25)
