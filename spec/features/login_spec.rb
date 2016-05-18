@@ -34,7 +34,7 @@ RSpec.feature "Login:", type: :feature, js: true do
   scenario "User tries to create event" do
     sign_up
     visit "/events/new"
-    expect(page).to have_content "BECOME AN EVENT MANAGER"
+    expect(page).to have_content "You are not authorized to access this page"
   end
 
   scenario "User tries to edit event" do
