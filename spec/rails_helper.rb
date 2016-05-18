@@ -54,6 +54,7 @@ RSpec.configure do |config|
   config.include ApplicationHelper
   config.include Requests::JsonHelper, type: :controller
   config.include Requests::ApiHelper, type: :controller
+  config.include Requests::ApiHelper, type: :feature
 end
 
 Shoulda::Matchers.configure do |config|
