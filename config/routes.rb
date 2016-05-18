@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   get "/tickets" => "bookings#index"
   get "/events/:id/tickets" =>
           "events#tickets", as: :event_tickets
+
+  get "/events/:id/tickets-report" =>
+          "events#tickets_report", as: :tickets_report
+
   get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
   post "/print/:id" => "printer#redirect_to_print"
   get "/print/:id" => "printer#redirect_to_print"
@@ -45,8 +49,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
   get "/remit/:id", to: "remit#new", as: :remit
-  get "/events/:id/:highlight_id" =>
-    "events#show_event_highlight", as: :show_event_highlight
   resources :users, only: [:show]
   get "*unmatched_route", to: "application#no_route_found"
 end

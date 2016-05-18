@@ -11,7 +11,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-
+.gtotal {
+  font-weight: bold; 
+}
 .clockpicker-display {
   vertical-align: middle;
   display: inline-block;

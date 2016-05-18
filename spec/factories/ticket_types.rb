@@ -8,5 +8,11 @@ FactoryGirl.define do
     factory :ticket_type_paid do
       price "9.99"
     end
+
+    trait :paid do
+      name "PaidTicket"
+      price "9.99"
+      quantity 2
+    end
   end
 end

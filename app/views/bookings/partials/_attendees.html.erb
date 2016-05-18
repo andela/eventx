@@ -1,0 +1,32 @@
+ 
+        <h5>Attendees</h5> 
+       <hr />
+<% if @presenter.attendees.empty? %>
+    <i>No Attendees!</i>
+<% else %>
+        <table class="responsive-table bordered striped">
+          <thead>
+          <tr>
+          <div class="padtable">
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Sigup Date</th>
+          </tr>
+      <tbody>
+
+  <% @presenter.attendees.each_with_index do |attendee, index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= [attendee.first_name, attendee.last_name].join(' ')%></td>
+        <td><%= attendee.email %></td>
+        <td><%= attendee.created_at.to_formatted_s(:long_ordinal) %></td>
+      </tr>
+  <% end %> 
+          <tr class="gtotal"> 
+          <td>Total Number of Attendees</td>
+          <td colspan="4"><%= @presenter.attendees.count %></td>
+        </tr>
+        </tbody>
+</table> 
+<% end %> 

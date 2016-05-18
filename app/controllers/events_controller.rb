@@ -8,7 +8,8 @@ class EventsController < ApplicationController
     :enable,
     :disable,
     :generate,
-    :scan
+    :scan,
+    :tickets_report
   ]
 
   respond_to :html, :json, :js
@@ -81,6 +82,10 @@ class EventsController < ApplicationController
 
   def tickets
     @bookings = current_user.user_tickets_for_event(params[:id])
+  end
+
+  def tickets_report
+    @presenter = Events::TicketsReportPresenter.new(@event)
   end
 
   def generate

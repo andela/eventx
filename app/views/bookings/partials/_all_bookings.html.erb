@@ -1,0 +1,36 @@
+
+        <h5>All Bookings</h5>
+        <hr /> 
+ <% if @presenter.all_bookings.empty? %>
+          <i>No bookings yet</i>
+ <% else %> 
+        <table class="responsive-table bordered striped">
+          <thead>
+          <tr>
+          <div class="padtable">
+            <th data-field="sn">S/N</th>
+            <th data-field="purchase">Purchase Date</th>
+            <th data-field="payment">Payment Status</th>
+            <th data-field="amount">Amount</th>
+            <th data-field="ticket">Number of Tickets</th>
+            <th>TicketID</th>
+          </tr>
+      <tbody>
+    <% @presenter.all_bookings.each_with_index do |booking, index| %>        
+                <tr>
+                  <td><%= index+1 %></td>
+                  <td><%= booking.created_at.to_formatted_s(:long_ordinal) %></td>
+                  <td><%= booking.payment_status %></td>
+                  <td>$ <%= booking.amount %>.00</td>
+                  <td><%= booking.user_tickets_count %></td>
+                  <td><%= booking.uniq_id %></td>
+                </tr>
+    <% end %>
+ <% end %> 
+
+<div class="center-align" id="pagination" >
+  <%= will_paginate @presenter.all_bookings , renderer: MaterializePagination::Rails %>
+  </div>
+        </tbody>
+      </table> 
+

@@ -12,7 +12,8 @@ class Ability
     end
 
     if user.event_manager?
-      can :manage, Event
+      can :manage, Event,
+          manager_profile_id: user.manager_profile.id
     else
       can :read, Event
     end
