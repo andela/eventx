@@ -28,5 +28,11 @@ module Requests
       post :api_login, params
       @api_key = json["api_key"]
     end
+
+    def page_should_have_content(contents)
+      contents.each do |content|
+        expect(page).to have_content(content)
+      end
+    end
   end
 end
