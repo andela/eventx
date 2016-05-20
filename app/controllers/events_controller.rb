@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     :scan,
     :tickets_report
   ]
+  before_action :set_sponsor, only: [:show, :edit, :update]
 
   respond_to :html, :json, :js
 
@@ -32,7 +33,6 @@ class EventsController < ApplicationController
     @booking.user = current_user
     @highlights = @event.highlights.decorate
     @event_ticket = @event.ticket_types
-    @event_sponsors = @event.eventsponsors
     1.times { @booking.user_tickets.build }
     respond_with @event
   end
@@ -131,6 +131,10 @@ class EventsController < ApplicationController
     else
       @event = @event.decorate
     end
+  end
+
+  def set_sponsor
+    @event_sponsors = @event.eventsponsors.group_by(&:level)
   end
 
   def loading

@@ -1,4 +1,3 @@
-<%= remotipart_response do %>
 <% unless @event_sponsor.errors.any? %>
 $("#eventSponsors").html("<%= j(render('event_sponsors', event_sponsors: @event_sponsors))%>")
 $("#addSponsorModal").closeModal();
@@ -6,5 +5,4 @@ $("#toast").html("<%= j(render('event_sponsor_toast')) %>");
 <% else %>
 $("#toast").html("<%= j(render('event_sponsor_toast')) %>");
 $("#addSponsorModal").closeModal();
-<% end %>
 <% end %>

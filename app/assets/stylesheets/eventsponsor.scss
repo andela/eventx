@@ -15,7 +15,27 @@
 }
 
 .manage-sponsor {
-  & .btn {
-    margin-left: 20px;
-  }
+  cursor: pointer;
+  position: absolute;
+  right: 2px;
+  top: 10px;
+}
+
+.delete-sponsor-icon {
+  color: #EA4335;
+}
+
+.edit-sponsor-icon {
+  color: inherit;
+}
+
+.save-sponsor-button {
+  margin: 5px !important;
+}
+
+.cancel-sponsor-button {
+  background: #EA4335;
+}
+.cancel-sponsor-button:hover {
+  background: #EA4335;
 }

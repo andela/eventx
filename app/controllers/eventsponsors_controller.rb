@@ -4,7 +4,7 @@ class EventsponsorsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @event_sponsors = @event.eventsponsors
+    @event_sponsors = @event.eventsponsors.group_by(&:level)
   end
 
   def new
@@ -26,7 +26,6 @@ class EventsponsorsController < ApplicationController
 
   def update
     @event_sponsor = @event.eventsponsors.find_by(id: params[:id])
-      binding.pry
     if @event_sponsor.update(event_sponsor_params)
       flash[:success] = "Event sponsor updated"
     else
@@ -47,7 +46,7 @@ class EventsponsorsController < ApplicationController
   end
 
   def all_sponsors
-    @event_sponsors = @event.eventsponsors
+    @event_sponsors = @event.eventsponsors.group_by(&:level)
   end
 
   def find_event

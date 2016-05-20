@@ -1,14 +1,4 @@
 module EventsponsorsHelper
-  def group_by_level(events, level)
-    level_sponsors = []
-    events.each do |event|
-      if event.level == level
-        level_sponsors << event
-      end
-    end
-    level_sponsors
-  end
-
   def can_manage_sponsor(sponsor)
     if event_manager?
       render(
@@ -18,12 +8,21 @@ module EventsponsorsHelper
     end
   end
 
+  def show_level(sponsor_level, level)
+    return "" if @event_sponsors[level].nil?
+    sponsor_level
+  end
+
   def add_sponsor
     if event_manager?
       "Add Sponsor"
     else
       "Become A Sponsor"
     end
+  end
+
+  def sponsor_level
+    Eventsponsor.levels.keys
   end
 
   def event_manager?

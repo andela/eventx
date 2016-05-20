@@ -1,4 +1,8 @@
-<div class="card-action manage-sponsor">
-  <%= link_to "Edit", edit_event_eventsponsor_path(@event.id, sponsor.id), class: "btn", remote: true, id: "addSponsor"%>
-  <%= link_to "Delete", event_eventsponsor_path(@event.id, sponsor.id), method: :delete, class: "btn", remote: true, data: {confirm: "Are you sure"}%>
+<div class="manage-sponsor">
+  <%= link_to event_eventsponsor_path(@event.id, sponsor.id), method: :delete, class: "delete-sponsor-icon", remote: true, data: { confirm: "Are you sure?" } do %>
+  <i class="material-icons">delete</i>
+  <% end %>
+  <%= link_to edit_event_eventsponsor_path(@event.id, sponsor.id), remote: true, class: "edit-sponsor-icon" do %>
+  <i class="material-icons" id="addSponsor">mode_edit</i>
+  <% end %>
 </div>
