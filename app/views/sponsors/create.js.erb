@@ -1,5 +1,5 @@
-<% unless @event_sponsor.errors.any? %>
-$("#eventSponsors").html("<%= j(render('event_sponsors', event_sponsors: @event_sponsors))%>")
+<% unless @sponsor.errors.any? %>
+$("#eventSponsors").html("<%= j(render('event_sponsors', sponsors: @sponsors))%>")
 $("#addSponsorModal").closeModal();
 $("#toast").html("<%= j(render('event_sponsor_toast')) %>");
 <% else %>

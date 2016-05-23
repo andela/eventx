@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513133744) do
+ActiveRecord::Schema.define(version: 20160520145755) do
+
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
@@ -103,19 +104,6 @@ ActiveRecord::Schema.define(version: 20160513133744) do
 
   add_index "events", ["manager_profile_id"], name: "index_events_on_manager_profile_id"
 
-  create_table "eventsponsors", force: :cascade do |t|
-    t.string   "name"
-    t.string   "logo"
-    t.string   "url"
-    t.text     "summary"
-    t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "level"
-  end
-
-  add_index "eventsponsors", ["event_id"], name: "index_eventsponsors_on_event_id"
-
   create_table "highlights", force: :cascade do |t|
     t.integer  "event_id"
     t.string   "title"
@@ -149,6 +137,19 @@ ActiveRecord::Schema.define(version: 20160513133744) do
     t.string   "status",       default: "requested"
     t.integer  "event_id"
   end
+
+  create_table "sponsors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "logo"
+    t.string   "url"
+    t.text     "summary"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "level"
+  end
+
+  add_index "sponsors", ["event_id"], name: "index_sponsors_on_event_id"
 
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"

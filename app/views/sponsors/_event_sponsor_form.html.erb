@@ -1,4 +1,4 @@
-<%= form_for(event_sponsor, url: event_eventsponsors_path(event_sponsor.event_id) + "/#{event_sponsor.id}", remote: true) do |f| %>
+<%= form_for(sponsor, url: event_sponsors_path(sponsor.event_id) + "/#{sponsor.id}", remote: true) do |f| %>
   <div class="col l4">
     <%= f.label :name, "Name", class: "bold black-text" %>
     <%= f.text_field :name, placeholder:"Name", class: "validate", required: :require,  pattern: ".{3,100}", title: "3 to 100 characters required" %>

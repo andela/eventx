@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :eventsponsor do
+  factory :sponsor do
     name { Faker::Company.name }
     logo Faker::Company.logo
     url { Faker::Internet.url }

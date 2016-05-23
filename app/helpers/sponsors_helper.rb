@@ -1,16 +1,23 @@
-module EventsponsorsHelper
+module SponsorsHelper
   def can_manage_sponsor(sponsor)
     if event_manager?
       render(
-        partial: "eventsponsors/manage_sponsor",
+        partial: "sponsors/manage_sponsor",
         locals: { sponsor: sponsor }
       )
     end
   end
 
   def show_level(sponsor_level, level)
-    return "" if @event_sponsors[level].nil?
-    sponsor_level
+    if @sponsors.empty?
+      ""
+    else
+      if @sponsors[level]
+        sponsor_level
+      else
+        ""
+      end
+    end
   end
 
   def add_sponsor
@@ -22,7 +29,7 @@ module EventsponsorsHelper
   end
 
   def sponsor_level
-    Eventsponsor.levels.keys
+    Sponsor.levels.keys
   end
 
   def event_manager?
@@ -31,7 +38,7 @@ module EventsponsorsHelper
 
   def can_add_event_sponsor
     if current_user
-      render partial: "eventsponsors/add_sponsor"
+      render partial: "sponsors/add_sponsor"
     end
   end
 end

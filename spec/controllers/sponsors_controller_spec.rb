@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.describe EventsponsorsController, type: :controller do
+RSpec.describe SponsorsController, type: :controller do
   before(:all) do
-    @event_sponsor = create(:eventsponsor)
+    @event_sponsor = create(:sponsor)
   end
 
   before(:each) do
@@ -19,7 +19,7 @@ RSpec.describe EventsponsorsController, type: :controller do
       end
 
       it "should assign eventsponsor" do
-        expect(assigns[:event_sponsors].count).to eq 1
+        expect(assigns[:sponsors].count).to eq 1
       end
     end
   end
@@ -31,7 +31,7 @@ RSpec.describe EventsponsorsController, type: :controller do
         :post,
         :create,
         event_id: @event_sponsor.event.id,
-        eventsponsor: attributes_for(:eventsponsor)
+        sponsor: attributes_for(:sponsor)
       )
       end
 
@@ -43,7 +43,7 @@ RSpec.describe EventsponsorsController, type: :controller do
       it "should increase event sponsors count by 1" do
         expect do
           valid_create_request
-        end.to change(Eventsponsor, :count).by(1)
+        end.to change(Sponsor, :count).by(1)
       end
     end
 
@@ -53,7 +53,7 @@ RSpec.describe EventsponsorsController, type: :controller do
           :post,
           :create,
           event_id: @event_sponsor.event.id,
-          eventsponsor: attributes_for(:eventsponsor, name: nil, logo: nil)
+          sponsor: attributes_for(:sponsor, name: nil)
         )
       end
 
@@ -65,7 +65,7 @@ RSpec.describe EventsponsorsController, type: :controller do
       it "should not increase event sponsors" do
         expect do
           invalid_create_request
-        end.to change(Eventsponsor, :count).by(0)
+        end.to change(Sponsor, :count).by(0)
       end
     end
   end
@@ -77,7 +77,7 @@ RSpec.describe EventsponsorsController, type: :controller do
           :put,
           :update,
           event_id: @event_sponsor.event.id,
-          eventsponsor: attributes_for(:eventsponsor),
+          sponsor: attributes_for(:sponsor),
           id: @event_sponsor.id
         )
       end
@@ -94,7 +94,7 @@ RSpec.describe EventsponsorsController, type: :controller do
           :put,
           :update,
           event_id: @event_sponsor.event.id,
-          eventsponsor: attributes_for(:eventsponsor, name: nil),
+          sponsor: attributes_for(:sponsor, name: nil),
           id: @event_sponsor.id
         )
       end
@@ -115,7 +115,7 @@ RSpec.describe EventsponsorsController, type: :controller do
           event_id: @event_sponsor.event.id,
           id: @event_sponsor.id
         )
-      end.to change(Eventsponsor, :count).by(-1)
+      end.to change(Sponsor, :count).by(-1)
     end
   end
 end
