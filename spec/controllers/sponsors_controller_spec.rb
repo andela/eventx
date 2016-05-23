@@ -27,12 +27,12 @@ RSpec.describe SponsorsController, type: :controller do
   describe "POST create" do
     context "when creating a new event sponsor" do
       let(:valid_create_request) do
-      xhr(
-        :post,
-        :create,
-        event_id: @event_sponsor.event.id,
-        sponsor: attributes_for(:sponsor)
-      )
+        xhr(
+          :post,
+          :create,
+          event_id: @event_sponsor.event.id,
+          sponsor: attributes_for(:sponsor)
+        )
       end
 
       it "returns success flash message" do

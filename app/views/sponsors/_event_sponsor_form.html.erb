@@ -7,9 +7,9 @@
     <%= f.label :url, "Website", class: "bold black-text" %>
     <%= f.text_field :url, class: "validate", required: :required,  pattern: "(https?://)?([a-z0-9]+\\.)?[a-z0-9\\-]+\\.[a-z]+.+[^\\W\\_]", title: "Enter a valid url" %>
   </div>
-  <div class="sponsor-level col l4">
+  <div class="browser-default sponsor-level col l4">
     <%= f.label :level, "Level", class: "bold black-text" %>
-    <%= f.select :level, options_for_select(sponsor_level), {include_blank: "Choose Sponsorship Level"} %>
+    <%= f.select :level, options_for_select(sponsor_level) %>
   </div>
   <div class="col l4">
     <%= f.label :summary, "Brief Description", class: "bold black-text" %>
@@ -17,7 +17,7 @@
   </div>
   <div class="col l4">
     <%= f.label :logo, "Logo", class: "bold black-text" %>
-    <%= f.file_field(:logo, required: :required)%>
+    <%= f.file_field(:logo)%>
   </div>
   <div class="modal-footer">
     <a href="#!" class="modal-action modal-close waves-effect waves-green btn save-sponsor-button cancel-sponsor-button">Cancel</a>
