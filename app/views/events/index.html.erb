@@ -51,6 +51,7 @@
             <%= render "welcome/search" %>
           </div>
         </div>
+        <div class="col-md-12" id="map-canvas" style="height: 500px"></div>
 
         <div class="content-set" id="events">
           <%= render "events_card", events: @events %>
@@ -60,3 +61,16 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  function all_events(){
+    return JSON.parse($('<div />').html("<%= @events.to_json %>").text());
+  }
+
+  function infoHtml(event){
+    return `<h6>` + event.title + `</h6>
+                <p>` + event.description + `</p>
+              <div class="card-action">
+                <a href="<%= request.protocol + request.host + "/events/" %>`+ event.id +`">VISIT PAGE</a>
+            </div>`;
+  }
+</script>
