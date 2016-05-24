@@ -1,5 +1,5 @@
-$(document).ready(function(){
-  $('#bookings_table').DataTable({
-     pagingType: 'numbers'
-  })
-})
+// $(document).ready(function(){
+//   $('#bookings_table').DataTable({
+//      pagingType: 'numbers'
+//   })
+// })

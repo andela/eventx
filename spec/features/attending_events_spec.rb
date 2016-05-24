@@ -65,4 +65,29 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     click_link "Blessings wedding"
     expect(page).to have_content "ATTEND THIS EVENT"
   end
+
+  scenario "User does not specify ticket quantity" do
+    sign_up
+    visit events_path
+    click_link "Blessings wedding"
+    click_link "Attend this event"
+    within ".modal-content" do
+      fill_in "tickets_quantity_1", with: 0
+      click_button "Submit"
+      expect(page.current_path).to eq "/events/1"
+    end
+  end
+
+  scenario "User specify ticket that is out of stock or specified excess quantity" do
+    sign_up
+    visit events_path
+    click_link "Blessings wedding"
+    click_link "Attend this event"
+    within ".modal-content" do
+      fill_in "tickets_quantity_1", with: 1000
+      click_button "Submit"
+      expect(page.current_path).to eq "/events/1"
+    end
+    expect(page).to have_content("Sorry")
+  end
 end
