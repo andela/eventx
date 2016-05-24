@@ -1,6 +1,7 @@
 class SponsorsController < ApplicationController
-  before_action :find_event
-  before_action :all_sponsors
+  load_and_authorize_resource
+  before_action :find_event, :all_sponsors
+  before_action :find_sponsor, only: [:edit, :update, :destroy]
   respond_to :html, :js
 
   def index
@@ -21,11 +22,9 @@ class SponsorsController < ApplicationController
   end
 
   def edit
-    @sponsor = @event.sponsors.find_by(id: params[:id])
   end
 
   def update
-    @sponsor = @event.sponsors.find_by(id: params[:id])
     if @sponsor.update(sponsor_params)
       flash[:success] = "Event sponsor updated"
     else
@@ -34,8 +33,7 @@ class SponsorsController < ApplicationController
   end
 
   def destroy
-    sponsor = @event.sponsors.find_by(id: params[:id])
-    sponsor.destroy
+    @sponsor.destroy
     flash[:success] = "Event sponsor deleted"
   end
 
@@ -51,5 +49,9 @@ class SponsorsController < ApplicationController
 
   def find_event
     @event = Event.find_by(id: params[:event_id])
+  end
+
+  def find_sponsor
+    @sponsor = @event.sponsors.find_by(id: params[:id])
   end
 end

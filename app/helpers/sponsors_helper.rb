@@ -1,4 +1,9 @@
 module SponsorsHelper
+  def group_by_level(level)
+    return [] unless @sponsors[level]
+    @sponsors[level]
+  end
+
   def can_manage_sponsor(sponsor)
     if event_manager?
       render(
@@ -9,14 +14,11 @@ module SponsorsHelper
   end
 
   def show_level(sponsor_level, level)
-    if @sponsors.empty?
-      ""
+    return "" unless @sponsors
+    if @sponsors[level]
+      sponsor_level
     else
-      if @sponsors[level]
-        sponsor_level
-      else
-        ""
-      end
+      ""
     end
   end
 
