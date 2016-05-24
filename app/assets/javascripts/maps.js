@@ -1,6 +1,25 @@
 $(function () {
   google.maps.event.addDomListener(window, 'load', initialize);
 });
+function geocode(address, fn) {
+  var geocoder = new google.maps.Geocoder();
+  var position = {
+    lat: null,
+    lng: null
+  };
+  geocoder.geocode({ 'address': address }, function (results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      var result = results[0].geometry.location;
+      position.lat = result.lat();
+      position.lng = result.lng();
+      console.log(position);
+      fn(position);
+    } else {
+      console.log('Failed');
+    }
+  });
+  return;
+}
 function initialize() {
   var mapOptions = {
     center: new google.maps.LatLng(-33.8688, 151.2195),
@@ -14,6 +33,22 @@ function initialize() {
   var marker = new google.maps.Marker({
     map: map,
     anchorPoint: new google.maps.Point(0, -29)
+  });
+  var events = all_events();
+  _.forEach(events, function (event) {
+    var infowindow = new google.maps.InfoWindow({
+      content: infoHtml(event),
+      maxWidth: 400
+    });
+    geocode(event.location, function (position) {
+      var marker = new google.maps.Marker({
+        map: map,
+        position: position,
+        title: event.title,
+        label: event.title
+      });
+      infowindow.open(map, marker);
+    });
   });
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
     infowindow.close();
