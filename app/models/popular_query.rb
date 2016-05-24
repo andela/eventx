@@ -11,6 +11,7 @@ class PopularQuery
     events.
       project(events[Arel.star], bookings[:event_id].count.as("num")).
       join(bookings).on(events[:id].eq(bookings[:event_id])).
-      where(events[:enabled].eq(true)).group(events[:id]).order("num DESC")
+      where(events[:enabled].eq(true)).group(events[:id]).
+      order("num DESC").take(9)
   end
 end

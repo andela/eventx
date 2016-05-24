@@ -1,0 +1,21 @@
+<% @categories = Category.list %>
+<div class="row">
+<%= form_tag(controller: "events", action: "popular" ) do %>
+<div class="input-field col s12 m6">
+<label class="remove-position">Filter Popular Event Categories</label>
+   <%= submit_tag "Filter Popular Event Categories", class: "waves-light btn" %>
+</div>
+
+<div class="input-field col s12 m6">
+<label class="remove-position">Select Categories</label>
+  <select name="category" class='browser-default' >
+      <option value="" disabled selected> Choose your option</option>
+    <% @categories.each_with_index do |category, index| %>
+    <option value="<%= category.id %>" id='dropdown-<%= "#{index}" %> '> <%= category.name %></option>
+    <%=link_to events_popular_path(category.id) %>
+      <% end %>
+  </select>
+</div>
+<% end %>
+</div>
+
