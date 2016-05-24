@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: b8e6b6fa51e0074ea44b4771a68b1817a14023fc
+  specs:
+    jquery-datatables-rails (3.4.0)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -381,6 +391,7 @@ DEPENDENCIES
   httparty
   icalendar
   jbuilder (~> 2.0)
+  jquery-datatables-rails!
   jquery-rails (= 4.0.5)
   jquery-ui-rails (= 5.0.5)
   jwt

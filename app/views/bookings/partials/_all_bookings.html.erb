@@ -4,17 +4,17 @@
  <% if @presenter.all_bookings.empty? %>
           <i>No bookings yet</i>
  <% else %> 
-        <table class="responsive-table bordered striped" id="bookings_table">
+        <table class="display responsive-table bordered striped" id="bookings_table">
           <thead>
-          <tr>
-          <div class="padtable">
-            <th data-field="sn">S/N</th>
-            <th data-field="purchase">Purchase Date</th>
-            <th data-field="payment">Payment Status</th>
-            <th data-field="amount">Amount</th>
-            <th data-field="ticket">Number of Tickets</th>
-            <th>TicketID</th>
-          </tr>
+            <tr>
+              <th data-field="sn">S/N</th>
+              <th data-field="purchase">Purchase Date</th>
+              <th data-field="payment">Payment Status</th>
+              <th data-field="amount">Amount</th>
+              <th data-field="ticket">Number of Tickets</th>
+              <th>TicketID</th>
+            </tr>
+          </thead>
       <tbody>
     <% @presenter.all_bookings.each_with_index do |booking, index| %>        
                 <tr>
@@ -26,11 +26,8 @@
                   <td><%= booking.uniq_id %></td>
                 </tr>
     <% end %>
+    </tbody>
+    </table> 
  <% end %> 
-
-<div class="center-align" id="pagination" >
-  <%= will_paginate @presenter.all_bookings , renderer: MaterializePagination::Rails %>
-  </div>
-        </tbody>
-      </table> 
+        
 
