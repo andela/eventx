@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :events do
     resources :bookings, only: [:create]
+    resources :sponsors
   end
   get "/remit/:id", to: "remit#new", as: :remit
   resources :users, only: [:show]

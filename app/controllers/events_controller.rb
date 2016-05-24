@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     :scan,
     :tickets_report
   ]
+  before_action :set_sponsor
 
   respond_to :html, :json, :js
 
@@ -130,6 +131,10 @@ class EventsController < ApplicationController
     else
       @event = @event.decorate
     end
+  end
+
+  def set_sponsor
+    @sponsors = @event.sponsors.group_by(&:level) if @event
   end
 
   def loading
