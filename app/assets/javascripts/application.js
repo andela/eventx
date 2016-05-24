@@ -20,7 +20,6 @@
 //= require_tree .
 /*jshint -W030 */
 /*jshint -W082 */
-
-$(document).ready(function() {
+$(document).ready(function () {
   $('select').material_select();
 });
