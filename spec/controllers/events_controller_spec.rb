@@ -26,7 +26,7 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe "#popular" do
-    context "when an event manager or user has popular events" do
+    context "when popular events exist" do
       it "renders the popular events" do
         get :popular
 
@@ -34,6 +34,30 @@ RSpec.describe EventsController, type: :controller do
         expect(assigns[:events][0].manager_profile_id).to eq 1
         expect(assigns[:events].count).to eq 1
         expect(response).to render_template "events/popular"
+      end
+    end
+  end
+
+  describe "#popular" do
+    context "when popular events categories filtered exist" do
+      it "renders the popular events of the category filtered" do
+        get :popular, category: 1
+
+        expect(assigns[:events][0].category_id).to eq 1
+        expect(assigns[:events][0].category.name).to eq "Music"
+        expect(response).to render_template "events/popular"
+      end
+    end
+  end
+
+  describe "#popular" do
+    context "when popular events categories filtered does not exist" do
+      it "renders an error message" do
+        get :popular, category: 3
+
+        expect(
+          flash[:notice]
+        ).to eq "This category does not have a popular event"
       end
     end
   end

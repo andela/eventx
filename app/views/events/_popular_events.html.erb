@@ -12,7 +12,7 @@
             <span class="card-title grey-text text-darken-4">
               <%= event.start_date.strftime("%b %d %Y") %>
             </span>
-          <p><%=link_to event.title, event %></p>
+          <p><%=link_to event.title, event, class: "remove-text" %></p>
         </div>
 
         <div class="card-action">
