@@ -12,10 +12,7 @@ function geocode(address, fn) {
       var result = results[0].geometry.location;
       position.lat = result.lat();
       position.lng = result.lng();
-      console.log(position);
       fn(position);
-    } else {
-      console.log('Failed');
     }
   });
   return;

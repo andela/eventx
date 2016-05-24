@@ -29,24 +29,14 @@ RSpec.feature "TicketsReport", type: :feature, js: true do
   scenario "Event manger clicks to view Tickets" do
     visit tickets_report_path(@event.id)
     expect(page.current_path).to eq tickets_report_path(@event.id)
-    page_should_have_content([
-      "Tickets",
-      "Grand Total",
-      "All Bookings",
-      "ALL BOOKINGS",
-      "ATTENDEES"
-    ])
+    page_should_have_content(
+      ["Tickets", "Grand Total", "All Bookings", "ALL BOOKINGS", "ATTENDEES"]
+    )
 
     within '#tickets_summary_table thead' do
-      page_should_have_content([
-        "S/N",
-        "Name",
-        "Quantity",
-        "Quantity Sold",
-        "Ticket Left",
-        "Price",
-        "Amount"
-      ])
+      page_should_have_content(
+        ["S/N", "Name", "Quantity", "Quantity Sold", "Ticket Left", "Price"]
+      )
     end
   end
 end
