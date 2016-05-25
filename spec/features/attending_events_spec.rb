@@ -77,7 +77,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     end
   end
 
-  scenario "User specify ticket that is out of stock or specified excess quantity" do
+  scenario "User specifies quantity above what is available" do
     sign_up
     visit events_path
     click_link "Blessings wedding"
