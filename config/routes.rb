@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root "welcome#index"
 
   scope controller: :events do
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
     post "/manage-staffs/:event_id" => :save_staffs, as: :save_staffs
     get "/manage-staffs/:event_id" => :manage_staffs, as: :manage_staffs
     get "/remove-staff/:event_id/:event_staff_id" => :remove_staff,
-      as: :remove_staff
+        as: :remove_staff
   end
 
   scope controller: :bookings do
