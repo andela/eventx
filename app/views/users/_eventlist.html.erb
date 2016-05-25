@@ -35,8 +35,9 @@
     <li class="divider"></li>
     <li><%= link_to "Request Remit", remit_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
-
     <li><%= link_to "Tickets Report", tickets_report_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
+    <li class="divider"></li>
+    <li><%= link_to "Manage Sponsors", event_sponsors_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
   </ul>
 </tr>

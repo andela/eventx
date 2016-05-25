@@ -46,6 +46,7 @@ gem "will_paginate", "~> 3.0.6"
 gem "faker", "1.5.0"
 gem "icalendar"
 gem "jquery-datatables-rails", github: "rweng/jquery-datatables-rails"
+gem "remotipart", "~> 1.2"
 
 group :development, :test do
   gem "sqlite3", "1.3.11"

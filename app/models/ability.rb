@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new
     can [:read, :tickets], Event
+    can :read, Sponsor
 
     if user.event_staffs.present?
       can :scan, Event do |event|
@@ -12,7 +13,8 @@ class Ability
     end
 
     if user.event_manager?
-      can :manage, Event
+      can :manage, Event, manager_profile_id: user.manager_profile.id
+      can :manage, Sponsor
     end
 
     if user.bookings.present?

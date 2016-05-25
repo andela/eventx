@@ -16,6 +16,7 @@ class Event < ActiveRecord::Base
   has_many :bookings
   has_many :user_tickets, through: :bookings
   has_many :attendees, through: :bookings, source: "user"
+  has_many :sponsors, dependent: :destroy
 
   belongs_to :manager_profile
   acts_as_tenant(:manager_profile)
@@ -35,6 +36,9 @@ class Event < ActiveRecord::Base
   scope :recent_events, lambda {
     where(enabled: true).
       order(created_at: :DESC).limit(12)
+  }
+  scope :popular_events_category, lambda { |category_id|
+    where(category_id: category_id)
   }
   scope :featured_events, lambda {
     where(enabled: true).
@@ -108,6 +112,13 @@ class Event < ActiveRecord::Base
 
   def can_request_remit?
     Date.today >= (end_date + 5.days)
+  end
+
+  def self.popular_by_categories(id)
+    popular_events.select do |category|
+      category.
+        category_id == id.to_i
+    end
   end
 
   private

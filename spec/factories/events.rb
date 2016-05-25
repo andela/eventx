@@ -56,5 +56,11 @@ FactoryGirl.define do
     trait :cancelled do
       enabled false
     end
+
+    factory :regular_event, parent: :event do
+      category
+      event_template
+      association :manager_profile, factory: :regular_manager_profile
+    end
   end
 end
