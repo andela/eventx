@@ -13,6 +13,7 @@
 //= require jquery2
 //= require cocoon
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require jquery.remotipart
 //= require jquery-ui/autocomplete
 //= require materialize-sprockets

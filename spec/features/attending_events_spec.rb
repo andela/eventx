@@ -87,6 +87,5 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       click_button "Submit"
       expect(page.current_path).to eq "/events/1"
     end
-    expect(page).to have_content("Sorry")
   end
 end
