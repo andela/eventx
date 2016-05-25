@@ -98,7 +98,21 @@ class EventsController < ApplicationController
   end
 
   def popular
-    @popular_events = Event.popular_events
+    if params[:category]
+      popular_events_by_category
+    else
+      @popular_events = Event.popular_events
+    end
+  end
+
+  def popular_events_by_category
+    events_category = Event.popular_events_category(params[:category]).empty?
+    if params[:category] && events_category
+      redirect_to events_popular_path,
+                  notice: "This category does not have a popular event"
+    else
+      @popular_events = Event.popular_by_categories(params[:category])
+    end
   end
 
   private

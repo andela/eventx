@@ -37,6 +37,9 @@ class Event < ActiveRecord::Base
     where(enabled: true).
       order(created_at: :DESC).limit(12)
   }
+  scope :popular_events_category, lambda { |category_id|
+    where(category_id: category_id)
+  }
   scope :featured_events, lambda {
     where(enabled: true).
       order(created_at: :DESC).limit(12)
@@ -109,6 +112,13 @@ class Event < ActiveRecord::Base
 
   def can_request_remit?
     Date.today >= (end_date + 5.days)
+  end
+
+  def self.popular_by_categories(id)
+    popular_events.select do |category|
+      category.
+        category_id == id.to_i
+    end
   end
 
   private

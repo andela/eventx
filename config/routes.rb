@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/events/:id/generate" => "events#generate", as: :generate_event
   get "/featured_events" => "welcome#featured"
   get "/popular_events" => "welcome#popular"
-  get "/events/popular" => "events#popular"
+  match "/events/popular" => "events#popular", via: [:post, :get]
   get "/upcoming_events" => "welcome#index"
   get "/my_events" => "users#show"
   get "events/loading"
