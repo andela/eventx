@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     get "/user_info/:user_id" => :fetch_user_info
   end
 
+  resources :users, only: [:show]
   resources :manager_profiles, only: [:new, :create]
   resources :attendees
   resources :categories
@@ -55,6 +56,9 @@ Rails.application.routes.draw do
     resources :sponsors
   end
 
+  get "/my_events" => "users#show"
+  get "/lookup_staffs" => "users#lookup_staff_emails"
+  get "/user_info/:user_id" => "users#fetch_user_info"
   get "/unattend", to: "attendees#destroy", as: :unattend
   get "/auth/failure", to: redirect("/")
   get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
