@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root "welcome#index"
-  get "events/new"
   post "/events/:event_id/manage_staffs" => "manager_profiles#save_staffs",
        as: :save_staffs
   get "/events/:event_id/manage_staffs" => "manager_profiles#manage_staffs",
@@ -33,8 +32,6 @@ Rails.application.routes.draw do
   get "/events/:id/tickets-report" =>
           "events#tickets_report", as: :tickets_report
   get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
-  post "/print/:id" => "printer#redirect_to_print"
-  get "/print/:id" => "printer#redirect_to_print"
   get "/download/:booking_id" => "printer#download", as: :download
   get "signout", to: "sessions#destroy", as: "signout"
   get "/session" => "sessions#create"
