@@ -5,6 +5,9 @@
   <div class="col m4">
     Ticket Price
   </div>
+  <div class="col m4">
+    Ticket Left
+  </div>
   <div class="col m3">
     Quantity
   </div>
@@ -18,6 +21,9 @@
     </div>
     <div class="col m4">
       <%= label :tickets_price, number_to_currency(ticket.price), class: "tickets_price" %>
+    </div>
+    <div class="col m4">
+      <%= label :tickets_price, ticket.tickets_left %>
     </div>
     <div class="col m3">
       <%= text_field :tickets_quantity, ticket.id, class: "event_ticket_input" %>
