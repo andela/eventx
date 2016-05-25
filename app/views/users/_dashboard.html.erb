@@ -43,7 +43,7 @@
   <div class="center-align" id="pagination" >
   <%= will_paginate @resources, renderer: MaterializePagination::Rails %>
   </div>
-  <a class="btn-floating btn-large round",  "data-position" = "top", "data-tooltip" = "I am tooltip" style="position: fixed; bottom: 645px; left: 180px;" href="<%= events_new_path%>"><i class="material-icons">add</i></a>
+  <a class="btn-floating btn-large round",  "data-position" = "top", "data-tooltip" = "I am tooltip" style="position: fixed; bottom: 645px; left: 180px;" href="<%= new_event_path%>"><i class="material-icons">add</i></a>
   <% else %>
     <%= render "users/users_dashboard"%>
   <% end %>
