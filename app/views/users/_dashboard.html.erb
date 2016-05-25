@@ -2,7 +2,7 @@
   <% if current_user.event_manager? %>
   <div class="row">
     <div class="col s6 offset-s4 post">
-        <%= form_tag user_path(current_user), method: :get, id: "user_event_search_form", remote: true do %>
+        <%= form_tag dashboard_path, method: :get, id: "user_event_search_form", remote: true do %>
           <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
             <%= text_field_tag(:event_name, "", placeholder: "Search By Event Name") %>
           <% end %>

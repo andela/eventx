@@ -41,7 +41,12 @@ Rails.application.routes.draw do
     post "/api_login"              => :api_login
   end
 
-  resources :users, only: [:show]
+  scope controller: :users do
+    get "/dashboard"          => :show
+    get "/lookup_staffs"      => :lookup_staff_emails
+    get "/user_info/:user_id" => :fetch_user_info
+  end
+
   resources :manager_profiles, only: [:new, :create]
   resources :attendees
   resources :categories
@@ -49,10 +54,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
     resources :sponsors
   end
-
-  get "/my_events" => "users#show"
-  get "/lookup_staffs" => "users#lookup_staff_emails"
-  get "/user_info/:user_id" => "users#fetch_user_info"
 
   get "/unattend", to: "attendees#destroy", as: :unattend
   get "/auth/failure", to: redirect("/")

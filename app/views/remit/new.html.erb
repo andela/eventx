@@ -4,9 +4,6 @@
     <div class="col s7 offset-s5">Hello <strong><%= @manager.company_name %></strong></div>
     <div class="col s9 offset-s3">Your request for remittance on the event <strong><%= @event.title %> </strong>ticket sales has been successfully processed</div>
      <div class="col s7 offset-s5">A mail has been sent to you</div>
-    <div class="col s7 offset-s5"><%= link_to "Back to events", my_events_path, class: "waves-effect waves-light btn custon" %><i class="material-icons right">send</i></div>
+    <div class="col s7 offset-s5"><%= link_to "Back to events", dashboard_path, class: "waves-effect waves-light btn custon" %><i class="material-icons right">send</i></div>
   </div>
 </div>
-
-
-
