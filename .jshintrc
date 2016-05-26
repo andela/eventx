@@ -24,6 +24,9 @@
     "highLight",
     "_",
     "confirm",
+    "infoHtml",
+    "all_events",
+    "data",
 
     "jasmine",
     "beforeEach",

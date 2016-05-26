@@ -142,8 +142,9 @@
         }).appendTo(this.spanAmPm);
       }
     }
-    if (options.darktheme)
+    if (options.darktheme) {
       popover.addClass('darktheme');
+    }
     // If autoclose is not setted, append a button
     $('<button type="button" class="btn-flat clockpicker-button" tabindex="' + (options.twelvehour ? '3' : '1') + '">' + options.donetext + '</button>').click($.proxy(this.done, this)).appendTo(this.footer);
     this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
@@ -177,8 +178,9 @@
           left: dialRadius + Math.sin(radian) * radius - tickRadius,
           top: dialRadius - Math.cos(radian) * radius - tickRadius
         });
-        if (inner)
+        if (inner) {
           tick.css('font-size', '120%');
+        }
         tick.html(i === 0 ? '00' : i);
         hoursView.append(tick);
         tick.on(mousedownEvent, mousedown);
@@ -199,32 +201,36 @@
     }
     // Clicking on minutes view space
     plate.on(mousedownEvent, function (e) {
-      if ($(e.target).closest('.clockpicker-tick').length === 0)
+      if ($(e.target).closest('.clockpicker-tick').length === 0) {
         mousedown(e, true);
+      }
     });
     // Mousedown or touchstart
     function mousedown(e, space) {
       var offset = plate.offset(), isTouch = /^touch/.test(e.type), x0 = offset.left + dialRadius, y0 = offset.top + dialRadius, dx = (isTouch ? e.originalEvent.touches[0] : e).pageX - x0, dy = (isTouch ? e.originalEvent.touches[0] : e).pageY - y0, z = Math.sqrt(dx * dx + dy * dy), moved = false;
       // When clicking on minutes view space, check the mouse position
-      if (space && (z < outerRadius - tickRadius || z > outerRadius + tickRadius))
+      if (space && (z < outerRadius - tickRadius || z > outerRadius + tickRadius)) {
         return;
+      }
       e.preventDefault();
       // Set cursor style of body after 200ms
       var movingTimer = setTimeout(function () {
         self.popover.addClass('clockpicker-moving');
       }, 200);
       // Place the canvas to top
-      if (svgSupported)
+      if (svgSupported) {
         plate.append(self.canvas);
+      }
       // Clock
       self.setHand(dx, dy, !space, true);
       // Mousemove on document
       $doc.off(mousemoveEvent).on(mousemoveEvent, function (e) {
         e.preventDefault();
         var isTouch = /^touch/.test(e.type), x = (isTouch ? e.originalEvent.touches[0] : e).pageX - x0, y = (isTouch ? e.originalEvent.touches[0] : e).pageY - y0;
-        if (!moved && x === dx && y === dy)
+        if (!moved && x === dx && y === dy) {
           // Clicking in chrome on windows will trigger a mousemove event
           return;
+        }
         moved = true;
         self.setHand(x, y, false, true);
       });
@@ -233,11 +239,12 @@
         $doc.off(mouseupEvent);
         e.preventDefault();
         var isTouch = /^touch/.test(e.type), x = (isTouch ? e.originalEvent.changedTouches[0] : e).pageX - x0, y = (isTouch ? e.originalEvent.changedTouches[0] : e).pageY - y0;
-        if ((space || moved) && x === dx && y === dy)
+        if ((space || moved) && x === dx && y === dy) {
           self.setHand(x, y);
-        if (self.currentView === 'hours')
+        }
+        if (self.currentView === 'hours') {
           self.toggleView('minutes', duration / 2);
-        else if (options.autoclose) {
+        } else if (options.autoclose) {
           self.minutesView.addClass('clockpicker-dial-out');
           setTimeout(function () {
             self.done();
@@ -290,8 +297,9 @@
     raiseCallback(this.options.init);
   }
   function raiseCallback(callbackFunction) {
-    if (callbackFunction && typeof callbackFunction === 'function')
+    if (callbackFunction && typeof callbackFunction === 'function') {
       callbackFunction();
+    }
   }
   // Default options
   ClockPicker.DEFAULTS = {
@@ -382,13 +390,15 @@
     // Hide when clicking or tabbing on any element except the clock and input
     $doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, function (e) {
       var target = $(e.target);
-      if (target.closest(self.popover.find('.picker__wrap')).length === 0 && target.closest(self.input).length === 0)
+      if (target.closest(self.popover.find('.picker__wrap')).length === 0 && target.closest(self.input).length === 0) {
         self.hide();
+      }
     });
     // Hide when ESC is pressed
     $doc.on('keyup.clockpicker.' + this.id, function (e) {
-      if (e.keyCode === 27)
+      if (e.keyCode === 27) {
         self.hide();
+      }
     });
     raiseCallback(this.options.afterShow);
   };
@@ -429,8 +439,9 @@
     this.toggleViewTimer = setTimeout(function () {
       hideView.css('visibility', 'hidden');
     }, duration);
-    if (raiseAfterHourSelect)
+    if (raiseAfterHourSelect) {
       raiseCallback(this.options.afterHourSelect);
+    }
   };
   // Reset clock hand
   ClockPicker.prototype.resetClock = function (delay) {
@@ -441,17 +452,20 @@
         self.canvas.removeClass('clockpicker-canvas-out');
         self.setHand(x, y);
       }, delay);
-    } else
+    } else {
       this.setHand(x, y);
+    }
   };
   // Set clock hand to (x, y)
   ClockPicker.prototype.setHand = function (x, y, roundBy5, dragging) {
     var radian = Math.atan2(x, -y), isHours = this.currentView === 'hours', unit = Math.PI / (isHours || roundBy5 ? 6 : 30), z = Math.sqrt(x * x + y * y), options = this.options, inner = isHours && z < (outerRadius + innerRadius) / 2, radius = inner ? innerRadius : outerRadius, value;
-    if (options.twelvehour)
+    if (options.twelvehour) {
       radius = outerRadius;
+    }
     // Radian should in range [0, 2PI]
-    if (radian < 0)
+    if (radian < 0) {
       radian = Math.PI * 2 + radian;
+    }
     // Get the round value
     value = Math.round(radian / unit);
     // Get the round radian
@@ -459,37 +473,44 @@
     // Correct the hours or minutes
     if (options.twelvehour) {
       if (isHours) {
-        if (value === 0)
+        if (value === 0) {
           value = 12;
+        }
       } else {
-        if (roundBy5)
+        if (roundBy5) {
           value *= 5;
-        if (value === 60)
+        }
+        if (value === 60) {
           value = 0;
+        }
       }
     } else {
       if (isHours) {
-        if (value === 12)
+        if (value === 12) {
           value = 0;
+        }
         value = inner ? value === 0 ? 12 : value : value === 0 ? 0 : value + 12;
       } else {
-        if (roundBy5)
+        if (roundBy5) {
           value *= 5;
-        if (value === 60)
+        }
+        if (value === 60) {
           value = 0;
+        }
       }
     }
-    if (isHours)
+    if (isHours) {
       this.fg.setAttribute('class', 'clockpicker-canvas-fg');
-    else {
-      if (value % 5 === 0)
+    } else {
+      if (value % 5 === 0) {
         this.fg.setAttribute('class', 'clockpicker-canvas-fg');
-      else
+      } else {
         this.fg.setAttribute('class', 'clockpicker-canvas-fg active');
+      }
     }
     // Once hours or minutes changed, vibrate the device
-    if (this[this.currentView] !== value)
-      if (vibrate && this.options.vibrate)
+    if (this[this.currentView] !== value) {
+      if (vibrate && this.options.vibrate) {
         // Do not vibrate too frequently
         if (!this.vibrateTimer) {
           navigator[vibrate](10);
@@ -497,6 +518,8 @@
             this.vibrateTimer = null;
           }, this), 100);
         }
+      }
+    }
     this[this.currentView] = value;
     this[isHours ? 'spanHours' : 'spanMinutes'].html(leadingZero(value));
     // If svg is not supported, just add an active class to the tick
@@ -533,24 +556,28 @@
     this.hide();
     this.label.addClass('active');
     var last = this.input.prop('value'), value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
-    if (this.options.twelvehour)
+    if (this.options.twelvehour) {
       value = value + this.amOrPm;
+    }
     this.input.prop('value', value);
     if (value !== last) {
       this.input.triggerHandler('change');
-      if (!this.isInput)
+      if (!this.isInput) {
         this.element.trigger('change');
+      }
     }
-    if (this.options.autoclose)
+    if (this.options.autoclose) {
       this.input.trigger('blur');
+    }
     raiseCallback(this.options.afterDone);
   };
   // Remove clockpicker from input
   ClockPicker.prototype.remove = function () {
     this.element.removeData('clockpicker');
     this.input.off('focus.clockpicker click.clockpicker');
-    if (this.isShown)
+    if (this.isShown) {
       this.hide();
+    }
     if (this.isAppended) {
       $win.off('resize.clockpicker' + this.id);
       this.popover.remove();
@@ -566,8 +593,9 @@
         $this.data('clockpicker', new ClockPicker($this, options));
       } else {
         // Manual operatsions. show, hide, remove, e.g.
-        if (typeof data[option] === 'function')
+        if (typeof data[option] === 'function') {
           data[option].apply(data, args);
+        }
       }
     });
   };
