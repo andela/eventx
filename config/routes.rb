@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
-  scope controller: :events do
-    get "/events/popular"            => :popular
-    get "/events/loading"
-    get "/events/:id/enable"         => :enable, as: :enable_event
-    get "/events/:id/disable"        => :disable, as: :disable_event
-    get "/events/:id/generate"       => :generate, as: :generate_event
-    get "/events/:id/scan"           => :scan, as: :gatekeeper
-    get "/events/:id/tickets"        => :tickets, as: :event_tickets
-    get "/events/:id/tickets-report" => :tickets_report, as: :tickets_report
+  scope path: "/events", controller: :events do
+    get "popular"            => :popular
+    get ":id/enable"         => :enable, as: :enable_event
+    get ":id/disable"        => :disable, as: :disable_event
+    get ":id/generate"       => :generate, as: :generate_event
+    get ":id/scan"           => :scan, as: :gatekeeper
+    get ":id/tickets"        => :tickets, as: :event_tickets
+    get ":id/tickets-report" => :tickets_report, as: :tickets_report
   end
 
   scope controller: :welcome do
@@ -46,6 +45,11 @@ Rails.application.routes.draw do
     get "/user_info/:user_id" => :fetch_user_info
   end
 
+  scope controller: :printer do
+    get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
+    get "/download/:booking_id" => "printer#download", as: :download
+  end
+
   resources :users, only: [:show]
   resources :manager_profiles, only: [:new, :create]
   resources :attendees
@@ -55,13 +59,7 @@ Rails.application.routes.draw do
     resources :sponsors
   end
 
-  get "/my_events" => "users#show"
-  get "/lookup_staffs" => "users#lookup_staff_emails"
-  get "/user_info/:user_id" => "users#fetch_user_info"
   get "/unattend", to: "attendees#destroy", as: :unattend
-  get "/auth/failure", to: redirect("/")
-  get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
-  get "/download/:booking_id" => "printer#download", as: :download
   get "/remit/:id", to: "remit#new", as: :remit
   get "*unmatched_route", to: "application#no_route_found"
 end

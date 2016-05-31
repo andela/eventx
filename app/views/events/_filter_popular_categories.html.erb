@@ -12,7 +12,7 @@
       <option value="" disabled selected> Choose your option</option>
     <% @categories.each_with_index do |category, index| %>
     <option value="<%= category.id %>" id='dropdown-<%= "#{index}" %> '> <%= category.name %></option>
-    <%=link_to events_popular_path(category.id) %>
+    <%=link_to popular_path(category.id) %>
       <% end %>
   </select>
 </div>
