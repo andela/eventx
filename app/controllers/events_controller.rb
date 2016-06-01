@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     :scan,
     :tickets_report
   ]
-  before_action :set_sponsor
+  before_action :set_sponsor, :subscription_status
 
   respond_to :html, :json, :js
 
@@ -146,6 +146,10 @@ class EventsController < ApplicationController
 
   def set_sponsor
     @sponsors = @event.sponsors.group_by(&:level) if @event
+  end
+
+  def subscription_status
+    @sub = Subscription.find_by(event_id: @event.id, user_id: current_user)
   end
 
   def loading

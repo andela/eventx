@@ -164,24 +164,32 @@ ActiveRecord::Schema.define(version: 20160614142249) do
 
   add_index "sponsors", ["event_id"], name: "index_sponsors_on_event_id"
 
+<<<<<<< 74a19be6920da212b05c30b76eb3e78cfb0128d2
 <<<<<<< 67bd84c18f7c5bf15a2420a92da2ccf48aac7420
 =======
 <<<<<<< 253928f923b3bed77b8623440b29942992b2edfa
 =======
 >>>>>>> feat(subscription): add subscription model
+=======
+>>>>>>> test(subscription): add controller test
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "manager_profile_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+<<<<<<< 74a19be6920da212b05c30b76eb3e78cfb0128d2
 <<<<<<< 67bd84c18f7c5bf15a2420a92da2ccf48aac7420
     t.integer  "user_id"
 =======
 >>>>>>> feat(subscription): add subscription model
+=======
+    t.integer  "user_id"
+>>>>>>> test(subscription): add controller test
   end
 
   add_index "subscriptions", ["event_id"], name: "index_subscriptions_on_event_id"
   add_index "subscriptions", ["manager_profile_id"], name: "index_subscriptions_on_manager_profile_id"
+<<<<<<< 74a19be6920da212b05c30b76eb3e78cfb0128d2
 <<<<<<< 67bd84c18f7c5bf15a2420a92da2ccf48aac7420
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
@@ -189,6 +197,10 @@ ActiveRecord::Schema.define(version: 20160614142249) do
 
 >>>>>>> feat(subscription): add subscription model
 >>>>>>> feat(subscription): add subscription model
+=======
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
+
+>>>>>>> test(subscription): add controller test
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"

@@ -50,9 +50,16 @@ RSpec.configure do |config|
     Rails.application.load_seed
   end
 
+  # Clean up all jobs specs with truncation
+  config.before(:each, job: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+>>>>>>> test(subscription): add controller test
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
   config.infer_spec_type_from_file_location!
   config.include ApplicationHelper
   config.include MessagesHelper
