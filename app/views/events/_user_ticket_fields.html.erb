@@ -26,7 +26,8 @@
       <%= label :tickets_price, ticket.tickets_left %>
     </div>
     <div class="col m3">
-      <%= text_field :tickets_quantity, ticket.id, class: "event_ticket_input" %>
+      <%= number_field :tickets_quantity, ticket.id, 
+      class: "event_ticket_input",  in: 1..(ticket.tickets_left)%>
     </div>
   </div>
 </p>
