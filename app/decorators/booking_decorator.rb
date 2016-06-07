@@ -23,16 +23,16 @@ class BookingDecorator < Draper::Decorator
   end
 
   def request_refund_button
-    generate_request_refund_button.html_safe if h.can? :request_refund, object
+    generate_request_refund_button.html_safe #if h.can? :request_refund, object
   end
 
   def generate_request_refund_button
     if refund_requested
       h.link_to "Processing Request", "#", class: "btn disabled print-box-size"
     else
-      h.link_to "Request Refund", h.refund_path(uniq_id),
-                class: "btn print-box-size",
-                remote: true, method: :post, id: "request-refund"
+      h.link_to "Request Refund", '#refund-form',
+                class: "btn print-box-size refund-button modal-trigger",
+                'data-id': uniq_id, id: "request-refund"
     end
   end
 
