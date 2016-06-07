@@ -52,14 +52,13 @@ class BookingsController < ApplicationController
 
   def request_refund
     @booking = Booking.find_by_uniq_id(params[:uniq_id])
-    flash[:notice] = if @booking.update_attributes(
-      refund_requested: true,
-      time_requested: Time.now
-    )
-                       "Request for a refund has been sent"
-                     else
-                       "Request cannot be sent at this time."
-                     end
+    if !@booking.refund_requested
+      @booking.update_attributes(
+        refund_requested: true,
+        time_requested: Time.now,
+        reason: params[:reason]
+      )
+    end
   end
 
   def use_ticket

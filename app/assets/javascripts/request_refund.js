@@ -21,7 +21,7 @@ $(document).ready(function () {
     }
     $.ajax({
       url: '/refund/' + uniq_id,
-      method: 'POST',
+      type: 'POST',
       data: { reason: reason }
     })
     .done(function(){
