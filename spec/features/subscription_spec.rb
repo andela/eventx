@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Subscription", js: true do
   before(:all) do
+    ManagerProfile.destroy_all
     @event = create(:regular_event)
   end
 

@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe SubscriptionsController, type: :request do
   before(:all) do
+    ManagerProfile.destroy_all
     create(:subscription)
     @event = create(:regular_event)
   end
