@@ -126,11 +126,10 @@ class BookingsController < ApplicationController
     else
       ticket_params.each do |key, value|
         tickets_left = @event.ticket_types.find(key).tickets_left
-        ticket_name = TicketType.find(key).name
-        if tickets_left < value.to_i
-          flash[:notice] = "Sorry, #{ticket_name} ticket is out of stock!"
-          redirect_to :back
-        end
+        next unless tickets_left < value.to_i
+        flash[:notice] = "Ticket quantity specified is
+                above the available quantity."
+        redirect_to :back
       end
     end
   end
