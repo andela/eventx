@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     :tickets_report
   ]
   before_action :set_sponsor, :subscription_status
-  before_action :subscription_status, except: [:index]
+  before_action :subscription_status, only: [:show, :edit, :create, :update]
 
   respond_to :html, :json, :js
 

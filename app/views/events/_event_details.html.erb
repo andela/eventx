@@ -26,9 +26,6 @@
         <label id="counter"></label>
         <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
 
-
-
-
         <div id="att">
           <%= render "events/attend_unattend_event_button" %>
         </div>
@@ -46,23 +43,19 @@
         </div>
         <% end %>
         <div class="subscribe-button">
-          <% if current_user %>
+          <% if @event.persisted? %>
+          <% if current_user && @event %>
             <% if @subscribed %>
               <%= link_to "Unsubscribe", event_subscription_path(@event.id, @subscribed.id), method: :delete, data: {confirm: "Are you sure" }, class: "btn modal-trigge cancel-sponsor-button", remote: true %>
             <% else %>
               <%= link_to "Subscribe", new_event_subscription_path(@event.id), class: "btn modal-trigger", remote: true %>
             <% end %>
           <% end %>
+          <% end %>
         </div>
 
         <div id="subscribeForm">
         </div>
-
-
-
-
-
-
 
         <%if @event.id%>
             <%= social_share_button_tag(@event.title, popup: true)%>

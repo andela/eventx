@@ -8,7 +8,6 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.new(subscription_params)
-    binding.pry
     if @subscription.save
       flash[:success] = "You been subscribed to this event"
     else
