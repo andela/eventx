@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title flow-text">
+        <strong>Request for a Refund</strong>
+        </span>
+        <p>A user has just requested a refund. Here are the details:</p>
+        <h4>User Details</h4>
+        <div class="col s6 l6">Name: </div>
+        <div class="col s6 l6"><%= @user.first_name %></div>
+
+        <% if @user.email %>
+          <div class="col s6 l6">Email: </div>
+          <div class="col s6 l6"><%= @user.email %></div>
+        <% end %>
+
+        <h4>Event Details</h4>
+        <div class="col s6 l6">Event: </div>
+        <div class="col s6 l6"><%= @event.title %></div>
+
+        <div class="col s6 l6">Event Date: </div>
+        <div class="col s6 l6"><%= @event.start_date.strftime ("%B %d, %Y") %></div>
+
+        <h4>Booking Details</h4>
+        <div class="col s6 l6">Date Booked: </div>
+        <div class="col s6 l6"><%= @booking.created_at.strftime ("%B %d, %Y") %></div>
+
+        <div class="col s6 l6">Booking ID: </div>
+        <div class="col s6 l6"><%= @booking.uniq_id %></div>
+
+        <div class="col s6 l6">Amount Paid: </div>
+        <div class="col s6 l6"><%= number_to_currency(@booking.amount) %></div>
+
+        <div class="col s6 l6">Transaction ID: </div>
+        <div class="col s6 l6"><%= @booking.txn_id %></div>
+      </div>
+    </div>
+    <div class="card-action">
+      <a href="#">Reject</a>
+      <a href="#">Accept</a>
+    </div>
+  </div>
+</div>
