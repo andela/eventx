@@ -1,6 +1,6 @@
 class Booking < ActiveRecord::Base
   before_create :add_uniq_id
-  before_save :calculate_amount
+  before_save :calculate_amount, :send_refund_request_mail
 
   belongs_to :user
   belongs_to :event
@@ -28,6 +28,10 @@ class Booking < ActiveRecord::Base
 
   def to_partial_path
     "bookings/ticket"
+  end
+
+  def send_refund_request_mail
+    BookingMailer.request_refund(self).deliver_now if refund_requested_changed?
   end
 
   private
