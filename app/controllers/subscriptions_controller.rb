@@ -2,11 +2,13 @@ class SubscriptionsController < ApplicationController
   respond_to :js
 
   def new
-    @subscription = Subscription.new()
+    @event = Event.find_by(id: params[:event_id])
+    @subscription = Subscription.new
   end
 
   def create
     @subscription = Subscription.new(subscription_params)
+    binding.pry
     if @subscription.save
       flash[:success] = "You been subscribed to this event"
     else
@@ -22,7 +24,6 @@ class SubscriptionsController < ApplicationController
     subscription.destroy
     flash[:success] = "You unsubscribed from this event"
   end
-
 
   private
 

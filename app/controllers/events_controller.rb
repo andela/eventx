@@ -12,6 +12,7 @@ class EventsController < ApplicationController
     :tickets_report
   ]
   before_action :set_sponsor, :subscription_status
+  before_action :subscription_status, except: [:index]
 
   respond_to :html, :json, :js
 
@@ -149,7 +150,10 @@ class EventsController < ApplicationController
   end
 
   def subscription_status
-    @sub = Subscription.find_by(event_id: @event.id, user_id: current_user)
+    @subscribed = Subscription.find_by(
+      event_id: @event.id,
+      user_id: current_user.id
+    ) if current_user
   end
 
   def loading

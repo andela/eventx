@@ -1,18 +1,20 @@
+<%=  form_for @subscription, url: event_subscriptions_path(event), remote: true do |f| %>
 <div id="subscribe" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4>Subscribe</h4>
-    <%=  form_for @sub, url: subscriptions_path, remote: true do |f| %>
-      <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked"/>
-        <label for="filled-in-box">Subscribe to Event</label>
-      </p>
-      <p>
-        <input type="checkbox" class="filled-in" id="filled-inbox" checked="checked"/>
-        <label for="filled-in-box">Subscribe to Event Manager</label>
-      </p>
-    <% end %>
+    <input type="hidden" name="subscription[user_id]" value="<%= current_user.id %>">
+    <p>
+      <input type="checkbox" class="filled-in" name="subscription[event_id]" value="<%= @event.id %>" id="filled-in-event" />
+      <label for="filled-in-event">Subscribe to Event</label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="filled-in" name="subscription[manager_profile_id]" value="<%= @event.manager_profile.id %>" id="filled-in-manager" />
+      <label for="filled-in-manager">Subscribe to Event Manager</label>
+    </p>
   </div>
   <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    <%= f.submit "Suscribe", id: "btn_subscribe", class: "btn"%>
   </div>
 </div>
+<% end %>

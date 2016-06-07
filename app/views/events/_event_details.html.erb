@@ -46,14 +46,17 @@
         </div>
         <% end %>
         <div class="subscribe-button">
-          <%= link_to "Subscribe", new_subscription_path, class: "btn modal-trigger", remote: true %>
+          <% if current_user %>
+            <% if @subscribed %>
+              <%= link_to "Unsubscribe", event_subscription_path(@event.id, @subscribed.id), method: :delete, data: {confirm: "Are you sure" }, class: "btn modal-trigge cancel-sponsor-button", remote: true %>
+            <% else %>
+              <%= link_to "Subscribe", new_event_subscription_path(@event.id), class: "btn modal-trigger", remote: true %>
+            <% end %>
+          <% end %>
         </div>
 
         <div id="subscribeForm">
-          <%= render "events/subscription" %>
         </div>
-
-
 
 
 

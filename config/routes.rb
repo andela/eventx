@@ -55,11 +55,11 @@ Rails.application.routes.draw do
   resources :manager_profiles, only: [:new, :create]
   resources :attendees
   resources :categories
-  resources :subscriptions, only: [:new, :create, :destroy]
   resources :events do
     resources :bookings, only: [:create]
     resources :sponsors
     resources :reviews, only: [:create]
+    resources :subscriptions, only: [:new, :create, :destroy]
   end
 
   get "/unattend", to: "attendees#destroy", as: :unattend
