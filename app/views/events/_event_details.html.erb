@@ -69,6 +69,97 @@
 
 <%= render partial: "sponsors/sponsor_modal" %>
 
+
+<div class="container center">
+  <h2 class="our_description_title">Comments</h2>
+<div class="row">
+  <div class="col s12 m12 l12">
+    <div class="card-panel teal">
+      <div class="comment-author">
+            <% if current_user.profile_url.present? %>
+            <%= image_tag current_user.profile_url, class: "comment-author-pic circle responsive-img" %>
+            <% else %>
+            <%= image_tag "defaultimage.jpeg", class: "left comment-author-pic circle responsive-img" %>
+            <% end %>
+      </div>
+      <div class="comment-content">
+        <div class="comment-header">
+          <h5 class="comment-author-name"><%= current_user.first_name.split(" ")[0] %></h5>
+          <div class="comment-rating">
+              <% 3.times  do %>
+              <span class="filled-in-star star-size">&#9734;</span>
+              <% end %>
+              <% (5 - 2).times do %>
+              <span class="star-size">&#9734;</span>
+              <% end %>
+          </div>
+        </div>
+        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+        </span>
+        <div class="reply-button">
+          <button type="button" name="button" id="replyButton" class="btn">Reply</button>
+        </div>
+      </div>
+        <div class="card-panel blue">
+          <div class="reply-author">
+                <% if current_user.profile_url.present? %>
+                <%= image_tag current_user.profile_url, class: "reply-author-pic circle responsive-img" %>
+                <% else %>
+                <%= image_tag "defaultimage.jpeg", class: "left reply-author-pic circle responsive-img" %>
+                <% end %>
+          </div>
+          <div class="reply-content">
+            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+            </span>
+          </div>
+        </div>
+      <div class="reply-form" id="replyForm" style="">
+        <form class="" action="index.html" method="post">
+          <div class="reply-form-field">
+            <div class="col l8  input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea" placeholder="Start a Conversation" cols="1"></textarea>
+            </div>
+            <div class="col l4 submit-reply-button">
+              <input type="button" name="name" value="Reply" class="btn">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row comment-form">
+  <form class="" action="index.html" method="post">
+    <div class="row">
+      <div class="col l8 comment-field">
+        <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" placeholder="Start a Conversation"></textarea>
+        </div>
+      </div>
+      <div class="col l4 rating-field">
+        <% 5.times  do %>
+        <span class="filled-in-star star-size">&#9734;</span>
+        <% end %>
+
+
+
+
+
+
+        <div class="submit-comment-button">
+          <input type="button" name="name" value="Submit" class="btn">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
 <div class="col-md-12" class="venue" id="venue" style="height: 70%; padding:0px">
 <div class="map-overlay"></div>
 <iframe scrolling="no" src=<%= getmap(@event.map_url) %> width="100%" height="100%" frameborder="0" class="our-event-map-url"></iframe>

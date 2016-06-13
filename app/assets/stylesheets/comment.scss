@@ -1,0 +1,151 @@
+.comment-author {
+  float: left;
+}
+.reply-author {
+  float: left;
+}
+
+.comment-author-pic {
+  vertical-align: middle;
+  width: 100px;
+  height: 50px;
+  border: solid 3px rgba(255,255,255, 0.6);
+  margin-top: -15px;
+}
+
+.reply-author-pic {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border: solid 3px rgba(255,255,255, 0.6);
+  margin-top: -15px;
+}
+
+.comment-rating {
+  float: right;
+  margin-top: -35px;
+}
+
+.comment-author-name {
+  text-align: left;
+  margin-top: -15px;
+}
+
+.comment-content {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.reply-button {
+    position: absolute;
+    right: 15px;
+}
+
+.star-size {
+  font-size: 1em;
+}
+
+.filled-in-star::before {
+  content: "\2605";
+  position: absolute;
+}
+
+.comment-field {
+    padding-left: 20px;
+}
+
+.rating-field {
+    margin-top: 40px;
+}
+
+.submit-comment-button {
+    margin-top: 15px;
+}
+
+.submit-reply-button {
+    margin-top: 15px;
+}
+
+.comment-form {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+}
+
+.reply-form {
+  & .input-field {
+    height: 50px;
+    margin-top: 0;
+  }
+
+  // & textarea {
+  //   background: green !important;
+  //   min-height: 10px !important;
+  // }
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}

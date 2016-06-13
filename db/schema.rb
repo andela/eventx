@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520145755) do
+ActiveRecord::Schema.define(version: 20160613103608) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20160520145755) do
     t.string   "banner"
     t.integer  "manager_profile_id", default: 0
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "rating"
+    t.integer  "event_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["comment_id"], name: "index_comments_on_comment_id"
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -150,6 +162,18 @@ ActiveRecord::Schema.define(version: 20160520145755) do
   end
 
   add_index "sponsors", ["event_id"], name: "index_sponsors_on_event_id"
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "manager_profile_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+  end
+
+  add_index "subscriptions", ["event_id"], name: "index_subscriptions_on_event_id"
+  add_index "subscriptions", ["manager_profile_id"], name: "index_subscriptions_on_manager_profile_id"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
