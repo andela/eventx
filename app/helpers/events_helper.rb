@@ -40,6 +40,14 @@ module EventsHelper
     end
   end
 
+  def past_event?(event)
+    if Time.now.to_i > event.end_date.to_i
+      true
+    else
+      false
+    end
+  end
+
   private
 
   def converter(amt)

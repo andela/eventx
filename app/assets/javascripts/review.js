@@ -1,48 +1,58 @@
-// $(document).ready(function(){
-//     // $("#replyButton").click(function(){
-//     //     $("#replyForm").hide();
-//     // });
-//     $("#replyButton").click(function(){
-//         $("replyForm").show();
-//     });
-// });
 $(document).ready(function() {
-  //Hide Search field
-  $( "#replyButton" ).click(function() {
-    $("#replyForm" ).toggle("slide", { direction: "down" }, 500);
-  });
-
   $('#addReview').click(function (){
-      var body = $("#reviewBody").val()
-      var event_id = $('#reviewEventId').val();
+      var body, event_id, user_id, rating, reviewers_name;
+      body = $("#reviewBody").val()
+      event_id = $('#reviewEventId').val();
+      user_id = $('#reviewerId').val();
+      rating = $( "input:checked" ).val();
       $.ajax({
         url: '/events/' + event_id + '/reviews',
         type: 'POST',
-        data: { review: { body: body, event_id: event_id } }
+        data: { review: { body: body, event_id: event_id, rating: rating, user_id: user_id } }
       })
       .done(function(data){
-        console.log(data);
-        Materialize.toast('Your request for refund has been submitted', 3000);
+        Materialize.toast('Your review has been saved', 3000);
         var clonedDiv = $('#review').clone();
-        console.log(clonedDiv);
         clonedDiv.find("#reviewBodyContent").html(data.body)
-        clonedDiv.find(".review-author-name").html("Ruby Hyperloop")
+        filled_in_stars(data.rating, clonedDiv);
+        empty_stars(data.rating, clonedDiv);
+        add_author_image(clonedDiv);
+        add_author_image(clonedDiv)
         clonedDiv.attr("id", "newId");
         $('#review').after(clonedDiv);
-
-
-
-
-
-        // var ele = $('*[data-id="' + uniq_id + '"]');
-        // ele.html('Processing Request');
-        // ele.attr('class','btn disabled print-box-size');
-        // ele.attr('href','#');
       })
       .fail(function(){
-        Materialize.toast('Sorry, request for refund was not submitted', 3000);
+        Materialize.toast('Sorry, review cannot be saved', 3000);
       });
 
       event.preventDefault()
     });
+
+    function filled_in_stars(number, target_div){
+      var stars = '';
+      for(var i = 1; i <= number; i++){
+        stars += '<span class="filled-in-star star-size">&#9734;</span>';
+      }
+      target_div.find(".review-rating").html(stars);
+    };
+
+    function empty_stars(number, target_div){
+      var stars = '';
+      count = 5 - number
+      for(var i = 1; i <= count; i++){
+        stars += '<span class="star-size">&#9734;</span>';
+      }
+      target_div.find(".review-rating").append(stars);
+    };
+
+    function add_author_image(target_div){
+      image_source = $("img.profile_pic").attr("src")
+      img = target_div.find(".review-author-pic");
+      img.attr("src", image_source);
+    };
+
+    function add_author_name(target_div){
+      reviewers_name = $("a.dropdown-button").text().trim();
+      clonedDiv.find(".review-author-name").html(reviewers_name)
+    }
 });
