@@ -71,21 +71,21 @@
 
 
 <div class="container center">
-  <h2 class="our_description_title">Comments</h2>
+  <h2 class="our_description_title">Reviews</h2>
 <div class="row">
   <div class="col s12 m12 l12">
-    <div class="card-panel teal">
-      <div class="comment-author">
+    <div class="card-panel teal" id="review">
+      <div class="review-author">
             <% if current_user.profile_url.present? %>
-            <%= image_tag current_user.profile_url, class: "comment-author-pic circle responsive-img" %>
+            <%= image_tag current_user.profile_url, class: "review-author-pic circle responsive-img" %>
             <% else %>
-            <%= image_tag "defaultimage.jpeg", class: "left comment-author-pic circle responsive-img" %>
+            <%= image_tag "defaultimage.jpeg", class: "left review-author-pic circle responsive-img" %>
             <% end %>
       </div>
-      <div class="comment-content">
-        <div class="comment-header">
-          <h5 class="comment-author-name"><%= current_user.first_name.split(" ")[0] %></h5>
-          <div class="comment-rating">
+      <div class="review-content">
+        <div class="review-header">
+          <h5 class="review-author-name"><%= current_user.first_name.split(" ")[0] %></h5>
+          <div class="review-rating">
               <% 3.times  do %>
               <span class="filled-in-star star-size">&#9734;</span>
               <% end %>
@@ -94,38 +94,9 @@
               <% end %>
           </div>
         </div>
-        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+        <span class="white-text" id="reviewBodyContent">I am a very simple card. I am good at containing small bits of information.
           I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
         </span>
-        <div class="reply-button">
-          <button type="button" name="button" id="replyButton" class="btn">Reply</button>
-        </div>
-      </div>
-        <div class="card-panel blue">
-          <div class="reply-author">
-                <% if current_user.profile_url.present? %>
-                <%= image_tag current_user.profile_url, class: "reply-author-pic circle responsive-img" %>
-                <% else %>
-                <%= image_tag "defaultimage.jpeg", class: "left reply-author-pic circle responsive-img" %>
-                <% end %>
-          </div>
-          <div class="reply-content">
-            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-            </span>
-          </div>
-        </div>
-      <div class="reply-form" id="replyForm" style="">
-        <form class="" action="index.html" method="post">
-          <div class="reply-form-field">
-            <div class="col l8  input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea" placeholder="Start a Conversation" cols="1"></textarea>
-            </div>
-            <div class="col l4 submit-reply-button">
-              <input type="button" name="name" value="Reply" class="btn">
-            </div>
-          </div>
-        </form>
       </div>
     </div>
   </div>
@@ -133,30 +104,26 @@
 
 
 
-<div class="row comment-form">
-  <form class="" action="index.html" method="post">
+<div class="row review-form">
+  <form class="">
     <div class="row">
-      <div class="col l8 comment-field">
+      <div class="col l8 review-field">
         <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea" placeholder="Start a Conversation"></textarea>
+            <textarea id="reviewBody" class="materialize-textarea" placeholder="Start a Conversation"></textarea>
         </div>
+        <input type="hidden" name="event_id" value="1" id="reviewEventId">
       </div>
       <div class="col l4 rating-field">
         <% 5.times  do %>
         <span class="filled-in-star star-size">&#9734;</span>
         <% end %>
-
-
-
-
-
-
-        <div class="submit-comment-button">
-          <input type="button" name="name" value="Submit" class="btn">
+        <div class="submit-review-button">
+          <input type="submit" name="name" value="Submit" class="btn" id="addReview">
         </div>
       </div>
     </div>
   </form>
+
 </div>
 </div>
 

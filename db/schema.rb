@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613103608) do
+ActiveRecord::Schema.define(version: 20160614084023) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -48,18 +48,6 @@ ActiveRecord::Schema.define(version: 20160613103608) do
     t.string   "banner"
     t.integer  "manager_profile_id", default: 0
   end
-
-  create_table "comments", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "rating"
-    t.integer  "event_id"
-    t.integer  "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "comments", ["comment_id"], name: "index_comments_on_comment_id"
-  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -149,6 +137,18 @@ ActiveRecord::Schema.define(version: 20160613103608) do
     t.string   "status",       default: "requested"
     t.integer  "event_id"
   end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "rating"
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reviews", ["event_id"], name: "index_reviews_on_event_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "sponsors", force: :cascade do |t|
     t.string   "name"

@@ -1,11 +1,11 @@
-.comment-author {
+.review-author {
   float: left;
 }
 .reply-author {
   float: left;
 }
 
-.comment-author-pic {
+.review-author-pic {
   vertical-align: middle;
   width: 100px;
   height: 50px;
@@ -21,17 +21,17 @@
   margin-top: -15px;
 }
 
-.comment-rating {
+.review-rating {
   float: right;
   margin-top: -35px;
 }
 
-.comment-author-name {
+.review-author-name {
   text-align: left;
   margin-top: -15px;
 }
 
-.comment-content {
+.review-content {
   position: relative;
   margin-bottom: 25px;
 }
@@ -50,7 +50,7 @@
   position: absolute;
 }
 
-.comment-field {
+.review-field {
     padding-left: 20px;
 }
 
@@ -58,7 +58,7 @@
     margin-top: 40px;
 }
 
-.submit-comment-button {
+.submit-review-button {
     margin-top: 15px;
 }
 
@@ -66,7 +66,7 @@
     margin-top: 15px;
 }
 
-.comment-form {
+.review-form {
     margin-left: 0rem !important;
     margin-right: 0rem !important;
 }
