@@ -12,7 +12,6 @@ $(document).ready(function(){
     $("#booking").show();
   });
 
-
    $("#btn_booking").click(function(){
     $("#booking").hide();
     $("#template").show();
