@@ -2,17 +2,21 @@
   <div class="col s6 offset-s2">
     <div class="card large padit">
       <div class="card-info">
-        <%= render 'categories/form' %>
-        <%= form_for @event, html: {class: "col s12", multipart: true} do |f| %>
-        <%= f.fields_for :ticket_types do |tickets| %>
-        <%= render "events/ticket_type_fields", f: tickets, locals: {f: tickets} %>
-        <% end %>
-        <div class="links">
-          <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, class: '' %>
+      <div>
+        <h5><i class="fa fa-user prefix icon-setting"></i> Add Ticket</h5>
+        <hr>
+          <%= render 'categories/form' %>
+          <%= form_for @event, html: {class: "col s12", multipart: true} do |f| %>
+          <%= f.fields_for :ticket_types do |tickets| %>
+          <%= render "events/ticket_type_fields", f: tickets, locals: {f: tickets} %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, class: '' %>
+          </div>
         </div>
         <!-- Add Staff -->
         <div class="row">
-          <div style="margin-bottom: 20px; margin-left: 50px;">
+          <div style="margin-bottom: 200px; margin-left: 50px;">
           </div>
           <div class="event_ticket_field">
             <h5><i class="fa fa-user prefix icon-setting"></i> Add Staff</h5>
@@ -24,7 +28,7 @@
         <!--End add staff -->
         <!-- Add Highlight -->
         <div class="row">
-          <div style="margin-bottom: 20px; margin-left: 50px;">
+          <div style="margin-bottom: 80px; margin-left: 50px;">
           </div>
           <div class="event_highlights_field">
             <h5><i class="fa fa-th-list prefix icon-setting"></i> Add Highlight</h5>

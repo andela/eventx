@@ -1,5 +1,5 @@
 var obj = {1: "#create", 2: "#booking", 3: "#template"};
-
+var count = 1;
 $(document).ready(function(){
   var default_hidden = ["#booking", "#template"],
       len = default_hidden.length;
@@ -8,12 +8,23 @@ $(document).ready(function(){
   }
 
   $("#btn_booking").click(function(){
-    $("#create").hide();
-    $("#booking").show();
+    $(obj[count]).hide();
+    count += 1;
+    $(obj[count]).show();
   });
 
-   $("#btn_booking").click(function(){
-    $("#booking").hide();
-    $("#template").show();
+  $("#btn_previous").click(function(){
+    $(obj[count]).hide();
+    count -= 1
+    $(obj[count]).show();
   });
+
+  //  $("#btn_booking").click(function(){
+  //   $("#booking").show();
+  //   $("#template").hide();
+  // });
+  //   $("#btn_booking").click(function(){
+  //   $("#booking").hide();
+  //   $("#template").show();
+  //});
 });
