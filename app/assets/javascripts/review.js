@@ -17,8 +17,8 @@ $(document).ready(function() {
         filled_in_stars(data.rating, clonedDiv);
         empty_stars(data.rating, clonedDiv);
         add_author_image(clonedDiv);
-        add_author_image(clonedDiv)
-        clonedDiv.attr("id", "newId");
+        add_author_name(clonedDiv);
+        clonedDiv.removeAttr("style");
         $('#review').after(clonedDiv);
       })
       .fail(function(){
@@ -53,6 +53,6 @@ $(document).ready(function() {
 
     function add_author_name(target_div){
       reviewers_name = $("a.dropdown-button").text().trim();
-      clonedDiv.find(".review-author-name").html(reviewers_name)
+      target_div.find(".review-author-name").html(reviewers_name)
     }
 });
