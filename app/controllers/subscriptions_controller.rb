@@ -1,10 +1,10 @@
 class SubscriptionsController < ApplicationController
-  respond_to :js
+  respond_to :json
 
-  def new
-    @event = Event.find_by(id: params[:event_id])
-    @subscription = Subscription.new
-  end
+  # def new
+  #   @event = Event.find_by(id: params[:event_id])
+  #   @subscription = Subscription.new
+  # end
 
   def create
     @subscription = Subscription.new(subscription_params)
