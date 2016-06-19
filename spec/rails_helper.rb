@@ -55,6 +55,7 @@ RSpec.configure do |config|
   config.include Requests::JsonHelper, type: :controller
   config.include Requests::ApiHelper, type: :controller
   config.include Requests::ApiHelper, type: :feature
+  config.include WaitForAjax, type: :feature
 end
 
 Shoulda::Matchers.configure do |config|

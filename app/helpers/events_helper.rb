@@ -41,7 +41,7 @@ module EventsHelper
   end
 
   def past_event?(event)
-    if Time.now.to_i > event.end_date.to_i
+    if Time.now > event.end_date
       true
     else
       false

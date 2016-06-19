@@ -1,14 +1,12 @@
 class ReviewsController < ApplicationController
+  respond_to :json
+
   def create
     review = Review.new(review_params)
     if review.save
-      respond_to do |format|
-        format.json { render json: review }
-      end
+      render json: review
     else
-      respond_to do |format|
-        format.json { render json: review }
-      end
+      render json: review.errors
     end
   end
 

@@ -72,7 +72,7 @@
 <div class="container center">
   <% if action_name == "show" && past_event?(@event) %>
      <%= render "reviews" %>
-     <% if current_user %>
+     <% if current_user && @event.attending?(current_user) %>
      <%= render "review_form" %>
      <% end %>
 <% end %>

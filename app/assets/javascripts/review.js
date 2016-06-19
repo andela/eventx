@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#addReview').click(function (){
+  $('#addReviewForm').submit(function (){
       var body, event_id, user_id, rating, reviewers_name;
       body = $("#reviewBody").val()
       event_id = $('#reviewEventId').val();
@@ -11,15 +11,19 @@ $(document).ready(function() {
         data: { review: { body: body, event_id: event_id, rating: rating, user_id: user_id } }
       })
       .done(function(data){
-        Materialize.toast('Your review has been saved', 3000);
-        var clonedDiv = $('#review').clone();
-        clonedDiv.find("#reviewBodyContent").html(data.body)
-        filled_in_stars(data.rating, clonedDiv);
-        empty_stars(data.rating, clonedDiv);
-        add_author_image(clonedDiv);
-        add_author_name(clonedDiv);
-        clonedDiv.removeAttr("style");
-        $('#review').after(clonedDiv);
+        if(data.error){
+          Materialize.toast(data.error, 3000)
+        }else{
+          Materialize.toast('Your review has been saved', 3000);
+          var clonedDiv = $('#review').clone();
+          clonedDiv.find("#reviewBodyContent").html(data.body)
+          filled_in_stars(data.rating, clonedDiv);
+          empty_stars(data.rating, clonedDiv);
+          add_author_image(clonedDiv);
+          add_author_name(clonedDiv);
+          clonedDiv.removeAttr("style");
+          $('#review').after(clonedDiv);
+        }
       })
       .fail(function(){
         Materialize.toast('Sorry, review cannot be saved', 3000);
