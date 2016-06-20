@@ -23,7 +23,7 @@ $(document).ready(function(){
 
     .fail(function(){
       Materialize.toast("Unable to subscribe to this event", 3000);
-    })
+    });
 
     event.preventDefault();
   });
@@ -39,7 +39,7 @@ $(document).ready(function(){
 
       $.ajax({
         url: "/events/" + event_id + "/subscriptions/" + subscription_id,
-        type: 'DELETE',
+        type: "DELETE",
         data: data
       })
 
