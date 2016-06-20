@@ -63,7 +63,7 @@
 </div>
 <script type="text/javascript">
   function all_events(){
-    return JSON.parse($('<div />').html("<%= @events.to_json %>").text());
+    return JSON.parse('<%= @events.to_json.html_safe %>');
   }
 
   function infoHtml(event){
