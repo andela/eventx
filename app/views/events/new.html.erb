@@ -8,8 +8,10 @@
     </div>
   </div>
 </div>
-
-  <%= render "create_event_card" %>
-  <%= render "preview_event" %>
-  <%= render "select_template" %>
-<%= render "navigate_next_event_form" %>
+<%= form_for @event, html: {class: "col s12", multipart: true, id: "event_form"} do |f| %>
+  <%= render "create_event_card", f: f %>
+  <%= render "preview_event", f: f %>
+  <%= render "select_template", f: f %>
+  <%= render "preview_template", f: f %>
+<% end %>
+  <%= render "navigate_next_event_form" %>

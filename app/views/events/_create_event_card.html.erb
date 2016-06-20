@@ -2,11 +2,11 @@
   <div class="col s6 offset-s2">
     <div class="card large">
       <div class="card-info">
-        <%= render 'categories/form' %>
-        <%= form_for @event, html: {class: "col s12", multipart: true} do |f| %>
+        <%#= render 'categories/form' %>
         <div class="col s12" id="test1">
           <div class="container margin-down">
             <div class="row">
+              <h3 class="event_headers"> Create Event </h3>
               <%= show_form_errors(@event) %>
               <div class="row">
                 <div class="input-field col s10">
@@ -81,9 +81,6 @@
                 <%= f.text_area :description, rows: 6, placeholder: "Enter description of event", required: true, class: "materialize-textarea" %>
               </div>
             </div>
-            <div class="col s3 offset-s4 center">
-              <%= link_to "Next <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center more-info z-depth-0", id:'next' %>
-            </div>
           </div>
         </div>
       </div>
@@ -99,4 +96,3 @@
     </div>
   </div>
 </div>
-<% end %>

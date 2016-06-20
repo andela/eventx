@@ -14,12 +14,20 @@ $(document).ready(function () {
         empty_fields.push(current_field.name);
       }
     }
-    empty_fields.forEach(function (value) {
+    return empty_fields
+  };
+
+  $('#saved_events').on('click', function () {
+    result = validateForm();
+    if (result.length > 0) {
+      result.forEach(function (value) {
       notify(value + ' is required!');
     });
-  };
-  $('#save_event').on('click', function () {
-    validateForm();
+    return false;
+    } else {
+      $("#event_form").submit();
+    }
+
   });
   var isExistingOnPage = function (userId) {
     var parent = $('#event_staffs').children(), isOnPage = false;

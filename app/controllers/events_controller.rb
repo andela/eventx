@@ -79,6 +79,7 @@ class EventsController < ApplicationController
                      else
                        @event.errors.full_messages.join("; ")
                      end
+
     respond_with(@event)
   end
 

@@ -1,18 +1,17 @@
 <div id="custom_category" class="modal">
-    <div class="modal-content">
-          <h4>Add Custom Category</h4>
-          <%= form_for(Category.new,remote: true) do |c| %> 
-        <div class="field">
-          <%= c.text_field :name, placeholder: "Enter category title", id: 'category_name'%>
-          <%= c.text_field :description, placeholder: "Enter category description", id:'category_description' %>
-        </div>
-      <div class="actions">
-        <%= c.submit "Add", class: "btn" %> 
-      </div>
-    <% end %> 
-    
+  <div class="modal-content">
+    <h4>Add Custom Category</h4>
+    <%= form_for(Category.new,remote: true) do |c| %>
+    <div class="field">
+      <%= c.text_field :name, placeholder: "Enter category title", id: 'category_name'%>
+      <%= c.text_field :description, placeholder: "Enter category description", id:'category_description' %>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    <div class="actions">
+      <%= c.submit "Add", class: "btn" %>
     </div>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+  </div>
 </div>
