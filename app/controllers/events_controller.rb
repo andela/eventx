@@ -11,8 +11,8 @@ class EventsController < ApplicationController
     :scan,
     :tickets_report
   ]
-  before_action :set_sponsor, :subscription_status
-  before_action :subscription_status, only: [:show, :edit, :create, :update]
+  before_action :set_sponsor
+  before_action :subscription_status, only: [:show]
 
   respond_to :html, :json, :js
 

@@ -1,15 +1,55 @@
-$(document).ready(function () {
-  alert("test")
-  $('#subscriptionForm').submit(function (event) {
-    alert("test")
-    var event_id, manager_profile_id, user_id;
-    event_id = $("input[name=subscription_event_id]:checkbox:checked").val()
-    manager_profile_id = $("input[name=subscription_manager_profile_id]:checkbox:checked").val()
-    user_id = $("#subscription_user_id").val();
-    console.log(event_id);
-    console.log(manager_profile_id);
-    console.log(user_id);
+$(document).ready(function(){
+  $("#btn_subscribe").click(function (){
+    $("#subscribe").closeModal();
+    var event_id = $("input[name=subscription_event_id]:checkbox:checked").val();
+    var data = { subscription: {
+      event_id: event_id,
+      manager_profile_id: $("input[name=subscription_manager_profile_id]:checkbox:checked").val(),
+      user_id: $("#subscription_user_id").val()
+    }};
 
-    event.preventDefault()
+    $.ajax({
+      url: '/events/' + event_id + '/subscriptions',
+      type: 'POST',
+      data: data
+    })
+    .done(function(data){
+      $("#subscribeBtn").hide();
+      $("#unsubscribeBtn").attr("subscription", data.id);
+      $("#unsubscribeBtn").show();
+      Materialize.toast('You have been subscribed to this event', 3000);
+    })
+    .fail(function(){
+      Materialize.toast('Unable to subscribe to this event', 3000);
+    });
+
+    event.preventDefault();
   });
+
+  $("#unsubscribeBtn").click(function(){
+    var data_confirm = confirm("Are You Sure");
+    if(data_confirm){
+      var event_id =  $("#unsubscribeBtn").attr("event");
+      var subscription_id = $("#unsubscribeBtn").attr("subscription");
+      var data = {
+        event_id: event_id
+      };
+
+      $.ajax({
+        url: '/events/' + event_id + '/subscriptions/' + subscription_id,
+        type: 'DELETE',
+        data: data
+      })
+
+      .done(function(data){
+        $("#subscribeBtn").show();
+        $("#unsubscribeBtn").hide();
+        Materialize.toast('You have unsubscribed from this event', 3000);
+      })
+
+      .fail(function(){
+        Materialize.toast('Unable to unsubscribe from this event', 3000);
+      });
+    }
+  })
 });

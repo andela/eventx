@@ -43,15 +43,14 @@
         </div>
         <% end %>
         <div class="subscribe-button">
-          <% if @event.persisted? %>
-          <% if current_user && @event %>
+          <% if current_user && action_name == "show" %>
             <% if @subscribed %>
-              <%= link_to "Unsubscribe", event_subscription_path(@event.id, @subscribed.id), method: :delete, data: {confirm: "Are you sure" }, class: "btn modal-trigge cancel-sponsor-button", remote: true %>
+              <button data-target="subscribe" class="btn modal-trigger" id="subscribeBtn" style="display:none">Subscribe</button>
+              <button id="unsubscribeBtn" event="<%= @event.id %>" subscription="<%= @subscribed.id %>" class="btn cancel-sponsor-button">Unsubscribe</button>
             <% else %>
-            <button data-target="subscribe" class="btn modal-trigger">Modal</button>
-              <%= link_to "Subscribe", new_event_subscription_path(@event.id), class: "btn modal-trigger", remote: true %>
+              <button id="unsubscribeBtn" event="<%= @event.id %>" class="btn cancel-sponsor-button" style="display:none;">Unsubscribe</button>
+              <button data-target="subscribe" class="btn modal-trigger" id="subscribeBtn">Subscribe</button>
             <% end %>
-          <% end %>
           <% end %>
         </div>
 
@@ -63,6 +62,7 @@
             <%= social_share_button_tag(@event.title, popup: true)%>
         <%end%>
       </div>
+
       <div class="row center"></div>
       <span class="hide-on-med-and-down"><br><br></span>
     </div>

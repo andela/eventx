@@ -1,17 +1,13 @@
 class SubscriptionsController < ApplicationController
   respond_to :json
 
-  # def new
-  #   @event = Event.find_by(id: params[:event_id])
-  #   @subscription = Subscription.new
-  # end
-
   def create
+    binding.pry
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
-      flash[:success] = "You been subscribed to this event"
+      render json: @subscription
     else
-      flash[:error] = "Unable to subscribe to this event"
+      render json: @subscription.errors
     end
   end
 
@@ -21,7 +17,7 @@ class SubscriptionsController < ApplicationController
       user_id: current_user.id
     )
     subscription.destroy
-    flash[:success] = "You unsubscribed from this event"
+    render json: { success: "Successfully unsubscribed from event" }
   end
 
   private
