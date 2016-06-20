@@ -53,7 +53,7 @@
         </div>
 
         <div id="subscribeForm">
-          <% if current_user && action_name == "show" && @subscribed %>
+          <% if current_user && action_name == "show" %>
           <%= render "subscription" %>
           <% end %>
         </div>

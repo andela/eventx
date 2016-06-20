@@ -9,19 +9,21 @@ $(document).ready(function(){
     }};
 
     $.ajax({
-      url: '/events/' + event_id + '/subscriptions',
-      type: 'POST',
+      url: "/events/" + event_id + "/subscriptions",
+      type: "POST",
       data: data
     })
+
     .done(function(data){
       $("#subscribeBtn").hide();
       $("#unsubscribeBtn").attr("subscription", data.id);
       $("#unsubscribeBtn").show();
-      Materialize.toast('You have been subscribed to this event', 3000);
+      Materialize.toast("You have been subscribed to this event", 3000);
     })
+
     .fail(function(){
-      Materialize.toast('Unable to subscribe to this event', 3000);
-    });
+      Materialize.toast("Unable to subscribe to this event", 3000);
+    })
 
     event.preventDefault();
   });
@@ -36,7 +38,7 @@ $(document).ready(function(){
       };
 
       $.ajax({
-        url: '/events/' + event_id + '/subscriptions/' + subscription_id,
+        url: "/events/" + event_id + "/subscriptions/" + subscription_id,
         type: 'DELETE',
         data: data
       })
@@ -44,12 +46,12 @@ $(document).ready(function(){
       .done(function(data){
         $("#subscribeBtn").show();
         $("#unsubscribeBtn").hide();
-        Materialize.toast('You have unsubscribed from this event', 3000);
+        Materialize.toast("You have unsubscribed from this event", 3000);
       })
 
       .fail(function(){
-        Materialize.toast('Unable to unsubscribe from this event', 3000);
+        Materialize.toast("Unable to unsubscribe from this event", 3000);
       });
     }
-  })
+  });
 });

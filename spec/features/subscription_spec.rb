@@ -22,8 +22,12 @@ RSpec.describe "Subscription", type: :feature, js: true do
   end
 
   scenario "when unsubscribing from an event" do
-    subscriber = create(:subscription, user_id: @event.manager_profile.user.id)
-    visit "/events/#{subscriber.event.id}"
+    create(
+      :subscription,
+      user_id: @event.manager_profile.user.id,
+      event_id: @event.id
+    )
+    visit "/events/#{@event.id}"
 
     find_button("unsubscribeBtn").trigger("click")
     page.evaluate_script("window.confirm = function() { return true; }")
