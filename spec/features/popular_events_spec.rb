@@ -6,7 +6,7 @@ RSpec.feature "PopularEvents", type: :feature, js: true do
   end
 
   scenario "User searches for popular Event" do
-    visit events_popular_path
+    visit popular_path
     expect(page).to have_content("Popular Events")
     expect(page.current_path).to eq "/events/popular"
   end

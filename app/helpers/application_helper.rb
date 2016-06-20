@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def create_event_or_login(name, classes)
     if current_user
-      content_tag(:a, name, href: events_new_path, class: classes * " ")
+      content_tag(:a, name, href: new_event_path, class: classes * " ")
     else
       content_tag(:a, name, href: "#login_modal", class:
                   classes * " " + " modal-trigger")

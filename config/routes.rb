@@ -1,44 +1,56 @@
 Rails.application.routes.draw do
   root "welcome#index"
-  get "events/new"
-  post "/events/:event_id/manage_staffs" => "manager_profiles#save_staffs",
-       as: :save_staffs
-  get "/events/:event_id/manage_staffs" => "manager_profiles#manage_staffs",
-      as: :manage_staffs
-  get "/events/:event_id/remove_staff/:event_staff_id" =>
-    "manager_profiles#remove_staff", as: :remove_staff
-  get "/events/:id/enable" =>
-          "events#enable", as: :enable_event
-  get "/events/:id/disable" =>
-          "events#disable", as: :disable_event
-  get "/events/:id/generate" => "events#generate", as: :generate_event
-  get "/featured_events" => "welcome#featured"
-  get "/popular_events" => "welcome#popular"
-  match "/events/popular" => "events#popular", via: [:post, :get]
-  get "/upcoming_events" => "welcome#index"
-  get "/my_events" => "users#show"
-  get "events/loading"
-  get "/lookup_staffs" => "users#lookup_staff_emails"
-  get "/user_info/:user_id" => "users#fetch_user_info"
-  post "/refund/:uniq_id" => "bookings#request_refund", as: :refund
-  post "/paypal_hook" => "bookings#paypal_hook", as: :paypal_hook
-  get "/scan_ticket" => "bookings#scan_ticket", as: :scan_ticket
-  get "/events/:id/scan" => "events#scan", as: :gatekeeper
-  get "/scan_ticket/:ticket_no" => "bookings#use_ticket", as: :scan
-  get "unattend", to: "attendees#destroy", as: "unattend"
-  get "auth/:provider/callback", to: "sessions#create"
-  get "auth/failure", to: redirect("/")
-  get "/tickets" => "bookings#index"
-  get "/events/:id/tickets" => "events#tickets", as: :event_tickets
-  get "/events/:id/tickets-report" =>
-          "events#tickets_report", as: :tickets_report
-  get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
-  post "/print/:id" => "printer#redirect_to_print"
-  get "/print/:id" => "printer#redirect_to_print"
-  get "/download/:booking_id" => "printer#download", as: :download
-  get "signout", to: "sessions#destroy", as: "signout"
-  get "/session" => "sessions#create"
-  post "/api_login" => "sessions#api_login"
+
+  scope path: "/events", controller: :events do
+    get "popular"            => :popular
+    get ":id/enable"         => :enable, as: :enable_event
+    get ":id/disable"        => :disable, as: :disable_event
+    get ":id/generate"       => :generate, as: :generate_event
+    get ":id/scan"           => :scan, as: :gatekeeper
+    get ":id/tickets"        => :tickets, as: :event_tickets
+    get ":id/tickets-report" => :tickets_report, as: :tickets_report
+  end
+
+  scope controller: :welcome do
+    get "/featured-events"           => :featured
+    get "/popular_events"            => :popular
+    get "/upcoming-events"           => :index
+  end
+
+  scope controller: :manager_profiles do
+    post "/manage-staffs/:event_id" => :save_staffs, as: :save_staffs
+    get "/manage-staffs/:event_id" => :manage_staffs, as: :manage_staffs
+    get "/remove-staff/:event_id/:event_staff_id" => :remove_staff,
+        as: :remove_staff
+  end
+
+  scope controller: :bookings do
+    post "/refund/:uniq_id"           => :request_refund, as: :refund
+    post "/paypal_hook"               => :paypal_hook, as: :paypal_hook
+    get "/scan-ticket"                => :scan_ticket, as: :scan_ticket
+    get "/scan-ticket/:ticket_no"     => :use_ticket, as: :scan
+    get "/tickets"                    => :index
+  end
+
+  scope controller: :sessions do
+    get "/auth/:provider/callback" => :create
+    get "/signout"                 => :destroy, as: :signout
+    get "/session"                 => :create
+    post "/api_login"              => :api_login
+  end
+
+  scope controller: :users do
+    get "/dashboard"          => :show
+    get "/lookup_staffs"      => :lookup_staff_emails
+    get "/user_info/:user_id" => :fetch_user_info
+  end
+
+  scope controller: :printer do
+    get "/print/:booking_id(/:ticket_type_id)" => "printer#print", as: :print
+    get "/download/:booking_id" => "printer#download", as: :download
+  end
+
+  resources :users, only: [:show]
   resources :manager_profiles, only: [:new, :create]
   resources :attendees
   resources :categories
@@ -46,7 +58,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
     resources :sponsors
   end
+
+  get "/unattend", to: "attendees#destroy", as: :unattend
   get "/remit/:id", to: "remit#new", as: :remit
-  resources :users, only: [:show]
   get "*unmatched_route", to: "application#no_route_found"
 end
