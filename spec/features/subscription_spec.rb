@@ -14,7 +14,6 @@ RSpec.describe "Subscription", type: :feature, js: true do
     visit "/events/#{@event.id}"
 
     find_button("subscribeBtn").trigger("click")
-    expect(page).to have_content "SUBSCRIBE"
     find_button("btn_subscribe").trigger("click")
     wait_for_ajax
 
