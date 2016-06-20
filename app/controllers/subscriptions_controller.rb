@@ -2,7 +2,6 @@ class SubscriptionsController < ApplicationController
   respond_to :json
 
   def create
-    binding.pry
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
       render json: @subscription

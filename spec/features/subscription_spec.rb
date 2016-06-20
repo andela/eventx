@@ -1,14 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Subscription", type: :feature, js: true do
-  before(:all) do
-    Capybara.current_driver = :selenium
-    ManagerProfile.destroy_all
+  before(:each) do
     @event = create(:regular_event)
-  end
-
-  after(:all) do
-    Capybara.use_default_driver
   end
 
   before(:each) do
@@ -19,12 +13,22 @@ RSpec.describe "Subscription", type: :feature, js: true do
   scenario "when subscribing for an event" do
     visit "/events/#{@event.id}"
 
-    # click_button "Subscribe"
     find_button("subscribeBtn").trigger("click")
     expect(page).to have_content "SUBSCRIBE"
     find_button("btn_subscribe").trigger("click")
-    # click_button "Subscribe"
+    wait_for_ajax
 
-    expect(page).to have_content "You been subscribed to this event"
+    expect(page).to have_content "You have been subscribed to this event"
+  end
+
+  scenario "when unsubscribing from an event" do
+    subscriber = create(:subscription, user_id: @event.manager_profile.user.id)
+    visit "/events/#{subscriber.event.id}"
+
+    find_button("unsubscribeBtn").trigger("click")
+    page.evaluate_script("window.confirm = function() { return true; }")
+    wait_for_ajax
+
+    expect(page).to have_content "You have unsubscribed from this event"
   end
 end
