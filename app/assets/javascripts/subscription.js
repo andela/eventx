@@ -1,10 +1,10 @@
 $(document).ready(function(){
   $("#btn_subscribe").click(function (){
     $("#subscribe").closeModal();
-    var event_id = $("input[name=subscription_event_id]:checkbox:checked").val();
+    var event_id = $("input[name=sub_event_id]:checkbox:checked").val();
     var data = { subscription: {
       event_id: event_id,
-      manager_profile_id: $("input[name=subscription_manager_profile_id]:checkbox:checked").val(),
+      manager_profile_id: $("input[name=sub_man_id]:checkbox:checked").val(),
       user_id: $("#subscription_user_id").val()
     }};
 

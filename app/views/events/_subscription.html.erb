@@ -3,12 +3,12 @@
       <h4>Subscribe</h4>
       <input type="hidden" name="subscription_user_id" value="<%= current_user.id %>" id="subscription_user_id">
       <p>
-        <input type="checkbox" class="filled-in" name="subscription_event_id" value="<%= @event.id %>" id="filled-in-event" checked="checked"/>
+        <input type="checkbox" class="filled-in" name="sub_event_id" value="<%= @event.id %>" id="filled-in-event" checked="checked"/>
         <label for="filled-in-event">Subscribe to Event</label>
       </p>
 
       <p>
-        <input type="checkbox" class="filled-in" name="subscription_manager_profile_id" value="<%= @event.manager_profile.id %>" id="filled-in-manager" checked="checked"/>
+        <input type="checkbox" class="filled-in" name="sub_man_id" value="<%= @event.manager_profile.id %>" id="filled-in-manager" checked="checked"/>
         <label for="filled-in-manager">Subscribe to Event Manager</label>
       </p>
     </div>
