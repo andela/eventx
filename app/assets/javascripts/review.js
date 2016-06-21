@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#addReviewForm').submit(function (event){
+  $("#addReviewForm").submit(function (event){
       var body, event_id, user_id, rating, reviewers_name;
       body = $("#reviewBody").val();
       event_id = $("#reviewEventId").val();
@@ -45,27 +45,27 @@ $(document).ready(function() {
         stars += "<span class='filled-in-star star-size'>&#9734;</span>";
       }
       target_div.find(".review-rating").html(stars);
-    };
+    }
 
     function empty_stars(number, target_div){
       var stars = "";
-      count = 5 - number;
+      var count = 5 - number;
       for(var i = 1; i <= count; i++){
         stars += "<span class='star-size'>&#9734;</span>";
       }
       target_div.find(".review-rating").append(stars);
-    };
+    }
 
     function add_author_image(target_div){
-      image_source = $("img.profile_pic").attr("src")
-      img = target_div.find(".review-author-pic");
+      var image_source = $("img.profile_pic").attr("src");
+      var img = target_div.find(".review-author-pic");
       img.attr("src", image_source);
-    };
+    }
 
     function add_author_name(target_div){
-      reviewers_name = $("a.dropdown-button").text().trim();
+      var reviewers_name = $("a.dropdown-button").text().trim();
       target_div.find(".review-author-name").html(reviewers_name);
-    };
+    }
 
     function empty_fields(){
       $("#reviewBody").val("");
