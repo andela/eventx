@@ -28,14 +28,20 @@ RSpec.describe ReviewsController, type: :controller do
       )
     end
 
-    context "when creating todo with valid details" do
+    context "when creating a review with valid details" do
       it "returns newly created review" do
         create_review_request("Great event")
         expect(JSON.parse(response.body)["body"]).to eq "Great event"
       end
+
+      it "increases review count" do
+        expect do
+          create_review_request("Nice event")
+        end.to change(Review, :count).by(1)
+      end
     end
 
-    context "when creating todo with invalid details" do
+    context "when creating a review with invalid details" do
       it "returns an error message" do
         create_review_request(nil)
         expect(JSON.parse(response.body)["body"]).to include("can't be blank")
