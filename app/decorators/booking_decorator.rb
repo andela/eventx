@@ -61,4 +61,14 @@ class BookingDecorator < Draper::Decorator
               " Download All Tickets", h.download_path(booking.id),
               class: "grey-text left", target: "_blank"
   end
+
+  def status_or_grant
+    return grant_refund_button if refund_requested && !granted
+    return "Refund Paid" if refund_requested && granted
+    payment_status.capitalize
+  end
+
+  def grant_refund_button
+    h.link_to "Grant Refund", h.grant_refund_path(uniq_id), id: "grant-refund"
+  end
 end

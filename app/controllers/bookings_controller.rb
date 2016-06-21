@@ -77,7 +77,6 @@ class BookingsController < ApplicationController
                      else
                        "This request has already been granted"
                      end
-
     redirect_to "/events/#{@booking.event.id}/tickets-report"
   end
 

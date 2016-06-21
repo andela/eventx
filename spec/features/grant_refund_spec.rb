@@ -11,6 +11,21 @@ RSpec.feature "Grant Refund", type: :feature do
       to receive(:current_user).and_return(@user)
   end
 
+  scenario "when user has requested refund" do
+    booking = create(:booking, event: @event, user: @user,
+                     payment_status: 2, amount: 20, refund_requested: true)
+    visit "/events/#{@event.id}/tickets-report"
+    expect(page).to have_content "Grant Refund"
+  end
+
+  scenario "when manager grants refund" do
+    booking = create(:booking, event: @event, user: @user, payment_status: 2,
+                     amount: 20, refund_requested: true)
+    visit "/events/#{@event.id}/tickets-report"
+    click_link "Grant Refund"
+    expect(page).to have_content "Refund Paid"
+  end
+
   scenario "cannot download ticket when refund has been granted" do
     booking = create(:booking, event: @event, user: @user, payment_status: 2,
                                amount: 20, refund_requested: true,
@@ -35,4 +50,5 @@ RSpec.feature "Grant Refund", type: :feature do
     expect(page).not_to have_content "DOWNLOAD ALL TICKETS"
     expect(page).not_to have_content "Cancelled"
   end
+
 end
