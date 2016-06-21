@@ -1,8 +1,8 @@
 .review {
-  padding-bottom: 5px;
-  padding-top: 15px;
   margin-bottom: 10px;
   margin-top: 10px;
+  padding-bottom: 5px;
+  padding-top: 15px;
   fieldset, label { margin: 0; padding: 0; }
   body{ margin: 20px; }
   h1 { font-size: 1.5em; margin: 10px; }
@@ -17,40 +17,41 @@
 }
 
 .review-author-pic {
+  border: solid 3px rgba(255,255,255, 0.6);
+  height: 50px;
+  margin-top: -15px;
   vertical-align: middle;
   width: 100px;
-  height: 50px;
-  border: solid 3px rgba(255,255,255, 0.6);
-  margin-top: -15px;
 }
 
 .reply-author-pic {
+  border: solid 3px rgba(255,255,255, 0.6);
+  height: 50px;
+  margin-top: -15px;
   vertical-align: middle;
   width: 50px;
-  height: 50px;
-  border: solid 3px rgba(255,255,255, 0.6);
-  margin-top: -15px;
 }
 
 .review-rating {
   float: right;
-  margin-top: -14px;
   margin-left: 5px;
+  margin-right: 25px;
+  margin-top: -14px;
 }
 
 .review-author-name {
-  text-align: left;
   margin-top: -15px;
+  text-align: left;
 }
 
 .review-content {
-  position: relative;
   margin-bottom: 25px;
+  position: relative;
 }
 
 .reply-button {
-    position: absolute;
-    right: 15px;
+  position: absolute;
+  right: 15px;
 }
 
 .star-size {
@@ -63,41 +64,37 @@
 }
 
 .review-field {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .rating-field {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .submit-review-button {
     margin-top: 10px;
 }
 
-.submit-reply-button {
-    // margin-top: 15px;
-}
-
 .review-form {
-    margin-left: 0rem !important;
-    margin-right: 0rem !important;
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
 }
 
 .reply-form {
   & .input-field {
-    height: 50px;
     margin-top: 0;
+    height: 50px;
   }
   display: none;
 }
 
 .review-content-body {
-  text-align: left;
-  margin-left: 55px;
   color: #333333;
   font-family: "europa", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 1.3rem;
+  margin-left: 55px;
+  text-align: left;
 }
 
 .rating {
@@ -110,8 +107,8 @@
   }
 
   & [type="radio"]:not(:checked) + label:before {
-    border-radius: 0;
     border: 0 solid #fff;
+    border-radius: 0;
   }
 }
 
