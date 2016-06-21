@@ -12,14 +12,14 @@ RSpec.feature "Grant Refund", type: :feature do
   end
 
   scenario "when user has requested refund" do
-    booking = create(:booking, event: @event, user: @user,
+    create(:booking, event: @event, user: @user,
                      payment_status: 2, amount: 20, refund_requested: true)
     visit "/events/#{@event.id}/tickets-report"
     expect(page).to have_content "Grant Refund"
   end
 
   scenario "when manager grants refund" do
-    booking = create(:booking, event: @event, user: @user, payment_status: 2,
+    create(:booking, event: @event, user: @user, payment_status: 2,
                      amount: 20, refund_requested: true)
     visit "/events/#{@event.id}/tickets-report"
     click_link "Grant Refund"
