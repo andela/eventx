@@ -15,6 +15,9 @@ class Ability
     if user.event_manager?
       can :manage, Event, manager_profile_id: user.manager_profile.id
       can :manage, Sponsor
+      can :manage, Booking do |booking|
+        booking.event.manager_profile_id = user.manager_profile.id
+      end
     end
 
     if user.bookings.present?
@@ -25,7 +28,6 @@ class Ability
       end
     end
 
-    can :create, Booking
-    can :paypal_hook, Booking
+    can [:create, :paypal_hook, :tickets, :read], Booking
   end
 end

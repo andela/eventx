@@ -23,22 +23,42 @@ class BookingDecorator < Draper::Decorator
   end
 
   def request_refund_button
-    generate_request_refund_button.html_safe if h.can? :request_refund, object
+    generate_request_refund_button if h.can? :request_refund, object
   end
 
   def generate_request_refund_button
-    if refund_requested
+    if refund_requested && !granted
       h.link_to "Processing Request", "#", class: "btn disabled print-box-size"
-    else
-      h.link_to "Request Refund", h.refund_path(uniq_id),
-                class: "btn print-box-size",
-                remote: true, method: :post, id: "request-refund"
+    elsif !refund_requested && !granted
+      h.link_to "Request Refund", '#refund-form',
+                class: "btn print-box-size refund-button modal-trigger",
+                'data-id': uniq_id, 'data-event': event_id, id: "request-refund"
     end
   end
 
   def status
-    "<span class='card-panel red right' \
-    style='position: relative; bottom: 37px; color: white'>
-    Cancelled</span>".html_safe unless event.enabled
+    if cancelled? && !granted
+      "<span class='card-panel red right' \
+      style='position: relative; bottom: 37px; color: white'>
+      Cancelled</span>".html_safe
+    elsif cancelled? && granted
+      "<span class='card-panel blue right' \
+      style='position: relative; bottom: 37px; color: white'>
+      Refund Paid</span>".html_safe
+    end
+  end
+
+  def cancelled?
+    !event.enabled
+  end
+
+  def download_tickets_button
+    generate_download_button unless refund_requested && granted
+  end
+
+  def generate_download_button
+    h.link_to h.content_tag(:i, "", class: "fa fa-floppy-o") +
+              " Download All Tickets", h.download_path(booking.id),
+              class: "grey-text left", target: "_blank"
   end
 end

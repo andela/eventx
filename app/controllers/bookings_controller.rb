@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user, except: [:paypal_hook]
   before_action :set_event, only: :each_event_ticket
-  before_action except: [:paypal_hook, :index, :each_event_ticket,
-                         :scan_ticket, :use_ticket, :request_refund] do
+  before_action except: [:paypal_hook, :index, :each_event_ticket, :scan_ticket,
+                         :use_ticket, :request_refund, :grant_refund] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -52,14 +52,33 @@ class BookingsController < ApplicationController
 
   def request_refund
     @booking = Booking.find_by_uniq_id(params[:uniq_id])
-    flash[:notice] = if @booking.update_attributes(
-      refund_requested: true,
-      time_requested: Time.now
-    )
-                       "Request for a refund has been sent"
+    unless @booking.refund_requested
+      @booking.update_attributes(
+        refund_requested: true,
+        time_requested: Time.now,
+        reason: params[:reason]
+      )
+    end
+  end
+
+  def grant_refund
+    @booking = Booking.find_by_uniq_id(params[:uniq_id])
+    data = {
+      granted: true,
+      granted_by: current_user.id,
+      time_granted: Time.now
+    }
+    flash[:notice] = if !@booking.granted
+                       if @booking.update_attributes(data)
+                         "You have successfully granted a refund request"
+                       else
+                         "Refund request cannot be granted at this time"
+                       end
                      else
-                       "Request cannot be sent at this time."
+                       "This request has already been granted"
                      end
+
+    redirect_to "/events/#{@booking.event.id}/tickets-report"
   end
 
   def use_ticket

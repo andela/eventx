@@ -1,5 +1,4 @@
 class EventDecorator < Draper::Decorator
-  # decorates :event
   delegate_all
 
   def image_url(version)

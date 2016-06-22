@@ -1,0 +1,46 @@
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p>Hi, <%= @user.first_name %> your request for a refund has been granted.</p>
+
+        <table style="min-width: 100%; width: 100%;" width="100%">
+          <tbody>
+            <tr>
+              <td style="border: 1px solid #c2c7d0; border-radius: 4px; padding: 10px" colspan="2">
+                <h3><a title="<%= @event.title %>" href="<%= "#{@host}/events/#{@event.id}" %>" target="_blank"><strong><%= @event.title %></strong></a></h3>
+                <h6 align="left"><%= @event.enabled ? "Active" : "Cancelled" %> | <%= @event.start_date.strftime ("%B %d, %Y") %></h6>
+              <%= @event.description %>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table style="min-width: 100%; width: 100%; margin: 50px" width="100%">
+          <tbody>
+            <tr><td colspan="2"><h4>Booking Details</h4></td></tr>
+            <tr><td>Date Booked: </td><td><%= @booking.created_at.strftime ("%B %d, %Y") %></td></tr>
+            <tr><td>Booking ID: </td><td><%= @booking.uniq_id %></td></tr>
+            <tr><td>Amount Paid: </td><td><%= number_to_currency(@booking.amount) %></td></tr>
+            <tr><td>Transaction ID: </td><td><%= @booking.txn_id %></td></tr>
+          </tbody>
+        </table>
+
+        <table style="min-width: 100%; width: 100%; margin: 50px" width="100%">
+          <tbody>
+            <tr><td colspan="2"><h4>Event Manager's Details</h4></td></tr>
+            <%
+              host = @host.split("/")
+              host[-1] = "#{@manager.subdomain}/#{host[-1]}"
+              host = host.join("/")
+            %>
+            <tr><td>Page: </td><td><a href="<%= host %>"><%= host %></a></td></tr>
+            <tr><td>E Mail: </td><td><%= @manager.company_mail %></td></tr>
+            <tr><td>Phone Number: </td><td><%= @manager.company_phone %></td></tr>
+            <tr><td>Transaction ID: </td><td><%= @booking.txn_id %></td></tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

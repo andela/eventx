@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520145755) do
+ActiveRecord::Schema.define(version: 20160607113454) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160520145755) do
     t.boolean  "granted",            default: false
     t.integer  "granted_by"
     t.datetime "time_granted"
+    t.string   "reason"
   end
 
   add_index "bookings", ["event_id"], name: "index_bookings_on_event_id"
