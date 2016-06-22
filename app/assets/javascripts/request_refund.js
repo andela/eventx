@@ -12,9 +12,10 @@ $(document).ready(function () {
     }
   });
   $('#submit-refund').click(function () {
-    var reason = 'Event was Cancelled';
-    var uniq_id = $('#uniq_id').val();
-    if ($('#reason-custom').val() !== '') {
+    var reason = 'Event was Cancelled',
+        uniq_id = $('#uniq_id').val(),
+        custom_reason = $('#reason-custom').val();
+    if (custom_reason !== '') {
       reason = $('#reason-custom').val();
     }
     $.ajax({
