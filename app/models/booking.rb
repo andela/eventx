@@ -1,6 +1,7 @@
 class Booking < ActiveRecord::Base
   before_create :add_uniq_id
-  before_save :calculate_amount, :send_mail
+  before_save :calculate_amount
+  after_update :send_mail
 
   belongs_to :user
   belongs_to :event
