@@ -37,11 +37,11 @@ class BookingDecorator < Draper::Decorator
   end
 
   def status
-    if cancelled? and !granted
+    if cancelled? && !granted
       "<span class='card-panel red right' \
       style='position: relative; bottom: 37px; color: white'>
       Cancelled</span>".html_safe
-    elsif cancelled? and granted
+    elsif cancelled? && granted
       "<span class='card-panel blue right' \
       style='position: relative; bottom: 37px; color: white'>
       Refund Paid</span>".html_safe
@@ -58,7 +58,7 @@ class BookingDecorator < Draper::Decorator
 
   def generate_download_button
     h.link_to h.content_tag(:i, "", class: "fa fa-floppy-o") +
-      " Download All Tickets",  h.download_path(booking.id),
-      {class: "grey-text left", target: "_blank"}
+              " Download All Tickets", h.download_path(booking.id),
+              class: "grey-text left", target: "_blank"
   end
 end

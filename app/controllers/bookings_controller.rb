@@ -63,19 +63,21 @@ class BookingsController < ApplicationController
 
   def grant_refund
     @booking = Booking.find_by_uniq_id(params[:uniq_id])
-    if !@booking.granted
-      if @booking.update_attributes(
-        granted: true,
-        granted_by: current_user.id,
-        time_granted: Time.now
-      )
-        flash[:notice] = "You have successfully granted a refund request"
-      else
-        flash[:notice] = "Refund request cannot be granted at this time"
-      end
-    else
-      flash[:notice] = "This request has already been granted"
-    end
+    data = {
+      granted: true,
+      granted_by: current_user.id,
+      time_granted: Time.now
+    }
+    flash[:notice] = if !@booking.granted
+                       if @booking.update_attributes(data)
+                         "You have successfully granted a refund request"
+                       else
+                         "Refund request cannot be granted at this time"
+                       end
+                     else
+                       "This request has already been granted"
+                     end
+
     redirect_to "/events/#{@booking.event.id}/tickets-report"
   end
 
