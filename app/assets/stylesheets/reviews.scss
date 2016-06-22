@@ -1,7 +1,8 @@
 .review {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
   margin-top: 10px;
-  padding-bottom: 5px;
+  padding-bottom: 20px;
   padding-top: 15px;
   fieldset, label { margin: 0; padding: 0; }
   body{ margin: 20px; }
@@ -58,6 +59,15 @@
   font-size: 1em;
 }
 
+.event-star-size {
+  font-size: 3em;
+}
+
+.event-filled-in-star::before {
+  // content: "\2605";
+  position: absolute;
+}
+
 .filled-in-star::before {
   content: "\2605";
   position: absolute;
@@ -78,6 +88,7 @@
 .review-form {
   margin-left: 0rem !important;
   margin-right: 0rem !important;
+  margin-top: 100px;
 }
 
 .reply-form {
@@ -95,6 +106,10 @@
   font-size: 1.3rem;
   margin-left: 55px;
   text-align: left;
+}
+
+.add-review-button {
+  width: 160px;
 }
 
 .rating {

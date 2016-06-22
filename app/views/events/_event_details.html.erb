@@ -28,6 +28,23 @@
         <div id="att">
           <%= render "events/attend_unattend_event_button" %>
         </div>
+
+
+        <% if action_name == "show" && cummulative_rating(@event)%>
+        <div class="event-rating">
+          <div class="event-rating-star">
+            <% (cummulative_rating(@event)).times  do %>
+            <span class="event-filled-in-star event-star-size">&#11088;</span>
+            <% end %>
+            <% (5 - (cummulative_rating(@event))).times do %>
+            <span class="event-star-size">&#9734;</span>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+
+
+
         <%if @event.id%>
             <%= social_share_button_tag(@event.title, popup: true)%>
         <%end%>
