@@ -46,8 +46,9 @@ class BookingsController < ApplicationController
   end
 
   def scan_ticket
-    @user_ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
-    flash[:notice] = "Ticket does not exist" unless @user_ticket
+    ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
+    flash[:notice] = "Ticket does not exist" unless ticket
+    @user_ticket = ticket ? ticket.decorate : ticket
   end
 
   def request_refund
@@ -82,7 +83,7 @@ class BookingsController < ApplicationController
 
   def use_ticket
     ticket_no = params[:ticket_no]
-    @user_ticket = UserTicket.find_by(ticket_number: ticket_no)
+    @user_ticket = UserTicket.find_by(ticket_number: ticket_no).decorate
     if @user_ticket.is_used
       flash[:notice] = "Ticket has already been used"
     else

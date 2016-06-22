@@ -50,5 +50,4 @@ RSpec.feature "Grant Refund", type: :feature do
     expect(page).not_to have_content "DOWNLOAD ALL TICKETS"
     expect(page).not_to have_content "Cancelled"
   end
-
 end

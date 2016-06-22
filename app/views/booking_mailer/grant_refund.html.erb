@@ -29,12 +29,13 @@
         <table style="min-width: 100%; width: 100%; margin: 50px" width="100%">
           <tbody>
             <tr><td colspan="2"><h4>Event Manager's Details</h4></td></tr>
-            <%
-              host = @host.split("/")
-              host[-1] = "#{@manager.subdomain}/#{host[-1]}"
-              host = host.join("/")
+            <% if @host
+                host = @host.split("/")
+                host[-1] = "#{@manager.subdomain}.#{host[-1]}"
+                host = host.join("/")
             %>
             <tr><td>Page: </td><td><a href="<%= host %>"><%= host %></a></td></tr>
+            <% end %>
             <tr><td>E Mail: </td><td><%= @manager.company_mail %></td></tr>
             <tr><td>Phone Number: </td><td><%= @manager.company_phone %></td></tr>
             <tr><td>Transaction ID: </td><td><%= @booking.txn_id %></td></tr>
