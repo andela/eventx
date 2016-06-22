@@ -76,7 +76,7 @@ class BookingsController < ApplicationController
     else
       flash[:notice] = "This request has already been granted"
     end
-    redirect_to "/my_events"
+    redirect_to "/events/#{@booking.event.id}/tickets-report"
   end
 
   def use_ticket
