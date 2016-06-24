@@ -1,0 +1,41 @@
+<div>
+  <div class="our-new-custom-nav">
+    <%= render "layouts/nav" %>
+  </div>
+  </div>
+<div id="main">
+  <div class="wrapper">
+      <%= render partial: "layouts/dashboard_sidebar"%>
+      <div class="row">
+        <div class="col s9">
+        <div class="event_staffs" id="user"></div>
+          <input type="hidden" id = "staff_id" name = "user_id" />
+            <input type="email" class="add_staff_field validate" id="staff_field_id" placeholder= "Enter a user email"/>
+      </div>
+
+        <div class="col s3"> 
+           <button class="btn waves-effect waves-light" type="submit" id="btn_ticket_form"> Transfer <i class="material-icons right">swap_horiz</i>
+          </button>
+        </div>
+
+    </div>
+
+<div class="row">
+      <table>
+        <thead>
+          <tr>
+              <th></th>
+              <th>Ticket Number</th>
+              <th>Type</th>
+              <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+    <%= render partial: "bookings/partials/ticket", collection: @all_tickets, as: :ticket %>
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,67 @@
+<div>
+  <div class="our-new-custom-nav">
+    <%= render "layouts/nav" %>
+  </div>
+  </div>
+<div id="main">
+  <div class="wrapper">
+      <%= render partial: "layouts/dashboard_sidebar"%>
+      <div class="row">
+        <div class="col s9"></div>
+    </div>
+
+<div class="row">
+      <table class="striped">
+        <tbody>
+          <tr>
+              <th>Transaction#</th>
+              <td><%= @transaction.id %></td>
+          </tr>
+
+           <tr>
+              <th>Recipient Name</th>
+              <td><%= @transaction.payers_name %></td>
+          </tr>
+
+          <tr>
+              <th>Status</th>
+              <td><%= @transaction.status %></td>
+          </tr>
+
+          <tr>
+              <th>Event</th>
+              <td><a href="<%= event_path(@transaction.event_id)%>" target="_blank"><%= @transaction.event %></a></td>
+          </tr>
+          <tr>
+              <th>Number of tickets</th>
+              <td><%= @transaction.ticket_count %></td>
+          </tr>
+
+          <tr>
+              <th>Total Amount</th>
+              <td><%= @total_amount %></td>
+          </tr>
+          <tr>
+            <%if action_button(@transaction.recipient_id) %>
+              <td>
+                <%= link_to ticket_transaction_path(@transaction.id), 
+                data: {:confirm => 'Are you sure?'}, class: 'btn red',:method => :delete do %>
+                Cancel Transaction<i class='material-icons right'>not_interested</i>
+                <% end %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to ticket_transaction_path(@transaction.id), 
+                data: {confirm: 'Are you sure?'}, class: 'btn red', method: :delete do %>
+                Not Interested<i class='material-icons right'>not_interested</i>
+              <% end %>
+                </td>
+              <td><%= link_to "Proceed to checkout", checkout_path, class: 'btn' %></td> 
+            <% end %> 
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

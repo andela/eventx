@@ -28,7 +28,18 @@ Rails.application.routes.draw do
   get "unattend", to: "attendees#destroy", as: "unattend"
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")
-  get "/tickets" => "bookings#index"
+
+  scope controller: :bookings do 
+    get "/bookings" => :index 
+    get "/bookings/:id/tickets" => :all_tickets 
+  end 
+  
+  resources :ticket_transactions
+
+  get "/bookings/:id/ticket-transactions", to: "ticket_transactions#index"
+
+  get "/ticket_transactions/:id/checkout", to: "ticket_transactions#checkout_ticket", as: :checkout
+
   get "/events/:id/tickets" => "events#tickets", as: :event_tickets
   get "/events/:id/tickets-report" =>
           "events#tickets_report", as: :tickets_report
