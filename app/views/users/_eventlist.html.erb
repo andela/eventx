@@ -23,7 +23,7 @@
   </td>
   <ul class="dropdown-content right-align" id="dropdown-<%= "#{event.id}" %>">
     <li data-eventId="<%= event.id %>">
-      <%= link_to "Edit Event", edit_event_path(event), class:"our-dropdown-content", data: {eventid: event.id } %>
+      <%= link_to "Edit Event", edit_event_path(event), class:"our-dropdown-content", id: "edit-event", data: {eventid: event.id } %>
     </li>
     <li class="divider"></li>
     <li><%= link_to "View Event", event, class: "our-dropdown-content" %></li>

@@ -30,7 +30,7 @@
         </a>
       </li>
       <ul class="dropdown-content right" id="dropdown-user_option">
-        <li><%= link_to "My Account", dashboard_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+        <li id="display-account"><%= link_to "My Account", user_path(current_user.id), data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
         <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
       </ul>
       <% else %>

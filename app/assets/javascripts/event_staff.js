@@ -91,7 +91,7 @@ $(document).ready(function () {
     staffRole = $('[name=\'role\']').val();
     $.get('/user_info/' + staffId + '?role=' + staffRole, function (data) {
       if (isExistingOnPage(data.user_id)) {
-        notify('This user has been added already');
+        notify('This user has been added already', 300000);
       } else {
         $('#event_staffs').append(generateHtml(data));
         notify('Staff has been successfuly added');

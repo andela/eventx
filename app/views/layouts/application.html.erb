@@ -44,13 +44,13 @@
 </head>
 
 <body>
+  <div id="ticket-display">
 <% if flash[:notice].present? %>
-  <div>
     <script type="text/javascript">
-        Materialize.toast("<%= flash[:notice].to_s %>", 3000, "rounded")
+        Materialize.toast("<%= flash[:notice].to_s %>", 3000)
     </script>
-  </div>
 <% end %>
+  </div>
 
     <%= yield %>
 

@@ -56,6 +56,7 @@ group :development, :test do
   gem "spring", "1.4.3"
   gem "rubocop", require: false
   gem "letter_opener"
+  gem 'selenium-webdriver', '~> 2.53'
 end
 
 group :test do

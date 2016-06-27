@@ -76,8 +76,7 @@ def sign_up
   set_valid_omniauth
   OmniAuth.config.test_mode = true
   visit root_path
-  expect(page).to have_content "SIGN UP"
-  click_link "Sign up"
+  page.find(".home_button").trigger("click")
   click_link "Google"
   visit root_path
 end
