@@ -1,14 +1,14 @@
 <div class="row review-form">
   <form class="" id="addReviewForm">
     <div class="row">
-      <div class="col l8 review-field">
+      <div class="col l9 review-field">
         <div class="input-field col s12">
             <textarea id="reviewBody" name="review[body]" class="materialize-textarea" placeholder="Add Review" required="true"></textarea>
         </div>
         <input type="hidden" name="event_id" value="<%= @event.id%>" id="reviewEventId">
         <input type="hidden" name="user_id" value="<%= current_user.id %>" id="reviewerId">
       </div>
-      <div class="col l4 rating-field">
+      <div class="col l3 rating-field">
         <fieldset class="rating">
         <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
         <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
