@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
 
   def scan_ticket
     ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
-    flash[:notice] = "Ticket does not exist" unless ticket
+    flash[:notice] = messages.ticket_invalid unless ticket
     @user_ticket = ticket ? ticket.decorate : ticket
   end
 
@@ -63,29 +63,31 @@ class BookingsController < ApplicationController
   end
 
   def grant_refund
-    @booking = Booking.find_by_uniq_id(params[:uniq_id])
+    @booking = Booking.find_by(uniq_id: params[:uniq_id])
     data = {
-      granted: true,
-      granted_by: current_user.id,
-      time_granted: Time.now
+      granted: true, granted_by: current_user.id, time_granted: Time.now
     }
-    flash[:notice] = if !@booking.granted
-                       if @booking.update_attributes(data)
-                         "You have successfully granted a refund request"
-                       else
-                         "Refund request cannot be granted at this time"
-                       end
+    flash[:notice] = if @booking.granted
+                       messages.duplicate_refund_request
                      else
-                       "This request has already been granted"
+                       update_booking data
                      end
     redirect_to "/events/#{@booking.event.id}/tickets-report"
+  end
+
+  def update_booking(data)
+    if @booking.update_attributes(data)
+      messages.grant_refund_success
+    else
+      messages.grant_refund_failure
+    end
   end
 
   def use_ticket
     ticket_no = params[:ticket_no]
     @user_ticket = UserTicket.find_by(ticket_number: ticket_no).decorate
     if @user_ticket.is_used
-      flash[:notice] = "Ticket has already been used"
+      flash[:notice] = messages.ticket_used
     else
       @user_ticket.update_attributes(
         is_used: true,
@@ -140,14 +142,13 @@ class BookingsController < ApplicationController
 
   def ticket_quantity_specified?
     if ticket_params.values.map(&:to_i).inject(:+) <= 0
-      flash[:notice] = "You have to specify quantity of ticket required!"
+      flash[:notice] = messages.ticket_quantity_empty
       redirect_to :back
     else
       ticket_params.each do |key, value|
         tickets_left = @event.ticket_types.find(key).tickets_left
         next unless tickets_left < value.to_i
-        flash[:notice] = "Ticket quantity specified is
-                above the available quantity."
+        flash[:notice] = messages.ticket_quantity_exeeded
         redirect_to :back
       end
     end

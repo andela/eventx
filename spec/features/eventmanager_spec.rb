@@ -19,7 +19,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     fill_in "manager_profile[company_phone]", with: ""
     fill_in "manager_profile[subdomain]", with: ""
     click_button "Submit"
-    expect(page).to have_content "Found Errors in form submitted!"
+    expect(page).to have_content "There is an error with the form submitted"
 
     # with correct values
     fill_in "manager_profile[company_name]", with: "Our Comapany"

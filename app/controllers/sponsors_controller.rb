@@ -15,9 +15,9 @@ class SponsorsController < ApplicationController
   def create
     @sponsor = @event.sponsors.new(sponsor_params)
     if @sponsor.save
-      flash[:success] = "Event sponsor added"
+      flash[:success] = messages.sponsor_create_success
     else
-      flash[:error] = "Unable to create event sponsor"
+      flash[:error] = messages.sponsor_create_error
     end
   end
 
@@ -26,15 +26,15 @@ class SponsorsController < ApplicationController
 
   def update
     if @sponsor.update(sponsor_params)
-      flash[:success] = "Event sponsor updated"
+      flash[:success] = messages.sponsor_update_success
     else
-      flash[:error] = "Unable to update event sponsor"
+      flash[:error] = messages.sponsor_update_error
     end
   end
 
   def destroy
     @sponsor.destroy
-    flash[:success] = "Event sponsor deleted"
+    flash[:success] = messages.sponsor_delete_success
   end
 
   private

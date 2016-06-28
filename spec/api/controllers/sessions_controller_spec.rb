@@ -25,14 +25,14 @@ RSpec.describe SessionsController, type: :controller do
       params = { provider: "facebook", token: "invalid token" }
       post :api_login, params
       expect(response.status).to eq 417
-      expect(json["api_key"]).to eql "Invalid token/provider supplied"
+      expect(json["api_key"]).to eql "Invalid token or provider supplied"
     end
 
     it "should not supply api key for incorrect provider" do
       params = { provider: "invalid provider", token: "token" }
       post :api_login, params
       expect(response.status).to eq 417
-      expect(json["api_key"]).to eql "Invalid token/provider supplied"
+      expect(json["api_key"]).to eql "Invalid token or provider supplied"
     end
   end
 

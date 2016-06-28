@@ -21,7 +21,7 @@ RSpec.describe ManagerProfilesController, type: :controller do
       session[:user_id] = user.id
       profile = attributes_for(:manager_profile, subdomain: nil)
       post :create, manager_profile: profile
-      expect(flash[:notice]).to eq "Found Errors in form submitted!"
+      expect(flash[:notice]).to eq "There is an error with the form submitted"
       expect(response).to render_template :new
       session[:user_id] = nil
     end
