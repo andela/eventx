@@ -41,11 +41,13 @@
 }
 
 .review-author-name {
+  color: #5c5c5c;
   margin-top: -15px;
   text-align: left;
 }
 
 .review-content {
+  color: #5c5c5c;
   margin-bottom: 25px;
   position: relative;
 }
@@ -64,7 +66,6 @@
 }
 
 .event-filled-in-star::before {
-  // content: "\2605";
   position: absolute;
 }
 
@@ -104,14 +105,17 @@
 .review-content-body {
   color: #333333;
   font-family: "europa", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 1.3rem;
   margin-left: 55px;
   text-align: left;
 }
 
 .add-review-button {
   width: 160px;
+}
+
+.reviews-header {
+  color: #5c5c5c;
+  margin-bottom: 30px;
 }
 
 .rating {
