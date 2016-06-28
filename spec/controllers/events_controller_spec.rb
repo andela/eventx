@@ -1,4 +1,3 @@
-require "rails_helper"
 require "support/booking_helper"
 
 RSpec.describe EventsController, type: :controller do
@@ -57,7 +56,7 @@ RSpec.describe EventsController, type: :controller do
 
         expect(
           flash[:notice]
-        ).to eq "This category does not have a popular event"
+        ).to eq messages.no_popular_event
       end
     end
   end

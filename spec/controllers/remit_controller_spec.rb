@@ -20,11 +20,9 @@ RSpec.describe RemitController, type: :controller do
         get :new, id: @event.id
 
         expect(assigns(:remit).event.title).to eq "Blessings wedding"
-        expect(
-          assigns(:remit
-                 ).event.description
-        ).to eq "Happy day of joy celebration happinness smiles."
         expect(assigns(:remit).event.venue).to eq "Beside the waters"
+        expect(assigns(:remit).event.description).
+          to eq "Happy day of joy celebration happinness smiles."
       end
     end
 
@@ -35,7 +33,7 @@ RSpec.describe RemitController, type: :controller do
 
         get :new, id: @event.id
 
-        expect(flash[:notice]).to eq "Event cannot yet request a remittance!"
+        expect(flash[:notice]).to eq messages.remit_not_due
       end
     end
 
@@ -48,9 +46,7 @@ RSpec.describe RemitController, type: :controller do
         remit.save
 
         get :new, id: @event.id
-        expect(
-          flash[:notice]
-        ).to eq "This event remit have already been processed"
+        expect(flash[:notice]).to eq messages.remit_duplicate_alert
         remit.destroy
       end
     end

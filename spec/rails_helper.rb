@@ -91,3 +91,7 @@ def sign_up_and_create_an_event_manager
   fill_in "manager_profile[subdomain]", with: "ladyb"
   click_button "Submit"
 end
+
+def messages
+  @messages = Message.new
+end

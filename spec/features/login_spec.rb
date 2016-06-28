@@ -34,14 +34,14 @@ RSpec.feature "Login:", type: :feature, js: true do
   scenario "User tries to create event" do
     sign_up
     visit "/events/new"
-    expect(page).to have_content "You are not authorized to access this page"
+    expect(page).to have_content messages.not_authorized
   end
 
   scenario "User tries to edit event" do
     sign_up
     event = create(:event)
     visit "/events/#{event.id}/edit"
-    expect(page).to have_content "You are not authorized to access this page"
+    expect(page).to have_content messages.not_authorized
   end
 
   scenario "User tries to visit bad address" do

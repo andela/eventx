@@ -78,8 +78,8 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_button "add_staff"
     click_link "Preview"
     click_button "Save"
-    expect(page).to have_content "Description is "\
-    "too long (maximum is 1000 characters)"
+    expect(page).to have_content "Description is \
+      too long (maximum is 1000 characters)"
   end
 
   scenario "Manager fills in a short description" do
@@ -107,8 +107,8 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_button "add_staff"
     click_link "Preview"
     click_button "Save"
-    expect(page).to have_content "Description is too "\
-    "short (minimum is 20 characters)"
+    expect(page).to have_content "Description is too \
+      short (minimum is 20 characters)"
   end
 
   scenario "Manager does not create ticket" do

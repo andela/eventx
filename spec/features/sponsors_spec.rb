@@ -21,7 +21,7 @@ describe "Sponsors", type: :feature, js: true do
     fill_in "sponsor_summary", with: sponsor.summary
     click_button "Save"
 
-    expect(page).to have_content("Event sponsor added")
+    expect(page).to have_content messages.sponsor_create_success
   end
 
   scenario "updating a sponsor with valid details" do
@@ -36,7 +36,7 @@ describe "Sponsors", type: :feature, js: true do
     fill_in "sponsor_summary", with: sponsor.summary
     click_button "Save"
 
-    expect(page).to have_content("Event sponsor updated")
+    expect(page).to have_content messages.sponsor_update_success
   end
 
   scenario "deleting a sponsor" do
@@ -46,6 +46,6 @@ describe "Sponsors", type: :feature, js: true do
     find(".delete-sponsor-icon").trigger("click")
     page.evaluate_script("window.confirm = function() { return true; }")
 
-    expect(page).to have_content("Event sponsor deleted")
+    expect(page).to have_content messages.sponsor_delete_success
   end
 end

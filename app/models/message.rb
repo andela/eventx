@@ -114,4 +114,8 @@ class Message
   def sponsor_delete_success
     "Event sponsor deleted"
   end
+
+  def not_authorized
+    "You are not authorized to access this page"
+  end
 end
