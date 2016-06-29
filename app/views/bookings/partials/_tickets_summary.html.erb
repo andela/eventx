@@ -1,44 +1,43 @@
-<div class="row">
-<div class="col s12">
-  <h5>Tickets</h5> 
-  <hr />
-  <table class="responsive-table bordered striped" id="tickets_summary_table">
-    <thead>
-      <tr>
-        <th>S/N</th>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Quantity Sold</th>
-        <th>Ticket Left</th>
-        <th>Price</th>
-        <th>Amount</th>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h5>Tickets</h5>
+      <hr />
+      <table class="responsive-table bordered striped" id="tickets_summary_table">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Quantity Sold</th>
+            <th>Ticket Left</th>
+            <th>Price</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+    <tbody>
+
+    <% @presenter.ticket_types.each_with_index do |ticket, index| %>
+        <tr>
+          <td><%= index + 1%></td>
+          <td><%= ticket.name %></td>
+          <td><%= ticket.quantity %></td>
+          <td><%= ticket.tickets_sold %></td>
+          <td><%= ticket.remains %></td>
+          <td><%= number_to_currency(ticket.price)%></td>
+          <td><%= number_to_currency(ticket.amount)%></td>
+        </tr>
+    <% end %>
+     <tr class="gtotal">
+        <td colspan="2">Grand Total</td>
+        <td><%= @presenter.calculate_total 'quantity' %></td>
+        <td><%= @presenter.calculate_total 'tickets_sold' %></td>
+        <td><%= @presenter.calculate_total 'remains' %></td>
+        <td><%= number_to_currency(@presenter.calculate_total 'price')%></td>
+        <td><%= number_to_currency(@presenter.calculate_total 'amount')%></td>
       </tr>
-    </thead>
-<tbody>
-
-<% @presenter.ticket_types.each_with_index do |ticket, index| %> 
-    <tr>
-            <td><%= index + 1%></td>
-            <td><%= ticket.name %></td>
-            <td><%= ticket.quantity %></td>
-            <td><%= ticket.tickets_sold %></td>
-            <td><%= ticket.remains %></td>
-            <td><%= number_to_currency(ticket.price)%></td>
-            <td><%= number_to_currency(ticket.amount)%></td>
-    </tr>
-
-<% end %> 
- <tr class="gtotal">  
-    <td colspan="2">Grand Total</td>
-    <td><%= @presenter.calculate_total 'quantity' %></td>
-    <td><%= @presenter.calculate_total 'tickets_sold' %></td>
-    <td><%= @presenter.calculate_total 'remains' %></td>
-    <td><%= number_to_currency(@presenter.calculate_total 'price')%></td>
-    <td><%= number_to_currency(@presenter.calculate_total 'amount')%></td>
-  </tr>
-  </tbody>
-</table> 
-</div>
-
-<br />
+      </tbody>
+    </table>
+    </div>
+  </div>
 </div>

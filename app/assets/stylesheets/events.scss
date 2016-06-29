@@ -193,7 +193,7 @@ input#event_photo_upload{
     font-family: 'Roboto', sans-serif !important;
   }
   a{
-    color: #ffffff !important;
+    color: #a1a1a1 !important;
     font-family: 'Roboto', sans-serif !important;
     font-size: large;
     font-weight: bolder;
@@ -281,4 +281,45 @@ input#event_photo_upload{
 }
 .staff_add_btn{
   margin-top: 42px;
+}
+
+#bookings_table_length, #bookings_table_filter{
+  width: 50%;
+  display: inline-block;
+  .select-wrapper {
+    display: inline-block;
+    width: 20%;
+    input{
+      border: 0px;
+    }
+  }
+  label{
+    font-size: 16px;
+    margin-top: 50px;
+    top: 20px;
+    padding-left: 50px;
+  }
+  .caret{
+    display: none;
+  }
+}
+
+#bookings_table_filter{
+  text-align: right;
+  input{
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+#bookings_table_info, #bookings_table_paginate{
+  display: inline-block;
+  width: 50%;
+}
+
+#bookings_table_paginate{
+  text-align: right;
+  span{
+    font-size: 20px;
+  }
 }
