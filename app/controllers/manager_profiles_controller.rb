@@ -6,12 +6,12 @@ class ManagerProfilesController < ApplicationController
     @manager_profile = ManagerProfile.new(manager_profile_params)
     @manager_profile.user_id = current_user.id
     if @manager_profile.save
-      flash[:success] = messages.manager_create_success
+      flash[:success] = manager_create_success
       path = request.base_url.gsub(%r((http:\/\/www.)|(www.)|(http:\/\/)),
                                    "http://#{@manager_profile.subdomain}.")
       redirect_to(path)
     else
-      flash[:notice] = messages.form_submission_error
+      flash[:notice] = form_submission_error
       render :new
     end
   end
@@ -25,15 +25,15 @@ class ManagerProfilesController < ApplicationController
     begin
       staff.save
     rescue ActiveRecord::RecordNotUnique
-      flash[:notice] = messages.form_submission_error
+      flash[:notice] = form_submission_error
     end
-    flash[:success] = messages.event_staff_added
+    flash[:success] = create_successful_message("event staff")
     redirect_to :manage_staffs
   end
 
   def remove_staff
     @event.event_staffs.find_by(id: params[:event_staff_id]).destroy
-    flash[:notice] = messages.event_staff_deleted
+    flash[:notice] = delete_successful_message("event staff")
     redirect_to :manage_staffs
   end
 

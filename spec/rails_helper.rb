@@ -60,6 +60,7 @@ RSpec.configure do |config|
   end
   config.infer_spec_type_from_file_location!
   config.include ApplicationHelper
+  config.include MessagesHelper
   config.include Requests::JsonHelper, type: :controller
   config.include Requests::ApiHelper, type: :controller
   config.include Requests::ApiHelper, type: :feature
@@ -90,8 +91,4 @@ def sign_up_and_create_an_event_manager
   fill_in "manager_profile[company_phone]", with: "08023439399"
   fill_in "manager_profile[subdomain]", with: "ladyb"
   click_button "Submit"
-end
-
-def messages
-  @messages = Message.new
 end

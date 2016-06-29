@@ -1,4 +1,4 @@
-class Message
+module MessagesHelper
   def ticket_invalid
     "Ticket does not exist"
   end
@@ -47,12 +47,28 @@ class Message
     "An error occurred"
   end
 
-  def event_updated
-    "Your Event was successfully updated"
+  def update_successful_message(class_name = "record")
+    "Your #{class_name} was successfully updated"
   end
 
-  def event_created
-    "Your Event was successfully created."
+  def create_successful_message(class_name = "record")
+    "Your #{class_name} was successfully created"
+  end
+
+  def delete_successful_message(class_name = "record")
+    "Your #{class_name} was successfully deleted"
+  end
+
+  def update_failure_message(class_name = "record")
+    "Your #{class_name} was not updated"
+  end
+
+  def create_failure_message(class_name = "record")
+    "Your #{class_name} was not created"
+  end
+
+  def delete_failure_message(class_name = "record")
+    "Your #{class_name} was not deleted"
   end
 
   def no_popular_event
@@ -71,14 +87,6 @@ class Message
     "There is an error with the form submitted"
   end
 
-  def event_staff_added
-    "Successfully added Staff!"
-  end
-
-  def event_staff_deleted
-    "Successfully deleted Staff!"
-  end
-
   def booking_not_found
     "Booking not found"
   end
@@ -93,26 +101,6 @@ class Message
 
   def invalid_token
     "Invalid token or provider supplied"
-  end
-
-  def sponsor_create_success
-    "Event sponsor added"
-  end
-
-  def sponsor_create_error
-    "Unable to create event sponsor"
-  end
-
-  def sponsor_update_success
-    "Event sponsor updated"
-  end
-
-  def sponsor_update_error
-    "Unable to update event sponsor"
-  end
-
-  def sponsor_delete_success
-    "Event sponsor deleted"
   end
 
   def not_authorized

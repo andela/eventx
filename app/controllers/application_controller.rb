@@ -1,6 +1,8 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
+  include MessagesHelper
+
   self.responder = ApplicationResponder
   respond_to :html, :json
 
@@ -31,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def no_route_found
-    flash[:notice] = messages.invalid_address
+    flash[:notice] = invalid_address
     redirect_to root_path
   end
 
@@ -56,7 +58,7 @@ class ApplicationController < ActionController::Base
   def set_tenant(subdomain)
     manager = ManagerProfile.find_by(subdomain: subdomain)
     if manager.nil?
-      flash[:info] = messages.invalid_subdomain
+      flash[:info] = invalid_subdomain
       render file: "public/custom_404.html", layout: false
     end
     ActsAsTenant.current_tenant = manager
@@ -64,10 +66,6 @@ class ApplicationController < ActionController::Base
 
   def decoded_auth_token
     @decoded_auth_token ||= AuthToken.decode(http_auth_header)
-  end
-
-  def messages
-    @messages ||= Message.new
   end
 
   def http_auth_header
@@ -81,7 +79,7 @@ class ApplicationController < ActionController::Base
       respond_to do |format|
         format.html do
           redirect_to(root_path)
-          flash[:notice] = messages.not_authenticated
+          flash[:notice] = not_authenticated
         end
         format.json do
           fail NotAuthenticatedError

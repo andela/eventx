@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
 
   def scan_ticket
     ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
-    flash[:notice] = messages.ticket_invalid unless ticket
+    flash[:notice] = ticket_invalid unless ticket
     @user_ticket = ticket ? ticket.decorate : ticket
   end
 
@@ -68,7 +68,7 @@ class BookingsController < ApplicationController
       granted: true, granted_by: current_user.id, time_granted: Time.now
     }
     flash[:notice] = if @booking.granted
-                       messages.duplicate_refund_request
+                       duplicate_refund_request
                      else
                        update_booking data
                      end
@@ -77,9 +77,9 @@ class BookingsController < ApplicationController
 
   def update_booking(data)
     if @booking.update_attributes(data)
-      messages.grant_refund_success
+      grant_refund_success
     else
-      messages.grant_refund_failure
+      grant_refund_failure
     end
   end
 
@@ -87,7 +87,7 @@ class BookingsController < ApplicationController
     ticket_no = params[:ticket_no]
     @user_ticket = UserTicket.find_by(ticket_number: ticket_no).decorate
     if @user_ticket.is_used
-      flash[:notice] = messages.ticket_used
+      flash[:notice] = ticket_used
     else
       @user_ticket.update_attributes(
         is_used: true,
@@ -142,13 +142,13 @@ class BookingsController < ApplicationController
 
   def ticket_quantity_specified?
     if ticket_params.values.map(&:to_i).inject(:+) <= 0
-      flash[:notice] = messages.ticket_quantity_empty
+      flash[:notice] = ticket_quantity_empty
       redirect_to :back
     else
       ticket_params.each do |key, value|
         tickets_left = @event.ticket_types.find(key).tickets_left
         next unless tickets_left < value.to_i
-        flash[:notice] = messages.ticket_quantity_exeeded
+        flash[:notice] = ticket_quantity_exeeded
         redirect_to :back
       end
     end

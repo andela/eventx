@@ -15,9 +15,9 @@ class SponsorsController < ApplicationController
   def create
     @sponsor = @event.sponsors.new(sponsor_params)
     if @sponsor.save
-      flash[:success] = messages.sponsor_create_success
+      flash[:success] = create_successful_message("sponsor")
     else
-      flash[:error] = messages.sponsor_create_error
+      flash[:error] = create_failure_message("sponsor")
     end
   end
 
@@ -26,15 +26,15 @@ class SponsorsController < ApplicationController
 
   def update
     if @sponsor.update(sponsor_params)
-      flash[:success] = messages.sponsor_update_success
+      flash[:success] = update_successful_message("sponsor")
     else
-      flash[:error] = messages.sponsor_update_error
+      flash[:error] = update_failure_message("sponsor")
     end
   end
 
   def destroy
     @sponsor.destroy
-    flash[:success] = messages.sponsor_delete_success
+    flash[:success] = delete_successful_message("sponsor")
   end
 
   private

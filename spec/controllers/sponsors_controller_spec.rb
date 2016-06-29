@@ -38,7 +38,7 @@ RSpec.describe SponsorsController, type: :controller do
 
         it "returns success flash message" do
           valid_create_request
-          expect(flash[:success]).to eq messages.sponsor_create_success
+          expect(flash[:success]).to eq create_successful_message("sponsor")
         end
 
         it "should increase event sponsors count by 1" do
@@ -60,7 +60,7 @@ RSpec.describe SponsorsController, type: :controller do
 
         it "returns error flash message" do
           invalid_create_request
-          expect(flash[:error]).to eq messages.sponsor_create_error
+          expect(flash[:error]).to eq create_failure_message("sponsor")
         end
 
         it "should not increase event sponsors" do
@@ -85,7 +85,7 @@ RSpec.describe SponsorsController, type: :controller do
 
         it "should set flash success message" do
           valid_update_request
-          expect(flash[:success]).to eq messages.sponsor_update_success
+          expect(flash[:success]).to eq update_successful_message("sponsor")
         end
       end
 
@@ -102,7 +102,7 @@ RSpec.describe SponsorsController, type: :controller do
 
         it "should set flash success message" do
           invalid_update_request
-          expect(flash[:error]).to eq messages.sponsor_update_error
+          expect(flash[:error]).to eq update_failure_message("sponsor")
         end
       end
     end

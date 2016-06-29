@@ -62,7 +62,7 @@ class EventsController < ApplicationController
     @roles = Event.get_roles
     @event.event_staffs.delete_all
     flash[:notice] = if @event.update(event_params)
-                       messages.event_updated
+                       update_successful_message("event")
                      else
                        @event.errors.full_messages.join("; ")
                      end
@@ -75,7 +75,7 @@ class EventsController < ApplicationController
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
     flash[:notice] = if @event.save
-                       messages.event_created
+                       create_successful_message("event")
                      else
                        @event.errors.full_messages.join("; ")
                      end
@@ -110,7 +110,7 @@ class EventsController < ApplicationController
     events_category = Event.popular_events_category(params[:category]).empty?
     if params[:category] && events_category
       redirect_to popular_path,
-                  notice: messages.no_popular_event
+                  notice: no_popular_event
     else
       @popular_events = Event.popular_by_categories(params[:category])
     end
@@ -137,7 +137,7 @@ class EventsController < ApplicationController
   def set_events
     @event = Event.find(params[:id])
     if @event.nil?
-      flash[:notice] = messages.event_not_found
+      flash[:notice] = event_not_found
       redirect_to :back
     else
       @event = @event.decorate

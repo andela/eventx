@@ -33,7 +33,7 @@ RSpec.describe RemitController, type: :controller do
 
         get :new, id: @event.id
 
-        expect(flash[:notice]).to eq messages.remit_not_due
+        expect(flash[:notice]).to eq remit_not_due
       end
     end
 
@@ -46,7 +46,7 @@ RSpec.describe RemitController, type: :controller do
         remit.save
 
         get :new, id: @event.id
-        expect(flash[:notice]).to eq messages.remit_duplicate_alert
+        expect(flash[:notice]).to eq remit_duplicate_alert
         remit.destroy
       end
     end

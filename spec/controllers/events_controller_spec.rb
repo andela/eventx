@@ -56,7 +56,7 @@ RSpec.describe EventsController, type: :controller do
 
         expect(
           flash[:notice]
-        ).to eq messages.no_popular_event
+        ).to eq no_popular_event
       end
     end
   end

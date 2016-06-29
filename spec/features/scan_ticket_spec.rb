@@ -33,9 +33,15 @@ RSpec.feature "ScanTicket", type: :feature, js: true do
 
   scenario "User clicks to attend an event" do
     event = create(:event, :cancelled, ticket_types: @ticket_types)
-    booking = create(:booking, event: event, user: @user, payment_status: 2,
-                               amount: 20, refund_requested: true,
-                               granted: true)
+    booking = create(
+      :booking,
+      event: event,
+      user: @user,
+      payment_status: 2,
+      amount: 20,
+      refund_requested: true,
+      granted: true
+    )
     create(:event_staff, :gate_keeper, event: event, user: @user)
     create(:user_ticket, ticket_type: @ticket_types[0], booking_id: booking.id)
     visit gatekeeper_path(event)
