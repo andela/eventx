@@ -108,7 +108,7 @@ class EventsController < ApplicationController
   def popular_events_by_category
     events_category = Event.popular_events_category(params[:category]).empty?
     if params[:category] && events_category
-      redirect_to events_popular_path,
+      redirect_to popular_path,
                   notice: "This category does not have a popular event"
     else
       @popular_events = Event.popular_by_categories(params[:category])

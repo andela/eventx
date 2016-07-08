@@ -7,7 +7,7 @@ class RemitController < ApplicationController
     @remit = @event.build_remit
 
     unless @remit.save
-      redirect_to my_events_path,
+      redirect_to dashboard_path,
                   notice: "Event cannot yet request a remittance!"
     end
   end
@@ -16,7 +16,7 @@ class RemitController < ApplicationController
 
   def remit_exist
     if Remit.find_by(event_id: params[:id])
-      redirect_to my_events_path,
+      redirect_to dashboard_path,
                   notice: "This event remit have already been processed"
     end
   end

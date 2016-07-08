@@ -8,7 +8,7 @@
         </div>
         <div class="card-content row alignbox">
           <div class="col l8 ">
-          <%= form_tag(controller: "printer", action: "redirect_to_print" ) do %>
+          <%= form_tag({ controller: "printer", action: "print", booking_id: booking.id }, method: :get, target: "_blank") do %>
             <select name="ticket_type_id" id='dropdown-<%= "#{index}" %> ' class='browser-default ticket-select' >
               <%= booking.show_ticket_types %>
               <option value="">Print All</option>

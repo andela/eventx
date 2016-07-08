@@ -1,13 +1,16 @@
 $(document).ready(function () {
   $('.lever').on('click', function () {
-    var status = !$(this).prev('.enable_event').prop('checked');
-    var value = $(this).prev('.enable_event').prop('value');
+    var status = !$(this).prev('.enable_event').prop('checked'),
+        value = $(this).prev('.enable_event').prop('value');
     if (status) {
-      $.ajax('/events/' + value + '/enable');
-      Materialize.toast('Event has been enabled', 3000);
+      processEvent('Event has been enabled', value, '/enable');
     } else {
-      $.ajax('/events/' + value + '/disable');
-      Materialize.toast('Event has been disabled', 3000);
+      processEvent('Event has been disabled', value, '/disable');
     }
   });
 });
+
+function processEvent(message, value, endpoint) {
+  $.ajax('/events/' + value + endpoint);
+  Materialize.toast(message, 3000);
+}

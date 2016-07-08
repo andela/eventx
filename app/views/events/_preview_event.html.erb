@@ -1,0 +1,96 @@
+<%= render 'categories/form' %>
+    <%= form_for @event, html: {class: "col s12", multipart: true} do |f| %>
+ <%= f.fields_for :ticket_types do |tickets| %>
+              <%= render "events/ticket_type_fields", f: tickets, locals: {f: tickets} %>
+              <% end %>
+            </div>
+            <div class="links">
+            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, class: '' %>
+          </div>
+          </div>
+          <!-- Add Staff -->
+          <div class="row">
+            <div style="margin-bottom: 20px; margin-left: 50px;">
+            </div>
+            <div class="event_ticket_field">
+              <h5><i class="fa fa-user prefix icon-setting"></i> Add Staff</h5>
+              <hr>
+              <div class="event_staffs" id="event_staffs"><%= @event.get_event_staffs %></div>
+              <%= render "staff_fields" %>
+            </div>
+          </div>
+        <!--End add staff -->
+        <!-- Add Highlight -->
+    <div class="row">
+            <div style="margin-bottom: 20px; margin-left: 50px;">
+            </div>
+            <div class="event_highlights_field">
+              <h5><i class="fa fa-th-list prefix icon-setting"></i> Add Highlight</h5>
+              <hr>
+              <div class="event_staffs" id="event_highlights">
+                <ul class="collapsible" data-collapsible="accordion" id="highlight_table">
+                  <% if @highlights %>
+                    <% count = 0 %>
+                    <% @highlights.each do |h| %>
+                      <%= render "highlight", highlight: h, count: count %>
+                      <% count += 1 %>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+                <%= render "highlight_fields", field_id: "_new"  %>
+              <div class="col s4">
+                <button type="button" id="add_highlight" class="btn btn-circle staff_add_btn">
+                  Add Highlight
+                </button>
+              </div>
+            </div>
+          </div>
+        <!--End add highlight -->
+          </div>
+        <div class="row category-selected">
+          <div class="row radio-select">
+            <h5>Select a template</h5>
+            <hr>
+            <div class="input-field col s10">
+
+              <div class="temps">
+                <% all_template.each do |i|%>
+                <span class="col s6 m3 center temp_image">
+                  <input id="<%= i.name %>" name="event[event_template_id]" type="radio" value="<%= i.id %>"/>
+                  <label for="<%= i.name %>">
+                    <%= image_tag "#{i.image}" %>
+                  </label>
+                </span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s3 offset-s4 center">
+        <%= link_to "Preview <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center preview z-depth-0"  %>
+      </div>
+
+    </div>
+
+    <%# end %>
+
+  </div>
+</div>
+
+<div class="col s12 offset-s3" id="preview">
+<!-- <iframe id="frame" scrolling="yes" src="30" width="80%" height="500px" frameborder="0" style="margin:0 auto;">
+  </iframe> -->
+
+  <div class="" id="preview-event-div" style="width: 80%; height: 500px; margin: 0 auto 5% auto; overflow: auto;">
+    <% @current_page = "new" %>
+    <%= render "event_details" %>
+  </div>
+  <div class="col s3 offset-s4 center">
+    <button class="col s12 btn-large waves-effect waves-light home_button center z-depth-0" id="save_event">Save
+      <i class="fa fa-floppy-o"></i>
+    </button>
+  </div>
+</div>
+<% end %>
