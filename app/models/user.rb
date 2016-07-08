@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :ticket_transactions, dependent: :destroy 
+  has_many :ticket_transactions, dependent: :destroy
   has_many :bookings
   has_many :user_tickets, through: :bookings
   has_many :events_attending, through: :bookings, source: "event"

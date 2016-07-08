@@ -4,7 +4,7 @@ class Booking < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :event
-  has_many :ticket_transactions, dependent: :destroy 
+  has_many :ticket_transactions, dependent: :destroy
   has_many :user_tickets, dependent: :destroy
   accepts_nested_attributes_for :user_tickets
   enum payment_status: [:unpaid, :free, :paid]
