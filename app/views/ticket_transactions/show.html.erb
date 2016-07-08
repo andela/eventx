@@ -12,7 +12,7 @@
 
 <div class="row">
       <table class="striped">
-        <tbody>
+        <tbody id="available_tickets">
           <tr>
               <th>Transaction#</th>
               <td><%= @transaction.id %></td>
@@ -42,7 +42,8 @@
               <td><%= @total_amount %></td>
           </tr>
           <tr>
-            <%if action_button(@transaction.recipient_id) %>
+            <% if @transaction.accepted %> 
+            <% elsif action_button(@transaction.recipient_id) %>
               <td>
                 <%= link_to ticket_transaction_path(@transaction.id), 
                 data: {:confirm => 'Are you sure?'}, class: 'btn red',:method => :delete do %>
