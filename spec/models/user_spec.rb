@@ -5,6 +5,10 @@ RSpec.describe User, type: :model do
     DatabaseCleaner.clean_with(:truncation)
   end
 
+  describe "user associations" do
+    it { is_expected.to have_many :reviews }
+  end
+
   describe "#from_omniauth" do
     it "creates users from valid OmniAuth response" do
       expect(User.from_omniauth(set_valid_omniauth)).to be_instance_of User

@@ -40,6 +40,16 @@ module EventsHelper
     end
   end
 
+  def past_event?(event)
+    Time.now > event.end_date
+  end
+
+  def cummulative_rating(event)
+    all_ratings ||= event.reviews.map(&:rating).compact
+    total_rating = all_ratings.reduce(:+)
+    (total_rating / all_ratings.size).round if total_rating
+  end
+
   private
 
   def converter(amt)

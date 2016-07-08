@@ -14,6 +14,7 @@ require "capybara/rails"
 require "database_cleaner"
 require "capybara/poltergeist"
 require "webmock/rspec"
+require "transactional_capybara/rspec"
 
 WebMock.allow_net_connect!
 
@@ -38,15 +39,22 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
+
+  config.after(:each, js: true) do
+    TransactionalCapybara::AjaxHelpers.wait_for_ajax(page)
+  end
+
   config.before(:each) do |example|
     DatabaseCleaner.strategy =
       example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
     Rails.application.load_seed
   end
+
   config.after(:each) do
     DatabaseCleaner.clean
   end

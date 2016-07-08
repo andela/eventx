@@ -1,0 +1,160 @@
+.review {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-bottom: 30px;
+  padding-top: 15px;
+  fieldset, label { margin: 0; padding: 0; }
+  body{ margin: 20px; }
+  h1 { font-size: 1.5em; margin: 10px; }
+}
+
+.review-author {
+  float: left;
+  margin-right: 15px;
+}
+.reply-author {
+  float: left;
+}
+
+.review-author-pic {
+  border: solid 3px rgba(255,255,255, 0.6);
+  height: 50px;
+  margin-top: -15px;
+  vertical-align: middle;
+  width: 100px;
+}
+
+.reply-author-pic {
+  border: solid 3px rgba(255,255,255, 0.6);
+  height: 50px;
+  margin-top: -15px;
+  vertical-align: middle;
+  width: 50px;
+}
+
+.review-rating {
+  float: right;
+  margin-left: 5px;
+  margin-right: 25px;
+  margin-top: -14px;
+}
+
+.review-author-name {
+  color: #5c5c5c;
+  margin-top: -15px;
+  text-align: left;
+}
+
+.review-content {
+  color: #5c5c5c;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.reply-button {
+  position: absolute;
+  right: 15px;
+}
+
+.star-size {
+  font-size: 1em;
+}
+
+.event-star-size {
+  font-size: 3em;
+}
+
+.event-filled-in-star::before {
+  position: absolute;
+}
+
+.filled-in-star::before {
+  content: "\2605";
+  position: absolute;
+}
+
+.review-field {
+  padding-left: 20px;
+}
+
+.rating-field {
+  margin-top: 40px;
+}
+
+.submit-review-button {
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.review-form {
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
+  margin-top: 100px;
+}
+
+.reply-form {
+  & .input-field {
+    margin-top: 0;
+    height: 50px;
+  }
+  display: none;
+}
+
+.review-content-body {
+  color: #333333;
+  font-family: "europa", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  margin-left: 55px;
+  text-align: left;
+}
+
+.add-review-button {
+  width: 160px;
+}
+
+.reviews-header {
+  color: #5c5c5c;
+  margin-bottom: 30px;
+}
+
+.rating {
+  border: none;
+  & [type="radio"]:checked + label:after {
+    background-color: transparent !important;
+    border: 0;
+  }
+
+  & [type="radio"]:not(:checked) + label:before {
+    border: 0 solid #fff;
+    border-radius: 0;
+  }
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+  content: "\f005";
+  display: inline-block;
+  font-family: FontAwesome;
+  font-size: 1.25em;
+  margin: 5px;
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+  margin-top: -20px;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
