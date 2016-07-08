@@ -10,7 +10,7 @@ RSpec.feature "RequestRefund", type: :feature, js: true do
 
   scenario "when event is cancelled and paid" do
     create(:booking, event: @event, user: @user, payment_status: 2, amount: 20)
-    visit tickets_path
+    visit bookings_path
     expect(page).to have_content "REQUEST REFUND"
     expect(page).to have_content "Cancelled"
     click_link "request-refund"
@@ -19,7 +19,7 @@ RSpec.feature "RequestRefund", type: :feature, js: true do
 
   scenario "when event is cancelled and free" do
     create(:booking, event: @event, user: @user)
-    visit tickets_path
+    visit bookings_path
     expect(page).not_to have_content "REQUEST REFUND"
   end
 end

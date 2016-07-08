@@ -50,6 +50,17 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.before(:each, js: true) do
+    page.driver.browser.url_blacklist = [
+      "https://fbcdn-profile-a.akamaihd.net/",
+      "http://graph.facebook.com/",
+      "https://fonts.gstatic.com/",
+      "https://fonts.googleapis.com/",
+      "http://www.google-analytics.com/"
+    ]
+  end
+
   config.infer_spec_type_from_file_location!
   config.include ApplicationHelper
   config.include Requests::JsonHelper, type: :controller
