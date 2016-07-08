@@ -29,16 +29,18 @@ Rails.application.routes.draw do
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")
 
-  scope controller: :bookings do 
-    get "/bookings" => :index 
-    get "/bookings/:id/tickets" => :all_tickets 
-  end 
-  
+  scope controller: :bookings do
+    get "/bookings" => :index
+    get "/bookings/:id/tickets" => :all_tickets, as: :all_tickets
+  end
+
   resources :ticket_transactions
 
-  get "/bookings/:id/ticket-transactions", to: "ticket_transactions#index"
-
-  get "/ticket_transactions/:id/checkout", to: "ticket_transactions#checkout_ticket", as: :checkout
+  scope controller: :ticket_transactions do
+    get "/bookings/:id/ticket-transactions" => :index, as: :booking_tickets
+    get "/ticket_transactions/:id/checkout" => :checkout_ticket, as: :checkout
+    post "/ticket_transaction_hook" => :hook, as: :ticket_transaction_hook
+  end
 
   get "/events/:id/tickets" => "events#tickets", as: :event_tickets
   get "/events/:id/tickets-report" =>

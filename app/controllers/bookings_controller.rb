@@ -8,8 +8,6 @@ class BookingsController < ApplicationController
     ticket_quantity_specified?
   end
 
-
-  
   protect_from_forgery except: [:paypal_hook]
   respond_to :js, :hmtl, :json
 
@@ -22,9 +20,9 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings.order(id: :desc).decorate
   end
 
-  def all_tickets 
-    @all_tickets = Booking.find(params[:id]).user_tickets.where(transfered: false).decorate 
-  end 
+  def all_tickets
+    @all_tickets = Booking.find(params[:id]).user_tickets.where(transfered: false).decorate
+  end
 
   def create
     @booking = Booking.create(event: @event, user: current_user)
@@ -97,7 +95,7 @@ class BookingsController < ApplicationController
     if @booking.amount == 0
       @booking.free!
       trigger_booking_mail
-      redirect_to tickets_path
+      redirect_to bookings_path
     else
       redirect_to @booking.paypal_url(paypal_hook_path)
     end

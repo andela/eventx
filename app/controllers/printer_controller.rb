@@ -24,7 +24,7 @@ class PrinterController < ApplicationController
     booking = current_user.bookings.find_by(id: params[:booking_id])
     if booking.nil?
       flash[:notice] = "Booking not found"
-      redirect_to tickets_path
+      redirect_to bookings_path
     else
       set_tickets(booking)
     end
