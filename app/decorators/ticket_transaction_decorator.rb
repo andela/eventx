@@ -1,41 +1,32 @@
 class TicketTransactionDecorator < Draper::Decorator
   delegate_all
 
-  def status 
-    (accepted)? 'Inactive': 'Pending'
-  end 
-
-  def receiver_email 
-    booking.user.email 
-  end 
-
-  def payers_name 
-    recipient_data = User.find(recipient_id).attributes.symbolize_keys
-    [recipient_data[:first_name], recipient_data[:last_name]].join(' ')
+  def status
+    (accepted) ? "Inactive" : "Pending"
   end
 
-  def event 
-    booking.event.title 
-  end 
-
-  def ticket_count 
-    tickets.size 
-  end 
-
-  def event_id 
-    booking.event.id 
+  def receiver_email
+    booking.user.email
   end
 
-  # total_amount = 0.0
-  #   UserTicket.find(@transaction.tickets).each do |ticket|
-  #       @total_amount += ticket.ticket_type.price.to_f 
-  #   end
+  def payers_name
+    user = User.find(recipient_id)
+    user.first_name.to_s + user.last_name.to_s
+  end
 
-  # def total_amount 
-  #   amount = 0.0
-  #   UserTicket.find(tickets).each do |ticket|
-  #     amount += ticket.ticket_type.price.to_f 
-  #   end 
-  # end 
+  def payers_email
+    User.find(recipient_id).email
+  end
+
+  def event
+    booking.event.title
+  end
+
+  def ticket_count
+    tickets.size
+  end
+
+  def event_id
+    booking.event.id
+  end
 end
-
