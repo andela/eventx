@@ -55,18 +55,15 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
->>>>>>> test(subscription): add controller test
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
   config.infer_spec_type_from_file_location!
   config.include ApplicationHelper
   config.include MessagesHelper
   config.include Requests::JsonHelper, type: :controller
   config.include Requests::ApiHelper, type: :controller
   config.include Requests::ApiHelper, type: :feature
-  config.include WaitForAjax, type: :feature
 end
 
 Shoulda::Matchers.configure do |config|

@@ -15,7 +15,6 @@ RSpec.describe "Subscription", type: :feature, js: true do
 
     find_button("subscribeBtn").trigger("click")
     find_button("btn_subscribe").trigger("click")
-    wait_for_ajax
 
     expect(page).to have_content "You have been subscribed to this event"
   end
@@ -30,7 +29,6 @@ RSpec.describe "Subscription", type: :feature, js: true do
 
     find_button("unsubscribeBtn").trigger("click")
     page.evaluate_script("window.confirm = function() { return true; }")
-    wait_for_ajax
 
     expect(page).to have_content "You have unsubscribed from this event"
   end
