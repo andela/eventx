@@ -17,7 +17,7 @@ class TicketTransactionMailer < ApplicationMailer
     @event_start_date = event_data.start_date
     @event_end_date = event_data.end_date
     @no_of_tickets = transaction.tickets.size
-    @status = (transaction.accepted) ? "Sold" : "Pending"
+    @status = transaction.accepted ? "Sold" : "Pending"
     @transaction_id = transaction.id
     @amount = Ticketing.new.total_ticket_amount(transaction)
 

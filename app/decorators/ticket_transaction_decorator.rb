@@ -2,7 +2,7 @@ class TicketTransactionDecorator < Draper::Decorator
   delegate_all
 
   def status
-    (accepted) ? "Inactive" : "Pending"
+    accepted ? "Inactive" : "Pending"
   end
 
   def receiver_email

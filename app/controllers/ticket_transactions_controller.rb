@@ -28,7 +28,7 @@ class TicketTransactionsController < ApplicationController
 
       redirect_to transaction.pay_pal_url(pay_info)
     end
-   end
+  end
 
   def hook
     params.permit!
@@ -41,7 +41,9 @@ class TicketTransactionsController < ApplicationController
         redirect_to bookings_path
       end
     else
-      flash[:notice] = "Invalid transaction ensure the receipient have a paypal account"
+      flash[:notice] = "Invalid transaction ensure the" \
+                       "receipient have a paypal account"
+
       redirect_to root_path
     end
   end

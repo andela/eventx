@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     post "/paypal_hook"               => :paypal_hook, as: :paypal_hook
     get "/scan-ticket"                => :scan_ticket, as: :scan_ticket
     get "/scan-ticket/:ticket_no"     => :use_ticket, as: :scan
-    get "/bookings"                    => :index
+    get "/bookings"                   => :index
     get "/bookings/:id/tickets" => :all_tickets, as: :all_tickets
   end
 

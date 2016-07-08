@@ -2,7 +2,8 @@ class BookingsController < ApplicationController
   before_action :authenticate_user, except: [:paypal_hook]
   before_action :set_event, only: :each_event_ticket
   before_action except: [:paypal_hook, :index, :each_event_ticket,
-                         :scan_ticket, :use_ticket, :request_refund, :all_tickets] do
+                         :scan_ticket, :use_ticket, :request_refund,
+                         :all_tickets] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -21,7 +22,8 @@ class BookingsController < ApplicationController
   end
 
   def all_tickets
-    @all_tickets = Booking.find(params[:id]).user_tickets.where(transfered: false).decorate
+    @all_tickets = Booking.find(params[:id]).user_tickets.
+                   where(transfered: false).decorate
   end
 
   def create
