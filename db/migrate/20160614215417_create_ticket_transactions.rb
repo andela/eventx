@@ -4,7 +4,7 @@ class CreateTicketTransactions < ActiveRecord::Migration
       t.integer :booking_id
       t.integer :recipient_id
       t.text :tickets
-      t.boolean :accepted, default: false 
+      t.boolean :accepted, default: false
 
       t.timestamps null: false
     end
