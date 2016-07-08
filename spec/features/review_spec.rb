@@ -27,8 +27,6 @@ RSpec.describe "Reviews", type: :feature, js: true do
       click_button("Add Review")
     end
 
-    wait_for_ajax
-
     expect(page).to have_content("This was a great event")
     expect(page).to have_content("Your review has been saved")
   end
