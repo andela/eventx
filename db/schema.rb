@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614215417) do
+
+ActiveRecord::Schema.define(version: 20160614142249) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.boolean  "granted",            default: false
     t.integer  "granted_by"
     t.datetime "time_granted"
+    t.string   "reason"
   end
 
   add_index "bookings", ["event_id"], name: "index_bookings_on_event_id"
@@ -138,6 +140,18 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.integer  "event_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "rating",     default: 3
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "reviews", ["event_id"], name: "index_reviews_on_event_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+
   create_table "sponsors", force: :cascade do |t|
     t.string   "name"
     t.string   "logo"
@@ -159,6 +173,18 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "manager_profile_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+  end
+
+  add_index "subscriptions", ["event_id"], name: "index_subscriptions_on_event_id"
+  add_index "subscriptions", ["manager_profile_id"], name: "index_subscriptions_on_manager_profile_id"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"

@@ -1,6 +1,7 @@
 class Booking < ActiveRecord::Base
   before_create :add_uniq_id
   before_save :calculate_amount
+  after_update :send_mail
 
   belongs_to :user
   belongs_to :event
@@ -29,6 +30,16 @@ class Booking < ActiveRecord::Base
 
   def to_partial_path
     "bookings/ticket"
+  end
+
+  def send_mail
+    if refund_requested_changed? && refund_requested
+      BookingMailer.request_refund(self, ENV["app_host"]).deliver_now
+    end
+
+    if granted_changed? && granted
+      BookingMailer.grant_refund(self, ENV["app_host"]).deliver_now
+    end
   end
 
   private

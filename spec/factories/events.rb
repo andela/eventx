@@ -51,6 +51,8 @@ FactoryGirl.define do
       title "Old Event"
       start_date Time.zone.now - 86_400 * 7
       end_date Time.zone.now
+      category
+      event_template
     end
 
     trait :cancelled do

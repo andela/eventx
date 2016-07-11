@@ -7,7 +7,7 @@ module Events
     end
 
     def all_bookings
-      event.bookings.paginate(page: 1, per_page: 20)
+      event.bookings.paginate(page: 1, per_page: 20).decorate
     end
 
     def attendees

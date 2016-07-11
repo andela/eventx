@@ -6,6 +6,10 @@ RSpec.describe Event, type: :model do
     expect(event).to be_valid
   end
 
+  describe "event associations" do
+    it { is_expected.to have_many :reviews }
+  end
+
   describe "#get_roles" do
     it "returns event roles" do
       result = { "Event Staff" => "event_staff",

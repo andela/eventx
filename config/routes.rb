@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   scope controller: :bookings do
     post "/refund/:uniq_id"           => :request_refund, as: :refund
+    get "/refund/:uniq_id"            => :grant_refund, as: :grant_refund
     post "/paypal_hook"               => :paypal_hook, as: :paypal_hook
     get "/scan-ticket"                => :scan_ticket, as: :scan_ticket
     get "/scan-ticket/:ticket_no"     => :use_ticket, as: :scan
@@ -65,6 +66,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :bookings, only: [:create]
     resources :sponsors
+    resources :reviews, only: [:create]
   end
 
   get "/unattend", to: "attendees#destroy", as: :unattend

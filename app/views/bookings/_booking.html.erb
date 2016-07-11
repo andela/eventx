@@ -14,8 +14,11 @@
     </div>
     
 <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><!-content -><i class="material-icons right">more_vert</i></span>
+      <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
       <p><a href="#">This is a link</a></p>
+
+    <div class="card-action">
+      <%= booking.download_tickets_button %>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Options<i class="material-icons right">close</i></span>
@@ -32,13 +35,5 @@
 
 
     </div>
-
-<!--    <div class="card-action">
-      <a href="/bookings/<%=booking.id%>/tickets" class="btn blue">View Tickets</a>
-      <br /><br />
-      <a href="/bookings/<%=booking.id%>/ticket-transactions" class="btn red">Pending Transactions</a>
-      <br /><br />
-      <%#= link_to content_tag(:i, "", class: "fa fa-floppy-o") + " Download All Tickets", download_path(booking.id), {class: "btn", target: "_blank"} %>
-    </div> -->
   </div>
 </div>

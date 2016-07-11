@@ -28,6 +28,23 @@
         <div id="att">
           <%= render "events/attend_unattend_event_button" %>
         </div>
+
+
+        <% if action_name == "show" && cummulative_rating(@event)%>
+        <div class="event-rating">
+          <div class="event-rating-star">
+            <% (cummulative_rating(@event)).times  do %>
+            <span class="event-filled-in-star event-star-size">&#11088;</span>
+            <% end %>
+            <% (5 - (cummulative_rating(@event))).times do %>
+            <span class="event-star-size">&#9734;</span>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+
+
+
         <%if @event.id%>
             <%= social_share_button_tag(@event.title, popup: true)%>
         <%end%>
@@ -68,6 +85,15 @@
 </div>
 
 <%= render partial: "sponsors/sponsor_modal" %>
+
+<div class="container center">
+  <% if action_name == "show" && past_event?(@event) %>
+     <%= render "reviews" %>
+     <% if current_user && @event.attending?(current_user) %>
+     <%= render "review_form" %>
+     <% end %>
+<% end %>
+</div>
 
 <div class="col-md-12" class="venue" id="venue" style="height: 70%; padding:0px">
 <div class="map-overlay"></div>
