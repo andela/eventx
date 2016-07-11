@@ -14,7 +14,6 @@ require "capybara/rails"
 require "database_cleaner"
 require "capybara/poltergeist"
 require "webmock/rspec"
-require "transactional_capybara/rspec"
 
 WebMock.allow_net_connect!
 
@@ -42,10 +41,6 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.after(:each, js: true) do
-    TransactionalCapybara::AjaxHelpers.wait_for_ajax(page)
   end
 
   config.before(:each) do |example|
@@ -76,7 +71,8 @@ def sign_up
   set_valid_omniauth
   OmniAuth.config.test_mode = true
   visit root_path
-  page.find(".home_button").trigger("click")
+  expect(page).to have_content "SIGN UP"
+  click_link "Sign up"
   click_link "Google"
   visit root_path
 end
