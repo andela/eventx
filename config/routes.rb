@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get ":id/scan"           => :scan, as: :gatekeeper
     get ":id/tickets"        => :tickets, as: :event_tickets
     get ":id/tickets-report" => :tickets_report, as: :tickets_report
+    get ":id/event_reminder"  => :event_reminder, as: :event_reminder
   end
 
   scope controller: :welcome do

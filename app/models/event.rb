@@ -26,6 +26,7 @@ class Event < ActiveRecord::Base
   mount_uploader :image, PictureUploader
 
   validate :expiration_date_cannot_be_in_the_past
+  validate  :can_send_notice
   validates :title, presence: true, length: { in: 5..250 }
   validates :description, presence: true, length: { in: 20..1000 }
   validates :start_date, presence: true
@@ -120,6 +121,23 @@ class Event < ActiveRecord::Base
       category.
         category_id == id.to_i
     end
+  end
+
+  def can_send_notice?
+    Date.today <= (start_date + 2.days)
+  end
+
+  def send_notice
+    if self.can_send_notice?
+      true
+      event_reminder_mail
+    else
+      errors.add(:self, "Not permitted send notice to user")
+    end
+  end
+
+ def event_reminder_mail
+    EventMailer.event_notice(self, self.manager_profile, self.manager_profile.user).deliver_now
   end
 
   private

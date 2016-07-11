@@ -116,6 +116,18 @@ class EventsController < ApplicationController
     end
   end
 
+  def event_reminder
+    @event = Event.find_by(id: params[:id])
+    @manager = @event.manager_profile
+    @user = @event.manager_profile.user
+    if @event.send_notice
+      flash[notice] = "Successfully sent notice"
+    else
+      redirect_to :back,
+      @event.errors.full_messages.join("; ")
+    end
+  end
+
   private
 
   def search_params
