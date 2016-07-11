@@ -22,10 +22,6 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     @cat = create(:category, manager_profile: @manager)
   end
 
-  after do
-    DatabaseCleaner.clean
-  end
-
   scenario "User tries to see all events" do
     visit events_path
 
