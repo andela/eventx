@@ -16,13 +16,13 @@ class SessionsController < ApplicationController
     token = params[:token]
     provider = params[:provider]
     if token.blank? || ENV[provider].nil?
-      render_api_response("Invalid token/provider supplied", 417)
+      render_api_response(invalid_token, 417)
     else
       response = get_provider_uri(ENV[provider], token)
       userinfo = JSON.parse(response.body) if response.code == 200
       api_user = get_api_user(userinfo, provider) if userinfo
       api_key = api_user.generate_auth_token if api_user
-      api_key ||= "Invalid token/provider supplied"
+      api_key ||= invalid_token
       get_api_response(api_key, api_user)
     end
   end
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
   private
 
   def get_api_response(api_key, api_user)
-    if api_key == "Invalid token/provider supplied"
+    if api_key == invalid_token
       render_api_response(api_key, 417)
     else
       session[:user_id] = api_user.id

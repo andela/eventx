@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user, except: [:paypal_hook]
   before_action :set_event, only: :each_event_ticket
-  before_action except: [:paypal_hook, :index, :each_event_ticket,
-                         :scan_ticket, :use_ticket, :request_refund] do
+  before_action except: [:paypal_hook, :index, :each_event_ticket, :scan_ticket,
+                         :use_ticket, :request_refund, :grant_refund] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -46,27 +46,48 @@ class BookingsController < ApplicationController
   end
 
   def scan_ticket
-    @user_ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
-    flash[:notice] = "Ticket does not exist" unless @user_ticket
+    ticket = UserTicket.find_by(ticket_number: params[:ticket_no])
+    flash[:notice] = ticket_invalid unless ticket
+    @user_ticket = ticket ? ticket.decorate : ticket
   end
 
   def request_refund
     @booking = Booking.find_by_uniq_id(params[:uniq_id])
-    flash[:notice] = if @booking.update_attributes(
-      refund_requested: true,
-      time_requested: Time.now
-    )
-                       "Request for a refund has been sent"
+    unless @booking.refund_requested
+      @booking.update_attributes(
+        refund_requested: true,
+        time_requested: Time.now,
+        reason: params[:reason]
+      )
+    end
+  end
+
+  def grant_refund
+    @booking = Booking.find_by(uniq_id: params[:uniq_id])
+    data = {
+      granted: true, granted_by: current_user.id, time_granted: Time.now
+    }
+    flash[:notice] = if @booking.granted
+                       duplicate_refund_request
                      else
-                       "Request cannot be sent at this time."
+                       update_booking data
                      end
+    redirect_to "/events/#{@booking.event.id}/tickets-report"
+  end
+
+  def update_booking(data)
+    if @booking.update_attributes(data)
+      grant_refund_success
+    else
+      grant_refund_failure
+    end
   end
 
   def use_ticket
     ticket_no = params[:ticket_no]
-    @user_ticket = UserTicket.find_by(ticket_number: ticket_no)
+    @user_ticket = UserTicket.find_by(ticket_number: ticket_no).decorate
     if @user_ticket.is_used
-      flash[:notice] = "Ticket has already been used"
+      flash[:notice] = ticket_used
     else
       @user_ticket.update_attributes(
         is_used: true,
@@ -121,14 +142,13 @@ class BookingsController < ApplicationController
 
   def ticket_quantity_specified?
     if ticket_params.values.map(&:to_i).inject(:+) <= 0
-      flash[:notice] = "You have to specify quantity of ticket required!"
+      flash[:notice] = ticket_quantity_empty
       redirect_to :back
     else
       ticket_params.each do |key, value|
         tickets_left = @event.ticket_types.find(key).tickets_left
         next unless tickets_left < value.to_i
-        flash[:notice] = "Ticket quantity specified is
-                above the available quantity."
+        flash[:notice] = ticket_quantity_exeeded
         redirect_to :back
       end
     end

@@ -1,0 +1,42 @@
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p>Hi, <a href="mailto:<%= @user.first_name %>" target="_blank"><%= @user.first_name %></a> just requested a refund. The reason for the refund is stated as "<%= @booking.reason %>"<br /><br /> Here are the event details: </span></p>
+
+        <table style="min-width: 100%; width: 100%;" width="100%">
+          <tbody>
+            <tr>
+              <td style="border: 1px solid #c2c7d0; border-radius: 4px; padding: 10px" colspan="2">
+                <h3><a title="<%= @event.title %>" href="<%= "#{@host}/events/#{@event.id}" %>" target="_blank"><strong><%= @event.title %></strong></a></h3>
+                <h6 align="left"><%= @event.enabled ? "Active" : "Cancelled" %> | <%= @event.start_date.strftime ("%B %d, %Y") %></h6>
+                <%= @event.description %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table style="min-width: 100%; width: 100%; margin: 50px" width="100%">
+          <tbody>
+            <tr><td colspan="2"><h4>Booking Details</h4></td></tr>
+            <tr><td>Date Booked: </td><td><%= @booking.created_at.strftime ("%B %d, %Y") %></td></tr>
+            <tr><td>Booking ID: </td><td><%= @booking.uniq_id %></td></tr>
+            <tr><td>Amount Paid: </td><td><%= number_to_currency(@booking.amount) %></td></tr>
+            <tr><td>Transaction ID: </td><td><%= @booking.txn_id %></td></tr>
+          </tbody>
+        </table>
+
+        <!-- button -->
+        <table class="btn-primary" border="0" cellspacing="30" cellpadding="0" style="text-align: center; width: 100%">
+          <tbody>
+            <tr style="text-align: center; width: 100%">
+              <td class="success"><a href="<%= "#{@host}/refund/#{@booking.uniq_id}" %>" target="_blank">Accept</a></td>
+              <td class="failure"><a href="#">Reject</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- /button -->
+      </td>
+    </tr>
+  </tbody>
+</table>

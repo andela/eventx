@@ -62,7 +62,7 @@ class EventsController < ApplicationController
     @roles = Event.get_roles
     @event.event_staffs.delete_all
     flash[:notice] = if @event.update(event_params)
-                       "Your Event was successfully updated"
+                       update_successful_message("event")
                      else
                        @event.errors.full_messages.join("; ")
                      end
@@ -75,7 +75,7 @@ class EventsController < ApplicationController
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
     flash[:notice] = if @event.save
-                       "Your Event was successfully created."
+                       create_successful_message("event")
                      else
                        @event.errors.full_messages.join("; ")
                      end
@@ -110,7 +110,7 @@ class EventsController < ApplicationController
     events_category = Event.popular_events_category(params[:category]).empty?
     if params[:category] && events_category
       redirect_to popular_path,
-                  notice: "This category does not have a popular event"
+                  notice: no_popular_event
     else
       @popular_events = Event.popular_by_categories(params[:category])
     end
@@ -124,24 +124,20 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_date,
-                                  :end_date, :category_id, :location, :venue,
-                                  :image, :template_id, :map_url,
-                                  :event_template_id,
-                                  ticket_types_attributes:
-                                    [:id, :_destroy, :name, :quantity, :price],
-                                  highlights_attributes:
-                                  [:id, :_destroy, :day, :title, :description,
-                                   :start_time, :end_time, :image,
-                                   :image_title],
-                                  event_staffs_attributes:
-                                    [:user_id, :role])
+    params.require(:event).permit(
+      :title, :description, :start_date, :end_date, :category_id, :location,
+      :venue, :image, :template_id, :map_url, :event_template_id,
+      ticket_types_attributes: [:id, :_destroy, :name, :quantity, :price],
+      highlights_attributes:   [:id, :_destroy, :day, :title, :description,
+                                :start_time, :end_time, :image, :image_title],
+      event_staffs_attributes: [:user_id, :role]
+    )
   end
 
   def set_events
     @event = Event.find(params[:id])
     if @event.nil?
-      flash[:notice] = "Event not found"
+      flash[:notice] = event_not_found
       redirect_to :back
     else
       @event = @event.decorate

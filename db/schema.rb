@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160614142249) do
     t.boolean  "granted",            default: false
     t.integer  "granted_by"
     t.datetime "time_granted"
+    t.string   "reason"
   end
 
   add_index "bookings", ["event_id"], name: "index_bookings_on_event_id"

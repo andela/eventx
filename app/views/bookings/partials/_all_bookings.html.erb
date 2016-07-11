@@ -1,9 +1,9 @@
 
         <h5>All Bookings</h5>
-        <hr /> 
+        <hr />
  <% if @presenter.all_bookings.empty? %>
           <i>No bookings yet</i>
- <% else %> 
+ <% else %>
         <table class="display responsive-table bordered striped" id="bookings_table">
           <thead>
             <tr>
@@ -16,18 +16,16 @@
             </tr>
           </thead>
       <tbody>
-    <% @presenter.all_bookings.each_with_index do |booking, index| %>        
+    <% @presenter.all_bookings.each_with_index do |booking, index| %>
                 <tr>
                   <td><%= index+1 %></td>
                   <td><%= booking.created_at.to_formatted_s(:long_ordinal) %></td>
-                  <td><%= booking.payment_status %></td>
-                  <td>$ <%= booking.amount %>.00</td>
+                  <td><%= booking.status_or_grant %></td>
+                  <td><%= number_to_currency booking.amount %></td>
                   <td><%= booking.user_tickets_count %></td>
                   <td><%= booking.uniq_id %></td>
                 </tr>
     <% end %>
     </tbody>
-    </table> 
- <% end %> 
-        
-
+    </table>
+ <% end %>

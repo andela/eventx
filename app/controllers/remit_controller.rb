@@ -8,7 +8,7 @@ class RemitController < ApplicationController
 
     unless @remit.save
       redirect_to dashboard_path,
-                  notice: "Event cannot yet request a remittance!"
+                  notice: remit_not_due
     end
   end
 
@@ -17,7 +17,7 @@ class RemitController < ApplicationController
   def remit_exist
     if Remit.find_by(event_id: params[:id])
       redirect_to dashboard_path,
-                  notice: "This event remit have already been processed"
+                  notice: remit_duplicate_alert
     end
   end
 end

@@ -8,12 +8,23 @@ RSpec.feature "RequestRefund", type: :feature, js: true do
       to receive(:current_user).and_return(@user)
   end
 
-  scenario "when event is cancelled and paid" do
+  scenario "when user visits tickets page" do
     create(:booking, event: @event, user: @user, payment_status: 2, amount: 20)
     visit tickets_path
     expect(page).to have_content "REQUEST REFUND"
     expect(page).to have_content "Cancelled"
+  end
+
+  scenario "when event is cancelled and paid" do
+    create(:booking, event: @event, user: @user, payment_status: 2, amount: 20)
+    visit tickets_path
     click_link "request-refund"
+    expect(page).to have_content "The event was cancelled"
+    expect(page).to have_content "SUBMIT REQUEST"
+    within("#refund-form") do
+      find("a", text: "SUBMIT REQUEST").click
+    end
+
     expect(page).to have_content "PROCESSING REQUEST"
   end
 

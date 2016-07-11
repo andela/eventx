@@ -3,11 +3,7 @@
     <div class="card">
       <div class="card-image">
         <img src="<%= @user_ticket.booking.event.image_url(:landing) %>">
-          <% if @user_ticket.is_used %>
-          <span class="card-panel red" style="position: absolute; bottom: 8px; color: white"><i class="material-icons">not_interested</i> Used</span>
-          <% else %>
-          <span class="card-panel teal" style="position: absolute; bottom: 8px; color: white"><i class="material-icons">verified_user</i> Valid</span>
-          <% end %>
+        <%= @user_ticket.status %>
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4"><%= @user_ticket.booking.event.title %><i class="material-icons right" id="open-ticket-details">more_vert</i></span>
@@ -34,7 +30,7 @@
         </ul>
       </div>
       <div class="card-action">
-        <%= link_to "Scan", scan_path(ticket_no: @user_ticket.ticket_number), class:"btn", id:"scan-ticket-button", remote: true %>
+        <%= @user_ticket.scan_ticket_button %>
         <a href="#" class="btn right">Cancel</a>
       </div>
     </div>
