@@ -70,11 +70,6 @@ group :test do
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: false
   gem "coveralls", require: false
-<<<<<<< 644480ce40ac7f255a158253d02185e2a2fab0bf
-=======
-  gem "transactional_capybara"
-  gem "selenium-webdriver", "~> 2.53"
->>>>>>> refactor(subscriptions): change from js to json format in subscription controller
 end
 
 group :production do
