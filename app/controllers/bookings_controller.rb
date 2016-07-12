@@ -49,7 +49,7 @@ class BookingsController < ApplicationController
       response = validate_ipn_notification(request.raw_post)
       examine_booking(response)
     end
-    redirect_to tickets_path
+    redirect_to bookings_path
   end
 
   def scan_ticket

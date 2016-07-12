@@ -1,8 +1,7 @@
 $(document).ready(function(){    
   $("#btn_ticket_form").click(function(){
 
-    var ticket_ids = [];  
-    var user_data = "";
+    var ticket_ids = [], user_data = "";
     $("input[name='ticket_ids']:checked").each(function(){
         ticket_ids.push($(this).val()); 
     });

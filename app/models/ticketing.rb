@@ -34,8 +34,9 @@ class Ticketing
     @booking.event_id = transaction.booking.event.id
     @booking.payment_status = "paid"
     @tickets.each { |ticket| ticket.update(transfered: false) }
-    @booking.user_tickets << @tickets
     @booking.save
+
+    @booking.user_tickets << @tickets
   end
 
   def total_ticket_amount(transaction)
