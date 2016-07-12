@@ -26,6 +26,7 @@ RSpec.feature "ScanTicket", type: :feature, js: true do
     expect(page).to have_content "Ticket Owner"
     find("#close-ticket-details").click
     click_link "Scan"
+    wait_for_ajax
     expect(page).to have_content "Used"
     find("#open-ticket-details").click
     expect(page).to have_content "Scanned by"

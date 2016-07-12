@@ -52,7 +52,7 @@ RSpec.feature "Grant Refund", type: :feature do
       granted: true
     )
     visit "/download/#{booking.id}"
-    expect(page.current_path).to eq "/tickets"
+    expect(page.current_path).to eq "/bookings"
   end
 
   scenario "cannot print ticket when refund has been granted" do
@@ -66,7 +66,7 @@ RSpec.feature "Grant Refund", type: :feature do
       granted: true
     )
     visit "/print/#{booking.id}"
-    expect(page.current_path).to eq "/tickets"
+    expect(page.current_path).to eq "/bookings"
   end
 
   scenario "can see booking has been refunded when refund has been granted" do
@@ -79,7 +79,7 @@ RSpec.feature "Grant Refund", type: :feature do
       refund_requested: true,
       granted: true
     )
-    visit "/tickets"
+    visit "/bookings"
     expect(page).to have_content "Refund Paid"
     expect(page).not_to have_content "DOWNLOAD ALL TICKETS"
     expect(page).not_to have_content "Cancelled"

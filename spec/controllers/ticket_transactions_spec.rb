@@ -10,7 +10,7 @@ RSpec.describe TicketTransactionsController, type: :controller do
 
   describe "GET index" do
     it "gets list of all pending transactions" do
-      get :index, id: 1
+      get :index, id: 2
 
       expect(assigns(:ticket_transactions).length).to eq 1
     end
