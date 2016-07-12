@@ -1,6 +1,6 @@
 <tr>
   <td class="chk_ticket">
-     <input type="checkbox" id="t<%=ticket.id%>" name="ticket_ids" 
+     <input type="checkbox" id="<%=ticket.id%>" name="ticket_ids" 
      value="<%= ticket.id %>"/><label for="<%= ticket.id %>">&nbsp;</label>
   </td>
   <td>
@@ -10,5 +10,5 @@
     </label>
   </td>
   <td><%= ticket.name %></td>
-  <td><%= ticket.status %></td>
+  <td><%= ticket.scanned %></td>
 </tr>
