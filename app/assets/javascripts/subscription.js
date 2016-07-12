@@ -1,8 +1,9 @@
 $(document).ready(function(){
   $("#btn_subscribe").click(function (){
     $("#subscribe").closeModal();
-    var event_id = $("input[name=sub_event_id]:checkbox:checked").val();
-    var data = { subscription: {
+    var event_id, data;
+    event_id = $("input[name=sub_event_id]:checkbox:checked").val();
+    data = { subscription: {
       event_id: event_id,
       manager_profile_id: $("input[name=sub_man_id]:checkbox:checked").val(),
       user_id: $("#subscription_user_id").val()
@@ -31,9 +32,10 @@ $(document).ready(function(){
   $("#unsubscribeBtn").click(function(){
     var data_confirm = confirm("Are You Sure");
     if(data_confirm){
-      var event_id =  $("#unsubscribeBtn").attr("event");
-      var subscription_id = $("#unsubscribeBtn").attr("subscription");
-      var data = {
+      var event_id, subscription_id, data;
+      event_id =  $("#unsubscribeBtn").attr("event");
+      subscription_id = $("#unsubscribeBtn").attr("subscription");
+      data = {
         event_id: event_id
       };
 
