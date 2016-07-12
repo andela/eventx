@@ -1,14 +1,14 @@
 <div class="row col s12 nested-fields " id="paid_ticket_div" >
-  <div class="input-field col s5">
+  <div class="input-field col l5">
     <%= f.text_field :name, placeholder: "Ticket Title"  %>
   </div>
-  <div class="input-field col s2">
+  <div class="input-field col l3">
     <%= f.text_field :quantity, min: 0, placeholder: "Quantity" %>
   </div>
-  <div class="input-field col s2">
+  <div class="input-field col l3">
     <%= f.text_field :price, min: 0, placeholder: "Price"%>
   </div>
-  <div class="col s2 closecocoon">
+  <div class="col l1 closecocoon">
     <%= link_to_remove_association "<i class='material-icons'>delete</i>".html_safe, f, class: "btn btn-floating red"  %>
   </div>
 </div>

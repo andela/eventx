@@ -6,8 +6,6 @@ $white-color: #000;
 $font-family: 'Roboto', sans-serif !important;
 
 .margin-down{
-  margin-top: 50px;
-  padding-bottom: 20px;
   input, select{
     outline: none;
     margin-top: 10px;
@@ -27,7 +25,6 @@ $font-family: 'Roboto', sans-serif !important;
       color: red;
     }
   }
-
   textarea{
     &:focus{
       outline: none !important;
@@ -36,6 +33,9 @@ $font-family: 'Roboto', sans-serif !important;
   i.icon-setting{
     margin-top: 20px;
     color: #969CA7 !important;
+  }
+  .row-padding {
+    padding: 0px 50px 0px 50px
   }
 }
 
@@ -359,4 +359,12 @@ input#event_photo_upload{
   font-size: 20px;
   font-family: $font-family;
   text-transform: uppercase;
+}
+
+.staff_role span.caret{
+  display: none;
+}
+
+input#staff_field_id {
+  margin-top: 20px;
 }
