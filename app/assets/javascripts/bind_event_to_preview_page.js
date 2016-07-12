@@ -1,24 +1,20 @@
 $(document).ready(function () {
-  var event_date = $('.parallax-container').data('countdown');
+  var event_date = $('.parallax-container').data('countdown'),
+      prev_color = '',
+      color = '',
+      map;
+
   if (event_date) {
     countdown(convertDate(event_date));
   }
-  // script for binding event details to preview page
-  // var prev_color = "init";
-  // var color = "";
-  var prev_color = '';
-  var color = '';
+
   $('.preview').click(function () {
-    // if(prev_color=="init" || prev_color!=color){
-    //   prev_color = color
     var start_date = $('#event_start_date').val();
     var end_date = $('#event_end_date').val();
     if (start_date) {
       countdown(convertDate(start_date), end_date);
     }
     var map_val = $('#event_map_url').val();
-    '';
-    var map;
     if (map_val) {
       map = map_val + '&output=embed';
     } else {
@@ -27,9 +23,6 @@ $(document).ready(function () {
     var description_selector = $('#event_description').val() === '' ? 'Your Event description goes here<br/><br/><br/><br/>' : $('#event_description').val();
     var description = description_selector.length > 200 ? description_selector.substr(0, 200) + '...' : description_selector;
     var title = $('#event_title').val() === '' ? 'Event title goes here' : $('#event_title').val();
-    $('.preview-tab').removeClass('disabled');
-    $('ul.tabs').tabs('select_tab', 'preview');
-    $('.preview-tab').addClass('disabled');
     $('.our-event-title').html(title);
     $('.our_event_description').html(description);
     $('.our-event-date').html(start_date + ' to ' + end_date);
