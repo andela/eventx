@@ -30,7 +30,7 @@ RSpec.feature "TicketsReport", type: :feature, js: true do
     visit tickets_report_path(@event.id)
     expect(page.current_path).to eq tickets_report_path(@event.id)
     page_should_have_content(
-      ["Tickets", "Grand Total", "All Bookings", "ALL BOOKINGS", "ATTENDEES"]
+      ["Tickets", "Grand Total", "SUMMARY", "ALL BOOKINGS", "ATTENDEES"]
     )
 
     within '#tickets_summary_table thead' do
