@@ -2,7 +2,7 @@ class UserTicketDecorator < Draper::Decorator
   delegate_all
 
   def scanned
-    is_used ? "INVALID" : "VALID"
+    is_used ? "is used" : "not used"
   end
 
   def name
