@@ -27,6 +27,7 @@
         <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
         <div id="att">
           <%= render "events/attend_unattend_event_button" %>
+          <%= render "events/set_reminder.html.erb" %>
         </div>
 
 

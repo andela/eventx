@@ -123,8 +123,8 @@ class EventsController < ApplicationController
     if @event.send_notice
       flash[notice] = "Successfully sent notice"
     else
-      redirect_to :back,
-      @event.errors.full_messages.join("; ")
+      redirect_to event_path,
+                  notice: "Not permitted send notice to user"
     end
   end
 

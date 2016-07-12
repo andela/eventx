@@ -47,6 +47,9 @@ gem "faker", "1.5.0"
 gem "icalendar"
 gem "jquery-datatables-rails", github: "rweng/jquery-datatables-rails"
 gem "remotipart", "~> 1.2"
+gem 'sucker_punch'
+
+
 
 group :development, :test do
   gem "sqlite3", "1.3.11"
@@ -70,7 +73,6 @@ group :test do
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: false
   gem "coveralls", require: false
-  gem "transactional_capybara"
 end
 
 group :production do
