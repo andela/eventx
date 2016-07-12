@@ -68,7 +68,6 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "Search By Event Name", with: "This is an edited Event"
     find("#search-button").click
     expect(page).to have_content "This is an edited Event"
-    sleep 5
   end
 
   scenario "Manager fills in a long description" do
@@ -101,7 +100,6 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     page.find("#saved_events").trigger("click")
     expect(page).to have_selector("#toast-container", "Description is "\
     "too long (maximum is 1000 characters)")
-    sleep 5
   end
 
   scenario "Manager fills in a short description" do
@@ -133,7 +131,6 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     expect(page).to have_content("Preview Event")
     page.find("#saved_events").trigger("click")
     expect(page).to have_selector("#toast-container", "Description is too short (minimum is 20 characters)")
-    sleep 5
   end
 
   scenario "Manager does not create ticket" do
