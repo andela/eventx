@@ -121,7 +121,7 @@ class EventsController < ApplicationController
     @manager = @event.manager_profile
     @user = @event.manager_profile.user
     if @event.send_notice
-      flash[notice] = "Successfully sent notice"
+     flash[:notice] = "Successfully sent notice"
     else
       redirect_to event_path,
                   notice: "Not permitted send notice to user"

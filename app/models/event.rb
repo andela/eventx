@@ -123,7 +123,7 @@ class Event < ActiveRecord::Base
   end
 
   def can_send_notice?
-    Date.today <= (start_date + 2.days)
+    start_date - 2.days == Date.today
   end
 
   def send_notice

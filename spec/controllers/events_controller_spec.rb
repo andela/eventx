@@ -1,6 +1,7 @@
 require "rails_helper"
 require "support/booking_helper"
 
+
 RSpec.describe EventsController, type: :controller do
   include BookingHelper
   before do
@@ -58,6 +59,18 @@ RSpec.describe EventsController, type: :controller do
         expect(
           flash[:notice]
         ).to eq "This category does not have a popular event"
+      end
+    end
+  end
+
+  describe "#event_reminder" do
+    context "when a user sets reminder for event not valid for reminder" do
+      it "renders error" do
+        get :event_reminder, id: Event.last.id
+
+        expect(
+          flash[:notice]
+        ).to eq "Not permitted send notice to user"
       end
     end
   end

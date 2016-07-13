@@ -10,7 +10,7 @@ RSpec.describe Event, type: :model do
     it { is_expected.to have_many :reviews }
   end
 
-  describe "#get_roles" do
+  describe ".get_roles" do
     it "returns event roles" do
       result = { "Event Staff" => "event_staff",
                  "Gate Keeper" => "gate_keeper",
@@ -20,7 +20,7 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "#find_event" do
+  describe ".find_event" do
     it "finds event without parameters" do
       desc = "Happy day of joy celebration happinness smiles."
       create(:event)
@@ -32,6 +32,21 @@ RSpec.describe Event, type: :model do
       desc = "Happy day of joy celebration happinness smiles."
       params = { event_name: "Blessings wedding" }
       expect(Event.find_event(params).as_json.first["description"]).to eq desc
+    end
+  end
+
+  describe "#can_send_notice" do
+    it "validates events that can send notice" do
+      create(:event)
+      event = Event.last
+      event.update(start_date: Date.today + 2.days)
+      expect(event.can_send_notice?).to eq true
+    end
+
+     it "validates events that cannot send notice" do
+      create(:event)
+      event = Event.last
+      expect(event.can_send_notice?).to eq false
     end
   end
 end

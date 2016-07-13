@@ -29,6 +29,8 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     click_button "Submit"
     expect(page.current_path).not_to eq "/manager_profiles/new"
 
+
+
     visit root_path
     expect(page).to have_content "CREATE EVENT"
     expect(page).not_to have_content "Become An Event Manager"

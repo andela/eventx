@@ -14,7 +14,6 @@ require "capybara/rails"
 require "database_cleaner"
 require "capybara/poltergeist"
 require "webmock/rspec"
-require "transactional_capybara/rspec"
 
 WebMock.allow_net_connect!
 
@@ -42,10 +41,6 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.after(:each, js: true) do
-    TransactionalCapybara::AjaxHelpers.wait_for_ajax(page)
   end
 
   config.before(:each) do |example|
