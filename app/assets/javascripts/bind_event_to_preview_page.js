@@ -35,4 +35,7 @@ $(document).ready(function () {
     $('#event_page_highlight').html($('ul#highlight_table').html());
     $('.collapsible').collapsible();
   });
+  $("#modal1").hover(function(){
+    $("#modal1").css("top", "0%");
+  });
 });  /* Every time the window is scrolled ... */

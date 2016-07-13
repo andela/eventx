@@ -28,13 +28,13 @@
             </div>
           </div>
           <div class="row row-padding">
-            <div class="input-field col l6 m12">
+            <div class="input-field col l6 s12">
               <i class="fa fa-map-marker prefix icon-setting"></i>
               <label>Location <span>*</span></label>
               <%= f.text_field :location, class: "validate", placeholder: "Enter Location where it will be held", required: true %>
               <%= f.hidden_field :map_url, placeholder: "Enter Location where it will be held" %>
             </div>
-            <div class="input-field col l6 m12">
+            <div class="input-field col l6 s12">
               <i class="fa fa-street-view prefix icon-setting"></i>
               <label>Venue</label>
               <%= f.text_field :venue, class: "validate", placeholder: "Enter Venue where it will be held", min: Date.today %>
@@ -46,27 +46,27 @@
             </div>
           </div>
           <div class="row row-padding">
-            <div class="input-field col l8">
+            <div class="input-field col l8 s12">
               <i class="fa fa-th-large prefix icon-setting"></i>
               <%= f.collection_select :category_id, Category.list, :id, :name, { prompt: "Choose a category"} , class: "browser-default", blank_option: true, required: true%>
             </div>
 
-            <div class="input-field col l4">
+            <div class="input-field col l4 s12">
               <button data-target="custom_category" class="btn modal-trigger input-field btn-large" id="btn_add_category"><i class="fa fa-plus-circle"></i> Add custom</button>
             </div>
           </div>
         <div class="row row-padding">
-          <div class="input-field col s6">
+          <div class="input-field col l6 s12">
             <i class="fa fa-calendar prefix icon-setting"></i>
             <%= f.date_field :start_date, class: "datepicker", placeholder: "Start Date", value: @event.start_date, required: true %>
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col l6 s12">
             <i class="fa fa-calendar prefix icon-setting"></i>
             <%= f.date_field :end_date, class: "datepicker", placeholder: "End Date", value: @event.end_date %>
           </div>
         </div>
-        <div class="row row-padding">
-          <div id="file-uploader" class="col l6 m6 s8 offset-l3 offset-m3 offset-s2 file-uploader">
+        <div class="row row-padding center">
+          <div id="file-uploader" class="col l6 m8 s12 offset-l3 offset-m2 file-uploader">
             <div class="inner-file-upload center">
               <span class="events_pic_name">
                 <i class="fa fa-camera"></i>
@@ -166,16 +166,20 @@
 </div>
 
 <!-- Preview Modal  -->
-<div id="modal1" class="modal modal-fixed-footer" style="width: 100%; height:100% !important; ">
-  <div class="modal-content" style="padding: 0px;">
-    <% @current_page = "new" %>
-    <%= render "event_details" %>
-  </div>
-  <div class="modal-footer">
-    <button class="btn-large waves-effect waves-light home_button z-depth-0" id="save_event">Save
-      <i class="fa fa-floppy-o"></i>
-    </button>
-    <a class="btn btn-large left modal-action modal-close waves-effect home_button red">Close Preview</a>
+<div class="modal-preview">
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content" style="padding: 0px;">
+      <% @current_page = "new" %>
+      <%= render "event_details" %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-large waves-effect waves-light home_button z-depth-0" id="save_event">Save
+        <i class="fa fa-floppy-o"></i>
+      </button>
+      <a class="btn btn-large left modal-action modal-close waves-effect home_button">Close
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
   </div>
 </div>
 <!-- End Preview Modal -->
