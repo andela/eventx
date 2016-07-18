@@ -33,17 +33,14 @@ class Ticketing
     @booking.user_id = payer.id
     @booking.event_id = transaction.booking.event.id
     @booking.payment_status = "paid"
-    @tickets.each { |ticket| ticket.update(transfered: false) }
+    @tickets.update_all(transfered: false)
     @booking.save
 
     @booking.user_tickets << @tickets
   end
 
-  def total_ticket_amount(transaction)
-    total_amount = 0.0
-    UserTicket.find(transaction.tickets).each do |ticket|
-      total_amount += ticket.ticket_type.price.to_f
-    end
-    total_amount
+  def ticket_amount(transaction)
+    UserTicket.find(transaction.tickets).first.
+      ticket_type.price.to_f
   end
 end

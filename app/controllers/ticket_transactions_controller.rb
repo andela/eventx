@@ -7,15 +7,11 @@ class TicketTransactionsController < ApplicationController
     @ticket_transactions = TicketTransaction.pending(params[:id]).decorate
   end
 
-  def set_ticketing
-    @ticketing ||= Ticketing.new
-  end
-
   def checkout_ticket
     transaction = TicketTransaction.find(params[:id])
     @transaction = transaction.decorate
     payers_email = @transaction.payers_email
-    amount = @ticketing.total_ticket_amount(@transaction)
+    amount = @ticketing.ticket_amount(@transaction)
 
     if amount.to_i.eql?(0)
       @ticketing.approve_transfer(transaction_id: transaction.id,
@@ -86,6 +82,10 @@ class TicketTransactionsController < ApplicationController
   end
 
   private
+
+  def set_ticketing
+    @ticketing ||= Ticketing.new
+  end
 
   def ticket_params
     params.permit(:recipient, :booking_id, ticket_ids: [])
