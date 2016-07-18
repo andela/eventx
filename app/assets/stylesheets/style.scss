@@ -17,10 +17,6 @@
 body {
   background-color: #fcfcfc;
 }
-#main,
-footer {
-  padding-left: 240px;
-}
 
 #input-select .input-field label {
   position: absolute;
@@ -524,6 +520,10 @@ ul.side-nav.leftside-navigation hr {
   text-align: center;
   margin-right: 1rem;
 }
+#slide-out{
+  position: absolute;
+  top: 60px
+}
 #slide-out ul.side-nav li {
   padding: 0px !important;
 }
@@ -977,16 +977,6 @@ li.kitchen:before {
 }
 li.home:before {
   background: #FDB45C;
-}
-a.button-collapse.top-nav {
-  position: absolute;
-  left: 7.5%;
-  top: 0;
-  float: none;
-  margin-left: 1.5rem;
-  color: #fff;
-  font-size: 32px;
-  z-index: 2;
 }
 /* trending bar chart */
 
@@ -1979,9 +1969,11 @@ tr.group:hover {
     Footer
 ====================================================================================*/
 
-footer.page-footer {
-  padding-top: 0px;
-}
+// footer.page-footer {
+//   padding-top: 0px;
+//   position: absolute;
+//   bottom: 100px;
+// }
 /*----------------------------------------
     footer charts
 ------------------------------------------*/

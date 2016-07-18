@@ -14,12 +14,6 @@
             Customize
           </a>
         </li>
-        <li class="tab col s3 preview-tab disabled">
-          <a class="our-tab2-color" href="#preview">
-            <i class="fa fa-globe "></i>
-            Preview Page
-          </a>
-        </li>
       </ul>
     </div>
 
@@ -188,28 +182,25 @@
         </div>
       </div>
       <div class="col s3 offset-s4 center">
-        <%= link_to "Preview <i class='fa fa-hand-o-right'></i>".html_safe, "#", class: "col s12 btn-large waves-effect waves-light home_button center preview z-depth-0"  %>
+        <%= link_to "Preview <i class='fa fa-hand-o-right'></i>".html_safe, "#modal1", class: "col s12 btn-large waves-effect waves-light home_button preview modal-trigger center z-depth-0"  %>
       </div>
 
     </div>
-
-    <%# end %>
-
   </div>
 </div>
 
-<div class="col s12 offset-s3" id="preview">
-<!-- <iframe id="frame" scrolling="yes" src="30" width="80%" height="500px" frameborder="0" style="margin:0 auto;">
-  </iframe> -->
-
-  <div class="" id="preview-event-div" style="width: 80%; height: 500px; margin: 0 auto 5% auto; overflow: auto;">
+<!-- Preview Modal  -->
+<div id="modal1" class="modal modal-fixed-footer" style="width: 100%; height:100% !important; ">
+  <div class="modal-content" style="padding: 0px;">
     <% @current_page = "new" %>
     <%= render "event_details" %>
   </div>
-  <div class="col s3 offset-s4 center">
-    <button class="col s12 btn-large waves-effect waves-light home_button center z-depth-0" id="save_event">Save
+  <div class="modal-footer">
+    <button class="btn-large waves-effect waves-light home_button z-depth-0" id="save_event">Save
       <i class="fa fa-floppy-o"></i>
     </button>
+    <a class="btn btn-large left modal-action modal-close waves-effect home_button red">Close Preview</a>
   </div>
 </div>
+<!-- End Preview Modal -->
 <% end %>

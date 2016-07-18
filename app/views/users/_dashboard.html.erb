@@ -1,32 +1,25 @@
 <div class="col s12">
   <% if current_user.event_manager? %>
-  <div class="row">
-    <div class="col s6 offset-s4 post">
-        <%= form_tag dashboard_path, method: :get, id: "user_event_search_form", remote: true do %>
-          <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
-            <%= text_field_tag(:event_name, "", placeholder: "Search By Event Name") %>
-          <% end %>
-          <%= content_tag :div, class: "input-field col l2 m2 s4" do %>
-          <%= button_tag( class: "btn btn-floating", id: "search-button") do %>
-            <%= content_tag :i, "search", class: "material-icons" %>
-          <% end %>
-          <% end %>
+  <div class="container center">
+    <div class="l6">
+      <%= form_tag dashboard_path, method: :get, id: "user_event_search_form", remote: true do %>
+        <%= content_tag :div, class: "input-field col l6 m6 s8" do %>
+          <%= text_field_tag(:event_name, "", placeholder: "Search By Event Name") %>
         <% end %>
+      <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col l8 m8 s6 offset-m2">
-      <label>
-        <% all_events = @resources %>
-        <strong><%= "Result: #{all_events.size} event".pluralize(all_events.size)%></strong>
-      </label>
-    </div>
+  <div class="container center">
+    <label>
+      <% all_events = @resources %>
+      <strong><%= "Result: #{all_events.size} event".pluralize(all_events.size)%></strong>
+    </label>
   </div>
   <div class="row">
-  <table class="responsive-table bordered tablebot">
+  <table class="responsive-table bordered">
     <thead>
     <tr>
-    <div class="padtable">
+    <div>
       <th data-field="id">Enable/Disable</th>
       <th data-field="id">Name</th>
       <th data-field="name">Location</th>
@@ -43,7 +36,6 @@
   <div class="center-align" id="pagination" >
   <%= will_paginate @resources, renderer: MaterializePagination::Rails %>
   </div>
-  <a class="btn-floating btn-large round",  "data-position" = "top", "data-tooltip" = "I am tooltip" style="position: fixed; bottom: 645px; left: 180px;" href="<%= new_event_path%>"><i class="material-icons">add</i></a>
   <% else %>
     <%= render "users/users_dashboard"%>
   <% end %>

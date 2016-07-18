@@ -1,5 +1,5 @@
 <nav class='custom_nav <%= "landing" unless @current_page && @current_page == "new" %> z-depth-0' style="z-index: 100 ">
-
+  </li>
   <div class="nav-wrapper <%= "#{@event.event_template} darken-4 " if controller_name == "events" && action_name == "show"%> <%= "landing2" if @current_page && @current_page == "new"%>">
     <% if content_for? :nav_cat %>
     <a class="button-collapse" data-activates="nav_mobile" href="#">
@@ -7,12 +7,16 @@
     </a>
     <% end %>
     <ul class="left">
-      <%= link_to get_site_root_site_link do %>
-      <h3 class="header home_app_title before-scroll our-custom-header">EventX</h3>
-      <% end %>
+      <li>
+        <%= link_to get_site_root_site_link do %>
+          <h3 class="header home_app_title before-scroll our-custom-header">EventX</h3>
+        <% end %>
+      </li>
+      <li>
+        <h3 class="home_app_title our-custom-header"><a href="#" data-activates="slide-out" class="menu-collapse"><i class="mdi-navigation-menu" style="position: absolute; top: 0px"></i></a></h3>
+      </li>
     </ul>
     <ul class="right">
-
       <% if content_for? :show %>
         <%= yield :show %>
       <% end %>
