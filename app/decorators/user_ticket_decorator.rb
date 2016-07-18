@@ -6,7 +6,6 @@ class UserTicketDecorator < Draper::Decorator
   end
 
   def name
-    ticket_type.name
     if !valid?
       status_label("red", "not_interested", "Used")
     else
