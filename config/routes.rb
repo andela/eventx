@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "welcome#index"
   get "/test", to: "users#test"
+  get "/homepage", to: "welcome#homepage"
 
   scope path: "/events", controller: :events do
     get "popular"            => :popular

@@ -5,6 +5,9 @@ class WelcomeController < ApplicationController
     respond_with @events
   end
 
+  def homepage
+  end
+
   def featured
     @events = Event.featured_events
     renders(@events)

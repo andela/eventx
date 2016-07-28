@@ -47,6 +47,7 @@ gem "faker", "1.5.0"
 gem "icalendar"
 gem "jquery-datatables-rails", github: "rweng/jquery-datatables-rails"
 gem "remotipart", "~> 1.2"
+gem 'mui-sass'
 
 group :development, :test do
   gem "sqlite3", "1.3.11"
