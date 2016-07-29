@@ -6,4 +6,5 @@ Rails.application.config.session_store(
   domain: {
     production: ENV["session_store_domain"],
     development: ".lvh.me"
-  }.fetch(Rails.env.to_sym, :all))
+  }.fetch(Rails.env.to_sym, :all)
+)

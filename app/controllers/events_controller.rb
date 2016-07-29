@@ -14,6 +14,8 @@ class EventsController < ApplicationController
   before_action :set_sponsor
   before_action :subscription_status, only: [:show]
 
+  layout "admin", only: [:tickets, :tickets_report]
+
   respond_to :html, :json, :js
 
   def new

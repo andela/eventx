@@ -14,32 +14,31 @@ RSpec.describe Events::TicketsReportPresenter do
     2.times do
       create(:user_ticket,
              ticket_type: ticket_types[i],
-             booking_id: booking.id
-            )
+             booking_id: booking.id)
       i += 1
     end
     @presenter = Events::TicketsReportPresenter.new(event)
   end
 
-  describe '#all_bookings' do
+  describe "#all_bookings" do
     it "returns all bookings for a valid event" do
       expect(@presenter.all_bookings.count).to eq 1
     end
   end
 
-  describe '#attendees' do
+  describe "#attendees" do
     it "returns all attendees for a valid event" do
       expect(@presenter.attendees.count).to eq 1
     end
   end
 
-  describe '#ticket_types' do
+  describe "#ticket_types" do
     it "returns all ticket types for a valid event" do
       expect(@presenter.ticket_types.count).to eq 2
     end
   end
 
-  describe '#calculate_total' do
+  describe "#calculate_total" do
     context "when asked for the quantity" do
       it "returns total ticket count" do
         expect(@presenter.calculate_total("quantity")).to eq 6
