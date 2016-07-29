@@ -30,7 +30,7 @@ class BookingDecorator < Draper::Decorator
     if refund_requested && !granted
       h.link_to "Processing Request", "#", class: "btn disabled print-box-size"
     elsif !refund_requested && !granted
-      h.link_to "Request Refund", '#refund-form',
+      h.link_to "Request Refund", "#refund-form",
                 class: "btn print-box-size refund-button modal-trigger",
                 'data-id': uniq_id, 'data-event': event_id, id: "request-refund"
     end

@@ -11,11 +11,9 @@ def build_google_oauth2_response(email = nil)
   OmniAuth::AuthHash.new(
     provider: "google_auth2", uid: "123456789",
     info: { name: "John Dummy", email: email || "johndummy@example.com",
-            image: "https://lh3.googleusercontent.com/url/photo.jpg"
-          },
+            image: "https://lh3.googleusercontent.com/url/photo.jpg" },
     credentials: { token: "token", refresh_token: "another_token",
-                   expires_at: 1_354_920_555, expires: true
-                 },
+                   expires_at: 1_354_920_555, expires: true },
     extra: { raw_info: { sub: "123456789", email: "dummy@domain.example.com",
                          email_verified: true,
                          name: "John Dummy",
@@ -24,8 +22,6 @@ def build_google_oauth2_response(email = nil)
                          gender: "male",
                          birthday: "1968-06-25",
                          locale: "en",
-                         hd: "example.com"
-                       }
-            }
+                         hd: "example.com" } }
   )
 end

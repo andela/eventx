@@ -17,8 +17,7 @@ RSpec.feature "TicketsReport", type: :feature, js: true do
     2.times do
       create(:user_ticket,
              ticket_type: ticket_types[i],
-             booking_id: booking.id
-            )
+             booking_id: booking.id)
       i += 1
     end
 
@@ -33,7 +32,7 @@ RSpec.feature "TicketsReport", type: :feature, js: true do
       ["Tickets", "Grand Total", "SUMMARY", "ALL BOOKINGS", "ATTENDEES"]
     )
 
-    within '#tickets_summary_table thead' do
+    within "#tickets_summary_table thead" do
       page_should_have_content(
         ["S/N", "Name", "Quantity", "Quantity Sold", "Ticket Left", "Price"]
       )

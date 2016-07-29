@@ -2,23 +2,23 @@
 
 <%  @resources.each do |event| %>
 <tr>
-  <td>
-    <div class="switch">
-    <label>
-      Disabled
-        <%=check_box_tag "enable_event", event.id, event.enabled , class: "enable_event" %>
-      <span class="lever"></span>
-      Enabled
-    </label>
-  </div>
-  </td>
-  <td><%= event.title %></td>
+  <td><%= link_to event.title, event %></td>
   <td><%= event.location %></td>
   <td><%= event.start_date.strftime("%d %B, %Y") %></td>
-  <td><%= event.end_date.strftime("%d %B, %Y") %></td>
   <td>
-    <a href="" class="dropdown-button btn manage_btn" data-activates="dropdown-<%= "#{event.id}" %>">Manage Event
-      <i class="material-icons right">keyboard_arrow_down</i>
+    <div class="switch">
+      <label>
+        <%=check_box_tag "enable_event", event.id, event.enabled , class: "enable_event" %>
+        <span class="lever"></span>
+      </label>
+    </div>
+  </td>
+  <td class="dashboard-reports">
+    <a href="<%=tickets_report_path(event) %>">
+      <i class="fa fa-users" aria-hidden="true"></i> 100 Attendees <br /> <i class="fa fa-ticket" aria-hidden="true"></i> $12k Tickets sold
+    </a>
+  <td>
+    <a href="" class="dropdown-button manage_btn" data-activates="dropdown-<%= "#{event.id}" %>"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
     </a>
   </td>
   <ul class="dropdown-content right-align" id="dropdown-<%= "#{event.id}" %>">
@@ -26,16 +26,11 @@
       <%= link_to "Edit Event", edit_event_path(event), class:"our-dropdown-content", data: {eventid: event.id } %>
     </li>
     <li class="divider"></li>
-    <li><%= link_to "View Event", event, class: "our-dropdown-content" %></li>
-    <li class="divider"></li>
     <li><%= link_to "View Booking", event_tickets_path(event), class: "our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
     <li><%= link_to "Manage Staffs", manage_staffs_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
-
     <li class="divider"></li>
     <li><%= link_to "Request Remit", remit_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
-    <li class="divider"></li>
-    <li><%= link_to "Tickets Report", tickets_report_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>
     <li><%= link_to "Manage Sponsors", event_sponsors_path(event), class:"our-dropdown-content", data: {eventid: event.id } %></li>
     <li class="divider"></li>

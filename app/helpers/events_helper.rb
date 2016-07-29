@@ -10,7 +10,7 @@ module EventsHelper
     if current_user
       link_to(
         button_text,
-        '#purchase_ticket_modal',
+        "#purchase_ticket_modal",
         class: classes,
         data: { id: "unattend", target: "purchase_ticket_modal" },
         id: "attend"
@@ -18,7 +18,7 @@ module EventsHelper
     else
       link_to(
         button_text,
-        '#login_modal',
+        "#login_modal",
         class: classes,
         data: { id: "attend", target: "login_modal" },
         id: "attend"
@@ -43,7 +43,7 @@ module EventsHelper
     if user_is_attending_event(event)
       "Attending"
     elsif tickets.max == tickets.min
-      tickets.max == 0 ? "Free" : number_to_currency(tickets.max, unit: "$")
+      tickets.max.zero? ? "Free" : number_to_currency(tickets.max, unit: "$")
     else
       "#{converter(tickets.min)} - #{converter(tickets.max)}"
     end

@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     :tickets_report
   ]
   before_action :set_sponsor
-
+  layout "admin", only: [:tickets, :tickets_report]
   respond_to :html, :json, :js
 
   def new

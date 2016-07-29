@@ -5,7 +5,9 @@ class ManagerProfile < ActiveRecord::Base
 
   validates :company_name, presence: true
   validates :subdomain, presence: true, uniqueness: true, format: {
-    with: /\A([a-zA-Z]+)/ }
+    with: /\A([a-zA-Z]+)/
+  }
   validates :company_mail, presence: true, uniqueness: true, format: {
-    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
+    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
+  }
 end

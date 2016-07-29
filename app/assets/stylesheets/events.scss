@@ -328,11 +328,6 @@ input#event_photo_upload{
   display: none;
 }
 
-[type="radio"]:not(:checked) + label:before{
-  position: absolute;
-  top: 50px;
-}
-
 [type="radio"]:checked + label:after {
   position: absolute;
   top: 7px;
@@ -342,8 +337,8 @@ input#event_photo_upload{
   width: 12px;
   height: 30px;
   border: solid #fff;
-  border-width: 0 6px 6px 0;
-  background-color: rgba(255, 255, 255, 0);
+  border-width: 0 5px 5px 0;
+  background: transparent;
   transform: rotate(45deg);
 }
 
@@ -359,4 +354,81 @@ input#event_photo_upload{
   font-size: 20px;
   font-family: $font-family;
   text-transform: uppercase;
+}
+
+.milestones{
+  opacity: 0.8;
+  .stats-large{
+    font-size: 35px;
+    font-weight: lighter;
+    margin: 0px;
+  }
+  .card-title{
+    margin: 0px;
+    font-weight: lighter;
+  }
+  i{
+    top: 20px;
+    position: relative;
+  }
+}
+
+.milestones:hover{
+  opacity: 1;
+  box-shadow: none;
+}
+
+.dashboard-container{
+  margin: 70px 20px 20px 20px;
+  font-size: 12px;
+}
+
+.dashboard-icon{
+  top: 15px;
+  position: relative;
+}
+
+.dashboard-reports{
+  background-color: teal;
+  border-bottom: 1px solid white;
+  a{
+    color: white;
+  }
+}
+
+.dashboard-reports:hover{
+  opacity: 0.9;
+}
+
+.no-margin{
+  margin: 0px !important;
+}
+
+.no-border{
+  border: none !important;
+}
+
+.dashboard-avatar{
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.dashboard-name{
+  font-weight: lighter;
+  position: absolute;
+  width: 100%;
+  padding: 20px;
+  bottom: 0px;
+  background-color: rgba(10, 10, 10, 0.3);
+  color: white;
+}
+
+.collection-item i {
+  font-size: 16px;
+  margin: 15px;
+}
+
+.dashboard-pagination{
+  margin: 15px;
 }

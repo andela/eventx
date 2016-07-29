@@ -13,7 +13,8 @@ class Category < ActiveRecord::Base
   scope :current, lambda {
     where(
       "manager_profile_id = ? OR manager_profile_id = ?",
-      0, ActsAsTenant.current_tenant.id)
+      0, ActsAsTenant.current_tenant.id
+    )
   }
 
   def self.tenant
