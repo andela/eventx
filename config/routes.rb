@@ -16,8 +16,12 @@ Rails.application.routes.draw do
     get "/featured-events"           => :featured
     get "/popular_events"            => :popular
     get "/upcoming-events"           => :index
+<<<<<<< HEAD
     get "about"                      => :about
     get "faq"                        => :faq
+=======
+    get "/about"                     => :about
+>>>>>>> feat(about page): add site wide statistics
   end
 
   scope controller: :manager_profiles do
