@@ -71,7 +71,7 @@ class TicketTransactionsController < ApplicationController
       flash[:notice] = @ticketing.reject_transfer(@transaction.id)
       redirect_to root_path
     else
-      @total_amount = @ticketing.total_ticket_amount(@transaction)
+      @total_amount = @ticketing.ticket_amount(@transaction)
     end
   end
 

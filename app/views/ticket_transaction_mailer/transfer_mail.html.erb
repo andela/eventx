@@ -1,74 +1,47 @@
 <div class="content">
-      <table>
-        <tr>
-          <td>
-            <p>Hi <%= @recipient_name %>,</p>
-            <p><%= @sender_name %> is trying to sell you tickets for an event. Please find details below.</p> 
+  <div class="message">
+    <p>Hi <%= @recipient_name %>! <br />
+      <%= @sender_name %> is trying to sell you tickets for an event. Please find details below.
+    </p> 
+  </div>
 
-            <table cellpadding="0" cellspacing="0" border="0">
+  <div class="field">
+    <p><b>TransactionID:</b> <%= @transaction_id %></p>
+  </div>
 
-            <tr>
-                <th>Transaction ID</th>
-                <td><%= @transaction_id %></td>
-              </tr>
+  <div class="field">
+    <p><b>Event Title:</b> <%= @event_title %></p>
+  </div>
 
-              <tr>
-                <th>Event Title</th>
-                <td><%= @event_title %></td>
-              </tr>
+  <div class="field">
+    <p><b>Event Description:</b> <%= @event_description %></p>
+  </div>
 
-              <tr>
-                <th>Event Description</th>
-                <td><%= @event_description %></td>
-              </tr>
+  <div class="field">
+    <p><b>Start Date:</b> <%= @event_start_date %></p>
+  </div>
 
-              <tr>
-                <th>Start Date</th>
-                <td><%= @event_start_date %></td>
-              </tr>
+  <div class="field">
+    <p><b>End Date:</b> <%= @event_end_date %></p>
+  </div>
 
-              <tr>
-                <th>End Date</th>
-                <td><%= @event_end_date %></td>
-              </tr>
-
-              <tr>
-                <th>Number of tickets</th>
-                <td><%= @no_of_tickets %></td>
-              </tr>
-
-              <tr>
-                <th>Status</th>
-                <td><%= @status %></td>
-              </tr>
-
-              <tr>
-                <th>Amount</th>
-                <td><%= @amount %></td>
-              </tr>
+  <div class="field">
+    <p><b>Number of tickets:</b> <%= @no_of_tickets %></p>
+  </div>
   
-            </table>
-            
-            <table class="btn-primary" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <!-- <td>
-                  <a href="http:">Proceed to checkout</a>
-                </td> -->
+  <div class="field">
+    <p><b>Status:</b> <%= @status %></p>
+  </div>
 
-                <td>
-                 <%= link_to 'Proceed to checkout',  checkout_url(@transaction_id, host: 'lvh.me:3000') %>
-                </td>
-              </tr>
-            </table>
+  <div class="field">
+    <p><b>Ticket Price:</b> <%= @amount %></p>
+  </div>
 
-            <table class="btn-primary" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td>
-                 <%= link_to 'Not interested',  ticket_transaction_url(@transaction_id, host: 'lvh.me:3000')+ "?delete=true" %>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      </div>
+  <div class="field">
+    <%= link_to 'Proceed to checkout',  checkout_url(@transaction_id, host: 'lvh.me:3000'), class: 'btn-primary' %>
+  </div>
+
+  <div class="field">
+  <%= link_to 'Not interested',  ticket_transaction_url(@transaction_id, host: 'lvh.me:3000')+ "?delete=true", class: 'btn-primary' %>
+  </div>
+</div>

@@ -33,7 +33,7 @@ class Ticketing
     @booking.user_id = payer.id
     @booking.event_id = transaction.booking.event.id
     @booking.payment_status = "paid"
-    @tickets.update_all(transfered: false)
+    @tickets.each { |ticket| ticket.update(transfered: false) }
     @booking.save
 
     @booking.user_tickets << @tickets

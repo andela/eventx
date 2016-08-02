@@ -19,7 +19,7 @@ class TicketTransactionMailer < ApplicationMailer
     @no_of_tickets = transaction.tickets.size
     @status = transaction.accepted ? "Sold" : "Pending"
     @transaction_id = transaction.id
-    @amount = Ticketing.new.total_ticket_amount(transaction)
+    @amount = Ticketing.new.ticket_amount(transaction)
 
     mail(to: @recipient_email, subject: "Request for Ticket Transfer")
   end
