@@ -5,25 +5,25 @@
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="card-panel teal milestones">
-    <div class="white-text stats-large">100k <i class="fa fa-users fa-lg right" aria-hidden="true"></i></div>
+      <div class="white-text stats-large"><%= @data.attendees %> <i class="fa fa-users fa-lg right" aria-hidden="true"></i></div>
     <p class="card-title white-text">Number of Attendees</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="card-panel red milestones">
-    <div class="white-text stats-large">$20m <i class="fa fa-ticket fa-lg right" aria-hidden="true"></i></div>
+      <div class="white-text stats-large">$ <%= @data.tickets_sold  %> <i class="fa fa-ticket fa-lg right" aria-hidden="true"></i></div>
     <p class="card-title white-text">Tickets Sold</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="card-panel blue milestones">
-    <div class="white-text stats-large">50k  <i class="fa fa-calendar-check-o fa-lg right" aria-hidden="true"></i></div>
+      <div class="white-text stats-large"><%= @data.events %><i class="fa fa-calendar-check-o fa-lg right" aria-hidden="true"></i></div>
     <p class="card-title white-text">Number of Events</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="card-panel black milestones lighten-3">
-    <div class="white-text stats-large">70  <i class="fa fa-briefcase fa-lg right" aria-hidden="true"></i></div>
+      <div class="white-text stats-large"><%= @data.sponsors %>  <i class="fa fa-briefcase fa-lg right" aria-hidden="true"></i></div>
     <p class="card-title white-text">Number of Sponsors</p>
   </div>
 </div>
