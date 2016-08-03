@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(version: 20160614215417) do
 
   add_index "sponsors", ["event_id"], name: "index_sponsors_on_event_id"
 
+<<<<<<< HEAD
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "manager_profile_id"
@@ -185,6 +186,8 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.datetime "updated_at",                   null: false
   end
 
+=======
+>>>>>>> Modify UI for about page and make the statistics dynamic
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"

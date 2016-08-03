@@ -22,7 +22,10 @@ class WelcomeController < ApplicationController
   end
 
   def about
-
+    @attendees = Attendee.count
+    @tickets = UserTicket.count
+    @eventsCount = Event.count
+    @sponsors = Sponsor.count
   end
 
   def renders(events)
