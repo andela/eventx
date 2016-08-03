@@ -30,7 +30,7 @@ class BookingDecorator < Draper::Decorator
     if refund_requested && !granted
       h.link_to "Processing Request", "#", class: "btn disabled print-box-size"
     elsif !refund_requested && !granted
-      h.link_to "Request Refund", '#refund-form',
+      h.link_to "Request Refund", "#refund-form",
                 class: "btn print-box-size refund-button modal-trigger",
                 'data-id': uniq_id, 'data-event': event_id, id: "request-refund"
     end
@@ -58,7 +58,7 @@ class BookingDecorator < Draper::Decorator
 
   def generate_download_button
     h.link_to h.content_tag(:i, "", class: "fa fa-floppy-o") +
-      " Download All Tickets", h.download_path(booking.id),
+              " Download All Tickets", h.download_path(booking.id),
               class: "grey-text left", target: "_blank"
   end
 

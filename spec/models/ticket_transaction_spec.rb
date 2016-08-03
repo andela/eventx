@@ -18,7 +18,7 @@ RSpec.describe TicketTransaction, type: :model do
     end
   end
 
-  describe '#pay_pal_url' do
+  describe "#pay_pal_url" do
     context "given payment info" do
       it "it returns the pay pal url for the transaction as a query string" do
         pay_info = { transaction: @transaction.decorate,

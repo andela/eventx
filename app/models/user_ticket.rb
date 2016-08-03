@@ -6,6 +6,10 @@ class UserTicket < ActiveRecord::Base
   belongs_to :booking, counter_cache: true
   belongs_to :scanned_by, class_name: "User", foreign_key: :scanned_by
 
+  def self.used_status(bool)
+    where(is_used: bool)
+  end
+
   private
 
   def add_ticket_number

@@ -21,7 +21,7 @@ RSpec.feature "TicketTransactions", type: :feature, js: true do
   scenario "user views tickets for a particular booking" do
     visit all_tickets_path(@booking.id)
 
-    within '#available_tickets thead' do
+    within "#available_tickets thead" do
       page_should_have_content(["Ticket Number", "Type", "Status"])
     end
 

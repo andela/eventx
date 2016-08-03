@@ -53,8 +53,7 @@ class TicketTransactionsController < ApplicationController
     http.use_ssl = true
     http.post(uri.request_uri, raw,
               "Content-Length" => raw.size.to_s,
-              "User-Agent" => "EventX"
-             ).body
+              "User-Agent" => "EventX").body
   end
 
   def create

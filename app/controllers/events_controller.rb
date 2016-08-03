@@ -116,6 +116,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def scanned_tickets_report
+    @used = @event.user_tickets.used_status(true)
+    @unused = @event.user_tickets.used_status(false)
+  end
+
   private
 
   def search_params

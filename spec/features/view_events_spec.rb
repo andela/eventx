@@ -33,14 +33,14 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     expect(page).to have_selector("Label", text: "Search Event")
     expect(page).to have_selector("Label", text: "Location")
 
-    page.find('#music').trigger("click")
+    page.find("#music").trigger("click")
     expect(page).to have_content("Blessings wedding")
 
-    page.find('#sport').trigger("click")
+    page.find("#sport").trigger("click")
     expect(page).not_to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
 
-    page.find('#parties').trigger("click")
+    page.find("#parties").trigger("click")
     expect(page).not_to have_content("Blessings wedding")
     expect(page).not_to have_content("Sports is cool")
 
@@ -56,7 +56,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
 
     visit events_path
     expect(page).to have_button("Search")
-    page.find('#all').trigger("click")
+    page.find("#all").trigger("click")
 
     expect(page).to have_content(@cat.name)
 

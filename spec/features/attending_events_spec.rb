@@ -47,11 +47,10 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       fill_in "tickets_quantity_1", with: 1
       click_button "Submit"
 
-      #expect(page.current_path).to eq "/bookings"
+      # expect(page.current_path).to eq "/bookings"
     end
 
-    #expect(page).to have_content "DOWNLOAD ALL TICKETS"
-    
+    # expect(page).to have_content "DOWNLOAD ALL TICKETS"
 
     visit print_path(25)
     expect(page).to have_content "Booking not found"

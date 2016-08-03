@@ -7,7 +7,7 @@ RSpec.describe CategoriesController, type: :controller do
     @category = attributes_for(:category)
   end
 
-  describe '#index' do
+  describe "#index" do
     context "when category is created by current_user" do
       before(:each) do
         create(:category, manager_profile_id: user.manager_profile.id)
@@ -31,7 +31,7 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
-  describe '#create' do
+  describe "#create" do
     context "when a valid category is given" do
       it "creates a new category" do
         expect do
