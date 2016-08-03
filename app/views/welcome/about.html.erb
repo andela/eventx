@@ -24,25 +24,25 @@
 <div class="about-stats group">
   <div class="col s12 m6 l3 no-margin">
   <div class="card-panel teal milestones">
-    <div class="white-text stats-large">100k <i class="fa fa-users fa-lg right" aria-hidden="true"></i></div>
+    <div class="white-text stats-large"><%= @attendees %>k <i class="fa fa-users fa-lg right" aria-hidden="true"></i></div>
     <p class="card-title white-text">Number of Attendees</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="card-panel red milestones">
-    <div class="white-text stats-large">$20m <i class="fa fa-ticket fa-lg right" aria-hidden="true"></i></div>
+    <div class="white-text stats-large">$<%= @tickets %>m <i class="fa fa-ticket fa-lg right" aria-hidden="true"></i></div>
     <p class="card-title white-text">Tickets Sold</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="card-panel blue milestones">
-    <div class="white-text stats-large">50k  <i class="fa fa-calendar-check-o fa-lg right" aria-hidden="true"></i></div>
+    <div class="white-text stats-large"> <%= @eventsCount %>k  <i class="fa fa-calendar-check-o fa-lg right" aria-hidden="true"></i></div>
     <p class="card-title white-text">Number of Events</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="card-panel black milestones lighten-3">
-    <div class="white-text stats-large">70  <i class="fa fa-briefcase fa-lg right" aria-hidden="true"></i></div>
+    <div class="white-text stats-large"> <%= @sponsors %>  <i class="fa fa-briefcase fa-lg right" aria-hidden="true"></i></div>
     <p class="card-title white-text">Number of Sponsors</p>
   </div>
 </div>
@@ -91,19 +91,24 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col s12 offset-s5">
+    <h3 class="header">FAQs</h3>
+  </div>
+</div>
 <div class="row faq" id="faq-row">
   <div id="faq">
     <ul class="collapsible" data-collapsible="accordion">
       <li>
-        <div class="collapsible-header">First</div>
+        <div class="collapsible-header">What does it cost to create an event?</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
       </li>
       <li>
-        <div class="collapsible-header">Second</div>
+        <div class="collapsible-header">Where are my tickets?</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
       </li>
       <li>
-        <div class="collapsible-header">Third</div>
+        <div class="collapsible-header">How to contact the event manager?</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
       </li>
     </ul>
