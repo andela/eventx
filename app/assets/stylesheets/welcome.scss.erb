@@ -117,9 +117,20 @@ html, body{
   color: #fff !important;
 }
 
-
 .black_text{
   color: black !important;
+}
+
+.red_text{
+  color: #F44336 !important;
+}
+
+.blue_text{
+  color: #2196F3 !important;
+}
+
+.teal_text{
+  color: #009688 !important;
 }
 
 input[type=text]:focus:not([readonly]){
@@ -360,7 +371,7 @@ a.remove-text {
   background-image: url("http://bit.ly/2ahKQFC");
   background-size: cover;
   padding: 20px;
-  height: 700px;
+  height: 450px;
 }
 
 .about-triangle {
@@ -373,7 +384,7 @@ a.remove-text {
   display: inline-block;
   float: left;
   width: 50%;
-  border-right: 630px solid transparent;
+  border-right: 50vw solid transparent;
   border-bottom: 100px solid #00a8f2;
 }
 
@@ -382,7 +393,7 @@ a.remove-text {
   display: inline-block;
   float: left;
   width: 50%;
-  border-left: 630px solid transparent;
+  border-left: 50vw solid transparent;
   border-bottom: 100px solid #00a8f2;
 }
 
@@ -402,9 +413,15 @@ a.remove-text {
   font-weight: 200;
   color: #fff;
   position: relative;
-  top: 191px;
+  top: 91px;
   text-align: center;
 }
+
+@media only screen and (max-width : 992px) {
+      .about-header-content {
+        font-size: 40px;
+      }
+    }
 
 .about-content {
   padding-bottom: 70px;
@@ -429,22 +446,21 @@ a.remove-text {
   margin: auto;
 }
 
+.row.card-group {
+    padding: 0 30px;
+}
+
 .milestones .stats-large {
   font-size: 40px;
   font-weight: lighter;
 }
 
 .feature-details {
-  position: relative;
-  bottom: 102px;
+  position: absolute;
+  bottom: 0;
   color: #fff;
   padding: 0 10px 0 10px;
-  background: rgba(0, 0,0, 0.5);
-}
-
-.feature-title {
-  font-size: 25px;
-  font-weight: 200;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .card.feature-card {
@@ -452,9 +468,14 @@ a.remove-text {
   margin-right: -10px;
 }
 
+.feature-title {
+  font-size: 25px;
+  font-weight: 200;
+}
+
 #faq-row {
   background: url(/assets/nearfooter.png);
-  padding: 20px 0 20px;
+  padding: 20px 30px;
   margin: 9px 0 0px;
 }
 
