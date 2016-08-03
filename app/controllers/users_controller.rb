@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     manager_profile = current_user.manager_profile
     manager_profile_id = manager_profile ? manager_profile.id : nil
+    @data = DashboardStat.new(manager_profile_id) unless manager_profile_id.nil?
     fetch_user_events(manager_profile_id)
   end
 
