@@ -24,25 +24,25 @@
 <div class="about-stats row group">
   <div class="col s12 m6 l3 no-margin">
   <div class="milestones">
-    <div class="teal_text stats-large">100k </div>
+    <div class="teal_text stats-large"><%= @attendees %>k </div>
     <p class="card-title teal_text">Number of Attendees</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="milestones">
-    <div class="red_text stats-large">$20m </div>
+    <div class="red_text stats-large">$<%= @tickets %>m </div>
     <p class="card-title red_text">Tickets Sold</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="milestones">
-    <div class="blue_text stats-large">50k  </div>
+    <div class="blue_text stats-large"><%= @eventsCount %>k </div>
     <p class="card-title blue_text">Number of Events</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
   <div class="milestones">
-    <div class="black_text stats-large">70  </div>
+    <div class="black_text stats-large"> <%= @sponsors %> </div>
     <p class="card-title black_text">Number of Sponsors</p>
   </div>
 </div>
@@ -99,19 +99,22 @@
   </div>
 </div>
 
+<div class="row">
+  <h3 class="header text-center">FAQs</h3>
+</div>
 <div class="row faq card-group" id="faq-row">
   <div class="col s12 m12 l12">
     <ul class="collapsible" data-collapsible="accordion">
       <li>
-        <div class="collapsible-header">First</div>
+        <div class="collapsible-header">What does it cost to create an event?</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
       </li>
       <li>
-        <div class="collapsible-header">Second</div>
+        <div class="collapsible-header">Where are my tickets?</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
       </li>
       <li>
-        <div class="collapsible-header">Third</div>
+        <div class="collapsible-header">How to contact the event manager?</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
       </li>
     </ul>
