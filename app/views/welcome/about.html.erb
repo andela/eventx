@@ -1,0 +1,116 @@
+<%= render partial: "layouts/nav" %>
+
+
+<div class="about-top">
+  <div class="about-us-text">
+    <div class="about-header-content">
+      What do we do that makes you happy?
+    </div>
+  </div>
+</div>
+<div class="right-left-triangle">
+  <div class="left-triangle">
+  </div>
+  <div class="right-triangle">
+  </div>
+</div>
+<div class="about">
+  <div class="about-content">
+  What do you do when you have an event and all the event management applications available are too heavy but with little functionality to serve your purpose?
+  How do organize a small get-together with your friends, without having to go through a rigorous event creation process and without bothering about all the complexities of event management?
+  </div>
+</div>
+
+<div class="about-stats group">
+  <div class="col s12 m6 l3 no-margin">
+  <div class="card-panel teal milestones">
+    <div class="white-text stats-large"><%= @attendees %>k <i class="fa fa-users fa-lg right" aria-hidden="true"></i></div>
+    <p class="card-title white-text">Number of Attendees</p>
+  </div>
+</div>
+<div class="col s12 m6 l3 no-margin">
+  <div class="card-panel red milestones">
+    <div class="white-text stats-large">$<%= @tickets %>m <i class="fa fa-ticket fa-lg right" aria-hidden="true"></i></div>
+    <p class="card-title white-text">Tickets Sold</p>
+  </div>
+</div>
+<div class="col s12 m6 l3 no-margin">
+  <div class="card-panel blue milestones">
+    <div class="white-text stats-large"> <%= @eventsCount %>k  <i class="fa fa-calendar-check-o fa-lg right" aria-hidden="true"></i></div>
+    <p class="card-title white-text">Number of Events</p>
+  </div>
+</div>
+<div class="col s12 m6 l3 no-margin">
+  <div class="card-panel black milestones lighten-3">
+    <div class="white-text stats-large"> <%= @sponsors %>  <i class="fa fa-briefcase fa-lg right" aria-hidden="true"></i></div>
+    <p class="card-title white-text">Number of Sponsors</p>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col s12 m6 l4">
+    <div class="card feature-card">
+      <div class="card-image">
+        <img src="https://static.artofwhere.net/img/home-tiles/wholesale-device-cases.jpg">
+        <span class="card-title">Card Title</span>
+      </div>
+      <div class="card-content">
+        <p>I am a very simple card. I am good at containing small bits of information.
+        I am convenient because I require little markup to use effectively.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6 l4">
+    <div class="card feature-card">
+      <div class="card-image">
+        <img src="https://static.artofwhere.net/img/home-tiles/wholesale-device-cases.jpg">
+        <span class="card-title">Card Title</span>
+      </div>
+      <div class="card-content">
+        <p>I am a very simple card. I am good at containing small bits of information.
+        I am convenient because I require little markup to use effectively.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6 l4">
+    <div class="card feature-card">
+      <div class="card-image">
+        <img src="https://static.artofwhere.net/img/home-tiles/wholesale-device-cases.jpg">
+        <div class="feature-details">
+          <div class="feature-title">
+            Card Title
+          </div>
+          <div class="feature-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 offset-s5">
+    <h3 class="header">FAQs</h3>
+  </div>
+</div>
+<div class="row faq" id="faq-row">
+  <div id="faq">
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header">What does it cost to create an event?</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header">Where are my tickets?</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header">How to contact the event manager?</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+    </ul>
+  </div>
+</div>
