@@ -23,27 +23,27 @@
 
 <div class="about-stats row group">
   <div class="col s12 m6 l3 no-margin">
-  <div class="card-panel teal milestones">
-    <div class="white-text stats-large"><%= @attendees %>k <i class="fa fa-users fa-lg right" aria-hidden="true"></i></div>
-    <p class="card-title white-text">Number of Attendees</p>
+  <div class="milestones">
+    <div class="teal_text stats-large"><%= @attendee_count %>k </div>
+    <p class="card-title teal_text">Number of Attendees</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
-  <div class="card-panel red milestones">
-    <div class="white-text stats-large">$<%= @tickets %>m <i class="fa fa-ticket fa-lg right" aria-hidden="true"></i></div>
-    <p class="card-title white-text">Tickets Sold</p>
+  <div class="milestones">
+    <div class="red_text stats-large">$<%= @ticket_count %>m </div>
+    <p class="card-title red_text">Tickets Sold</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
-  <div class="card-panel blue milestones">
-    <div class="white-text stats-large"> <%= @eventsCount %>k  <i class="fa fa-calendar-check-o fa-lg right" aria-hidden="true"></i></div>
-    <p class="card-title white-text">Number of Events</p>
+  <div class="milestones">
+    <div class="blue_text stats-large"><%= @event_count %>k </div>
+    <p class="card-title blue_text">Number of Events</p>
   </div>
 </div>
 <div class="col s12 m6 l3 no-margin">
-  <div class="card-panel black milestones lighten-3">
-    <div class="white-text stats-large"> <%= @sponsors %>  <i class="fa fa-briefcase fa-lg right" aria-hidden="true"></i></div>
-    <p class="card-title white-text">Number of Sponsors</p>
+  <div class="milestones">
+    <div class="black_text stats-large"> <%= @sponsor_count %> </div>
+    <p class="card-title black_text">Number of Sponsors</p>
   </div>
 </div>
 </div>
