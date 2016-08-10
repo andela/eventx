@@ -27,7 +27,6 @@ class WelcomeController < ApplicationController
     @attendee_count = Attendee.count
     @ticket_count = UserTicket.count
     @event_count = Event.count
-    @sponsor_count = Sponsor.count
   end
 
 >>>>>>> 9116d09... [#126584711] change variable name to reflect count
