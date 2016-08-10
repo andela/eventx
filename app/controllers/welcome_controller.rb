@@ -16,9 +16,6 @@ class WelcomeController < ApplicationController
   end
 
   def about
-    @attendee_count = Attendee.count
-    @ticket_count = UserTicket.count
-    @event_count = Event.count
   end
 
   def renders(events)
