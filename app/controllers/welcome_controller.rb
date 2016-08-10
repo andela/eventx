@@ -24,9 +24,6 @@ class WelcomeController < ApplicationController
 <<<<<<< HEAD
 =======
   def about
-    @attendee_count = Attendee.count
-    @ticket_count = UserTicket.count
-    @event_count = Event.count
   end
 
 >>>>>>> 9116d09... [#126584711] change variable name to reflect count
