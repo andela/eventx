@@ -24,6 +24,7 @@ class WelcomeController < ApplicationController
 <<<<<<< HEAD
 =======
   def about
+    @presenter = Welcome::WelcomePresenter.new
   end
 
 >>>>>>> 9116d09... [#126584711] change variable name to reflect count

@@ -17,27 +17,27 @@
 <div class="about">
   <div class="about-content">
   What do you do when you have an event and all the event management applications available are too heavy but with little functionality to serve your purpose?
-  How do organize a small get-together with your friends, without having to go through a rigorous event creation process and without bothering about all the complexities of event management?
+  How do you organize a small get-together with your friends, without having to go through a rigorous event creation process and without bothering about all the complexities of event management?
   </div>
 </div>
 
 <div class="about-stats row group">
   <div class="col s12 m4 l4 no-margin">
     <div class="milestones">
-      <div class="teal_text stats-large"><%= attendee_count %>k </div>
+      <div class="teal_text stats-large"><%= @presenter.attendee_count %>k </div>
       <p class="card-title teal_text">Number of Attendees</p>
     </div>
   </div>
   <div class="col s12 m4 l4 no-margin">
     <div class="milestones">
-      <div class="yellow_text stats-large">$<%= ticket_count %>m </div>
-      <p class="card-title yellow_text">Tickets Sold</p>
+      <div class="red_text stats-large">$<%= @presenter.ticket_count %>m </div>
+      <p class="card-title red_text">Tickets Sold</p>
     </div>
   </div>
   <div class="col s12 m4 l4 no-margin">
     <div class="milestones">
-      <div class="orange_text stats-large"><%= event_count %>k </div>
-      <p class="card-title orange_text">Number of Events</p>
+      <div class="blue_text stats-large"><%= @presenter.event_count %>k </div>
+      <p class="card-title blue_text">Number of Events</p>
     </div>
   </div>
 </div>
@@ -67,7 +67,7 @@
             Why Choose Us?
           </div>
           <div class="feature-content">
-            <p>We absolutely love innovation and change your experience with us every moment that counts. <a href="#">Try now</a> for free!</p>
+            <p>We use innovative tools to make sure you create memorable experiences for yourself and your friends. <a href="#">Try now</a> for free!</p>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
             Our Community
           </div>
           <div class="feature-content">
-            <p>You can be part of the great work we do just by becoming a part of our community of fun-loving people. They love to help...</p>
+            <p>You can be part of the great work we do just by joining our community of fun-loving people. They love to help...</p>
           </div>
         </div>
       </div>
