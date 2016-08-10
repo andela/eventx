@@ -8,6 +8,10 @@ html, body{
   width: 100%;
 }
 
+a {
+  color: #4ABDAC;
+}
+
 .parallax-container{
   height: 650px;
   width: 100%;
@@ -114,12 +118,31 @@ html, body{
 }
 
 .white_text{
-  color: #fff !important;
+  color: #fff;
 }
 
-
 .black_text{
-  color: black !important;
+  color: black;
+}
+
+.red_text{
+  color: #F44336;
+}
+
+.orange_text {
+  color: #FC4A1A;
+}
+
+.yellow_text {
+  color: #F7B733;
+}
+
+.blue_text{
+  color: #2196F3;
+}
+
+.teal_text{
+  color: #4ABDAC;
 }
 
 input[type=text]:focus:not([readonly]){
@@ -353,4 +376,133 @@ nav.custom_nav{
 
 a.remove-text {
   color: #ffffff !important;
+}
+
+.about-top {
+  position: relative;
+  background-image: url("http://bit.ly/2ahKQFC");
+  background-size: 120%;
+  padding: 20px;
+  height: 350px;
+}
+
+.about-triangle {
+  background: #4abdac;
+  height: 350px;
+}
+
+.left-triangle {
+  height: 100px;
+  display: inline-block;
+  float: left;
+  width: 50%;
+  border-right: 50vw solid transparent;
+  border-bottom: 100px solid #4abdac;
+}
+
+.right-triangle {
+  height: 100px;
+  display: inline-block;
+  float: left;
+  width: 50%;
+  border-left: 50vw solid transparent;
+  border-bottom: 100px solid #4abdac;
+}
+
+.right-left-triangle {
+  position: relative;
+  top: -100px;
+}
+
+.about {
+  background: #4abdac;
+}
+
+.about-header-content {
+  width: 70%;
+  margin: auto;
+  font-size: 65px;
+  font-weight: 200;
+  color: #fff;
+  position: relative;
+  top: 91px;
+  text-align: center;
+}
+
+@media only screen and (max-width : 992px) {
+      .about-header-content {
+        font-size: 40px;
+      }
+    }
+
+.about-content {
+  padding-bottom: 70px;
+  width: 80%;
+  margin: auto;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 200;
+  text-align: center;
+}
+
+.no-margin {
+  display: inline-block;
+  float: left;
+  width: 25%;
+}
+
+.about-stats {
+  padding-top: 15px;
+  height: 175px;
+  width: 95%;
+  margin: auto;
+}
+
+.row.card-group {
+    padding: 0 30px;
+}
+
+.card .card-image img {
+  height: 200px;
+}
+
+.milestones {
+  padding: 20px;
+  text-align: center;
+  margin: 0.5rem 0 1rem 0;
+  border-radius: 2px;
+}
+
+.milestones .stats-large {
+  font-size: 40px;
+  font-weight: lighter;
+}
+
+.feature-details {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  padding: 0 10px 0 10px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card.feature-card {
+  margin-left: -12px;
+  margin-right: -10px;
+}
+
+.feature-title {
+  font-size: 25px;
+  font-weight: 200;
+}
+
+#faq-row {
+  background: url(/assets/nearfooter.png);
+  padding: 20px 30px;
+  margin: 9px 0 0px;
+}
+
+#faq {
+  width: 65%;
+  margin: auto;
 }
