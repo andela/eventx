@@ -19,7 +19,6 @@ class WelcomeController < ApplicationController
     @attendee_count = Attendee.count
     @ticket_count = UserTicket.count
     @event_count = Event.count
-    @sponsor_count = Sponsor.count
   end
 
   def renders(events)
