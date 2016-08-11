@@ -5,79 +5,202 @@
     <br><br>
       <h1 class="header center home_app_title">EventX</h1>
 
-      <div class="row center">
-        <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
-      </div>
+  <div class="navbar-fixed">
+    <nav class='custom_nav <%= "landing" unless @current_page && @current_page == "new" %>'>
+      <div class="nav-wrapper ">
+        <a href="#" class="brand-logo logo-padding">EventX</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
 
+          <li><a href="#">About EventX</a></li>
+          <li><a href="#">Event Management Tools</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Find Events Near Me</a></li>
+          
+            <ul class="right">
+              <% if content_for? :show %>
+                <%= yield :show %>
+              <% end %>
+
+              <% if current_user %>
+                <li>
+                  <a class="<%= "dropdown-button" unless @current_page && @current_page == "new"%>" data-activates="dropdown-user_option" data-beloworigin="true" href="#" style="padding:0 20px;">
+                    <% if current_user.profile_url.present? %>
+                    <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
+                    <% else %>
+                    <%= image_tag "defaultimage.jpeg", class: "left profile_pic circle responsive-img" %>
+                    <% end %>
+                    <%= current_user.first_name.split(" ")[0] %>
+                    <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
+                  </a>
+                </li>
+                <ul class="dropdown-content right" id="dropdown-user_option">
+                  <li><%= link_to "My Account", dashboard_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+                  <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+                </ul>
+              <% else %>
+                <li>
+                  <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
+                  <%= "#{content_tag :i, "", class: "fa fa-lock white_text left  hide-on-small-only"} Log In".html_safe %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>      
+        </ul>
+        <ul id="slide-out" class="side-nav ">
+          <li class="divider"><a href="#" class="brand-logo logo-padding"><h3>EventX</h3></a></li>
+          <li><a href="#">About EventX</a></li>
+          <li><a href="#">Event Management Tools</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Find Events Near Me</a></li>
+          
+            <ul class="left">
+              <% if content_for? :show %>
+                <%= yield :show %>
+              <% end %>
+
+              <% if current_user %>
+                <li>
+                  <a class="<%= "dropdown-button" unless @current_page && @current_page == "new"%>" data-activates="dropdown-user_option" data-beloworigin="true" href="#" style="padding:0 20px;">
+                    <% if current_user.profile_url.present? %>
+                    <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
+                    <% else %>
+                    <%= image_tag "defaultimage.jpeg", class: "left profile_pic circle responsive-img" %>
+                    <% end %>
+                    <%= current_user.first_name.split(" ")[0] %>
+                    <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
+                  </a>
+                </li>
+                <ul class="dropdown-content right" id="dropdown-user_option">
+                  <li><%= link_to "My Account", dashboard_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+                  <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+                </ul>
+              <% else %>
+                <li>
+                  <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
+                  <%= "#{content_tag :i, "", class: "fa fa-lock black_text right  hide-on-small-only"} Log In".html_safe %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br><br><br><br><br>
+      <h2 class="header center home_app_title">Bring Your Passions to Life!</h2>
+      <br>
+      <div class="row center">
+        <h5 class="header col s12 light home_app_tag">Manage and Search for Events Around You</h5>
+      </div>
+      <br>
       <div class="row center">
         <% if can? :create, Event %>
-        <%= create_event_or_login("Create Event", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
+          <%= create_event_or_login("Create Event", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%elsif !current_user %>
-         <%= create_event_or_login("Sign up", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
+          <%= create_event_or_login("Get Started", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%else%>
-        <%= become_a_manager("Become An Event Manager", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
+          <%= become_a_manager("Become An Event Manager", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%end%>
       </div>
 
       <span class="hide-on-med-and-down"><br><br></span>
     </div>
   </div>
-  <div class="parallax"><%= image_tag "best.jpg"%></div>
-
-  <div class="container header center search_form l8 m8 s8 offset-s2">
-    <%= render "welcome/search" %>
-  </div>
-
+  <div class="parallax"><%= image_tag "special-event.jpg"%></div>
   <a href="#featured_events" class="alert-scroll-under"><%= image_tag("scroll_circle.svg", class: "responsive")%></a>
 </div>
 
-<div id="featured_events" class="event-section row remove-margin">
-  <div class="col s12" style="padding: 0px 0px">
-
-    <ul class="tabs">
-      <li class="tab col s3">
-        <%= link_to "UPCOMING", "#upcoming", class:"active our-tab-color", style:"color: #313131"  %>
-      </li>
-      <li class="tab col s3">
-        <%= link_to "FEATURED", "#featured", class:"our-tab-color", style:"color: #313131", id:"featured_tab" %>
-      </li>
-      <li class="tab col s3">
-        <%= link_to "POPULAR", "#popular", class:"our-tab-color", style:"color: #313131", id: "popular_tab"  %>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col s12" id="upcoming">
-    <div class="content-set">
-      <div class="row scrollblock" id="upcoming_content">
-        <%= render "events/events_card", events: @events %>
-        <div class="row col l12 s12 m12">
-        <div class="center">
-          <% unless @events.count < 12 %>
-            <%= link_to "SEE MORE", events_path, class: "btn-large z-depth-0 our-search-btn" %>
-          <% end %>
-        </div>
+<div class="row homepage-cards">
+  <h4 class="center">WHAT WE OFFER</h4>
+  <div class="col m4">
+    <div class="card teal darken-1 card small">
+      <div class="card-image">
+        <%= image_tag "office.jpg"%>
+        <span class="card-title"><h5>Planning Tools</h5></span>
       </div>
+      <div class="card-content white-text">
+        <p>Our intuitive planning tools ensure that your event goes as planned.</p>
+      </div>
+      <div class="card-action">
+        <a href="#">Learn More</a>
       </div>
     </div>
   </div>
-
-  <%= render "welcome/homepage_tab", text_id: "featured", example_id: "featured_content" %>
-  <%= render "welcome/homepage_tab", text_id: "popular", example_id: "popular_content" %>
+  <div class="col m4">
+    <div class="card teal darken-1 small">
+      <div class="card-image">
+        <%= image_tag "office.jpg"%>
+        <span class="card-title"><h5>Ticket Management</h5></span>
+      </div>
+      <div class="card-content white-text">
+        <p>Create tickets for your guests and manage ordering easily on Eventx</p>
+      </div>
+      <div class="card-action">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col m4">
+    <div class="card teal darken-1 small">
+      <div class="card-image">
+        <%= image_tag "office.jpg"%>
+        <span class="card-title"><h5>Newsletters</h5></span>
+      </div>
+      <div class="card-content white-text">
+        <p>Send newsletters and notifications to your guests reminding them about the event</p>
+      </div>
+      <div class="card-action">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="near-footer">
-  <h4>Create your own event</h4>
-
-  <p>Bring people together, or turn your passion into a business.
-    <br>
-    EventX gives you everything you need to host your best event yet.
-  </p>
-
-  <% if can? :create, Event %>
-    <%= create_event_or_login("Get Started", ["waves-effect", "btn-large bottom_btn z-depth-0"]) %>
-  <% else %>
-    <%= become_a_manager("Get Started", ["waves-effect", "btn-large bottom_btn z-depth-0"]) %>
-  <% end %>
-
+<div class="row homepage-cards">
+  <div class="col m4">
+    <div class="card teal darken-1 card small">
+      <div class="card-image">
+        <%= image_tag "office.jpg"%>
+        <span class="card-title"><h5>Feedback on Events</h5></span>
+      </div>
+      <div class="card-content white-text">
+        <p>Get ratings and reviews from guests about how they felt about your events</p>
+      </div>
+      <div class="card-action">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col m4">
+    <div class="card teal darken-1 small">
+      <div class="card-image">
+        <%= image_tag "office.jpg"%>
+        <span class="card-title"><h5>Promote your Events</h5></span>
+      </div>
+      <div class="card-content white-text">
+        <p>Use our powerful social media tools to increase attendance and enhance attendee engagement</p>
+      </div>
+      <div class="card-action">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col m4">
+    <div class="card teal darken-1 small">
+      <div class="card-image">
+        <%= image_tag "office.jpg"%>
+        <span class="card-title"><h5>Manage your Events</h5></span>
+      </div>
+      <div class="card-content white-text">
+        <p>Our tools allow you to be in the driver seat and take charge of your events</p>
+      </div>
+      <div class="card-action">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
 </div>
