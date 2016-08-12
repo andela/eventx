@@ -12,7 +12,7 @@ require "capybara"
 require "capybara/rspec"
 require "capybara/rails"
 require "database_cleaner"
-#require "capybara/poltergeist"
+require "capybara/poltergeist"
 require "webmock/rspec"
 
 WebMock.allow_net_connect!
@@ -21,13 +21,13 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
-# Capybara.register_driver :poltergeist do |app|
-#   Capybara::Poltergeist::Driver.new(app, js_errors: false, inspector: true,
-#                                          timeout: 60,
-#                                          phantomjs: Phantomjs.path)
-# end
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, js_errors: false, inspector: true,
+                                         timeout: 60,
+                                         phantomjs: Phantomjs.path)
+end
 
-#Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :poltergeist
 
 Capybara.server do |app, port|
   require "rack/handler/puma"
