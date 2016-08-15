@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   scope controller: :users do
     get "/dashboard" => :show
+    get "/dashboard_user" => :show_user
     get "/lookup_staffs"      => :lookup_staff_emails
     get "/user_info/:user_id" => :fetch_user_info
   end

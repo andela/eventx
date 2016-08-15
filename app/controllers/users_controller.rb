@@ -4,10 +4,17 @@ class UsersController < ApplicationController
   layout "admin", only: :show
 
   def show
-    manager_profile = current_user.manager_profile
-    manager_profile_id = manager_profile ? manager_profile.id : nil
-    @data = DashboardStat.new(manager_profile_id) unless manager_profile_id.nil?
-    fetch_user_events(manager_profile_id)
+    if current_user.event_manager?
+      manager_profile = current_user.manager_profile
+      manager_profile_id = manager_profile ? manager_profile.id : nil
+      @data = DashboardStat.new(manager_profile_id) unless manager_profile_id.nil?
+      @profile_type = "manager"
+      fetch_user_events(manager_profile_id)
+    else
+      @data = User.get_user_events(current_user.id)
+      @profile_type = "regular"
+      fetch_user_events(current_user.id)
+    end
   end
 
   def lookup_staff_emails
@@ -23,7 +30,7 @@ class UsersController < ApplicationController
     events = if current_user.event_manager?
                Event.my_event_search(search_params, manager_profile_id)
              else
-               current_user.bookings.includes(:event)
+               @data
              end
     @resources = WillPaginate::Collection.create(paginate_params, 5,
                                                  events.length) do |pager|

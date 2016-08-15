@@ -37,11 +37,11 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     expect(page).to have_content "Add to Google Calendar"
   end
 
-  scenario "User clicks to attend an event" do
+  scenario "User clicks to attend an event", :js => true do
     sign_up
     visit events_path
     click_link "Blessings wedding"
-    find_link("Attend this event").trigger("click")
+    click_link "Attend this event"
     within ".modal-content" do
       page.execute_script("$('#ticket_type_1').prop('checked', true)")
       fill_in "tickets_quantity_1", with: 1
