@@ -63,7 +63,6 @@ class User < ActiveRecord::Base
   end
 
   def self.get_user_events(user_id)
-    # booking = Booking.find_by(user_id: user_id)
     booking = Booking.where(user_id: user_id).pluck(:event_id)
     event = Event.find(booking)
 
