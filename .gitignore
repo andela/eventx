@@ -23,7 +23,9 @@ coverage/
 .idea/
 
 # Ignore all files ending with ds_store
-*DS_STORE
+.DS_Store
+config/.DS_Store
+
 
 # Rubocop
 index.html
