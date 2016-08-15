@@ -37,7 +37,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     expect(page).to have_content "Add to Google Calendar"
   end
 
-  scenario "User clicks to attend an event", :js => true do
+  scenario "User clicks to attend an event" do
     sign_up
     visit events_path
     click_link "Blessings wedding"

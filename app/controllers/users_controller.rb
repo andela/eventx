@@ -13,8 +13,10 @@ class UsersController < ApplicationController
     else
       @data = User.get_user_events(current_user.id)
       @profile_type = "regular"
+      @all_events = Event.all
       fetch_user_events(current_user.id)
     end
+    # binding.pry
   end
 
   def lookup_staff_emails
