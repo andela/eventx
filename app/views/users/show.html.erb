@@ -1,2 +1,7 @@
-<%#=# render "users/dashboard_mile_stones" %>
-<%= render "users/dashboard", locals: {data: @data }  %>
+<% if @profile_type == "manager" %>
+  <%#= render "users/dashboard_mile_stones" %>
+  <%= render "users/dashboard", locals: {data: @data}  %>
+<% else %>
+  <%= render "users/dashboard_user", locals: {data: @data}  %>
+  <%#= render "users/users_dashboard", locals: {data: @data}  %>
+<% end %>

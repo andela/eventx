@@ -61,4 +61,11 @@ class User < ActiveRecord::Base
                                                   :profile_url).first
     { first_name: user[0], email: user[1], profile_url: user[2] }
   end
+
+  def self.get_user_events(user_id)
+    # booking = Booking.find_by(user_id: user_id)
+    booking = Booking.where(user_id: user_id).pluck(:event_id)
+    event = Event.find(booking)
+
+  end
 end
