@@ -42,7 +42,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     visit events_path
     click_link "Blessings wedding"
     click_link "Attend this event"
-    within ".modal-content" do
+    within ".modal-content" do  
       page.execute_script("$('#ticket_type_1').prop('checked', true)")
       fill_in "tickets_quantity_1", with: 1
       click_button "Submit"

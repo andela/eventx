@@ -1,6 +1,5 @@
-<div class="our-new-custom-nav">
-  <%= render "layouts/nav" %>
-</div>
-
-<%= render "users/dashboard"%>
-
+<% if @profile_type == "manager" %>
+  <%= render "users/mngr_dashboard", locals: {data: @data}  %>
+<% else %>
+  <%= render "users/user_dashboard", locals: {data: @data}  %>
+<% end %>

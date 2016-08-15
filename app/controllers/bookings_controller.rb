@@ -109,7 +109,7 @@ class BookingsController < ApplicationController
   end
 
   def process_free_ticket_or_redirect_paid_ticket
-    if @booking.amount == 0
+    if @booking.amount.zero?
       @booking.free!
       trigger_booking_mail
       redirect_to tickets_path
@@ -127,8 +127,7 @@ class BookingsController < ApplicationController
     http.use_ssl = true
     http.post(uri.request_uri, raw,
               "Content-Length" => raw.size.to_s,
-              "User-Agent" => "EventX"
-             ).body
+              "User-Agent" => "EventX").body
   end
 
   def examine_booking(response)

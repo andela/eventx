@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root "welcome#index"
-  get "/test", to: "users#test"
 
   scope path: "/events", controller: :events do
     get "popular"            => :popular
@@ -42,7 +41,8 @@ Rails.application.routes.draw do
   end
 
   scope controller: :users do
-    get "/dashboard"          => :show
+    get "/dashboard" => :show
+    get "/dashboard_user" => :show_user
     get "/lookup_staffs"      => :lookup_staff_emails
     get "/user_info/:user_id" => :fetch_user_info
   end

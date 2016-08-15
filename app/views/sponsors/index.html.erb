@@ -1,28 +1,18 @@
-<div class="our-new-custom-nav">
-   <%= render "layouts/nav" %>
+<div class="row">
+  <div class="dashboard-search">
+    <h5 class="col 12"><i class="fa fa-credit-card fa-lg" aria-hidden="true"></i> All Sponsors <small>(<%= @event.title%>)</small></h5>
+  </div>
 </div>
 
-<div class="event-section row event-sponsors-main center">
-  <div id="left">
-    <div id="sidebar">
-      <%= render partial: "layouts/dashboard_sidebar"%>
-    </div>
-  </div>
+<div class="event-sponsors-main center">
   <div id="right">
-
     <div class="row">
-      <div class="col l6">
-        <h5>All Sponsors for <%= @event.title%> Event </h5>
-      </div>
       <div class="col l6">
         <%= can_add_event_sponsor %>
       </div>
     </div>
-
-
     <%= render partial: "event_sponsors" %>
   </div>
 </div>
-<div id="toast">
-</div>
+<div id="toast"></div>
 <%= render partial: "sponsor_modal" %>

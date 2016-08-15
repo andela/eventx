@@ -43,7 +43,8 @@ class User < ActiveRecord::Base
 
   def user_tickets_for_event(event_id)
     bookings.where(
-      event_id: event_id).order(id: :desc).decorate
+      event_id: event_id
+    ).order(id: :desc).decorate
   end
 
   def generate_auth_token
@@ -59,5 +60,10 @@ class User < ActiveRecord::Base
     user = User.where(id: params[:user_id]).pluck(:first_name, :email,
                                                   :profile_url).first
     { first_name: user[0], email: user[1], profile_url: user[2] }
+  end
+
+  def self.get_user_events(user_id)
+    booking = Booking.where(user_id: user_id).pluck(:event_id)
+    event = Event.find(booking)
   end
 end

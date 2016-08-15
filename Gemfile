@@ -8,7 +8,7 @@ gem "coffee-rails", "~> 4.1.0"
 gem "cancancan", "1.13.1"
 gem "jquery-rails", "4.0.5"
 gem "jquery-ui-rails", "5.0.5"
-gem "materialize-sass", "0.97.1"
+gem "materialize-sass"
 gem "font-awesome-sass", "4.4.0"
 gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
@@ -55,6 +55,7 @@ group :development, :test do
   gem "spring", "1.4.3"
   gem "rubocop", require: false
   gem "letter_opener"
+  gem "selenium-webdriver", "~> 2.53", ">= 2.53.4"
 end
 
 group :development do

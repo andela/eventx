@@ -31,7 +31,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_link "My Account"
     expect(page).to have_content "This is a test Event"
     expect(page).to have_content "Lagos, Nigeria"
-    find("a[data-activates = 'dropdown-1']").click
+    find("a[data-activates = 'dropdown-1']").hover
     within ".dropdown-content" do
       click_link "Edit Event"
     end

@@ -1,14 +1,21 @@
 class UsersController < ApplicationController
   before_action :authenticate_user
   respond_to :json, :html, :js
-
-  def test
-  end
+  layout "admin", only: :show
 
   def show
-    manager_profile = current_user.manager_profile
-    manager_profile_id = manager_profile ? manager_profile.id : nil
-    fetch_user_events(manager_profile_id)
+    if current_user.event_manager?
+      manager_profile = current_user.manager_profile
+      manager_profile_id = manager_profile ? manager_profile.id : nil
+      @data = DashboardStat.new(manager_profile_id) unless manager_profile_id.nil?
+      @profile_type = "manager"
+      fetch_user_events(manager_profile_id)
+    else
+      @data = User.get_user_events(current_user.id)
+      @profile_type = "regular"
+      @all_events = Event.all
+      fetch_user_events(current_user.id)
+    end
   end
 
   def lookup_staff_emails
@@ -24,7 +31,7 @@ class UsersController < ApplicationController
     events = if current_user.event_manager?
                Event.my_event_search(search_params, manager_profile_id)
              else
-               current_user.bookings.includes(:event)
+               @data
              end
     @resources = WillPaginate::Collection.create(paginate_params, 5,
                                                  events.length) do |pager|

@@ -3,21 +3,16 @@ $(document).ready(function () {
     inDuration: 300,
     outDuration: 225,
     constrain_width: false,
-    // Does not change width of dropdown to that of the activator
-    hover: false,
-    // Activate on hover
-    gutter: 0,
-    // Spacing from edge
-    belowOrigin: false  // Displays dropdown below the button
+    hover: true,
   });
   if (window.location.pathname != '/') {
     $('.our-custom-header').removeClass('before-scroll').css({ 'padding-top': '9px' });
   }
+  $('.button-collapse').sideNav();
   $('select').material_select();
   $('.parallax').parallax();
   $('.modal-trigger').leanModal();
-  $('.button-collapse').sideNav();
-  $('.menu-collapse').sideNav();
+  // $('.menu-collapse').sideNav();
   $('ul.pagination li').click(function () {
     $('ul.pagination li').removeClass('active');
   });
