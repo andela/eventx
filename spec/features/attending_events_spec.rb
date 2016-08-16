@@ -13,14 +13,14 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       and_return("")
   end
 
-  # scenario "User searches for an Event" do
-  #   visit root_path
-  #   fill_in "Search Event", with: "Sports is cool"
-  #   click_button "Search"
-  #   expect(page).not_to have_content("Blessings wedding")
-  #   expect(page).to have_content("Sports is cool")
-  #   expect(page.current_path).to eq "/events"
-  # end
+  scenario "User searches for an Event" do
+    visit root_path
+    fill_in "Search Event", with: "Sports is cool"
+    click_button "Search"
+    expect(page).not_to have_content("Blessings wedding")
+    expect(page).to have_content("Sports is cool")
+    expect(page.current_path).to eq "/events"
+  end
 
   scenario "User tries to attend past Event" do
     visit events_path
@@ -37,6 +37,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     expect(page).to have_content "Add to Google Calendar"
   end
 
+<<<<<<< 3a49e5a8743554f250798e81992ce388f19a98ae
   scenario "User clicks to attend an event" do
     sign_up
     visit events_path
