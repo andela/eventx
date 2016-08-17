@@ -28,8 +28,8 @@
                 <td>
                   <div class="switch">
                     <label>
-                      <%=check_box_tag "enable_event", event.id, event.enabled , class: "enable_event" %>
-                      <span class="lever"></span>
+                      <%=check_box_tag "unattend_event", event.id, event.attending?(current_user), class: "unattend_event" %>
+                      <span class="lever user-lever"></span>
                     </label>
                   </div>
                 </td>
@@ -58,39 +58,41 @@
 
 <%  @all_events.each do |event| %>
   <% if event.enabled %>
-    <% @tickets = event.ticket_types.pluck(:price)%>
-    <div class="col l4 s12 m4" id="fade-in">
-      <div class="card small card-shadow" id="card">
-        <div class="Amount">
-              <%= event_price(@tickets, event) %>
-        </div>
-        <div class="card-image waves-effect waves-block waves-light">
-          <%=link_to (image_tag event.image_url(:landing)), event  %>
-        </div>
-        <div class="card-content">
-          <span class="card-title grey-text text-darken-4">
-            <%= event.start_date.strftime("%b %d %Y") %>
-          </span>
-          <p class="event-name"><%=link_to event.title, event, :target => "_blank" %></p>
-        </div>
+    <% unless event.attending?(current_user) %>
+      <% @tickets = event.ticket_types.pluck(:price)%>
+      <div class="col l4 s12 m4" id="fade-in">
+        <div class="card small card-shadow" id="card">
+          <div class="Amount">
+                <%= event_price(@tickets, event) %>
+          </div>
+          <div class="card-image waves-effect waves-block waves-light">
+            <%=link_to (image_tag event.image_url(:landing)), event  %>
+          </div>
+          <div class="card-content">
+            <span class="card-title grey-text text-darken-4">
+              <%= event.start_date.strftime("%b %d %Y") %>
+            </span>
+            <p class="event-name"><%=link_to event.title, event, :target => "_blank" %></p>
+          </div>
 
-        <div class="card-action lighten-1">
-          <span class="card-title grey-text text-darken-4">
-            <i class="fa fa-map-marker"></i>
-               <%= truncate (event.venue + " " + event.location) %>
-            <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
-          </span>
+          <div class="card-action lighten-1">
+            <span class="card-title grey-text text-darken-4">
+              <i class="fa fa-map-marker"></i>
+                 <%= truncate (event.venue + " " + event.location) %>
+              <i class="material-icons right activator pointer tooltipped" data-delay="50" data-position="bottom" data-tooltip="view more">more_vert</i>
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Description
+              <i class="material-icons right">close</i>
+            </span>
+            <h5><%= event.title %></h5>
+            <p><%= event.description %></p>
+          </div>
         </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Description
-            <i class="material-icons right">close</i>
-          </span>
-          <h5><%= event.title %></h5>
-          <p><%= event.description %></p>
-        </div>
+        <br>
       </div>
-      <br>
-    </div>
+    <% end %>
   <% end %>
 <% end %>
 <div class="center-align dashboard-pagination" id="pagination" >
