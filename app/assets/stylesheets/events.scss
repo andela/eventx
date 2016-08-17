@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $white-color: #000;
+$font-family: 'Roboto', sans-serif !important;
 
 .margin-down{
   margin-top: 50px;
@@ -190,11 +191,11 @@ input#event_photo_upload{
 .card-content  {
   span{
     color:  rgba(28, 28, 28, 0.6) !important;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: $font-family;
   }
   a{
-    color: #ffffff !important;
-    font-family: 'Roboto', sans-serif !important;
+    color: #a1a1a1 !important;
+    font-family: $font-family;
     font-size: large;
     font-weight: bolder;
   }
@@ -218,7 +219,7 @@ input#event_photo_upload{
   padding-top: 20% !important;
   font-size: 64px;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font-family;
   font-weight: 400
 }
 

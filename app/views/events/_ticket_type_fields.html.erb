@@ -9,6 +9,6 @@
     <%= f.text_field :price, min: 0, placeholder: "Price"%>
   </div>
   <div class="col s2 closecocoon">
-    <%= link_to_remove_association "x", f, class: "btn-floating btn waves-effect waves-light red"  %>
+    <%= link_to_remove_association "<i class='material-icons'>delete</i>".html_safe, f, class: "btn btn-floating red"  %>
   </div>
 </div>

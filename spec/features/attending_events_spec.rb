@@ -33,8 +33,8 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     visit events_path
     click_link "Blessings wedding"
     expect(page).to have_content "ATTEND THIS EVENT"
-    expect(page).to have_content "Add to my Calendar"
-    expect(page).to have_content "Add to Google Calendar"
+    expect(page).to have_content "ADD TO MY CALENDAR"
+    expect(page).to have_content "ADD TO GOOGLE CALENDAR"
   end
 
   scenario "User clicks to attend an event" do

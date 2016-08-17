@@ -14,6 +14,18 @@ class EventDecorator < Draper::Decorator
     object.event_template.name if object.event_template
   end
 
+  def highlights
+    object.highlights ? object.highlights.decorate : ""
+  end
+
+  def reviews
+    object.reviews ? object.reviews : ""
+  end
+
+  def sponsors
+    object.sponsors ? object.sponsors : ""
+  end
+
   def end_date
     return object.end_date.strftime("%b %d %Y") if object.end_date?
     Time.zone.now.strftime("%b %d %Y")

@@ -17,6 +17,10 @@ $(document).ready(function () {
   $('.parallax').parallax();
   $('.modal-trigger').leanModal();
   $('.button-collapse').sideNav();
+  $('.menu-collapse').sideNav();
+  $('ul.pagination li').click(function () {
+    $('ul.pagination li').removeClass('active');
+  });
   $('.datepicker').pickadate({
     selectMonths: true,
     // Creates a dropdown to control month

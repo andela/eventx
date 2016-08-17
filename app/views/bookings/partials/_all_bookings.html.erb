@@ -1,31 +1,30 @@
-
-        <h5>All Bookings</h5>
-        <hr />
- <% if @presenter.all_bookings.empty? %>
-          <i>No bookings yet</i>
- <% else %>
-        <table class="display responsive-table bordered striped" id="bookings_table">
-          <thead>
-            <tr>
-              <th data-field="sn">S/N</th>
-              <th data-field="purchase">Purchase Date</th>
-              <th data-field="payment">Payment Status</th>
-              <th data-field="amount">Amount</th>
-              <th data-field="ticket">Number of Tickets</th>
-              <th>TicketID</th>
-            </tr>
-          </thead>
-      <tbody>
+<h5>All Bookings</h5>
+<hr />
+<% if @presenter.all_bookings.empty? %>
+  <i>No bookings yet</i>
+<% else %>
+  <table class="display responsive-table bordered striped" id="bookings_table">
+    <thead>
+      <tr>
+        <th data-field="sn">S/N</th>
+        <th data-field="purchase">Purchase Date</th>
+        <th data-field="payment">Payment Status</th>
+        <th data-field="amount">Amount</th>
+        <th data-field="ticket">Number of Tickets</th>
+        <th>TicketID</th>
+      </tr>
+    </thead>
+    <tbody>
     <% @presenter.all_bookings.each_with_index do |booking, index| %>
-                <tr>
-                  <td><%= index+1 %></td>
-                  <td><%= booking.created_at.to_formatted_s(:long_ordinal) %></td>
-                  <td><%= booking.status_or_grant %></td>
-                  <td><%= number_to_currency booking.amount %></td>
-                  <td><%= booking.user_tickets_count %></td>
-                  <td><%= booking.uniq_id %></td>
-                </tr>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= booking.created_at.to_formatted_s(:long_ordinal) %></td>
+        <td><%= booking.status_or_grant %></td>
+        <td><%= number_to_currency booking.amount %></td>
+        <td><%= booking.user_tickets_count %></td>
+        <td><%= booking.uniq_id %></td>
+      </tr>
     <% end %>
     </tbody>
-    </table>
+  </table>
  <% end %>

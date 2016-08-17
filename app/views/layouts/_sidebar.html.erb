@@ -1,8 +1,5 @@
 <% if content_for? :nav_cat %>
-    <aside >
-      <a href="#" data-activates="slide-out" class="button-collapse"></a>
-      <ul class="side-nav our-custom-new-sidebar" id="slide-out">
-        <%= yield :nav_cat %>
-      </ul>
-    </aside>
+  <ul class="side-nav our-custom-new-sidebar" id="slide-out">
+    <%= yield :nav_cat %>
+  </ul>
 <% end %>

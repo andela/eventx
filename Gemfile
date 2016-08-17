@@ -52,10 +52,13 @@ group :development, :test do
   gem "sqlite3", "1.3.11"
   gem "pry-rails"
   gem "pry-nav"
-  gem "web-console", "~> 2.0"
   gem "spring", "1.4.3"
   gem "rubocop", require: false
   gem "letter_opener"
+end
+
+group :development do
+  gem "web-console", "~> 2.0"
 end
 
 group :test do
