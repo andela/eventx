@@ -65,10 +65,13 @@
             <a href="#!name"><span class="white-text name"><%= current_user.first_name %></span></a>
             <a href="#!email"><span class="white-text email"><%= current_user.email %></span></a>
           </div></li>
-          <li><a><i class="fa fa-user"></i> Dashboard</a></li>
-          <li><a><i class="fa fa-cog"></i> Account Settings</a></li>
+
+          <li><%= link_to icon('user')+"Dashboard", dashboard_path %></li>
           <li><a><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
-          <li><a><i class="fa fa-line-chart"></i> Popular Events</a></li>
+          <li><%= link_to icon('line-chart')+"Popular Events", "#" %></li>
+          <% unless current_user.event_manager? %>
+          <li><%= link_to icon('line-chart')+"Create Event", new_manager_profile_path %></li>
+          <% end %>
           <li><%= link_to icon('power-off')+"Logout", signout_path %></li>
         </ul>
         <div class="col l3" style="padding:0px;">

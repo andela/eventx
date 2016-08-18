@@ -1,5 +1,5 @@
 <% if @profile_type == "manager" %>
-  <%= render "users/mngr_dashboard", locals: {data: @data}  %>
+  <%= render "users/manager_dashboard", locals: {data: @data}  %>
 <% else %>
   <%= render "users/user_dashboard", locals: {data: @data}  %>
 <% end %>

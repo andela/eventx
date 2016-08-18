@@ -9,7 +9,9 @@
       </li>
     </ul>
     <ul class="right hide-on-med-and-down">
-      <li><a href="#"><i class="material-icons">message</i></a></li>
+      <% if current_user.event_manager? %>
+      <li><%= link_to new_event_path do %><i class="material-icons">message</i><% end %></li>
+      <% end %>
       <li><a href="#"><i class="material-icons">notifications</i></a></li>
       <li><a href="#"><i class="material-icons">refresh</i></a></li>
       <li><a href="#"><i class="material-icons">more_vert</i></a></li>
