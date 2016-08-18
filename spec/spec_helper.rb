@@ -1,9 +1,10 @@
 require "codeclimate-test-reporter"
 SimpleCov.start "rails" do
-  formatter SimpleCov::Formatter::MultiFormatter.new([
+  test_formatter = [
     SimpleCov::Formatter::HTMLFormatter,
     CodeClimate::TestReporter::Formatter
-  ])
+  ]
+  formatter SimpleCov::Formatter::MultiFormatter.new(test_formatter)
 end
 CodeClimate::TestReporter.start
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
