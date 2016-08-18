@@ -27,8 +27,8 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_link "Preview"
     click_button "Save"
 
-    find("a[data-activates = 'dropdown-user_option']").click
-    click_link "My Account"
+    page.find("a[data-activates = 'dropdown-user_option']", :match => :first).trigger("click")
+    find_link("My Account").trigger("click")
     expect(page).to have_content "This is a test Event"
     expect(page).to have_content "Lagos, Nigeria"
     find("a[data-activates = 'dropdown-1']").click
@@ -46,8 +46,8 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     expect(page).to have_content update_successful_message("event")
     expect(page.current_path).to eq "/events/1"
 
-    find("a[data-activates = 'dropdown-user_option']").click
-    click_link "My Account"
+    page.find("a[data-activates = 'dropdown-user_option']", :match => :first).trigger("click")
+    find_link("My Account").trigger("click")
     fill_in "Search By Event Name", with: "This is an edited Event"
     expect(page).to have_content "This is an edited Event"
   end
