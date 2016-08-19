@@ -12,6 +12,7 @@ class EventsController < ApplicationController
     :tickets_report
   ]
   before_action :set_sponsor
+  before_action :subscription_status, only: [:show]
 
   respond_to :html, :json, :js
 
@@ -144,6 +145,13 @@ class EventsController < ApplicationController
 
   def set_sponsor
     @sponsors = @event.sponsors.group_by(&:level) if @event
+  end
+
+  def subscription_status
+    @subscribed = Subscription.find_by(
+      event_id: @event.id,
+      user_id: current_user.id
+    ) if current_user
   end
 
   def loading

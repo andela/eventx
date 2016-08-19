@@ -284,79 +284,11 @@ input#event_photo_upload{
   margin-top: 42px;
 }
 
-#bookings_table_length, #bookings_table_filter{
-  width: 50%;
-  display: inline-block;
-  .select-wrapper {
-    display: inline-block;
-    width: 20%;
-    input{
-      border: 0px;
-    }
-  }
-  label{
-    font-size: 16px;
-    margin-top: 50px;
-    top: 20px;
-    padding-left: 50px;
-  }
-  .caret{
-    display: none;
-  }
+#subscribe {
+  width: 30%;
+  height: 200px;
 }
 
-#bookings_table_filter{
-  text-align: right;
-  input{
-    display: inline-block;
-    width: 50%;
-  }
-}
-
-#bookings_table_info, #bookings_table_paginate{
-  display: inline-block;
-  width: 50%;
-}
-
-#bookings_table_paginate{
-  text-align: right;
-  span{
-    font-size: 20px;
-  }
-}
-[type="radio"] + label:before{
-  display: none;
-}
-
-[type="radio"]:not(:checked) + label:before{
-  position: absolute;
-  top: 50px;
-}
-
-[type="radio"]:checked + label:after {
-  position: absolute;
-  top: 7px;
-  left: 50px;
-  border-radius: 0px;
-  display: block;
-  width: 12px;
-  height: 30px;
-  border: solid #fff;
-  border-width: 0 6px 6px 0;
-  background-color: rgba(255, 255, 255, 0);
-  transform: rotate(45deg);
-}
-
-.temp_image label img {
-  border-radius: 50px;
-  height: 50px;
-  width: 50px;
-  margin: 0px;
-  padding: 0px;
-}
-
-.calender-link{
-  font-size: 20px;
-  font-family: $font-family;
-  text-transform: uppercase;
+.subscribe-button {
+  margin: 10px;
 }

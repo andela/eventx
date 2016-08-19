@@ -2,6 +2,8 @@ class ManagerProfile < ActiveRecord::Base
   belongs_to :user
   has_many :events
   has_many :categories
+  has_many :subscriptions
+  has_many :subscribers, through: :subscriptions, source: :user
 
   validates :company_name, presence: true
   validates :subdomain, presence: true, uniqueness: true, format: {

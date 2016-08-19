@@ -31,21 +31,21 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
 
   scenario "User tries to attend Event" do
     visit events_path
-    click_link "Blessings wedding"
+    find_link("Blessings wedding").trigger("click")
     expect(page).to have_content "ATTEND THIS EVENT"
-    expect(page).to have_content "ADD TO MY CALENDAR"
-    expect(page).to have_content "ADD TO GOOGLE CALENDAR"
+    expect(page).to have_content "Add to my Calendar"
+    expect(page).to have_content "Add to Google Calendar"
   end
 
   scenario "User clicks to attend an event" do
     sign_up
     visit events_path
     click_link "Blessings wedding"
-    click_link "Attend this event"
+    find_link("Attend this event").trigger("click")
     within ".modal-content" do
       page.execute_script("$('#ticket_type_1').prop('checked', true)")
       fill_in "tickets_quantity_1", with: 1
-      click_button "Submit"
+      find_button("Submit").trigger("click")
     end
 
     expect(page).to have_content "DOWNLOAD ALL TICKETS"
@@ -58,7 +58,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     visit events_path
     click_link "Blessings wedding"
     expect(page).to have_content "UNATTEND"
-    click_link "Unattend"
+    find_link("Unattend").trigger("click")
 
     visit events_path
     click_link "Blessings wedding"
@@ -69,7 +69,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     sign_up
     visit events_path
     click_link "Blessings wedding"
-    click_link "Attend this event"
+    find_link("Attend this event").trigger("click")
     within ".modal-content" do
       fill_in "tickets_quantity_1", with: 0
       click_button "Submit"
@@ -81,7 +81,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     sign_up
     visit events_path
     click_link "Blessings wedding"
-    click_link "Attend this event"
+    find_link("Attend this event").trigger("click")
     within ".modal-content" do
       fill_in "tickets_quantity_1", with: 1000
       click_button "Submit"

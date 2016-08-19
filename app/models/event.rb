@@ -18,6 +18,8 @@ class Event < ActiveRecord::Base
   has_many :attendees, through: :bookings, source: "user"
   has_many :sponsors, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :subscriptions
+  has_many :subscribers, through: :subscriptions, source: :user
 
   belongs_to :manager_profile
   acts_as_tenant(:manager_profile)
@@ -32,6 +34,9 @@ class Event < ActiveRecord::Base
   validates :end_date, presence: true
   validates :category_id, presence: true
   validates :ticket_types, presence: true
+
+  after_create :notify_manager_subscribers
+  after_update :notify_event_subscribers
 
   # scope
   scope :recent_events, lambda {
@@ -126,5 +131,23 @@ class Event < ActiveRecord::Base
 
   def invalid_staff_info(attr)
     attr["user_id"].blank?
+  end
+
+  def notify_manager_subscribers
+    NewEventMailer.new_event(manager_subscribers, self).deliver_now unless
+      manager_subscribers.empty?
+  end
+
+  def notify_event_subscribers
+    UpdateEventMailer.update_event(event_subscribers, self).deliver_now unless
+      event_subscribers.empty?
+  end
+
+  def manager_subscribers
+    manager_profile.subscribers.map(&:email).compact
+  end
+
+  def event_subscribers
+    subscribers.map(&:email).compact
   end
 end

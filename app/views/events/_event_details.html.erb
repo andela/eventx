@@ -16,60 +16,76 @@
 <% end%>
 <%= render "layouts/nav" %>
 <header>
-<div class="parallax-container" data-countdown="<%= @event.start_date %>" id="index-banner">
-  <span class="end_date" data-countdown="<%= @event.end_date %>" id="index-banners"></span>
-  <div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
-          <label id="counter"></label>
-          <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
-          <div id="att">
-            <%= render "events/attend_unattend_event_button" %>
-          </div>
+  <div class="parallax-container" data-countdown="<%= @event.start_date %>" id="index-banner">
+    <span class="end_date" data-countdown="<%= @event.end_date %>" id="index-banners"></span>
+    <div style="height: 100%; width: 100%; position: absolute; background-color: rgba(0,0,0,0.4)">
+      <%= render "layouts/nav" %>
+      <div class="section no-pad-bot">
+        <div class="container">
+          <div class="row center">
+            <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
+            <label id="counter"></label>
+            <%= content_tag(:label, "#{@event.start_date} to #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
 
+            <div id="att">
+              <%= render "events/attend_unattend_event_button" %>
+            </div>
 
-          <% if action_name == "show" && cummulative_rating(@event)%>
-          <div class="event-rating">
-            <div class="event-rating-star">
-              <% (cummulative_rating(@event)).times  do %>
-              <span class="event-filled-in-star event-star-size">&#11088;</span>
-              <% end %>
-              <% (5 - (cummulative_rating(@event))).times do %>
-              <span class="event-star-size">&#9734;</span>
+            <% if action_name == "show" && cummulative_rating(@event)%>
+            <div class="event-rating">
+              <div class="event-rating-star">
+                <% (cummulative_rating(@event)).times  do %>
+                <span class="event-filled-in-star event-star-size">&#11088;</span>
+                <% end %>
+                <% (5 - (cummulative_rating(@event))).times do %>
+                <span class="event-star-size">&#9734;</span>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+            <div class="subscribe-button">
+              <% if current_user && action_name == "show" && @subscribed %>
+                  <button data-target="subscribe" class="btn modal-trigger" id="subscribeBtn" style="display:none">Subscribe</button>
+                  <button id="unsubscribeBtn" event="<%= @event.id %>" subscription="<%= @subscribed.id %>" class="btn cancel-sponsor-button">Unsubscribe</button>
+                <% else %>
+                  <button id="unsubscribeBtn" event="<%= @event.id %>" class="btn cancel-sponsor-button" style="display:none;">Unsubscribe</button>
+                  <button data-target="subscribe" class="btn modal-trigger" id="subscribeBtn">Subscribe</button>
               <% end %>
             </div>
+
+            <div id="subscribeForm">
+              <% if current_user && action_name == "show" %>
+              <%= render "subscription" %>
+              <% end %>
+            </div>
+
+            <%if @event.id%>
+                <%= social_share_button_tag(@event.title, popup: true)%>
+            <%end%>
           </div>
-          <% end %>
-
-
-
-          <%if @event.id%>
-              <%= social_share_button_tag(@event.title, popup: true)%>
-          <%end%>
+          <div class="row center"></div>
+          <span class="hide-on-med-and-down"><br><br></span>
         </div>
         <div class="row center"></div>
         <span class="hide-on-med-and-down"><br><br></span>
       </div>
+      <div class="parallax"><%= image_tag @event.image_url(:main) %></div>
     </div>
-    <div class="parallax"><%= image_tag @event.image_url(:main) %></div>
   </div>
-</div>
 </header>
 <div class="description" id="description">
-<div class="container center">
-  <h2 class="our_description_title">Description</h2>
-  <p class="our_event_description"><%= @event.description %></p>
-  <div class="row center calender-link">
-    <div class="col l6">
-      <%= @event.display_download_link %>
-    </div>
-    <div class="col l6">
-      <%= @event.display_google_link %>
+  <div class="container center">
+    <h2 class="our_description_title">Description</h2>
+    <p class="our_event_description"><%= @event.description %></p>
+    <div class="row center calender-link">
+      <div class="col l6">
+        <%= @event.display_download_link %>
+      </div>
+      <div class="col l6">
+        <%= @event.display_google_link %>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <% if @event.highlights.size > 0 %>

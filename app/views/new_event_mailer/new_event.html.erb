@@ -1,0 +1,5 @@
+Hello,
+
+Your favourite event manager <%= @event.manager_profile.user.first_name %> has created a new event. Visit the event page to see more details
+<%= link_to "Event", event_path(@event.id) %>
+Best Regards
