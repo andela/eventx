@@ -21,6 +21,8 @@ coverage/
 # Gemfile.lock
 
 .idea/
+routes_list.rb
+/public/*
 
 # Ignore all files ending with ds_store
 .DS_Store
