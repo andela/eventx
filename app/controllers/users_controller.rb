@@ -5,13 +5,11 @@ class UsersController < ApplicationController
 
   def show
     if current_user.event_manager?
-      manager_profile = current_user.manager_profile
-      manager_profile_id = manager_profile ? manager_profile.id : nil
-      @data = DashboardStat.new(manager_profile_id) unless manager_profile_id.nil?
+      manager_profile_id = current_user.manager_profile.id
+      @data = DashboardStat.new(manager_profile_id)
       @profile_type = "manager"
       fetch_user_events(manager_profile_id)
     else
-      @data = User.get_user_events(current_user.id)
       @profile_type = "regular"
       @all_events = Event.all
       fetch_user_events(current_user.id)
@@ -31,7 +29,7 @@ class UsersController < ApplicationController
     events = if current_user.event_manager?
                Event.my_event_search(search_params, manager_profile_id)
              else
-               @data
+               User.get_user_events(current_user.id)
              end
     @resources = WillPaginate::Collection.create(paginate_params, 5,
                                                  events.length) do |pager|

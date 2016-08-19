@@ -19,4 +19,3 @@ RSpec.feature "User visits dashboard", type: :feature, js: true do
     expect(page).to have_css "h5", text: "My Events"
   end
 end
-

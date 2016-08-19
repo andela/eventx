@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe UsersController, type: :controller do
   before do
     user = FactoryGirl.create(:user)
-    binding.pry
     manager = FactoryGirl.create(:manager_profile, user: user)
     session[:user_id] = user.id
     api_key = user.generate_auth_token
