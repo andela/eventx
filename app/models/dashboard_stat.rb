@@ -6,7 +6,7 @@ class DashboardStat
     @manager_events = @manager.events
   end
 
-  def events
+  def events_count
     manager_events.size
   end
 

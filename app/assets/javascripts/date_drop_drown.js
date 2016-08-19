@@ -12,7 +12,6 @@ $(document).ready(function () {
   $('select').material_select();
   $('.parallax').parallax();
   $('.modal-trigger').leanModal();
-  // $('.menu-collapse').sideNav();
   $('ul.pagination li').click(function () {
     $('ul.pagination li').removeClass('active');
   });
