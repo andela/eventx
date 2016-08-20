@@ -17,18 +17,18 @@ RSpec.feature "Login:", type: :feature, js: true do
     expect(page).to have_selector("div.sso_option", count: 6)
   end
 
-  # scenario "User tries to login with google" do
-  #   visit new_event_path
-  #   expect(page).to have_content "GET STARTED"
+  scenario "User tries to login with google" do
+    visit new_event_path
+    expect(page).to have_content "GET STARTED"
 
-  #   click_link "Get Started"
-  #   click_link "Google"
-  #   visit root_path
-  #   expect(page).to have_content "BECOME AN EVENT MANAGER"
-  #   expect(page).to have_button "Search"
-  #   expect(page).to have_content "UPCOMING"
-  #   expect(page).to have_content "FEATURED"
-  # end
+    click_link "Get Started"
+    click_link "Google"
+    visit root_path
+    expect(page).to have_content "BECOME AN EVENT MANAGER"
+    expect(page).to have_button "Search"
+    expect(page).to have_content "UPCOMING"
+    expect(page).to have_content "FEATURED"
+  end
 
   scenario "User tries to create event" do
     sign_up
