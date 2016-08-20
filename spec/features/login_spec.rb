@@ -26,8 +26,6 @@ RSpec.feature "Login:", type: :feature, js: true do
     visit root_path
     expect(page).to have_content "BECOME AN EVENT MANAGER"
     expect(page).to have_button "Search"
-    expect(page).to have_content "UPCOMING"
-    expect(page).to have_content "FEATURED"
   end
 
   scenario "User tries to create event" do
