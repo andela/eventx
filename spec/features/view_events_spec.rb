@@ -43,11 +43,6 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     page.find("#parties").trigger("click")
     expect(page).not_to have_content("Blessings wedding")
     expect(page).not_to have_content("Sports is cool")
-
-    visit root_path
-    # click_link "UPCOMING"
-    # click_link "FEATURED"
-    # click_link "POPULAR"
   end
 
   scenario "User tries to see all the events on a valid Manager subdomain" do
