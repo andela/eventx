@@ -6,10 +6,10 @@
         <a href="#" class="brand-logo logo-padding">EventX</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-          <li><a href="#">About EventX</a></li>
-          <li><a href="#">Event Management Tools</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Find Events Near Me</a></li>
+          <li><a href="about-eventx">About EventX</a></li>
+          <li><a href="index#homepage-event-tools">Event Management Tools</a></li>
+          <li><a href="about-eventx#faq">FAQs</a></li>
+          <li><a href="index#search-events">Find Events Near Me</a></li>
           
             <ul class="right">
               <% if content_for? :show %>
@@ -109,7 +109,7 @@
   <a href="#featured_events" class="alert-scroll-under"><%= image_tag("scroll_circle.svg", class: "responsive")%></a>
 </div>
 
-<div class="row homepage-cards">
+<div id="homepage-event-tools" class="row homepage-cards">
   <br><h4 class="center">WHAT WE OFFER</h4>
   <div class="col m4">
     <div class="card teal darken-1 card small">
@@ -200,8 +200,8 @@
   </div>
 </div>
 
-<div class="yellow darken-1">
-  <br><h4 class="center">DO WHAT YOU LOVE</h4><br>
+<div id="search-events" class="yellow darken-1">
+  <br><br><h4 class="center">DO WHAT YOU LOVE</h4><br>
   <h5 class="center">Find an event near you</h5>
     <div class="col l12">
     <div class="row our-search">
