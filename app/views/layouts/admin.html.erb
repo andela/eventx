@@ -45,10 +45,7 @@
 
   <body>
     <% if flash[:notice].present? %>
-      <div>
-        <script type="text/javascript">
-            Materialize.toast("<%= flash[:notice].to_s %>", 3000, "rounded")
-        </script>
+      <div id="admin_toast" onload="Materialize.toast("<%= flash[:notice].to_s %>", 3000, "rounded")">
       </div>
     <% end %>
     <main>
