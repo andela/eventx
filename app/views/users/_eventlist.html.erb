@@ -21,7 +21,7 @@
       <a href="" class="dropdown-button manage_btn" data-activates="dropdown-<%= "#{event.id}" %>"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
       </a>
     </td>
-    <ul class="dropdown-content right-align" id="dropdown-<%= "#{event.id}" %>">
+    <ul class="dropdown-content" id="dropdown-<%= "#{event.id}" %>">
       <li data-eventId="<%= event.id %>">
         <%= link_to "Edit Event", edit_event_path(event), class:"our-dropdown-content", data: {eventid: event.id } %>
       </li>
