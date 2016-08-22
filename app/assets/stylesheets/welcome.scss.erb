@@ -380,42 +380,10 @@ a.remove-text {
 
 .about-top {
   position: relative;
-  background-image: url("http://bit.ly/2ahKQFC");
+  background-image: url("https://pixabay.com/static/uploads/photo/2014/09/07/17/41/girl-438129_960_720.jpg");
   background-size: 120%;
   padding: 20px;
-  height: 350px;
-}
-
-.about-triangle {
-  background: #4abdac;
-  height: 350px;
-}
-
-.left-triangle {
-  height: 100px;
-  display: inline-block;
-  float: left;
-  width: 50%;
-  border-right: 50vw solid transparent;
-  border-bottom: 100px solid #4abdac;
-}
-
-.right-triangle {
-  height: 100px;
-  display: inline-block;
-  float: left;
-  width: 50%;
-  border-left: 50vw solid transparent;
-  border-bottom: 100px solid #4abdac;
-}
-
-.right-left-triangle {
-  position: relative;
-  top: -100px;
-}
-
-.about {
-  background: #4abdac;
+  height: 250px;
 }
 
 .about-header-content {
@@ -435,14 +403,21 @@ a.remove-text {
       }
     }
 
+.about {
+  padding: 50px;
+  padding-top: 0
+}
+
 .about-content {
   padding-bottom: 70px;
-  width: 80%;
   margin: auto;
-  color: #fff;
   font-size: 1.5em;
   font-weight: 200;
-  text-align: center;
+}
+
+.about-content h4 {
+  padding: 10px;
+  padding-left: 0
 }
 
 .no-margin {
@@ -451,26 +426,34 @@ a.remove-text {
   width: 25%;
 }
 
+.stat-group {
+  margin-top: 1rem
+}
+
 .about-stats {
-  padding-top: 15px;
   height: 175px;
-  width: 95%;
+  padding: 0 30px;
   margin: auto;
 }
 
 .row.card-group {
     padding: 0 30px;
+    margin-top: 350px;
 }
 
 .card .card-image img {
-  height: 200px;
+  height: 250px;
 }
 
 .milestones {
-  padding: 20px;
+  padding: 5px 10px 10px;
   text-align: center;
-  margin: 0.5rem 0 1rem 0;
+  margin: 1rem 0 0 0;
   border-radius: 2px;
+  border: 1px solid #ddd;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .milestones .stats-large {
@@ -480,10 +463,11 @@ a.remove-text {
 
 .feature-details {
   position: absolute;
+  font-weight: 200;
   bottom: 0;
   color: #fff;
   padding: 0 10px 0 10px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .card.feature-card {
@@ -493,7 +477,7 @@ a.remove-text {
 
 .feature-title {
   font-size: 25px;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 #faq-row {
