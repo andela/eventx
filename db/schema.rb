@@ -164,6 +164,18 @@ ActiveRecord::Schema.define(version: 20160614142249) do
 
   add_index "sponsors", ["event_id"], name: "index_sponsors_on_event_id"
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "manager_profile_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+  end
+
+  add_index "subscriptions", ["event_id"], name: "index_subscriptions_on_event_id"
+  add_index "subscriptions", ["manager_profile_id"], name: "index_subscriptions_on_manager_profile_id"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
+
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"
