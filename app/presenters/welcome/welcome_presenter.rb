@@ -1,7 +1,7 @@
 module Welcome
   class WelcomePresenter
-    def attendee_count
-      Attendee.count
+    def manager_count
+      ManagerProfile.count
     end
 
     def ticket_count

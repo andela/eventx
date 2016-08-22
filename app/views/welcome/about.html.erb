@@ -1,6 +1,5 @@
 <%= render partial: "layouts/nav" %>
 
-
 <div class="about-top">
   <div class="about-us-text">
     <div class="about-header-content">
@@ -8,108 +7,88 @@
     </div>
   </div>
 </div>
-<div class="right-left-triangle">
-  <div class="left-triangle">
-  </div>
-  <div class="right-triangle">
-  </div>
-</div>
+
 <div class="about">
-  <div class="about-content">
-  What do you do when you have an event and all the event management applications available are too heavy but with little functionality to serve your purpose?
-  How do you organize a small get-together with your friends, without having to go through a rigorous event creation process and without bothering about all the complexities of event management?
-  </div>
-</div>
+  <div class="about-stats row group">
+    <div class="col s12 m8 l10 no-margin">
+      <div class="about-content">
+        <h4 class="teal_text">You have the idea...</h4>
+        What do you do when you have an event and all the event management applications available are too heavy but with little functionality to serve your purpose?
+        How do you organize a small get-together with your friends, without having to go through a rigorous event creation process and without bothering about all the complexities of event management?
+        <h4 class="teal_text">We Make It Happen</h4>
+        Our team of world-class developers is ready to help you bring your passions to life. There are tons of possibilities we believe can be achieved without sweat.
+        Oh, and we are not just developers, we love events too! We have a lot of experience in planning events and know exactly what you want.
+        Wouldn't you like to take this journey with us?
+      </div>
+    </div>
 
-<div class="about-stats row group">
-  <div class="col s12 m4 l4 no-margin">
-    <div class="milestones">
-      <div class="teal_text stats-large"><%= @presenter.attendee_count %>k </div>
-      <p class="card-title teal_text">Number of Attendees</p>
-    </div>
-  </div>
-  <div class="col s12 m4 l4 no-margin">
-    <div class="milestones">
-      <div class="red_text stats-large">$<%= @presenter.ticket_count %>m </div>
-      <p class="card-title red_text">Tickets Sold</p>
-    </div>
-  </div>
-  <div class="col s12 m4 l4 no-margin">
-    <div class="milestones">
-      <div class="blue_text stats-large"><%= @presenter.event_count %>k </div>
-      <p class="card-title blue_text">Number of Events</p>
-    </div>
-  </div>
-</div>
-
-<div class="row card-group">
-  <div class="col s12 m4 l4">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://pixabay.com/static/uploads/photo/2016/06/20/20/20/table-1469719__340.jpg">
-        <div class="feature-details">
-          <div class="feature-title">
-            Who We Are
-          </div>
-          <div class="feature-content">
-            <p>We are a group of fun-loving people who love events! Our team of party-goers know how important events are to you.</p>
-          </div>
+    <div class="col s12 m4 l2 no-padding stat-group">
+      <div class="col s12 m12 l12 no-margin">
+        <div class="milestones">
+          <div class="orange_text stats-large"><%= @presenter.event_count %> </div>
+          <p class="card-title"><%= "Event".pluralize(@presenter.event_count)%></p>
+        </div>
+      </div>
+      <div class="col s12 m12 l12 no-margin">
+        <div class="milestones">
+          <div class="orange_text stats-large"><%= @presenter.ticket_count %> </div>
+          <p class="card-title"><%= "Ticket".pluralize(@presenter.ticket_count)%> Sold</p>
+        </div>
+      </div>
+      <div class="col s12 m12 l12 no-margin">
+        <div class="milestones">
+          <div class="orange_text stats-large"><%= @presenter.manager_count %> </div>
+          <p class="card-title"><%= "Event Manager".pluralize(@presenter.manager_count)%></p>
         </div>
       </div>
     </div>
   </div>
-  <div class="col s12 m4 l4">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://pixabay.com/static/uploads/photo/2016/07/21/09/04/apple-1532055__340.jpg">
-        <div class="feature-details">
-          <div class="feature-title">
-            Why Choose Us?
-          </div>
-          <div class="feature-content">
-            <p>We use innovative tools to make sure you create memorable experiences for yourself and your friends. <a href="#">Try now</a> for free!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 m4 l4">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://pixabay.com/static/uploads/photo/2014/04/02/17/03/freedom-307791__180.png">
-        <div class="feature-details">
-          <div class="feature-title">
-            Our Community
-          </div>
-          <div class="feature-content">
-            <p>You can be part of the great work we do just by joining our community of fun-loving people. They love to help...</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col s12 offset-s5">
-    <h3 class="header">FAQs</h3>
-  </div>
-</div>
-<div class="row faq" id="faq-row">
-  <div id="faq">
-    <ul class="collapsible" data-collapsible="accordion">
-      <li>
-        <div class="collapsible-header">What does it cost to create an event?</div>
-        <div class="collapsible-body"><p>It costs you absolutely nothing. You only lose the time it takes to put on your shoes. We apologise for that.</p></div>
-      </li>
-      <li>
-        <div class="collapsible-header">Where are my tickets?</div>
-        <div class="collapsible-body"><p>Your tickets are electronic and sent to your mail as soon as they have been verified. These are used just as you would use a paper ticket.</p></div>
-      </li>
-      <li>
-        <div class="collapsible-header">How to contact the event manager?</div>
-        <div class="collapsible-body"><p>The event manager's contact is accessible on the selected event page. Note that this feature may not exist if the event manager decides to make his contact private.</p></div>
-      </li>
-    </ul>
+  <div class="row card-group">
+    <div class="col s12 m4 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://pixabay.com/static/uploads/photo/2016/06/20/20/20/table-1469719__340.jpg">
+          <div class="feature-details">
+            <div class="feature-title">
+              Who We Are
+            </div>
+            <div class="feature-content">
+              <p>We are a group of fun-loving people who love events! Our team of party-goers know how important events are to you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m4 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://pixabay.com/static/uploads/photo/2016/07/21/09/04/apple-1532055__340.jpg">
+          <div class="feature-details">
+            <div class="feature-title">
+              Why Choose Us?
+            </div>
+            <div class="feature-content">
+              <p>We use innovative tools to make sure you create memorable experiences for yourself and your friends.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m4 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://pixabay.com/static/uploads/photo/2014/04/02/17/03/freedom-307791__180.png">
+          <div class="feature-details">
+            <div class="feature-title">
+              Our Community
+            </div>
+            <div class="feature-content">
+              <p>You can be part of the great work we do just by joining our community of fun-loving people. They love to help...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
