@@ -1,6 +1,12 @@
 <% unless @resources.empty? %>
-$('#events_lists').html("<%=j render 'users/eventlist' %>")
-$('#pagination').html("<%=j will_paginate @resources, renderer: MaterializePagination::Rails %>")
+$('#events_lists').html("<%=j render 'users/eventlist' %>");
+$('#pagination').html("<%=j will_paginate @resources, renderer: MaterializePagination::Rails %>");
+$('.dropdown-button').dropdown({
+  inDuration: 300,
+  outDuration: 225,
+  constrain_width: false,
+  hover: true,
+});
 
 <% else %>
   $('#events_lists').html("<h4>No Event found</h4>")

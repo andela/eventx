@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_link_tag "application",
+    "https://fonts.googleapis.com/css?family=Great+Vibes",
+    "https://fonts.googleapis.com/icon?family=Material+Icons",
+    "https://fonts.googleapis.com/css?family=Open+Sans:300,600",
+    media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application",
+    "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=AIzaSyAy8oTJkGBEFjUoc5jjcanrtbKfL9B-x3o",
+    "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.9.0/lodash.js",
+    "data-turbolinks-track" => false %>
+
+    <%= csrf_meta_tags %>
+    <% if @event && @event.id %>
+      <%
+      set_meta_tags title: @event.title,
+        type:  "event",
+        image: @event.image,
+        description: @event.description[0..150],
+        url: (request.base_url + event_path(@event))
+      %>
+      <%
+        set_meta_tags twitter: {
+          card: "summary",
+          title: @event.title,
+          image: @event.image,
+          description: @event.description[0..150],
+          url: (request.base_url + event_path(@event))
+        }
+      %>
+      <%
+        set_meta_tags og: {
+          title: @event.title,
+          type:  "event",
+          image: @event.image,
+          description: @event.description[0..150],
+          url: (request.base_url + event_path(@event))
+        }
+        %>
+    <% end %>
+    <%= display_meta_tags site: "EventX" %>
+  </head>
+
+  <body>
+    <% if flash[:notice].present? %>
+      <div id="admin_toast" onload="Materialize.toast("<%= flash[:notice].to_s %>", 3000, "rounded")">
+      </div>
+    <% end %>
+    <main>
+      <%= render "layouts/admin_nav" %>
+      <div class="row">
+        <ul id="slide-out" class="side-nav fixed" style="width:320px;">
+          <li class="teal">
+            <%= link_to get_site_root_site_link do %>
+              <h3 class="header home_app_title before-scroll our-custom-header">EventX</h3>
+            <% end %>
+          </li>
+          <li><div class="userView teal">
+            <a href="#!user"><%= image_tag current_user.profile_url, class: "circle" %></a>
+            <a href="#!name"><span class="white-text name"><%= current_user.first_name %></span></a>
+            <a href="#!email"><span class="white-text email"><%= current_user.email %></span></a>
+          </div></li>
+
+          <li><%= link_to icon('user')+"Dashboard", dashboard_path %></li>
+          <li><a><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
+          <li><%= link_to icon('line-chart')+"Popular Events", "#" %></li>
+          <% unless current_user.event_manager? %>
+          <li><%= link_to icon('line-chart')+"Create Event", new_manager_profile_path %></li>
+          <% end %>
+          <li><%= link_to icon('power-off')+"Logout", signout_path %></li>
+        </ul>
+        <div class="col l3" style="padding:0px;">
+          &nbsp;
+        </div>
+        <div class="col l9 m12">
+          <div class="dashboard-container">
+            <%= yield %>
+          </di>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

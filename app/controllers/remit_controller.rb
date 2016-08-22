@@ -1,5 +1,6 @@
 class RemitController < ApplicationController
   before_action :remit_exist
+  layout "admin"
 
   def new
     @event = Event.find_by(id: params[:id])
@@ -7,8 +8,7 @@ class RemitController < ApplicationController
     @remit = @event.build_remit
 
     unless @remit.save
-      redirect_to dashboard_path,
-                  notice: remit_not_due
+      redirect_to dashboard_path, notice: remit_not_due
     end
   end
 
@@ -16,8 +16,7 @@ class RemitController < ApplicationController
 
   def remit_exist
     if Remit.find_by(event_id: params[:id])
-      redirect_to dashboard_path,
-                  notice: remit_duplicate_alert
+      redirect_to dashboard_path, notice: remit_duplicate_alert
     end
   end
 end

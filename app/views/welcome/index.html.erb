@@ -1,12 +1,14 @@
 <div class="parallax-container" id="index-banner">
-    <%= render "layouts/nav" %>
+  <%= render "layouts/nav" %>
   <div class="section no-pad-bot">
     <div class="container">
     <br><br>
       <h1 class="header center home_app_title">EventX</h1>
+
       <div class="row center">
         <h5 class="header col s12 light home_app_tag">Simple, Easy, Build it</h5>
       </div>
+
       <div class="row center">
         <% if can? :create, Event %>
         <%= create_event_or_login("Create Event", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
@@ -15,20 +17,23 @@
         <%else%>
         <%= become_a_manager("Become An Event Manager", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%end%>
-
       </div>
+
       <span class="hide-on-med-and-down"><br><br></span>
     </div>
   </div>
   <div class="parallax"><%= image_tag "best.jpg"%></div>
+
   <div class="container header center search_form l8 m8 s8 offset-s2">
     <%= render "welcome/search" %>
   </div>
+
   <a href="#featured_events" class="alert-scroll-under"><%= image_tag("scroll_circle.svg", class: "responsive")%></a>
 </div>
 
 <div id="featured_events" class="event-section row remove-margin">
   <div class="col s12" style="padding: 0px 0px">
+
     <ul class="tabs">
       <li class="tab col s3">
         <%= link_to "UPCOMING", "#upcoming", class:"active our-tab-color", style:"color: #313131"  %>
@@ -41,6 +46,7 @@
       </li>
     </ul>
   </div>
+
   <div class="col s12" id="upcoming">
     <div class="content-set">
       <div class="row scrollblock" id="upcoming_content">
@@ -68,10 +74,10 @@
     EventX gives you everything you need to host your best event yet.
   </p>
 
-    <% if can? :create, Event %>
-      <%= create_event_or_login("Get Started", ["waves-effect", "btn-large bottom_btn z-depth-0"]) %>
-    <% else %>
-      <%= become_a_manager("Get Started", ["waves-effect", "btn-large bottom_btn z-depth-0"]) %>
-    <% end %>
+  <% if can? :create, Event %>
+    <%= create_event_or_login("Get Started", ["waves-effect", "btn-large bottom_btn z-depth-0"]) %>
+  <% else %>
+    <%= become_a_manager("Get Started", ["waves-effect", "btn-large bottom_btn z-depth-0"]) %>
+  <% end %>
 
 </div>
