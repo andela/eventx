@@ -25,7 +25,7 @@ class EventDate
   end
 
   def this_week
-    [t.beginning_of_week, t.end_of_week]
+    [t.beginning_of_day, t.end_of_day + (secs * 7)]
   end
 
   def next_week
