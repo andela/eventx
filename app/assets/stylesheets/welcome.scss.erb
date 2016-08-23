@@ -159,9 +159,16 @@ input[type=text]:focus:not([readonly]) {
   width: 15px;
 }
 
-.card .card-title {
+.card-title {
   font-size: 15px;
+<<<<<<< HEAD
   background-color: rgba(0, 0, 0, 0.32);
+=======
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
+>>>>>>> [#126584711] redesign about page after pairing session review
 }
 
 .card .card-action {
@@ -388,7 +395,7 @@ nav ul a:hover {
   font-weight: 200;
   color: #fff;
   position: relative;
-  top: 191px;
+  top: 60px;
   text-align: center;
 }
 
@@ -399,8 +406,7 @@ nav ul a:hover {
 }
 
 .about {
-  padding: 50px;
-  padding-top: 0
+  padding: 75px;
 }
 
 .about-content {
@@ -427,26 +433,47 @@ nav ul a:hover {
 
 .about-stats {
   height: 175px;
-  padding: 0 30px;
   margin: auto;
 >>>>>>> feat(about page): add site wide statistics
 }
 
+.about-stats-div {
+  background: #e3efef;
+}
+
 .row.card-group {
     padding: 0 30px;
-    margin-top: 350px;
+    margin-top: 200px;
+    margin-bottom: 200px;
 }
 
 .card .card-image img {
   height: 250px;
 }
 
-.milestones {
-  padding: 5px 10px 10px;
+.col.padding-side-25 {
+  padding: 0 35px;
+}
+
+.col.padding-side-25 p {
+  font-size: 18px;
+}
+
+.justify-align {
+  text-align: justify;
+}
+
+.col.padding-side-25 h4 {
+  font-weight: 300;
   text-align: center;
-  margin: 1rem 0 0 0;
+}
+
+.milestones {
+  padding: 25px 10px 10px;
+  color: #fff;
+  text-align: center;
   border-radius: 2px;
-  border: 1px solid #ddd;
+  background: #4ABDAC;
   -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
@@ -454,7 +481,7 @@ nav ul a:hover {
 
 .milestones .stats-large {
   font-size: 40px;
-  font-weight: lighter;
+  font-weight: 300;
 }
 
 .feature-details {

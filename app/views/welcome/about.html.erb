@@ -3,90 +3,47 @@
 <div class="about-top">
   <div class="about-us-text">
     <div class="about-header-content">
-      We all love events!
+      We All Love Events!
     </div>
   </div>
 </div>
 
 <div class="about">
-  <div class="about-stats row group">
-    <div class="col s12 m8 l10 no-margin">
-      <div class="about-content">
-        <h4 class="teal_text">You have the idea...</h4>
-        What do you do when you have an event and all the event management applications available are too heavy but with little functionality to serve your purpose?
-        How do you organize a small get-together with your friends, without having to go through a rigorous event creation process and without bothering about all the complexities of event management?
-        <h4 class="teal_text">We Make It Happen</h4>
-        Our team of world-class developers is ready to help you bring your passions to life. There are tons of possibilities we believe can be achieved without sweat.
-        Oh, and we are not just developers, we love events too! We have a lot of experience in planning events and know exactly what you want.
-        Wouldn't you like to take this journey with us?
-      </div>
+  <div class="row">
+    <div class="col s12 m4 l4 padding-side-25">
+      <h4 class="teal_text">Who We Are</h4>
+      <p class="justify-align">We are a group of fun-loving people who love events! Our team of world-class developers is ready to help you bring your passions to life. Oh, and we are not just developers, we love events too! We have a lot of experience in planning events and know exactly what you want.</p>
     </div>
+    <div class="col s12 m4 l4 padding-side-25">
+      <h4 class="orange_text">Why Choose Us?</h4>
+      <p class="justify-align">We use innovative tools to make sure you create memorable experiences for you and your friends. There are tons of possibilities we believe can be achieved without sweat. Just click a button.</p>
+    </div>
+    <div class="col s12 m4 l4 padding-side-25">
+      <h4 class="yellow_text">Our Community</h4>
+      <p class="justify-align">You can be part of the great work we do just by joining our community of fun-loving people. They love to help... From birthday communities to school clubs, you would definitely find a group you fit into or just create one!</p>
+    </div>
+  </div>
+</div>
 
-    <div class="col s12 m4 l2 no-padding stat-group">
-      <div class="col s12 m12 l12 no-margin">
+<div class="about-stats-div">
+  <div class="about">
+    <div class="about-stats row group">
+      <div class="col s12 m12 l4 padding-side-25">
         <div class="milestones">
-          <div class="orange_text stats-large"><%= @presenter.event_count %> </div>
+          <div class="stats-large"><%= @presenter.event_count %> </div>
           <p class="card-title"><%= "Event".pluralize(@presenter.event_count)%></p>
         </div>
       </div>
-      <div class="col s12 m12 l12 no-margin">
+      <div class="col s12 m12 l4 padding-side-25">
         <div class="milestones">
-          <div class="orange_text stats-large"><%= @presenter.ticket_count %> </div>
+          <div class="stats-large"><%= @presenter.ticket_count %> </div>
           <p class="card-title"><%= "Ticket".pluralize(@presenter.ticket_count)%> Sold</p>
         </div>
       </div>
-      <div class="col s12 m12 l12 no-margin">
+      <div class="col s12 m12 l4 padding-side-25">
         <div class="milestones">
-          <div class="orange_text stats-large"><%= @presenter.manager_count %> </div>
-          <p class="card-title"><%= "Event Manager".pluralize(@presenter.manager_count)%></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row card-group">
-    <div class="col s12 m4 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="https://pixabay.com/static/uploads/photo/2016/06/20/20/20/table-1469719__340.jpg">
-          <div class="feature-details">
-            <div class="feature-title">
-              Who We Are
-            </div>
-            <div class="feature-content">
-              <p>We are a group of fun-loving people who love events! Our team of party-goers know how important events are to you.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m4 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="https://pixabay.com/static/uploads/photo/2016/07/21/09/04/apple-1532055__340.jpg">
-          <div class="feature-details">
-            <div class="feature-title">
-              Why Choose Us?
-            </div>
-            <div class="feature-content">
-              <p>We use innovative tools to make sure you create memorable experiences for yourself and your friends.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m4 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="https://pixabay.com/static/uploads/photo/2014/04/02/17/03/freedom-307791__180.png">
-          <div class="feature-details">
-            <div class="feature-title">
-              Our Community
-            </div>
-            <div class="feature-content">
-              <p>You can be part of the great work we do just by joining our community of fun-loving people. They love to help...</p>
-            </div>
-          </div>
+          <div class="stats-large"><%= @presenter.user_count %> </div>
+          <p class="card-title"><%= "Event Lover".pluralize(@presenter.user_count)%></p>
         </div>
       </div>
     </div>
