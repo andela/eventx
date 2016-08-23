@@ -8,17 +8,12 @@ html, body {
   width: 100%;
 }
 
-<<<<<<< HEAD
-.parallax-container {
-  height: 640px;
-=======
 a {
   color: #4ABDAC;
 }
 
 .parallax-container{
   height: 650px;
->>>>>>> f1a9689... #[126584711] change to required theme
   width: 100%;
   background-color: rgba(0,0,0,0.45);
 }
@@ -99,14 +94,6 @@ a {
 
 }
 
-<<<<<<< HEAD
-.white_text {
-  color: #fff !important;
-}
-
-.black_text {
-  color: black;
-=======
 .white_text{
   color: #fff;
 }
@@ -134,10 +121,21 @@ a {
 
 .teal_text{
   color: #4ABDAC;
->>>>>>> f1a9689... #[126584711] change to required theme
 }
 
-input[type=text]:focus:not([readonly]) {
+.yellow_bg {
+  background: #F7B733;
+}
+
+.orange_bg {
+  background: #FC4A1A;
+}
+
+.teal_bg {
+  background: #4ABDAC;
+}
+
+input[type=text]:focus:not([readonly]){
   border-bottom: 1px solid #fff;
   box-shadow: 0 1px 0 0 #EED8AE;
 }
@@ -159,9 +157,12 @@ input[type=text]:focus:not([readonly]) {
   width: 15px;
 }
 
-.card .card-title {
+.card-title {
   font-size: 15px;
-  background-color: rgba(0, 0, 0, 0.32);
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 .card .card-action {
@@ -229,7 +230,6 @@ input[type=text]:focus:not([readonly]) {
 .tabs .tab a:hover {
   color: #f9c9cb;
 }
-
 
 footer.page-footer {
   position: relative;
@@ -353,18 +353,11 @@ a.remove-text {
   color: #ffffff !important;
 }
 
-<<<<<<< HEAD
-h2.brand-logo.logo-property { 
-  padding-left: 20px;
-  font-family: 'Great Vibes', cursive;
-  margin: 1.2rem 0;
-=======
 .about-top {
   position: relative;
   background-image: url("https://pixabay.com/static/uploads/photo/2014/09/07/17/41/girl-438129_960_720.jpg");
   background-size: 120%;
   padding: 20px;
-<<<<<<< HEAD
   height: 350px;
 }
 
@@ -378,22 +371,14 @@ h2.brand-logo.logo-property {
   display: inline-block;
   float: left;
   width: 50%;
-<<<<<<< HEAD
-  border-right: 630px solid transparent;
-  border-bottom: 100px solid #00a8f2;
->>>>>>> 4a9c9ae... [#126584711] change placeholder texts
-=======
   border-right: 50vw solid transparent;
   border-bottom: 100px solid #4abdac;
->>>>>>> f1a9689... #[126584711] change to required theme
 }
 
 .divider {
   background-color: rgba(0, 128, 128, 0.6);
   width: 100%;
   height: 100px;
-<<<<<<< HEAD
-=======
   display: inline-block;
   float: left;
   width: 50%;
@@ -408,9 +393,7 @@ h2.brand-logo.logo-property {
 
 .about {
   background: #4abdac;
-=======
   height: 250px;
->>>>>>> 554f4b5... [#126584711] change about page design, change attendee count to event managers count
 }
 
 .about-header-content {
@@ -420,7 +403,7 @@ h2.brand-logo.logo-property {
   font-weight: 200;
   color: #fff;
   position: relative;
-  top: 191px;
+  top: 60px;
   text-align: center;
 }
 
@@ -430,9 +413,16 @@ h2.brand-logo.logo-property {
   }
 }
 
-.about {
-  padding: 50px;
-  padding-top: 0
+@media only screen and (min-width: 0) {
+  .about {
+      padding: 50px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about {
+    padding: 75px;
+  }
 }
 
 .about-content {
@@ -458,37 +448,40 @@ h2.brand-logo.logo-property {
 }
 
 .about-stats {
-  height: 175px;
-<<<<<<< HEAD
-  width: 95%;
->>>>>>> f1a9689... #[126584711] change to required theme
-=======
-  padding: 0 30px;
->>>>>>> 554f4b5... [#126584711] change about page design, change attendee count to event managers count
   margin: auto;
 }
 
-<<<<<<< HEAD
-nav ul a:hover {
-  background-color: rgba(74, 189, 172, 0.4);
-  font-size: 1.03rem;
-  font-weight: 500;
-=======
+.about-stats-div {
+  background: #e3efef;
+}
+
 .row.card-group {
     padding: 0 30px;
-    margin-top: 350px;
+    margin-top: 200px;
+    margin-bottom: 200px;
 }
 
 .card .card-image img {
   height: 250px;
 }
 
+.col.padding-side-25 {
+  padding: 10px 35px;
+}
+
+.col.padding-side-25 p {
+  font-size: 20px;
+}
+
+.col.padding-side-25 h4 {
+  font-weight: 300;
+}
+
 .milestones {
-  padding: 5px 10px 10px;
+  padding: 25px 10px 10px;
+  color: #fff;
   text-align: center;
-  margin: 1rem 0 0 0;
   border-radius: 2px;
-  border: 1px solid #ddd;
   -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
@@ -496,7 +489,7 @@ nav ul a:hover {
 
 .milestones .stats-large {
   font-size: 40px;
-  font-weight: lighter;
+  font-weight: 300;
 }
 
 .feature-details {
@@ -526,5 +519,4 @@ nav ul a:hover {
 #faq {
   width: 65%;
   margin: auto;
->>>>>>> 6ee8e3c... change about us caption
 }

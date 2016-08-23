@@ -5,9 +5,6 @@ class WelcomeController < ApplicationController
     respond_with @events
   end
 
-  def about
-  end
-
   def faq
   end
 
@@ -21,13 +18,10 @@ class WelcomeController < ApplicationController
     renders(@events)
   end
 
-<<<<<<< HEAD
-=======
   def about
     @presenter = Welcome::WelcomePresenter.new
   end
 
->>>>>>> 9116d09... [#126584711] change variable name to reflect count
   def renders(events)
     respond_with(events) do |format|
       format.html { render "welcome/events_list", layout: false }

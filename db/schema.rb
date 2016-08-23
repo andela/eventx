@@ -176,7 +176,6 @@ ActiveRecord::Schema.define(version: 20160614215417) do
   add_index "subscriptions", ["manager_profile_id"], name: "index_subscriptions_on_manager_profile_id"
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
-<<<<<<< HEAD
   create_table "ticket_transactions", force: :cascade do |t|
     t.integer  "booking_id"
     t.integer  "recipient_id"
@@ -186,8 +185,6 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.datetime "updated_at",                   null: false
   end
 
-=======
->>>>>>> 779da43... [#126584711] run db:migrate to migrate subscriptions table
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"
