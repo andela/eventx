@@ -34,9 +34,4 @@ RSpec.describe Event, type: :model do
       expect(Event.find_event(params).as_json.first["description"]).to eq desc
     end
   end
-
-  describe "associations" do
-    it { is_expected.to have_many :subscriptions }
-    it { is_expected.to have_many :subscribers }
-  end
 end

@@ -50,11 +50,6 @@ RSpec.configure do |config|
     Rails.application.load_seed
   end
 
-  # Clean up all jobs specs with truncation
-  config.before(:each, job: true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
   config.after(:each) do
     DatabaseCleaner.clean
   end
@@ -85,7 +80,7 @@ end
 
 def sign_up_and_create_an_event_manager
   sign_up
-  find_link("Become An Event Manager").trigger("click")
+  click_link "Become An Event Manager"
   fill_in "manager_profile[company_name]", with: "Our Comapany"
   fill_in "manager_profile[company_mail]", with: "baba@yaho.com"
   fill_in "manager_profile[company_phone]", with: "08023439399"

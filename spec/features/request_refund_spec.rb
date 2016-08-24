@@ -22,7 +22,7 @@ RSpec.feature "RequestRefund", type: :feature, js: true do
     expect(page).to have_content "The event was cancelled"
     expect(page).to have_content "SUBMIT REQUEST"
     within("#refund-form") do
-      find_link("SUBMIT REQUEST").trigger("click")
+      find("a", text: "SUBMIT REQUEST").click
     end
 
     expect(page).to have_content "PROCESSING REQUEST"
