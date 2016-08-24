@@ -408,8 +408,16 @@ a.remove-text {
   }
 }
 
-.about {
-  padding: 75px;
+@media only screen and (min-width: 0) {
+  .about {
+      padding: 50px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about {
+    padding: 75px;
+  }
 }
 
 .about-content {
@@ -435,7 +443,6 @@ a.remove-text {
 }
 
 .about-stats {
-  height: 175px;
   margin: auto;
 }
 
@@ -454,7 +461,7 @@ a.remove-text {
 }
 
 .col.padding-side-25 {
-  padding: 0 35px;
+  padding: 10px 35px;
 }
 
 .col.padding-side-25 p {
