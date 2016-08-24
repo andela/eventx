@@ -3,7 +3,7 @@ FactoryGirl.define do
     title "Blessings wedding"
     description "Happy day of joy celebration happinness smiles."
     location "Beach side"
-    start_date Time.zone.now + 86_400
+    start_date Time.zone.now + 3600
     end_date Time.zone.now + 86_400 * 7
     image "http://graph.facebook.com/1065771400114300/picture"
     theme_id 1
