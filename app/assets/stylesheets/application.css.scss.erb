@@ -129,8 +129,17 @@ td, th {
 }
 
 .our-search {
-  margin: 0 !important;
-  background-color: rgba(0, 0, 0, 0.9);
+  margin: 1rem !important;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.search-caption{
+  background-color: rgb(247, 183, 51);
+  width: 200px;
+  max-width: 100%;
+  padding: .5rem;
+  font-weight: 500;
 }
 
 .before-scroll {
@@ -247,6 +256,10 @@ select .browser-default, #event_category_id {
   }
 }
 
+.card.small {
+  margin: 12px;
+}
+
 .ticket_type {
   display: inline-block;
   transform: rotate(45deg);
@@ -276,7 +289,7 @@ select .browser-default, #event_category_id {
   position: fixed;
   width: 240px;
   left: -105%;
-  top: 0;
+  top: -10px;
   margin: 0;
   height: 100%;
   height: calc(100% + 60px);
@@ -293,6 +306,11 @@ select .browser-default, #event_category_id {
   left: 0;
   position: absolute;
   height: 570px;
+}
+
+.side-nav.right {
+  float: left;
+  padding-left: -20px; 
 }
 
 .poptext {

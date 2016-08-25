@@ -3,32 +3,35 @@
 
   <div class="section no-pad-bot">
     <div class="container">
-      <br><br><br><br><br><br>
-      <h2 class="header center home_app_title">Bring Your Passions to Life!</h2>
-      <br>
+      <br><br><br>
+      <h2 class="header center home_app_title">Bring Your Passions to Life</h2>
       <div class="row center">
-        <h5 class="header col s12 light home_app_tag">Manage and Search for Events Around You</h5>
+        <h5 class="header col s12 light home_app_tag">Create a Memorable Event or Find Awesome Ones Here</h5>
       </div>
-      <br>
+      <br><br>
       <div class="row center">
         <% if can? :create, Event %>
           <%= create_event_or_login("Create Event", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%elsif !current_user %>
-          <%= create_event_or_login("Get Started", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
+          <%= create_event_or_login("Start an Event", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%else%>
           <%= become_a_manager("Become An Event Manager", ["waves-effect", "waves-light btn-large",  "home_button"]) %>
         <%end%>
       </div>
-
       <span class="hide-on-med-and-down"><br><br></span>
     </div>
   </div>
+  <br>
+  <div class="header center search_form our-search l12">
+    <h6 class="search-caption">FIND AN EVENT NEAR YOU</h6>
+    <%= render "welcome/search" %>
+  </div>
+  <br>
   <div class="parallax"><%= image_tag "special-event.jpg"%></div>
-  <a href="#featured_events" class="alert-scroll-under"><%= image_tag("scroll_circle.svg", class: "responsive")%></a>
 </div>
 
 <div id="homepage-event-tools" class="row homepage-cards">
-  <br><h4 class="center">WHAT WE OFFER</h4>
+  <br><br><h4 class="center">WHAT WE OFFER</h4><br><br>
   <div class="col m4">
     <div class="card teal darken-1 card small">
       <div class="card-image">
@@ -72,6 +75,7 @@
     </div>
   </div>
 </div>
+<br>
 <div class="row homepage-cards">
   <div class="col m4">
     <div class="card teal darken-1 small">
@@ -116,15 +120,4 @@
     </div>
   </div>
 </div>
-
-<div id="search-events" class="yellow darken-1">
-  <br><br><h4 class="center">DO WHAT YOU LOVE</h4><br>
-  <h5 class="center">Find an event near you</h5>
-    <div class="col l12">
-    <div class="row our-search">
-      <div class="header center search_form our-search l12">
-        <%= render "welcome/search" %>
-      </div>
-    </div>
-  </div>
-</div>
+<br>

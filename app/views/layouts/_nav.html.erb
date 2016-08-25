@@ -9,7 +9,6 @@
       <li><a href="about">About EventX</a></li>
       <li><a href="index#homepage-event-tools">Event Management Tools</a></li>
       <li><a href="faq">FAQs</a></li>
-      <li><a href="index#search-events">Find Events Near Me</a></li>
        
         <ul class="right">
           <% if content_for? :show %>
@@ -48,13 +47,11 @@
       <li><a href="about">About EventX</a></li>
       <li><a href="index#homepage-event-tools">Event Management Tools</a></li>
       <li><a href="faq">FAQs</a></li>
-      <li><a href="index#search-events">Find Events Near Me</a></li>
       
         <ul class="left">
           <% if content_for? :show %>
             <%= yield :show %>
           <% end %>
-
           <% if current_user %>
             <li>
               <a class="<%= "dropdown-button" unless @current_page && @current_page == "new"%>" data-activates="dropdown-user_option" data-beloworigin="true" href="#" style="padding:0 20px;">
@@ -74,7 +71,7 @@
           <% else %>
             <li>
               <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
-              <%= "#{content_tag :i, "", class: "fa fa-lock black_text right  hide-on-small-only"} Sign In".html_safe %>
+              <%= "#{content_tag :i, "", class: "fa fa-lock black_text  hide-on-small-only"} Sign In".html_safe %>
               <% end %>
             </li>
           <% end %>

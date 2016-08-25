@@ -7,9 +7,9 @@ RSpec.feature "Login:", type: :feature, js: true do
 
   scenario "User visits the homepage" do
     visit(root_path)
-    expect(page).to have_selector("h2.header", text: "Bring Your Passions to Life!")
-    expect(page).to have_selector("h5.header", text: "Manage and Search for Events Around You")
-    expect(page).to have_selector("a", text: "GET STARTED")
+    expect(page).to have_selector("h2.header", text: "Your Passions to Life")
+    expect(page).to have_selector("h5.header", text: "Create a Memorable Event")
+    expect(page).to have_selector("a", text: "START AN EVENT")
 
     click_link "Log In"
 
@@ -19,9 +19,9 @@ RSpec.feature "Login:", type: :feature, js: true do
 
   scenario "User tries to login with google" do
     visit new_event_path
-    expect(page).to have_content "GET STARTED"
+    expect(page).to have_content "START AN EVENT"
 
-    click_link "Get Started"
+    click_link "Start an Event"
     click_link "Google"
     visit root_path
     expect(page).to have_content "BECOME AN EVENT MANAGER"
@@ -43,6 +43,6 @@ RSpec.feature "Login:", type: :feature, js: true do
 
   scenario "User tries to visit bad address" do
     visit "/postoffice"
-    expect(page).to have_content "Manage and Search for Events Around You"
+    expect(page).to have_content "Create a Memorable Event"
   end
 end
