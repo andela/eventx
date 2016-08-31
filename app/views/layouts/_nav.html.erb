@@ -54,7 +54,7 @@
           <% end %>
           <% if current_user %>
             <li>
-              <a class="<%= "dropdown-button" unless @current_page && @current_page == "new"%>" data-activates="dropdown-user_option" data-beloworigin="true" href="#" style="padding:0 20px;">
+              <a class="<%= "dropdown-button" unless @current_page && @current_page == "new"%>" data-activates="dropdown-user_option_mobile" data-beloworigin="true" href="#" style="padding:0 10px;">
                 <% if current_user.profile_url.present? %>
                 <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
                 <% else %>
@@ -64,14 +64,14 @@
                 <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
               </a>
             </li>
-            <ul class="dropdown-content right" id="dropdown-user_option">
+            <ul class="dropdown-content right" id="dropdown-user_option_mobile">
               <li><%= link_to "My Account", dashboard_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
               <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
             </ul>
           <% else %>
             <li>
               <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
-              <%= "#{content_tag :i, "", class: "fa fa-lock black_text  hide-on-small-only"} Sign In".html_safe %>
+              <%= "#{content_tag :i, "", class: "fa fa-lock black_text right hide-on-small-only"} Sign In".html_safe %>
               <% end %>
             </li>
           <% end %>
