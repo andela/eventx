@@ -10,10 +10,10 @@
     </ul>
     <ul class="right hide-on-med-and-down">
       <% if current_user.event_manager? %>
-      <li><%= link_to new_event_path do %><i class="material-icons">message</i><% end %></li>
+      <li><%= link_to new_event_path do %><i class="material-icons">library_add</i><% end %></li>
       <% end %>
       <li><a href="#"><i class="material-icons">notifications</i></a></li>
-      <li><a href="#"><i class="material-icons">refresh</i></a></li>
+      <li><%= link_to dashboard_path do %><i class="material-icons">refresh</i><% end %></li>
       <li><a href="#"><i class="material-icons">more_vert</i></a></li>
     </ul>
   </div>
