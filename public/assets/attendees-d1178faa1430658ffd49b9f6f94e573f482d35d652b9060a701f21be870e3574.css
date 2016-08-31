@@ -1,6 +1,0 @@
-/* Remove default checkbox */
-/* line 359, /Users/andela2014/.rvm/gems/ruby-2.1.6/gems/materialize-sass-0.97.0/app/assets/stylesheets/materialize/components/_form.scss */
-/* line 15, /rails/eventx/app/assets/stylesheets/attendees.scss */
-input.event_ticket_input {
-  height: 1.5em;
-}
