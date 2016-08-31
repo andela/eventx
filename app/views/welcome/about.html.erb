@@ -30,20 +30,20 @@
     <div class="about-stats row group">
       <div class="col s12 m12 l4 padding-side-25">
         <div class="milestones teal_bg">
-          <div class="stats-large"><%= @presenter.event_count %> </div>
-          <p class="card-title"><%= "Event".pluralize(@presenter.event_count)%></p>
+          <div class="stats-large"><%= @milestone_presenter.event_count %> </div>
+          <p class="card-title"><%= "Event".pluralize(@milestone_presenter.event_count)%></p>
         </div>
       </div>
       <div class="col s12 m12 l4 padding-side-25">
         <div class="milestones orange_bg">
-          <div class="stats-large"><%= @presenter.ticket_count %> </div>
-          <p class="card-title"><%= "Ticket".pluralize(@presenter.ticket_count)%> Sold</p>
+          <div class="stats-large"><%= @milestone_presenter.ticket_count %> </div>
+          <p class="card-title"><%= "Ticket".pluralize(@milestone_presenter.ticket_count)%> Sold</p>
         </div>
       </div>
       <div class="col s12 m12 l4 padding-side-25">
         <div class="milestones yellow_bg">
-          <div class="stats-large"><%= @presenter.user_count %> </div>
-          <p class="card-title"><%= "Event Lover".pluralize(@presenter.user_count)%></p>
+          <div class="stats-large"><%= @milestone_presenter.user_count %> </div>
+          <p class="card-title"><%= "Event Lover".pluralize(@milestone_presenter.user_count)%></p>
         </div>
       </div>
     </div>

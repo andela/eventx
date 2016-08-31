@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
   end
 
   def about
-    @presenter = Welcome::WelcomePresenter.new
+    @milestone_presenter = Welcome::WelcomePresenter.new
   end
 
   def renders(events)
