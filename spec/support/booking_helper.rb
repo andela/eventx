@@ -26,38 +26,13 @@ module BookingHelper
   end
 
   def create_booking
+    booking = create(:booking)
     @user = user
     @event = event
-    booking = create(:booking)
     booking.user_id = @user.id
     booking.event_id = @event.id
     booking.save
-
     ticket_type = create(:ticket_type, event: @event)
     create(:user_ticket, ticket_type: ticket_type, booking: booking)
-
-    receiver = create(:user)
-    create(
-      :ticket_transaction, booking: booking,
-                           recipient_id: receiver.id
-    )
-  end
-
-  def create_paid_booking
-    ticket_type = create(:ticket_type, :paid, event: @event)
-    booking = create(
-      :booking, txn_id: "Paid ticket",
-                user: @user, event: @event
-    )
-
-    ticket = create(
-      :user_ticket, ticket_type: ticket_type,
-                    booking: booking
-    )
-
-    create(
-      :ticket_transaction, tickets: [ticket.id],
-                           recipient_id: 2, booking: booking
-    )
   end
 end

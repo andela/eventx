@@ -30,8 +30,7 @@ Rails.application.routes.draw do
     post "/paypal_hook"               => :paypal_hook, as: :paypal_hook
     get "/scan-ticket"                => :scan_ticket, as: :scan_ticket
     get "/scan-ticket/:ticket_no"     => :use_ticket, as: :scan
-    get "/bookings"                   => :index
-    get "/bookings/:id/tickets" => :all_tickets, as: :all_tickets
+    get "/tickets"                    => :index
   end
 
   scope controller: :sessions do
@@ -52,14 +51,7 @@ Rails.application.routes.draw do
     get "/download/:booking_id" => "printer#download", as: :download
   end
 
-  scope controller: :ticket_transactions do
-    get "/bookings/:id/ticket-transactions" => :index, as: :booking_tickets
-    get "/ticket_transactions/:id/checkout" => :checkout_ticket, as: :checkout
-    post "/ticket_transaction_hook" => :hook, as: :ticket_transaction_hook
-  end
-
   resources :users, only: [:show]
-  resources :ticket_transactions
   resources :manager_profiles, only: [:new, :create]
   resources :attendees
   resources :categories

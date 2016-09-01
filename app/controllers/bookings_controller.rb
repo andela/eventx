@@ -1,10 +1,8 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user, except: [:paypal_hook]
   before_action :set_event, only: :each_event_ticket
-
-  before_action except: [:paypal_hook, :index, :each_event_ticket,
-                         :scan_ticket, :use_ticket, :request_refund,
-                         :all_tickets, :grant_refund] do
+  before_action except: [:paypal_hook, :index, :each_event_ticket, :scan_ticket,
+                         :use_ticket, :request_refund, :grant_refund] do
     set_event
     ticket_params
     ticket_quantity_specified?
@@ -20,11 +18,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings.order(id: :desc).decorate
-  end
-
-  def all_tickets
-    @all_tickets = Booking.find(params[:id]).user_tickets.
-                   where(transfered: false).decorate
   end
 
   def create
@@ -49,7 +42,7 @@ class BookingsController < ApplicationController
       response = validate_ipn_notification(request.raw_post)
       examine_booking(response)
     end
-    redirect_to bookings_path
+    redirect_to tickets_path
   end
 
   def scan_ticket
@@ -119,7 +112,7 @@ class BookingsController < ApplicationController
     if @booking.amount.zero?
       @booking.free!
       trigger_booking_mail
-      redirect_to bookings_path
+      redirect_to tickets_path
     else
       redirect_to @booking.paypal_url(paypal_hook_path)
     end

@@ -15,8 +15,9 @@ RSpec.describe "routing to controllers", type: :routing do
   end
   it "does not expose a list of bookings" do
     expect(get: "/bookings").to route_to(
-      controller: "bookings",
-      action: "index"
+      controller: "application",
+      action: "no_route_found",
+      unmatched_route: "bookings"
     )
   end
   it "gets featured events" do

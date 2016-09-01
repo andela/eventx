@@ -10,27 +10,9 @@
       <p><strong>Date Booked: </strong><span class="card-title grey-text text-darken-4"><%= booking.created_at.strftime("%b %d, %Y") %></span></p>
       <p><strong>Status: </strong><%= booking.payment_status.capitalize %></p>
       <%= booking.request_refund_button %>
-
     </div>
-    
-<div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-      <p><a href="#">This is a link</a></p>
-
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Options<i class="material-icons right">close</i></span>
-
-
-     <div class="card-action">
-         <br /><br />
-      <a href="/bookings/<%=booking.id%>/tickets" class="btn blue">View Tickets</a>
-      <br /><br />
-      <a href="/bookings/<%=booking.id%>/ticket-transactions" class="btn red">Pending Transactions</a>
-      <br /><br />
-      <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + " Download All Tickets", download_path(booking.id), {class: "btn", target: "_blank"} %>
-    </div> 
-
+    <div class="card-action">
+      <%= booking.download_tickets_button %>
     </div>
   </div>
-</div>
 </div>
