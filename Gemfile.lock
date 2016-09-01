@@ -447,6 +447,3 @@ DEPENDENCIES
   will_paginate (~> 3.0.6)
   will_paginate-materialize
   wkhtmltopdf-binary
-
-BUNDLED WITH
-   1.12.5

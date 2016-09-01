@@ -2,15 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.our-image-cover{
+.our-image-cover {
   height: 64px !important;
-  div{
+  div {
     height: 100% !important;
     margin-top: 6% !important;
   }
 }
 
-#main{
+#main {
   padding-top: 68px;
   background: #eee;
 }
@@ -22,32 +22,31 @@
 }
 
 @media only screen and  (max-width:601px) {
-  .our-fa-caret-down.fa-caret-down{
+  .our-fa-caret-down.fa-caret-down {
     margin-top: 20px;
   }
 }
-@media only screen and (min-width: 993px){
+
+@media only screen and (min-width: 993px) {
   .our-modified-container.container {
     width: 95%;
   }
 }
 
-#content{
-  margin-bottom: 0;
-}
+#content {margin-bottom: 0;}
 
-#slide-out li a i{
+#slide-out li a i {
   line-height: inherit;
   width: 2rem;
   font-size: 1.6rem;
   display: block;
   float: left;
-}
-ul#dropdown-user_option{
-  margin-left: 3%;
+  margin-left: 32px;
 }
 
-li a.our-dropdown-content{
+ul#dropdown-user_option {margin-left: 3%;}
+
+li a.our-dropdown-content {
   color: black;
   font-size: 14px;
   font-weight: 400;
@@ -55,14 +54,12 @@ li a.our-dropdown-content{
 }
 
 //an underlay for the transparent navbar on the users#show page
-.our-new-custom-nav{
+.our-new-custom-nav {
   background-color: #222222 !important;
   height: 64px;
 }
 
-.sh{
-  margin-top: 6px;
-}
+.sh {margin-top: 6px;}
 
 .pagination li.active {
   background-color: teal;

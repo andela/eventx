@@ -3,6 +3,7 @@ class SponsorsController < ApplicationController
   before_action :find_event, :all_sponsors
   before_action :find_sponsor, only: [:edit, :update, :destroy]
   respond_to :html, :js
+  
   layout "admin"
   def index
     @sponsors = @event.sponsors.group_by(&:level)

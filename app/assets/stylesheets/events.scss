@@ -5,48 +5,46 @@
 $white-color: #000;
 $font-family: 'Roboto', sans-serif !important;
 
-.margin-down{
+.margin-down {
   margin-top: 50px;
   padding-bottom: 20px;
-  input, select{
+  input, select {
     outline: none;
     margin-top: 10px;
     padding: 5px;
-    &:focus{
+    &:focus {
       outline: none !important;
       border-bottom-color:  #CCCCCC !important;
     }
   }
-  label{
+  label {
     color: #000000;
     margin-bottom: 15px !important;
     font-weight: bold;
     text-transform: uppercase;
     font-size: small;
-    span{
-      color: red;
-    }
+    span {color: red;}
   }
 
-  textarea{
-    &:focus{
+  textarea {
+    &:focus {
       outline: none !important;
     }
   }
-  i.icon-setting{
+  i.icon-setting {
     margin-top: 20px;
     color: #969CA7 !important;
   }
 }
 
-.location_form_padding{
-  input{
+.location_form_padding {
+  input {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
     padding: 0px;
     padding-left: 5px;
   }
-  select .browser-default, #event_category_id{
+  select .browser-default, #event_category_id {
     border: 1px solid #CCCCCC !important;
     border-radius: 0px !important;
     width: 90%;
@@ -58,31 +56,27 @@ $font-family: 'Roboto', sans-serif !important;
   }
 }
 
-.file-uploader{
+.file-uploader {
   border: 1px solid #CCCCCC;
   background-color: #ffffff;
   left: 20%;
-  .inner-file-upload{
+  .inner-file-upload {
     margin: 5%;
     padding: 15%;
     border: 2px dashed #CCCCCC;
   }
-  input{
-    display: none;
-  }
-   p {
+  input {display: none;}
+  p {
     text-align: center;
     position: absolute;
     top: 15%;
     left: 34%;
     font-weight: bolder;
-     text-transform: uppercase;
+    text-transform: uppercase;
   }
 }
 
-.row.ticket{
-  display: none;
-}
+.row.ticket {display: none;}
 
 .setup {
   position: absolute;
@@ -92,40 +86,36 @@ $font-family: 'Roboto', sans-serif !important;
   padding: 17px;
 }
 
-.category-select{
+.category-select {
   position: relative;
   width: 100%;
-  select{
+  select {
      border: 1px solid #CCCCCC !important;
      border-radius: 0px !important;
      width: 100%;
     -webkit-appearance: none;    margin-left: 5%;
     padding-left: 5px !important;
   }
-  label{
-    padding-left: 5%;
-  }
+  label {padding-left: 5%;}
 }
 
-.radio-select{
-  label{
+.radio-select {
+  label {
     padding-left: 7%;
   }
 }
 
-.map-area{
+.map-area {
   text-align: center;
   padding: 20%;
 }
 
-.our-map{
+.our-map {
   width: 79.33333% !important;
   margin-left: 47px !important;
 }
 
-input#event_photo_upload{
-  display: none;
-}
+input#event_photo_upload {display: none;}
 
 @media only screen and (min-width: 993px) {
   .our-sidebar-for-eventshow.l9 {
@@ -135,17 +125,11 @@ input#event_photo_upload{
   }
 }
 
-.our-label{
-  border-bottom: solid thin black;
-}
+.our-label {border-bottom: solid thin black;}
 
-.pre-our-label{
-  background-color: #00BCD4;
-}
+.pre-our-label {background-color: #00BCD4;}
 
-.ticket{
-  margin-left:4.2rem;
-}
+.ticket {margin-left:4.2rem;}
 
 #frame {
   -ms-zoom: 0.85;
@@ -157,43 +141,37 @@ input#event_photo_upload{
   margin-bottom: 0px !important;
 }
 
-#popular {
-  margin-left: 0px !important;
-}
+#popular {margin-left: 0px !important;}
 
-::-webkit-input-placeholder {
+::-webkit-input-placeholder {color: rgba(101,104,109,0.8);}
+
+:-moz-placeholder { 
+  /* Firefox 18- */
   color: rgba(101,104,109,0.8);
 }
 
-:-moz-placeholder { /* Firefox 18- */
+::-moz-placeholder {  
+  /* Firefox 19+ */
   color: rgba(101,104,109,0.8);
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-  color: rgba(101,104,109,0.8);
-}
+:-ms-input-placeholder {color: rgba(101,104,109,0.8);}
 
-:-ms-input-placeholder {
-  color: rgba(101,104,109,0.8);
-}
-
-.card-image{
+.card-image {
  img {-webkit-transition: all 0.3s ease;
   -moz-transition:    all 0.3s ease;
   -o-transition:      all 0.3s ease;
   -ms-transition:     all 0.3s ease;
   transition:         all 0.3s ease;}
-  img:hover{
-    transform: scale(1.1);
-  }
+  img:hover {transform: scale(1.1);}
 }
 
-.card-content  {
-  span{
+.card-content {
+  span {
     color:  rgba(28, 28, 28, 0.6) !important;
     font-family: $font-family;
   }
-  a{
+  a {
     color: #a1a1a1 !important;
     font-family: $font-family;
     font-size: large;
@@ -201,7 +179,7 @@ input#event_photo_upload{
   }
 }
 
-.our_parallax{
+.our_parallax {
   background-size: cover !important;
   background-attachment: fixed !important;
   background-position: center;
@@ -215,7 +193,7 @@ input#event_photo_upload{
   margin-top: 0px;
 }
 
-.our-event-title{
+.our-event-title {
   padding-top: 20% !important;
   font-size: 64px;
   color: white;
@@ -223,21 +201,19 @@ input#event_photo_upload{
   font-weight: 400
 }
 
-.our_description_title{
-  font-size: 30px;
-}
+.our_description_title {font-size: 30px;}
 
-.our_event_description{
+.our_event_description {
   font-size: 21px;
   word-wrap: break-word;
 }
 
-.description{
+.description {
   color: #5c5c5c;
   margin: 5% 0;
 }
 
-#venue{
+#venue {
   position: relative;
   width: 100%;
   height: 70%;
@@ -246,7 +222,7 @@ input#event_photo_upload{
 }
 
 
-.map-overlay{
+.map-overlay {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -254,16 +230,14 @@ input#event_photo_upload{
   right: 0;
 }
 
-.btn-large.home_button{
-  margin-bottom: 20px;
-}
+.btn-large.home_button {margin-bottom: 20px;}
 
-.event_staffs{
+.event_staffs {
   margin-left: 8%;
   margin-top: 3%;
 }
 
-.add_staff_field{
+.add_staff_field {
   border-radius: 0px;
   background: #fff;
   border: 1px solid #454545;
@@ -277,65 +251,53 @@ input#event_photo_upload{
     box-shadow: 0 0 3px #444;
 }
 
-.staff_role{
-  margin-top: 35px;
-}
-.staff_add_btn{
-  margin-top: 42px;
-}
+.staff_role {margin-top: 35px;}
+
+.staff_add_btn {margin-top: 42px;}
 
 #subscribe {
   width: 30%;
   height: 200px;
 }
 
-.subscribe-button {
-  margin: 10px;
-}
+.subscribe-button {margin: 10px;}
 
-#bookings_table_length, #bookings_table_filter{
+#bookings_table_length, #bookings_table_filter {
   width: 50%;
   display: inline-block;
   .select-wrapper {
     display: inline-block;
     width: 20%;
-    input{
-      border: 0px;
-    }
+    input {border: 0px;}
   }
-  label{
+  label {
     font-size: 16px;
     margin-top: 50px;
     top: 20px;
     padding-left: 50px;
   }
-  .caret{
-    display: none;
-  }
+  .caret {display: none;}
 }
 
-#bookings_table_filter{
+#bookings_table_filter {
   text-align: right;
-  input{
+  input {
     display: inline-block;
     width: 50%;
   }
 }
 
-#bookings_table_info, #bookings_table_paginate{
+#bookings_table_info, #bookings_table_paginate {
   display: inline-block;
   width: 50%;
 }
 
-#bookings_table_paginate{
+#bookings_table_paginate {
   text-align: right;
-  span{
-    font-size: 20px;
-  }
+  span {font-size: 20px;}
 }
-[type="radio"] + label:before{
-  display: none;
-}
+
+[type="radio"] + label:before {display: none;}
 
 [type="radio"]:checked + label:after {
   position: absolute;
@@ -359,71 +321,63 @@ input#event_photo_upload{
   padding: 0px;
 }
 
-.calender-link{
+.calender-link {
   font-size: 20px;
   font-family: $font-family;
   text-transform: uppercase;
 }
 
-.milestones{
+.milestones {
   opacity: 0.8;
-  .stats-large{
+  .stats-large {
     font-size: 35px;
     font-weight: lighter;
     margin: 0px;
   }
-  .card-title{
+  .card-title {
     margin: 0px;
     font-weight: lighter;
   }
-  i{
+  i {
     top: 20px;
     position: relative;
   }
 }
 
-.milestones:hover{
+.milestones:hover {
   opacity: 1;
   box-shadow: none;
 }
 
-.dashboard-container{
+.dashboard-container {
   margin: 70px 20px 20px 20px;
   font-size: 12px;
 }
 
-.dashboard-icon{
+.dashboard-icon {
   top: 15px;
   position: relative;
 }
 
-.dashboard-reports{
+.dashboard-reports {
   background-color: teal;
   border-bottom: 1px solid white;
-  a{
-    color: white;
-  }
+  a {color: white;}
 }
 
-.dashboard-reports:hover{
-  opacity: 0.9;
-}
+.dashboard-reports:hover {opacity: 0.9;}
 
-.no-margin{
-  margin: 0px !important;
-}
+.no-margin {margin: 0px !important;}
 
-.no-border{
-  border: none !important;
-}
+.no-border {border: none !important;}
 
-.dashboard-avatar{
+.dashboard-avatar {
   position: relative;
   top: 20px;
   left: 20px;
 }
 
-.dashboard-name{
+.dashboard-name {
   font-weight: lighter;
   position: absolute;
   width: 100%;
@@ -438,6 +392,4 @@ input#event_photo_upload{
   margin: 15px;
 }
 
-.dashboard-pagination{
-  margin: 15px;
-}
+.dashboard-pagination {margin: 15px;}

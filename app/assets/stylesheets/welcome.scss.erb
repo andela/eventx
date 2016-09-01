@@ -3,18 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-html, body{
+html, body {
   height: 100%;
   width: 100%;
 }
 
-.parallax-container{
-  height: 650px;
+.parallax-container {
+  height: 640px;
   width: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.45);
 }
 
-#event{
+#event {
   position: absolute;
   height: inherit;
   width: 100%;
@@ -23,48 +23,44 @@ html, body{
   background-color: rgba(0,0,0,0.4);
 }
 
-.home_app_title{
+.home_app_title {
   color: #fff !important;
   text-shadow: 2px 1px 1px black;
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Roboto', cursive;
   margin:0;
+  padding: 25px 0;
+  font-size: 3rem;
 }
 
-.home_user_options{
-  // top: 0;
+.home_user_options {
   text-align: right;
-  // position: relative;
-  // padding-right: 5%
 }
 
-.home_user_options .home_sign_in_or_up{
+.home_user_options .home_sign_in_or_up {
   display: inline;
-  // padding: 10px;
 }
 
-.home_user_options .home_sign_in_or_up .btn_a_tag{
+.home_user_options .home_sign_in_or_up .btn_a_tag {
   text-decoration: none;
   color: #fff;
-
 }
 
-.home_app_tag{
+.home_app_tag {
   width: 20%;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: #fff;
+  margin: auto;
 }
 
-.btn-large.home_button{
-  // width: 30%;
-  font-size: 1.25em; //20px;
+.btn-large.home_button {
+  font-size: 1.25em;
   border-style: solid #EED8AE;
-  // border-width: 5px;
   border-radius: 6px;
-  background-color: #EED8AE;
-  color: #000000
+  background-color: #00897b;
+  color: #ffffff
 }
 
-.home_tag{
+.home_tag {
   position: relative;
   top: 12%;
   bottom: 12%;
@@ -73,12 +69,9 @@ html, body{
 .search_form {
   position: relative;
   background-color: rgba(0, 0, 0, 0.64);
-  // margin: 5% 5%;
   bottom: 0 !important;
 
-  select{
-    // margin: -2px 40px;
-
+  select {
     width: 80%;
     margin-left: 20%;
     background-color: rgba(255, 255, 255, 0);
@@ -90,52 +83,35 @@ html, body{
     -moz-appearance: none !important;
     text-decoration: none !important;
     border-radius: none !important;
-    // border-radius: 0px !important;
-    &:focus{
+    &:focus {
       outline: none;
     }
-
   }
 
-  //
-  // select:-moz-focusring{
-  //   outline: none;
-  //   border: none;
-  //   color: #fff;
-  //   text-shadow: 0 0 0 #000;
-  // }
-
-  button{
-    // height: 40px;
-    // line-height: 42px;
-    // vertical-align: middle;
-    // margin-bottom: 5px;
-  }
 }
 
-.white_text{
+.white_text {
   color: #fff !important;
 }
 
-
-.black_text{
-  color: black !important;
+.black_text {
+  color: black;
 }
 
-input[type=text]:focus:not([readonly]){
+input[type=text]:focus:not([readonly]) {
   border-bottom: 1px solid #fff;
   box-shadow: 0 1px 0 0 #EED8AE;
 }
 
-.content-set{
+.content-set {
   margin: 40px;
 }
 
-.event-section{
+.event-section {
   background:#F7F7F7 ;
  }
 
-.card-shadow{
+.card-shadow {
   box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
 }
 
@@ -146,6 +122,7 @@ input[type=text]:focus:not([readonly]){
 
 .card .card-title {
   font-size: 15px;
+  background-color: rgba(0, 0, 0, 0.32);
 }
 
 .card .card-action {
@@ -153,11 +130,11 @@ input[type=text]:focus:not([readonly]){
   padding: 10px 20px;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
-.Amount{
+.Amount {
   text-transform: uppercase;
   background-color: #EED8AE;
   font-size: 12px;
@@ -185,9 +162,7 @@ input[type=text]:focus:not([readonly]){
   display: none;
 }
 
-
-
-.remove-margin{
+.remove-margin {
   margin: 0;
 }
 
@@ -224,7 +199,7 @@ footer.page-footer {
   padding-top: 20px;
   background-color: #333333;
   border-top: 5px solid #666666;
-  a{
+  a {
     color: #666;
   }
   nav {
@@ -238,74 +213,59 @@ footer.page-footer {
 }
 
 
-.hideme
-{
+.hideme {
   opacity:0;
 }
 
-i.when_icon{
+i.when_icon {
   color: white;
   position: absolute;
   left: 5px;
 }
 
-.btn-large.bottom_btn{
+.btn-large.bottom_btn {
   background-color: #EED8AE;
   color: #000000
 }
 
-// .btn_a_tag{
-//   .white_text{
-//     height: inherit !important;
-//   }
-// }
-
-nav.custom_nav{
-  // opacity: 0.5;
-  // filter: alpha(opacity=50);
-  // background-color: rgba(0,0,0,.1);
-  // background-color: transparent !important;
+nav.custom_nav {
   background-color: rgba(0, 0, 0, 0.0);
-  // opacity: 0.0;
   width: 100%;
   color: white !important;
   top: 0;
   position: absolute;
-   //filter: alpha(opacity=50);
 }
 
-.sso_option .btn{
+.sso_option .btn {
   width: 100% !important;
-  // font-size: 65%;
 }
 
-.profile_pic.circle{
+.profile_pic.circle {
     vertical-align: middle;
     width: 50px;
     height: 50px;
     border: solid 3px rgba(255,255,255, 0.6);
 }
-.our-center{
+
+.our-center {
   margin:0 auto !important;
 }
 
-.alert-scroll-under{
+.alert-scroll-under {
   display: inline-block;
   vertical-align: middle;
   height: 2%;
   width: 2%;
-  // background-image: url("<%= image_path('scroll_circle.svg')%>");
   background-position: 0 -1865px;
   background-repeat: no-repeat;
   position: absolute;
   z-index: 15;
-  // bottom: 2.625rem;
   bottom: 2.625rem;
   left: 50%;
   margin-left: -0.375rem;
 }
 
-.drop{
+.drop {
   color: #6B5936;
 }
 
@@ -337,20 +297,38 @@ nav.custom_nav{
   opacity: 0.90;
 }
 
-.remove-position{
-    color: #9e9e9e;
-    position: relative !important;
-    top: 0.02rem !important;
-    left: 0.75rem;
-    font-size: 1rem;
-    cursor: text;
+.remove-position {
+  color: #9e9e9e;
+  position: relative !important;
+  top: 0.02rem !important;
+  left: 0.75rem;
+  font-size: 1rem;
+  cursor: text;
 }
 
-.transform-text{
+.transform-text {
   text-transform: capitalize !important;
 }
 
-
 a.remove-text {
   color: #ffffff !important;
+}
+
+h2.brand-logo.logo-property { 
+  padding-left: 20px;
+  font-family: 'Great Vibes', cursive;
+  margin: 1.2rem 0;
+}
+
+.divider {
+  background-color: rgba(0, 128, 128, 0.6);
+  width: 100%;
+  height: 100px;
+  margin: auto;
+}
+
+nav ul a:hover {
+  background-color: rgba(74, 189, 172, 0.4);
+  font-size: 1.03rem;
+  font-weight: 500;
 }
