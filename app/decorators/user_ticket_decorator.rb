@@ -1,6 +1,18 @@
 class UserTicketDecorator < Draper::Decorator
   delegate_all
 
+  def scanned
+    is_used ? "is used" : "not used"
+  end
+
+  def name
+    if !valid?
+      status_label("red", "not_interested", "Used")
+    else
+      status_label("teal", "verified_user", "Valid")
+    end
+  end
+
   def status
     if !valid?
       status_label("red", "not_interested", "Used")

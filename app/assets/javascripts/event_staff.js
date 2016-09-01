@@ -31,6 +31,7 @@ $(document).ready(function () {
     }
     return isOnPage;
   };
+  
   var generateHtml = function (data) {
     return [
       '<div class=\'chip\' data-id =',
@@ -52,6 +53,7 @@ $(document).ready(function () {
       '/></div>'
     ].join('\n');
   };
+
   var validateEmailField = function (email, staffId) {
     if (email.val().length < 1 && staffId.length < 1) {
       notify('Email field can\'t be blank');

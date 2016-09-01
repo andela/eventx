@@ -1,0 +1,14 @@
+<tr>
+  <td class="chk_ticket">
+     <input type="checkbox" id="<%=ticket.id%>" name="ticket_ids" 
+     value="<%= ticket.id %>"/><label for="<%= ticket.id %>">&nbsp;</label>
+  </td>
+  <td>
+    <label>
+    <input type="hidden" value="<%= ticket.booking.id %>" id="booking_id"/>
+      <%= ticket.ticket_number %>
+    </label>
+  </td>
+  <td><%= ticket.name %></td>
+  <td><%= ticket.scanned %></td>
+</tr>

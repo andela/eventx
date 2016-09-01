@@ -48,22 +48,10 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
       find_button("Submit").trigger("click")
     end
 
-    expect(page).to have_content "DOWNLOAD ALL TICKETS"
-    expect(page.current_path).to eq "/tickets"
-
-    visit print_path(25)
-    expect(page).to have_content "Booking not found"
-    expect(page).to have_content "My Events"
-
     visit events_path
     click_link "Blessings wedding"
     expect(page).to have_content "UNATTEND"
     find_link("Unattend").trigger("click")
-
-    visit events_path
-    click_link "Blessings wedding"
-    expect(page).to have_content "ATTEND THIS EVENT"
-  end
 
   scenario "User does not specify ticket quantity" do
     sign_up
