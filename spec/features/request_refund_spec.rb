@@ -18,7 +18,7 @@ RSpec.feature "RequestRefund", type: :feature, js: true do
   scenario "when event is cancelled and paid" do
     create(:booking, event: @event, user: @user, payment_status: 2, amount: 20)
     visit tickets_path
-    click_link "request-refund"
+    find_link("request-refund").trigger("click")
     expect(page).to have_content "The event was cancelled"
     expect(page).to have_content "SUBMIT REQUEST"
     within("#refund-form") do
