@@ -8,17 +8,17 @@ html, body {
   width: 100%;
 }
 
-<<<<<<< HEAD
+
 .parallax-container {
   height: 640px;
-=======
+
 a {
   color: #4ABDAC;
 }
 
 .parallax-container {
   height: 650px;
->>>>>>> #[126584711] change to required theme
+
   width: 100%;
   background-color: rgba(0,0,0,0.45);
 }
@@ -41,24 +41,17 @@ a {
   font-size: 3rem;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 .home_user_options {
-=======
-.home_user_options{
->>>>>>> [#126584711] write css rules with single attribute in one line, remove commented code
   text-align: right;
 }
 
 .home_user_options .home_sign_in_or_up {
   display: inline;
 }
-=======
+
 .home_user_options { text-align: right; }
 
 .home_user_options .home_sign_in_or_up { display: inline; }
->>>>>>> [#126584711] add semicolons at the end of every css attribute, add spacing after selectors
-
 .home_user_options .home_sign_in_or_up .btn_a_tag {
   text-decoration: none;
   color: #fff;
@@ -70,13 +63,10 @@ a {
   color: #fff;
   margin: auto;
 }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 .btn-large.home_button {
 =======
 .btn-large.home_button{
->>>>>>> [#126584711] write css rules with single attribute in one line, remove commented code
+ >>>>>>> [#126584711] write css rules with single attribute in one line, remove commented code
   font-size: 1.25em;
   border-style: solid #EED8AE;
   border-radius: 6px;
@@ -189,9 +179,14 @@ input[type=text]:focus:not([readonly]) {
 .teal_bg { background: #4ABDAC; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 input[type=text]:focus:not([readonly]){
 >>>>>>> [#126584711] change colors of text and milestone blocks
 =======
+=======
+.aliceblue_bg { background:#e3efef; }
+
+>>>>>>> [#126584711] add team section in about page
 input[type=text]:focus:not([readonly]) {
 >>>>>>> [#126584711] write css rules with single attribute in one line, remove commented code
   border-bottom: 1px solid #fff;
@@ -265,6 +260,12 @@ input[type=text]:focus:not([readonly]) {
   top: 10px;
   right: 10px;
   z-index: 50;
+}
+
+.profile-card {
+  transition: box-shadow .25s;
+  text-align: center;
+  border-radius: 2px;
 }
 
 .card .card-reveal {
@@ -554,13 +555,16 @@ nav ul a:hover {
   margin-bottom: 200px;
 }
 
-.card .card-image img { height: 250px; }
+.profile-card .card-image img { height: 200px; }
 
 .col.padding-side-25 { padding: 10px 35px; }
 
 .col.padding-side-25 p { font-size: 20px; }
 
-.col.padding-side-25 h4 { font-weight: 300; }
+.col.padding-side-25 h4 {
+  font-weight: 300;
+  text-align: center;
+}
 
 .milestones {
   padding: 35px 10px 20px;
@@ -578,16 +582,17 @@ nav ul a:hover {
 }
 
 .feature-details {
-  position: relative;
-  bottom: 102px;
-  color: #fff;
-  padding: 0 10px;
-  background: rgba(0, 0,0, 0.5);
+  bottom: 0;
+  color: #000;
+  text-align: center;
+  padding: 10px 10px 2px;
+  background: transparent;
 }
 
 .feature-title {
-  font-size: 25px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: -10px;
 }
 
 .card.feature-card {
