@@ -67,7 +67,7 @@
           <li><a><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
           <li><%= link_to icon('line-chart')+"Popular Events", "#" %></li>
           <% unless current_user.event_manager? %>
-          <li><%= link_to icon('line-chart')+"Create Event", new_manager_profile_path %></li>
+          <li><%= link_to icon('plus-square')+"Create Event", new_manager_profile_path %></li>
           <% end %>
           <li><%= link_to icon('power-off')+"Logout", signout_path %></li>
         </ul>

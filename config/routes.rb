@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     get "/featured-events"           => :featured
     get "/popular_events"            => :popular
     get "/upcoming-events"           => :index
-    get "/about"                     => :about
+    get "about"                      => :about
+    get "faq"                        => :faq
   end
 
   scope controller: :manager_profiles do

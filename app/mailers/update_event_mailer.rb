@@ -4,7 +4,7 @@ class UpdateEventMailer < ApplicationMailer
 
     mail(
       to: subscriber_email,
-      subject: "Event changeds"
+      subject: "Event changed"
     )
   end
 end

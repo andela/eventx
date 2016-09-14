@@ -1,50 +1,80 @@
-<nav class='custom_nav <%= "landing" unless @current_page && @current_page == "new" %> z-depth-0' style="z-index: 100 ">
-  <div class="nav-wrapper <%= "#{@event.event_template} darken-4 " if controller_name == "events" && action_name == "show"%> <%= "landing2" if @current_page && @current_page == "new"%>">
-    <a class="button-collapse" data-activates="slide-out" href="#">
-      <i class="material-icons">menu</i>
-    </a>
-
-    <ul class="left">
-      <li>
-        <%= link_to get_site_root_site_link do %>
-          <h3 class="header home_app_title before-scroll our-custom-header">EventX</h3>
-        <% end %>
-      </li>
-      <li>
-        <h3 class="home_app_title our-custom-header"><a href="#" data-activates="slide-out" class="menu-collapse"><i class="mdi-navigation-menu" style="position: absolute; top: 0px"></i></a></h3>
-      </li>
-    </ul>
-
-    <ul class="right">
-      <% if content_for? :show %>
-        <%= yield :show %>
-      <% end %>
-
-      <% if current_user %>
-        <li>
-          <a class="<%= "dropdown-button" unless @current_page && @current_page == "new"%>" data-activates="dropdown-user_option" data-beloworigin="true" href="#" style="padding:0 20px;">
-            <% if current_user.profile_url.present? %>
-            <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
-            <% else %>
-            <%= image_tag "defaultimage.jpeg", class: "left profile_pic circle responsive-img" %>
-            <% end %>
-            <%= current_user.first_name.split(" ")[0] %>
-            <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
-          </a>
-        </li>
-        <ul class="dropdown-content right" id="dropdown-user_option">
-          <li><%= link_to "My Account", dashboard_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
-          <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
-        </ul>
-      <% else %>
-        <li>
-          <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
-          <%= "#{content_tag :i, "", class: "fa fa-lock white_text left  hide-on-small-only"} Log In".html_safe %>
+<nav class='custom_nav <%= "landing" unless @current_page && @current_page == "new" %>'>
+  <div class="nav-wrapper">
+    <%= "#{@event.event_template} darken-4 " if controller_name == "events" && action_name == "show"%>
+    <%= "landing2" if @current_page && @current_page == "new"%>
+    <%= link_to get_site_root_site_link do %>
+      <h2 class="brand-logo logo-property">EventX</h2>
+    <% end %>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="root#homepage-event-tools">Event Management Tools</a></li>
+      <li><a href="faq">FAQs</a></li>
+       
+        <ul class="right">
+          <% if content_for? :show %>
+            <%= yield :show %>
           <% end %>
-        </li>
-      <% end %>
 
+          <% if current_user %>
+            <li>
+              <a class="<%= "dropdown-button" unless @current_page && @current_page == "new"%>" data-activates="dropdown-user_option" data-beloworigin="true" href="#" style="padding:0 20px;">
+                <% if current_user.profile_url.present? %>
+                <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
+                <% else %>
+                <%= image_tag "defaultimage.jpeg", class: "left profile_pic circle responsive-img" %>
+                <% end %>
+                <%= current_user.first_name.split(" ")[0] %>
+                <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
+              </a>
+            </li>
+            <ul class="dropdown-content right" id="dropdown-user_option">
+              <li><%= link_to "My Account", dashboard_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+              <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+            </ul>
+          <% else %>
+            <li>
+              <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
+              <%= "#{content_tag :i, "", class: "fa fa-lock white_text left  hide-on-small-only"} Log In".html_safe %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>      
     </ul>
-
+    <ul id="slide-out" class="side-nav ">
+      <li class="divider"><%= link_to get_site_root_site_link do %>
+          <h2 class="brand-logo logo-property">EventX</h2>
+        <% end %></li>
+      <li><a href="root#homepage-event-tools">Event Management Tools</a></li>
+      <li><a href="faq">FAQs</a></li>
+      
+        <ul class="left">
+          <% if content_for? :show %>
+            <%= yield :show %>
+          <% end %>
+          <% if current_user %>
+            <li>
+              <a class="<%= "dropdown-button" unless @current_page && @current_page == "new"%>" data-activates="dropdown-user_option_mobile" data-beloworigin="true" href="#" style="padding:0 10px;">
+                <% if current_user.profile_url.present? %>
+                <%= image_tag current_user.profile_url, class: "profile_pic circle responsive-img" %>
+                <% else %>
+                <%= image_tag "defaultimage.jpeg", class: "left profile_pic circle responsive-img" %>
+                <% end %>
+                <%= current_user.first_name.split(" ")[0] %>
+                <i class=" our-fa-caret-down fa fa-caret-down" style="margin-left: 4px; font-size: 15px; float: right;"></i>
+              </a>
+            </li>
+            <ul class="dropdown-content right" id="dropdown-user_option_mobile">
+              <li><%= link_to "My Account", dashboard_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+              <li><%= link_to "Logout", signout_path, data: {no_turbolink: true}, class: "our-dropdown-content" %></li>
+            </ul>
+          <% else %>
+            <li>
+              <%= link_to "#login_modal", class: "modal-trigger btn_a_tag", data: { target: "login_modal", no_turbolink: true} do %>
+              <%= "#{content_tag :i, "", class: "fa fa-lock black_text right hide-on-small-only"} Sign In".html_safe %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>   
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
   </div>
 </nav>

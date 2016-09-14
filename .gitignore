@@ -21,7 +21,6 @@ coverage/
 # Gemfile.lock
 
 .idea/
-/public/*
 
 # Ignore all files ending with ds_store
 .DS_Store

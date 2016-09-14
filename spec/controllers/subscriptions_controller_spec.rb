@@ -16,7 +16,7 @@ RSpec.describe SubscriptionsController, type: :request do
     end
 
     context "when event manager updates an event" do
-      it "should diliver email to subscribers" do
+      it "should deliver email to subscribers" do
         put "/events/#{@event.id}", attributes_for(:regular_event)
         expect(ActionMailer::Base.deliveries.size).to eq 1
       end
