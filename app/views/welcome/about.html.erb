@@ -10,22 +10,126 @@
 
 <div class="about">
   <div class="row">
-    <div class="col s12 m4 l4 padding-side-25">
+    <div class="col s12 m12 l12 padding-side-25">
       <h4 class="teal_text">Who We Are</h4>
       <p>We are a group of fun-loving people who love events! Our team of world-class developers is ready to help you bring your passions to life. Oh, and we are not just developers, we love events too! We have a lot of experience in planning events and know exactly what you want.</p>
     </div>
-    <div class="col s12 m4 l4 padding-side-25">
+  </div>
+  <div class="row">
+    <div class="col s12 m6 l4">
+      <div class="profile-card">
+        <div class="card-image">
+          <%= image_tag 'team_profile_1.png' %>
+          <div class="feature-details">
+            <div class="feature-title">
+              Michael Ogala
+            </div>
+            <div class="feature-content">
+              <p>Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 l4">
+      <div class="profile-card">
+        <div class="card-image">
+          <%= image_tag 'team_profile_2.jpg' %>
+          <div class="feature-details">
+            <div class="feature-title">
+              Chineze Nwosu
+            </div>
+            <div class="feature-content">
+              <p>Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 l4">
+      <div class="profile-card">
+        <div class="card-image">
+          <%= image_tag 'team_profile_3.jpg' %>
+          <div class="feature-details">
+            <div class="feature-title">
+              Morolake Orekoya
+            </div>
+            <div class="feature-content">
+              <p>Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6 l4">
+      <div class="profile-card">
+        <div class="card-image">
+          <%= image_tag 'team_profile_4.jpg' %>
+          <div class="feature-details">
+            <div class="feature-title">
+              Michael Egwali
+            </div>
+            <div class="feature-content">
+              <p>Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 l4">
+      <div class="profile-card">
+        <div class="card-image">
+          <%= image_tag 'team_profile_5.jpg' %>
+          <div class="feature-details">
+            <div class="feature-title">
+              Abdulmujeeb Jamiu
+            </div>
+            <div class="feature-content">
+              <p>Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 l4">
+      <div class="profile-card">
+        <div class="card-image">
+          <%= image_tag 'team_profile_6.jpg' %>
+          <div class="feature-details">
+            <div class="feature-title">
+              Mayowa Adegbola
+            </div>
+            <div class="feature-content">
+              <p>Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about aliceblue_bg">
+  <div class="row">
+    <div class="col s12 m12 l12 padding-side-25">
       <h4 class="teal_text">Why Choose Us?</h4>
       <p>We use innovative tools to make sure you create memorable experiences for you and your friends. There are tons of possibilities we believe can be achieved without sweat. Just click a button and we are here to help.</p>
     </div>
-    <div class="col s12 m4 l4 padding-side-25">
+  </div>
+</div>
+
+<div class="about">
+  <div class="row">
+    <div class="col s12 m12 l12 padding-side-25">
       <h4 class="teal_text">Our Community</h4>
       <p>You can be part of the great work we do just by joining our community of fun-loving people. They love to help... From birthday communities to school clubs, you would definitely find a group you fit into or just create one!</p>
     </div>
   </div>
 </div>
 
-<div class="about-stats-div">
+<div class="about-stats-div" style="display:none">
   <div class="about">
     <div class="about-stats row group">
       <div class="col s12 m12 l4 padding-side-25">
@@ -33,7 +137,7 @@
           <div class="stats-large">
             <%= @milestone_presenter.event_count %>
           </div>
-          <p class="about-card-title">
+          <p class="card-title">
             <%= "Event".pluralize(@milestone_presenter.event_count)%>
           </p>
         </div>
@@ -43,7 +147,7 @@
           <div class="stats-large">
             <%= @milestone_presenter.ticket_count %>
           </div>
-          <p class="about-card-title">
+          <p class="card-title">
             <%= "Ticket".pluralize(@milestone_presenter.ticket_count)%> Sold
           </p>
         </div>
@@ -53,7 +157,7 @@
           <div class="stats-large">
             <%= @milestone_presenter.user_count %>
           </div>
-          <p class="about-card-title">
+          <p class="card-title">
             <%= "Event Lover".pluralize(@milestone_presenter.user_count)%>
           </p>
         </div>
