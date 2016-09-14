@@ -1,0 +1,63 @@
+<%= render partial: "layouts/nav" %>
+
+<div class="about-top">
+  <div class="about-us-text">
+    <div class="about-header-content">
+      We All Love Events!
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <div class="row">
+    <div class="col s12 m4 l4 padding-side-25">
+      <h4 class="teal_text">Who We Are</h4>
+      <p>We are a group of fun-loving people who love events! Our team of world-class developers is ready to help you bring your passions to life. Oh, and we are not just developers, we love events too! We have a lot of experience in planning events and know exactly what you want.</p>
+    </div>
+    <div class="col s12 m4 l4 padding-side-25">
+      <h4 class="teal_text">Why Choose Us?</h4>
+      <p>We use innovative tools to make sure you create memorable experiences for you and your friends. There are tons of possibilities we believe can be achieved without sweat. Just click a button and we are here to help.</p>
+    </div>
+    <div class="col s12 m4 l4 padding-side-25">
+      <h4 class="teal_text">Our Community</h4>
+      <p>You can be part of the great work we do just by joining our community of fun-loving people. They love to help... From birthday communities to school clubs, you would definitely find a group you fit into or just create one!</p>
+    </div>
+  </div>
+</div>
+
+<div class="about-stats-div">
+  <div class="about">
+    <div class="about-stats row group">
+      <div class="col s12 m12 l4 padding-side-25">
+        <div class="milestones teal_bg">
+          <div class="stats-large">
+            <%= @milestone_presenter.event_count %>
+          </div>
+          <p class="about-card-title">
+            <%= "Event".pluralize(@milestone_presenter.event_count)%>
+          </p>
+        </div>
+      </div>
+      <div class="col s12 m12 l4 padding-side-25">
+        <div class="milestones orange_bg">
+          <div class="stats-large">
+            <%= @milestone_presenter.ticket_count %>
+          </div>
+          <p class="about-card-title">
+            <%= "Ticket".pluralize(@milestone_presenter.ticket_count)%> Sold
+          </p>
+        </div>
+      </div>
+      <div class="col s12 m12 l4 padding-side-25">
+        <div class="milestones yellow_bg">
+          <div class="stats-large">
+            <%= @milestone_presenter.user_count %>
+          </div>
+          <p class="about-card-title">
+            <%= "Event Lover".pluralize(@milestone_presenter.user_count)%>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

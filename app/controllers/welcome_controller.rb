@@ -21,6 +21,10 @@ class WelcomeController < ApplicationController
     renders(@events)
   end
 
+  def about
+    @milestone_presenter = Welcome::WelcomePresenter.new
+  end
+
   def renders(events)
     respond_with(events) do |format|
       format.html { render "welcome/events_list", layout: false }
