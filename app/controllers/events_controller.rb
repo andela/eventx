@@ -7,6 +7,7 @@ class EventsController < ApplicationController
     :update,
     :enable,
     :disable,
+    :manage,
     :generate,
     :scan,
     :tickets_report
@@ -15,6 +16,7 @@ class EventsController < ApplicationController
   before_action :subscription_status, only: [:show]
 
   layout "admin", only: [:tickets, :tickets_report]
+  # layout "event_admin", only: [:manage]
 
   respond_to :html, :json, :js
 
@@ -81,6 +83,10 @@ class EventsController < ApplicationController
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
+  end
+
+  def manage
+    @roles = Event.get_roles
   end
 
   def tickets
