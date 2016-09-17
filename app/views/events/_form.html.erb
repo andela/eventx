@@ -81,8 +81,17 @@
           </div>
         </div>
         <div class="row">
-
+          <div class="col s12 center pull-s1">
+            <label>Recurring Event?</label>
+            <div class="switch">
+              <label>
+                <input type="checkbox", class="recur-event" >
+                <span class="lever recur-lever"></span>
+              </label>
+            </div>
+          </div>
         </div>
+        <%= render 'events/recurring_event' %>
         <div class="row col s10">
           <div id="file-uploader" class="col l6 m6 s8 offset-l3 offset-m3 offset-s2 file-uploader">
             <div class="inner-file-upload center">
