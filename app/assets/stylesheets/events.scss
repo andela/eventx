@@ -145,12 +145,12 @@ input#event_photo_upload {display: none;}
 
 ::-webkit-input-placeholder {color: rgba(101,104,109,0.8);}
 
-:-moz-placeholder { 
+:-moz-placeholder {
   /* Firefox 18- */
   color: rgba(101,104,109,0.8);
 }
 
-::-moz-placeholder {  
+::-moz-placeholder {
   /* Firefox 19+ */
   color: rgba(101,104,109,0.8);
 }
@@ -393,3 +393,8 @@ input#event_photo_upload {display: none;}
 }
 
 .dashboard-pagination {margin: 15px;}
+
+.recurring-event{
+  margin: 10px;
+  padding-top: 50px;
+}
