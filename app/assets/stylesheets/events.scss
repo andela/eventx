@@ -395,6 +395,11 @@ input#event_photo_upload {display: none;}
 .dashboard-pagination {margin: 15px;}
 
 .recurring-event{
-  margin: 10px;
-  padding-top: 50px;
+  margin: 10px 0;
+  padding: 10px !important;
+  border: 1px solid #CCCCCC;
+}
+
+.display-none{
+  display: none;
 }
