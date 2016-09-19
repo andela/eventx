@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  include Wisper::Publisher
   belongs_to :category
   belongs_to :event_template
   has_one :remit
@@ -36,6 +37,7 @@ class Event < ActiveRecord::Base
   validates :ticket_types, presence: true
 
   after_create :notify_manager_subscribers
+  after_create :publish_create_event
   after_update :notify_event_subscribers
 
   # scope
@@ -149,5 +151,9 @@ class Event < ActiveRecord::Base
 
   def event_subscribers
     subscribers.map(&:email).compact
+  end
+
+  def publish_create_event
+    broadcast(:event_created, self)
   end
 end
