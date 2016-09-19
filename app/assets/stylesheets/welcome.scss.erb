@@ -270,15 +270,61 @@ input[type=text]:focus:not([readonly]) {
 
 .why-choose-row {
   text-align: center;
-  img {
-    height: 500px;
+  padding: 50px 0;
+  .bubble {
+    display: inline-block;
+    padding: 20px;
+    width: 280px;
+    height: 280px;
+    opacity: 0.7;
+    border-radius: 50%;
+  }
+  .bubble-header {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+  }
+}
+
+@media only screen and (max-width : 768px) {
+  .why-choose-row {
+    padding: 20px 0;
+    .bubble {
+      padding: 20px;
+      width: 180px;
+      height: 180px;
+      font-size: 80%;
+    }
+    .bubble-header {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: inline-block;
+      height: 25px;
+      width: 25px;
+      padding: 1px;
+    }
+    .padding-side-25 p.card-title {
+      font-size: 14px;
+    }
+  }
+
+  .about .community-row {
+     margin: 0; 
   }
 }
 
 .community-row {
   text-align: center;
+  margin: 60px;
   img {
-    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
   }
 }
 
@@ -529,7 +575,10 @@ nav ul a:hover {
 }
 
 @media (min-width: 1200px) {
-  .about { padding: 75px; }
+  .about {
+    padding: 75px;
+    min-height: 100vh;
+  }
 }
 
 .about-content {
