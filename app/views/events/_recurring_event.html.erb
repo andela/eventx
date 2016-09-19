@@ -1,122 +1,36 @@
 <div class="row">
-  <div class="col s10 l6 offset-l2 offset-s2 white center recurring-event">
+  <div class="col s10 l6 offset-l2 offset-s2 white center recurring-event display-none">
+
     <div>
       <label>How often does this event occur?</label>
     </div>
     <div class="col s6 m6 l6 offset-l3">
-      <select name="frequency" id="frequency" class="event-freq-select">
+      <select name="frequency" id="frequency">
         <option value="Daily">Daily</option>
         <option value="Weekly">Weekly</option>
-        <option value="Yearly">Yearly</option>
+        <option value="Monthly">Monthly</option>
       </select>
     </div>
-    <div class="col s6">
-      <input type="text" name="time" list="avail-time"/>
-      <datalist id="avail-time">
-        <option value="12:00 AM">12:00 AM</option>
-        <option value="12:30 AM">12:30 AM</option>
-        <option value="01:00 AM">01:00 AM</option>
-        <option value="01:30 AM">01:30 AM</option>
-        <option value="02:00 AM">02:00 AM</option>
-        <option value="02:30 AM">02:30 AM</option>
-        <option value="03:00 AM">03:00 AM</option>
-        <option value="03:30 AM">03:30 AM</option>
-        <option value="04:00 AM">04:00 AM</option>
-        <option value="04:30 AM">04:30 AM</option>
-        <option value="05:00 AM">05:00 AM</option>
-        <option value="05:30 AM">05:30 AM</option>
-        <option value="06:00 AM">06:00 AM</option>
-        <option value="06:30 AM">06:30 AM</option>
-        <option value="07:00 AM">07:00 AM</option>
-        <option value="07:30 AM">07:30 AM</option>
-        <option value="08:00 AM">08:00 AM</option>
-        <option value="08:30 AM">08:30 AM</option>
-        <option value="09:00 AM">09:00 AM</option>
-        <option value="09:30 AM">09:30 AM</option>
-        <option value="10:00 AM">10:00 AM</option>
-        <option value="10:30 AM">10:30 AM</option>
-        <option value="11:00 AM">11:00 AM</option>
-        <option value="11:30 AM">11:30 AM</option>
-        <option value="12:00 PM">12:00 PM</option>
-        <option value="12:30 PM">12:30 PM</option>
-        <option value="01:00 PM">01:00 PM</option>
-        <option value="01:30 PM">01:30 PM</option>
-        <option value="02:00 PM">02:00 PM</option>
-        <option value="02:30 PM">02:30 PM</option>
-        <option value="03:00 PM">03:00 PM</option>
-        <option value="03:30 PM">03:30 PM</option>
-        <option value="04:00 PM">04:00 PM</option>
-        <option value="04:30 PM">04:30 PM</option>
-        <option value="05:00 PM">05:00 PM</option>
-        <option value="05:30 PM">05:30 PM</option>
-        <option value="06:00 PM">06:00 PM</option>
-        <option value="06:30 PM">06:30 PM</option>
-        <option value="07:00 PM">07:00 PM</option>
-        <option value="07:30 PM">07:30 PM</option>
-        <option value="08:00 PM">08:00 PM</option>
-        <option value="08:30 PM">08:30 PM</option>
-        <option value="09:00 PM">09:00 PM</option>
-        <option value="09:30 PM">09:30 PM</option>
-        <option value="10:00 PM">10:00 PM</option>
-        <option value="10:30 PM">10:30 PM</option>
-        <option value="11:00 PM">11:00 PM</option>
-        <option value="11:30 PM">11:30 PM</option>
-      </datalist>
+    <div class="input-field col s12">
+      <select multiple class="week-frequency display-none">
+        <option value="" disabled selected>Choose the days</option>
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+      </select>
     </div>
-    <div class="col s6 pull-right">
-      <input type="text" name="time" list="avail-time"/>
-      <datalist id="avail-time">
-        <option value="12:00 AM">12:00 AM</option>
-        <option value="12:30 AM">12:30 AM</option>
-        <option value="01:00 AM">01:00 AM</option>
-        <option value="01:30 AM">01:30 AM</option>
-        <option value="02:00 AM">02:00 AM</option>
-        <option value="02:30 AM">02:30 AM</option>
-        <option value="03:00 AM">03:00 AM</option>
-        <option value="03:30 AM">03:30 AM</option>
-        <option value="04:00 AM">04:00 AM</option>
-        <option value="04:30 AM">04:30 AM</option>
-        <option value="05:00 AM">05:00 AM</option>
-        <option value="05:30 AM">05:30 AM</option>
-        <option value="06:00 AM">06:00 AM</option>
-        <option value="06:30 AM">06:30 AM</option>
-        <option value="07:00 AM">07:00 AM</option>
-        <option value="07:30 AM">07:30 AM</option>
-        <option value="08:00 AM">08:00 AM</option>
-        <option value="08:30 AM">08:30 AM</option>
-        <option value="09:00 AM">09:00 AM</option>
-        <option value="09:30 AM">09:30 AM</option>
-        <option value="10:00 AM">10:00 AM</option>
-        <option value="10:30 AM">10:30 AM</option>
-        <option value="11:00 AM">11:00 AM</option>
-        <option value="11:30 AM">11:30 AM</option>
-        <option value="12:00 PM">12:00 PM</option>
-        <option value="12:30 PM">12:30 PM</option>
-        <option value="01:00 PM">01:00 PM</option>
-        <option value="01:30 PM">01:30 PM</option>
-        <option value="02:00 PM">02:00 PM</option>
-        <option value="02:30 PM">02:30 PM</option>
-        <option value="03:00 PM">03:00 PM</option>
-        <option value="03:30 PM">03:30 PM</option>
-        <option value="04:00 PM">04:00 PM</option>
-        <option value="04:30 PM">04:30 PM</option>
-        <option value="05:00 PM">05:00 PM</option>
-        <option value="05:30 PM">05:30 PM</option>
-        <option value="06:00 PM">06:00 PM</option>
-        <option value="06:30 PM">06:30 PM</option>
-        <option value="07:00 PM">07:00 PM</option>
-        <option value="07:30 PM">07:30 PM</option>
-        <option value="08:00 PM">08:00 PM</option>
-        <option value="08:30 PM">08:30 PM</option>
-        <option value="09:00 PM">09:00 PM</option>
-        <option value="09:30 PM">09:30 PM</option>
-        <option value="10:00 PM">10:00 PM</option>
-        <option value="10:30 PM">10:30 PM</option>
-        <option value="11:00 PM">11:00 PM</option>
-        <option value="11:30 PM">11:30 PM</option>
-      </datalist>
+    <div class="col s12">
+      <div class="col s4">
+        <button class="btn btn-circle" type="button" name="action">Add</button>
+      </div>
+      <div class="col s4">
+        <button class="btn waves-effect waves-light" type="button" name="action">Cancel</button>
+      </div>
     </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Add</button>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Cancel</button>
+
   </div>
 </div>

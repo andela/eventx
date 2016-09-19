@@ -18,7 +18,7 @@
     </div>
 
     <%= render 'categories/form' %>
-    <%= form_for @event, html: {class: "col s12", multipart: true} do |f| %>
+    <%= form_for @event, remote: true, html: {class: "col s12", multipart: true} do |f| %>
     <div class="col s12" id="test1">
       <div class="container margin-down">
         <div class="row">
@@ -70,16 +70,24 @@
             </div>
           </div>
         </div>
+        <!-- Event Start/End Date/Time -->
         <div class="row">
-          <div class="input-field col s5">
+          <div class="input-field col s3">
             <i class="fa fa-calendar prefix icon-setting"></i>
             <%= f.date_field :start_date, class: "datepicker", placeholder: "Start Date", value: @event.start_date, required: true %>
           </div>
-          <div class="input-field col s5">
+          <div class="input-field col s2">
+            <%= text_field_tag "event_start_time", '', class: "event-time-picker", placeholder: "Start Time" %>
+          </div>
+          <div class="input-field col s3">
             <i class="fa fa-calendar prefix icon-setting"></i>
             <%= f.date_field :end_date, class: "datepicker", placeholder: "End Date", value: @event.end_date %>
           </div>
+          <div class="input-field col s2">
+            <%= text_field_tag "event_end_time", '', class: "event-time-picker", placeholder: "End Time" %>
+          </div>
         </div>
+        <!-- Event Start/End Date/Time -->
         <div class="row">
           <div class="col s12 center pull-s1">
             <label>Recurring Event?</label>
@@ -91,7 +99,9 @@
             </div>
           </div>
         </div>
-        <%= render 'events/recurring_event' %>
+        <div id="recur-event-card">
+          <%= render 'events/recurring_event' %>
+        </div>
         <div class="row col s10">
           <div id="file-uploader" class="col l6 m6 s8 offset-l3 offset-m3 offset-s2 file-uploader">
             <div class="inner-file-upload center">
