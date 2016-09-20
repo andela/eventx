@@ -2,6 +2,10 @@ class Category < ActiveRecord::Base
   validates :name, presence: true
   has_many :events
   belongs_to :manager_profile
+  #remove later
+  #has_and_belongs_to_many :subscribers, class_name: "User"
+  has_many :notification_subscriptions
+  has_many :subscribers, through: :notification_subscriptions, class_name: "User"
 
   scope :list, lambda {
     where(

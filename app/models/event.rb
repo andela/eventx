@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   include Wisper::Publisher
+
   belongs_to :category
   belongs_to :event_template
   has_one :remit
