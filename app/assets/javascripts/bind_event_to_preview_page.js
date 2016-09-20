@@ -1,17 +1,23 @@
 $(document).ready(function () {
   var event_date = $('.parallax-container').data('countdown'),
+      end_date = $('.end_date').data('countdown'),
+      start_time = $('.start_time').data('countdown'),
+      end_time = $('.end_time').data('countdown'),
       prev_color = '',
       color = '',
       map;
 
-  if (event_date) { countdown(convertDate(event_date)); }
+  if (event_date) { countdown(convertDate(event_date, start_time), end_date, end_time); };
 
   $('.preview').click(function () {
     var map_val = $('#event_map_url').val(),
         start_date = $('#event_start_date').val(),
-        end_date = $('#event_end_date').val();
+        end_date = $('#event_end_date').val(),
+        start_time = $('#event_start_time').val(),
+        end_time = $('#event_end_time').val();
 
-    if (start_date) { countdown(convertDate(start_date), end_date); }
+    if (start_date) { countdown(convertDate(start_date, start_time), end_date, end_time); };
+
     if (map_val) {
       map = map_val + '&output=embed';
     } else {

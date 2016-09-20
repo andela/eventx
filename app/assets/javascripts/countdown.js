@@ -1,12 +1,29 @@
-function convertDate(startdate) {
+function convertDate(startDate, startTime) {
   var date = new Date();
-  var dateStr = startdate.toString();
-  var date2 = new Date(dateStr.replace(/-/g, '/'));
+  var date2 = new Date(startDate);
+  var apm = startTime.toString().split(":")[1].match(/^(\d+)([A|P]M)$/)[2];
+  if (apm === "AM"){
+    date2.setHours(startTime.split(":")[0]);
+  } else {
+    date2.setHours(+startTime.split(":")[0] + 12);
+  }
+  date2.setMinutes(startTime.split(":")[1].match(/^(\d+)[A|P]M$/)[1]);
   var diff = Math.floor((date2 - date) / (60 * 1000));
   return diff;
 }
-function countdown(val) {
+
+function countdown(val, end_date, end_time) {
+  var endDate = new Date(end_date);
+  var apm = end_time.toString().split(":")[1].match(/^(\d+)([A|P]M)$/)[2];
+  if (apm === "AM"){
+    endDate.setHours(end_time.split(":")[0]);
+  } else {
+    endDate.setHours(+end_time.split(":")[0] + 12);
+  }
+  endDate.setMinutes(end_time.split(":")[1].match(/^(\d+)[A|P]M$/)[1]);
+
   var minutes = val;
+
   $('#counter').css({
     'font-size': '3rem',
     'padding': '0 10px',
@@ -14,7 +31,8 @@ function countdown(val) {
     'z-index': '100',
     'background-color': 'rgba(0,0,0,0.2)'
   });
-  if (minutes > 1) {
+
+  if (minutes > 0) {
     function tick() {
       var seconds = 60;
       var mins = minutes;
@@ -35,7 +53,10 @@ function countdown(val) {
       }
     }
     tick();
-  } else {
+  } else if ((new Date()) > endDate) {
     counter.innerHTML = 'This event has ended';
+  } else {
+    counter.innerHTML = 'This event has started';
   }
+
 }

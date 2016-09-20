@@ -68,6 +68,7 @@ class EventsController < ApplicationController
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
+    binding.pry
   end
 
   def create
@@ -81,6 +82,7 @@ class EventsController < ApplicationController
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
+    binding.pry
   end
 
   def tickets
@@ -126,7 +128,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(
-      :title, :description, :start_date, :end_date, :category_id, :location,
+      :title, :description, :start_date, :end_date, :start_time, :end_time, :category_id, :location,
       :venue, :image, :template_id, :map_url, :event_template_id,
       ticket_types_attributes: [:id, :_destroy, :name, :quantity, :price],
       highlights_attributes:   [:id, :_destroy, :day, :title, :description,
