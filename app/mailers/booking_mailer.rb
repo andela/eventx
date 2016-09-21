@@ -18,4 +18,5 @@ class BookingMailer < ApplicationMailer
     @title = "Your Request for Refund has been Granted"
     mail(to: @user.email, subject: "Your Request for Refund has been Granted")
   end
+
 end

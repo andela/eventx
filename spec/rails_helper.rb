@@ -14,6 +14,7 @@ require "capybara/rails"
 require "database_cleaner"
 require "capybara/poltergeist"
 require "webmock/rspec"
+require 'capybara/email/rspec'
 
 WebMock.allow_net_connect!
 

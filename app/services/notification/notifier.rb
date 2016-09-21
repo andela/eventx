@@ -4,11 +4,13 @@ class Notification::Notifier
   def self.notify_subscribers(event)
     setup
     find_subscribers(event)
+    puts 'before sending mail'
+    # EventMailer.new_subscribed_event(@subscribers.first, event).deliver_now
+    # puts 'Email should have been sent'
+    p '*' * 100
     @subscribers.each do |subscriber|
-      #send notification
-      puts  '******************************************************'
-      puts "New Event #{event.title} has been created"
-      puts  '******************************************************'
+      puts "Event Mailer called next ****************************************"
+      EventMailer.new_subscribed_event(subscriber, event).deliver_now
     end
   end
 

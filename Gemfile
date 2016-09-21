@@ -57,6 +57,7 @@ group :development, :test do
   gem "rubocop", require: false
   gem "letter_opener"
   gem "selenium-webdriver", "~> 2.53", ">= 2.53.4"
+  gem 'capybara-email', '~> 2.5'
 end
 
 group :development do
