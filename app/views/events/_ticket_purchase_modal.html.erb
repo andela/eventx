@@ -1,8 +1,19 @@
 <div class="modal" id="purchase_ticket_modal">
   <div class="modal-content row">
-    Buy tickets
+    <!-- Buy tickets -->
     <%= form_for @booking, url: event_bookings_path(@event) do |f| %>
       <%#= f.text_field :ticket_type %>
+      <div class="col l12 m12">
+        <h6>How did you find this event?</h6>
+        <hr>
+        <div class="col l4 m4">
+        <%= image_tag "Twitter_image.jpg" %>
+        <!-- <p><input type="checkbox" id="test5" /><label for="test5">Twitter</label></p> -->
+        <%= f.label :event_source %>
+        <%= f.check_box :event_source %>
+        </div>
+      </div>
+      <hr>
       <%= f.fields_for :user_tickets do |attendee| %>
         <%= render "user_ticket_fields", f: attendee %>
       <% end %>

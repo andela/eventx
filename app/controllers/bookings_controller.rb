@@ -101,7 +101,7 @@ class BookingsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:tickets_quantity)
+    params.require(:tickets_quantity, :event_source)
   end
 
   def set_event
