@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614215417) do
+ActiveRecord::Schema.define(version: 20160921082615) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.string   "map_url"
     t.integer  "manager_profile_id"
     t.boolean  "enabled",            default: true
+    t.string   "subdomain"
   end
 
   add_index "events", ["manager_profile_id"], name: "index_events_on_manager_profile_id"
@@ -176,15 +177,6 @@ ActiveRecord::Schema.define(version: 20160614215417) do
   add_index "subscriptions", ["manager_profile_id"], name: "index_subscriptions_on_manager_profile_id"
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
-  create_table "ticket_transactions", force: :cascade do |t|
-    t.integer  "booking_id"
-    t.integer  "recipient_id"
-    t.text     "tickets"
-    t.boolean  "accepted",     default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"
@@ -203,7 +195,6 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.boolean  "is_used",        default: false
     t.datetime "time_used"
     t.integer  "scanned_by"
-    t.boolean  "transfered",     default: false
   end
 
   add_index "user_tickets", ["booking_id"], name: "index_user_tickets_on_booking_id"
