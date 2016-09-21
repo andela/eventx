@@ -32,13 +32,7 @@ html, body {
   font-size: 3rem;
 }
 
-.home_user_options {
-  text-align: right;
-}
-
-.home_user_options .home_sign_in_or_up {
-  display: inline;
-}
+.home_user_options .home_sign_in_or_up { display: inline; }
 
 .home_user_options .home_sign_in_or_up .btn_a_tag {
   text-decoration: none;
@@ -83,46 +77,62 @@ html, body {
     -moz-appearance: none !important;
     text-decoration: none !important;
     border-radius: none !important;
+    
     &:focus {
       outline: none;
     }
   }
-
 }
 
-.white_text {
-  color: #fff !important;
-}
+.white_text { color: #fff; }
 
-.black_text {
-  color: black;
-}
+.black_text { color: black; }
+
+.red_text { color: #F44336; }
+
+.orange_text { color: #FC4A1A; }
+
+.yellow_text { color: #F7B733; }
+
+.blue_text { color: #2196F3; }
+
+.teal_text { color: #4ABDAC; }
+
+.yellow_bg { background: #F7B733; }
+
+.orange_bg { background: #FC4A1A; }
+
+.teal_bg { background: #4ABDAC; }
+
+.aliceblue_bg { background:#e3efef; }
 
 input[type=text]:focus:not([readonly]) {
   border-bottom: 1px solid #fff;
   box-shadow: 0 1px 0 0 #EED8AE;
 }
 
-.content-set {
-  margin: 40px;
-}
+.content-set { margin: 40px; }
 
-.event-section {
-  background:#F7F7F7 ;
- }
+.event-section { background:#F7F7F7; }
 
-.card-shadow {
-  box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
-}
+.card-shadow { box-shadow: 0 1px 0 0 rgba(0,0,0,.1); }
 
 .card .card-content .card-title {
   line-height: 0px;
   width: 15px;
 }
 
-.card .card-title {
+.card .card-title{
   font-size: 15px;
-  background-color: rgba(0, 0, 0, 0.32);
+  background-color: rgba(0,0,0, 0.32 );
+}
+
+.about-card-title {
+  font-size: 15px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 .card .card-action {
@@ -130,9 +140,7 @@ input[type=text]:focus:not([readonly]) {
   padding: 10px 20px;
 }
 
-.pointer {
-  cursor: pointer;
-}
+.pointer { cursor: pointer; }
 
 .Amount {
   text-transform: uppercase;
@@ -150,6 +158,77 @@ input[type=text]:focus:not([readonly]) {
   z-index: 50;
 }
 
+.profile-card {
+  transition: box-shadow .25s;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.why-choose-row {
+  text-align: center;
+  padding: 50px 0;
+
+  .bubble {
+    display: inline-block;
+    padding: 20px;
+    width: 280px;
+    height: 280px;
+    opacity: 0.7;
+    border-radius: 50%;
+  }
+
+  .bubble-header {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+  }
+}
+
+@media only screen and (max-width : 768px) {
+  .why-choose-row {
+    padding: 20px 0;
+    .bubble {
+      padding: 20px;
+      width: 180px;
+      height: 180px;
+      font-size: 80%;
+    }
+
+    .bubble-header {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: inline-block;
+      height: 25px;
+      width: 25px;
+      padding: 1px;
+    }
+
+    .padding-side-25 p.card-title {
+      font-size: 14px;
+    }
+  }
+
+  .about .community-row {
+     margin: 0; 
+  }
+}
+
+.community-row {
+  text-align: center;
+  margin: 60px;
+
+  img {
+    max-height: 200px;
+    max-width: 100%;
+  }
+}
+
 .card .card-reveal {
   padding: 20px;
   position: absolute;
@@ -162,9 +241,7 @@ input[type=text]:focus:not([readonly]) {
   display: none;
 }
 
-.remove-margin {
-  margin: 0;
-}
+.remove-margin { margin: 0; }
 
 .tabs .indicator {
   position: absolute;
@@ -187,10 +264,7 @@ input[type=text]:focus:not([readonly]) {
   transition: color 0.28s ease;
 }
 
-.tabs .tab a:hover {
-  color: #f9c9cb;
-}
-
+.tabs .tab a:hover { color: #f9c9cb; }
 
 footer.page-footer {
   position: relative;
@@ -199,9 +273,9 @@ footer.page-footer {
   padding-top: 20px;
   background-color: #333333;
   border-top: 5px solid #666666;
-  a {
-    color: #666;
-  }
+
+  a { color: #666; }
+
   nav {
     color: #fff;
     background-color: #333333;
@@ -212,10 +286,7 @@ footer.page-footer {
   }
 }
 
-
-.hideme {
-  opacity:0;
-}
+.hideme { opacity:0; }
 
 i.when_icon {
   color: white;
@@ -225,7 +296,7 @@ i.when_icon {
 
 .btn-large.bottom_btn {
   background-color: #EED8AE;
-  color: #000000
+  color: #000000;
 }
 
 nav.custom_nav {
@@ -234,11 +305,11 @@ nav.custom_nav {
   color: white !important;
   top: 0;
   position: absolute;
+  z-index: 10;
+  box-shadow: none;
 }
 
-.sso_option .btn {
-  width: 100% !important;
-}
+.sso_option .btn { width: 100% !important; }
 
 .profile_pic.circle {
     vertical-align: middle;
@@ -247,9 +318,7 @@ nav.custom_nav {
     border: solid 3px rgba(255,255,255, 0.6);
 }
 
-.our-center {
-  margin:0 auto !important;
-}
+.our-center { margin:0 auto !important; }
 
 .alert-scroll-under {
   display: inline-block;
@@ -265,9 +334,7 @@ nav.custom_nav {
   margin-left: -0.375rem;
 }
 
-.drop {
-  color: #6B5936;
-}
+.drop { color: #6B5936; }
 
 .slider .slides li .caption {
   color: #26a69a;
@@ -306,15 +373,131 @@ nav.custom_nav {
   cursor: text;
 }
 
-.transform-text {
-  text-transform: capitalize !important;
+.transform-text { text-transform: capitalize !important; }
+
+a.remove-text { color: #ffffff !important; }
+
+.about-top {
+  position: relative;
+  background-image: url('<%= asset_path('about_bg.jpg') %>');
+  background-size: 100%;
+  padding: 20px;
+  height: 250px;
 }
 
-a.remove-text {
-  color: #ffffff !important;
+.about-header-content {
+  width: 70%;
+  margin: auto;
+  font-size: 65px;
+  font-weight: 200;
+  color: #fff;
+  position: relative;
+  top: 60px;
+  text-align: center;
 }
 
-h2.brand-logo.logo-property { 
+@media only screen and (max-width : 992px) {
+  .about-header-content { font-size: 40px; }
+}
+
+@media only screen and (min-width: 0) {
+  .about { padding: 50px; }
+}
+
+@media (min-width: 1200px) {
+  .about {
+    padding: 75px;
+    min-height: 100vh;
+  }
+}
+
+.about-content {
+  padding-bottom: 70px;
+  margin: auto;
+  font-size: 1.5em;
+  font-weight: 200;
+}
+
+.about-content h4 {
+  padding: 10px;
+  padding-left: 0;
+}
+
+.no-margin {
+  display: inline-block;
+  float: left;
+  width: 25%;
+}
+
+.stat-group { margin-top: 1rem; }
+
+.about-stats { margin: auto; }
+
+.about-stats-div { background: #e3efef; }
+
+.row.card-group {
+  padding: 0 30px;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+.profile-card .card-image img { height: 200px; }
+
+.col.padding-side-25 { padding: 10px 35px; }
+
+.col.padding-side-25 p { font-size: 20px; }
+
+.col.padding-side-25 h3 {
+  font-weight: 300;
+  text-align: center;
+}
+
+.milestones {
+  padding: 35px 10px 20px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.milestones .stats-large {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.feature-details {
+  bottom: 0;
+  color: #000;
+  text-align: center;
+  padding: 10px 10px 2px;
+  background: transparent;
+}
+
+.feature-title {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: -10px;
+}
+
+.card.feature-card {
+  margin-left: -12px;
+  margin-right: -10px;
+}
+
+#faq-row {
+  background: url(/assets/nearfooter.png);
+  padding: 20px 0;
+  margin-top: 9px;
+}
+
+#faq {
+  width: 65%;
+  margin: auto;
+}
+
+h2.brand-logo.logo-property {
   padding-left: 20px;
   font-family: 'Great Vibes', cursive;
   margin: 1.2rem 0;
