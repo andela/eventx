@@ -6,10 +6,9 @@ class EventMailer < ApplicationMailer
   end
 
   def new_subscribed_event(user, event)
-    puts "In the mail method **********************************************"
     @user = user
     @event = event
-    mail to: @user.email, subject: "New #{event.title} event "
-    puts "After sending mail"
+
+    mail to: @user.email, subject: "New #{event.category.name} event "
   end
 end

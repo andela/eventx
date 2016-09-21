@@ -4,13 +4,8 @@ class Notification::Notifier
   def self.notify_subscribers(event)
     setup
     find_subscribers(event)
-    puts 'before sending mail'
-    # EventMailer.new_subscribed_event(@subscribers.first, event).deliver_now
-    # puts 'Email should have been sent'
-    p '*' * 100
     @subscribers.each do |subscriber|
-      puts "Event Mailer called next ****************************************"
-      EventMailer.new_subscribed_event(subscriber, event).deliver_now
+      SendNotificationEmailJob.set(wait: 5.seconds).perform_later(subscriber, event)
     end
   end
 

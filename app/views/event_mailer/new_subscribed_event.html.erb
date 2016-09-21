@@ -1,9 +1,9 @@
-<h1>Hi, <%= @user.first_name %></h1>
 
-<p>A new <%= @event.title %> event going to take place on </p><br>
-<p>Event Details </p>
+<h1 style="background-color: rgba(232, 44, 12, .8); color: white; padding: 10px;">Hi, <%= @user.first_name %></h1>
+
+<p>A new <%= @event.category.name %> event going to take place on <%= @event.start_date %></p>
+<h3>Event Details </h3>
+<h4>Event Description</h4>
 <p><%= @event.description %></p>
+<h4>Event Location</h4>
 <p><%= @event.location %></p>
-<p>
-
-</p>
