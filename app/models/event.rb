@@ -155,6 +155,10 @@ class Event < ActiveRecord::Base
   end
 
   def publish_create_event
+    p "*" * 100
+    puts 'before broadcast'
     broadcast(:event_created, self)
+    puts 'after broadcast'
+    p "*" * 100
   end
 end

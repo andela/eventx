@@ -1,5 +1,8 @@
 class EventListener
   def event_created(event)
+    p "*" * 100
+    p "Event Created"
+    p "*" * 100
     ::Notification::Notifier.notify_subscribers(event)
   end
 
