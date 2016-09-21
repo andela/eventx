@@ -6,11 +6,36 @@
       <div class="col l12 m12">
         <h6>How did you find this event?</h6>
         <hr>
-        <div class="col l4 m4">
+        <div class="col l2 m4">
+        <%= image_tag "Twitter_image.jpg" %><br>
+        <%= f.label :event_source, "Twitter" %>
+        <%= f.radio_button(:event_source, "Twitter", class: "mod1") %>
+        </div>
+        <div class="col l2 m4">
         <%= image_tag "Twitter_image.jpg" %>
-        <!-- <p><input type="checkbox" id="test5" /><label for="test5">Twitter</label></p> -->
-        <%= f.label :event_source %>
-        <%= f.check_box :event_source %>
+        <%= f.label :event_source, "Facebook" %>
+        <%= f.radio_button(:event_source, "Facebook") %>
+        </div>
+        <div class="col l2 m4">
+        <%= image_tag "Twitter_image.jpg" %>
+        <%= f.label :event_source, "Facebook" %>
+        <%= f.radio_button(:event_source, "Facebook") %>
+        </div>
+        <div class="col l2 m4">
+        <%= image_tag "Twitter_image.jpg" %>
+        <%= f.label :event_source, "Facebook" %>
+        <%= f.radio_button(:event_source, "Facebook") %>
+        </div>
+        <div class="col l2 m4">
+        <%= image_tag "Twitter_image.jpg" %>
+        <%= f.label :event_source, "Facebook" %>
+        <%= f.radio_button(:event_source, "Facebook") %>
+        </div>
+        <div class="col l2 m4">
+        <%= image_tag "Twitter_image.jpg" %>
+        <%= f.label :event_source, "Other" %>
+        <%= f.radio_button(:event_source, "#{params[:event_source]}") %>
+        <%= f.text_field :event_source, class: "mod" %>
         </div>
       </div>
       <hr>
