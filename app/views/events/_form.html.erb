@@ -39,7 +39,7 @@
               <label>Location
                 <span>*</span>
               </label>
-              <%= f.text_field :location, class: "validate", placeholder: "Enter Location where it will be held", required: true %>
+              <%= f.text_field :location, class: "validate", placeholder: "Enter Location where it will be held", required: true, disabled: disable %>
               <%= f.hidden_field :map_url, placeholder: "Enter Location where it will be held", disabled: disable %>
             </div>
             <div class="input-field col l5 m5 s10">
