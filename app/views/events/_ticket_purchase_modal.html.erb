@@ -9,33 +9,32 @@
         <div class="col l2 m4">
         <%= image_tag "Twitter_image.jpg" %><br>
         <%= f.label :event_source, "Twitter" %>
-        <%= f.radio_button(:event_source, "Twitter", class: "mod1") %>
+        <%= f.radio_button(:event_source, "Twitter", class: "modal-radio") %>
         </div>
         <div class="col l2 m4">
         <%= image_tag "Twitter_image.jpg" %>
         <%= f.label :event_source, "Facebook" %>
-        <%= f.radio_button(:event_source, "Facebook") %>
+        <%= f.radio_button(:event_source, "Facebook", class: "modal-radio") %>
         </div>
         <div class="col l2 m4">
         <%= image_tag "Twitter_image.jpg" %>
         <%= f.label :event_source, "Facebook" %>
-        <%= f.radio_button(:event_source, "Facebook") %>
+        <%= f.radio_button(:event_source, "Facebook", class: "modal-radio") %>
         </div>
         <div class="col l2 m4">
         <%= image_tag "Twitter_image.jpg" %>
         <%= f.label :event_source, "Facebook" %>
-        <%= f.radio_button(:event_source, "Facebook") %>
+        <%= f.radio_button(:event_source, "Facebook", class: "modal-radio") %>
         </div>
         <div class="col l2 m4">
         <%= image_tag "Twitter_image.jpg" %>
         <%= f.label :event_source, "Facebook" %>
-        <%= f.radio_button(:event_source, "Facebook") %>
+        <%= f.radio_button(:event_source, "Facebook", class: "modal-radio") %>
         </div>
         <div class="col l2 m4">
         <%= image_tag "Twitter_image.jpg" %>
         <%= f.label :event_source, "Other" %>
-        <%= f.radio_button(:event_source, "#{params[:event_source]}") %>
-        <%= f.text_field :event_source, class: "mod" %>
+        <%= f.radio_button(:event_source, "#{params[:event_source]}", class: "modal-radio") %>
         </div>
       </div>
       <hr>
