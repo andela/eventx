@@ -5,6 +5,9 @@ class Ability
     user ||= User.new
     can [:read, :tickets], Event
     can :read, Sponsor
+    alias_action :create, :read, :update, :destroy, :to => :crud
+    alias_action :create, :read, :update, :to => :cru
+
 
     if user.event_staffs.present?
       can :scan, Event do |event|
@@ -26,6 +29,32 @@ class Ability
           booking.event.start_date > Time.now &&
           booking.payment_status == "paid"
       end
+    end
+
+    event ||= Event.new
+    event_staff = EventStaff.find_by(user_id: user.id, event_id: event.id)
+    # binding.pry
+    if event_staff.present?
+      if event_staff.collaborator?
+        can :manage, [Event, Task, EventStaff] 
+      elsif event_staff.manager?
+        can :update, Event
+        can :crud, [Task, EventStaff]
+      elsif event_staff.sponsor?
+        can :read, [Event, EventStaff]
+        can :crud, [Task]
+      elsif event_staff.logistics?
+        can :read, [Event, EventStaff]
+        can :crud, Task
+      elsif event_staff.volunteer?
+        can :read, [Event, EventStaff]
+        can :cru, Task, :user_id => user.id
+      elsif event_staff.ticket_seller?
+        can :read, [Event, EventStaff]
+        can :cru, Task, :user_id => user.id
+      end
+    else
+      cannot :read, Event, :event_id => event.id
     end
 
     can [:create, :paypal_hook, :tickets, :read], Booking

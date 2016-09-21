@@ -1,6 +1,6 @@
 <div class="row">
   <div class="dashboard-search">
-    <h5 class="col 12"><i class="fa fa-cogs fa-lg" aria-hidden="true"></i> Manage Staff <small>(<%= @event.title%>)</small></h5>
+    <h5 class="col 12"> Manage Staff </h5>
   </div>
 </div>
 
@@ -8,17 +8,19 @@
   <div class="staff">
     <ul class="collection with-header">
       <% @event.event_staffs.each do |staff| %>
-        <%= render "event_staffs", staff: staff %>
+        <%= render "manager_profiles/event_staffs", staff: staff %>
       <% end %>
     </ul>
   </div>
 
   <section id="content" >
     <%= form_tag do |f| %>
+      <% disable ||= false %>
+      <% allow_delete ||= true %>
       <div class="col s12">
         <div class="container">
           <div class="row">
-            <div class="input-field col s3">
+            <div class="text-field col s3">
               <%= select_tag(:role, options_for_select(@roles))%>
             </div>
             <div class="input-field col offset-s1 s5">
@@ -27,7 +29,8 @@
             </div>
             <div class="input-field col s3">
               <%= button_tag  "Submit", id: "save_staff",
-              class: "btn waves-effect waves-light home_button center z-depth-0"%>
+              class: "btn waves-effect waves-light home_button center z-depth-0",
+                url: :save_staffs_path %>
             </div>
           </div>
         </div>

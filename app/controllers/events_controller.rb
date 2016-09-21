@@ -1,23 +1,20 @@
 class EventsController < ApplicationController
-  load_and_authorize_resource class: "Event"
+  # load_and_authorize_resource class: "Event"
   before_action :authenticate_user, except: [:show, :index]
   before_action :set_events, only:  [
-    :show,
-    :edit,
-    :update,
-    :enable,
-    :disable,
-    :manage,
-    :generate,
-    :scan,
-    :tickets_report
-  ]
+                                      :show,
+                                      :edit,
+                                      :update,
+                                      :enable,
+                                      :disable,
+                                      :manage,
+                                      :generate,
+                                      :scan,
+                                      :tickets_report
+                                    ]
   before_action :set_sponsor
   before_action :subscription_status, only: [:show]
-
   layout "admin", only: [:tickets, :tickets_report]
-  # layout "event_admin", only: [:manage]
-
   respond_to :html, :json, :js
 
   def new
@@ -82,10 +79,12 @@ class EventsController < ApplicationController
                      else
                        @event.errors.full_messages.join("; ")
                      end
+    @event.event_staffs.create(user_id: current_user.id, role: "collaborator")
     respond_with(@event)
   end
 
   def manage
+    @sponsors = @event.sponsors.group_by(&:level)
     @roles = Event.get_roles
   end
 

@@ -1,7 +1,6 @@
 class ManagerProfilesController < ApplicationController
   before_action :authenticate_user
   before_action :managers_current_event
-  layout "admin", only: :manage_staffs
 
   def create
     @manager_profile = ManagerProfile.new(manager_profile_params)
@@ -39,7 +38,9 @@ class ManagerProfilesController < ApplicationController
   end
 
   def manage_staffs
+    # @event
     @roles = Event.get_roles
+    redirect_to :back 
   end
 
   private
