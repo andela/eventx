@@ -6,10 +6,14 @@
     <%= select_tag(:role, options_for_select(@roles))%>
     <input type="hidden" id = "staff_id" name = "user_id" />
   </div>
-    <div class="checked_div hide"></div>
+  <div class="checked_div hide"></div>
   <div class="col s4">
     <button type="button" id="add_staff" class="btn btn-circle staff_add_btn">
       Add Staff
     </button>
+  </div>
+  <div id="event_subdomain" class="input-field col s12 hide">
+    Please choose a preferred subdomain for your collaborative event.
+    <%= f.text_field :subdomain, required: true, placeholder: 'Subdomain' %>
   </div>
 </div>

@@ -61,15 +61,6 @@ $(document).ready(function () {
       return true;
     }
   };
-  $('.add_staff_field').autocomplete({
-    delay: 500,
-    minLength: 1,
-    source: '/lookup_staffs',
-    select: function (event, ui) {
-      var staffId = ui.item.data;
-      $('#staff_id').val(staffId);
-    }
-  });
   $('.event_staffs').on('click', '.remove_staff', function () {
     $(this).parents('.chip').hide('slow', function () {
       $(this).remove();
@@ -86,6 +77,9 @@ $(document).ready(function () {
         notify('This user has been added already');
       } else {
         $('#event_staffs').append(generateHtml(data));
+        if (staffRole == 'event_manager') {
+          $('#event_subdomain').removeClass('hide');
+        }
         notify('Staff has been successfuly added');
         $('#staff_field_id').val('');
         $('#staff_id').val('');
