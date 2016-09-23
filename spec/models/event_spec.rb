@@ -8,6 +8,9 @@ RSpec.describe Event, type: :model do
 
   describe "event associations" do
     it { is_expected.to have_many :reviews }
+    it { is_expected.to have_many :subscriptions }
+    it { is_expected.to have_many :subscribers }
+    it { is_expected.to have_many :tasks }
   end
 
   describe "#get_roles" do
@@ -33,10 +36,5 @@ RSpec.describe Event, type: :model do
       params = { event_name: "Blessings wedding" }
       expect(Event.find_event(params).as_json.first["description"]).to eq desc
     end
-  end
-
-  describe "associations" do
-    it { is_expected.to have_many :subscriptions }
-    it { is_expected.to have_many :subscribers }
   end
 end

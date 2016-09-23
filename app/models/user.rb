@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :manager_profile
   has_many :events, through: :manager_profile
   has_many :reviews, dependent: :destroy
+  has_many :tasks
 
   def self.from_omniauth(auth)
     return auth unless auth

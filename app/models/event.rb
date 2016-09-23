@@ -20,6 +20,7 @@ class Event < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :subscriptions
   has_many :subscribers, through: :subscriptions, source: :user
+  has_many :tasks
 
   belongs_to :manager_profile
   acts_as_tenant(:manager_profile)

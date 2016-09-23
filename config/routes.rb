@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get ":id/scan"           => :scan, as: :gatekeeper
     get ":id/tickets"        => :tickets, as: :event_tickets
     get ":id/tickets-report" => :tickets_report, as: :tickets_report
+    get ":id/manage"         => :manage, as: :manage_event
   end
 
   scope controller: :welcome do
@@ -62,6 +63,7 @@ Rails.application.routes.draw do
     resources :sponsors
     resources :reviews, only: [:create]
     resources :subscriptions, only: [:new, :create, :destroy]
+    resources :tasks
   end
 
   get "/unattend", to: "attendees#destroy", as: :unattend

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614215417) do
+ActiveRecord::Schema.define(version: 20160923101552) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 20160614215417) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "event_roles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "event_staffs", force: :cascade do |t|
     t.integer  "role"
     t.integer  "user_id"
@@ -77,6 +84,13 @@ ActiveRecord::Schema.define(version: 20160614215417) do
   add_index "event_staffs", ["event_id"], name: "index_event_staffs_on_event_id"
   add_index "event_staffs", ["user_id", "event_id"], name: "index_event_staffs_on_user_id_and_event_id", unique: true
   add_index "event_staffs", ["user_id"], name: "index_event_staffs_on_user_id"
+
+  create_table "event_staffs_roles", id: false, force: :cascade do |t|
+    t.integer "event_staff_id"
+    t.integer "role_id"
+  end
+
+  add_index "event_staffs_roles", ["event_staff_id", "role_id"], name: "index_event_staffs_roles_on_event_staff_id_and_role_id"
 
   create_table "event_templates", force: :cascade do |t|
     t.string   "name"
@@ -151,6 +165,17 @@ ActiveRecord::Schema.define(version: 20160614215417) do
   add_index "reviews", ["event_id"], name: "index_reviews_on_event_id"
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], name: "index_roles_on_name"
+
   create_table "sponsors", force: :cascade do |t|
     t.string   "name"
     t.string   "logo"
@@ -175,6 +200,18 @@ ActiveRecord::Schema.define(version: 20160614215417) do
   add_index "subscriptions", ["event_id"], name: "index_subscriptions_on_event_id"
   add_index "subscriptions", ["manager_profile_id"], name: "index_subscriptions_on_manager_profile_id"
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "completed_status", default: false
+    t.integer  "event_id"
+    t.integer  "user"
+    t.integer  "assigner"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "tasks", ["event_id"], name: "index_tasks_on_event_id"
 
   create_table "ticket_transactions", force: :cascade do |t|
     t.integer  "booking_id"
