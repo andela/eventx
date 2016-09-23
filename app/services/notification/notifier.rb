@@ -26,10 +26,11 @@ class Notification::Notifier
 
     def self.message(subscriber, event)
       "<h4>Hi, #{subscriber.first_name}</h4>"\
-      "<p>A new #{event.category.name} event going to take place on #{event.start_date.strftime('%b %d %Y')}</p>"\
+      "<p>A new #{event.category.name} event is going to take place on #{event.start_date.strftime('%b %d %Y')}</p>"\
       "<h5>Event Details</h5>"\
-      "<p>#{event.description}</p>"\
-      "<p>#{event.location}</p>"\
+      "<p><strong>Host: </strong>#{event.manager_profile.user.first_name}"\
+      "<p><strong>Description: </strong>#{event.description}</p>"\
+      "<p><strong>Location: </strong>#{event.location}</p>"\
       "<a href='/events/#{event.id}' class='btn waves-effect waves-light'>Attend This Event</a>"
     end
 

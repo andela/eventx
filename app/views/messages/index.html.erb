@@ -7,7 +7,7 @@
       <tr>
         <td>
           <a href='/dashboard/messages/<%=message.id%>' class="message">
-          <h5><%= message.title%></h5>
+          <h6><%= message.title%></h6>
           </a>
         </td>
         <td>
@@ -18,3 +18,5 @@
     </table>
   </div>
 </div>
+
+<%= will_paginate @messages %>

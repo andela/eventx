@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   layout 'admin'
   before_action :find_message, only: [:show, :destroy]
   def index
-    @messages = Message.all.order('created_at ASC')
+    @messages = Message.paginate(page: params[:page], per_page: 5)
   end
 
   def show
