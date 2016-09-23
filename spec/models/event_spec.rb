@@ -12,7 +12,7 @@ RSpec.describe Event, type: :model do
 
   describe "#get_roles" do
     it "returns event roles" do
-      result = { "Event Staff" => "event_staff",
+      result = { "Volunteer" => "event_staff",
                  "Gate Keeper" => "gate_keeper",
                  "Event Manager" => "event_manager",
                  "Super Admin" => "super_admin" }

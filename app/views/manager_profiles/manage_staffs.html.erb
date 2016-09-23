@@ -3,20 +3,20 @@
     <h5 class="col 12"> Manage Staff </h5>
   </div>
 </div>
-
+<% disable_create = false unless disable_create %>
+<% disable_delete = false unless disable_delete %>
+<% #binding.pry %>
 <div class="wrapper">
   <div class="staff">
     <ul class="collection with-header">
       <% @event.event_staffs.each do |staff| %>
-        <%= render "manager_profiles/event_staffs", staff: staff %>
+        <%= render "manager_profiles/event_staffs", staff: staff, disable_delete: disable_delete %>
       <% end %>
     </ul>
   </div>
-
+  <% unless disable_create %>
   <section id="content" >
     <%= form_tag do |f| %>
-      <% disable ||= false %>
-      <% allow_delete ||= true %>
       <div class="col s12">
         <div class="container">
           <div class="row">
@@ -37,4 +37,5 @@
       </div>
     <% end %>
   </section>
+  <% end %>
 </div>

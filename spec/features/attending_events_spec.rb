@@ -2,21 +2,18 @@ require "rails_helper"
 
 RSpec.feature "ViewEvents", type: :feature, js: true do
   before(:each) do
-    manager =
-      create(:manager_profile, user: create(:user))
-    create(:event, manager_profile: manager)
-    old = build(:old_event, manager_profile: manager)
-    old.save(validate: false)
-    create(:sport_event, manager_profile: manager)
+    manager = create(:manager_profile, user: create(:user))
+    event = create(:event, manager_profile: manager)
+    ordinary_user = create(:regular_user)
+    collaborator = create(:event_staff, create(:regular_user))
+    create()
 
     allow_any_instance_of(BookingsController).to receive(:trigger_booking_mail).
       and_return("")
   end
 
-  scenario "User searches for an Event" do
-    visit root_path
-    fill_in "Search Event", with: "Sports is cool"
-    find_button("Search").trigger("click")
+  scenario "Non-team Members" do
+    it "should not have access to the dashboard"
     expect(page).not_to have_content("Blessings wedding")
     expect(page).to have_content("Sports is cool")
     expect(page.current_path).to eq "/events"

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get "popular"            => :popular
     get ":id/enable"         => :enable, as: :enable_event
     get ":id/disable"        => :disable, as: :disable_event
-    get ":id/manage"         => :manage, as: :manage_event 
+    get ":id/administer"     => :administer, as: :manage_event 
     get ":id/generate"       => :generate, as: :generate_event
     get ":id/scan"           => :scan, as: :gatekeeper
     get ":id/tickets"        => :tickets, as: :event_tickets

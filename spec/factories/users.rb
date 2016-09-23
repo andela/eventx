@@ -11,5 +11,15 @@ FactoryGirl.define do
     trait :manager do
       manager_profile
     end
+
+    factory :regular_user, parent: :user do
+      status 0
+      first_name  { Faker::Name.first_name }
+      last_name  { Faker::Name.last_name }
+      email { Faker::Internet.email }
+      profile_url { Faker::Internet.url('graph.facebook.com') }
+      provider "facebook"
+      uid { Faker::Lorem.characters(16) }
+    end
   end
 end

@@ -6,7 +6,9 @@
   <p><%= staff.user.first_name + " " + staff.user.last_name.to_s %><br>
    <span class="emails"><%= staff.user.email %></span>
   </p>
-  <a href="<%= remove_staff_path(event_staff_id: staff, event_id: @event.id) %>"
+  <% unless disable_delete %>
+    <a href="<%= remove_staff_path(event_staff_id: staff, event_id: @event.id) %>"
     data-confirm="Are you sure you want to delete this staff ?">
-    <i class="material-icons secondary-content">delete</i></a>
+      <i class="material-icons secondary-content">delete</i></a>
+  <% end %>
 </li>

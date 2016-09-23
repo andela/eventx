@@ -13,6 +13,9 @@ class Ability
       can :scan, Event do |event|
         user == event.event_staffs.find_by(user_id: user.id, role: 1).user
       end
+      can :administer, Event do |event|
+        event.event_staffs.find_by(user_id: user.id).present?
+      end
     end
 
     if user.event_manager?
@@ -33,10 +36,9 @@ class Ability
 
     event ||= Event.new
     event_staff = EventStaff.find_by(user_id: user.id, event_id: event.id)
-    # binding.pry
     if event_staff.present?
       if event_staff.collaborator?
-        can :manage, [Event, Task, EventStaff] 
+        can :manage, [event, Task, event.event_staffs]
       elsif event_staff.manager?
         can :update, Event
         can :crud, [Task, EventStaff]
@@ -48,13 +50,11 @@ class Ability
         can :crud, Task
       elsif event_staff.volunteer?
         can :read, [Event, EventStaff]
-        can :cru, Task, :user_id => user.id
+        can :cru, [Task], user_id: user.id
       elsif event_staff.ticket_seller?
         can :read, [Event, EventStaff]
-        can :cru, Task, :user_id => user.id
+        can :cru, [Task], user_id: user.id
       end
-    else
-      cannot :read, Event, :event_id => event.id
     end
 
     can [:create, :paypal_hook, :tickets, :read], Booking

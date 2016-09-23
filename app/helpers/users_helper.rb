@@ -12,9 +12,7 @@ module UsersHelper
       github: { name: "Github", class:
         "grey darken-4", icon_class: "fa-github" },
       tumblr: { name: "Tumblr", class:
-        "blue-grey darken-3", icon_class: "fa-tumblr" },
-      local: { name: "Localhost", class:
-        "green", icon_class: "fa-unlock-alt" }
+        "blue-grey darken-3", icon_class: "fa-tumblr" }
     }
   end
 end

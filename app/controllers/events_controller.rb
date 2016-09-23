@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  # load_and_authorize_resource class: "Event"
+  load_and_authorize_resource class: "Event"
   before_action :authenticate_user, except: [:show, :index]
   before_action :set_events, only:  [
                                       :show,
@@ -7,7 +7,7 @@ class EventsController < ApplicationController
                                       :update,
                                       :enable,
                                       :disable,
-                                      :manage,
+                                      :administer,
                                       :generate,
                                       :scan,
                                       :tickets_report
@@ -83,7 +83,7 @@ class EventsController < ApplicationController
     respond_with(@event)
   end
 
-  def manage
+  def administer
     @sponsors = @event.sponsors.group_by(&:level)
     @roles = Event.get_roles
   end
