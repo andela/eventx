@@ -6,10 +6,9 @@ class User < ActiveRecord::Base
   has_one :manager_profile
   has_many :events, through: :manager_profile
   has_many :reviews, dependent: :destroy
-  #remove later
-  #has_and_belongs_to_many :subscriptions, class_name: "Category"
+  has_many :messages, dependent: :destroy
   has_many :notification_subscriptions
-  has_many :subscriptions, through: :notification_subscriptions, source: "category"
+  has_many :subscriptions, through: :notification_subscriptions, source: "category", dependent: :destroy
 
   def self.from_omniauth(auth)
     return auth unless auth

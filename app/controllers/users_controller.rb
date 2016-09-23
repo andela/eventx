@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user
   respond_to :json, :html, :js
-  layout "admin", only: :show
+  layout "admin", only: [:show, :settings]
 
   def show
     if current_user.event_manager?
@@ -41,6 +41,15 @@ class UsersController < ApplicationController
   def fetch_user_info
     user_info = User.user_info(user_info_params)
     render json: user_info
+  end
+
+  def settings
+    @categories = Category.all.select { |category|
+                                        !current_user.subscriptions.include? category
+                                      }
+                                      .map { |c| [c.name, c.id] }
+    @subscription = NotificationSubscription.new
+    @subscriptions = current_user.notification_subscriptions
   end
 
   private

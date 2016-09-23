@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919220826) do
+ActiveRecord::Schema.define(version: 20160922140345) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -138,12 +138,23 @@ ActiveRecord::Schema.define(version: 20160919220826) do
     t.string   "domain"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.string   "sender"
+    t.boolean  "read",       default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "notification_subscriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "category_id"
-    t.boolean  "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "inbox_notification"
+    t.boolean  "email_notification"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "notification_subscriptions", ["user_id", "category_id"], name: "index_notification_subscriptions_on_user_id_and_category_id"

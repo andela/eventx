@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root "welcome#index"
 
   scope path: "/events", controller: :events do
@@ -46,6 +47,19 @@ Rails.application.routes.draw do
     get "/dashboard" => :show
     get "/lookup_staffs"      => :lookup_staff_emails
     get "/user_info/:user_id" => :fetch_user_info
+    get "dashboard/settings"  => :settings
+  end
+
+  scope controller: :notifications do
+    post "dashboard/subscriptions/new"          => :create
+    post "dashboard/subscriptions/delete/:id"   => :destroy
+    post "dashboard/subscriptions/update/:id"   => :update
+  end
+
+  scope controller: :messages do
+    get   'dashboard/messages'       => :index
+    get   'dashboard/messages/:id'   => :show
+    post  'dashboard/messages/:id'   => :destroy
   end
 
   scope controller: :printer do

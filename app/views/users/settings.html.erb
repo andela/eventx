@@ -1,0 +1,41 @@
+ <ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header active"><%= icon('envelope') %> <strong>Subscribe To Notifications</strong></div>
+      <div class="collapsible-body">
+      <br>
+        <div class="container">
+          <ul class="collection with-header">
+            <li class="collection-header teal lighten-2 white-text"><h5>Your Subscriptions</h5></li>
+            <% @subscriptions.each do |subscription| %>
+              <li class="collection-item" style="overflow: hidden;">
+                <div><%=subscription.category.name%><%=link_to "Unsubscribe".html_safe, {controller: :notifications, action: 'destroy', id: subscription.id},method: :destroy, class: 'secondary-content btn waves-effect waves-light red', data: {confirm: "Are you sure you want to unsubscribe"}%></div>
+              </li>
+            <% end %>
+          </ul>
+          <br><br>
+          <h6>Subscribe To A New Category</h6>
+          <%= form_for @subscription, url: {controller: :notifications, action: 'create'} do |f| %>
+            <p>
+              <%= f.label :category_id, 'Select A Category' %>
+              <%= f.select(:category_id, options_for_select(@categories), class: 'browser-default') %>
+            </p>
+            <p>
+              <%= f.check_box :email_notification, class: 'filled-in' %>
+              <%= f.label :email_notification, 'Would You Like To Receive Email Notifications?' %>
+            </p>
+            <p>
+              <%= f.submit "Subscribe", class: "btn waves-effect waves-light" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>
+  </ul>

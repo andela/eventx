@@ -27,4 +27,12 @@ module ApplicationHelper
     end
     "<div class='row error'><ul>#{content}</ul></div>".html_safe
   end
+
+  def message_link(messages)
+    if messages.unread.count.zero?
+      "Inbox<span class='badge'>#{messages.count}</span>".html_safe
+    else
+      "Inbox<span class='new badge'>#{messages.unread.count}</span>".html_safe
+    end
+  end
 end
