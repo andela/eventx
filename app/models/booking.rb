@@ -1,6 +1,4 @@
 class Booking < ActiveRecord::Base
-  attr_accessor :event_source
-
   before_create :add_uniq_id
   before_save :calculate_amount
   after_update :send_mail
