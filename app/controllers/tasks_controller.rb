@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   load_and_authorize_resource
-  before_action :find_event, :all_tasks, :find_task
-  before_action :set_task, only: [:edit, :update, :destroy]
+  before_action :find_event
 
   layout "admin"
   
@@ -22,7 +21,7 @@ class TasksController < ApplicationController
   end
   
   def edit
-    @task = Task.find_by(params[:id, :event_id: @event.id])
+    # @task = Task.find_by(params[:id, :event_id: @event.id])
   end
   
   def create
@@ -52,15 +51,11 @@ class TasksController < ApplicationController
 
   private
 
-    def set_task
-      @task = Task.find_by(params[:id, :event_id: @event.id])
-    end
-
     def find_event
       @event = Event.find_by(id: params[:event_id])
     end
     
     def task_params
-      params.require(:task).permit(:name, :user, :assigner, :completed_status)
+      params.require(:task).permit(:name, :user, :completed_status)
     end
 end

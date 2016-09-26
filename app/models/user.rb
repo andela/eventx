@@ -67,4 +67,12 @@ class User < ActiveRecord::Base
     booking = Booking.where(user_id: user_id).pluck(:event_id)
     Event.find(booking)
   end
+
+  def self.get_team_events(user)
+    user_events = []
+    user.event_staffs.each do |position| 
+      user_events.push(Event.find(position.event_id))
+    end
+    user_events
+  end
 end

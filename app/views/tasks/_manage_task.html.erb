@@ -1,0 +1,8 @@
+<div class="manage-task">
+  <%= link_to event_task_path(@event.id, task.id), method: :delete, class: "delete-task-icon", remote: true, data: { confirm: "Are you sure?" } do %>
+    <i class="material-icons">delete</i>
+  <% end %>
+  <%= link_to edit_event_task_path(@event.id, task.id), remote: true, class: "edit-task-icon" do %>
+    <i class="material-icons" id="addTask">mode_edit</i>
+  <% end %>
+</div>

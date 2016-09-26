@@ -1,25 +1,18 @@
-<p id="notice"><%= notice %></p>
+r<div class="row">
+  <div class="dashboard-search">
+    <h5 class="col 12"><i class="fa fa-credit-card fa-lg" aria-hidden="true"></i> All Tasks <small>(<%= @event.title%>)</small></h5>
+  </div>
+</div>
 
-<h1>Listing Checks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @checks.each do |check| %>
-      <tr>
-        <td><%= link_to 'Show', check %></td>
-        <td><%= link_to 'Edit', edit_check_path(check) %></td>
-        <td><%= link_to 'Destroy', check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Check', new_check_path %>
+<div class="event-tasks-main center">
+  <div id="right">
+    <div class="row">
+      <div class="col l6">
+        <% #= can_add_event_task %>
+      </div>
+    </div>
+    <% #= render partial: "event_tasks" %>
+  </div>
+</div>
+<div id="toast"></div>
+<% #= render partial: "task_modal" %>

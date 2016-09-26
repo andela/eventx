@@ -5,6 +5,7 @@ class Ability
     user ||= User.new
     can [:read, :tickets], Event
     can :read, Sponsor
+    can :manage, Task
 
     if user.event_staffs.present?
       can :scan, Event do |event|

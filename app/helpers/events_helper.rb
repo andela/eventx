@@ -53,6 +53,12 @@ module EventsHelper
     Time.now > event.end_date
   end
 
+  def manage_events_link
+    if User.get_user_events(current_user)
+      link_to(icon("home") + " Events I Belong To", administer_event_path)
+    end
+  end
+
   def cummulative_rating(event)
     all_ratings ||= event.reviews.map(&:rating).compact
     total_rating = all_ratings.reduce(:+)
@@ -64,4 +70,5 @@ module EventsHelper
   def converter(amt)
     number_to_currency(amt, unit: "$")
   end
+
 end

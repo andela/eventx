@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   scope path: "/events", controller: :events do
     get "popular"            => :popular
+    get "administer"         => :administer, as: :administer_event
     get ":id/enable"         => :enable, as: :enable_event
     get ":id/disable"        => :disable, as: :disable_event
     get ":id/generate"       => :generate, as: :generate_event
     get ":id/scan"           => :scan, as: :gatekeeper
     get ":id/tickets"        => :tickets, as: :event_tickets
     get ":id/tickets-report" => :tickets_report, as: :tickets_report
-    get ":id/manage"         => :manage, as: :manage_event
   end
 
   scope controller: :welcome do
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   end
 
   scope controller: :users do
-    get "/dashboard" => :show
+    get "/dashboard"          => :show
     get "/lookup_staffs"      => :lookup_staff_emails
     get "/user_info/:user_id" => :fetch_user_info
   end

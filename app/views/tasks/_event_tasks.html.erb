@@ -1,0 +1,16 @@
+<div id="eventTasks">
+<div class="row gold-tasks">
+  <h5><% #= show_level("Gold Tasks", "gold")%></h5>
+  <% #= render partial: "tasks/list_tasks", locals: { tasks: group_by_level("gold") }%>
+</div>
+
+<div class="row silver-tasks">
+  <h5><% #= show_level("Silver Tasks", "silver")%></h5>
+  <% #= render partial: "tasks/list_tasks", locals: { tasks: group_by_level("silver") }%>
+</div>
+
+<div class="row bronze-tasks">
+  <h5><% #= show_level("Bronze Tasks", "bronze")%></h5>
+  <% #= render partial: "tasks/list_tasks", locals: { tasks: group_by_level("bronze") }%>
+</div>
+</div>
