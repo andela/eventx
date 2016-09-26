@@ -1,9 +1,0 @@
-Hi, <%= @user.first_name %>
-
-A new <%= @event.category.name %> event going to take place on <%= @event.start_date.strftime("%b %d %Y") %>
-Event Details
-<%= @event.description %>
-<%= @event.location %>
-
-<%= link_to "Click to Subscribe", event_path(@event.id) %>
-

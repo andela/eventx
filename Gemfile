@@ -58,6 +58,7 @@ group :development, :test do
   gem "letter_opener"
   gem "selenium-webdriver", "~> 2.53", ">= 2.53.4"
   gem 'capybara-email', '~> 2.5'
+  gem 'sidekiq', '~> 4.2', '>= 4.2.1'
 end
 
 group :development do

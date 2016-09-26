@@ -78,4 +78,10 @@ RSpec.describe User, type: :model do
       expect(User.user_role("event_manager")).to eq "Event Manager"
     end
   end
+
+  context 'Notification Associations' do
+    it { should have_many :notification_subscriptions }
+    it { should have_many :subscriptions }
+    it { should have_many :messages }
+  end
 end

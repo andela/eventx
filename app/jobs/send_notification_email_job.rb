@@ -3,6 +3,6 @@ class SendNotificationEmailJob < ActiveJob::Base
 
   def perform(user, event)
     @user = user
-    EventMailer.new_subscribed_event(@user, event).deliver_now
+    NotificationsMailer.new_subscribed_event(@user, event).deliver_later
   end
 end
