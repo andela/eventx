@@ -24,6 +24,10 @@ class EventsController < ApplicationController
     @roles = Event.get_roles
   end
 
+  def show_domain
+    show
+  end
+
   def index
     @categories = Category.list
     @events = Event.find_event(search_params)
@@ -127,7 +131,7 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(
       :title, :description, :start_date, :end_date, :category_id, :location,
-      :venue, :image, :template_id, :map_url, :event_template_id,
+      :venue, :image, :template_id, :map_url, :event_template_id, :subdomain,
       ticket_types_attributes: [:id, :_destroy, :name, :quantity, :price],
       highlights_attributes:   [:id, :_destroy, :day, :title, :description,
                                 :start_time, :end_time, :image, :image_title],

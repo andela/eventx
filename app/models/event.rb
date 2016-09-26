@@ -37,6 +37,7 @@ class Event < ActiveRecord::Base
 
   after_create :notify_manager_subscribers
   after_update :notify_event_subscribers
+  before_save :downcase_subdomain
 
   # scope
   scope :recent_events, lambda {
@@ -149,5 +150,9 @@ class Event < ActiveRecord::Base
 
   def event_subscribers
     subscribers.map(&:email).compact
+  end
+
+  def downcase_subdomain
+    self.subdomain = self.subdomain.downcase
   end
 end

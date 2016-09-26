@@ -40,8 +40,39 @@ class ApplicationController < ActionController::Base
   def check_domain
     subdomain = modify(request.subdomain)
     excluded_subdomains = %w[eventx admin www event]
-    unless subdomain.empty? || excluded_subdomains.include?(subdomain)
-      set_tenant subdomain
+    if excluded_subdomains.include?(subdomain) || subdomain.empty?
+      redirect_to_manager_subdomain
+    else
+      check_if_event_or_manager_subdomain subdomain
+    end
+  end
+
+  def check_if_event_or_manager_subdomain(subdomain)
+    manager = ManagerProfile.find_by(subdomain: subdomain)
+    if manager.nil?
+      get_event_domain subdomain
+    else
+      set_tenant manager
+    end
+  end
+
+  def get_event_domain(subdomain)
+    event = Event.find_by(subdomain: subdomain)
+    if event.nil?
+      show_invalid_domain_error
+    else
+      redirect_to subdomain: event.subdomain
+    end
+  end
+
+  def show_invalid_domain_error
+    flash[:info] = invalid_subdomain
+    render file: "public/custom_404.html", layout: false
+  end
+
+  def redirect_to_manager_subdomain
+    if current_user && current_user.event_manager?
+      redirect_to subdomain: current_user.manager_profile.subdomain
     end
   end
 
@@ -55,13 +86,12 @@ class ApplicationController < ActionController::Base
     request.format.json?
   end
 
-  def set_tenant(subdomain)
-    manager = ManagerProfile.find_by(subdomain: subdomain)
-    if manager.nil?
-      flash[:info] = invalid_subdomain
-      render file: "public/custom_404.html", layout: false
+  def set_tenant(manager)
+    if current_user
+      ActsAsTenant.current_tenant = manager
+    else
+      redirect_to subdomain: 'www'
     end
-    ActsAsTenant.current_tenant = manager
   end
 
   def decoded_auth_token
