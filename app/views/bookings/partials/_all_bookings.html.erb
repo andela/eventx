@@ -25,8 +25,8 @@
         <td><%= number_to_currency booking.amount %></td>
         <td><%= booking.user_tickets_count %></td>
         <td><%= booking.uniq_id %></td>
-        <% event_analytics = booking.user_tickets.first.event_source %>
-        <td class="<%= event_analytics %>"><%= event_analytics %></td>
+        <% event_source = booking.user_tickets.first.event_source %>
+        <td class="<%= event_source %>"><%= event_source %></td>
       </tr>
     <% end %>
     </tbody>
