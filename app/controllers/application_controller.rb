@@ -43,25 +43,16 @@ class ApplicationController < ActionController::Base
     if excluded_subdomains.include?(subdomain) || subdomain.empty?
       redirect_to_manager_subdomain
     else
-      check_if_event_or_manager_subdomain subdomain
+      get_manager_by_subdomain subdomain
     end
   end
 
-  def check_if_event_or_manager_subdomain(subdomain)
+  def get_manager_by_subdomain(subdomain)
     manager = ManagerProfile.find_by(subdomain: subdomain)
     if manager.nil?
-      get_event_domain subdomain
-    else
-      set_tenant manager
-    end
-  end
-
-  def get_event_domain(subdomain)
-    event = Event.find_by(subdomain: subdomain)
-    if event.nil?
       show_invalid_domain_error
     else
-      redirect_to subdomain: event.subdomain
+      set_tenant manager
     end
   end
 
@@ -90,6 +81,7 @@ class ApplicationController < ActionController::Base
     if current_user
       ActsAsTenant.current_tenant = manager
     else
+      flash[:notice] = unauthorised_subdomain
       redirect_to subdomain: 'www'
     end
   end

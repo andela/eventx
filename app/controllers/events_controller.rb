@@ -25,7 +25,9 @@ class EventsController < ApplicationController
   end
 
   def show_domain
-    show
+    @event = Event.find_by(subdomain: request.subdomain).decorate
+    set_event
+    render "show"
   end
 
   def index
@@ -35,12 +37,20 @@ class EventsController < ApplicationController
     respond_with @events
   end
 
-  def show
+  def set_event
     @booking = @event.bookings.new
     @booking.user = current_user
     @event_ticket = @event.ticket_types
     1.times { @booking.user_tickets.build }
-    respond_with @event
+  end
+
+  def show
+    set_event
+    if @event.subdomain
+      redirect_to event_subdomain_url(subdomain: @event.subdomain)
+    else
+      render "show"
+    end
   end
 
   def edit

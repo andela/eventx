@@ -35,6 +35,10 @@ module MessagesHelper
     "Subdomain does not exist"
   end
 
+  def unauthorised_subdomain
+    "You need to be signed in to access this subdomain"
+  end
+
   def not_authenticated
     "You need to log in"
   end
