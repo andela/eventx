@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921082615) do
+ActiveRecord::Schema.define(version: 20160926232804) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -120,6 +120,20 @@ ActiveRecord::Schema.define(version: 20160921082615) do
   end
 
   add_index "highlights", ["event_id"], name: "index_highlights_on_event_id"
+
+  create_table "invites", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "role"
+    t.string   "token"
+    t.boolean  "accepted"
+    t.integer  "event_id"
+    t.integer  "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "invites", ["event_id"], name: "index_invites_on_event_id"
+  add_index "invites", ["sender_id"], name: "index_invites_on_sender_id"
 
   create_table "manager_profiles", force: :cascade do |t|
     t.string   "user_id"

@@ -44,10 +44,16 @@ $(document).ready(function () {
       data.user_role,
       ' )&emsp;',
       '<a href=\'#\' data-remote=\'true\'><span class=\'remove_staff\'>x</span></a>',
-      '<input type=\'hidden\' class=\'uid\'name = \'event[event_staffs_attributes][][user_id]\' value =',
+      '<input type=\'hidden\' class=\'uid\'name = \'event[invites_attributes][][user_id]\' value =',
       data.user_id,
       '/>',
-      '<input type=\'hidden\' name = \'event[event_staffs_attributes][][role]\' value =',
+      '<input type=\'hidden\' class=\'uid\'name = \'event[invites_attributes][][sender_id]\' value =',
+      $("[name='sender_id']").val(),
+      '/>',
+      '<input type=\'hidden\' class=\'uid\'name = \'event[invites_attributes][][email]\' value =',
+      data.email,
+      '/>',
+      '<input type=\'hidden\' name = \'event[invites_attributes][][role]\' value =',
       data.role,
       '/></div>'
     ].join('\n');

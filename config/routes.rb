@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get '/', to: 'events#show_domain', constraints: SubdomainConstraint.new, as: :event_subdomain
+  get '/', to: 'events#show_domain', constraints: SubdomainConstraint.new,
+    as: :event_subdomain
   root "welcome#index"
 
   scope path: "/events", controller: :events do

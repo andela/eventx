@@ -1,0 +1,19 @@
+<h1></h1>
+<p>
+  <%= @greeting %>,
+</p><br>
+<p>You have been invited by <%= @event.manager_profile.user.full_name %> to <%= @invite.role_specification %> at <%= @event.title %> that will be holding on <%= @event.start_date.strftime("%b %d %Y") %></p><br>
+<p>Event Details </p>
+<p><%= @event.description%></p>
+<p><%= @event.location %></p><br>
+<p>Would you like to accept this invitation?</p>
+<table class="btn-primary">
+  <tr>
+    <td>
+      <a href="<%= @event.id %>" >Yes</a> 
+    </td>
+    <td class="failure">
+      <a href="<%= @event.id %>" >No</a>
+    </td>
+  </tr>
+</table>

@@ -4,10 +4,13 @@ class Event < ActiveRecord::Base
   has_one :remit
   has_many :ticket_types, dependent: :destroy
   has_many :event_staffs, dependent: :destroy
+  has_many :invites, dependent: :destroy
   has_many :highlights, dependent: :destroy
   has_many :staffs, through: :event_staffs, source: "user"
   accepts_nested_attributes_for :ticket_types,
                                 allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :invites,
+                                allow_destroy: true
   accepts_nested_attributes_for :event_staffs,
                                 allow_destroy: true,
                                 reject_if: :invalid_staff_info
@@ -34,6 +37,7 @@ class Event < ActiveRecord::Base
   validates :end_date, presence: true
   validates :category_id, presence: true
   validates :ticket_types, presence: true
+  validates :subdomain, presence: true, if: :collaborator_exists?
 
   after_create :notify_manager_subscribers
   after_update :notify_event_subscribers
@@ -51,6 +55,10 @@ class Event < ActiveRecord::Base
     where(enabled: true).
       order(created_at: :DESC).limit(12)
   }
+
+  def collaborator_exists?
+    self.invites.any? { |invite| invite.role == "event_manager" }
+  end
 
   def expiration_date_cannot_be_in_the_past
     today = Time.zone.today

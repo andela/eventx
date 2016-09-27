@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :manager_profile
   has_many :events, through: :manager_profile
   has_many :reviews, dependent: :destroy
+  has_many :sent_invites, class_name: "Invite", foreign_key: :sender_id
 
   def self.from_omniauth(auth)
     return auth unless auth
@@ -50,6 +51,10 @@ class User < ActiveRecord::Base
   def generate_auth_token
     payload = { user_id: id, email: email }
     AuthToken.encode(payload)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def self.user_role(role)

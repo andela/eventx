@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def show_domain
     @event = Event.find_by(subdomain: request.subdomain).decorate
-    set_event
+    set_event_attributes
     render "show"
   end
 
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
     respond_with @events
   end
 
-  def set_event
+  def set_event_attributes
     @booking = @event.bookings.new
     @booking.user = current_user
     @event_ticket = @event.ticket_types
@@ -45,11 +45,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    set_event
-    if @event.subdomain
-      redirect_to event_subdomain_url(subdomain: @event.subdomain)
-    else
+    set_event_attributes
+    if @event.subdomain.blank?
       render "show"
+    else
+      redirect_to event_subdomain_url(subdomain: @event.subdomain)
     end
   end
 
@@ -91,10 +91,29 @@ class EventsController < ApplicationController
     @event.title = @event.title.strip
     flash[:notice] = if @event.save
                        create_successful_message("event")
+                       send_staff_invites(@event)
                      else
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
+  end
+
+  def send_staff_invites(event)
+    @invites = event.invites
+    @invites.each do |invite|
+      send_invite_to_new_or_existing_users invite
+    end
+  end
+
+  def send_invite_to_new_or_existing_users(invite)
+    if invite.recipient
+      send_existing_staff_invite(invite)
+    end
+  end
+
+  def send_existing_staff_invite(invite)
+    mail = EventMailer.staff_invitation(invite)
+    mail.deliver_now
   end
 
   def tickets
@@ -145,7 +164,7 @@ class EventsController < ApplicationController
       ticket_types_attributes: [:id, :_destroy, :name, :quantity, :price],
       highlights_attributes:   [:id, :_destroy, :day, :title, :description,
                                 :start_time, :end_time, :image, :image_title],
-      event_staffs_attributes: [:user_id, :role]
+      invites_attributes: [:email, :role, :sender_id]
     )
   end
 

@@ -1,10 +1,11 @@
 <div class="row col s12" id="" >
   <div class="input-field col s5">
-    <input type="email" class="add_staff_field" placeholder="Enter staff email" id = "staff_field_id"/>
+    <input type="email" class="add_staff_field" name="email" placeholder="Enter staff email" id="staff_field_id"/>
   </div>
   <div class="input-field col s3 staff_role">
     <%= select_tag(:role, options_for_select(@roles))%>
-    <input type="hidden" id = "staff_id" name = "user_id" />
+    <input type="hidden" id="staff_id" name="user_id" />
+    <input type="hidden" value="<%= current_user.id %>" name="sender_id" />
   </div>
   <div class="checked_div hide"></div>
   <div class="col s4">
@@ -14,6 +15,6 @@
   </div>
   <div id="event_subdomain" class="input-field col s12 hide">
     Please choose a preferred subdomain for your collaborative event.
-    <%= f.text_field :subdomain, required: true, placeholder: 'Subdomain' %>
+    <%= f.text_field :subdomain, placeholder: 'Subdomain' %>
   </div>
 </div>

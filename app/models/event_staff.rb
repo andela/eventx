@@ -1,5 +1,6 @@
 class EventStaff < ActiveRecord::Base
-  enum role: [:event_staff, :gate_keeper, :event_manager, :super_admin]
+  include StaffRole
+
   validates :role, presence: true
   validates :user, presence: true
 
