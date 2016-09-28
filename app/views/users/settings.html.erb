@@ -22,6 +22,7 @@
       <h6 class="collection-header teal lighten-2 white-text" style="padding: 10px;">Subscribe To A New Category</h6>
       <%= form_for @subscription, url: {controller: :notifications, action: 'create'} do |f| %>
         <p>
+          <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.label :category_id, 'Select A Category' %>
           <%= f.select(:category_id, options_for_select(@categories), class: 'browser-default') %>
         </p>

@@ -50,13 +50,6 @@ ActiveRecord::Schema.define(version: 20160922140345) do
     t.integer  "manager_profile_id", default: 0
   end
 
-  create_table "categories_users", id: false, force: :cascade do |t|
-    t.integer "category_id"
-    t.integer "user_id"
-  end
-
-  add_index "categories_users", ["category_id", "user_id"], name: "index_categories_users_on_category_id_and_user_id"
-
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -149,12 +142,12 @@ ActiveRecord::Schema.define(version: 20160922140345) do
   end
 
   create_table "notification_subscriptions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "category_id"
-    t.boolean  "inbox_notification"
-    t.boolean  "email_notification"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "user_id",                            null: false
+    t.integer  "category_id",                        null: false
+    t.boolean  "inbox_notification", default: true
+    t.boolean  "email_notification", default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "notification_subscriptions", ["user_id", "category_id"], name: "index_notification_subscriptions_on_user_id_and_category_id"

@@ -19,7 +19,7 @@ RSpec.feature "Settings", type: :feature, js: true do
 
   scenario 'User unsubscribes to notifications from a category' do
     sign_up
-    create(:notification_subscription)
+    create(:notification_subscription, category_id: 3)
     visit dashboard_settings_path
     expect(page).to have_content('Your Subscriptions')
     expect(page).to have_content('Classes')

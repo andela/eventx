@@ -44,8 +44,6 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_link "Preview"
     click_button "Save"
     expect(page).to have_content "This is an edited Event"
-    save_and_open_page
-    binding.pry
     expect(page).to have_content update_successful_message("event")
     expect(page.current_path).to eq "/events/1"
 

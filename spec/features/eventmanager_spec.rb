@@ -76,4 +76,59 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     expect(page).to have_selector("label.our-event-date",
                                   text: "#{date1} " + "to #{date1}")
   end
+
+  scenario 'Subscribers receive an email when a new event is created' do
+    @user = create(:user, id: 500)
+    @notification = create(:notification_subscription, user_id: 500, category_id: 1)
+
+    #become an event manager
+    find_link("Become An Event Manager").trigger("click")
+    fill_in "manager_profile[company_name]", with: "Our Comapany"
+    fill_in "manager_profile[company_mail]", with: "baba@yaho.com"
+    fill_in "manager_profile[company_phone]", with: "08023439399"
+    fill_in "manager_profile[subdomain]", with: "ladyb"
+    click_button "Submit"
+
+    visit new_event_path
+    fill_new_event_form
+
+    subscribers_receive_email
+  end
+
+
+
+  def fill_new_event_form
+    fill_in "event[title]", with: "This is a test Event"
+    fill_in "event[location]", with: "Lagos, Nigeria"
+    fill_in "event[venue]", with: "Amity"
+    find("#event_category_id").find(:xpath, "option[2]").select_option
+
+    date = Date.tomorrow.in_time_zone.to_i * 1000
+    page.execute_script("$('#event_start_date')\
+                        .pickadate('picker').set('select', #{date})")
+    page.execute_script("$('#event_end_date')\
+                        .pickadate('picker').set('select', #{date})")
+
+    description = "This is a demo description for our event"
+    fill_in "event[description]", with: description
+
+    click_link "Next"
+    fill_in "event[ticket_types_attributes][0][name]", with: "free"
+    fill_in "event[ticket_types_attributes][0][quantity]", with: 10
+    fill_in "event[ticket_types_attributes][0][price]", with: 0.0
+    click_link "Preview"
+    expect(page).to have_selector("h3.our-event-title",
+                                  text: "This is a test Event")
+    expect(page).to have_selector("p.our_event_description", text: description)
+    date = Date.tomorrow.strftime("%-d %B, %Y")
+    expect(page).to have_selector("label.our-event-date",
+                                  text: "#{date} to #{date}")
+
+    click_button "Save"
+  end
+
+  def subscribers_receive_email
+    open_email(@user.email)
+    expect(current_email.to).to eq 'eb@gmail.com'
+  end
 end

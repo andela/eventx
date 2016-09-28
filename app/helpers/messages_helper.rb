@@ -43,6 +43,14 @@ module MessagesHelper
     "You have successfully unattended this event"
   end
 
+  def new_subscription(category)
+    "You have successfully subscribe to notifications from #{category}"
+  end
+
+  def subcription_cancelled(category)
+    "You have unsubscribed notifications from #{category} category"
+  end
+
   def error_occured
     "An error occurred"
   end

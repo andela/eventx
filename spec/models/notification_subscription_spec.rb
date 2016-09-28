@@ -7,6 +7,8 @@ RSpec.describe NotificationSubscription, type: :model do
     it { should have_db_column :inbox_notification }
     it { should have_db_column :email_notification }
     it { should have_db_index [:user_id, :category_id] }
+    it { should validate_presence_of :user_id }
+    it { should validate_presence_of :category_id }
   end
 
   context 'Associations' do

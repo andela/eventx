@@ -5,11 +5,11 @@ class NotificationsController < ApplicationController
 
   def create
     @subscription = NotificationSubscription.new(notification_params)
-    @subscription.user_id = current_user.id
     if @subscription.save
-      redirect_to controller: 'users', action: 'settings'
+      flash[:notice] = new_subscription(@subscription.category.name)
+      redirect_to dashboard_settings_path
     else
-      redirect_to controller: 'users', action: 'show'
+      redirect_to dashboard_path
     end
   end
 
@@ -20,16 +20,18 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    if @notification.destroy
-      redirect_to :back
-    else
-      redirect_to controller: 'users', action: 'show'
-    end
+    flash[:notice] = if @notification.destroy
+                        subcription_cancelled(@notification.category.name)
+                      else
+                        error_occured
+                      end
+    redirect_to dashboard_settings_path
   end
 
   private
   def notification_params
-    params.require(:notification_subscription).permit(:user_id, :category_id, :email_notification)
+    params.require(:notification_subscription).
+      permit(:user_id, :category_id, :email_notification)
   end
 
   def find_notification

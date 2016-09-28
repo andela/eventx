@@ -45,9 +45,9 @@ class UsersController < ApplicationController
 
   def settings
     @categories = Category.all.select { |category|
-                                        !current_user.subscriptions.include? category
-                                      }
-                                      .map { |c| [c.name, c.id] }
+                    !current_user.subscriptions.include? category
+                    }
+                    .map { |c| [c.name, c.id] }
     @subscription = NotificationSubscription.new
     @subscriptions = current_user.notification_subscriptions
   end
