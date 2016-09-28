@@ -26,8 +26,7 @@ class BookingsController < ApplicationController
     ticket_params.each do |ticket_type_id, quantity|
       quantity.to_i.times do
         user = UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking,
-                              event_source: source_params
-)
+                              event_source: source_params)
         tickets << user
       end
     end
