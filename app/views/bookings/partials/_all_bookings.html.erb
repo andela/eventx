@@ -26,7 +26,7 @@
         <td><%= booking.user_tickets_count %></td>
         <td><%= booking.uniq_id %></td>
         <% event_source = booking.user_tickets.first.event_source %>
-        <td class="<%= event_source %>"><%= event_source %></td>
+        <td><%= event_source %></td>
       </tr>
     <% end %>
     </tbody>
