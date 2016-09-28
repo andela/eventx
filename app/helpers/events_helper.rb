@@ -55,7 +55,7 @@ module EventsHelper
 
   def manage_events_link
     if User.get_user_events(current_user)
-      link_to(icon("home") + " Events I Belong To", administer_event_path)
+      link_to(icon("users") + " My Events Teams", administer_event_path)
     end
   end
 

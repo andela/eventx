@@ -1,36 +1,5 @@
-<% content_for :manage_event_menu do %>
-  <ul class="collapsible">  
-    <li>
-      <div class="collapsible-header active">
-        <i class="fa fa-cogs" aria-hidden="true"></i>Manage Event
-      </div>
-      <div class="collapsible-body">
-        <ul>
-          <li>
-            <% #= link_to icon("pencil-square-o") + " Edit Event", edit_event_path, id: "manage-event-btn" %>
-          </li>
-
-          <li> 
-            <% #= link_to icon("users") + " Staff", manage_staffs_path(@event.id), id: "manage-stsff-btn" %>
-          </li>
-
-          <li> 
-            <% #= link_to icon("money") + " Sponsors", event_sponsors_path(@event.id), id: "manage-sponsor-btn" %>
-          </li>
-
-          <li> 
-            <% #= link_to icon("sticky-note-o") + " Tasks", event_tasks_path(@event.id), id: "manage-task-btn" %>
-          </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-<% end %>
-
 <div class="row">
-  <div class="dashboard-search">
     <h5 class="col l6"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> Events I Belong To</h5>
-  </div>
 </div>
 
 <div id="content">
@@ -38,18 +7,6 @@
     <div class="card col s12 no-margin no-padding">
       <div class="row no-margin no-padding">
         <table class="responsive-table striped">
-          <!-- <thead>
-            <tr>
-              <div>
-                <th data-field="name">Name</th>
-                <th data-field="edit">Edit</th>
-                <th data-field="team">Team Members</th>
-                <th data-field="my-tasks">My Tasks</th>
-                <th data-field="all-tasks">All Tasks</th>
-                <th data-field="sponsors">Sponsors</th>
-              </tr>
-            </div>
-          </thead> -->
           <tbody id="events_lists">
             <%  @my_events.each do |event| %>
               <% if event.enabled %>
@@ -62,11 +19,11 @@
                   <%= link_to icon("pencil-square-o") + " Edit Event", edit_event_path(event.id), id: "manage-event-btn" %></td>
                   <td><%= link_to icon("users") + " Event Team", manage_staffs_path(event.id), id: "manage-stsff-btn" %></td>
                   <td>
-                    <%= "My Tasks" %>
-                    <% #= (link_to icon("sticky-note-o") + " My Tasks", event_tasks_path(event.id), id: "manage-task-btn")  %>
+                    <%= icon("sticky-note-o") +" My Tasks" %>
+                    <% #= (link_to icon("sticky-note-o") + " My Tasks", event_task_path(event.id), id: "manage-task-btn")  %>
                   </td>
                   <td>
-                    <%= link_to icon("sticky-note-o") + " All Tasks", event_tasks_path(event.id), id: "manage-task-btn" %>
+                    <%= link_to icon("tasks") + " All Tasks", event_tasks_path(event.id), id: "manage-task-btn" %>
                   </td>
                   <td>
                     <%= link_to icon("money") + " Sponsors", event_sponsors_path(event.id), id: "manage-sponsor-btn" %>

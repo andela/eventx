@@ -1,18 +1,18 @@
-r<div class="row">
+<div class="row">
   <div class="dashboard-search">
-    <h5 class="col 12"><i class="fa fa-credit-card fa-lg" aria-hidden="true"></i> All Tasks <small>(<%= @event.title%>)</small></h5>
+    <h5 class="col 12"><i class="fa fa-tasks fa-lg" aria-hidden="true"></i> All Tasks <small>(<%= @event.title%>)</small></h5>
   </div>
 </div>
 
 <div class="event-tasks-main center">
   <div id="right">
     <div class="row">
-      <div class="col l6">
-        <% #= can_add_event_task %>
+      <div class="col l2">
+        <%= can_add_event_task %>
       </div>
     </div>
-    <% #= render partial: "event_tasks" %>
+    <%= render partial: "event_tasks" %>
   </div>
 </div>
 <div id="toast"></div>
-<% #= render partial: "task_modal" %>
+<%= render partial: "task_modal" %>

@@ -1,16 +1,27 @@
 <div id="eventTasks">
-<div class="row gold-tasks">
-  <h5><% #= show_level("Gold Tasks", "gold")%></h5>
-  <% #= render partial: "tasks/list_tasks", locals: { tasks: group_by_level("gold") }%>
-</div>
-
-<div class="row silver-tasks">
-  <h5><% #= show_level("Silver Tasks", "silver")%></h5>
-  <% #= render partial: "tasks/list_tasks", locals: { tasks: group_by_level("silver") }%>
-</div>
-
-<div class="row bronze-tasks">
-  <h5><% #= show_level("Bronze Tasks", "bronze")%></h5>
-  <% #= render partial: "tasks/list_tasks", locals: { tasks: group_by_level("bronze") }%>
-</div>
+  <table class="responsive-table striped">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Assigned To</th>
+        <th>Assigned By</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tasks_lists">
+      <%  @tasks.each do |task| %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= task.user.first_name %></td>
+          <td><%= task.assigner.first_name %></td>
+          <td><%= task.completed_status ? "Completed" : "Pending" %></td>
+          <td>
+            <% #= link_to icon("pencil-square-o"), edit_event_task_path(task.id), class: "teal" %>
+            <% #= link_to icon("trash"), event_task_path(@task.id), method: delete, remote: true,class: "red" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

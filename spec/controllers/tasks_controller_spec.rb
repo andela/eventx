@@ -123,7 +123,7 @@ RSpec.describe TasksController, type: :controller do
 
   describe "Unauthorised User" do
     before(:all) do
-      @user = create(:user)
+      @user = create(:regular_user)
       @event = create(:regular_event)
     end
 

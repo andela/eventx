@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    can [:read, :tickets], Event
+    can [:read, :tickets, :administer], Event
     can :read, Sponsor
     can :manage, Task
 
@@ -26,6 +26,26 @@ class Ability
         booking.event.enabled == false &&
           booking.event.start_date > Time.now &&
           booking.payment_status == "paid"
+      end
+    end
+
+    event ||= Event.new
+    event_staff = EventStaff.find_by(user_id: user.id, event_id: event.id)
+    if event_staff.present?
+      if event_staff.super_admin?
+        can :manage, [event, Task, event.event_staffs]
+      elsif event_staff.event_manager?
+        can :update, Event
+        can :crud, [Task, EventStaff]
+      elsif event_staff.sponsor?
+        can :read, [Event, EventStaff]
+        can :crud, [Task]
+      elsif event_staff.volunteer?
+        can :read, [Event, EventStaff]
+        can :cru, [Task], user_id: user.id
+      elsif event_staff.gate_keeper?
+        can :read, [Event, EventStaff]
+        can :cru, [Task], user_id: user.id
       end
     end
 

@@ -1,5 +1,5 @@
-$("#eventSponsors").html("<%= j(render('event_sponsors', sponsors: @sponsors))%>")
+$("#eventTasks").html("<% #= j(render('event_tasks', tasks: @tasks))%>")
 
 <% if flash[:success] %>
-$("#toast").html("<%= j(render('event_sponsor_toast')) %>");
+$("#toast").html("<% #= j(render('event_task_toast')) %>");
 <% end %>

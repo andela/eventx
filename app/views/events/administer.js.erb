@@ -1,26 +1,21 @@
 $(document).ready(function () {
-//   $('#edit-event').click(function () {
-//     var event_id = $(this).data('eventid');
-//     $('#content').load('/events/' + event_id + '/edit');
-//   });
-
   $('#manage-event-btn').click(function (event) {
-    $('#content').html('<%= escape_javascript(render <template></template>: "events/edit", layout: "admin" %>');
+    $('#content').html('<%= j(render template: "events/edit", layout: "admin" %>');
     event.preventDefault()
   });
 
   $('#manage-staff-btn').click(function (event) {
-    $('#content').html('<%= escape_javascript(render file: "manager_profiles/manage_staff" %>');
+    $('#content').html('<%= j(render file: "manager_profiles/manage_staff" %>');
     event.preventDefault()
   });
 
   $('#manage-task-btn').click(function (event) {
-    $('#content').html('<%= escape_javascript(render file: "taska/show" %>');
+    $('#content').html('<%= j(render file: "taska/show" %>');
     event.preventDefault()
   });
 
   $('#manage-sponsor-btn').click(function (event) {
-    $('#content').html('<%= escape_javascript(render file: "sponsors/show %>');
+    $('#content').html('<%= j(render file: "sponsors/show %>');
     event.preventDefault()
   });
 });

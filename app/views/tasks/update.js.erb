@@ -1,8 +1,8 @@
-<% unless @sponsor.errors.any? %>
-$("#eventSponsors").html("<%= j(render('event_sponsors', sponsors: @sponsors))%>")
-$("#addSponsorModal").closeModal();
-$("#toast").html("<%= j(render('event_sponsor_toast')) %>");
+<% unless @task.errors.any? %>
+$("#eventTasks").html("<% #= j(render('event_tasks', tasks: @tasks))%>")
+$("#addTaskModal").closeModal();
+$("#toast").html("<% #= j(render('event_task_toast')) %>");
 <% else %>
-$("#toast").html("<%= j(render('event_sponsor_toast')) %>");
-$("#addSponsorModal").closeModal();
+$("#toast").html("<% #= j(render('event_task_toast')) %>");
+$("#addTaskModal").closeModal();
 <% end %>
