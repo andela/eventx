@@ -1,4 +1,6 @@
 require "rails_helper"
+require 'support/booking_helper'
+include BookingHelper
 
 RSpec.describe UsersController, type: :controller do
   before do

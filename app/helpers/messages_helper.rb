@@ -55,6 +55,10 @@ module MessagesHelper
     "An error occurred"
   end
 
+  def message_deleted
+    'Message has been deleted'
+  end
+
   def update_successful_message(class_name = "record")
     "Your #{class_name} was successfully updated"
   end

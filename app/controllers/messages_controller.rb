@@ -10,11 +10,12 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    if @message.destroy
-      redirect_to :back
-    else
-      render 'index'
-    end
+    flash[:notice] = if @message.destroy
+                       render 'index'
+                       message_deleted
+                     else
+                       error_occured
+                     end
   end
 
   private
