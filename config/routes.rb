@@ -21,6 +21,12 @@ Rails.application.routes.draw do
     get "faq"                        => :faq
   end
 
+  scope path: "/invite", controller: :invites do
+    get ":token/:accepted" => :confirm_invite, as: :confirm_invite
+    post ":id/:accepted/accept" => :accept, as: :accept_invite
+    post ":id/cancel" => :cancel, as: :cancel_invite
+  end
+
   scope controller: :manager_profiles do
     post "/manage-staffs/:event_id" => :save_staffs, as: :save_staffs
     get "/manage-staffs/:event_id" => :manage_staffs, as: :manage_staffs

@@ -37,7 +37,12 @@ class Event < ActiveRecord::Base
   validates :end_date, presence: true
   validates :category_id, presence: true
   validates :ticket_types, presence: true
-  validates :subdomain, presence: true, if: :collaborator_exists?
+  validates :subdomain,
+            presence: true,
+            uniqueness: true,
+            format: { with: /\A([a-zA-Z]+)/ },
+            if: :collaborator_exists?
+  validate :subdomain_not_same_as_event_manager_subdomain
 
   after_create :notify_manager_subscribers
   after_update :notify_event_subscribers
@@ -55,10 +60,6 @@ class Event < ActiveRecord::Base
     where(enabled: true).
       order(created_at: :DESC).limit(12)
   }
-
-  def collaborator_exists?
-    self.invites.any? { |invite| invite.role == "event_manager" }
-  end
 
   def expiration_date_cannot_be_in_the_past
     today = Time.zone.today
@@ -161,6 +162,16 @@ class Event < ActiveRecord::Base
   end
 
   def downcase_subdomain
-    self.subdomain = self.subdomain.downcase
+    subdomain.downcase! if subdomain.present?
+  end
+
+  def collaborator_exists?
+    invites.any? { |invite| invite.role == "event_manager" }
+  end
+
+  def subdomain_not_same_as_event_manager_subdomain
+    if ManagerProfile.where(subdomain: self.subdomain).exists?
+      self.errors.add(:subdomain, 'is already taken')
+    end
   end
 end

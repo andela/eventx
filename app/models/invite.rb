@@ -2,7 +2,7 @@ class Invite < ActiveRecord::Base
   include StaffRole
 
   belongs_to :event
-  belongs_to :sender
+  belongs_to :sender, class_name: "User"
 
   before_create :generate_token
 

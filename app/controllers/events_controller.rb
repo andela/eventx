@@ -37,13 +37,6 @@ class EventsController < ApplicationController
     respond_with @events
   end
 
-  def set_event_attributes
-    @booking = @event.bookings.new
-    @booking.user = current_user
-    @event_ticket = @event.ticket_types
-    1.times { @booking.user_tickets.build }
-  end
-
   def show
     set_event_attributes
     if @event.subdomain.blank?
@@ -90,30 +83,12 @@ class EventsController < ApplicationController
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
     flash[:notice] = if @event.save
-                       create_successful_message("event")
                        send_staff_invites(@event)
+                       create_successful_message("event")
                      else
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
-  end
-
-  def send_staff_invites(event)
-    @invites = event.invites
-    @invites.each do |invite|
-      send_invite_to_new_or_existing_users invite
-    end
-  end
-
-  def send_invite_to_new_or_existing_users(invite)
-    if invite.recipient
-      send_existing_staff_invite(invite)
-    end
-  end
-
-  def send_existing_staff_invite(invite)
-    mail = EventMailer.staff_invitation(invite)
-    mail.deliver_now
   end
 
   def tickets
@@ -152,6 +127,13 @@ class EventsController < ApplicationController
 
   private
 
+  def set_event_attributes
+    @booking = @event.bookings.new
+    @booking.user = current_user
+    @event_ticket = @event.ticket_types
+    1.times { @booking.user_tickets.build }
+  end
+
   def search_params
     params.permit(:event_name, :event_location, :event_date, :category_id,
                   :enabled)
@@ -187,6 +169,24 @@ class EventsController < ApplicationController
       event_id: @event.id,
       user_id: current_user.id
     ) if current_user
+  end
+
+  def send_staff_invites(event)
+    @invites = event.invites
+    @invites.each do |invite|
+      send_invite_to_new_or_existing_users(invite)
+    end
+  end
+
+  def send_invite_to_new_or_existing_users(invite)
+    if invite.recipient
+      send_existing_staff_invite(invite)
+    end
+  end
+
+  def send_existing_staff_invite(invite)
+    mail = EventMailer.staff_invitation(invite)
+    mail.deliver_now
   end
 
   def loading

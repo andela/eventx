@@ -47,27 +47,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_manager_by_subdomain(subdomain)
-    manager = ManagerProfile.find_by(subdomain: subdomain)
-    event = Event.find_by(subdomain: subdomain)
-    if manager.nil? && event.nil?
-      show_invalid_domain_error
-    elsif event.nil?
-      set_tenant manager
-    end
-  end
-
-  def show_invalid_domain_error
-    flash[:info] = invalid_subdomain
-    render file: "public/custom_404.html", layout: false
-  end
-
-  def redirect_to_manager_subdomain
-    if current_user && current_user.event_manager? 
-      redirect_to subdomain: current_user.manager_profile.subdomain
-    end
-  end
-
   protected
 
   def modify(name)
@@ -108,6 +87,27 @@ class ApplicationController < ActionController::Base
           fail NotAuthenticatedError
         end
       end
+    end
+  end
+
+  def get_manager_by_subdomain(subdomain)
+    manager = ManagerProfile.find_by(subdomain: subdomain)
+    event = Event.find_by(subdomain: subdomain)
+    if manager.nil? && event.nil?
+      show_invalid_domain_error
+    elsif event.nil?
+      set_tenant manager
+    end
+  end
+
+  def show_invalid_domain_error
+    flash[:info] = invalid_subdomain
+    render file: "public/custom_404.html", layout: false
+  end
+
+  def redirect_to_manager_subdomain
+    if current_user && current_user.event_manager? 
+      redirect_to subdomain: current_user.manager_profile.subdomain
     end
   end
 end
