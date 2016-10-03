@@ -21,4 +21,12 @@ class Invite < ActiveRecord::Base
   def recipient_name
     (recipient.full_name if recipient) || email[/[^@]+/]
   end
+
+  def accept
+    self.update_attributes(accepted: true)
+  end
+
+  def reject
+    self.update_attributes(accepted: false)
+  end
 end

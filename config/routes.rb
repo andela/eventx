@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
   scope path: "/invite", controller: :invites do
     get ":token/:accepted" => :confirm_invite, as: :confirm_invite
-    post ":id/:accepted/accept" => :accept, as: :accept_invite
+    post ":id/accept" => :accept, as: :accept_invite
+    post ":id/reject" => :reject, as: :reject_invite
     post ":id/cancel" => :cancel, as: :cancel_invite
   end
 

@@ -1,9 +1,10 @@
 <div class="col s12">
   <div class="container">
     <div class="row">
-      <h5>You have chosen to <%= ("accept" if @accepted == '1') || "reject" %> this invitation</h5>
-        <div class="input-field col s10">
-        <%= link_to "Confirm", accept_invite_path(@invite, accepted: @accepted), method: :post, class: "btn waves-effect waves-light home_button center  z-depth-0"%>
+    <h5>Invitation to <%= @invite.role_specification %> at <%= @invite.event.description %></h5>
+      <p class="invite-subheading">You have chosen to <%= accept_or_reject_invite %> this invitation</p>
+        <div class="input-field">
+        <%= link_to "Confirm", invite_path, method: :post, class: "btn waves-effect waves-light home_button center  z-depth-0"%>
         <%= link_to "Cancel", cancel_invite_path(@invite), method: :post, class: "btn btn-cancel waves-effect waves-light home_button center  z-depth-0"%>
         </div>
     </div>

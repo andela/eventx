@@ -110,4 +110,20 @@ module MessagesHelper
   def not_authorized
     "You are not authorized to access this page"
   end
+
+  def invite_accepted(sender_name)
+    "You have accepted #{sender_name}'s offer"
+  end
+
+  def invite_rejected(sender_name)
+    "You have rejected #{sender_name}'s offer"
+  end
+
+  def invite_reply_cancelled(sender_name)
+    "You have not replied to #{sender_name}'s offer"
+  end
+
+  def invite_already_replied(sender_name)
+    "You have already replied to #{sender_name}'s offer"
+  end
 end

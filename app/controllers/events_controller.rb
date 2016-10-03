@@ -185,7 +185,7 @@ class EventsController < ApplicationController
   end
 
   def send_existing_staff_invite(invite)
-    mail = EventMailer.staff_invitation(invite)
+    mail = InviteMailer.staff_invitation(invite)
     mail.deliver_now
   end
 

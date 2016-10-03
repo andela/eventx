@@ -1,7 +1,7 @@
 <h1></h1>
-<p>
+<h4>
   <%= @greeting %>,
-</p><br>
+</h4><br>
 <p>You have been invited by <%= @event.manager_profile.user.full_name %> to <%= @invite.role_specification %> at <%= @event.title %> that will be holding on <%= @event.start_date.strftime("%b %d %Y") %></p><br>
 <p>Event Details </p>
 <p><%= @event.description%></p>
