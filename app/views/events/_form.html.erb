@@ -88,20 +88,37 @@
           </div>
         </div>
         <!-- Event Start/End Date/Time -->
-        <div class="row">
-          <div class="col s12 center pull-s1">
-            <label>Recurring Event?</label>
-            <div class="switch">
-              <label>
-                <input type="checkbox", class="recur-event" >
-                <span class="lever recur-lever"></span>
-              </label>
+        <!-- Start: Add Recurring-Event -->
+        <% unless @event.recurring_event.persisted? %>
+          <div class="row">
+              <div class="col s12 center pull-s1">
+                <label>Recurring Event?</label>
+                <div class="switch">
+                  <label>
+                  <input type="checkbox", class="recur-event">
+                  <span class="lever recur-lever"></span>
+                  </label>
+                </div>
             </div>
           </div>
+        <% end %>
+
+        <div class="row">
+          <% if @event.recurring_event.persisted? %>
+            <div class="recurring_event_space">
+              <%= f.fields_for :recurring_event do |event| %>
+                <%= render 'events/recurring_event_fields', f: event %>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="recurring_event_space display-none" >
+              <%= f.fields_for :recurring_event do |event| %>
+                <%= render 'events/recurring_event_fields', f: event %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
-        <div id="recur-event-card">
-          <%= render 'events/recurring_event' %>
-        </div>
+        <!--End: add Recurring-Event -->
         <div class="row col s10">
           <div id="file-uploader" class="col l6 m6 s8 offset-l3 offset-m3 offset-s2 file-uploader">
             <div class="inner-file-upload center">
@@ -131,6 +148,7 @@
         <div>
           <div style="margin-bottom: 20px; margin-left: 50px;">
           </div>
+
           <div class="row ">
             <div class="event_ticket_field" >
               <h5><i class="fa fa-ticket prefix icon-setting"></i> Create Ticket</h5>
@@ -140,8 +158,8 @@
               <% end %>
             </div>
             <div class="links">
-            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, class: '' %>
-          </div>
+              <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, class: '' %>
+            </div>
           </div>
           <!-- Add Staff -->
           <div class="row">

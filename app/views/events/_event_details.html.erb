@@ -27,7 +27,8 @@
           <div class="row center">
             <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
             <label id="counter"></label>
-            <%= content_tag(:label, "#{@event.start_date + " - " + @event.start_time} to #{@event.end_date + " - " + @event.end_time}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 5%", class: "our-event-date")  %>
+            <%= content_tag(:label, "#{@event.start_date} - #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif", class: "our-event-date")  %>
+            <%= content_tag(:label, (@recurring_event.nil? ? "" : display_event_frequency(@recurring_event)) + "#{@event.start_time} - #{@event.end_time}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 2%") %>
 
             <div id="att">
               <%= render "events/attend_unattend_event_button" %>

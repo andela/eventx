@@ -19,9 +19,12 @@ class EventsController < ApplicationController
   respond_to :html, :json, :js
 
   def new
+    binding.pry
     @event = Event.new.decorate
     @event.ticket_types.build
+    @event.build_recurring_event
     @roles = Event.get_roles
+    # binding.pry
   end
 
   def index
@@ -35,6 +38,7 @@ class EventsController < ApplicationController
     @booking = @event.bookings.new
     @booking.user = current_user
     @event_ticket = @event.ticket_types
+    @recurring_event = @event.recurring_event unless @event.recurring_event.nil?
     1.times { @booking.user_tickets.build }
     respond_with @event
   end
@@ -42,6 +46,8 @@ class EventsController < ApplicationController
   def edit
     @roles = Event.get_roles
     @highlights = @event.highlights
+    @event.build_recurring_event unless @event.recurring_event
+    # binding.pry
   end
 
   def enable
@@ -60,6 +66,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    binding.pry
     @roles = Event.get_roles
     @event.event_staffs.delete_all
     flash[:notice] = if @event.update(event_params)
@@ -68,7 +75,6 @@ class EventsController < ApplicationController
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
-    binding.pry
   end
 
   def create
@@ -82,7 +88,6 @@ class EventsController < ApplicationController
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
-    binding.pry
   end
 
   def tickets
@@ -133,6 +138,7 @@ class EventsController < ApplicationController
       ticket_types_attributes: [:id, :_destroy, :name, :quantity, :price],
       highlights_attributes:   [:id, :_destroy, :day, :title, :description,
                                 :start_time, :end_time, :image, :image_title],
+      recurring_event_attributes:   [:id, :_destroy, :frequency, :day, :week],
       event_staffs_attributes: [:user_id, :role]
     )
   end

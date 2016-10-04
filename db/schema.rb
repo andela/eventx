@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919095533) do
+ActiveRecord::Schema.define(version: 20161002220845) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -133,6 +133,17 @@ ActiveRecord::Schema.define(version: 20160919095533) do
     t.datetime "updated_at",    null: false
     t.string   "domain"
   end
+
+  create_table "recurring_events", force: :cascade do |t|
+    t.string   "frequency"
+    t.string   "day"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "week"
+  end
+
+  add_index "recurring_events", ["event_id"], name: "index_recurring_events_on_event_id"
 
   create_table "remits", force: :cascade do |t|
     t.datetime "created_at",                         null: false

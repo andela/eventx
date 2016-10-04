@@ -59,6 +59,17 @@ module EventsHelper
     (total_rating / all_ratings.size).round if total_rating
   end
 
+  def display_event_frequency(recurring_event)
+    if recurring_event.frequency == "Daily"
+      "Every Day from "
+    elsif recurring_event.frequency == "Weekly"
+      "Every " + recurring_event.day + " from "
+    else
+      "Every " + recurring_event.week + " " +
+        recurring_event.day + " of the Month, from "
+    end
+  end
+
   private
 
   def converter(amt)
