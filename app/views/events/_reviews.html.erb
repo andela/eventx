@@ -1,7 +1,7 @@
 <h2 class="our_description_title reviews-header">Reviews</h2>
 <div class="row">
 <div class="col s12 m12 l12">
-  
+
   <% @event.reviews.each do |review| %>
   <div class="review" id="review">
     <div class="review-author">
@@ -25,7 +25,12 @@
       </div>
       <div class="review-content-body" id="reviewBodyContent">
         <%= review.body %>
+        <a class="waves-effect waves-light btn responseButton" id="responseButton">Respond</a>
+        <div id="newResponse"></div>
+
+        <%= render "response_form", review:  review %>
       </div>
+
     </div>
   </div>
   <% end %>

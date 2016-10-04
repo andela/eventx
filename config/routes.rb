@@ -60,9 +60,13 @@ Rails.application.routes.draw do
   resources :events do
     resources :bookings, only: [:create]
     resources :sponsors
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create] do
+      resources :reviews, only: :create
+    end
     resources :subscriptions, only: [:new, :create, :destroy]
   end
+
+
 
   get "/unattend", to: "attendees#destroy", as: :unattend
   get "/remit/:id", to: "remit#new", as: :remit

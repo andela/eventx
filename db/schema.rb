@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614215417) do
+ActiveRecord::Schema.define(version: 20160925093954) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -49,6 +49,19 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.string   "banner"
     t.integer  "manager_profile_id", default: 0
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "review_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
+  add_index "comments", ["review_id"], name: "index_comments_on_review_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -141,11 +154,13 @@ ActiveRecord::Schema.define(version: 20160614215417) do
 
   create_table "reviews", force: :cascade do |t|
     t.text     "body"
-    t.integer  "rating",     default: 3
+    t.integer  "rating",        default: 3
     t.integer  "event_id"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "response_id"
+    t.string   "response_type"
   end
 
   add_index "reviews", ["event_id"], name: "index_reviews_on_event_id"
@@ -176,15 +191,6 @@ ActiveRecord::Schema.define(version: 20160614215417) do
   add_index "subscriptions", ["manager_profile_id"], name: "index_subscriptions_on_manager_profile_id"
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
-  create_table "ticket_transactions", force: :cascade do |t|
-    t.integer  "booking_id"
-    t.integer  "recipient_id"
-    t.text     "tickets"
-    t.boolean  "accepted",     default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
   create_table "ticket_types", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "event_id"
@@ -203,7 +209,6 @@ ActiveRecord::Schema.define(version: 20160614215417) do
     t.boolean  "is_used",        default: false
     t.datetime "time_used"
     t.integer  "scanned_by"
-    t.boolean  "transfered",     default: false
   end
 
   add_index "user_tickets", ["booking_id"], name: "index_user_tickets_on_booking_id"

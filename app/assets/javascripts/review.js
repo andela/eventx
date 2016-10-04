@@ -61,7 +61,8 @@ $(document).ready(function () {
   }
 
   function add_author_name(target_div) {
-    var reviewers_name = $('a.dropdown-button').text().trim();
+    var reviewers_name = $('#currentUser').text().trim();
+    console.log(reviewers_name);
     target_div.find('.review-author-name').html(reviewers_name);
   }
 

@@ -1,0 +1,17 @@
+<div class="row review-form" id="responseForm" style="display: none;">
+    <form class="" id="addResponseForm">
+        <div class="row">
+            <div class="col l9 review-field">
+                <div class="input-field col s12">
+                    <textarea id="responseBody" name="review[body]" class="materialize-textarea" placeholder="Add Review" required="true"></textarea>
+                </div>
+                <input type="hidden" name="event_id" value="<%= @event.id%>" id="responseEventId">
+                <input type="hidden" name="user_id" value="<%= current_user.id %>" id="responseId">
+                <input type="hidden" name="review_id" value="<%= review.id %>" id="reviewId">
+            </div>
+            <div class="submit-review-button">
+                <input type="submit" name="add_response" value="Add Response" class="btn add-response-button" id="addResponse">
+            </div>
+        </div>
+    </form>
+</div>

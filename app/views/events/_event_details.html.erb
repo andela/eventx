@@ -110,7 +110,7 @@
 
 <% if @event.reviews.size > 0 %>
   <div class="container center">
-    <% if action_name == "show" && past_event?(@event) %>
+    <% if action_name == "show" %>
        <%= render "reviews" %>
     <% end %>
   </div>
