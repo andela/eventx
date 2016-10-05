@@ -1,13 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  event_id: 
-  review_id: 
   body: MyText
+  review_id: 1
 
 two:
-  user_id: 
-  event_id: 
-  review_id: 
   body: MyText
+  review_id: 1

@@ -1,29 +1,38 @@
 <div class="container">
+
   <div class="review" id="review" style="display:none;">
     <div class="review-author">
-          <img src="" alt="" class="review-author-pic circle responsive-img"/>
+      <img src="" alt="" class="review-author-pic circle responsive-img"/>
     </div>
+
     <div class="review-content">
       <div class="review-header">
         <h5 class="review-author-name"></h5>
         <div class="review-rating">
         </div>
       </div>
-      <div class="review-content-body" id="reviewBodyContent">
-      </div>
+
+      <div class="review-content-body" id="reviewBodyContent"></div>
     </div>
   </div>
+
   <div class="row review-form">
+
     <form class="" id="addReviewForm">
+
       <div class="row">
+
         <div class="col l9 review-field">
           <div class="input-field col s12">
-              <textarea id="reviewBody" name="review[body]" class="materialize-textarea" placeholder="Add Review" required="true"></textarea>
+              <textarea id="reviewBody" name="body" class="materialize-textarea" placeholder="Add Review" required="true"></textarea>
           </div>
+
           <input type="hidden" name="event_id" value="<%= @event.id%>" id="reviewEventId">
           <input type="hidden" name="user_id" value="<%= current_user.id %>" id="reviewerId">
         </div>
+
         <div class="col l3 rating-field">
+
           <fieldset class="rating">
           <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
           <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
@@ -31,11 +40,15 @@
           <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
           <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
           </fieldset>
+
           <div class="submit-review-button">
             <input type="submit" name="add_review" value="Add Review" class="btn add-review-button" id="addReview">
           </div>
+
         </div>
+
       </div>
     </form>
+
   </div>
 </div>

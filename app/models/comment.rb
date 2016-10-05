@@ -1,9 +1,7 @@
-class Review < ActiveRecord::Base
-
+class Comment < ActiveRecord::Base
   belongs_to :event
+  belongs_to :review
   belongs_to :user
-
-  has_many :comments, dependent: :destroy
 
   validates :body, presence: true
 end

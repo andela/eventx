@@ -1,0 +1,10 @@
+Started GET "/events/1?body=sdgfdgfdgdf&user_id=2&event_id=1&review_id=2&add_comment=Add+Comment" for 127.0.0.1 at 2016-10-05 09:41:37 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"body"=>"sdgfdgfdgdf", "user_id"=>"2", "event_id"=>"1", "review_id"=>"2", "add_comment"=>"Add Comment", "id"=>"1"}
+
+http://lvh.me:3000/events/1?comment%5Bbody%5D=aqwert&comment%5Buser_id%5D=2&comment%5Bevent_id%5D=1&comment%5Breview_id%5D=2&add_comment=Add+Comment
+
+
+Started POST "/events/1/1/comments/" for 127.0.0.1 at 2016-10-05 09:43:30 +0100
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"user_id"=>"2", "event_id"=>"1", "review_id"=>"1", "body"=>"will work"}, "event_id"=>"1", "review_id"=>"1"}

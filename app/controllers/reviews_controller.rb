@@ -2,8 +2,7 @@ class ReviewsController < ApplicationController
   respond_to :json
 
   def create
-      review = Review.find_by(id: params[:review_id])
-      review = Review.new(review_params.merge(response: review))
+      review = Review.new(review_params)
       if review.save
         render json: review
       else

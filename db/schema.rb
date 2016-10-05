@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925093954) do
+ActiveRecord::Schema.define(version: 20161004135345) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -154,13 +154,11 @@ ActiveRecord::Schema.define(version: 20160925093954) do
 
   create_table "reviews", force: :cascade do |t|
     t.text     "body"
-    t.integer  "rating",        default: 3
+    t.integer  "rating",     default: 3
     t.integer  "event_id"
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "response_id"
-    t.string   "response_type"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "reviews", ["event_id"], name: "index_reviews_on_event_id"

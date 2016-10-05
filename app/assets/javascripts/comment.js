@@ -1,44 +1,41 @@
 $(document).ready(function () {
-  $('#addReviewForm').submit(function (event) {
-    var body, event_id, user_id, rating, reviewers_name;
-    body = $('#reviewBody').val();
-    event_id = $('#reviewEventId').val();
-    user_id = $('#reviewerId').val();
-    rating = $('input:checked').val();
+  $('.addCommentForm').submit(function (event) {
+    // console.log(this);
+    // console.log(event.target);
+    var form = event.target;
+    var body, event_id, user_id, review_id, reviewers_name;
+    user_id = $(this).find('.commenterId').val();
+    event_id = $(this).find('.commentEventId').val();
+    review_id = $(this).find('.commentReviewId').val();
+
+    // console.log(review_id);
+    body = $(this).find('.commentBody').val();
+    console.log(body);
 
     $.ajax({
 
-      url: '/events/' + event_id + '/reviews',
+      url: '/events/' + event_id + '/' + review_id + '/comments/',
 
       type: 'POST',
 
       data: {
-        review: {
-          body: body,
+        comment: {
+          user_id: user_id,
           event_id: event_id,
-          rating: rating,
-          user_id: user_id
+          review_id: review_id,
+          body: body
         }
       }
 
     })
 
     .done(function (data) {
-      Materialize.toast('Your review has been saved', 3000);
-      var clonedDiv = $('#review').last().clone();
-      // console.log(clonedDiv);
-      clonedDiv.find('#reviewBodyContent').html(data.body);
-      // console.log(data.body);
-      filled_in_stars(data.rating, clonedDiv);
-      empty_stars(data.rating, clonedDiv);
-      add_author_image(clonedDiv);
-      add_author_name(clonedDiv);
-      clonedDiv.removeAttr('style');
-      clonedDiv.insertAfter($('#review').last());
-      empty_fields();
+      Materialize.toast('Your comment has been saved', 3000);
+
     })
 
     .fail(function () {
+      // console.log(url);
       Materialize.toast('Sorry, review cannot be saved', 3000);
     });
     event.preventDefault();

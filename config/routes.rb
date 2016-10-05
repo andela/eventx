@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
+  post "/events/:event_id/:review_id/comments" => "comments#create"
+
   scope path: "/events", controller: :events do
     get "popular"            => :popular
     get ":id/enable"         => :enable, as: :enable_event
