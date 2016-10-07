@@ -106,7 +106,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_manager_subdomain
-    if current_user && current_user.event_manager? 
+    if current_user && current_user.event_manager?
       redirect_to subdomain: current_user.manager_profile.subdomain
     end
   end

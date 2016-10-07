@@ -4,6 +4,7 @@ class InvitesController < ApplicationController
   def confirm_invite
     @invite = Invite.find_by(token: params[:token])
     @accepted = params[:accepted]
+    session[:user_id] = @invite.recipient.id
   end
 
   def accept

@@ -170,7 +170,7 @@ class Event < ActiveRecord::Base
   end
 
   def subdomain_not_same_as_event_manager_subdomain
-    if ManagerProfile.where(subdomain: self.subdomain).exists?
+    if ManagerProfile.where(subdomain: subdomain).exists? && subdomain.present?
       self.errors.add(:subdomain, 'is already taken')
     end
   end
