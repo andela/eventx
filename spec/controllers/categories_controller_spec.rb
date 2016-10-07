@@ -4,6 +4,7 @@ RSpec.describe CategoriesController, type: :controller do
   let(:user) { create(:user, :manager) }
   before(:each) do
     allow(controller).to receive(:current_user).and_return(user)
+    @manager_profile = user.manager_profile
     @category = attributes_for(:category)
   end
 

@@ -3,11 +3,11 @@ require "rails_helper"
 RSpec.describe UsersController, type: :controller do
   before do
     user = FactoryGirl.create(:user)
-    manager = FactoryGirl.create(:manager_profile, user: user)
+    @manager_profile = FactoryGirl.create(:manager_profile, user: user)
     session[:user_id] = user.id
     api_key = user.generate_auth_token
     request.headers["Authorization"] = api_key.to_s
-    FactoryGirl.create(:event, manager_profile: manager)
+    FactoryGirl.create(:event, manager_profile: @manager_profile)
   end
 
   describe "#show" do

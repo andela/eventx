@@ -4,6 +4,8 @@ RSpec.describe SponsorsController, type: :controller do
   describe "Event Manager" do
     before(:all) do
       @event_sponsor = create(:sponsor)
+      binding.pry
+      @manager_profile = @event_sponsor.event.manager_profile
     end
 
     before(:each) do

@@ -14,13 +14,13 @@ module BookingHelper
   end
 
   def event
-    manager = create(:manager_profile, user: user)
+    @manager_profile = create(:manager_profile, user: user)
     event_template = EventTemplate.create(
       name: "purple",
       image: "http://goo.gl/erHIiU"
     )
     create(
-      :event, manager_profile: manager,
+      :event, manager_profile: @manager_profile,
               event_template: event_template
     )
   end
