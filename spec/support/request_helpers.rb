@@ -35,4 +35,30 @@ module Requests
       end
     end
   end
+
+  module SubdomainHelper
+    def get(*args)
+      request_host
+      super
+    end
+
+    def post(*args)
+      request_host
+      super
+    end
+
+    def put(*args)
+      request_host
+      super
+    end
+
+    def delete(*args)
+      request_host
+      super
+    end
+
+    def request_host
+      @request.host = "#{@manager_profile.subdomain}.#{request.host}" if @manager_profile
+    end
+  end
 end
