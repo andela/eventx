@@ -32,6 +32,8 @@
           <div class="review-content-body" id="reviewBodyContent">
             <%= review.body %>
 
+            <%= render "events/comments" %>
+
             <%= render "events/comment_form", review:  review %>
           </div>
 

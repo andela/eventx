@@ -1,0 +1,26 @@
+<h2 class="our_description_title reviews-header center">Comments</h2>
+
+
+    <% @event.comments.each do |comment| %>
+    <div class="row">
+      <div class="comment col-sm-s12" id="comment">
+        <div class="comment-author col-sm-s4">
+              <% if comment.user.profile_url.present? %>
+              <%= image_tag comment.user.profile_url, class: "comment-author-pic circle responsive-img" %>
+              <% else %>
+              <%= image_tag "defaultimage.jpeg", class: "left comment-author-pic circle responsive-img" %>
+              <% end %>
+        </div>
+
+        <div class="comment-content col-sm-s8 col-sm-offset-s4">
+          <div class="comment-header">
+            <h5 class="comment-author-name"><%= comment.user.first_name.split(" ")[0] %></h5>
+          </div>
+          <div class="comment-content-body" id="commentBodyContent">
+            <%= comment.body %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
