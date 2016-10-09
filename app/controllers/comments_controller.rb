@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   respond_to :json
 
   def create
-    binding.pry
     comment = Comment.new(comment_params)
     if comment.save
       render json: comment
