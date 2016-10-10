@@ -25,7 +25,6 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
   scenario "User tries to attend past Event" do
     visit events_path
     find_link("Old Event").trigger("click")
-    # sleep 2
     expect(page).not_to have_content "ATTEND THIS EVENT"
     expect(page).to have_content "This event has ended"
   end

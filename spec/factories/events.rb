@@ -52,9 +52,9 @@ FactoryGirl.define do
     factory :old_event do
       title "Old Event"
       start_date Time.zone.now - 86_400 * 7
-      start_time Time.now + 3000
+      start_time Time.now
       end_date Time.zone.now
-      end_time Time.now + 3300
+      end_time Time.now
       category
       event_template
     end
