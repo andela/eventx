@@ -7,7 +7,7 @@ $(document).ready(function () {
       color = '',
       map;
 
-  if (event_date) { countdown(convertDate(event_date, start_time), end_date, end_time) }
+  if (event_date) { countdown(convertDate(event_date, start_time), end_date, end_time); }
 
   $('.preview').click(function () {
     var map_val = $('#event_map_url').val(),
@@ -21,16 +21,16 @@ $(document).ready(function () {
 
     var rec_text;
     if (frequency === 'Daily'){
-      rec_text = 'Every Day from '
+      rec_text = 'Every Day from ';
     } else if (frequency === 'Weekly'){
-      rec_text = 'Every ' + day + ' from '
+      rec_text = 'Every ' + day + ' from ';
     } else if (frequency === 'Monthly'){
-      rec_text = 'Every ' + week + ' ' + day + ' of the Month, from '
+      rec_text = 'Every ' + week + ' ' + day + ' of the Month, from ';
     } else {
-      rec_text = ''
+      rec_text = '';
     }
 
-    if (start_date) { countdown(convertDate(start_date, start_time), end_date, end_time) }
+    if (start_date) { countdown(convertDate(start_date, start_time), end_date, end_time); }
 
     if (map_val) {
       map = map_val + '&output=embed';
