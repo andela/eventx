@@ -25,7 +25,8 @@ class BookingsController < ApplicationController
     tickets = []
     ticket_params.each do |ticket_type_id, quantity|
       quantity.to_i.times do
-        user = UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking)
+        user = UserTicket.new(ticket_type_id: ticket_type_id, booking: @booking,
+                              event_source: source_params)
         tickets << user
       end
     end
@@ -102,6 +103,14 @@ class BookingsController < ApplicationController
 
   def ticket_params
     params.require(:tickets_quantity)
+  end
+
+  def source_params
+    params.permit(:event_source, :other)
+    if params[:event_source] == "Other"
+      params[:event_source] = params[:other] unless params[:other].blank?
+    end
+    params[:event_source]
   end
 
   def set_event

@@ -38,4 +38,23 @@ RSpec.feature "TicketsReport", type: :feature, js: true do
       )
     end
   end
+
+  scenario "Event manger clicks to view Event Source" do
+    visit tickets_report_path(@event.id)
+    expect(page.current_path).to eq tickets_report_path(@event.id)
+    page_should_have_content(
+      ["Tickets", "Grand Total", "SUMMARY", "ALL BOOKINGS", "ATTENDEES"]
+    )
+    click_link "All Bookings"
+    within "#bookings_table thead" do
+      page_should_have_content(
+        ["Event Source"]
+      )
+    end
+    within "#bookings_table tbody" do
+      page_should_have_content(
+        ["Facebook"]
+      )
+    end
+  end
 end
