@@ -23,10 +23,6 @@ class EventDecorator < Draper::Decorator
     object.highlights ? object.highlights.decorate : ""
   end
 
-  def recurring_event?
-    object.recurring_event.persisted? ? true : false
-  end
-
   def reviews
     object.reviews ? object.reviews : ""
   end

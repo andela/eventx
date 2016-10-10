@@ -29,7 +29,7 @@
             <label id="counter"></label>
 
             <% if @recurring_event.nil? %>
-              <%= content_tag(:label, "#{@event.start_date}, #{@event.start_time} to #{@event.end_date}, #{@event.end_time}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif", class: "our-event-date") %>
+              <%= content_tag(:label, "#{@event.start_date}, #{@event.start_time} - #{@event.end_date}, #{@event.end_time}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif", class: "our-event-date") %>
               <%= content_tag(:label, "", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 2%", class: "our-event-time") %>
             <% else %>
             <%= content_tag(:label, "#{@event.start_date} - #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif", class: "our-event-date") %>

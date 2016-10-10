@@ -63,7 +63,6 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     fill_in "event[ticket_types_attributes][0][quantity]", with: 10
     fill_in "event[ticket_types_attributes][0][price]", with: 0.0
     click_link "Preview"
-    # binding.pry
     expect(page).to have_selector("h3.our-event-title",
                                   text: "This is a test Event")
     expect(page).to have_selector("p.our_event_description", text: description)
@@ -78,6 +77,6 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     expect(page).to have_selector("p.our_event_description", text: description)
     date1 = Date.tomorrow.strftime("%b %d %Y")
     expect(page).to have_selector("label.our-event-date",
-                                  text: "#{date1}, 09:00AM to #{date1}, 02:00PM")
+                                  text: "#{date1}, 09:00AM - #{date1}, 02:00PM")
   end
 end

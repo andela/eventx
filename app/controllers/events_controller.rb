@@ -13,17 +13,16 @@ class EventsController < ApplicationController
   ]
   before_action :set_sponsor
   before_action :subscription_status, only: [:show]
-  before_action :build_recurring_event, only: [:new]
 
   layout "admin", only: [:tickets, :tickets_report]
 
   respond_to :html, :json, :js
 
   def new
-    # binding.pry
+    @event = Event.new.decorate
+    build_recurring_event
     @event.ticket_types.build
     @roles = Event.get_roles
-    # binding.pry
   end
 
   def index
@@ -45,8 +44,7 @@ class EventsController < ApplicationController
   def edit
     @roles = Event.get_roles
     @highlights = @event.highlights
-    @event.build_recurring_event unless @event.recurring_event
-    # binding.pry
+    build_recurring_event unless @event.recurring_event
   end
 
   def enable
@@ -65,7 +63,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    # binding.pry
     @roles = Event.get_roles
     @event.event_staffs.delete_all
     flash[:notice] = if @event.update(event_params)
@@ -84,6 +81,7 @@ class EventsController < ApplicationController
     flash[:notice] = if @event.save
                        create_successful_message("event")
                      else
+                       build_recurring_event
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
@@ -132,8 +130,19 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(
-      :title, :description, :start_date, :end_date, :start_time, :end_time, :category_id, :location,
-      :venue, :image, :template_id, :map_url, :event_template_id,
+      :title,
+      :description,
+      :start_date,
+      :end_date,
+      :start_time,
+      :end_time,
+      :category_id,
+      :location,
+      :venue,
+      :image,
+      :template_id,
+      :map_url,
+      :event_template_id,
       ticket_types_attributes: [:id, :_destroy, :name, :quantity, :price],
       highlights_attributes:   [:id, :_destroy, :day, :title, :description,
                                 :start_time, :end_time, :image, :image_title],
@@ -167,7 +176,6 @@ class EventsController < ApplicationController
   end
 
   def build_recurring_event
-    @event = Event.new.decorate
     @event.build_recurring_event
   end
 end

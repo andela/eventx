@@ -90,7 +90,7 @@
         <!-- Event Start/End Date/Time -->
         <!-- Start: Add Recurring-Event -->
         <div class="row">
-          <% if @event.recurring_event? %>
+          <% if @event.recurring_event.persisted? %>
             <%= render "events/persisted_recurring_event_fields", f: f %>
           <% else %>
             <%= render "events/new_recurring_event_fields", f: f %>
