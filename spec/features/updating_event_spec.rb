@@ -39,10 +39,10 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "event[title]", with: "This is an edited Event"
     fill_in "event[location]", with: "Obodo, Oyibo"
     fill_in "event[venue]", with: "LAmity"
-    click_link "Next"
+    find_link("Next").trigger("click")
 
-    click_link "Preview"
-    click_button "Save"
+    find_link("Preview").trigger("click")
+    find_button("Save").trigger("click")
     expect(page).to have_content "This is an edited Event"
     expect(page).to have_content update_successful_message("event")
     expect(page.current_path).to eq "/events/1"
