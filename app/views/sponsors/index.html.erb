@@ -8,7 +8,9 @@
   <div id="right">
     <div class="row">
       <div class="col l6">
-        <%= can_add_event_sponsor %>
+        <% if can? :create, Sponsor, event_id: @event.id %>
+          <%= can_add_event_sponsor %>
+        <% end %>
       </div>
     </div>
     <%= render partial: "sponsors/event_sponsors" %>

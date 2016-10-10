@@ -3,6 +3,7 @@ require "rails_helper"
 describe "Sponsors", type: :feature, js: true do
   before(:each) do
     @event = create(:regular_event)
+    @event.event_staffs.create(role: 2, user: @event.manager_profile.user)
   end
 
   before(:each) do

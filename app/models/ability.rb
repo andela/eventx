@@ -21,6 +21,7 @@ class Ability
           can :manage, Event, id: staff.event_id
           can :manage, Task, event_id: staff.event_id
           can :manage, EventStaff, event_id: staff.event_id
+          can :manage, Sponsor, event_id: staff.event_id
         end
 
         if staff.role == "logistics"
@@ -45,7 +46,7 @@ class Ability
 
     if user.event_manager?
       can :manage, Event, manager_profile_id: user.manager_profile.id
-      can :manage, Sponsor
+      user.events.each { |event| can :manage, Sponsor, event_id: event.id }
       can :manage, Booking do |booking|
         booking.event.manager_profile_id = user.manager_profile.id
       end
