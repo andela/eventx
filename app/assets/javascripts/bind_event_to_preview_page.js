@@ -7,7 +7,7 @@ $(document).ready(function () {
       color = '',
       map;
 
-  if (event_date) { countdown(convertDate(event_date, start_time), end_date, end_time); };
+  if (event_date) { countdown(convertDate(event_date, start_time), end_date, end_time) }
 
   $('.preview').click(function () {
     var map_val = $('#event_map_url').val(),
@@ -19,17 +19,18 @@ $(document).ready(function () {
         week = $('#event_recurring_event_attributes_week').val(),
         day = $('#event_recurring_event_attributes_day').val();
 
-    if (frequency === "Daily"){
-      rec_text = "Every Day from "
-    } else if (frequency === "Weekly"){
-      rec_text = "Every " + day + " from "
-    } else if (frequency === "Monthly"){
-      rec_text = "Every " + week + " " + day + " of the Month, from "
+    var rec_text;
+    if (frequency === 'Daily'){
+      rec_text = 'Every Day from '
+    } else if (frequency === 'Weekly'){
+      rec_text = 'Every ' + day + ' from '
+    } else if (frequency === 'Monthly'){
+      rec_text = 'Every ' + week + ' ' + day + ' of the Month, from '
     } else {
-      rec_text = ""
+      rec_text = ''
     }
 
-    if (start_date) { countdown(convertDate(start_date, start_time), end_date, end_time); };
+    if (start_date) { countdown(convertDate(start_date, start_time), end_date, end_time) }
 
     if (map_val) {
       map = map_val + '&output=embed';
@@ -45,12 +46,12 @@ $(document).ready(function () {
     var title = $('#event_title').val() === '' ? 'Event title goes here' : $('#event_title').val();
     $('.our-event-title').html(title);
     $('.our_event_description').html(description);
-    if (rec_text !== ""){
+    if (rec_text !== ''){
       $('.our-event-date').html(start_date + ' - ' + end_date);
       $('.our-event-time').html(rec_text + start_time + ' to ' + end_time);
     } else {
-      $('.our-event-date').html(start_date + ", " + start_time + ' - ' + end_date + ", " + end_time);
-      $('.our-event-time').html("");
+      $('.our-event-date').html(start_date + ', ' + start_time + ' - ' + end_date + ', ' + end_time);
+      $('.our-event-time').html('');
     }
     $('.landing2').removeClass(prev_color);
     $('.landing2').addClass(color);

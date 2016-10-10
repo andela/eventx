@@ -1,26 +1,26 @@
 function convertDate(startDate, startTime) {
   var date = new Date();
   var date2 = new Date(startDate);
-  var apm = startTime.toString().split(":")[1].match(/^(\d+)([A|P]M)$/)[2];
-  if (apm === "AM"){
-    date2.setHours(startTime.split(":")[0]);
+  var apm = startTime.toString().split(':')[1].match(/^(\d+)([A|P]M)$/)[2];
+  if (apm === 'AM'){
+    date2.setHours(startTime.split(':')[0]);
   } else {
-    date2.setHours(+startTime.split(":")[0] + 12);
+    date2.setHours(+startTime.split(':')[0] + 12);
   }
-  date2.setMinutes(startTime.split(":")[1].match(/^(\d+)[A|P]M$/)[1]);
+  date2.setMinutes(startTime.split(':')[1].match(/^(\d+)[A|P]M$/)[1]);
   var diff = Math.floor((date2 - date) / (60 * 1000));
   return diff;
 }
 
 function countdown(val, end_date, end_time) {
   var endDate = new Date(end_date);
-  var apm = end_time.toString().split(":")[1].match(/^(\d+)([A|P]M)$/)[2];
-  if (apm === "AM"){
-    endDate.setHours(end_time.split(":")[0]);
+  var apm = end_time.toString().split(':')[1].match(/^(\d+)([A|P]M)$/)[2];
+  if (apm === 'AM'){
+    endDate.setHours(end_time.split(':')[0]);
   } else {
-    endDate.setHours(+end_time.split(":")[0] + 12);
+    endDate.setHours(+end_time.split(':')[0] + 12);
   }
-  endDate.setMinutes(end_time.split(":")[1].match(/^(\d+)[A|P]M$/)[1]);
+  endDate.setMinutes(end_time.split(':')[1].match(/^(\d+)[A|P]M$/)[1]);
 
   var minutes = val;
 
