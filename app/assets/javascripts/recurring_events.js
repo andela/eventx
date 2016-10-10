@@ -28,7 +28,6 @@ $(document).ready( function () {
       $('.day-frequency').removeClass('display-none');
       $('#event_recurring_event_attributes_day').val('');
       $('#event_recurring_event_attributes_week').val('');
-      console.log("monnn")
     } else {
       $('.week-frequency').addClass('display-none');
       $('.day-frequency').addClass('display-none');
