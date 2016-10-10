@@ -13,8 +13,12 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     date = Date.tomorrow.in_time_zone.to_i * 1000
     page.execute_script("$('#event_start_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[start_time]", with: "09:00AM"
+
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[end_time]", with: "02:00PM"
+
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description
     click_link "Next"
@@ -42,7 +46,9 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     click_link "Next"
 
     click_link "Preview"
+    sleep 2
     click_button "Save"
+
     expect(page).to have_content "This is an edited Event"
     expect(page).to have_content update_successful_message("event")
     expect(page.current_path).to eq "/events/1"
@@ -66,8 +72,12 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     date = Date.tomorrow.in_time_zone.to_i * 1000
     page.execute_script("$('#event_start_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[start_time]", with: "09:00AM"
+
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[end_time]", with: "02:00PM"
+
     description = "description " * 84
     fill_in "event[description]", with: description
     click_link "Next"
@@ -78,6 +88,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "Enter staff email", with: email
     click_button "add_staff"
     click_link "Preview"
+    sleep 2
     click_button "Save"
     expect(page).to have_content "Description is \
       too long (maximum is 1000 characters)"
@@ -95,8 +106,12 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     date = Date.tomorrow.in_time_zone.to_i * 1000
     page.execute_script("$('#event_start_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[start_time]", with: "09:00AM"
+
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[end_time]", with: "02:00PM"
+
     description = "short "
     fill_in "event[description]", with: description
     click_link "Next"
@@ -107,6 +122,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "Enter staff email", with: email
     click_button "add_staff"
     click_link "Preview"
+    sleep 2
     click_button "Save"
     expect(page).to have_content "Description is too \
       short (minimum is 20 characters)"
@@ -124,12 +140,17 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     date = Date.tomorrow.in_time_zone.to_i * 1000
     page.execute_script("$('#event_start_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[start_time]", with: "09:00AM"
+
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[end_time]", with: "02:00PM"
+
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description
     click_link "Next"
     click_link "Preview"
+    sleep 2
     click_button "Save"
     expect(page).to have_content("Ticket types can't be blank")
   end

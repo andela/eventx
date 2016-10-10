@@ -1,6 +1,6 @@
 <nav class='custom_nav <%= "landing" unless @current_page && @current_page == "new" %>'>
   <div class="nav-wrapper">
-    <%= "#{@event.event_template} darken-4 " if controller_name == "events" && action_name == "show"%>
+      <!-- "#{@event.event_template} darken-4" if controller_name == "events" && action_name == "show" -->
     <%= "landing2" if @current_page && @current_page == "new"%>
     <%= link_to get_site_root_site_link do %>
       <h2 class="brand-logo logo-property">EventX</h2>
@@ -8,7 +8,7 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="root#homepage-event-tools">Event Management Tools</a></li>
       <li><a href="faq">FAQs</a></li>
-       
+
         <ul class="right">
           <% if content_for? :show %>
             <%= yield :show %>
@@ -37,7 +37,7 @@
               <% end %>
             </li>
           <% end %>
-        </ul>      
+        </ul>
     </ul>
     <ul id="slide-out" class="side-nav ">
       <li class="divider"><%= link_to get_site_root_site_link do %>
@@ -45,7 +45,7 @@
         <% end %></li>
       <li><a href="root#homepage-event-tools">Event Management Tools</a></li>
       <li><a href="faq">FAQs</a></li>
-      
+
         <ul class="left">
           <% if content_for? :show %>
             <%= yield :show %>
@@ -73,7 +73,7 @@
               <% end %>
             </li>
           <% end %>
-        </ul>   
+        </ul>
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
   </div>

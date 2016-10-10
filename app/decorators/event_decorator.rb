@@ -7,7 +7,12 @@ class EventDecorator < Draper::Decorator
 
   def start_date
     return object.start_date.strftime("%b %d %Y") if object.start_date?
-    Time.zone.now.strftime("%b %d %Y")
+    # Time.zone.now.strftime("%b %d %Y")
+  end
+
+  def start_time
+    return object.start_time.strftime("%I:%M%p") if object.start_time?
+    # Time.now.strftime("%I:%M%p")
   end
 
   def event_template
@@ -28,7 +33,12 @@ class EventDecorator < Draper::Decorator
 
   def end_date
     return object.end_date.strftime("%b %d %Y") if object.end_date?
-    Time.zone.now.strftime("%b %d %Y")
+    # Time.zone.now.strftime("%b %d %Y")
+  end
+
+  def end_time
+    return object.end_time.strftime("%I:%M%p") if object.end_time?
+    # Time.now.strftime("%I:%M%p")
   end
 
   def get_event_staffs

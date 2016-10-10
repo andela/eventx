@@ -61,6 +61,17 @@ module EventsHelper
 
   private
 
+  def display_event_frequency(recurring_event)
+    if recurring_event.frequency == "Daily"
+      "Every Day from "
+    elsif recurring_event.frequency == "Weekly"
+      "Every " + recurring_event.day + " from "
+    else
+      "Every " + recurring_event.week + " " +
+        recurring_event.day + " of the Month, from "
+    end
+  end
+
   def converter(amt)
     number_to_currency(amt, unit: "$")
   end

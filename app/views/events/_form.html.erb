@@ -70,16 +70,33 @@
             </div>
           </div>
         </div>
+        <!-- Event Start/End Date/Time -->
         <div class="row">
-          <div class="input-field col s5">
+          <div class="input-field col s3">
             <i class="fa fa-calendar prefix icon-setting"></i>
             <%= f.date_field :start_date, class: "datepicker", placeholder: "Start Date", value: @event.start_date, required: true %>
           </div>
-          <div class="input-field col s5">
+          <div class="input-field col s2">
+            <%= f.text_field :start_time, class: "event-time-picker", placeholder: "Start Time", required: true %>
+          </div>
+          <div class="input-field col s3">
             <i class="fa fa-calendar prefix icon-setting"></i>
             <%= f.date_field :end_date, class: "datepicker", placeholder: "End Date", value: @event.end_date %>
           </div>
+          <div class="input-field col s2">
+            <%= f.text_field :end_time, class: "event-time-picker", placeholder: "End Time", required: true %>
+          </div>
         </div>
+        <!-- Event Start/End Date/Time -->
+        <!-- Start: Add Recurring-Event -->
+        <div class="row">
+          <% if @event.recurring_event.persisted? %>
+            <%= render "events/persisted_recurring_event_fields", f: f %>
+          <% else %>
+            <%= render "events/new_recurring_event_fields", f: f %>
+          <% end %>
+        </div>
+        <!--End: add Recurring-Event -->
         <div class="row col s10">
           <div id="file-uploader" class="col l6 m6 s8 offset-l3 offset-m3 offset-s2 file-uploader">
             <div class="inner-file-upload center">
@@ -109,6 +126,7 @@
         <div>
           <div style="margin-bottom: 20px; margin-left: 50px;">
           </div>
+
           <div class="row ">
             <div class="event_ticket_field" >
               <h5><i class="fa fa-ticket prefix icon-setting"></i> Create Ticket</h5>
@@ -118,8 +136,8 @@
               <% end %>
             </div>
             <div class="links">
-            <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, class: '' %>
-          </div>
+              <%= link_to_add_association content_tag(:span, 'Add Ticket', class: "btn btn-circle"), f, :ticket_types, class: '' %>
+            </div>
           </div>
           <!-- Add Staff -->
           <div class="row">

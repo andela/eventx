@@ -1,0 +1,36 @@
+<div class="row col s12 recurring_event_space nested-fields">
+  <%= f.fields_for :recurring_event do |rec_event| %>
+
+    <div class="col s12 center pull-s1">
+      <label>Recurrency:</label>
+    </div>
+
+    <div class="input-field col s3">
+      <%= rec_event.select :frequency, options_for_select(RecurringEvent::FREQUENCY, @event.recurring_event.frequency), { include_blank: "How frequent?" }, class: "browser-default" %>
+    </div>
+
+
+    <% if @event.recurring_event.frequency == "Weekly" %>
+      <div class="input-field col s4 day-frequency">
+        <%= rec_event.select :day, options_for_select(RecurringEvent::DAY, @event.recurring_event.day), { include_blank: "What day of the week?" }, class: "browser-default"  %>
+      </div>
+      <div class="input-field col s4 week-frequency display-none">
+        <%= rec_event.select :week, options_for_select(RecurringEvent::WEEK, @event.recurring_event.week), { include_blank: "What week of the month?" }, class: "browser-default" %>
+      </div>
+    <% end %>
+
+    <% if @event.recurring_event.frequency == "Monthly" %>
+      <div class="input-field col s4 day-frequency">
+        <%= rec_event.select :day, options_for_select(RecurringEvent::DAY, @event.recurring_event.day), { include_blank: "What day of the week?" }, class: "browser-default"  %>
+      </div>
+      <div class="input-field col s4 week-frequency">
+        <%= rec_event.select :week, options_for_select(RecurringEvent::WEEK, @event.recurring_event.week), { include_blank: "What week of the month?" }, class: "browser-default" %>
+      </div>
+    <% end %>
+
+    <div class="close-cocoon col-sm-2 pull-right">
+      <%= link_to_remove_association "<i class='material-icons'>delete</i>".html_safe, rec_event, class: "btn btn-floating red"  %>
+    </div>
+
+  <% end %>
+</div>

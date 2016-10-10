@@ -20,6 +20,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new.decorate
+    build_recurring_event
     @event.ticket_types.build
     @roles = Event.get_roles
   end
@@ -35,6 +36,7 @@ class EventsController < ApplicationController
     @booking = @event.bookings.new
     @booking.user = current_user
     @event_ticket = @event.ticket_types
+    @recurring_event = @event.recurring_event unless @event.recurring_event.nil?
     1.times { @booking.user_tickets.build }
     respond_with @event
   end
@@ -42,6 +44,7 @@ class EventsController < ApplicationController
   def edit
     @roles = Event.get_roles
     @highlights = @event.highlights
+    build_recurring_event unless @event.recurring_event
   end
 
   def enable
@@ -78,6 +81,7 @@ class EventsController < ApplicationController
     flash[:notice] = if @event.save
                        create_successful_message("event")
                      else
+                       build_recurring_event
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
@@ -126,11 +130,23 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(
-      :title, :description, :start_date, :end_date, :category_id, :location,
-      :venue, :image, :template_id, :map_url, :event_template_id,
+      :title,
+      :description,
+      :start_date,
+      :end_date,
+      :start_time,
+      :end_time,
+      :category_id,
+      :location,
+      :venue,
+      :image,
+      :template_id,
+      :map_url,
+      :event_template_id,
       ticket_types_attributes: [:id, :_destroy, :name, :quantity, :price],
       highlights_attributes:   [:id, :_destroy, :day, :title, :description,
                                 :start_time, :end_time, :image, :image_title],
+      recurring_event_attributes:   [:id, :_destroy, :frequency, :day, :week],
       event_staffs_attributes: [:user_id, :role]
     )
   end
@@ -157,5 +173,9 @@ class EventsController < ApplicationController
   end
 
   def loading
+  end
+
+  def build_recurring_event
+    @event.build_recurring_event
   end
 end

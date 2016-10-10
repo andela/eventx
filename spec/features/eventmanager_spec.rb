@@ -49,8 +49,11 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     date = Date.tomorrow.in_time_zone.to_i * 1000
     page.execute_script("$('#event_start_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[start_time]", with: "09:00AM"
+
     page.execute_script("$('#event_end_date')\
                         .pickadate('picker').set('select', #{date})")
+    fill_in "event[end_time]", with: "02:00PM"
 
     description = "This is a demo description for our event"
     fill_in "event[description]", with: description
@@ -65,7 +68,7 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     expect(page).to have_selector("p.our_event_description", text: description)
     date = Date.tomorrow.strftime("%-d %B, %Y")
     expect(page).to have_selector("label.our-event-date",
-                                  text: "#{date} to #{date}")
+                                  text: "#{date}, 09:00AM - #{date}, 02:00PM")
 
     click_button "Save"
 
@@ -74,6 +77,6 @@ RSpec.feature "Event Manager abilities", type: :feature, js: true do
     expect(page).to have_selector("p.our_event_description", text: description)
     date1 = Date.tomorrow.strftime("%b %d %Y")
     expect(page).to have_selector("label.our-event-date",
-                                  text: "#{date1} " + "to #{date1}")
+                                  text: "#{date1}, 09:00AM - #{date1}, 02:00PM")
   end
 end

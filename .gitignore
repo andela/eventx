@@ -50,4 +50,8 @@ public/uploads/tmp/*
 
 /vendor/*
 
-.DS_Store
+# Ignore precompiled assets
+/public/assets/*
+
+#ignore test dir
+test

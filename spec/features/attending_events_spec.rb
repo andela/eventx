@@ -53,6 +53,7 @@ RSpec.feature "ViewEvents", type: :feature, js: true do
     expect(page.current_path).to eq "/tickets"
 
     visit print_path(25)
+    sleep 2
     expect(page).to have_content "Booking not found"
     expect(page).to have_content "My Events"
 
