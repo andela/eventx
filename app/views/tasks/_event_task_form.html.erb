@@ -1,0 +1,15 @@
+<%= form_for(task, url: event_tasks_path(task.event_id) + "/#{task.id}", remote: true) do |f| %>
+  <div class="col l12">
+    <%= f.label :name, "Description", class: "bold black-text" %>
+    <%= f.text_area :name, placeholder:"I want you to complete this task", class: "validate", required: :require,  pattern: ".{3,100}", title: "3 to 1000 characters required", autofocus: true %>
+  </div>
+  <div class="browser-default sponsor-level col l12">
+    <%= f.label :user_id, "Assign Task to", class: "bold black-text" %>
+    <%= f.select :user_id, @event.event_staffs.collect{ |s| [get_name_and_role(s), s.user_id] } %>
+  </div>
+  <br>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn save-task-button cancel-sponsor-button">Cancel</a>
+    <%= f.submit "Save", id: "saveTask", class: "waves-effect waves-green btn save-sponsor-button" %>
+  </div>
+<% end %>

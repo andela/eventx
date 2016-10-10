@@ -4,7 +4,10 @@
   <p><%= staff.user.first_name%><br>
    <span class="emails"><%= staff.user.email%></span>
   </p>
-  <a href="<%= remove_staff_path(event_staff_id: staff) %>"
-    data-confirm="Are you sure you want to delete this staff ?">
+  <% if can? :delete, EventStaff, event_id: @event.id %>
+    <a href="<%= remove_staff_path(event_staff_id: staff.user_id, 
+      event_id: @event.id) %>" 
+      data-confirm="Are you sure you want to delete this staff ?">
     <i class="material-icons secondary-content">delete</i></a>
+  <% end %>
 </li>

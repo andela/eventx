@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <%= event.title %>
+    <br>
+    <%= link_to " (View Details)", event, target: "_blank" %>
+  </td>
+  <td>
+    <%= link_to icon("pencil-square-o") + " Edit Event", 
+        edit_event_path(event.id), method:"", id: "manage-event-btn" %>
+  </td>
+  <td>
+    <%= link_to icon("users") + " Team Members", 
+        manage_staffs_path(event.id), id: "manage-staff-btn" %>
+  </td>
+  <td>
+    <%= link_to icon("tasks") + " Tasks", 
+        event_tasks_path(event.id), id: "manage-task-btn" %>
+  </td>
+  <td>
+    <%= link_to icon("money") + " Sponsors", 
+        event_sponsors_path(event.id), id: "manage-sponsor-btn" %>
+  </td>
+</tr>            

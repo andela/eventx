@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
 
   describe "user associations" do
     it { is_expected.to have_many :reviews }
+    it { is_expected.to have_many :tasks }
   end
 
   describe "#from_omniauth" do

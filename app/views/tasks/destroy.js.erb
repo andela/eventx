@@ -1,0 +1,9 @@
+$('#all-tasks').html('<%= j(render("event_tasks", tasks: @tasks))%>')
+$('#my-tasks').html('<%= j(render("my_event_tasks", tasks: @tasks))%>')
+
+<% if flash[:success] %>
+  Materialize.toast("<%= flash[:success] %>", 4000)
+<% end %>
+<% if flash[:error] %>
+  Materialize.toast("<%= flash[:error] %>", 4000)
+<% end %>

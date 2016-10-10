@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   scope path: "/events", controller: :events do
     get "popular"            => :popular
+    get "administer"         => :administer, as: :administer_event
     get ":id/enable"         => :enable, as: :enable_event
     get ":id/disable"        => :disable, as: :disable_event
     get ":id/generate"       => :generate, as: :generate_event
@@ -43,7 +44,7 @@ Rails.application.routes.draw do
   end
 
   scope controller: :users do
-    get "/dashboard" => :show
+    get "/dashboard"          => :show
     get "/lookup_staffs"      => :lookup_staff_emails
     get "/user_info/:user_id" => :fetch_user_info
   end
@@ -62,6 +63,7 @@ Rails.application.routes.draw do
     resources :sponsors
     resources :reviews, only: [:create]
     resources :subscriptions, only: [:new, :create, :destroy]
+    resources :tasks
   end
 
   get "/unattend", to: "attendees#destroy", as: :unattend

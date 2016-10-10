@@ -1,0 +1,34 @@
+<div id="eventTasks">
+  <table class="responsive-table striped">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Assigned To</th>
+        <th>Assigned By</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tasks_lists">
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= task.user.first_name %></td>
+          <td><%= task.assigner.first_name %></td>
+          <td><%= task.completed_status ? "Completed" : "Pending" %></td>
+          <td>
+            <% if can? :delete, Task, event_id: @event.id %>
+              <%= link_to icon("pencil-square-o"), 
+                  edit_event_task_path(id: task.id, event_id: @event.id), 
+                  class:"modal-trigger waves-effect btn", id: "addTask", 
+                  remote: true %>
+              <%= link_to icon("trash"), 
+                  event_task_path(id: task.id, event_id: @event.id), 
+                  method: "delete", remote: true, class: "btn red" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

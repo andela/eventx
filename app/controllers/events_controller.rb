@@ -9,12 +9,14 @@ class EventsController < ApplicationController
     :disable,
     :generate,
     :scan,
+    :administer_full,
     :tickets_report
   ]
   before_action :set_sponsor
+  before_action :set_roles, only: [:edit, :update, :create, :administer]
   before_action :subscription_status, only: [:show]
 
-  layout "admin", only: [:tickets, :tickets_report]
+  layout "admin", only: [:administer, :tickets, :tickets_report]
 
   respond_to :html, :json, :js
 
@@ -40,7 +42,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @roles = Event.get_roles
     @highlights = @event.highlights
   end
 
@@ -60,7 +61,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @roles = Event.get_roles
     @event.event_staffs.delete_all
     flash[:notice] = if @event.update(event_params)
                        update_successful_message("event")
@@ -71,16 +71,24 @@ class EventsController < ApplicationController
   end
 
   def create
-    @roles = Event.get_roles
     @event = Event.new(event_params).decorate
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
     flash[:notice] = if @event.save
+                       @event.event_staffs.create(
+                         role: 2,
+                         user_id: current_user.id,
+                         event_id: @event.id
+                       )
                        create_successful_message("event")
                      else
                        @event.errors.full_messages.join("; ")
                      end
     respond_with(@event)
+  end
+
+  def administer
+    @my_events = User.get_team_events(current_user)
   end
 
   def tickets
@@ -147,6 +155,10 @@ class EventsController < ApplicationController
 
   def set_sponsor
     @sponsors = @event.sponsors.group_by(&:level) if @event
+  end
+
+  def set_roles
+    @roles = Event.get_roles
   end
 
   def subscription_status

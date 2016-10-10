@@ -1,0 +1,21 @@
+<div class="row">
+  <h5>
+    <i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> 
+    Events I Belong To
+  </h5>
+  <hr>
+  <div id="content">
+    <div class="card col s12 no-margin no-padding">
+      <div class="row">
+        <table class="responsive-table striped">
+          <tbody id="events_lists">
+            <% @my_events.each do |event| %>
+              <%= check_status(event) %>
+            <% end %>
+          </tbody>
+        </table>
+        <div id="edit_event-modal" class="modal"></div>
+      </div>
+    </div>
+  </div>
+</div>

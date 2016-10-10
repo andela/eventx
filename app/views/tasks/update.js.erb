@@ -1,0 +1,5 @@
+<% unless @task.errors.any? %>
+  $("#eventTasks").html("<%= j(render('event_tasks', tasks: @tasks))%>");
+<% end %>
+$("#toast").html("<%= j(render('event_task_toast')) %>");
+$("#addTaskModal").closeModal();
