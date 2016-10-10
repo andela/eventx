@@ -9,14 +9,9 @@ module TasksHelper
   end
 
   def can_add_event_task
-    # binding.pry
     if can? :create, Task
       render partial: "tasks/add_task"
     end
-  end
-
-  def all_tasks
-    # @event.tasks
   end
 
   def get_name_and_role(staff)

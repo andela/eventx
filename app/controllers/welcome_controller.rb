@@ -5,9 +5,6 @@ class WelcomeController < ApplicationController
     respond_with @events
   end
 
-  def about
-  end
-
   def faq
   end
 
