@@ -205,8 +205,8 @@ ActiveRecord::Schema.define(version: 20160923101552) do
     t.string   "name"
     t.boolean  "completed_status", default: false
     t.integer  "event_id"
-    t.integer  "user"
-    t.integer  "assigner"
+    t.integer  "user_id"
+    t.integer  "assigner_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
