@@ -23,6 +23,7 @@ RSpec.feature "Grant Refund", type: :feature do
       amount: 20,
       refund_requested: true
     )
+    create  :user_ticket
     visit "/events/#{@event.id}/tickets-report"
     expect(page).to have_content "Grant Refund"
   end
@@ -36,6 +37,8 @@ RSpec.feature "Grant Refund", type: :feature do
       amount: 20,
       refund_requested: true
     )
+    create  :user_ticket
+    create  :ticket_type
     visit "/events/#{@event.id}/tickets-report"
     click_link "Grant Refund"
     expect(page).to have_content "Refund Paid"

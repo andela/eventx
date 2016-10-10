@@ -41,7 +41,7 @@ RSpec.feature "Event Manager edits event", type: :feature, js: true do
     fill_in "event[venue]", with: "LAmity"
     click_link "Next"
 
-    click_link "Preview"
+    find_link("Preview").trigger("click")
     click_button "Save"
     expect(page).to have_content "This is an edited Event"
     expect(page).to have_content update_successful_message("event")
