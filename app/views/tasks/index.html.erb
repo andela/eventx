@@ -1,18 +1,28 @@
 <div class="row">
-  <div class="dashboard-search">
-    <h5 class="col 12"><i class="fa fa-tasks fa-lg" aria-hidden="true"></i> All Tasks <small>(<%= @event.title%>)</small></h5>
+  <h5 class="col s12">
+    <i class="fa fa-tasks fa-lg" aria-hidden="true"></i> 
+    All Tasks <small>(<%= @event.title%>)</small>
+  </h5>
+  
+  <div class="col s12">
+    <%= can_add_event_task %>
+    <ul class="tabs">
+      <li class="tab col m6">
+        <h6 class="black-text"><a class="active" href="#my-tasks">My Tasks</a></h6>
+      </li>
+      <li class="tab col m6">
+        <h6 class="black-text"><a  href="#all-tasks">All Tasks</a></h6>
+      </li>
+    </ul>
   </div>
-</div>
+  <div id="my-tasks" class="col s12">
+    <%= render partial: "tasks/my_event_tasks" %>
+  </div>
+  <div id="all-tasks" class="col s12">
+    <%= render partial: "tasks/event_tasks" %>
+  </div>
+</div>  
 
-<div class="event-tasks-main center">
-  <div id="right">
-    <div class="row">
-      <div class="col l2">
-        <%= can_add_event_task %>
-      </div>
-    </div>
-    <%= render partial: "event_tasks" %>
-  </div>
-</div>
 <div id="toast"></div>
-<%= render partial: "task_modal" %>
+
+<%= render partial: "tasks/task_modal" %>

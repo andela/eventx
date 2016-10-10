@@ -54,8 +54,16 @@ module EventsHelper
   end
 
   def manage_events_link
-    if User.get_user_events(current_user)
+    if current_user.event_staffs.exists?
       link_to(icon("users") + " My Events Teams", administer_event_path)
+    end
+  end
+
+  def check_status(event)
+    if event.enabled
+      render partial: "events/administered_events", locals: { event: event }
+    else
+      "#{event} has been disabled"
     end
   end
 
@@ -70,5 +78,4 @@ module EventsHelper
   def converter(amt)
     number_to_currency(amt, unit: "$")
   end
-
 end

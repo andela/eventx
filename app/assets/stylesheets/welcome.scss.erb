@@ -253,6 +253,7 @@ input[type=text]:focus:not([readonly]) {
 
 .tabs .tab a {
   color: rgb(140, 131, 131);
+  padding: 10px;
   display: block;
   width: 100%;
   height: 100%;
@@ -264,7 +265,14 @@ input[type=text]:focus:not([readonly]) {
   transition: color 0.28s ease;
 }
 
+.tabs .tab .active {
+  background-color: teal;
+  color: white;
+}
+
 .tabs .tab a:hover { color: #f9c9cb; }
+
+h5.col.s12 { margin: 20px 0; }
 
 footer.page-footer {
   position: relative;

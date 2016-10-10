@@ -1,8 +1,5 @@
 <% unless @task.errors.any? %>
-$("#eventTasks").html("<% #= j(render('event_tasks', tasks: @tasks))%>")
-$("#addTaskModal").closeModal();
-$("#toast").html("<% #= j(render('event_task_toast')) %>");
-<% else %>
-$("#toast").html("<% #= j(render('event_task_toast')) %>");
-$("#addTaskModal").closeModal();
+  $("#eventTasks").html("<%= j(render('event_tasks', tasks: @tasks))%>");
 <% end %>
+$("#toast").html("<%= j(render('event_task_toast')) %>");
+$("#addTaskModal").closeModal();

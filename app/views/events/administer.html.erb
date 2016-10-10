@@ -1,39 +1,20 @@
 <div class="row">
-    <h5 class="col l6"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> Events I Belong To</h5>
-</div>
-
-<div id="content">
-  <div class="row">
+  <h5>
+    <i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> 
+    Events I Belong To
+  </h5>
+  <hr>
+  <div id="content">
     <div class="card col s12 no-margin no-padding">
       <div class="row no-margin no-padding">
         <table class="responsive-table striped">
           <tbody id="events_lists">
-            <%  @my_events.each do |event| %>
-              <% if event.enabled %>
-                <tr>
-                  <td>
-                    <%= event.title %>
-                    <br>
-                    <%= link_to " (View Details)", event, :target => "_blank" %></td>
-                  <td>
-                  <%= link_to icon("pencil-square-o") + " Edit Event", edit_event_path(event.id), id: "manage-event-btn" %></td>
-                  <td><%= link_to icon("users") + " Event Team", manage_staffs_path(event.id), id: "manage-stsff-btn" %></td>
-                  <td>
-                    <%= icon("sticky-note-o") +" My Tasks" %>
-                    <% #= (link_to icon("sticky-note-o") + " My Tasks", event_task_path(event.id), id: "manage-task-btn")  %>
-                  </td>
-                  <td>
-                    <%= link_to icon("tasks") + " All Tasks", event_tasks_path(event.id), id: "manage-task-btn" %>
-                  </td>
-                  <td>
-                    <%= link_to icon("money") + " Sponsors", event_sponsors_path(event.id), id: "manage-sponsor-btn" %>
-                  </td>
-                </tr>
-              <% end %>
+            <% @my_events.each do |event| %>
+              <%= check_status(event) %>
             <% end %>
           </tbody>
         </table>
-        <div id="edit_event-modal" class="modal">
+        <div id="edit_event-modal" class="modal"></div>
       </div>
     </div>
   </div>

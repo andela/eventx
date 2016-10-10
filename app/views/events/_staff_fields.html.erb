@@ -3,7 +3,7 @@
     <input type="email" class="add_staff_field" placeholder="Enter staff email" id = "staff_field_id"/>
   </div>
   <div class="input-field col s3 staff_role">
-    <%= select_tag(:role, options_for_select(@roles))%>
+    <%= select_tag(:role, options_for_select(@event.event_staffs.roles))%>
     <input type="hidden" id = "staff_id" name = "user_id" />
   </div>
     <div class="checked_div hide"></div>

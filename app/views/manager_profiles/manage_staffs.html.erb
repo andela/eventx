@@ -8,7 +8,7 @@
   <div class="staff">
     <ul class="collection with-header">
       <% @event.event_staffs.each do |staff| %>
-        <%= render "event_staffs", staff: staff %>
+        <%= render "manager_profiles/event_staffs", staff: staff %>
       <% end %>
     </ul>
   </div>
@@ -19,10 +19,11 @@
         <div class="container">
           <div class="row">
             <div class="input-field col s3">
-              <%= select_tag(:role, options_for_select(@roles))%>
+              <%= select_tag(:role, options_for_select(@event.event_staffs.roles))%>
             </div>
             <div class="input-field col offset-s1 s5">
-              <input type="text" id = "ent_staff_email" class= "add_staff_field" placeholder="Enter staff email"/>
+              <input type="text" id = "ent_staff_email" 
+                  class= "add_staff_field" placeholder="Enter staff email"/>
               <input type="hidden" id = "staff_id" name = "user_id" />
             </div>
             <div class="input-field col s3">

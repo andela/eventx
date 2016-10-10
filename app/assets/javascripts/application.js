@@ -16,6 +16,7 @@
 //= require dataTables/jquery.dataTables
 //= require jquery.remotipart
 //= require jquery-ui/autocomplete
+//= require event_autocomplete
 //= require materialize-sprockets
 //= require social-share-button
 //= require_tree .

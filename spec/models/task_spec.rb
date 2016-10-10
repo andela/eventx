@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Task, type: :model do
   it "should have a valid factory" do
@@ -18,21 +18,21 @@ RSpec.describe Task, type: :model do
     it { is_expected.to validate_presence_of(:assigner) }
   end
 
-  describe "#my_tasks" do  
-    it "shows only the user's tasks" do
+  describe "#my_tasks" do
+    it "shows only the current ßuser's tasks" do
       user1 = create(:regular_user)
       user2 = create(:regular_user)
       assigner = create(:user)
       event = create(:regular_event)
       create(:task, user: user1, assigner: assigner, event: event)
       create(
-        :task, name: "My task", 
-        user: user1, 
-        assigner: assigner, 
-        event: event
+        :task, name: "My task",
+               user: user1,
+               assigner: assigner,
+               event: event
       )
       create(:task, user: user2, assigner: assigner, event: event)
-      
+
       expect(user1.tasks.find_by(name: "My task")).to \
         eq(Task.find_by(name: "My task"))
       expect(user1.tasks).to_not include(user2.tasks)

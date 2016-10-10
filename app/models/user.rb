@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :events, through: :manager_profile
   has_many :reviews, dependent: :destroy
   has_many :tasks
+  has_many :assisted_events, through: :event_staffs, source: "event"
 
   def self.from_omniauth(auth)
     return auth unless auth
@@ -70,7 +71,7 @@ class User < ActiveRecord::Base
 
   def self.get_team_events(user)
     user_events = []
-    user.event_staffs.each do |position| 
+    user.event_staffs.each do |position|
       user_events.push(Event.find(position.event_id))
     end
     user_events

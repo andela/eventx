@@ -1,0 +1,22 @@
+<div id="eventTasks">
+  <table class="responsive-table striped">
+    <thead>
+      <tr>
+        <th data-field="name">Task</th>
+        <th data-field="assigner">Assigned By</th>
+        <th data-field="completed_status">Status</th>
+      </tr>
+    </thead>
+    <tbody id="tasks_lists">
+    <% @my_tasks.each do |task| %>
+      <%= form_tag event_task_path(id: task.id, event_id: @event.id) do %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= task.assigner.first_name %></td>
+          <td><%= check_box_tag :task, :completed_status, class: "filled-in" %></td>          
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

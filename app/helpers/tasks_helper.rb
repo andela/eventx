@@ -1,5 +1,4 @@
 module TasksHelper
-
   def can_manage_task(task)
     if true
       render(
@@ -10,13 +9,14 @@ module TasksHelper
   end
 
   def can_add_event_task
-    if current_user
+    # binding.pry
+    if can? :create, Task
       render partial: "tasks/add_task"
     end
   end
 
   def all_tasks
-    @event.tasks
+    # @event.tasks
   end
 
   def get_name_and_role(staff)

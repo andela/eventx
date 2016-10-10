@@ -1,21 +1,20 @@
 class TasksController < ApplicationController
   load_and_authorize_resource
-  before_action :find_event, :all_tasks
+  before_action :find_event, :all_tasks, :find_task
 
   layout "admin"
-  
+
   def index
-    @tasks = @event.tasks
   end
 
   def show
-    @my_task = Task.where(event_id: @event.id, user_id: current_user.id)
+    @task = Task.new
   end
-  
+
   def new
     @task = @event.tasks.new
   end
-  
+
   def create
     @task = @event.tasks.new(task_params)
     @task.assigner = current_user
@@ -37,7 +36,7 @@ class TasksController < ApplicationController
       flash[:error] = update_failure_message("task")
     end
   end
-  
+
   def destroy
     @task.destroy
     flash[:success] = delete_successful_message("task")
@@ -45,19 +44,19 @@ class TasksController < ApplicationController
 
   private
 
-    def find_event
-      @event = Event.find_by(id: params[:event_id])
-    end
-    
-    def find_task
-      @task = @event.tasks.find(params[:id])
-    end
+  def find_event
+    @event = Event.find_by(id: params[:event_id])
+  end
 
-    def all_tasks
-      @tasks = @event.tasks
-    end
-    
-    def task_params
-      params.require(:task).permit(:name, :user_id, :completed_status)
-    end
+  def find_task
+    @my_tasks = Task.where(event_id: @event.id, user_id: current_user.id)
+  end
+
+  def all_tasks
+    @tasks = @event.tasks
+  end
+
+  def task_params
+    params.require(:task).permit(:name, :user_id, :completed_status)
+  end
 end

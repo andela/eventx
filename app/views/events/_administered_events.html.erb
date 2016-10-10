@@ -1,0 +1,35 @@
+<tr>
+  <td>
+    <%= event.title %>
+    <br>
+    <%= link_to " (View Details)", event, target: "_blank" %>
+  </td>
+  <td>
+    <% button_status = false unless button_status #get_button_status(Event) %>
+    <% #= button_tag class: "btn", disabled: button_status do %>
+      <%= link_to icon("pencil-square-o") + " Edit Event", 
+          edit_event_path(event.id), method:"", id: "manage-event-btn" %>
+    <% #end %>
+  </td>
+  <td>
+    <% button_status = false unless button_status %>
+    <% #= button_tag class: "btn", disabled: button_status do %>
+      <%= link_to icon("users") + " Team Members", 
+          manage_staffs_path(event.id), id: "manage-staff-btn" %>
+    <% #end %>
+  </td>
+  <td>
+    <% button_status = false unless button_status %>
+    <% #= button_tag class: "btn", disabled: button_status do %>
+    <%= link_to icon("tasks") + " Tasks", 
+        event_tasks_path(event.id), id: "manage-task-btn" %>
+    <% #end %>
+  </td>
+  <td>
+  <% button_status = false unless button_status %>
+    <% #= button_tag class: "btn", disabled: button_status do %>
+    <%= link_to icon("money") + " Sponsors", 
+        event_sponsors_path(event.id), id: "manage-sponsor-btn" %>
+    <% #end %>
+  </td>
+</tr>            

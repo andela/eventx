@@ -1,12 +1,12 @@
 class EventStaff < ActiveRecord::Base
   enum role: [
-                :event_staff, 
-                :gate_keeper, 
-                :event_manager, 
-                :super_admin, 
-                :sponsor,
-                :volunteer
-              ]
+    :event_staff,
+    :gate_keeper,
+    :collaborator,
+    :logistics,
+    :sponsor,
+    :volunteer
+  ]
   validates :role, presence: true
   validates :user, presence: true
 

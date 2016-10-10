@@ -9,6 +9,7 @@ class EventsController < ApplicationController
     :disable,
     :generate,
     :scan,
+    :administer_full,
     :tickets_report
   ]
   before_action :set_sponsor
@@ -74,6 +75,11 @@ class EventsController < ApplicationController
     @event.manager_profile = current_user.manager_profile
     @event.title = @event.title.strip
     flash[:notice] = if @event.save
+                       @event.event_staffs.create(
+                         role: 2,
+                         user_id: current_user.id,
+                         event_id: @event.id
+                       )
                        create_successful_message("event")
                      else
                        @event.errors.full_messages.join("; ")

@@ -1,8 +1,3 @@
-<div class="navbar-fixed">
-  <%= render "layouts/admin_nav" %>
-</div>
-<main>
-<div class="container margin-down">
   <h4 class="col 12">
     <i class="fa fa-cogs fa-lg" aria-hidden="true"></i> Manage Event 
     <small>(<%= link_to @event.title, event_path(@event.id) %>)</small>
@@ -27,9 +22,9 @@
 
       <div id="staff" class="col s12">
         <% #binding.pry %>
-        <% if can? :crud, Event %>
+        <% if can? :crud, EventStaff %>
           <%= render file: "manager_profiles/manage_staffs" %>
-        <% elsif can? :cru, Event %>
+        <% elsif can? :cru, EventStaff %>
           <%= render file: "manager_profiles/manage_staffs", locals: { disable_delete: true } %>
         <% else %>
           <%= render file: "manager_profiles/manage_staffs", locals: { disable_create: true, disable_delete: true } %>
@@ -41,8 +36,6 @@
       </div>
 
       <div id="tasks" class="col s12">
-        To be implemented
+        <%= render file: "tasks/index" %>
       </div>
     </div>    
-</div>
-</main>
