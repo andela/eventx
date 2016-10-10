@@ -35,6 +35,8 @@ class Event < ActiveRecord::Base
   validates :description, presence: true, length: { in: 20..1000 }
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
   validates :category_id, presence: true
   validates :ticket_types, presence: true
 

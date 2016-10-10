@@ -13,16 +13,15 @@ class EventsController < ApplicationController
   ]
   before_action :set_sponsor
   before_action :subscription_status, only: [:show]
+  before_action :build_recurring_event, only: [:new]
 
   layout "admin", only: [:tickets, :tickets_report]
 
   respond_to :html, :json, :js
 
   def new
-    binding.pry
-    @event = Event.new.decorate
+    # binding.pry
     @event.ticket_types.build
-    @event.build_recurring_event
     @roles = Event.get_roles
     # binding.pry
   end
@@ -66,7 +65,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    binding.pry
+    # binding.pry
     @roles = Event.get_roles
     @event.event_staffs.delete_all
     flash[:notice] = if @event.update(event_params)
@@ -165,5 +164,10 @@ class EventsController < ApplicationController
   end
 
   def loading
+  end
+
+  def build_recurring_event
+    @event = Event.new.decorate
+    @event.build_recurring_event
   end
 end

@@ -4,7 +4,9 @@ FactoryGirl.define do
     description "Happy day of joy celebration happinness smiles."
     location "Beach side"
     start_date Time.zone.now + 86_400
+    start_time Time.now
     end_date Time.zone.now + 86_400 * 7
+    end_time Time.now
     image "http://graph.facebook.com/1065771400114300/picture"
     theme_id 1
     category_id 1

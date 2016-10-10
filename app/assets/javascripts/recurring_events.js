@@ -20,16 +20,20 @@ $(document).ready( function () {
   $('#event_recurring_event_attributes_frequency').on('change', function (){
     if (this.value === "Weekly"){
       $('.week-frequency').addClass('display-none');
-      $('#event_recurring_event_attributes_week').val('');
       $('.day-frequency').removeClass('display-none');
+      $('#event_recurring_event_attributes_day').val('');
+      $('#event_recurring_event_attributes_week').val('');
     } else if (this.value === "Monthly") {
       $('.week-frequency').removeClass('display-none');
       $('.day-frequency').removeClass('display-none');
+      $('#event_recurring_event_attributes_day').val('');
+      $('#event_recurring_event_attributes_week').val('');
+      console.log("monnn")
     } else {
       $('.week-frequency').addClass('display-none');
-      $('#event_recurring_event_attributes_week').val('');
       $('.day-frequency').addClass('display-none');
       $('#event_recurring_event_attributes_day').val('');
+      $('#event_recurring_event_attributes_week').val('');
     }
   });
 

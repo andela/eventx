@@ -38,5 +38,7 @@ RSpec.describe Event, type: :model do
   describe "associations" do
     it { is_expected.to have_many :subscriptions }
     it { is_expected.to have_many :subscribers }
+    it { is_expected.to have_one :recurring_event }
+    it { is_expected.to accept_nested_attributes_for :recurring_event }
   end
 end

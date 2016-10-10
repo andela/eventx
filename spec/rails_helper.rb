@@ -13,6 +13,7 @@ require "capybara/rspec"
 require "capybara/rails"
 require "database_cleaner"
 require "capybara/poltergeist"
+require "selenium-webdriver"
 require "webmock/rspec"
 
 WebMock.allow_net_connect!
@@ -26,8 +27,18 @@ Capybara.register_driver :poltergeist do |app|
                                          timeout: 60,
                                          phantomjs: Phantomjs.path)
 end
-
 Capybara.javascript_driver = :poltergeist
+
+# Capybara.javascript_driver = :selenium
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Selenium::Driver.new(app, js_errors: false, inspector: true,
+#                                          timeout: 60,
+#                                          phantomjs: Phantomjs.path)
+# end
+
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+# end
 
 Capybara.server do |app, port|
   require "rack/handler/puma"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002220845) do
+ActiveRecord::Schema.define(version: 20161009170439) do
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "user_id"
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20161002220845) do
     t.boolean  "enabled",            default: true
     t.time     "start_time"
     t.time     "end_time"
-    t.boolean  "recurring"
   end
 
   add_index "events", ["manager_profile_id"], name: "index_events_on_manager_profile_id"

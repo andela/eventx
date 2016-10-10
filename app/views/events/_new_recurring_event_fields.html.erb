@@ -1,0 +1,27 @@
+<div class="row col s12 center pull-s1">
+  <label>Recurring Event?</label>
+  <div class="switch">
+    <label>
+    <input type="checkbox", class="recur-event">
+    <span class="lever recur-lever"></span>
+    </label>
+  </div>
+</div>
+
+<div class="row recurring_event_space display-none">
+  <%= f.fields_for :recurring_event do |rec_event| %>
+
+    <div class="input-field col s3">
+      <%= rec_event.select :frequency, options_for_select(RecurringEvent::FREQUENCY, @event.recurring_event.frequency), { include_blank: "How frequent?" }, class: "browser-default"  %>
+    </div>
+
+    <div class="input-field col s4 week-frequency display-none">
+      <%= rec_event.select :week, options_for_select(RecurringEvent::WEEK, @event.recurring_event.week), { include_blank: "What week of the month?" }, class: "browser-default"  %>
+    </div>
+
+    <div class="input-field col s4 day-frequency display-none">
+      <%= rec_event.select :day, options_for_select(RecurringEvent::DAY, @event.recurring_event.day), { include_blank: "What day of the week?" }, class: "browser-default"  %>
+    </div>
+
+  <% end %>
+</div>

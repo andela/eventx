@@ -51,7 +51,7 @@ public/uploads/tmp/*
 /vendor/*
 
 # Ignore precompiled assets
-public/assets
+/public/assets/*
 
 #ignore test dir
 test

@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @booking = Booking.create(event: @event, user: current_user)
     tickets = []
     ticket_params.each do |ticket_type_id, quantity|

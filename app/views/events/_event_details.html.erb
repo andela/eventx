@@ -27,24 +27,30 @@
           <div class="row center">
             <h3 class="header col s12 light our-event-title"><%= @event.title %></h3>
             <label id="counter"></label>
-            <%= content_tag(:label, "#{@event.start_date} - #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif", class: "our-event-date")  %>
-            <%= content_tag(:label, (@recurring_event.nil? ? "" : display_event_frequency(@recurring_event)) + "#{@event.start_time} - #{@event.end_time}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 2%") %>
+
+            <% if @recurring_event.nil? %>
+              <%= content_tag(:label, "#{@event.start_date}, #{@event.start_time} to #{@event.end_date}, #{@event.end_time}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif", class: "our-event-date") %>
+              <%= content_tag(:label, "", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 2%", class: "our-event-time") %>
+            <% else %>
+            <%= content_tag(:label, "#{@event.start_date} - #{@event.end_date}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif", class: "our-event-date") %>
+            <%= content_tag(:label, display_event_frequency(@recurring_event) + "#{@event.start_time} to #{@event.end_time}", style: "display: block; font-size: 24px; color: white; font-family: 'Roboto', sans-serif; margin-bottom: 2%", class: "our-event-time") %>
+            <% end %>
 
             <div id="att">
               <%= render "events/attend_unattend_event_button" %>
             </div>
 
             <% if action_name == "show" && cummulative_rating(@event)%>
-            <div class="event-rating">
-              <div class="event-rating-star">
-                <% (cummulative_rating(@event)).times  do %>
-                <span class="event-filled-in-star event-star-size">&#11088;</span>
-                <% end %>
-                <% (5 - (cummulative_rating(@event))).times do %>
-                <span class="event-star-size">&#9734;</span>
-                <% end %>
+              <div class="event-rating">
+                <div class="event-rating-star">
+                  <% (cummulative_rating(@event)).times  do %>
+                  <span class="event-filled-in-star event-star-size">&#11088;</span>
+                  <% end %>
+                  <% (5 - (cummulative_rating(@event))).times do %>
+                  <span class="event-star-size">&#9734;</span>
+                  <% end %>
+                </div>
               </div>
-            </div>
             <% end %>
             <div class="subscribe-button">
               <% if current_user && action_name == "show" && @subscribed %>

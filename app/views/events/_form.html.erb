@@ -89,33 +89,11 @@
         </div>
         <!-- Event Start/End Date/Time -->
         <!-- Start: Add Recurring-Event -->
-        <% unless @event.recurring_event.persisted? %>
-          <div class="row">
-              <div class="col s12 center pull-s1">
-                <label>Recurring Event?</label>
-                <div class="switch">
-                  <label>
-                  <input type="checkbox", class="recur-event">
-                  <span class="lever recur-lever"></span>
-                  </label>
-                </div>
-            </div>
-          </div>
-        <% end %>
-
         <div class="row">
-          <% if @event.recurring_event.persisted? %>
-            <div class="recurring_event_space">
-              <%= f.fields_for :recurring_event do |event| %>
-                <%= render 'events/recurring_event_fields', f: event %>
-              <% end %>
-            </div>
+          <% if @event.recurring_event? %>
+            <%= render "events/persisted_recurring_event_fields", f: f %>
           <% else %>
-            <div class="recurring_event_space display-none" >
-              <%= f.fields_for :recurring_event do |event| %>
-                <%= render 'events/recurring_event_fields', f: event %>
-              <% end %>
-            </div>
+            <%= render "events/new_recurring_event_fields", f: f %>
           <% end %>
         </div>
         <!--End: add Recurring-Event -->
